@@ -29,7 +29,7 @@ BlobFuse-based approaches considered for MAI caching/data access; must scale to 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

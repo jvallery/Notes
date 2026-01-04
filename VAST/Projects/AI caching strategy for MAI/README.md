@@ -29,7 +29,7 @@ Define and execute a unified, pluggable caching strategy for MAI at extreme scal
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -1,20 +1,32 @@
 ---
-type: customer-root
-name: Dhammak
-status: needs-review
+type: customer
+title: "Dhammak"
 last_contact: '2025-10-22'
+created: '2026-01-04'
 tags:
-- needs-review
+  - type/customer
 ---
 
 # Dhammak
 
-> ⚠️ Auto-created stub - needs review
+## Account Overview
+
+**Industry**: _Unknown_
+**Relationship**: Prospect/Customer
+**Status**: Active
 
 ## Recent Context
 
 - 2025-10-22: [[2025-10-22 - Dhammak Microsoft partnership positioning]]
-## Key Facts
+
+## Open Tasks
+
+```dataview
+TASK
+FROM "VAST/Customers and Partners/Dhammak"
+WHERE !completed
+```
+
+## Key Contacts
 
 ## Related
-

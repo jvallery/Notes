@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Aaron Batillo")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ Previously at Microsoft AI, Inflection AI, Cohere, and Color.
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

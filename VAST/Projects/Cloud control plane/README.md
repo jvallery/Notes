@@ -29,7 +29,7 @@ Planned cloud control plane build at VAST (via acquired company 'Red Stapler'); 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

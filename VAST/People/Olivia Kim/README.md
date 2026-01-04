@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Olivia Kim")
 SORT due ASC
 ```
@@ -46,4 +46,4 @@ Previously worked at eBay and Facebook.
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

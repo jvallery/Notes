@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Cliff Henson")
 SORT due ASC
 ```
@@ -46,4 +46,4 @@ Cliff Henson has over 24 years of experience in supply chain management. Prior t
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-30*

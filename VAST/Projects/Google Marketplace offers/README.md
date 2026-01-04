@@ -29,7 +29,7 @@ Recently launched Google Marketplace offers; broader partnership and integration
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -30,7 +30,7 @@ Lightweight recurring win/loss analysis and product monthly business review tied
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

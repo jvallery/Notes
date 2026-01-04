@@ -29,7 +29,7 @@ Future cloud/SaaS operating model for VAST (multi-tenant service) informed by cu
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

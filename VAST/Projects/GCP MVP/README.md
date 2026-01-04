@@ -29,7 +29,7 @@ Near-term Google Cloud marketplace MVP launch; requires routable IP deployment f
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

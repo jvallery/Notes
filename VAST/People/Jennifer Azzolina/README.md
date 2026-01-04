@@ -44,4 +44,4 @@ Former Senior Director of Global Alliances at Cloudera; extensive experience in 
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-14*

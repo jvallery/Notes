@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Steve Ballmer")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-12-19*

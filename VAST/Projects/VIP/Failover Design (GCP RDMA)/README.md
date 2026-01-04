@@ -30,7 +30,7 @@ Re-evaluate VIP and failover approaches on GCP for RDMA workloads (ILB vs alias 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

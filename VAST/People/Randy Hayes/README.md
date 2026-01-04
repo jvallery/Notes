@@ -42,4 +42,4 @@ Randy Hayes has been with VAST Data since its early stages, contributing to its 
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-14*

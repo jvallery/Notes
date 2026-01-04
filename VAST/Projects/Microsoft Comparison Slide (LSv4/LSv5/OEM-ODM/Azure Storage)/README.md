@@ -49,7 +49,7 @@ _Who is working on this project?_
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```
@@ -84,10 +84,10 @@ _Recent activity will be populated here..._
 
 ```dataview
 TABLE file.mtime as "Modified"
-FROM ""
+FROM this.file.folder
 WHERE type != "readme" AND type != "projects"
 SORT file.mtime DESC
 ```
 
 ---
-*Last updated: *
+*Last updated: 2026-01-03*

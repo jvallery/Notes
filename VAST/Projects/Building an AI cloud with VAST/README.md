@@ -29,7 +29,7 @@ Planned 45-minute SCO session for Jason: explain why VAST is used, where it’s 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

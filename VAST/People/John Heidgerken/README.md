@@ -23,7 +23,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "John Heidgerken")
 SORT due ASC
 ```
@@ -42,4 +42,4 @@ John Heidgerken has been serving as the Americas West Area Director of Systems E
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-06*

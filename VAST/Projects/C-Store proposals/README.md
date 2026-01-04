@@ -29,7 +29,7 @@ Internal proposals (Krishnan and team) around using a C-Store approach as part o
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Amy Shapiro")
 SORT due ASC
 ```
@@ -45,4 +45,4 @@ Extensive experience in financial leadership roles across private and public tec
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-28*

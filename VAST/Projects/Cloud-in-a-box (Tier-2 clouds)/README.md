@@ -29,7 +29,7 @@ Alliance-driven blueprint for Tier-2 clouds using control-plane partners to deli
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

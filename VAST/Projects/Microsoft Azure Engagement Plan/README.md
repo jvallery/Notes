@@ -29,7 +29,7 @@ Draft a Microsoft networking engagement plan focused on minimizing egress (e.g.,
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

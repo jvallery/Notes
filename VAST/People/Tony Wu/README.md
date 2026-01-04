@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Tony Wu")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ Tony Wu is an experienced engineering leader with a strong background in artific
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

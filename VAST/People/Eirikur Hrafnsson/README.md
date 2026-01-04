@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Eirikur Hrafnsson")
 SORT due ASC
 ```
@@ -50,4 +50,4 @@ Eirikur Hrafnsson co-founded Greenqloud in 2010, serving as CEO and later COO un
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-28*

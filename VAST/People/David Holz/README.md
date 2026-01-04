@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "David Holz")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ David Holz co-founded Leap Motion in 2010, a company specializing in gesture-rec
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-12-19*

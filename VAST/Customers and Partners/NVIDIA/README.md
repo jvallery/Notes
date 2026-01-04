@@ -29,7 +29,7 @@ _No key contacts identified._
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

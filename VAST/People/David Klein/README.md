@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "David Klein")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ David Klein has been with NVIDIA since 2011, progressing through roles from Seni
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

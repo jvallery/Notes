@@ -22,7 +22,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Eric Wolfie")
 SORT due ASC
 ```
@@ -43,4 +43,4 @@ Erik Wolf has extensive experience in sales strategy and enablement. He has been
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-27*

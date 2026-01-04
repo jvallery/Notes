@@ -21,8 +21,8 @@ Any path outside these prefixes will cause the plan to fail. Never generate path
 
 ## Vault Context
 
-### Entity Folders
-{{ entity_folders | tojson(indent=2) }}
+### Entity Paths (Name → Folder)
+{{ entity_paths | tojson(indent=2) }}
 
 ### Entity Aliases
 {{ aliases | tojson(indent=2) }}

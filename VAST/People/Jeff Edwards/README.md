@@ -22,7 +22,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Jeff Edwards")
 SORT due ASC
 ```
@@ -43,4 +43,4 @@ Jeff Denworth has over two decades of experience with advanced computation and m
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

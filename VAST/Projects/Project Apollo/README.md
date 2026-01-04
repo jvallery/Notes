@@ -29,7 +29,7 @@ AKS-led initiative to build a slimmed-down Azure control plane/topology for sing
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

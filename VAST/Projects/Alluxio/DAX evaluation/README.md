@@ -30,7 +30,7 @@ Evaluate Alluxio/DAX as a single cache solution supporting both training and inf
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -26,7 +26,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Ronnie Lazar")
 SORT due ASC
 ```
@@ -47,4 +47,4 @@ Over 35 years of experience in software engineering and management, including ro
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-01*

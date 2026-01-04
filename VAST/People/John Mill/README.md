@@ -22,7 +22,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "John Mill")
 SORT due ASC
 ```
@@ -40,4 +40,4 @@ John Mao has been serving as the Global Head of Business Development at VAST Dat
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-31*

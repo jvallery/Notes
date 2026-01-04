@@ -30,7 +30,7 @@ BlobFuse/Blockfuse caching and data access work in progress; needs review of lat
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

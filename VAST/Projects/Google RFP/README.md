@@ -29,7 +29,7 @@ Prepare for Google RFP discussions; quickly triage whether requirements are bloc
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

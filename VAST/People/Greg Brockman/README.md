@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Greg Brockman")
 SORT due ASC
 ```
@@ -46,4 +46,4 @@ Co-founder and President of OpenAI; former CTO at Stripe; led projects like Open
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-22*

@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Michael Myrah")
 SORT due ASC
 ```
@@ -50,4 +50,4 @@ Michael Myrah has been with Microsoft since at least 2012, holding various posit
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-06*

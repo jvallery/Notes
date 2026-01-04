@@ -20,7 +20,7 @@ In-flight Fort Meade initiative to run Gemini on-prem ("Gemini as a service") as
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Jay Parikh")
 SORT due ASC
 ```
@@ -48,4 +48,4 @@ Jay Parikh joined Microsoft in October 2024 as Executive Vice President of CoreA
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-06*

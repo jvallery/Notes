@@ -29,7 +29,7 @@ System of record for cloud entitlements, metering/usage reporting, call-home reg
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

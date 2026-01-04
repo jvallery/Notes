@@ -29,7 +29,7 @@ Parallel partnership track where Google sells TPUs to model builders and wants s
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

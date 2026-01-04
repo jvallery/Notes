@@ -30,7 +30,7 @@ Assess complementing the Marketplace L-series offer with higher-density storage 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

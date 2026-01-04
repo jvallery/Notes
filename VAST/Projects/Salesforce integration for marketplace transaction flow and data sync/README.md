@@ -29,7 +29,7 @@ Integrate Salesforce to support marketplace transaction flow and data synchroniz
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -29,7 +29,7 @@ Positioned as a follow-on to Bifrost for further Blob performance enhancements; 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -29,7 +29,7 @@ Validate what Microsoft data can be used in ROI comparisons before sharing with 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

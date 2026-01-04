@@ -29,7 +29,7 @@ Create a one-pager converting VAST EB power savings into additional GPUs per sit
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

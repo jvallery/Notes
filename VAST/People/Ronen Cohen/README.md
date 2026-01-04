@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Ronen Cohen")
 SORT due ASC
 ```
@@ -45,4 +45,4 @@ Ronen Cohen has over 20 years of experience in machine learning and data structu
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-01*

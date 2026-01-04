@@ -29,7 +29,7 @@ Packaging VAST portfolio as a blueprint for NeoClouds to offer AI cloud services
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

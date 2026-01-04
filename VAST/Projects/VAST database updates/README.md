@@ -28,7 +28,7 @@ _Brief description of this project..._
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

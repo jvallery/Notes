@@ -26,7 +26,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Jason Ainsworth")
 SORT due ASC
 ```
@@ -48,4 +48,4 @@ _Career history, expertise, interests, personal details shared..._
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

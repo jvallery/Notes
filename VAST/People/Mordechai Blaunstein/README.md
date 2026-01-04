@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Mordechai Blaunstein")
 SORT due ASC
 ```
@@ -58,4 +58,4 @@ Over 28 years of experience in the technology sector, holding leadership roles i
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-01*

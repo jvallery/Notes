@@ -26,7 +26,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Jan Niemus")
 SORT due ASC
 ```
@@ -51,4 +51,4 @@ Jan Niemiec has been serving as Managing Director at Google since May 2023. Prio
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-29*

@@ -29,7 +29,7 @@ Response effort to Google Distributed Cloud RFP to replace NetApp as storage par
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

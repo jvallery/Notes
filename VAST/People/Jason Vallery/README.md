@@ -164,4 +164,4 @@ Prior to joining VAST Data, Jason Vallery had a 13-year career at Microsoft, whe
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-01*

@@ -30,7 +30,7 @@ Referenced as a comparable large-scale site/footprint; potentially related to th
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

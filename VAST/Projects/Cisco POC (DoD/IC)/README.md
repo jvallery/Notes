@@ -30,7 +30,7 @@ Proof of concept with Google DoD/IC team and Cisco gear to validate VAST stack w
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

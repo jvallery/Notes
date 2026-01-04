@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Ray Coetzee")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ Ray Coetzee is a Solution Architect Lead at VAST Data, with expertise in paralle
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-30*

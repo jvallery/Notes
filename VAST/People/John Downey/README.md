@@ -26,7 +26,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "John Downey")
 SORT due ASC
 ```
@@ -51,4 +51,4 @@ John Downey is based out of the New York City Metropolitan Area and works at Goo
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-31*

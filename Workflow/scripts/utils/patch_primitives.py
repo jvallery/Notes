@@ -4,6 +4,7 @@ Structured patch operations - NO REGEX for content modification.
 These primitives are safe, deterministic, and testable.
 """
 
+import re
 from pathlib import Path
 import sys
 
@@ -100,6 +101,15 @@ def append_under_heading(content: str, heading: str, text: str) -> str:
     text_stripped = text.strip()
     if text_stripped in section_content:
         return content  # Already present, don't duplicate
+    
+    # IDEMPOTENT: For context entries, check if same note link already exists
+    # Context entries look like: "- 2025-10-01: [[2025-10-01 - Note title]]"
+    wikilink_match = re.search(r'\[\[([^\]]+)\]\]', text_stripped)
+    if wikilink_match:
+        note_link = wikilink_match.group(1)
+        # Check if this exact note link already exists in section
+        if f"[[{note_link}]]" in section_content:
+            return content  # Note link already present, don't duplicate
 
     # Insert content before end_line
     # Ensure there's content separation
@@ -181,6 +191,15 @@ def prepend_under_heading(content: str, heading: str, text: str) -> str:
     text_stripped = text.strip()
     if text_stripped in section_content:
         return content  # Already present, don't duplicate
+    
+    # IDEMPOTENT: For context entries, check if same note link already exists
+    # Context entries look like: "- 2025-10-01: [[2025-10-01 - Note title]]"
+    wikilink_match = re.search(r'\[\[([^\]]+)\]\]', text_stripped)
+    if wikilink_match:
+        note_link = wikilink_match.group(1)
+        # Check if this exact note link already exists in section
+        if f"[[{note_link}]]" in section_content:
+            return content  # Note link already present, don't duplicate
 
     # Find first content line after heading (skip blank lines)
     first_content_line = target_line + 1

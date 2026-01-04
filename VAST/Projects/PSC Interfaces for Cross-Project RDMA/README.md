@@ -29,7 +29,7 @@ Assess requirement to use Private Service Connect interfaces (PSCI) for cross-pr
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

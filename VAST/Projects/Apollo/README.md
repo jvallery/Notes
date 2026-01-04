@@ -29,7 +29,7 @@ Microsoft initiative with unclear scope/boundaries and many stakeholders; tight 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

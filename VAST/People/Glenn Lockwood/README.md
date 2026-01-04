@@ -26,7 +26,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Glenn Lockwood")
 SORT due ASC
 ```
@@ -49,4 +49,4 @@ Glenn Lockwood has extensive experience in high-performance computing (HPC) and 
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-06*

@@ -30,7 +30,7 @@ Caching/storage proposals for MAI (C-Store-based) and related BlockFuse/BlobFuse
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

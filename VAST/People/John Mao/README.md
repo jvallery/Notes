@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "John Mao")
 SORT due ASC
 ```
@@ -45,4 +45,4 @@ John Mao has over 15 years of experience in the IT and cloud sectors. Prior to j
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-31*

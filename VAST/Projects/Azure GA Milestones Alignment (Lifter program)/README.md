@@ -29,7 +29,7 @@ Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

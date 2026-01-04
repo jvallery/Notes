@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Juergen Willis")
 SORT due ASC
 ```
@@ -47,4 +47,4 @@ Darryl K. Willis is an Independent Director at Dril-Quip, Inc. and Nine Energy S
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-09-30*

@@ -1,20 +1,31 @@
 ---
-type: person-root
-name: Lihi Rotchild
-status: needs-review
+type: people
+title: "Lihi Rotchild"
 last_contact: '2025-10-28'
+created: '2026-01-04'
 tags:
-- needs-review
+  - type/people
+  - company/google
 ---
 
 # Lihi Rotchild
 
-> ⚠️ Auto-created stub - needs review
+## Profile
+
+**Role**: _Unknown_
+**Company**: Google
+**Relationship**: External contact (Google)
 
 ## Recent Context
 
 - 2025-10-28: [[2025-10-28 - GCP MVP launch alignment]] (via Google)
-## Key Facts
+
+## Open Tasks
+
+```dataview
+TASK
+FROM "VAST/People/Lihi Rotchild"
+WHERE !completed
+```
 
 ## Related
-

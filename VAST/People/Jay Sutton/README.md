@@ -22,7 +22,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Jay Sutton")
 SORT due ASC
 ```
@@ -43,4 +43,4 @@ Jay Sutton is a seasoned sales professional with a progressive career in the tec
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-07*

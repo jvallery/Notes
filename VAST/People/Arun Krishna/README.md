@@ -22,7 +22,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Arun Krishna")
 SORT due ASC
 ```
@@ -44,4 +44,4 @@ Hari Krishna has 16 years of experience in the field. Prior to joining VAST Data
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-09-03*

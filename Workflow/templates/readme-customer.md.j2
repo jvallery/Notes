@@ -100,7 +100,7 @@ _What are the immediate next actions for this account?_
 {% else -%}
 ```dataview
 TASK
-FROM "{{ folder_path | default('') }}"
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

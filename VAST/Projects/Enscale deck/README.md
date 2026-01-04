@@ -29,7 +29,7 @@ Adapt Enscale solution/deck to support Microsoft/MAI storyline; emphasize Kubern
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

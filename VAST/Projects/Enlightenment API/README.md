@@ -29,7 +29,7 @@ Prior project related to redirects/enlightenment API; explicitly stated as not t
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

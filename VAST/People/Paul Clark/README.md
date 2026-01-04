@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Paul Clark")
 SORT due ASC
 ```
@@ -46,4 +46,4 @@ Paul Clark has over 31 years of experience in the technology sector. He joined M
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-11-06*

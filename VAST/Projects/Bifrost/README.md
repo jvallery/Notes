@@ -29,7 +29,7 @@ Blob performance initiative including a direct read path from compute to capacit
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

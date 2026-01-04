@@ -29,7 +29,7 @@ Neo cloud feature requirements workstream; core to current business; Morty owns 
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

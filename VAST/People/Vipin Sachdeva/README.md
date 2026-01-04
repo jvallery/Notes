@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Vipin Sachdeva")
 SORT due ASC
 ```
@@ -52,4 +52,4 @@ Vipin has over 23 years of experience in high-performance computing and AI. He j
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-01*

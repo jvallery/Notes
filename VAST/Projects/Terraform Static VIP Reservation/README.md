@@ -29,7 +29,7 @@ Provide Terraform examples/snippets showing how static VIP IPs are provisioned/r
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -222,11 +222,24 @@ def format_contact_section(profile: AggregatedPersonDetails) -> str:
 
 
 def format_tasks_section(tasks: list[ExtractedTask]) -> str:
-    """Format tasks as Obsidian Tasks plugin format."""
+    """Format tasks as Obsidian Tasks plugin format.
+    
+    Full format: - [ ] text @owner 📅 due 🔺 #task
+    Priority markers: 🔺 highest, ⏫ high, 🔼 medium, 🔽 low, ⏬ lowest
+    """
     lines: list[str] = []
     
+    # Priority marker mapping
+    PRIORITY_MARKERS = {
+        "highest": "🔺",
+        "high": "⏫",
+        "medium": "🔼",
+        "low": "🔽",
+        "lowest": "⏬",
+    }
+    
     for task in tasks[:10]:  # Limit to 10 tasks
-        # Build task line: - [ ] text @owner 📅 due
+        # Build task line: - [ ] text @owner 📅 due 🔺 #task
         task_line = f"- [ ] {task.text}"
         
         if task.owner and task.owner.lower() != "myself":
@@ -234,6 +247,15 @@ def format_tasks_section(tasks: list[ExtractedTask]) -> str:
         
         if task.due:
             task_line += f" 📅 {task.due}"
+        
+        # Add priority marker if specified
+        if hasattr(task, 'priority') and task.priority:
+            priority_marker = PRIORITY_MARKERS.get(task.priority.lower(), "")
+            if priority_marker:
+                task_line += f" {priority_marker}"
+        
+        # Always add #task tag for Obsidian Tasks plugin
+        task_line += " #task"
         
         lines.append(task_line)
     

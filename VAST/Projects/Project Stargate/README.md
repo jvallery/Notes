@@ -29,7 +29,7 @@ OpenAI-related initiative referenced as 'Project Stargate'; VAST has a newly sta
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

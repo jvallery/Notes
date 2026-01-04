@@ -29,7 +29,7 @@ Educate Microsoft BizDev (density/power, single-namespace story) and secure intr
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

@@ -29,7 +29,7 @@ Make Confluence the authoritative home for FRDs/customer requirements with templ
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

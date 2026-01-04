@@ -29,7 +29,7 @@ Define and deliver a single, pluggable caching solution for MAI that prioritizes
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

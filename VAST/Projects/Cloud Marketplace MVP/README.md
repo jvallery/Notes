@@ -1,20 +1,34 @@
 ---
-type: person-root
-name: Cloud Marketplace MVP
-status: needs-review
-last_contact: '2025-10-01'
+type: project
+title: "Cloud Marketplace MVP"
+created: '2026-01-04'
+status: active
 tags:
-- needs-review
+  - type/project
 ---
 
 # Cloud Marketplace MVP
 
-> ⚠️ Auto-created stub - needs review
+## Overview
+
+Project to launch VAST on cloud marketplaces (AWS, Azure, GCP) with MVP feature set.
+
+## Goals
+
+- Define GA acceptance criteria
+- Prepare GTM/pricing package (target: February SCO)
+- Competitive benchmarking vs Weka/Hammerspace
 
 ## Recent Context
 
-- 2025-10-01: Cloud Marketplace MVP checklist captured; GA acceptance criteria, GTM/pricing package (ahead of February SCO), and competitive benchmarking vs Weka/Hammerspace.
-## Key Facts
+- 2025-10-01: [[2025-10-01 - Cloud Marketplace MVP checklist]] - GA acceptance criteria, GTM/pricing package, and competitive benchmarking captured.
+
+## Open Tasks
+
+```dataview
+TASK
+FROM "VAST/Projects/Cloud Marketplace MVP"
+WHERE !completed
+```
 
 ## Related
-

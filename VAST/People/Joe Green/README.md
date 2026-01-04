@@ -25,7 +25,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Joe Green")
 SORT due ASC
 ```
@@ -47,4 +47,4 @@ Previously worked as a Software Development Engineer II at Amazon Web Services (
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-28*

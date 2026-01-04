@@ -29,7 +29,7 @@ Define and validate networking model for RDMA-enabled Z4M instances on GCP, incl
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

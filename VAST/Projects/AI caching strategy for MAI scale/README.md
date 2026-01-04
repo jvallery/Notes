@@ -29,7 +29,7 @@ Define a unified, pluggable caching approach to meet MAI training-first requirem
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

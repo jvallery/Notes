@@ -29,7 +29,7 @@ Evaluate OpenAI’s caching code/IP as a candidate for MAI’s unified cache: co
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

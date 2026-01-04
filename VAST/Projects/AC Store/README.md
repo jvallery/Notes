@@ -29,7 +29,7 @@ Internal proposal (Krishnan’s team) as part of caching strategy options for MA
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```

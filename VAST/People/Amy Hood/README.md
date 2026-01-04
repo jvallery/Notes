@@ -24,7 +24,7 @@ tags:
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed AND contains(text, "Amy Hood")
 SORT due ASC
 ```
@@ -45,4 +45,4 @@ Amy Hood has been with Microsoft since 2002 and became the company's first femal
 ## Related
 
 ---
-*Last updated: *
+*Last updated: 2025-10-28*

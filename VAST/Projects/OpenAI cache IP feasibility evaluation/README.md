@@ -29,7 +29,7 @@ Assess feasibility of using OpenAI cache IP/code for MAI: confirm IP/access, rev
 
 ```dataview
 TASK
-FROM ""
+FROM this.file.folder
 WHERE !completed
 SORT due ASC
 ```
