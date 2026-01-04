@@ -60,6 +60,7 @@ Creates a new file from a template. **CRITICAL: CREATE operations must ONLY cont
     "tasks": [...],
     "decisions": [...],
     "facts": [...],
+    "topics": [...],
     "source": "transcript",
     "source_ref": "Inbox/_archive/2026-01-03/original.md"
   }
@@ -124,6 +125,7 @@ For each extraction, you MUST generate:
      - `tasks`: Use extraction.tasks (array of task objects)
      - `decisions`: Use extraction.decisions
      - `facts`: Use extraction.facts
+     - `topics`: Use extraction.topics
      - `source`: "transcript" or "email"
      - `source_ref`: Construct from source_file path
    - **DO NOT leave context empty - copy data from the extraction!**

@@ -640,33 +640,29 @@ Templates already include:
 
 # Vault Analysis Findings (2026-01-04)
 
-## 26) Topics Field Not Extracted (Schema Gap)
+## 26) ✅ FIXED: Topics Field Not Extracted (Schema Gap)
 
 **Goal:** Add `topics` to extraction prompt so Topics sections are populated.
 
-**Status: NOT STARTED**
+**Status: FIXED** (2026-01-04)
 
 **Discovery:**
 
 - `Workflow/schemas/extraction.schema.json` has `topics` field defined
 - `Workflow/models/extraction.py` has `topics: list[str]` in Pydantic model
-- `Workflow/prompts/system-extractor.md.j2` does NOT request topics in output schema
-- Result: All Topics sections in READMEs are empty
+- `Workflow/prompts/system-extractor.md.j2` did NOT request topics in output schema
 
-**Impact:** High - every extraction is missing topic tagging
+**Fix Applied:**
 
-**Effort:** 5 minutes
-
-**Tasks**
-
-- [ ] Add `topics: list[str]` to extraction prompt output schema
-- [ ] Add guidance: "Extract 3-5 high-level topic tags (lowercase, hyphenated)"
-- [ ] Verify Pydantic model accepts topics from extraction
+- Added `"topics": ["array of main topics/themes discussed"]` to extraction prompt JSON schema
+- Added `topics: list[str]` to `CreateContext` in changeplan.py
+- Added `topics` to planner prompt example and required context list
+- Added `## Topics` section to people.md.j2 and customer.md.j2 templates
 
 **Success Criteria**
 
-- Extraction JSON includes `topics: ["cloud-strategy", "pricing", "roadmap"]`
-- Topics appear in README sections
+- ✅ Extraction JSON will now include `topics: ["cloud-strategy", "pricing", "roadmap"]`
+- ✅ Topics will appear in generated notes
 
 ---
 
@@ -2496,7 +2492,7 @@ Most are intentionally unstructured, but should be documented.
 
 | #   | Issue                           | Impact | Effort | Priority    |
 | --- | ------------------------------- | ------ | ------ | ----------- |
-| 26  | Topics not extracted            | HIGH   | 5 min  | 🔴 CRITICAL |
+| ~~26~~  | ~~Topics not extracted~~        | ~~HIGH~~ | ~~5 min~~ | ✅ FIXED |
 | 42  | Broken source_ref targets       | HIGH   | 60 min | 🔴 CRITICAL |
 | 70  | Template mismatch               | HIGH   | 30 min | 🔴 CRITICAL |
 | ~~90~~  | ~~LLM uses 1:1 in filenames~~   | ~~HIGH~~ | ~~10 min~~ | ✅ FIXED |

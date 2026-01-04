@@ -46,6 +46,13 @@ tags:
 - {{ fact }}
 {% endfor -%}
 {% endif %}
+{%- if topics %}
+
+## Topics
+{% for topic in topics %}
+- {{ topic }}
+{% endfor -%}
+{% endif %}
 
 ---
 

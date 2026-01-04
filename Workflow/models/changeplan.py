@@ -76,6 +76,7 @@ class CreateContext(BaseModel):
     tasks: list[TaskContext] = Field(default_factory=list, description="Tasks from extraction")
     decisions: list[str] = Field(default_factory=list, description="Decisions from extraction")
     facts: list[str] = Field(default_factory=list, description="Key facts from extraction")
+    topics: list[str] = Field(default_factory=list, description="Topics discussed from extraction")
     source: str = Field(default="transcript", description="Source type: transcript or email")
     source_ref: str = Field(default="", description="Path to archived source file")
     # Entity-specific fields (populated based on note_type)
