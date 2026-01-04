@@ -2457,6 +2457,8 @@ Most are intentionally unstructured, but should be documented.
 | 92  | person_to_project schema err | HIGH   | 15 min | 🔴 CRITICAL |
 | 93  | extra_tags undefined         | MED    | 5 min  | 🔴 CRITICAL |
 | 94  | note_type undefined          | MED    | 5 min  | 🔴 CRITICAL |
+| 95  | 19 people notes misclassified| HIGH   | 30 min | 🔴 HIGH     |
+| 96  | Archive filename mismatch    | HIGH   | TBD    | 🔴 CRITICAL |
 | 62  | 17 stale last_contact        | HIGH   | 30 min | 🔴 HIGH     |
 | 75  | Deterministic extraction     | HIGH   | 2 hrs  | 🔴 HIGH     |
 | 76  | Persist run artifacts        | HIGH   | 60 min | 🔴 HIGH     |
@@ -2533,10 +2535,12 @@ Most are intentionally unstructured, but should be documented.
 |               | Empty folders           | 15                       |
 |               | Self-referential links  | 3                        |
 |               | Template mismatch       | 1 (critical)             |
-| **New Items** | Added to TODO.md        | 69 (items 26-94)         |
-|               | Critical pipeline bugs  | 5 (items 90-94)          |
+| **New Items** | Added to TODO.md        | 71 (items 26-96)         |
+|               | Critical pipeline bugs  | 6 (items 90-94, 96)      |
 |               | Hallucinated note links | 39 (27% broken)          |
 |               | LLM path errors         | 14+ (from logs)          |
+|               | Misclassified notes     | 19 (type=customer wrong) |
+|               | Archive integrity issue | 1 (filename mismatch)    |
 
 ---
 
@@ -2764,3 +2768,50 @@ Log error: `'note_type' is undefined`
 **Root Cause**: Template uses `{{ note_type }}` but extraction/context doesn't provide it.
 
 **Fix**: Ensure `note_type` is passed to template context in plan/apply phase.
+
+---
+
+## 95) 19 People Notes Have `type: customer` + `account:` (Misclassified)
+
+**Found**: 2025-01-04
+
+Notes filed in `VAST/People/` are misclassified with customer frontmatter:
+```yaml
+type: "customer"
+account: "Jeff Denworth"  # Should be person:
+```
+
+**Affected files**:
+- `VAST/People/Jeff Denworth/2025-10-27 - Jeff 1-1 cloud priorities.md`
+- All 10+ Jai Menon meeting notes
+- `VAST/People/Jack Kabat/2025-09-18 - VAST CoreWeave storage strategy deep dive.md`
+- And 6+ more
+
+**Root Cause**: LLM classifies internal 1:1s with colleagues as "customer" meetings.
+
+**Fix**:
+1. Add to extraction prompt: "Colleagues (VAST employees) are NEVER customers. Use type=people"
+2. Fix existing 19 notes: change `type:` and `account:` → `person:`
+
+---
+
+## 96) CRITICAL: Archive Filename Mismatch - Wrong Content Association
+
+**Found**: 2025-01-04
+
+The archive file `Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md` contains:
+- **Actual content**: Strategic Microsoft/VAST discussion (Jason + colleague discussing MAI, Bifrost, etc.)
+- **Filename suggests**: "G24 Flight School" training content
+
+The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussion.md` has:
+- `source_ref` pointing to the Flight School file
+- Content extracted from the strategic discussion (correct content, wrong source attribution)
+
+**Root Cause**: Multiple files may have been conflated during archive, or filename was wrong from ingestion.
+
+**Impact**: Critical - source_ref traceability is broken. Can't trust archive file names.
+
+**Investigation Needed**:
+1. Check if `Inbox/Transcripts/` had duplicate/misnamed files
+2. Verify archive process preserves original filenames
+3. May need to re-ingest from MacWhisper exports
