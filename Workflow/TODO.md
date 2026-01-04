@@ -9,11 +9,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Align all OpenAI usage with documented privacy requirements and a single API surface.
 
 **Tasks**
+
 - Unify on one API pattern (`responses.parse` preferred) across core pipeline and backfill.
 - Ensure `store=False` is passed on all API calls (extract/plan/backfill/audits).
 - Fix privacy config source: code should read `models.privacy.store` (or update config to match code).
 
 **Success Criteria**
+
 - All OpenAI calls include `store=False`.
 - No direct `chat.completions.create` usage for structured outputs.
 - Privacy check reads the correct config field and fails fast if violated.
@@ -25,11 +27,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Prevent data loss and dirty repos during Apply/Migration/Backfill.
 
 **Tasks**
+
 - Update `backup_file()` to preserve vault-relative structure for all callers.
 - Switch staging to `git add -A -- Inbox/ VAST/ Personal/` (or `add_content_dirs_all`).
 - Ensure migration/backfill apply flows use same staging strategy.
 
 **Success Criteria**
+
 - Running Apply on multiple README.md files produces distinct backups.
 - Git commits capture renames/deletions with a clean working tree.
 
@@ -40,6 +44,7 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Resolve conflicts between `STANDARDS.md`, templates, and validators.
 
 **Tasks**
+
 - Choose one README root schema (`person-root` vs `people`) and update:
   - `STANDARDS.md`
   - README templates (`readme-*.md.j2`)
@@ -47,6 +52,7 @@ This list is ordered by risk and dependency. Each task includes success criteria
 - Update tag taxonomy rules if nested tags are ever allowed.
 
 **Success Criteria**
+
 - README templates produce frontmatter that matches `STANDARDS.md`.
 - Migration scanner reports no false positives for correct README types.
 
@@ -57,11 +63,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Ensure JSON schemas match actual Pydantic models.
 
 **Tasks**
+
 - Update `schemas/changeplan.schema.json` to match `PatchSpec` shape
   - `append_under_heading` should match nested `heading` object.
 - Update `schemas/extraction.schema.json` to align with ExtractionV1 (or explicitly document system-set fields).
 
 **Success Criteria**
+
 - `scripts/validate.py` passes on artifacts that Pydantic accepts.
 - No “valid by schema / invalid by model” discrepancy.
 
@@ -72,11 +80,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Make backfill extraction deterministic, privacy‑safe, and schema‑enforced.
 
 **Tasks**
+
 - Replace backfill chat extraction with Responses API + Pydantic schema.
 - Remove brittle JSON code-fence parsing and duplicate `decisions` fallback bug.
 - Gate web enrichment behind config flag + caching (if kept).
 
 **Success Criteria**
+
 - Backfill extractor returns valid typed objects without manual JSON parsing.
 - Web search enrichment can be disabled centrally; no unbounded API calls.
 
@@ -87,11 +97,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Ensure correct profile selection for Inbox sources.
 
 **Tasks**
+
 - Decide on heuristic vs LLM classification; update docs to match.
 - If LLM classification: add structured classifier schema and integrate into `extract.py`.
 - If heuristic-only: document explicitly in README/Design.
 
 **Success Criteria**
+
 - Extract runs select correct profile for transcripts vs customer vs projects in test cases.
 - Documentation reflects actual behavior.
 
@@ -102,11 +114,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Avoid ambiguous entities and improve plan accuracy.
 
 **Tasks**
+
 - Provide full entity folder paths to planner (not just names).
 - Include aliases from `entities/aliases.yaml` in planner prompt.
 - Disambiguate Personal vs VAST entities in context.
 
 **Success Criteria**
+
 - Planner can generate correct `path` for known entities without guessing.
 - Fewer warnings about ambiguous entity names.
 
@@ -117,11 +131,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Prevent overwriting archives and duplicate patches.
 
 **Tasks**
+
 - Update archive strategy to preserve relative paths or add unique suffixes.
 - Make `append_under_heading` idempotent (dedupe or marker).
 - Ensure apply rollback restores archived sources (if moved).
 
 **Success Criteria**
+
 - Two sources with same filename can be archived without overwrite.
 - Re-running Apply does not duplicate appended content.
 
@@ -132,10 +148,12 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Bring vault to SOT compliance for entity roots.
 
 **Tasks**
+
 - Run migration to create missing READMEs (People, Projects, Customers).
 - Decide on Personal READMEs strategy and either create or explicitly exempt.
 
 **Success Criteria**
+
 - All entity folders have README.md, or exemptions are documented.
 
 ---
@@ -145,11 +163,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Remove stale/duplicate docs and align all references.
 
 **Tasks**
+
 - Remove or mark archived docs as outdated.
 - Update `Workflow/README.md`, `REQUIREMENTS.md`, `DESIGN.md`, `BACKFILL-DESIGN.md` to match code.
 - Align config path references (`Inbox/_bins` vs `Workflow/*`).
 
 **Success Criteria**
+
 - All docs agree on API usage, model policy, and paths.
 - No contradictory instructions remain.
 
@@ -160,11 +180,13 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Catch regressions in core pipeline.
 
 **Tasks**
+
 - Add unit test for `apply.py` path validation + rollback.
 - Add plan/apply round‑trip test using fixture extraction JSON.
 - Add schema vs Pydantic consistency tests.
 
 **Success Criteria**
+
 - Tests fail when paths are unsafe or schema drift exists.
 - CI passes with new tests.
 
@@ -175,11 +197,88 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Ensure safe execution and recovery steps are documented.
 
 **Tasks**
+
 - Document rollback steps for Apply/Backfill/Migration.
 - Add checklist for daily run (pre-flight, post-run review).
 
 **Success Criteria**
+
 - Operator can recover from a failed run without guesswork.
+
+---
+
+## 13) Parallel Execution for process_inbox.py
+
+**Goal:** Speed up EXTRACT and PLAN phases with concurrent execution.
+
+**Tasks**
+
+- Port `ThreadPoolExecutor` pattern from `backfill/extractor.py` to `process_inbox.py`.
+- Add `--workers N` CLI flag (default 5) for parallel extraction/planning.
+- Ensure thread-safe logging and progress reporting.
+- Rate-limit API calls to respect OpenAI limits.
+
+**Success Criteria**
+
+- 126 files process in ~20 min instead of ~60 min.
+- No race conditions in JSON output or logging.
+- Works with `--dry-run` and `--verbose` flags.
+
+---
+
+## 14) Enhanced Verbose Output
+
+**Goal:** Show extraction richness, not just task counts.
+
+**Tasks**
+
+- Update verbose output format to show: `✓ customer, 3 tasks, 5 facts, 2 decisions, 4 topics`.
+- Add `--summary` flag to show aggregate stats at end of each phase.
+- Include mentions breakdown in verbose mode: `mentions: 5 people, 2 projects, 3 accounts`.
+
+**Success Criteria**
+
+- User can see extraction quality without reading JSON files.
+- Summary shows total tasks/facts/decisions/topics extracted.
+
+---
+
+## 15) CONTRACTS.md Alignment Fixes
+
+**Goal:** Resolve specification inconsistencies identified in CONTRACTS review.
+
+**Tasks**
+
+- [ ] Classification policy: Pick heuristics OR LLM reclassification, update docs.
+- [ ] Schema scope: ExtractionV1 Pydantic is richer than prompt guidance—align them.
+- [ ] Entity creation: Resolve "skip unknown" vs "`_NEW_` prefix" conflict.
+- [ ] `meeting_date`: Guarantee injection from filename when present.
+- [ ] `task.related_*`: Typed references with confidence (not just strings).
+- [ ] Normalize failure handling: Consistent with guarantees.
+- [ ] API contract: Use `responses.parse()` everywhere (not mixed with chat.completions).
+
+**Success Criteria**
+
+- Single source of truth: DESIGN.md, schemas, and code all agree.
+- No "valid input → surprising output" edge cases.
+
+---
+
+## 16) Multi-Entity Attribution
+
+**Goal:** Support notes that span multiple entities (customer + project + people).
+
+**Tasks**
+
+- Add `related_entities` array to ExtractionV1: `[{type, name, role, confidence}]`.
+- Update planner to generate patch ops for ALL related entities, not just primary.
+- Display related entities in verbose output.
+- Consider cross-linking notes (e.g., customer note links to project note).
+
+**Success Criteria**
+
+- A meeting about Microsoft + Neo project + Kanchan creates/updates 3 entity READMEs.
+- `related_entities` captured in extraction JSON with roles (e.g., "discussed", "action owner").
 
 ---
 
@@ -187,3 +286,4 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 - This TODO intentionally prioritizes safety/consistency fixes before quality improvements.
 - For each task, update `Workflow/codex/FULL-REVIEW.md` when completed.
+- Items 13-16 added 2026-01-04 based on pipeline run observations.

@@ -172,7 +172,11 @@ class TransactionalApply:
         
         elif op.op == OperationType.PATCH:
             if not target.exists():
-                raise FileNotFoundError(f"Target not found for PATCH: {target}")
+                # Auto-create stub README for _NEW_ entities or other missing READMEs
+                if target.name == "README.md":
+                    self._create_stub_readme(target)
+                else:
+                    raise FileNotFoundError(f"Target not found for PATCH: {target}")
             
             content = safe_read_text(target)
             for patch in op.patches:
@@ -246,6 +250,82 @@ class TransactionalApply:
         elif spec.primitive == PatchPrimitive.ENSURE_WIKILINKS:
             return ensure_wikilinks(content, spec.wikilinks)
         return content
+    
+    def _create_stub_readme(self, target: Path) -> None:
+        """
+        Create a minimal stub README for a _NEW_ entity folder.
+        
+        This handles the case where the planner generates PATCH ops for
+        entity READMEs that don't exist yet. The stub provides enough
+        structure for patches to succeed.
+        """
+        # Determine entity type from path
+        rel_path = target.relative_to(self.vault_root)
+        parts = rel_path.parts
+        
+        # Extract entity name from folder (strip _NEW_ prefix)
+        entity_folder = parts[-2] if len(parts) >= 2 else "Unknown"
+        entity_name = entity_folder.replace("_NEW_", "").replace("_NEW_", "")
+        
+        # Determine type based on path
+        if "Customers and Partners" in str(rel_path):
+            entity_type = "customer"
+            template_name = "readme-customer.md.j2"
+        elif "People" in str(rel_path):
+            entity_type = "person"
+            template_name = "readme-person.md.j2"
+        elif "Projects" in str(rel_path):
+            entity_type = "project"
+            template_name = "readme-project.md.j2"
+        else:
+            # Fallback to minimal stub
+            entity_type = "unknown"
+            template_name = None
+        
+        if template_name:
+            try:
+                context = {
+                    "name": entity_name,
+                    "entity_name": entity_name,
+                    "type": entity_type,
+                    "account": entity_name if entity_type == "customer" else None,
+                    "person": entity_name if entity_type == "person" else None,
+                    "project": entity_name if entity_type == "project" else None,
+                }
+                content = render_note(template_name, context)
+            except Exception:
+                # Fallback to minimal stub
+                content = self._minimal_stub(entity_name, entity_type)
+        else:
+            content = self._minimal_stub(entity_name, entity_type)
+        
+        # Create the file
+        target.parent.mkdir(parents=True, exist_ok=True)
+        atomic_write(target, content)
+        self.created_files.append(target)
+    
+    def _minimal_stub(self, name: str, entity_type: str) -> str:
+        """Create minimal README stub with required structure."""
+        return f"""---
+type: "{entity_type}-root"
+name: "{name}"
+status: "needs-review"
+last_contact: null
+tags:
+  - "needs-review"
+---
+
+# {name}
+
+> ⚠️ Auto-created stub - needs review
+
+## Recent Context
+
+## Key Facts
+
+## Related
+
+"""
     
     def _archive_source(self, source_file: Path) -> None:
         """Move source file to archive."""

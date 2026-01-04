@@ -7,6 +7,7 @@ Used by both plan.py (post-generation validation) and apply.py (pre-apply valida
 
 from models.changeplan import ChangePlan, OperationType, PatchPrimitive
 from scripts.utils.templates import ALLOWED_TEMPLATES
+from scripts.utils.fs import sanitize_path
 
 
 def validate_changeplan(plan: ChangePlan) -> list[str]:
@@ -16,19 +17,24 @@ def validate_changeplan(plan: ChangePlan) -> list[str]:
     This is the SINGLE SOURCE OF TRUTH for changeplan validation.
     Used by both planning phase (to flag issues) and apply phase (to reject invalid plans).
     
+    Paths are sanitized before validation - colons in filenames are automatically
+    converted to dashes (e.g., "1:1" → "1-1").
+    
     Returns list of issues (empty if valid).
     """
     issues = []
     
     for i, op in enumerate(plan.operations):
-        # Validate paths - no absolute, no traversal
+        # Sanitize path first (handles colons, etc.)
+        sanitized = sanitize_path(op.path)
+        
+        # Validate sanitized paths - no absolute, no traversal
         if (
-            op.path.startswith("/")
-            or "\\" in op.path
-            or ":" in op.path
-            or ".." in op.path
+            sanitized.startswith("/")
+            or "\\" in sanitized
+            or ".." in sanitized
         ):
-            issues.append(f"Operation {i}: invalid path '{op.path}'")
+            issues.append(f"Operation {i}: invalid path '{op.path}' (sanitized: '{sanitized}')")
         
         # Check for forbidden operations (archive is deterministic, not LLM-generated)
         if op.op.value not in ["create", "patch", "link"]:
