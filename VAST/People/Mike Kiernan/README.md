@@ -12,37 +12,15 @@ tags:
 
 # Mike Kiernan
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Microsoft
+**Relationship**: Partner stakeholder at Microsoft
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Involved in UK Met Office POC discussions; plan mentioned to deploy VAST hardware into an Azure Canary region for independent POC.
+- Contact driving UK Met Office POC interest in an Azure Canary region (separate from Apollo).
+- UK Met Office stakeholder; expected at Supercomputing; has a key storage person (Nico) on his team.
 
 ## Open Tasks
 
@@ -53,16 +31,12 @@ WHERE !completed AND contains(text, "Mike Kiernan")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@MikeKiernan") AND !completed
-SORT due ASC
-```
+- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
+- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
+- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
 
 ## Key Facts
 
@@ -77,26 +51,9 @@ SORT due ASC
 - DGX Cloud on Azure uses AMLFS for H100/A100; no GB-series storage benchmarking observed by Kanchan.
 - Deploying VAST on Lsv4/Lsv5 compute SKUs is power/capex prohibitive at exabyte scale; co-engineered bare metal on Azure Storage hardware is needed.
 
-## Topics Discussed
+## Background
 
-Project Apollo overview and requests to VAST, VAST POC rack shipment to Azure data center, Running VAST bare metal on Azure Storage hardware, Fungible DPU vs NVIDIA BlueField 3 risk/selection, MAI Dallas capacity (Dec/Apr) and storage plan-of-record uncertainty, Classic Azure interoperability needs (Overlake/SDN), UK Met Office POC in Azure Canary region, NVIDIA DGX Cloud storage performance requirements and leverage vs Azure Storage, Azure internal politics and stakeholder alignment (Manish resistance), Co-engineering a VAST-optimized Azure Storage SKU with Michael Myrah, Exec meeting planning with Nidhi and Renan (around Ignite), Azure Dedicated (Anand) as parallel bare-metal path, Licensing strategy: all-you-can-eat enterprise license, MAI and Project Apollo alignment and timelines, VAST bare metal on Azure storage hardware vs VM-based deployment
-
-## Recent Context
-
-- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
-- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
-- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
-- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
-
-## Profile
-
-**Role**: Microsoft
-**Relationship**: Partner stakeholder at Microsoft
-
-**Background**:
-- Involved in UK Met Office POC discussions; plan mentioned to deploy VAST hardware into an Azure Canary region for independent POC.
-- Contact driving UK Met Office POC interest in an Azure Canary region (separate from Apollo).
-- UK Met Office stakeholder; expected at Supercomputing; has a key storage person (Nico) on his team.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -121,9 +78,6 @@ Project Apollo overview and requests to VAST, VAST POC rack shipment to Azure da
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

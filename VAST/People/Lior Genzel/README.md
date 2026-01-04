@@ -10,32 +10,6 @@ tags:
 
 # Lior Genzel
 
-## Recent Context
-
-- 2025-10-30: [[Sources/Transcripts/2025/2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De.md|Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] — Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in Dec, small). Agreed to...
-
-- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home.md|Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] — Intro call exploring roles for Jason at VAST. Lior outlined three potential homes (Jay’s model build...
-
-- unknown: [[Sources/Transcripts/2025/2025-10 - Lior Genzel.md|Lior Genzel]] — - TPUs with Google
-
-- 2025-11-03: [[Sources/Transcripts/2025/2025-11-03.md|2025-11-03]] — - Hardware SKU from MSFT
-
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
-- unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy...
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris]] - GSI Team aligned on a go-to-market strategy with global SIs centered on enterprise workflow automati... (via GSI Team)
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
-- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
-- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
-- 2025-11-03: [[2025-11-03]] - Brief note capturing open questions and next items around Microsoft hardware SKUs, a POC with MAI, b...
-- 2025-10-31: [[2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]] - Group meeting with Google partner stakeholders on the technical and commercial path to run VAST on G... (via Google)
-- 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te...
-- 2025-10-30: [[2025-10-30 - Jason and Rob aligned on maturing VaST’s support and customer success for a SaaS]] - 1:1 between Jason Vallery and Rob Banga aligning on how to mature VAST’s support and customer succes... (via Rob Banga)
-
 ## Profile
 
 **Role**: Cloud ("cloud guy") at VAST Data (BizDev / Alliances)
@@ -49,6 +23,28 @@ tags:
 ## Open Tasks
 
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
+
+## Recent Context
+
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris]] - GSI Team aligned on a go-to-market strategy with global SIs centered on enterprise workflow automati... (via GSI Team)
+- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
+- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
+- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
+- 2025-11-03: [[Sources/Transcripts/2025/2025-11-03.md|2025-11-03]] — - Hardware SKU from MSFT
+- 2025-11-03: [[2025-11-03]] - Brief note capturing open questions and next items around Microsoft hardware SKUs, a POC with MAI, b...
+- 2025-10-31: [[2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]] - Group meeting with Google partner stakeholders on the technical and commercial path to run VAST on G... (via Google)
+- 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
+- 2025-10-30: [[Sources/Transcripts/2025/2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De.md|Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] — Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in Dec, small). Agreed to...
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te...
+- 2025-10-30: [[2025-10-30 - Jason and Rob aligned on maturing VaST’s support and customer success for a SaaS]] - 1:1 between Jason Vallery and Rob Banga aligning on how to mature VAST’s support and customer succes... (via Rob Banga)
+- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home.md|Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] — Intro call exploring roles for Jason at VAST. Lior outlined three potential homes (Jay’s model build...
+- unknown: [[Sources/Transcripts/2025/2025-10 - Lior Genzel.md|Lior Genzel]] — - TPUs with Google
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
+- unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy...
 
 ## Key Facts
 

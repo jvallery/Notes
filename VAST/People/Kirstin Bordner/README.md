@@ -11,37 +11,12 @@ tags:
 
 # Kirstin Bordner
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Relationship**: Meeting participant
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Meeting participant; no additional context in note.
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Kirstin Bordner")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@KirstinBordner") AND !completed
-SORT due ASC
-```
+- 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]] - Cloud BU leadership aligned on a dual-track cloud strategy: ship a near-term GCP marketplace MVP wit... (via Cloud)
 
 ## Key Facts
 
@@ -73,20 +41,9 @@ SORT due ASC
 - Supercomputing presence includes VAST booth plus Google and Microsoft booths; ~10 end-user cloud meetings planned.
 - Key dates: Ignite 2025-11-18 to 2025-11-21; re:Invent 2025-12-01 to 2025-12-05; planned Iceland trip 2025-12-08.
 
-## Topics Discussed
+## Background
 
-Dual-track cloud go-to-market (marketplace vs hyperscaler whales), GCP MVP launch readiness (networking, deployment flow, demos), Collateral gaps and product marketing deliverables, Standardized performance/TCO benchmarking and KPI framing, Marketplace private offers and pricing component tuning, Maintenance handling, HA, and failure domain behavior, QA/support readiness and break-glass procedures, Microsoft MAI supercomputing opportunity and Enscale storyline adaptation, Kubernetes-led control plane concept (Project Apollo) and Polaris lifecycle management, Risk of resale lock-in/feature abstraction (CoreWeave-style)
-
-## Recent Context
-
-- 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]] - Cloud BU leadership aligned on a dual-track cloud strategy: ship a near-term GCP marketplace MVP wit... (via Cloud)
-
-## Profile
-
-**Relationship**: Meeting participant
-
-**Background**:
-- Meeting participant; no additional context in note.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -100,9 +57,6 @@ Dual-track cloud go-to-market (marketplace vs hyperscaler whales), GCP MVP launc
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

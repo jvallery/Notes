@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Satya Nadella/README.md",
+                "file": "VAST/People/Alon Horev/_Open Topics.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "_Open Topics"
             }
           }
         ]
@@ -154,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "VAST/People/Satya Nadella/README.md",
+                "file": "VAST/People/Alon Horev/_Open Topics.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of README"
+              "title": "Outline of _Open Topics"
             }
           }
         ],
@@ -185,6 +185,19 @@
   },
   "active": "af216fe4a7d76c13",
   "lastOpenFiles": [
+    "Sources/Transcripts/2025/2025-12-18 - Azure integration recording.md",
+    "Sources/Transcripts/2025/2025-11-04 - Jeff Denworth - Planning sessions.md",
+    "Sources/Transcripts/2025/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md",
+    "Sources/Transcripts/2025/2025-11-03 - Lior Genzel - MAI POC and hardware SKU.md",
+    "Workflow/scripts/cleanup/source_normalizer.py",
+    "Workflow/prompts/audit-readme.md",
+    "Workflow/scripts/cleanup/__init__.py",
+    "Workflow/scripts/cleanup/readme_normalizer.py",
+    "Workflow/scripts/cleanup",
+    "VAST/People/Akanksha Mehrotra/README.md",
+    "VAST/People/Aaron Zilber/README.md",
+    "VAST/People/Aaron Batillo/README.md",
+    "VAST/People/Satya Nadella/README.md",
     "VAST/People/Sam Hopewell/README.md",
     "Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md",
     "VAST/People/Tiffany Stonehill/README.md",
@@ -202,25 +215,12 @@
     "Sources/Transcripts/2025/2025-10 - Cloud Marketplace MVP.md",
     "Sources/Transcripts/2025/2025-11-03 - Team reviewed how cloud clusters must map to Salesforce assets (AccountSitePSN.md",
     "Sources/Transcripts/2025/2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke.md",
-    "Sources/Transcripts/2025/2025-10-30 - The group aligned on the cloud support operating model (Customer Success, Suppor.md",
-    "Sources/Transcripts/2025/2025-10 - SaaS.md",
-    "Sources/Transcripts/2025/2025-10 - Learning.md",
-    "Sources/Transcripts/2025/2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p.md",
-    "Sources/Transcripts/2025/2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a.md",
-    "Sources/Transcripts/2025/2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g.md",
-    "Sources/Transcripts/2025/2025-10-30 - Weekly SE community call covering end-of-quarter push, Tech Summit logistics, an.md",
-    "Sources/Transcripts/2025/2025-11-03 - Team reviewed the updated 5.5 plan feature freeze next week, beta in January, r.md",
-    "Sources/Transcripts/2025/2025-10-31 - Teams aligned on a two-track evaluation for Apollo’s AI cloud storage (A) valid.md",
     "Workflow/scripts/migrate/__init__.py",
     "Workflow/scripts/migrate/consolidate_sources.py",
     "Sources/Transcripts/2026",
     "Sources/Transcripts/2025",
     "Sources/Transcripts/2024",
     "Sources/Email/2026",
-    "Sources/Email/2025",
-    "Sources/Email/2024",
-    "Sources/Documents/2026",
-    "Sources/Documents/2025",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",

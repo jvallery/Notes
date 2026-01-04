@@ -10,16 +10,26 @@ tags:
 
 # Shachar Feinblit
 
+## Profile
+
+**Role**: R&D leader (implied; receives reports from Roy, Dafna, Eyal, Noa) at VAST Data (R&D)
+**Location**: Tel Aviv (implied by visit and team location)
+**Relationship**: Internal collaborator (engineering leadership)
+
+**Background**:
+- Engineering leader perspective: architects write FRDs; wants stronger technical depth and end-to-end product involvement; optimizes for throughput; notes widespread use of Cursor and preference for organic AI enablement.
+- Listed as a candidate for weekly/monthly 1:1 cadence (marked '++').
+- Point person for confirming AI-first development mandate, training cadence, and adoption targets; involved in organizing Tel-Aviv trip meetings and coordinating team/all-hands participation.
+
+## Open Tasks
+
+```tasks
+path includes Shachar Feinblit
+not done
+```
+
 ## Recent Context
 
-- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s.md|Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s]] — Jason and Shachar aligned on setting a weekly 30-minute 1:1 and planning Jason’s Tel Aviv visit (Nov...
-
-- unknown: [[Sources/Transcripts/2025/2025-10 - Shachar Feinblit.md|Shachar Feinblit]] — - [x] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption...
-
-- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
-- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec...
-- unknown: [[_Open Topics]] - Open topics note for Shachar Feinblit, listing key internal Slack contacts by functional area (suppo...
 - 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi... (via Jonsi Stephenson)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
@@ -31,17 +41,12 @@ tags:
 - 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
 - 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] - Weekly 1:1 where Liraz Ben Or explained VAST’s non-traditional major release management process (4 p... (via Liraz Ben Or)
 - 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] - Weekly 1:1 intro where Liraz Ben Or walked Jason Vallery through VAST’s non-traditional release mana... (via Liraz Ben Or)
-
-## Profile
-
-**Role**: R&D leader (implied; receives reports from Roy, Dafna, Eyal, Noa) at VAST Data (R&D)
-**Location**: Tel Aviv (implied by visit and team location)
-**Relationship**: Internal collaborator (engineering leadership)
-
-**Background**:
-- Engineering leader perspective: architects write FRDs; wants stronger technical depth and end-to-end product involvement; optimizes for throughput; notes widespread use of Cursor and preference for organic AI enablement.
-- Listed as a candidate for weekly/monthly 1:1 cadence (marked '++').
-- Point person for confirming AI-first development mandate, training cadence, and adoption targets; involved in organizing Tel-Aviv trip meetings and coordinating team/all-hands participation.
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s.md|Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s]] — Jason and Shachar aligned on setting a weekly 30-minute 1:1 and planning Jason’s Tel Aviv visit (Nov...
+- unknown: [[Sources/Transcripts/2025/2025-10 - Shachar Feinblit.md|Shachar Feinblit]] — - [x] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption...
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
+- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec...
+- unknown: [[_Open Topics]] - Open topics note for Shachar Feinblit, listing key internal Slack contacts by functional area (suppo...
 
 ## Key Facts
 

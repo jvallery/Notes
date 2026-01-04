@@ -14,10 +14,6 @@ last_contact: '2025-10-06'
 
 # Cloud control plane
 
-## Overview
-
-Planned cloud control plane build at VAST (via acquired company 'Red Stapler'); Jason would own PM portion and manage/coordinate PM work.
-
 ## Status
 
 | Field | Value |
@@ -25,21 +21,9 @@ Planned cloud control plane build at VAST (via acquired company 'Red Stapler'); 
 | **Status** | active |
 | **Owner** | Jan C. Stefansson |
 
-## Current Blockers
+## Overview
 
-- ❌ Unclear resourcing/role boundaries given multi-hat expectations
-
-## Next Steps
-
-- [ ] Define scope and success criteria for PM ownership of the cloud control plane
-
-## Collaborators
-
-| Person | Role | Company |
-|--------|------|---------|
-| [[Jeff Denworth]] |  |  |
-| [[Jan C. Stefansson]] |  |  |
-| [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
+Planned cloud control plane build at VAST (via acquired company 'Red Stapler'); Jason would own PM portion and manage/coordinate PM work.
 
 ## Open Tasks
 
@@ -50,11 +34,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Do not pursue a Microsoft counteroffer given compensation constraints and unclear scope.
-- ✅ Proceed toward a decision between VAST and Crusoe with intent to resign by Wednesday.
+- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
 
 ## Key Facts
 
@@ -66,33 +48,3 @@ SORT due ASC
 - Jason estimates ~$800k in vested compensation would be forfeited if leaving Microsoft.
 - Jason planned to meet Renan (described as VAST CEO) to quantify risk and negotiate equity/commission.
 - Jason stated staying at Microsoft is effectively a closed option.
-
-## Topics / Themes
-
-Job offers comparison (VAST vs Crusoe vs Microsoft), Compensation structure risk (commission/equity variability), Apollo program scope ambiguity and execution risk, Career trajectory and path to partner at Microsoft, Resignation timeline
-
-## Related People
-
-- [[Jeff Denworth]]
-- [[Jan C. Stefansson]]
-- [[Jason Vallery]]
-
-## Related Customers
-
-- [[VAST Data]]
-
-## Recent Context
-
-- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

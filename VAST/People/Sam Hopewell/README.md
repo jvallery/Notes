@@ -4,16 +4,11 @@ title: Sam Hopewell
 last_contact: '2025-10-22'
 created: '2026-01-03'
 tags:
-  - type/people
-  - entity/Sam Hopewell
+- type/people
+- entity/Sam Hopewell
 ---
 
 # Sam Hopewell
-
-## Recent Context
-
-- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md|OpenAI storage strategy and VAST POC]] — Sam (primary storage owner for research at OpenAI) discussed VAST as "warm storage" adjacent to GPU fleets, global namespace concerns, and near-term POC path. Status on hold due to firefighting.
-- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Jason (VAST) reconnected with Sam (OpenAI) to discuss VAST as GPU-adjacent warm.md|Reconnect on VAST as GPU-adjacent warm storage]] — Discussed VAST positioning as warm tier for OpenAI's research clusters.
 
 ## Profile
 
@@ -28,17 +23,14 @@ tags:
 - Concerned about global namespace reliability/metadata performance at multi-EiB scale
 - Short-staffed and actively hiring; POC timing tied to clearing near-term fires
 
-## Key Contacts at OpenAI
-
-- [[Sam Hopewell]] — Storage Owner (Research)
-- Rory Carmichael — Sam's boss (Research Infra/Supercomputers)
-- Uday — Above Sam & Rory (reports to Greg Brockman)
-- DAQ/Louis — Applied data acquisition
-- Melissa Du — Logistics for "neo clouds"/CoreWeave (under Kevin Park)
-
 ## Open Tasks
 
 ```tasks
 path includes Sam Hopewell
 not done
 ```
+
+## Recent Context
+
+- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md|OpenAI storage strategy and VAST POC]] — Sam (primary storage owner for research at OpenAI) discussed VAST as "warm storage" adjacent to GPU fleets, global namespace concerns, and near-term POC path. Status on hold due to firefighting.
+- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Jason (VAST) reconnected with Sam (OpenAI) to discuss VAST as GPU-adjacent warm.md|Reconnect on VAST as GPU-adjacent warm storage]] — Discussed VAST positioning as warm tier for OpenAI's research clusters.

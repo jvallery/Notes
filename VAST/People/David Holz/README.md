@@ -12,37 +12,13 @@ tags:
 
 # David Holz
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Founder and CEO |
-| **Company** | Midjourney |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [Not publicly available](Not publicly available) |
-| **Location** | San Francisco, California, USA |
+**Role**: Founder at Midjourney
+**Relationship**: Target contact (prospect)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-David Holz co-founded Leap Motion in 2010, a company specializing in gesture-recognition technology for virtual reality. He served as CTO until 2021, when he founded Midjourney, an AI-driven image generation platform. Prior to his entrepreneurial ventures, Holz pursued a PhD in applied mathematics at the University of North Carolina at Chapel Hill and worked at NASA and the Max Planck Institute.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Midjourney founder; team has many mutuals; exploring intro paths including via Henry Perez (Google).
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "David Holz")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@DavidHolz") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -73,21 +42,9 @@ SORT due ASC
 - Warm-intro quality varies; weak LinkedIn mutuals can waste cycles.
 - Hyperscaler conflicts (Google/Microsoft) can block introductions.
 
-## Topics Discussed
+## Background
 
-Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative), Persona targeting (data/pipeline teams vs exec-only), Salesforce history audit before re-engagement, Target account prioritization and expansion (e.g., Black Forest Labs)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Role**: Founder at Midjourney
-**Relationship**: Target contact (prospect)
-
-**Background**:
-- Midjourney founder; team has many mutuals; exploring intro paths including via Henry Perez (Google).
+David Holz co-founded Leap Motion in 2010, a company specializing in gesture-recognition technology for virtual reality. He served as CTO until 2021, when he founded Midjourney, an AI-driven image generation platform. Prior to his entrepreneurial ventures, Holz pursued a PhD in applied mathematics at the University of North Carolina at Chapel Hill and worked at NASA and the Max Planck Institute.
 
 ## Key Decisions
 
@@ -101,9 +58,6 @@ Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVI
 - [[Model Builder Turbine]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

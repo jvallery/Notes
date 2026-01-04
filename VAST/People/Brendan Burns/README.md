@@ -11,37 +11,12 @@ tags:
 
 # Brendan Burns
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | _Unknown_ |
-| **Company** | _Unknown_ |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
-
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Role**: _Unknown_
+**Organization**: _Unknown_
+**Location**: _Unknown_
+**Relationship**: _Unknown_
 
 ## Open Tasks
 
@@ -52,16 +27,13 @@ WHERE !completed AND contains(text, "Brendan Burns")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@BrendanBurns") AND !completed
-SORT due ASC
-```
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
+- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
+- 2025-09-03: [[2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a high-priority evaluation of AI caching st... (via Jai Menon)
+- 2025-09-03: [[2025-09-03 - Reconnected post-sabbatical and aligned on Jason’s initial focus evaluate OpenA]] - 1:1 between Jason Vallery and Jai Menon after Jason’s sabbatical to align Jason’s initial focus on e... (via Jai Menon)
 
 ## Key Facts
 
@@ -76,17 +48,9 @@ SORT due ASC
 - Cache must scale to ~100k nodes and run on AKS + Spark.
 - OpenAI cache IP may be usable by Microsoft, but legal/IP clearance and repo access must be confirmed (Pete and Sila involved).
 
-## Topics Discussed
+## Background
 
-MAI caching strategy and unified cache goal, OpenAI cache code access and IP/licensing, Scaling requirements to ~100k nodes and AKS/Spark fit, Comparison of caching options (C-Store, Alluxio/DAX, BlobFuse/BlockFuse), Bifrost architecture and direct read path, MAI org changes (compute under AKS leadership), Performance snapshot feedback and follow-up conversations, MAI unified caching strategy (training-first, later inference/KB caching), OpenAI cache IP/code access and legal clearance, Scalability requirements (100k nodes; 400k/40k GPU targets), AKS + Spark integration constraints, Comparison of caching options (BlobFuse, Alluxio/DAX, AC Store, OpenAI cache), Blob performance roadmap: Bifrost direct read path and DeltaZero follow-on, Snapshot feedback and potential escalation path (Ong, Manish, Wamshi), Multi-region cache pooling possibility
-
-## Recent Context
-
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
-- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
-- 2025-09-03: [[2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a high-priority evaluation of AI caching st... (via Jai Menon)
-- 2025-09-03: [[2025-09-03 - Reconnected post-sabbatical and aligned on Jason’s initial focus evaluate OpenA]] - 1:1 between Jason Vallery and Jai Menon after Jason’s sabbatical to align Jason’s initial focus on e... (via Jai Menon)
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -102,9 +66,6 @@ MAI caching strategy and unified cache goal, OpenAI cache code access and IP/lic
 - ✅ Primary focus is training cache requirements; inference KB caching follows after.
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

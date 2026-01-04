@@ -10,12 +10,26 @@ tags:
 
 # Asaf Levy
 
+## Profile
+
+**Role**: Chief architect at VAST Data (Architecture team (within engineering))
+**Location**: Tel Aviv
+**Relationship**: Internal collaborator / technical stakeholder
+
+**Background**:
+- Aligned on persistence design, object tiering, and QoS/governance; contributed by defining governance model, benchmarking metadata persistence options, and sharing DataSpaces architecture/persistence roadmap.
+- Listed as a candidate for weekly/monthly 1:1 cadence (marked '++').
+- Author has met Asaf and has more time scheduled; technical collaborator.
+
+## Open Tasks
+
+```tasks
+path includes Asaf Levy
+not done
+```
+
 ## Recent Context
 
-- unknown: [[Sources/Transcripts/2025/2025-10 - Asaf Levy.md|Asaf Levy]] — - [x] Meet Asaf (chief architect) to align on persistence design, object tiering, and QoS/governance...
-
-- unknown: [[2025-10 - Asaf Levy]] - Completed action items from a working session with Asaf Levy to align on DataSpaces persistence desi...
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
@@ -29,17 +43,9 @@ tags:
 - 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 - 2025-10-28: [[2025-10-28 - Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s]] - Weekly 30-minute 1:1 cadence was established between Jason Vallery and Shachar Feinblit, and they pl... (via Shachar Feinblit)
 - 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]] - Cloud BU leadership aligned on a dual-track cloud strategy: ship a near-term GCP marketplace MVP wit... (via Cloud)
-
-## Profile
-
-**Role**: Chief architect at VAST Data (Architecture team (within engineering))
-**Location**: Tel Aviv
-**Relationship**: Internal collaborator / technical stakeholder
-
-**Background**:
-- Aligned on persistence design, object tiering, and QoS/governance; contributed by defining governance model, benchmarking metadata persistence options, and sharing DataSpaces architecture/persistence roadmap.
-- Listed as a candidate for weekly/monthly 1:1 cadence (marked '++').
-- Author has met Asaf and has more time scheduled; technical collaborator.
+- unknown: [[Sources/Transcripts/2025/2025-10 - Asaf Levy.md|Asaf Levy]] — - [x] Meet Asaf (chief architect) to align on persistence design, object tiering, and QoS/governance...
+- unknown: [[2025-10 - Asaf Levy]] - Completed action items from a working session with Asaf Levy to align on DataSpaces persistence desi...
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 
 ## Key Facts
 

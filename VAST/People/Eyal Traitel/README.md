@@ -10,16 +10,26 @@ tags:
 
 # Eyal Traitel
 
+## Profile
+
+**Role**: Program manager at VAST Data (Release planning)
+**Location**: Tel Aviv
+**Relationship**: Internal collaborator (release planning)
+
+**Background**:
+- Release planning perspective: minor releases caused churn; 5.6 GA around July; 5.5 missed cloud-critical items; auth providers limited (~8) and config not tenant-scoped.
+- Referenced as a program manager to sync with.
+- Joined VAST in Dec 2024; focuses on planning minor releases; works closely with release managers and with vForce/service pack teams; involved in planning discussions with control plane (Polaris/Iceland) and cluster teams for VAST on Cloud.
+
+## Open Tasks
+
+- [ ] Create unified backlog with RICE scoring and define Cloud Design Qualifiers required for 5.6; decide P0 vs P1 scope without slipping GA.
+- [ ] Publish release discipline and support/EOL policy (freeze windows, gates, deal-override policy and RAPID table).
+
 ## Recent Context
 
-- unknown: [[Sources/Transcripts/2025/2025-10 - Eyal Traitel.md|Eyal Traitel]]
-
 - 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i.md|Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] — Jason and Eyal discussed VAST’s release intake, planning, and execution model, including how majors,...
-
 - 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf.md|Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] — Jason and Eyal aligned on how VAST plans and executes major/minor releases, hotfixes, and service pa...
-
-- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
-- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
 - 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h...
 - 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m...
 - 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] - Weekly 1:1 where Liraz Ben Or explained VAST’s non-traditional major release management process (4 p... (via Liraz Ben Or)
@@ -29,6 +39,9 @@ tags:
 - 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
 - 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on accelerating AI-first software developme... (via Tomer Hagay)
 - 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
+- unknown: [[Sources/Transcripts/2025/2025-10 - Eyal Traitel.md|Eyal Traitel]]
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
+- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
 
 ## Key Facts
 
@@ -46,22 +59,6 @@ tags:
 ## Topics
 
 Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target, Release intake and prioritization (leadership, architects, SE/Salesforce), Major vs minor releases and phase-gate process, Service packs and hotfix process (vForce, upstreaming fixes), Regression/performance testing practices for minors, SaaS agility vs storage reliability constraints
-
-## Profile
-
-**Role**: Program manager at VAST Data (Release planning)
-**Location**: Tel Aviv
-**Relationship**: Internal collaborator (release planning)
-
-**Background**:
-- Release planning perspective: minor releases caused churn; 5.6 GA around July; 5.5 missed cloud-critical items; auth providers limited (~8) and config not tenant-scoped.
-- Referenced as a program manager to sync with.
-- Joined VAST in Dec 2024; focuses on planning minor releases; works closely with release managers and with vForce/service pack teams; involved in planning discussions with control plane (Polaris/Iceland) and cluster teams for VAST on Cloud.
-
-## Open Tasks
-
-- [ ] Create unified backlog with RICE scoring and define Cloud Design Qualifiers required for 5.6; decide P0 vs P1 scope without slipping GA.
-- [ ] Publish release discipline and support/EOL policy (freeze windows, gates, deal-override policy and RAPID table).
 
 ## Key Decisions
 

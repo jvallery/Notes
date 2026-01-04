@@ -12,37 +12,14 @@ tags:
 
 # Roy Sterman
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | vForce lead (front-line R&D for CS/customers) |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: vForce lead (front-line R&D for CS/customers) at VAST Data (vForce)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Leads vForce; front R&D arm in front of CS and customers; drives urgent fixes/hotfix needs and backport requests; collaborates with service pack/hotfix management team.
+- Drives urgent fixes and requests for hotfixes/service packs; initiates backports from future releases for customers; coordinates with Dafna’s team.
 
 ## Open Tasks
 
@@ -53,16 +30,11 @@ WHERE !completed AND contains(text, "Roy Sterman")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RoySterman") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
 
 ## Key Facts
 
@@ -77,24 +49,9 @@ SORT due ASC
 - Major multi-tenancy blocker: authentication providers limited to 8 and configured at host cluster rather than tenant-scoped; scaling and tenantizing is a large effort.
 - Control plane (Polaris/Iceland) is more cloud-native; cluster layer is not yet operating in an agile/SaaS mode.
 
-## Topics Discussed
+## Background
 
-Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target, Release intake and prioritization (leadership, architects, SE/Salesforce), Major vs minor releases and phase-gate process, Service packs and hotfix process (vForce, upstreaming fixes), Regression/performance testing practices for minors, SaaS agility vs storage reliability constraints
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
-- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
-
-## Profile
-
-**Role**: vForce lead (front-line R&D for CS/customers) at VAST Data (vForce)
-**Relationship**: Internal collaborator
-
-**Background**:
-- Leads vForce; front R&D arm in front of CS and customers; drives urgent fixes/hotfix needs and backport requests; collaborates with service pack/hotfix management team.
-- Drives urgent fixes and requests for hotfixes/service packs; initiates backports from future releases for customers; coordinates with Dafna’s team.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -104,9 +61,6 @@ Release planning and execution (major/minor releases), Hotfixes and service pack
 - ✅ Establish a monthly touchpoint between Jason and Brandon.
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

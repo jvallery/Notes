@@ -11,37 +11,12 @@ tags:
 
 # Jeff Edwards
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Co-founder & CMO |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/jeffdenworth](https://www.linkedin.com/in/jeffdenworth) |
-| **Location** | New York, New York, United States |
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Jeff Denworth has over two decades of experience with advanced computation and massively scalable big data and cloud storage technologies. Prior to co-founding VAST Data, he held management roles at DDN, CTERA Networks, and Cluster File Systems.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Assigned multiple investor/introduction follow-ups (Lambda/Reflection, Bond/Physical Intelligence, Zara investor thread).
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Jeff Edwards")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JeffEdwards") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -72,20 +40,9 @@ SORT due ASC
 - Warm-intro quality varies; weak LinkedIn mutuals can waste cycles.
 - Hyperscaler conflicts (Google/Microsoft) can block introductions.
 
-## Topics Discussed
+## Background
 
-Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative), Persona targeting (data/pipeline teams vs exec-only), Salesforce history audit before re-engagement, Target account prioritization and expansion (e.g., Black Forest Labs)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Relationship**: Internal collaborator
-
-**Background**:
-- Assigned multiple investor/introduction follow-ups (Lambda/Reflection, Bond/Physical Intelligence, Zara investor thread).
+Jeff Denworth has over two decades of experience with advanced computation and massively scalable big data and cloud storage technologies. Prior to co-founding VAST Data, he held management roles at DDN, CTERA Networks, and Cluster File Systems.
 
 ## Key Decisions
 
@@ -99,9 +56,6 @@ Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVI
 - [[Model Builder Turbine]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

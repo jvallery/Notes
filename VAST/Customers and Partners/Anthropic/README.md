@@ -13,10 +13,6 @@ tags:
 
 # Anthropic
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -28,27 +24,6 @@ _Brief description of this customer, their business, and relationship..._
 
 _No key contacts identified._
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-- ❌ Prior outreach via investor path declined/stalled; Microsoft/Oracle-linked mutuals may be off-limits.
-- ❌ No established door yet; capacity allocation dynamics may constrain
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -57,47 +32,6 @@ FROM ""
 WHERE !completed
 SORT due ASC
 ```
-
-
-## Opportunities
-
-- Referenced as using Google TPU technology; context for TPU track
-- Referenced as example of Google on-prem TPU hardware deal lacking surrounding software stack; motivates GDC direction
-- Ongoing attempts to find the right entry point; multiple mutuals exist but quality varies.
-- Mentioned competitively: Data Engine unlikely to be deciding factor vs Weka; storage-led win more likely
-- Hyperscaler-scale engagement track (mentioned as target whale)
-- Mentioned as fastest-growing model sales on Azure (context for Microsoft diversification beyond OpenAI)
-- Referenced as AI tooling example (Claude agents) used for modern dev workflows
-
-## Key Decisions
-
-- ✅ Greg Castellucci will run point with Google Federal and coordinate with the corporate GDC team over the next few weeks.
-- ✅ Jason Vallery will coordinate RFP content assembly and connect Greg with Google stakeholders.
-- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi focused on AI, VM shapes/RDMA, and hardware tradeoffs.
-- ✅ Leo will own the end-to-end formal RFP response and submission.
-- ✅ Use the Fort Meade on-prem Gemini initiative as the primary near-term validation path/reference.
-- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in the architecture proposal.
-- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
-- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
-- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
-- ✅ Prioritize building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
-
-## Key Facts
-
-- Google Distributed Cloud has connected and air-gapped variants; NetApp is the incumbent storage partner.
-- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and is undergoing vendor due diligence.
-- Google’s emphasis areas include air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags.
-- Fort Meade "Gemini as a service" on-prem initiative is described as a Q4 commit and a near-term joint validation path.
-- GDC deployments commonly run on Dell; HPE and Cisco are also in scope for hardware options.
-- VAST recently launched Google Marketplace offers; broader partnership is still early.
-- Resource risk: Greg may be heavily focused on Leidos next year, potentially impacting continuity.
-- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and conventional channel partnerships (non-cloud).
-- Sagi leads pipelines/serverless; packaging and cloud GTM for pipelines is under-thought.
-- Morty owns Neo-cloud feature requirements; he can support Jason but must maintain Neo-cloud coverage.
-
-## Topics / Themes
-
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Org map and key leaders/roles, Cross-cloud platform strategy and homogenization across providers, Cloud GTM plays and integrations (Foundry/Bedrock/Vertex), Cataloging in-flight deals by product requirements, Control-plane partnerships and 'cloud-in-a-box' for Tier-2 clouds
 
 ## Recent Context
 
@@ -113,12 +47,31 @@ Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness a
 - 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
 - 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
 
+## Key Facts
+
+- Google Distributed Cloud has connected and air-gapped variants; NetApp is the incumbent storage partner.
+- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and is undergoing vendor due diligence.
+- Google’s emphasis areas include air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags.
+- Fort Meade "Gemini as a service" on-prem initiative is described as a Q4 commit and a near-term joint validation path.
+- GDC deployments commonly run on Dell; HPE and Cisco are also in scope for hardware options.
+- VAST recently launched Google Marketplace offers; broader partnership is still early.
+- Resource risk: Greg may be heavily focused on Leidos next year, potentially impacting continuity.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and conventional channel partnerships (non-cloud).
+- Sagi leads pipelines/serverless; packaging and cloud GTM for pipelines is under-thought.
+- Morty owns Neo-cloud feature requirements; he can support Jason but must maintain Neo-cloud coverage.
+
+## Opportunities
+
+- Referenced as using Google TPU technology; context for TPU track
+- Referenced as example of Google on-prem TPU hardware deal lacking surrounding software stack; motivates GDC direction
+- Ongoing attempts to find the right entry point; multiple mutuals exist but quality varies.
+- Mentioned competitively: Data Engine unlikely to be deciding factor vs Weka; storage-led win more likely
+- Hyperscaler-scale engagement track (mentioned as target whale)
+- Mentioned as fastest-growing model sales on Azure (context for Microsoft diversification beyond OpenAI)
+- Referenced as AI tooling example (Claude agents) used for modern dev workflows
+
 ## Collaborators
 
 | Person | Role | Company |
 |--------|------|---------|
 | [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
-
-## Related People
-
-- [[Jason Vallery]]

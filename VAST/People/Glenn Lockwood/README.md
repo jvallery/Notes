@@ -12,37 +12,15 @@ tags:
 
 # Glenn Lockwood
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Principal Engineer |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | San Francisco Bay Area |
+**Role**: OpenAI
+**Relationship**: External connector
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Glenn Lockwood has extensive experience in high-performance computing (HPC) and AI infrastructure. He served as a Principal Engineer at Microsoft, focusing on supporting large-scale AI supercomputers, including those used by OpenAI. Prior to Microsoft, he was a Storage Architect at Berkeley Lab, where he led the design of large-scale storage systems. He holds a Ph.D. in Materials Science from Rutgers University.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Potential connector into Thinking Machines; has relationship with Christian Gibson; previously provided a summary doc of a meeting with an engineer contact.
+- Asked to validate engineering reality of KV cache depiction (current NFS; future GPU-direct-to-object).
+- Previously worked closely with Jason at OpenAI; left in July and joined VAST (per transcript).
 
 ## Open Tasks
 
@@ -53,16 +31,15 @@ WHERE !completed AND contains(text, "Glenn Lockwood")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@GlennLockwood") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-11-06: [[2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p]] - Review of updated AI pipeline slides for an upcoming VAST SE Tech Summit, covering model training (c... (via AI Pipelines Collateral)
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
+- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
 
 ## Key Facts
 
@@ -88,32 +65,10 @@ SORT due ASC
 - OpenAI pattern: central CPU-adjacent data lake plus GPU-adjacent working set caches across many regions/clouds.
 - Field enablement/content ownership is fragmented with duplicative Confluence docs and unclear owners.
 - SE bandwidth is constrained by installs (rack/stack ~2 weeks); a new partner program was created to offload rack-and-stack but cabling errors can cause multi-day delays.
-## Topics Discussed
 
-Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft, Google RFP triage and no-bid criteria for block/latency-heavy asks, Confluence as FRD system of record and documentation taxonomy, Win/loss cadence and product MBR rhythm, Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal
+## Background
 
-
-VAST-in-cloud strategy and cloud economics, Marketplace packaging (tenant outcomes vs cluster admin), Bare metal instances vs cloud VMs, Object storage capacity tiering, DataSpaces/global namespace for hybrid/multi-cloud AI, OpenAI reference architecture patterns, Field enablement and solution content ownership, SE org maturity and enterprise selling gaps, Install/rack-and-stack burden and partner program, Networking complexity requirements for deployments, Tech Summit follow-up
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-11-06: [[2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p]] - Review of updated AI pipeline slides for an upcoming VAST SE Tech Summit, covering model training (c... (via AI Pipelines Collateral)
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-
-- 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
-## Profile
-
-**Role**: OpenAI
-**Relationship**: External connector
-
-**Background**:
-- Potential connector into Thinking Machines; has relationship with Christian Gibson; previously provided a summary doc of a meeting with an engineer contact.
-- Asked to validate engineering reality of KV cache depiction (current NFS; future GPU-direct-to-object).
-- Previously worked closely with Jason at OpenAI; left in July and joined VAST (per transcript).
+Glenn Lockwood has extensive experience in high-performance computing (HPC) and AI infrastructure. He served as a Principal Engineer at Microsoft, focusing on supporting large-scale AI supercomputers, including those used by OpenAI. Prior to Microsoft, he was a Storage Architect at Berkeley Lab, where he led the design of large-scale storage systems. He holds a Ph.D. in Materials Science from Rutgers University.
 
 ## Key Decisions
 
@@ -140,9 +95,6 @@ VAST-in-cloud strategy and cloud economics, Marketplace packaging (tenant outcom
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

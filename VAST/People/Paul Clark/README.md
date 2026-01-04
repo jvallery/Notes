@@ -12,37 +12,13 @@ tags:
 
 # Paul Clark
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President of AI Delivery |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Redmond, Washington, United States |
+**Role**: Runs CO&I/CNLI (Azure datacenter org; per transcript) at Microsoft (CO&I)
+**Relationship**: Microsoft infrastructure leader (context)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Paul Clark has over 31 years of experience in the technology sector. He joined Microsoft in April 2023 as Vice President of AI Delivery. Prior to this, he held various leadership roles at Intel Corporation, including General Manager of Cloud Sustainability, Provisioning and Decommissioning, and Senior Director of Global Infrastructure.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- One of three CVPs responsible for building/delivering Azure infrastructure capacity.
 
 ## Open Tasks
 
@@ -53,16 +29,10 @@ WHERE !completed AND contains(text, "Paul Clark")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@PaulClark") AND !completed
-SORT due ASC
-```
+- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
 
 ## Key Facts
 
@@ -77,22 +47,9 @@ SORT due ASC
 - MAI contact requested to start testing immediately and prefers functional access now.
 - Current support requires pre-certified hardware; VM support expected in December and only for small VMs.
 
-## Topics Discussed
+## Background
 
-Walmart hybrid lakehouse architecture (GCP + two on-prem sites), SyncEngine replication from GCS to on-prem, DataSpaces/global namespace across on-prem sites, GCS API compatibility requirement, Strong consistency challenges and write-lease semantics, Network throughput/egress feasibility for multi-Tbps replication, Pilot/POC scoping using real workloads (Trino/Presto, Spark; Delta/Hudi tables), Governance, multi-tenancy, auditing, and compliance requirements, BigQuery interoperability considerations, Q4 pilot cluster configurations (Region 1/Region 2), MAI meeting preparation and testing plan, Hardware vs VM support timeline, External sharing constraints for Azure Blob data, Deck improvements: observability and CSI driver, Microsoft internal politics and stakeholder management
-
-## Recent Context
-
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
-
-## Profile
-
-**Role**: Runs CO&I/CNLI (Azure datacenter org; per transcript) at Microsoft (CO&I)
-**Relationship**: Microsoft infrastructure leader (context)
-
-**Background**:
-- One of three CVPs responsible for building/delivering Azure infrastructure capacity.
+Paul Clark has over 31 years of experience in the technology sector. He joined Microsoft in April 2023 as Vice President of AI Delivery. Prior to this, he held various leadership roles at Intel Corporation, including General Manager of Cloud Sustainability, Provisioning and Decommissioning, and Senior Director of Global Infrastructure.
 
 ## Key Decisions
 
@@ -114,9 +71,6 @@ Walmart hybrid lakehouse architecture (GCP + two on-prem sites), SyncEngine repl
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

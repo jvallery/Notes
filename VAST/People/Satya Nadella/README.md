@@ -12,37 +12,13 @@ tags:
 
 # Satya Nadella
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | CEO |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: CEO at Microsoft
+**Relationship**: Executive at customer account (Microsoft)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced in context of public comments/interviews about Microsoft’s AI infrastructure expansion and associated CapEx risk.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Satya Nadella")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@SatyaNadella") AND !completed
-SORT due ASC
-```
+- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) covering Microsoft... (via Rosanne Kincaid–Smith)
 
 ## Key Facts
 
@@ -74,30 +43,15 @@ SORT due ASC
 - Fiber proximity to hyperscaler hero regions is a key determinant: limited fiber constrains training workloads and pushes sites toward inference-heavy use cases.
 - Data gravity is shifting as compute chases power; VAST’s global data namespace is positioned to connect data to distributed compute.
 
-## Topics Discussed
+## Background
 
-Microsoft GPU capacity strategy (in-house vs neo-clouds), Lease dynamics and balance-sheet risk management, GPU depreciation/asset life uncertainty, Workload placement tradeoffs (training vs inference), Fiber connectivity and proximity to hyperscaler hero regions, Neo-cloud business models and shifting GPU capex risk, Dhammak data center and GPU cloud buildout strategy, Data gravity shifting as compute chases power, VAST global data namespace positioning
-
-## Recent Context
-
-- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) covering Microsoft... (via Rosanne Kincaid–Smith)
-
-## Profile
-
-**Role**: CEO at Microsoft
-**Relationship**: Executive at customer account (Microsoft)
-
-**Background**:
-- Referenced in context of public comments/interviews about Microsoft’s AI infrastructure expansion and associated CapEx risk.
+_Career history, expertise, interests, personal details shared..._
 
 ## Related Customers
 
 - [[Microsoft]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

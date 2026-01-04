@@ -10,28 +10,6 @@ tags:
 
 # Liraz Ben Or
 
-## Recent Context
-
-- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage.md|Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] — Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release management process, org st...
-
-- unknown: [[Sources/Transcripts/2025/2025-10 - Liraz Ben Or.md|Liraz Ben Or]] — - [x] Introduce yourself and sync with program managers (Liraz) ✅ 2025-11-08
-
-- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga.md|Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] — Liraz walked Jason through VAST’s non-traditional release management: 4 phase gates in a Waterfall m...
-
-- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
-- unknown: [[2025-10 - Liraz Ben Or]] - Checklist note tracking completion of initial sync activities with Liraz Ben Or, including introduct...
-- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
-- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
-- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
-- 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] - Weekly 1:1 where Liraz Ben Or explained VAST’s non-traditional major release management process (4 p...
-- 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] - Weekly 1:1 intro where Liraz Ben Or walked Jason Vallery through VAST’s non-traditional release mana...
-- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
-
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 ## Profile
 
 **Role**: Program manager at VAST Data (R&D)
@@ -41,6 +19,31 @@ tags:
 - Program/quality perspective: Golden Run and Code Freeze misaligned; much is tribal knowledge and not written down; target QA success ~96–97%.
 - Involved in coordinating with program managers and release gate meetings/cadence.
 - Referenced as a program manager to sync with.
+
+## Open Tasks
+
+```tasks
+path includes Liraz Ben Or
+not done
+```
+
+## Recent Context
+
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage.md|Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] — Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release management process, org st...
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga.md|Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] — Liraz walked Jason through VAST’s non-traditional release management: 4 phase gates in a Waterfall m...
+- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
+- 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] - Weekly 1:1 where Liraz Ben Or explained VAST’s non-traditional major release management process (4 p...
+- 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] - Weekly 1:1 intro where Liraz Ben Or walked Jason Vallery through VAST’s non-traditional release mana...
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
+- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
+- unknown: [[Sources/Transcripts/2025/2025-10 - Liraz Ben Or.md|Liraz Ben Or]] — - [x] Introduce yourself and sync with program managers (Liraz) ✅ 2025-11-08
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
+- unknown: [[2025-10 - Liraz Ben Or]] - Checklist note tracking completion of initial sync activities with Liraz Ben Or, including introduct...
+- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
 
 ## Key Facts
 
@@ -66,12 +69,14 @@ tags:
 - Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
 - Ben is the new Google PM counterpart for this effort.
+
 ## Topics
 
 Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target, Release intake and prioritization (leadership, architects, SE/Salesforce), Major vs minor releases and phase-gate process, Service packs and hotfix process (vForce, upstreaming fixes), Regression/performance testing practices for minors, SaaS agility vs storage reliability constraints
 
 
 GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding
+
 ## Key Decisions
 
 - ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.

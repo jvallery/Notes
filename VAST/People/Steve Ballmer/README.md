@@ -12,37 +12,13 @@ tags:
 
 # Steve Ballmer
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Owner |
-| **Company** | Los Angeles Clippers |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Hunts Point, Washington |
+**Role**: Microsoft
+**Relationship**: Not a direct relationship; contextual reference
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced as a cultural shorthand for Microsoft internal hard-coding/assumptions around Blob usage.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Steve Ballmer")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@SteveBallmer") AND !completed
-SORT due ASC
-```
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
 
 ## Key Facts
 
@@ -77,21 +46,9 @@ SORT due ASC
 - Private Link / VNet boundary is a recurring constraint for integrating VAST with Azure managed services; first-party services may have deeper access (e.g., network security perimeter).
 - Jason is earmarked to present at SCO; Jeff wants him to be 'lord of all things cloud' and cover AI cloud building with VAST.
 
-## Topics Discussed
+## Background
 
-Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal competition (Rockset/FoundationDB/RocksDB), AZCopy as Blob API MVP target, ABFS driver and Spark/Databricks integration considerations, Tiering/offload to Azure Blob and flash vs HDD supply dynamics, Namespace/metadata synchronization with existing cloud object data (change feed, eventual consistency), Azure Key Vault / customer-managed keys gap, Azure networking constraints (Private Link, first-party vs partner access), Foundry and Fabric integration opportunities, NeoCloud market shaping and packaging VAST portfolio, SCO session planning and messaging
-
-## Recent Context
-
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-
-## Profile
-
-**Role**: Microsoft
-**Relationship**: Not a direct relationship; contextual reference
-
-**Background**:
-- Referenced as a cultural shorthand for Microsoft internal hard-coding/assumptions around Blob usage.
+Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
 
 ## Key Decisions
 
@@ -103,9 +60,6 @@ Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal c
 - [[Microsoft]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

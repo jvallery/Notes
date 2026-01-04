@@ -12,37 +12,14 @@ tags:
 
 # Jay Parikh
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Executive Vice President, CoreAI – Platform and Tools |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/jayparikh](https://www.linkedin.com/in/jayparikh) |
-| **Location** | United States |
+**Role**: Microsoft
+**Relationship**: Partner stakeholder at Microsoft
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Jay Parikh joined Microsoft in October 2024 as Executive Vice President of CoreAI – Platform and Tools, reporting directly to CEO Satya Nadella. Prior to this, he served as CEO of Lacework, a cloud security company, and was the Global Head of Engineering at Facebook (now Meta) from 2009 to 2021. His earlier roles include Senior Vice President of Engineering & Operations at Ning, Inc., and Vice President of Engineering at Akamai Technologies. He holds a Bachelor of Science in Mechanical Engineering from Virginia Tech.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced as leadership channel associated with Fungible being pushed to partners; could be part of political alignment needed.
+- Referenced as another leadership channel associated with Fungible promotion; potential executive influence.
 
 ## Open Tasks
 
@@ -53,16 +30,10 @@ WHERE !completed AND contains(text, "Jay Parikh")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JayParikh") AND !completed
-SORT due ASC
-```
+- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
+- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
 
 ## Key Facts
 
@@ -77,23 +48,9 @@ SORT due ASC
 - DGX Cloud on Azure uses AMLFS for H100/A100; no GB-series storage benchmarking observed by Kanchan.
 - Deploying VAST on Lsv4/Lsv5 compute SKUs is power/capex prohibitive at exabyte scale; co-engineered bare metal on Azure Storage hardware is needed.
 
-## Topics Discussed
+## Background
 
-Project Apollo overview and requests to VAST, VAST POC rack shipment to Azure data center, Running VAST bare metal on Azure Storage hardware, Fungible DPU vs NVIDIA BlueField 3 risk/selection, MAI Dallas capacity (Dec/Apr) and storage plan-of-record uncertainty, Classic Azure interoperability needs (Overlake/SDN), UK Met Office POC in Azure Canary region, NVIDIA DGX Cloud storage performance requirements and leverage vs Azure Storage, Azure internal politics and stakeholder alignment (Manish resistance), Co-engineering a VAST-optimized Azure Storage SKU with Michael Myrah, Exec meeting planning with Nidhi and Renan (around Ignite), Azure Dedicated (Anand) as parallel bare-metal path, Licensing strategy: all-you-can-eat enterprise license, MAI and Project Apollo alignment and timelines, VAST bare metal on Azure storage hardware vs VM-based deployment
-
-## Recent Context
-
-- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
-- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
-
-## Profile
-
-**Role**: Microsoft
-**Relationship**: Partner stakeholder at Microsoft
-
-**Background**:
-- Referenced as leadership channel associated with Fungible being pushed to partners; could be part of political alignment needed.
-- Referenced as another leadership channel associated with Fungible promotion; potential executive influence.
+Jay Parikh joined Microsoft in October 2024 as Executive Vice President of CoreAI – Platform and Tools, reporting directly to CEO Satya Nadella. Prior to this, he served as CEO of Lacework, a cloud security company, and was the Global Head of Engineering at Facebook (now Meta) from 2009 to 2021. His earlier roles include Senior Vice President of Engineering & Operations at Ning, Inc., and Vice President of Engineering at Akamai Technologies. He holds a Bachelor of Science in Mechanical Engineering from Virginia Tech.
 
 ## Key Decisions
 
@@ -113,9 +70,6 @@ Project Apollo overview and requests to VAST, VAST POC rack shipment to Azure da
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

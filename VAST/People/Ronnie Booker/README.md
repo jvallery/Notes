@@ -12,37 +12,13 @@ tags:
 
 # Ronnie Booker
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Owns chassis/layout/storage placement decisions for Apollo deployments |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Owns chassis/layout/storage placement decisions for Apollo deployments at Microsoft
+**Relationship**: Key Microsoft decision-maker to engage
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Key decision-maker for what goes in the data center (chassis design, layout, storage placement). Identified as the right target vs Nidhi/Manish for hardware/OEM storage-dense path.
 
 ## Open Tasks
 
@@ -53,16 +29,11 @@ WHERE !completed AND contains(text, "Ronnie Booker")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RonnieBooker") AND !completed
-SORT due ASC
-```
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
+- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
 
 ## Key Facts
 
@@ -86,26 +57,10 @@ SORT due ASC
 - Blob API is largely Microsoft-specific; S3 compatibility is broadly attractive; multi-protocol (Blob + S3) could broaden appeal but faces Azure control plane integration hurdles.
 - MAI contact requested to start testing immediately and prefers functional access now.
 - Current support requires pre-certified hardware; VM support expected in December and only for small VMs.
-## Topics Discussed
 
-Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal, MAI/Falcon operational issues: topology-aware scheduling, IB telemetry, reliability, Power constraints as primary bottleneck and translating storage savings into GPUs, OpenAI leadership changes and implications for Microsoft alignment, Supercomputing conference coordination and intros
+## Background
 
-
-Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and AI WAN, MAI control plane fragility and GPU utilization constraints, Project Apollo (AKS-led slim control plane) and storage integration, Azure internal politics (Compute vs Storage incentives), Azure hardware qualification path and timelines, Liquid-cooled storage SKUs and data center cooling fungibility, Blob API vs S3 compatibility and multi-protocol strategy, Using MAI success as a wedge for broader Azure adoption, MAI meeting preparation and testing plan, Hardware vs VM support timeline, External sharing constraints for Azure Blob data, Deck improvements: observability and CSI driver, Microsoft internal politics and stakeholder management, Engaging Azure hardware leadership via sponsorship
-## Recent Context
-
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
-- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
-## Profile
-
-**Role**: Owns chassis/layout/storage placement decisions for Apollo deployments at Microsoft
-**Relationship**: Key Microsoft decision-maker to engage
-
-**Background**:
-- Key decision-maker for what goes in the data center (chassis design, layout, storage placement). Identified as the right target vs Nidhi/Manish for hardware/OEM storage-dense path.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -121,9 +76,6 @@ Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and A
 - [[Microsoft BizDev Education & Intros to Ronnie]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

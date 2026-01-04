@@ -11,37 +11,13 @@ tags:
 
 # John Heidgerken
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Americas West Area Director, Systems Engineering |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: DM for system engineering (supports SE org; Brad and Paul's boss) (Systems Engineering)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-John Heidgerken has been serving as the Americas West Area Director of Systems Engineering at VAST Data since November 2023. Prior to this, he was a Senior Systems Engineer at Dell EMC from August 2018 to November 2023. His earlier experience includes roles at Rackspace from August 2006 to July 2015, culminating as a SAN Engineer III, as well as positions at Credit Karma and USAA in infrastructure engineering and member support, respectively. He holds a Bachelor's degree in Music Education from The University of Texas at San Antonio, earned between 2000 and 2004.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Introduced as DM for system engineering part of the business; supports Brad and is Paul's boss.
 
 ## Open Tasks
 
@@ -52,16 +28,11 @@ WHERE !completed AND contains(text, "John Heidgerken")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JohnHeidgerken") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
 
 ## Key Facts
 
@@ -76,23 +47,9 @@ SORT due ASC
 - John owns alliances/partnerships for conventional channels (incl. AMD/NVIDIA) and control-plane partner ecosystem for Tier-2 cloud-in-a-box.
 - Morty owns Neo cloud feature requirements; moving to Jason’s team but must keep Neo focus.
 
-## Topics Discussed
+## Background
 
-Walmart hybrid lakehouse architecture (GCP + two on-prem sites), SyncEngine replication from GCS to on-prem, DataSpaces/global namespace across on-prem sites, GCS API compatibility requirement, Strong consistency challenges and write-lease semantics, Network throughput/egress feasibility for multi-Tbps replication, Pilot/POC scoping using real workloads (Trino/Presto, Spark; Delta/Hudi tables), Governance, multi-tenancy, auditing, and compliance requirements, BigQuery interoperability considerations, Q4 pilot cluster configurations (Region 1/Region 2), Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
-
-## Profile
-
-**Role**: DM for system engineering (supports SE org; Brad and Paul's boss) (Systems Engineering)
-**Relationship**: Internal collaborator
-
-**Background**:
-- Introduced as DM for system engineering part of the business; supports Brad and is Paul's boss.
+John Heidgerken has been serving as the Americas West Area Director of Systems Engineering at VAST Data since November 2023. Prior to this, he was a Senior Systems Engineer at Dell EMC from August 2018 to November 2023. His earlier experience includes roles at Rackspace from August 2006 to July 2015, culminating as a SAN Engineer III, as well as positions at Credit Karma and USAA in infrastructure engineering and member support, respectively. He holds a Bachelor's degree in Music Education from The University of Texas at San Antonio, earned between 2000 and 2004.
 
 ## Key Decisions
 
@@ -108,9 +65,6 @@ Walmart hybrid lakehouse architecture (GCP + two on-prem sites), SyncEngine repl
 - ✅ Use an NVIDIA-customer event (via AI Circle) as the primary NVIDIA intro mechanism; direct 1:1 intros from NVIDIA reps are unlikely.
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

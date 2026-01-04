@@ -12,37 +12,16 @@ tags:
 
 # Jason Vallery
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Principal PM Manager - Azure Storage |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/jvallery](https://www.linkedin.com/in/jvallery) |
-| **Location** | Longmont, Colorado, United States |
+**Role**: Product management (cloud); partnerships with hyperscale cloud providers at VAST Data (Cloud / Partnerships)
+**Location**: Colorado (near Boulder)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Prior to joining VAST Data, Jason Vallery had a 13-year career at Microsoft, where he contributed to building the Azure cloud from the ground up. He has extensive experience in AI-focused storage and data infrastructure for large-scale data processing.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Coordinated Microsoft-related collateral and validations (ROI data usage, BizDev education/intros, power-savings one-pager, marketplace offer assessment).
+- Internal collaborator coordinating partner/customer requirements and meetings.
+- Internal collaborator coordinating cloud/partner-related work.
 
 ## Open Tasks
 
@@ -57,15 +36,25 @@ WHERE contains(file.outlinks, this.file.link)
 - [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
 - [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Jason Vallery
 
-## Tasks They Own
+## Recent Context
 
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JasonVallery") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
+- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
+- unknown: [[2025-10 - OpenAI Tasks]] - Task list for coordinating with OpenAI on storage API requirements, global KV store needs, and sched... (via OpenAI)
+- unknown: [[2025-10 - Andy Pernsteiner]] - A completed action item to set up a 1:1 with Andy Bernstein to learn meeting rhythms and communicati... (via Andy Perlsteiner)
+- unknown: [[2025-10 - Asaf Levy]] - Completed action items from a working session with Asaf Levy to align on DataSpaces persistence desi... (via Asaf Levy)
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
+- unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers... (via Jonsi Stephenson)
+- unknown: [[2025-10 - Josh Wentzell]] - Follow-up task to contact Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding materi... (via Josh Wentzell)
+- unknown: [[2025-10 - Kanchan Mehrotra]] - A completed follow-up task to connect with Kanchan Mehrotra about storage plays and density for Supe... (via Kanchan Mehrotra)
+- unknown: [[2025-10 - Kishore Inampudi]] - Follow-up task to coordinate with Kishore Inampudi on Azure Extended Zones after A2N approval, align... (via Kishore Inampudi)
+- unknown: [[2025-10 - Kurt Niebuhr]] - Action items related to keeping Jason informed on neo-cloud partnership pipeline opportunities and p... (via Kurt Niebuhr)
+- unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy... (via Lior Genzel)
+- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
+- unknown: [[2025-10 - Rick Hasleton]] - A single action item to meet with Customer Success to learn the end-to-end account support workflow,... (via Rick Haselton)
+- unknown: [[2025-10 - Rob Benoit]] - A completed task to coordinate with Rob Benoit regarding expectations for Tech Summit content, assig... (via Rob Benoit)
+- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
 
 ## Key Facts
 
@@ -91,43 +80,10 @@ SORT due ASC
 - Finance will not have a separate cloud P&L; cloud metrics will be reported within overall P&L; SaaS/consumption metrics and forecasting model must be defined before full SaaS launch.
 - Customer Success is currently reactive support rather than proactive CS.
 - PM team is small relative to product scope; professionalizing PM is a major initiative for the coming year.
-## Topics Discussed
 
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Z4M storage-serving VM roadmap (density, pricing optimization), Local SSD vs HyperDisk vs object storage tiers (latency/economics), Google Supercomputer (GSC) provisioning, co-placement, and partner integration, RDMA and GPUDirect Storage (A5X GPUs) and TPU RDMA timeline, Anywhere Cache (cost vs performance)
+## Background
 
-
-GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec, Future pricing model: VAST units of measurement for compute/capacity, Hybrid on-prem/cloud conversion and revenue recognition complexity, Multi-cloud pooling feasibility and hyperscaler positioning concerns, Need for cloud customer success coverage and internal usage alerting, Org landscape and key players, Cloud strategy beyond S3, Embedding with SEs and customer workflow discovery, Google RFP and TPU angle; fit assessment, Microsoft positioning vs Azure Storage gaps
-## Recent Context
-
-- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
-- unknown: [[2025-10 - OpenAI Tasks]] - Task list for coordinating with OpenAI on storage API requirements, global KV store needs, and sched... (via OpenAI)
-- unknown: [[2025-10 - Andy Pernsteiner]] - A completed action item to set up a 1:1 with Andy Bernstein to learn meeting rhythms and communicati... (via Andy Perlsteiner)
-- unknown: [[2025-10 - Asaf Levy]] - Completed action items from a working session with Asaf Levy to align on DataSpaces persistence desi... (via Asaf Levy)
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
-- unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers... (via Jonsi Stephenson)
-- unknown: [[2025-10 - Josh Wentzell]] - Follow-up task to contact Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding materi... (via Josh Wentzell)
-- unknown: [[2025-10 - Kanchan Mehrotra]] - A completed follow-up task to connect with Kanchan Mehrotra about storage plays and density for Supe... (via Kanchan Mehrotra)
-- unknown: [[2025-10 - Kishore Inampudi]] - Follow-up task to coordinate with Kishore Inampudi on Azure Extended Zones after A2N approval, align... (via Kishore Inampudi)
-- unknown: [[2025-10 - Kurt Niebuhr]] - Action items related to keeping Jason informed on neo-cloud partnership pipeline opportunities and p... (via Kurt Niebuhr)
-- unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy... (via Lior Genzel)
-- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
-- unknown: [[2025-10 - Rick Hasleton]] - A single action item to meet with Customer Success to learn the end-to-end account support workflow,... (via Rick Haselton)
-- unknown: [[2025-10 - Rob Benoit]] - A completed task to coordinate with Rob Benoit regarding expectations for Tech Summit content, assig... (via Rob Benoit)
-- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
-
-
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
-## Profile
-
-**Role**: Product management (cloud); partnerships with hyperscale cloud providers at VAST Data (Cloud / Partnerships)
-**Location**: Colorado (near Boulder)
-**Relationship**: Internal collaborator
-
-**Background**:
-- Coordinated Microsoft-related collateral and validations (ROI data usage, BizDev education/intros, power-savings one-pager, marketplace offer assessment).
-- Internal collaborator coordinating partner/customer requirements and meetings.
-- Internal collaborator coordinating cloud/partner-related work.
+Prior to joining VAST Data, Jason Vallery had a 13-year career at Microsoft, where he contributed to building the Azure cloud from the ground up. He has extensive experience in AI-focused storage and data infrastructure for large-scale data processing.
 
 ## Key Decisions
 
@@ -204,9 +160,6 @@ GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tack
 - [[EB Power Savings to GPUs One-Pager]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

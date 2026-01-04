@@ -12,37 +12,14 @@ tags:
 
 # Joe Stevens
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Runs data |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Runs data at VAST Data (Data)
+**Location**: Boston
+**Relationship**: Internal collaborator (mentioned)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Data leader in Boston hub.
 
 ## Open Tasks
 
@@ -53,16 +30,9 @@ WHERE !completed AND contains(text, "Joe Stevens")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JoeStevens") AND !completed
-SORT due ASC
-```
+- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
 
 ## Key Facts
 
@@ -74,27 +44,11 @@ SORT due ASC
 - Unit-based pricing ('VAST units') is viewed as a way to normalize pricing across cohorts and across storage/compute and on-prem/cloud, while easing migration to a new model.
 - Key risks include customer backlash/contraction from inconsistent pricing and deal-level discount leakage when cloud SKUs are undiscountable.
 
-## Topics Discussed
+## Background
 
-Corporate finance scope and constraints, Hiring a Cloud Solutions finance business partner, Investor valuation metrics (growth-adjusted ARR multiple), Pricing model evolution (unit-based pricing), Discount discipline and controls, Cloud Solutions strategy beyond marketplace VM limits, Exabyte-scale customer targeting to unlock hyperscaler hardware, Common data namespace across on-prem, multi-cloud, and neo-clouds, Founder-driven decision dynamics and change management
-
-## Recent Context
-
-- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
-
-## Profile
-
-**Role**: Runs data at VAST Data (Data)
-**Location**: Boston
-**Relationship**: Internal collaborator (mentioned)
-
-**Background**:
-- Data leader in Boston hub.
+_Career history, expertise, interests, personal details shared..._
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

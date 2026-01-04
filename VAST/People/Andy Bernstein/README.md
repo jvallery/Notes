@@ -11,37 +11,12 @@ tags:
 
 # Andy Bernstein
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Runs a CTO meeting rhythm; can advise which Slack channels/meetings to join; described as an amazing person and key guide to internal cadence.
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Andy Bernstein")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@AndyBernstein") AND !completed
-SORT due ASC
-```
+- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
 
 ## Key Facts
 
@@ -75,20 +43,9 @@ SORT due ASC
 - Lior has sell-to obligations including Microsoft AI research/MapFalcon engagement (~16,000 GPUs).
 - Org changes moving people under Jason’s scope are imminent and sensitive.
 
-## Topics Discussed
+## Background
 
-Cloud alignment and synthesized pipeline/requirements across major clouds, Microsoft prioritization and ROI narrative, Google TPU partnership strategy and competitive positioning vs Google first-party storage, OpenAI engagement timing and deferring alignment, Pricing/consumption model vs prepaid commitments; on-prem utilization risk, Org structure changes and meeting cadence/1:1s, Slack presence and internal channels (pre-sales, cloud deployment threads), Tech Summit content ownership and expectations, Supercomputing meeting planning and small-group with Nidhi, Tel Aviv agenda planning via Shachar
-
-## Recent Context
-
-- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
-
-## Profile
-
-**Relationship**: Internal collaborator
-
-**Background**:
-- Runs a CTO meeting rhythm; can advise which Slack channels/meetings to join; described as an amazing person and key guide to internal cadence.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -102,9 +59,6 @@ Cloud alignment and synthesized pipeline/requirements across major clouds, Micro
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

@@ -13,10 +13,6 @@ tags:
 
 # Shopify
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -29,26 +25,6 @@ _Brief description of this customer, their business, and relationship..._
 - [[Timo Pervane]]
 - [[Amy Shapiro]]
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-_No known blockers._
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -58,15 +34,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-_No active opportunities._
-
-## Key Decisions
-
-_Important decisions made with this customer..._
-
+- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
 
 ## Key Facts
 
@@ -78,13 +48,9 @@ _Important decisions made with this customer..._
 - Unit-based pricing ('VAST units') is viewed as a way to normalize pricing across cohorts and across storage/compute and on-prem/cloud, while easing migration to a new model.
 - Key risks include customer backlash/contraction from inconsistent pricing and deal-level discount leakage when cloud SKUs are undiscountable.
 
-## Topics / Themes
+## Opportunities
 
-Corporate finance scope and constraints, Hiring a Cloud Solutions finance business partner, Investor valuation metrics (growth-adjusted ARR multiple), Pricing model evolution (unit-based pricing), Discount discipline and controls, Cloud Solutions strategy beyond marketplace VM limits, Exabyte-scale customer targeting to unlock hyperscaler hardware, Common data namespace across on-prem, multi-cloud, and neo-clouds, Founder-driven decision dynamics and change management
-
-## Recent Context
-
-- 2025-10-28: [[2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] - Introductory 1:1 between Jason Vallery and Timo Pervane focused on finance org context, Cloud Soluti... (via Timo Pervane)
+_No active opportunities._
 
 ## Collaborators
 
@@ -92,8 +58,3 @@ Corporate finance scope and constraints, Hiring a Cloud Solutions finance busine
 |--------|------|---------|
 | [[Timo Pervane]] | Leads Corporate Finance (FP&A, planning, IR, corp dev) | VAST Data |
 | [[Amy Shapiro]] | CFO | VAST Data |
-
-## Related People
-
-- [[Timo Pervane]]
-- [[Amy Shapiro]]

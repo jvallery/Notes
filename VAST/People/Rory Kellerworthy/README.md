@@ -11,37 +11,12 @@ tags:
 
 # Rory Kellerworthy
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Relationship**: External connector
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Connector to NVIDIA rep David Klein; also connected to Perplexity contact Noah Yonick; described as staying neutral and not always making direct intros.
 
 ## Open Tasks
 
@@ -52,16 +27,10 @@ WHERE !completed AND contains(text, "Rory Kellerworthy")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RoryKellerworthy") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
 
 ## Key Facts
 
@@ -76,21 +45,9 @@ SORT due ASC
 - Targets reviewed included Thinking Machines, Reflection, Physical Intelligence, Midjourney, SSI (Safe Superintelligence Inc.), Perplexity, Cohere, Magic, Anthropic, and Apple.
 - Reflection is reportedly discussing ~10,000 GB300s for an upcoming run.
 
-## Topics Discussed
+## Background
 
-Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal, MAI/Falcon operational issues: topology-aware scheduling, IB telemetry, reliability, Power constraints as primary bottleneck and translating storage savings into GPUs, OpenAI leadership changes and implications for Microsoft alignment, Supercomputing conference coordination and intros, Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative), Persona targeting (data/pipeline teams vs exec-only), Salesforce history audit before re-engagement, Target account prioritization and expansion (e.g., Black Forest Labs)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-## Profile
-
-**Relationship**: External connector
-
-**Background**:
-- Connector to NVIDIA rep David Klein; also connected to Perplexity contact Noah Yonick; described as staying neutral and not always making direct intros.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -106,9 +63,6 @@ Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power adva
 - [[Model Builder Turbine]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

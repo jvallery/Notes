@@ -10,14 +10,6 @@ tags:
 
 # Erez Zilber
 
-## Recent Context
-
-- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az.md|Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] — Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Azure marketplace use ...
-
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
-- 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Jason Vallery and Erez Zilber aligned on implementing Azure Blob API support in VAST, primarily to e...
-
 ## Profile
 
 **Role**: Protocols architect at VAST Data (Protocols)
@@ -28,6 +20,20 @@ tags:
 - Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
 - Referenced as part of current cloud pricing approach discussions.
 - Protocols architect at VAST for 8+ years; leads field-driven protocol requirements and translates them into engineering deliverables; currently ramping on Azure Blob API semantics and requirements mapping for OpenAI.
+
+## Open Tasks
+
+```tasks
+path includes Erez Zilber
+not done
+```
+
+## Recent Context
+
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az.md|Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] — Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Azure marketplace use ...
+- 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Jason Vallery and Erez Zilber aligned on implementing Azure Blob API support in VAST, primarily to e...
 
 ## Key Facts
 

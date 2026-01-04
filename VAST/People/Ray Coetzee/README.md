@@ -11,37 +11,14 @@ tags:
 
 # Ray Coetzee
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Solution Architect Lead |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Multi-tenancy SME (technical)
+**Location**: UK
+**Relationship**: Internal SME contact
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Ray Coetzee is a Solution Architect Lead at VAST Data, with expertise in parallel filesystem engineering. He has contributed to technical validations and presentations, including a collaboration with Vertica and a technical social event at UCL in May 2022.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Technical multi-tenancy SME; recommended but secondary to Phil Wagstrom for hierarchy/admin model details.
 
 ## Open Tasks
 
@@ -52,16 +29,9 @@ WHERE !completed AND contains(text, "Ray Coetzee")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RayCoetzee") AND !completed
-SORT due ASC
-```
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
 
 ## Key Facts
 
@@ -76,22 +46,9 @@ SORT due ASC
 - OpenAI architecture pattern described: multi-exabyte lakes in 3 Azure regions; GPUs in 50+ regions plus other providers; GPU-adjacent cache with checkpoints back to central.
 - Urgent need: Sync Engine must read from Azure Blob to support large migrations (wave.ai) on a December timeline; key engineer Aaron Zilber is OOO ~2.5 weeks.
 
-## Topics Discussed
+## Background
 
-Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics, Multi-tenancy backlog toward SaaS, OpenAI architecture and global data plane opportunity, Sync Engine ownership gap and Azure Blob-source migration needs
-
-## Recent Context
-
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-
-## Profile
-
-**Role**: Multi-tenancy SME (technical)
-**Location**: UK
-**Relationship**: Internal SME contact
-
-**Background**:
-- Technical multi-tenancy SME; recommended but secondary to Phil Wagstrom for hierarchy/admin model details.
+Ray Coetzee is a Solution Architect Lead at VAST Data, with expertise in parallel filesystem engineering. He has contributed to technical validations and presentations, including a collaboration with Vertica and a technical social event at UCL in May 2022.
 
 ## Key Decisions
 
@@ -104,9 +61,6 @@ Roles and responsibilities between PM and Field CTO org, Documentation and field
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

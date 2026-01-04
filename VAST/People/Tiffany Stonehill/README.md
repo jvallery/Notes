@@ -12,37 +12,14 @@ tags:
 
 # Tiffany Stonehill
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Cloud field lead for AWS and Azure (exact title not stated) |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Cloud field lead for AWS and Azure (exact title not stated) at VAST Data (Cloud / Field)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- At VAST ~1.5 years; previously covered OCI; now covers Azure and AWS; helps route field opportunities and adds people to Slack channel; involved with product marketing on talk tracks/battle cards.
+- Owns AWS/Azure field engagement for VAST on Cloud; coordinating intake via Slack; working with product marketing on positioning/battle cards/talk tracks; covering Supercomputing and Ignite.
 
 ## Open Tasks
 
@@ -53,16 +30,11 @@ WHERE !completed AND contains(text, "Tiffany Stonehill")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@TiffanyStonehill") AND !completed
-SORT due ASC
-```
+- 2025-10-29: [[2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g]] - Group office hours aligned the team on positioning and operating mechanics for VAST on Cloud, emphas... (via VAST on Cloud Office Hours)
+- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
+- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
 
 ## Key Facts
 
@@ -77,24 +49,9 @@ SORT due ASC
 - Tiffany Stonehill covers AWS and Azure; Olivia Borey covers GCP and OCI.
 - Jason Vallery joined as VP of Product Management for Cloud and reports to Jeff Denworth; previously spent 13 years leading Microsoft object storage PM.
 
-## Topics Discussed
+## Background
 
-Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and AI WAN, MAI control plane fragility and GPU utilization constraints, Project Apollo (AKS-led slim control plane) and storage integration, Azure internal politics (Compute vs Storage incentives), Azure hardware qualification path and timelines, Liquid-cooled storage SKUs and data center cooling fungibility, Blob API vs S3 compatibility and multi-protocol strategy, Using MAI success as a wedge for broader Azure adoption, VAST on Cloud positioning and global namespace, Marketplace automation and transacting via cloud marketplaces, VM shape constraints and cloud TCO vs on-prem, Object storage integration roadmap (e.g., S3) and SyncEngine bridge, Hyperscaler partnerships/programs (AWS FSx) and influencing roadmaps, Field intake process via Slack and Salesforce
-
-## Recent Context
-
-- 2025-10-29: [[2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g]] - Group office hours aligned the team on positioning and operating mechanics for VAST on Cloud, emphas... (via VAST on Cloud Office Hours)
-- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
-- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
-
-## Profile
-
-**Role**: Cloud field lead for AWS and Azure (exact title not stated) at VAST Data (Cloud / Field)
-**Relationship**: Internal collaborator
-
-**Background**:
-- At VAST ~1.5 years; previously covered OCI; now covers Azure and AWS; helps route field opportunities and adds people to Slack channel; involved with product marketing on talk tracks/battle cards.
-- Owns AWS/Azure field engagement for VAST on Cloud; coordinating intake via Slack; working with product marketing on positioning/battle cards/talk tracks; covering Supercomputing and Ignite.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -115,9 +72,6 @@ Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and A
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

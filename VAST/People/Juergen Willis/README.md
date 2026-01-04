@@ -12,37 +12,13 @@ tags:
 
 # Juergen Willis
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President-Energy & Resources |
-| **Company** | Microsoft Corp. |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: CVP of Azure Storage (retired) at Microsoft (Azure Storage)
+**Relationship**: Referenced former sponsor
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Darryl K. Willis is an Independent Director at Dril-Quip, Inc. and Nine Energy Service, Inc. He is also a Director at INROADS, Inc. and holds the position of Vice President-Energy & Resources at Microsoft Corp. Previously, he served as President & Chief Executive Officer-Angola at BP Plc (Texas), Senior Vice President-Reservoir Development at BP America, Inc., Vice President-Technology Operations at TNK-BP Ltd., and General Manager at BP Angola. He was also a Vice President-Oil, Gas & Energy at Google Cloud. Mr. Willis completed his undergraduate degree at Northwestern State University and his graduate degrees at the University of New Orleans and Stanford Graduate School of Business.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Jason's former champion/sponsor in Azure Storage; left ~18 months prior, contributing to Jason lacking a champion in the org.
 
 ## Open Tasks
 
@@ -53,16 +29,11 @@ WHERE !completed AND contains(text, "Juergen Willis")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JuergenWillis") AND !completed
-SORT due ASC
-```
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s retention risk after disappointing... (via Jai Menon)
+- 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
 
 ## Key Facts
 
@@ -77,23 +48,9 @@ SORT due ASC
 - Dallas HDD capacity is expected to land in January; a larger capacity build is expected in April; Richmond was replaced by a larger capacity site.
 - Target per-site scale discussed: ~1 exabyte usable (potentially ~7 exabytes for a 350MW site) and ~120,000 GPUs.
 
-## Topics Discussed
+## Background
 
-Retention risk and compensation/rewards, External job offers and decision timeline, Role scope/ownership and management vs IC path, Organizational politics and execution speed, Apollo storage strategy (clean-sheet vs existing Azure Storage/Bifrost), Build vs buy/partner for near-term storage, Deploying VAST for Apollo training workloads on Azure, Azure Gen9 XIO bare metal vs Azure Storage software stack benchmarking, VAST ODM hardware options (performance-optimized vs capacity-optimized), Power and rack density constraints at exabyte scale, Read/write throughput requirements for large GPU clusters, NIC/DPU choices and qualification (Fungible vs NVIDIA BlueField), Blob API requirement vs NFS/S3 and impact on data loaders, Azure internal stakeholder alignment and politics, Dallas/Phoenix/Richmond site capacity timelines
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s retention risk after disappointing... (via Jai Menon)
-- 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
-
-## Profile
-
-**Role**: CVP of Azure Storage (retired) at Microsoft (Azure Storage)
-**Relationship**: Referenced former sponsor
-
-**Background**:
-- Jason's former champion/sponsor in Azure Storage; left ~18 months prior, contributing to Jason lacking a champion in the org.
+Darryl K. Willis is an Independent Director at Dril-Quip, Inc. and Nine Energy Service, Inc. He is also a Director at INROADS, Inc. and holds the position of Vice President-Energy & Resources at Microsoft Corp. Previously, he served as President & Chief Executive Officer-Angola at BP Plc (Texas), Senior Vice President-Reservoir Development at BP America, Inc., Vice President-Technology Operations at TNK-BP Ltd., and General Manager at BP Angola. He was also a Vice President-Oil, Gas & Energy at Google Cloud. Mr. Willis completed his undergraduate degree at Northwestern State University and his graduate degrees at the University of New Orleans and Stanford Graduate School of Business.
 
 ## Key Decisions
 
@@ -110,9 +67,6 @@ Retention risk and compensation/rewards, External job offers and decision timeli
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

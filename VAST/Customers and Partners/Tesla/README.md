@@ -14,10 +14,6 @@ tags:
 
 # Tesla
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -29,26 +25,6 @@ _Brief description of this customer, their business, and relationship..._
 
 _No key contacts identified._
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-_No known blockers._
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -58,15 +34,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-- Ongoing relationship; urgent incremental requests after trials drive additional development and QA work, impacting release scope.
-
-## Key Decisions
-
-_Important decisions made with this customer..._
-
+- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
 
 ## Key Facts
 
@@ -81,18 +51,6 @@ _Important decisions made with this customer..._
 - Major multi-tenancy blocker: authentication providers limited to 8 and configured at host cluster rather than tenant-scoped; scaling and tenantizing is a large effort.
 - Control plane (Polaris/Iceland) is more cloud-native; cluster layer is not yet operating in an agile/SaaS mode.
 
-## Topics / Themes
+## Opportunities
 
-Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target
-
-## Recent Context
-
-- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
-
-## Related People
-
-_Internal team members working on this account..._
-
-
----
-*Last updated: *
+- Ongoing relationship; urgent incremental requests after trials drive additional development and QA work, impacting release scope.

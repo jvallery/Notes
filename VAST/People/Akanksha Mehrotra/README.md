@@ -11,37 +11,12 @@ tags:
 
 # Akanksha Mehrotra
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Running scale tests and capturing performance metrics (including throughput reduction) for distributed cache checkpointing.
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Akanksha Mehrotra")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@AkankshaMehrotra") AND !completed
-SORT due ASC
-```
+- 2025-09-16: [[2025-09-16 - Team reviewed status of distributed cache for checkpointing implementation comp]] - Weekly 1:1 focused on the distributed cache for checkpointing: implementation is complete, with scal... (via Vishnu Charan TJ)
 
 ## Key Facts
 
@@ -75,20 +43,9 @@ SORT due ASC
 - CoreAI requested SSD-only KV cache offload without cloud tier; feasibility is unclear.
 - AWS patterns referenced: PyTorch S3 storage writer, prefix layout/naming to reduce partition hot-spotting/503s, and S3 Express as a cache reference.
 
-## Topics Discussed
+## Background
 
-Distributed cache for checkpointing status and MVP scope, Scale and resilience testing (100–200 nodes) and extrapolation to 10k–100k nodes, Network throughput reduction measurement to Blob and TPS per node to metadata/blob, AKS integration approach: Linux mount vs CSI PV and containers team concerns, Private preview planning and customer cohort (Figure AI first; MAI deferred), CoreAI SSD-only KV cache offload request, Long-term strategy: open-source/Python tool contributions vs kernel-mode driver vs user-mode library, AWS reference implementations (PyTorch S3 storage writer, prefix entropy, S3 Express)
-
-## Recent Context
-
-- 2025-09-16: [[2025-09-16 - Team reviewed status of distributed cache for checkpointing implementation comp]] - Weekly 1:1 focused on the distributed cache for checkpointing: implementation is complete, with scal... (via Vishnu Charan TJ)
-
-## Profile
-
-**Relationship**: Internal collaborator
-
-**Background**:
-- Running scale tests and capturing performance metrics (including throughput reduction) for distributed cache checkpointing.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -102,9 +59,6 @@ Distributed cache for checkpointing status and MVP scope, Scale and resilience t
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

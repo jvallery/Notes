@@ -10,19 +10,6 @@ tags:
 
 # Josh Wentzell
 
-## Recent Context
-
-- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo.md|Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] — Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Josh outlined multi-te...
-
-- unknown: [[Sources/Transcripts/2025/2025-10 - Josh Wentzell.md|Josh Wentzell]] — - [x] Ping [@Josh Wentzell](https://vastdata.slack.com/team/U03RTCX4H5G) (Office of the CTO) to obta...
-
-- unknown: [[2025-10 - Josh Wentzell]] - Follow-up task to contact Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding materi...
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-10-31: [[2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] - Introductory 1:1 with Josh Wentzell to align on VAST on Cloud strategy and identify platform gaps, e...
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on accelerating AI-first software developme... (via Tomer Hagay)
-- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
-
 ## Profile
 
 **Role**: Office of the CTO at VAST Data (Office of the CTO)
@@ -32,6 +19,24 @@ tags:
 - Point of contact to obtain VAST OVA and onboarding materials for local lab testing.
 - Referenced as having redone a system to make it work on HPE Alletra hardware.
 - Hired ~3 years prior; initially lab manager improving lab automation/pipelines; works with customers integrating VAST APIs into automation platforms; previously handled many AWS VOC discussions before Carl joined; built a beta Ansible module but cannot maintain it alone.
+
+## Open Tasks
+
+```tasks
+path includes Josh Wentzell
+not done
+```
+
+## Recent Context
+
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo.md|Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] — Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Josh outlined multi-te...
+- 2025-10-31: [[2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] - Introductory 1:1 with Josh Wentzell to align on VAST on Cloud strategy and identify platform gaps, e...
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
+- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on accelerating AI-first software developme... (via Tomer Hagay)
+- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
+- unknown: [[Sources/Transcripts/2025/2025-10 - Josh Wentzell.md|Josh Wentzell]] — - [x] Ping [@Josh Wentzell](https://vastdata.slack.com/team/U03RTCX4H5G) (Office of the CTO) to obta...
+- unknown: [[2025-10 - Josh Wentzell]] - Follow-up task to contact Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding materi...
 
 ## Key Facts
 

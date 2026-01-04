@@ -12,37 +12,13 @@ tags:
 
 # Melissa Du
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Logistics for “neo clouds” / CoreWeave (finance/capacity org) |
-| **Company** | OpenAI |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Logistics for “neo clouds” / CoreWeave (finance/capacity org) at OpenAI (Finance/capacity)
+**Relationship**: Customer stakeholder
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Handles logistics for 'neo clouds'/CoreWeave-related capacity; under Kevin Park.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Melissa Du")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@MelissaDu") AND !completed
-SORT due ASC
-```
+- unknown: [[Oct 22nd, 2025]] - Stakeholder mapping and technical positioning for an OpenAI research primary storage proof-of-concep... (via Sam Hopewell)
 
 ## Key Facts
 
@@ -73,21 +42,9 @@ SORT due ASC
 - Constraint: do not touch software stack on GPU hosts unless net throughput gains are proven; prefer any namespace/client component to run on VAST servers and expose local object endpoints; avoid heavy agents on GPU nodes.
 - Internal pressure exists to complete this because it increases GPU fleet fungibility and unlocks capacity for research projects; Sam is short staffed and actively hiring.
 
-## Topics Discussed
+## Background
 
-OpenAI stakeholder map for research storage/infra, VAST as near-GPU warm storage to mitigate WAN/Azure variability, Storage tiering vocabulary (cold/warm/hot), POC status and operational blockers (bandwidth/firefighting, decision backlog), Global namespace skepticism and metadata scalability at multi-EiB, Architecture constraints: no heavy GPU-host agents; local object endpoints, Win criteria: throughput, list/TPS, WAN resilience, low overhead, fast feature turnaround
-
-## Recent Context
-
-- unknown: [[Oct 22nd, 2025]] - Stakeholder mapping and technical positioning for an OpenAI research primary storage proof-of-concep... (via Sam Hopewell)
-
-## Profile
-
-**Role**: Logistics for “neo clouds” / CoreWeave (finance/capacity org) at OpenAI (Finance/capacity)
-**Relationship**: Customer stakeholder
-
-**Background**:
-- Handles logistics for 'neo clouds'/CoreWeave-related capacity; under Kevin Park.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -98,9 +55,6 @@ OpenAI stakeholder map for research storage/infra, VAST as near-GPU warm storage
 - [[OpenAI]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

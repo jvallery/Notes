@@ -12,37 +12,13 @@ tags:
 
 # Qi Ke
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | CVP |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: CVP at Microsoft (AKS org (Brendan's org))
+**Relationship**: Internal stakeholder (compute lead)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Leading the compute side for MAI support within Brendan's AKS org; referred to as "Qi/"Kiki" Ke".
 
 ## Open Tasks
 
@@ -53,16 +29,12 @@ WHERE !completed AND contains(text, "Qi Ke")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@QiKe") AND !completed
-SORT due ASC
-```
+- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-09-03: [[2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a high-priority evaluation of AI caching st... (via Jai Menon)
+- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
 
 ## Key Facts
 
@@ -85,27 +57,10 @@ SORT due ASC
 - Bifrost includes a direct read path from compute to capacity nodes, bypassing FE/table for reads; Lukasz is implementing this component.
 - Compute for MAI moved under Brendan’s org (AKS); CVP Qiu Ke involved; Yumin coordinating.
 - Possible MAI requirement: multi-region pooling for a distributed cache (unconfirmed).
-## Topics Discussed
 
-AI caching strategy for MAI (training and inference), OpenAI cache IP/code access and feasibility, Alluxio/DAX as unified cache option, C-Store proposal evaluation, Blockfuse/BlobFuse maturity and performance, MAI requirements: scale, AKS + Spark, possible multi-region pooling, Blob performance roadmap: Bifrost direct-read path and DeltaZero follow-on, Performance snapshot discussion and escalation path, Establishing ongoing 1:1 cadence, MAI and Project Apollo alignment and timelines, VAST bare metal on Azure storage hardware vs VM-based deployment, Fungible DPU readiness risk vs BlueField-3 alternative, Dallas capacity planning (Dec/Apr) and classic Azure feasibility, Networking/SDN (Overlake) constraints for bare metal in classic Azure, NVIDIA DGX Cloud reference architecture and storage throughput requirements
+## Background
 
-
-MAI caching strategy and unified cache goal, OpenAI cache code access and IP/licensing, Scaling requirements to ~100k nodes and AKS/Spark fit, Comparison of caching options (C-Store, Alluxio/DAX, BlobFuse/BlockFuse), Bifrost architecture and direct read path, MAI org changes (compute under AKS leadership), Performance snapshot feedback and follow-up conversations
-## Recent Context
-
-- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-09-03: [[2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a high-priority evaluation of AI caching st... (via Jai Menon)
-
-
-- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
-## Profile
-
-**Role**: CVP at Microsoft (AKS org (Brendan's org))
-**Relationship**: Internal stakeholder (compute lead)
-
-**Background**:
-- Leading the compute side for MAI support within Brendan's AKS org; referred to as "Qi/"Kiki" Ke".
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -126,9 +81,6 @@ MAI caching strategy and unified cache goal, OpenAI cache code access and IP/lic
 - [[AI caching strategy for MAI scale]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

@@ -13,10 +13,6 @@ tags:
 
 # Goldman Sachs
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -28,26 +24,6 @@ _Brief description of this customer, their business, and relationship..._
 
 _No key contacts identified._
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-_No known blockers._
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -57,14 +33,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-_No active opportunities._
-
-## Key Decisions
-
-- ✅ Meet at Tech Summit for follow-up conversation
+- 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
 
 ## Key Facts
 
@@ -79,18 +50,6 @@ _No active opportunities._
 - Field enablement/content ownership is fragmented with duplicative Confluence docs and unclear owners.
 - SE bandwidth is constrained by installs (rack/stack ~2 weeks); a new partner program was created to offload rack-and-stack but cabling errors can cause multi-day delays.
 
-## Topics / Themes
+## Opportunities
 
-VAST-in-cloud strategy and cloud economics, Marketplace packaging (tenant outcomes vs cluster admin), Bare metal instances vs cloud VMs, Object storage capacity tiering, DataSpaces/global namespace for hybrid/multi-cloud AI, OpenAI reference architecture patterns, Field enablement and solution content ownership, SE org maturity and enterprise selling gaps, Install/rack-and-stack burden and partner program, Networking complexity requirements for deployments, Tech Summit follow-up
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
-
-## Related People
-
-_Internal team members working on this account..._
-
-
----
-*Last updated: *
+_No active opportunities._

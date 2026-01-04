@@ -12,37 +12,13 @@ tags:
 
 # Director Hampson
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Director (exact function not stated) |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Director (exact function not stated) at VAST Data
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Committed to share prior customer learnings (e.g., ICE/NYSE evaluation) in Slack; referenced SyncEngine as a gap-closer for moving data in/out of cloud object storage.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Director Hampson")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@DirectorHampson") AND !completed
-SORT due ASC
-```
+- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
 
 ## Key Facts
 
@@ -77,21 +46,9 @@ SORT due ASC
 - Marketplace private offers (once GA/transactable) will burn down customer cloud commits.
 - NeoCloud contractual constraints (example: CoreWeave) may restrict enabling global namespace/data movement; dedicated environments may be required for some large projects.
 
-## Topics Discussed
+## Background
 
-VAST on Cloud positioning and talk track (global namespace, data-to-compute), MVP architecture (8-node VM/NVMe cluster per tenant) and deployment mechanics, Marketplace rollout and private offers; commit burn-down, Hyperscaler dependencies: VM shapes, AWS FSx first-party path, Object storage integration roadmap (S3) and SyncEngine, Handling multi-PB opportunities and expectation setting (Visa ~20PB), Customer learnings from ICE/NYSE evaluation (burst to AWS vs on-prem), Genomics pipeline use case (~100TB ephemeral) and POC/fulfillment mechanics, Tenant-level peering / multi-tenancy constraints and NeoCloud contracts, Supercomputing demos and field enablement
-
-## Recent Context
-
-- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
-
-## Profile
-
-**Role**: Director (exact function not stated) at VAST Data
-**Relationship**: Internal collaborator
-
-**Background**:
-- Committed to share prior customer learnings (e.g., ICE/NYSE evaluation) in Slack; referenced SyncEngine as a gap-closer for moving data in/out of cloud object storage.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -105,9 +62,6 @@ VAST on Cloud positioning and talk track (global namespace, data-to-compute), MV
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

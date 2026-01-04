@@ -12,51 +12,26 @@ tags:
 
 # Randy Hayes
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President, Public Sector |
-| **Company** | VAST Data Federal |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/rfhayes](https://www.linkedin.com/in/rfhayes) |
-| **Location** | Arlington, Virginia, United States |
+**Role**: VAST Data (Federal)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Randy Hayes has been with VAST Data since its early stages, contributing to its growth from zero revenue to billion-dollar deals. He played a pivotal role in launching VAST Data Federal, a subsidiary focused on supporting government and defense organizations with data storage solutions. Prior to his current role, he served as Director of Sales at VAST Data.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Supports briefing preparation; discussed Fort Meade being real/Q4 commit; has Avere background referenced by Jason.
+- Runs federal; hoping for lift from cloud partners (Google mentioned).
 
 ## Open Tasks
 
 - [ ] Prepare EBC-style briefing on AI workloads, storage patterns, and air-gapped operations for Google. @Randy Hayes
 
-## Tasks They Own
+## Recent Context
 
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RandyHayes") AND !completed
-SORT due ASC
-```
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -71,26 +46,9 @@ SORT due ASC
 - Sagi leads pipelines/serverless; packaging and cloud GTM for pipelines is under-thought.
 - Morty owns Neo-cloud feature requirements; he can support Jason but must maintain Neo-cloud coverage.
 
-## Topics Discussed
+## Background
 
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Org map and key leaders/roles, Cross-cloud platform strategy and homogenization across providers, Cloud GTM plays and integrations (Foundry/Bedrock/Vertex), Cataloging in-flight deals by product requirements, Control-plane partnerships and 'cloud-in-a-box' for Tier-2 clouds
-
-## Recent Context
-
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Role**: VAST Data (Federal)
-**Relationship**: Internal collaborator
-
-**Background**:
-- Supports briefing preparation; discussed Fort Meade being real/Q4 commit; has Avere background referenced by Jason.
-- Runs federal; hoping for lift from cloud partners (Google mentioned).
+Randy Hayes has been with VAST Data since its early stages, contributing to its growth from zero revenue to billion-dollar deals. He played a pivotal role in launching VAST Data Federal, a subsidiary focused on supporting government and defense organizations with data storage solutions. Prior to his current role, he served as Director of Sales at VAST Data.
 
 ## Key Decisions
 
@@ -116,9 +74,6 @@ Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness a
 - [[Fort Meade "Gemini as a service" on-prem validation]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

@@ -12,37 +12,14 @@ tags:
 
 # Greg Brockman
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | President |
-| **Company** | OpenAI |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/thegdb](https://www.linkedin.com/in/thegdb) |
-| **Location** | San Francisco, California |
+**Role**: OpenAI
+**Relationship**: Customer executive stakeholder (indirect)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Co-founder and President of OpenAI; former CTO at Stripe; led projects like OpenAI Gym and OpenAI Five.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced as an executive in the reporting chain above Uday (not fully identified in note).
+- Uday reports to him at OpenAI.
 
 ## Open Tasks
 
@@ -53,16 +30,10 @@ WHERE !completed AND contains(text, "Greg Brockman")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@GregBrockman") AND !completed
-SORT due ASC
-```
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- unknown: [[Oct 22nd, 2025]] - Stakeholder mapping and technical positioning for an OpenAI research primary storage proof-of-concep... (via Sam Hopewell)
 
 ## Key Facts
 
@@ -77,23 +48,9 @@ SORT due ASC
 - OpenAI tiering vocabulary: Azure Blob = cold; VAST = warm (near GPUs, efficient/high-throughput for staging large working sets); on-GPU/local = hot/ultra.
 - POC goal: make more clusters research-worthy despite poor/transient WAN by staging checkpoints/training sets locally and serving some reads from VAST when GPU caching isn’t required.
 
-## Topics Discussed
+## Background
 
-Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal, MAI/Falcon operational issues: topology-aware scheduling, IB telemetry, reliability, Power constraints as primary bottleneck and translating storage savings into GPUs, OpenAI leadership changes and implications for Microsoft alignment, Supercomputing conference coordination and intros, OpenAI stakeholder map for research storage/infra, VAST as near-GPU warm storage to mitigate WAN/Azure variability, Storage tiering vocabulary (cold/warm/hot), POC status and operational blockers (bandwidth/firefighting, decision backlog), Global namespace skepticism and metadata scalability at multi-EiB, Architecture constraints: no heavy GPU-host agents; local object endpoints, Win criteria: throughput, list/TPS, WAN resilience, low overhead, fast feature turnaround
-
-## Recent Context
-
-- unknown: [[Oct 22nd, 2025]] - Stakeholder mapping and technical positioning for an OpenAI research primary storage proof-of-concep... (via Sam Hopewell)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-## Profile
-
-**Role**: OpenAI
-**Relationship**: Customer executive stakeholder (indirect)
-
-**Background**:
-- Referenced as an executive in the reporting chain above Uday (not fully identified in note).
-- Uday reports to him at OpenAI.
+Co-founder and President of OpenAI; former CTO at Stripe; led projects like OpenAI Gym and OpenAI Five.
 
 ## Key Decisions
 
@@ -106,9 +63,6 @@ Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power adva
 - [[OpenAI]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

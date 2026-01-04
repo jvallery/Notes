@@ -12,37 +12,14 @@ tags:
 
 # Joe Green
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Software Engineer |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | San Francisco Bay Area, United States |
+**Role**: Microsoft
+**Relationship**: Microsoft collaborator for events/storytelling
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Previously worked as a Software Development Engineer II at Amazon Web Services (AWS) and as an Enterprise Engineer at Meta.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- From Koncha's team; previously on Evan's team and owned H-series as PM; organizing Supercomputing activities with Andrew.
+- From Kanchan’s team; organizing Supercomputing activities with Andrew; previously on Evan’s team and owned H-series PM role.
 
 ## Open Tasks
 
@@ -53,16 +30,10 @@ WHERE !completed AND contains(text, "Joe Green")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JoeGreen") AND !completed
-SORT due ASC
-```
+- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
 
 ## Key Facts
 
@@ -77,23 +48,9 @@ SORT due ASC
 - GPU supply constraints limit 3P deals; demand remains high.
 - Azure LSV4 is the only current option and has poor economics (too many cores, weak networking, low drive density).
 
-## Topics Discussed
+## Background
 
-MAI as marquee win to drive Azure hardware alignment, UK Met Office opportunity and LSV5 networking economics, Azure LSV4/LSV5 VM shape limitations for VAST, Comparative economics deck (VAST vs Blob; on-prem vs Azure), Azure Marketplace offer progress and limitations, Neo clouds and GPU-adjacent storage for network disconnect resilience, OpenAI/Foundry long-term memory and key-value store needs, Supercomputing and Ignite coordination (booth/panel/keynote slide), 3P GPU capacity constraints and seller enablement, MAI as lighthouse customer to force Azure hardware shape, UK Met Office constraints (price, networking) and Supercomputing meetings, Azure LSV4 vs LSV5 economics and networking limitations, Azure Marketplace listing and control plane integration, Internal stakeholder alignment (Nidhi, Igal, Azure Storage conflict), Neo clouds and GPU-adjacent storage for network-disconnect resilience
-
-## Recent Context
-
-- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
-- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
-
-## Profile
-
-**Role**: Microsoft
-**Relationship**: Microsoft collaborator for events/storytelling
-
-**Background**:
-- From Koncha's team; previously on Evan's team and owned H-series as PM; organizing Supercomputing activities with Andrew.
-- From Kanchan’s team; organizing Supercomputing activities with Andrew; previously on Evan’s team and owned H-series PM role.
+Previously worked as a Software Development Engineer II at Amazon Web Services (AWS) and as an Enterprise Engineer at Meta.
 
 ## Key Decisions
 
@@ -113,9 +70,6 @@ MAI as marquee win to drive Azure hardware alignment, UK Met Office opportunity 
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

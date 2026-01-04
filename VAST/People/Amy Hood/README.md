@@ -12,37 +12,13 @@ tags:
 
 # Amy Hood
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Executive Vice President and Chief Financial Officer |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Seattle, Washington, United States |
+**Role**: CFO at Microsoft (Finance)
+**Relationship**: Executive at customer account (Microsoft)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Amy Hood has been with Microsoft since 2002 and became the company's first female CFO in 2013. She leads Microsoft's worldwide finance organization and has played a pivotal role in strategic acquisitions, including LinkedIn, GitHub, and Activision Blizzard. Prior to Microsoft, she worked at Goldman Sachs in investment banking and capital markets. Hood holds a bachelor's degree in economics from Duke University and an MBA from Harvard University. She is also a member of the board of directors at 3M.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced as driving finance/balance-sheet risk management behind Microsoft lease pullbacks; viewed as influential in strategy around leases vs shifting GPU capex risk to neo-cloud partners.
 
 ## Open Tasks
 
@@ -53,16 +29,12 @@ WHERE !completed AND contains(text, "Amy Hood")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@AmyHood") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) covering Microsoft... (via Rosanne Kincaid–Smith)
 
 ## Key Facts
 
@@ -77,24 +49,9 @@ SORT due ASC
 - Kurt is global pre-sales lead for AI Infra under Zia; his team scores constrained GPU allocations and must approve any allocation of constrained SKUs.
 - Kurt’s proposal: GA Azure Extended Zones as network-only plus AKS NodeJoin (ACAS FlexNode) to connect neo/sovereign cloud training sites to Azure for global inference.
 
-## Topics Discussed
+## Background
 
-Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft, Google RFP triage and no-bid criteria for block/latency-heavy asks, Confluence as FRD system of record and documentation taxonomy, Win/loss cadence and product MBR rhythm, Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) covering Microsoft... (via Rosanne Kincaid–Smith)
-
-## Profile
-
-**Role**: CFO at Microsoft (Finance)
-**Relationship**: Executive at customer account (Microsoft)
-
-**Background**:
-- Referenced as driving finance/balance-sheet risk management behind Microsoft lease pullbacks; viewed as influential in strategy around leases vs shifting GPU capex risk to neo-cloud partners.
+Amy Hood has been with Microsoft since 2002 and became the company's first female CFO in 2013. She leads Microsoft's worldwide finance organization and has played a pivotal role in strategic acquisitions, including LinkedIn, GitHub, and Activision Blizzard. Prior to Microsoft, she worked at Goldman Sachs in investment banking and capital markets. Hood holds a bachelor's degree in economics from Duke University and an MBA from Harvard University. She is also a member of the board of directors at 3M.
 
 ## Key Decisions
 
@@ -114,9 +71,6 @@ Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi
 - [[Microsoft]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

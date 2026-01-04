@@ -12,37 +12,13 @@ tags:
 
 # Soraya Alami
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: VAST Data (GSI Team)
+**Relationship**: Internal collaborator (GSI Team)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Driving SI coordination and partner engagement planning (EY, Accenture/Avanade, Kyndryl) and internal prep for executive meetings.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Soraya Alami")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@SorayaAlami") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris]] - GSI Team aligned on a go-to-market strategy with global SIs centered on enterprise workflow automati... (via GSI Team)
 
 ## Key Facts
 
@@ -75,21 +44,9 @@ SORT due ASC
 - Competitive overlap expected with Microsoft AI Foundry; VAST to emphasize data/workflow portability across clouds and on-prem.
 - Multiple SIs (TCS, Wipro, Tech Mahindra, Infosys) are reorganizing around AI; sales/build misalignment exists.
 
-## Topics Discussed
+## Background
 
-SI go-to-market strategy focused on workflow automation, EY Azure-first design partnership and executive alignment at Microsoft Ignite, Cloud roadmap: marketplace GA timing, burst/repatriation scenarios, Optimized VM shapes and potential bare metal/storage-core integrations, Competitive positioning vs Microsoft AI Foundry, Accenture opinionated AI/HPC stack inclusion, Deloitte AI Factory learnings and productized delivery, Partner referral incentive program (~3% ACV), Kyndryl engagement via workshop and incentive-led motion, SI organizational changes around AI (TCS, Wipro, Tech Mahindra, Infosys)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris]] - GSI Team aligned on a go-to-market strategy with global SIs centered on enterprise workflow automati... (via GSI Team)
-
-## Profile
-
-**Role**: VAST Data (GSI Team)
-**Relationship**: Internal collaborator (GSI Team)
-
-**Background**:
-- Driving SI coordination and partner engagement planning (EY, Accenture/Avanade, Kyndryl) and internal prep for executive meetings.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -107,9 +64,6 @@ SI go-to-market strategy focused on workflow automation, EY Azure-first design p
 - [[GSI Team]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

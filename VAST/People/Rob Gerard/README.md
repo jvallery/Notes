@@ -12,37 +12,13 @@ tags:
 
 # Rob Gerard
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | CSI/CoSy program/project manager |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: CSI/CoSy program/project manager at VAST Data (OCTO team)
+**Relationship**: Internal collaborator
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Owns/coordinates CSI driver and CoSy discussions; frequently on customer calls; noted as on paternity leave; should clarify CSI vs CoSy adoption and roadmap.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Rob Gerard")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RobGerard") AND !completed
-SORT due ASC
-```
+- 2025-10-31: [[2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] - Introductory 1:1 with Josh Wentzell to align on VAST on Cloud strategy and identify platform gaps, e... (via Josh Wentzell)
 
 ## Key Facts
 
@@ -75,30 +44,15 @@ SORT due ASC
 - Customers often build internal front-ends for buckets/policies/S3 key rotation to enforce approvals and guardrails.
 - Loopback OVA can be spun up via AWX/Cosmodrome in OCI; Josh sent the link.
 
-## Topics Discussed
+## Background
 
-VAST on Cloud strategy and SaaS multi-tenancy vision, Multi-tenancy API/GUI gaps and tenant-admin permissions, VOC deployment friction and need for preflight/wizard, Terraform provider coverage and state-management issues, Ansible support (beta vs official collection) and resourcing, Customer automation patterns (Terraform/Ansible/REST) and internal portals, CSI vs CoSy adoption and roadmap ownership, Marketplace offers across hyperscalers and price/performance constraints, Multi-cloud data spaces for multi-region durability and data mobility to GPUs, OVA/loopback cluster for hands-on learning
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo]] - Introductory 1:1 with Josh Wentzell to align on VAST on Cloud strategy and identify platform gaps, e... (via Josh Wentzell)
-
-## Profile
-
-**Role**: CSI/CoSy program/project manager at VAST Data (OCTO team)
-**Relationship**: Internal collaborator
-
-**Background**:
-- Owns/coordinates CSI driver and CoSy discussions; frequently on customer calls; noted as on paternity leave; should clarify CSI vs CoSy adoption and roadmap.
+_Career history, expertise, interests, personal details shared..._
 
 ## Related Projects
 
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

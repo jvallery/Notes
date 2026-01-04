@@ -12,37 +12,15 @@ tags:
 
 # Jan Niemus
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Managing Director |
-| **Company** | Google |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Herndon, United States |
+**Role**: Runs DoD/IC organization at Google (Google Federal/IC)
+**Relationship**: Partner stakeholder (Google Federal/IC)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Jan Niemiec has been serving as Managing Director at Google since May 2023. Prior to this role, he held various leadership positions at Cisco from October 2004 to June 2023, including Vice President of Sales overseeing a team focused on national security and defense, as well as Regional Sales Director responsible for federal accounts. His early career includes roles such as Director of Sales Business Development and Regional Manager at Cisco, along with experience in the United States Air Force as a Major, where he managed programs for the Space portfolio. Additionally, he worked at Sun Microsystems as an Account Manager focused on the Defense Intelligence Agency and contributed as a Senior Member of Technical Staff at The Aerospace Corporation. Jan holds a Master of Science in Aerospace Engineering from the University of Maryland and a Bachelor of Engineering in Mechanical Engineering from Stevens Institute of Technology.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Runs Google DoD/IC; personal friend of a VAST federal leader; previously a VP in Cisco DoD/IC sector; helped bring Cisco linkage; approved/pushing POC.
+- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
+- Listed in known entities; not discussed in note content beyond manifest context.
 
 ## Open Tasks
 
@@ -53,16 +31,13 @@ WHERE !completed AND contains(text, "Jan Niemus")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JanNiemus") AND !completed
-SORT due ASC
-```
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
 
 ## Key Facts
 
@@ -77,27 +52,9 @@ SORT due ASC
 - Documentation is currently feature/button-oriented and not scenario-driven; scenario guides are ad hoc and late.
 - PM process gaps include training ownership, PRDs vs FRDs (engineering writes FRDs), release visibility, and access to builds/docs.
 
-## Topics Discussed
+## Background
 
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics
-
-## Recent Context
-
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
-
-## Profile
-
-**Role**: Runs DoD/IC organization at Google (Google Federal/IC)
-**Relationship**: Partner stakeholder (Google Federal/IC)
-
-**Background**:
-- Runs Google DoD/IC; personal friend of a VAST federal leader; previously a VP in Cisco DoD/IC sector; helped bring Cisco linkage; approved/pushing POC.
-- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
-- Listed in known entities; not discussed in note content beyond manifest context.
+Jan Niemiec has been serving as Managing Director at Google since May 2023. Prior to this role, he held various leadership positions at Cisco from October 2004 to June 2023, including Vice President of Sales overseeing a team focused on national security and defense, as well as Regional Sales Director responsible for federal accounts. His early career includes roles such as Director of Sales Business Development and Regional Manager at Cisco, along with experience in the United States Air Force as a Major, where he managed programs for the Space portfolio. Additionally, he worked at Sun Microsystems as an Account Manager focused on the Defense Intelligence Agency and contributed as a Senior Member of Technical Staff at The Aerospace Corporation. Jan holds a Master of Science in Aerospace Engineering from the University of Maryland and a Bachelor of Engineering in Mechanical Engineering from Stevens Institute of Technology.
 
 ## Key Decisions
 
@@ -112,19 +69,16 @@ Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness a
 - ✅ Schedule a follow-up focused on OpenAI architecture and needs.
 - ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
 
+## Related Customers
+
+- [[Google]]
+
 ## Related Projects
 
 - [[Cisco POC (DoD/IC)]]
 - [[Fort Meade "Gemini as a service" on-prem validation]]
 
-## Related Customers
-
-- [[Google]]
-
 ## Related
-
-
-
 
 ---
 *Last updated: *

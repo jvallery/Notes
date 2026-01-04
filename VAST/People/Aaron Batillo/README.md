@@ -12,37 +12,13 @@ tags:
 
 # Aaron Batillo
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Engineer |
-| **Company** | CoreWeave |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Colorado, USA |
+**Role**: CoreWeave
+**Relationship**: External connector
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Previously at Microsoft AI, Inflection AI, Cohere, and Color.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Former Microsoft colleague of Jason Vallery; potential connector for intros to Phil (Cohere) and Eric (Magic).
 
 ## Open Tasks
 
@@ -53,16 +29,10 @@ WHERE !completed AND contains(text, "Aaron Batillo")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@AaronBatillo") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -77,22 +47,9 @@ SORT due ASC
 - Targets reviewed included Thinking Machines, Reflection, Physical Intelligence, Midjourney, SSI (Safe Superintelligence Inc.), Perplexity, Cohere, Magic, Anthropic, and Apple.
 - Reflection is reportedly discussing ~10,000 GB300s for an upcoming run.
 
-## Topics Discussed
+## Background
 
-Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft, Google RFP triage and no-bid criteria for block/latency-heavy asks, Confluence as FRD system of record and documentation taxonomy, Win/loss cadence and product MBR rhythm, Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Role**: CoreWeave
-**Relationship**: External connector
-
-**Background**:
-- Former Microsoft colleague of Jason Vallery; potential connector for intros to Phil (Cohere) and Eric (Magic).
+Previously at Microsoft AI, Inflection AI, Cohere, and Color.
 
 ## Key Decisions
 
@@ -110,9 +67,6 @@ Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi
 - [[Model Builder Turbine]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

@@ -11,37 +11,12 @@ tags:
 
 # Pierre Eves
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | _Unknown_ |
-| **Company** | _Unknown_ |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
-
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Role**: _Unknown_
+**Organization**: _Unknown_
+**Location**: _Unknown_
+**Relationship**: _Unknown_
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Pierre Eves")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@PierreEves") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -72,13 +40,9 @@ SORT due ASC
 - Warm-intro quality varies; weak LinkedIn mutuals can waste cycles.
 - Hyperscaler conflicts (Google/Microsoft) can block introductions.
 
-## Topics Discussed
+## Background
 
-Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative), Persona targeting (data/pipeline teams vs exec-only), Salesforce history audit before re-engagement, Target account prioritization and expansion (e.g., Black Forest Labs)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -88,9 +52,6 @@ Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVI
 - ✅ Defer direct Google/Microsoft-introduced paths where conflicts exist to reduce hyperscaler conflict risk.
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

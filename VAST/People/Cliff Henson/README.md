@@ -12,37 +12,13 @@ tags:
 
 # Cliff Henson
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Corporate Vice President, Cloud Supply Chain |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/cliff-henson-8b906025](https://www.linkedin.com/in/cliff-henson-8b906025) |
-| **Location** | Austin, Texas Metropolitan Area, United States |
+**Role**: Runs CSCP (Azure capacity supply chain / logistics partner org) at Microsoft (CSCP)
+**Relationship**: Microsoft infrastructure leader (context)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Cliff Henson has over 24 years of experience in supply chain management. Prior to joining Microsoft in February 2020, he held various leadership roles at Hewlett Packard Enterprise, including Senior Vice President of Global Supply Chain. He holds a BSME from Texas Tech University and an MBA from the University of St. Thomas (TX).
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- One of three CVPs (with Ronnie Borker and Paul Clark) responsible for building/delivering Azure infrastructure capacity.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Cliff Henson")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@CliffHenson") AND !completed
-SORT due ASC
-```
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
 
 ## Key Facts
 
@@ -76,21 +45,9 @@ SORT due ASC
 - OpenAI is described as the top strategic win; reported right of first refusal lifted enabling multi-cloud data plane.
 - Jason travel is heavy until mid-December; meeting Jeff in San Francisco next week for guidance.
 
-## Topics Discussed
+## Background
 
-MAI meeting preparation and testing plan, Hardware vs VM support timeline, External sharing constraints for Azure Blob data, Deck improvements: observability and CSI driver, Microsoft internal politics and stakeholder management, Engaging Azure hardware leadership via sponsorship, Two-track cloud strategy: marketplace SaaS + first-party hardware wins, CSP prioritization: Azure primary, OCI secondary, AWS deprioritized, GCP program review and GKE-native integration approach, Resourcing/team structure and potential addition of Karl
-
-## Recent Context
-
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
-
-## Profile
-
-**Role**: Runs CSCP (Azure capacity supply chain / logistics partner org) at Microsoft (CSCP)
-**Relationship**: Microsoft infrastructure leader (context)
-
-**Background**:
-- One of three CVPs (with Ronnie Borker and Paul Clark) responsible for building/delivering Azure infrastructure capacity.
+Cliff Henson has over 24 years of experience in supply chain management. Prior to joining Microsoft in February 2020, he held various leadership roles at Hewlett Packard Enterprise, including Senior Vice President of Global Supply Chain. He holds a BSME from Texas Tech University and an MBA from the University of St. Thomas (TX).
 
 ## Key Decisions
 
@@ -108,9 +65,6 @@ MAI meeting preparation and testing plan, Hardware vs VM support timeline, Exter
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

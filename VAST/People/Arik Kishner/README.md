@@ -12,37 +12,14 @@ tags:
 
 # Arik Kishner
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Account team member / seller (exact title not stated) |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Account team member / seller (exact title not stated) at VAST Data (Sales/Field (implied))
+**Relationship**: Internal collaborator (field)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Raised a large-scale cloud copy requirement (~20 PB) and asked about scalability/TCO and architecture options; to follow up offline with Lior.
+- Raised Visa account requirement for ~20PB full copy in AWS and asked about scalability/TCO improvements and newer architectures.
 
 ## Open Tasks
 
@@ -53,16 +30,10 @@ WHERE !completed AND contains(text, "Arik Kishner")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@ArikKishner") AND !completed
-SORT due ASC
-```
+- 2025-10-29: [[2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g]] - Group office hours aligned the team on positioning and operating mechanics for VAST on Cloud, emphas... (via VAST on Cloud Office Hours)
+- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
 
 ## Key Facts
 
@@ -77,23 +48,9 @@ SORT due ASC
 - AWS FSx first-party program is being pursued; more field opportunities help accelerate hyperscaler support.
 - Cloud engineering team grew from ~5 to ~25 engineers, increasing velocity.
 
-## Topics Discussed
+## Background
 
-VAST on Cloud positioning and global namespace, Marketplace automation and transacting via cloud marketplaces, VM shape constraints and cloud TCO vs on-prem, Object storage integration roadmap (e.g., S3) and SyncEngine bridge, Hyperscaler partnerships/programs (AWS FSx) and influencing roadmaps, Field intake process via Slack and Salesforce, Multi-tenancy and tenant-level peering limitations, SE enablement, collateral, and Supercomputing demos, VAST on Cloud positioning and talk track (global namespace, data-to-compute), MVP architecture (8-node VM/NVMe cluster per tenant) and deployment mechanics, Marketplace rollout and private offers; commit burn-down, Hyperscaler dependencies: VM shapes, AWS FSx first-party path, Object storage integration roadmap (S3) and SyncEngine, Handling multi-PB opportunities and expectation setting (Visa ~20PB), Customer learnings from ICE/NYSE evaluation (burst to AWS vs on-prem)
-
-## Recent Context
-
-- 2025-10-29: [[2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g]] - Group office hours aligned the team on positioning and operating mechanics for VAST on Cloud, emphas... (via VAST on Cloud Office Hours)
-- 2025-10-29: [[2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a]] - Group meeting to align positioning and go-to-market for VAST on Cloud, including MVP architecture, m... (via VAST on Cloud Office Hours)
-
-## Profile
-
-**Role**: Account team member / seller (exact title not stated) at VAST Data (Sales/Field (implied))
-**Relationship**: Internal collaborator (field)
-
-**Background**:
-- Raised a large-scale cloud copy requirement (~20 PB) and asked about scalability/TCO and architecture options; to follow up offline with Lior.
-- Raised Visa account requirement for ~20PB full copy in AWS and asked about scalability/TCO improvements and newer architectures.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -110,9 +67,6 @@ VAST on Cloud positioning and global namespace, Marketplace automation and trans
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

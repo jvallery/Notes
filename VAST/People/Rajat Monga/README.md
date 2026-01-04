@@ -11,37 +11,14 @@ tags:
 
 # Rajat Monga
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Leads inferencing stuff |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Leads inferencing stuff (Inferencing)
+**Location**: Silicon Valley
+**Relationship**: Internal stakeholder (potential offsite participant)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Potential offsite speaker; inferencing leader interested in KV caching and how inferencing fits into OpenAI inferencing framework.
 
 ## Open Tasks
 
@@ -52,16 +29,9 @@ WHERE !completed AND contains(text, "Rajat Monga")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@RajatMonga") AND !completed
-SORT due ASC
-```
+- 2025-09-15: [[2025-09-15 - Jason and Jai discussed options and strategy for distributed caching (BlobFuse v]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on choosing a distributed cache strategy (Blo... (via Jai Menon)
 
 ## Key Facts
 
@@ -75,22 +45,9 @@ SORT due ASC
 - Key technical concerns: consistent hashing scalability/rebalancing, whether to build a high-TPS metadata/index store, Go+FUSE performance vs C++/kernel client, and Alluxio IP/Java considerations.
 - North Star tradeoff: productize best-of open source vs deeply integrate with platform/hardware offloads (kernel-mode, GPUs, DPU/FunOS).
 
-## Topics Discussed
+## Background
 
-Distributed cache strategy and decision framework, MAI checkpointing approach (local NVMe + async copy), BlobFuse private preview scope and readiness, Manifold/Singularity cache and consistent hashing, OpenAI TensorCache stability and roadmap (GPT-6 memory focus), Metadata/index store strategy (build vs open source like FoundationDB), Performance/runtime choices (Go + FUSE vs C++/kernel client), Alluxio viability (IP/China perception, Java stack), Oct 15 Silicon Valley offsite planning and attendees
-
-## Recent Context
-
-- 2025-09-15: [[2025-09-15 - Jason and Jai discussed options and strategy for distributed caching (BlobFuse v]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on choosing a distributed cache strategy (Blo... (via Jai Menon)
-
-## Profile
-
-**Role**: Leads inferencing stuff (Inferencing)
-**Location**: Silicon Valley
-**Relationship**: Internal stakeholder (potential offsite participant)
-
-**Background**:
-- Potential offsite speaker; inferencing leader interested in KV caching and how inferencing fits into OpenAI inferencing framework.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -101,9 +58,6 @@ Distributed cache strategy and decision framework, MAI checkpointing approach (l
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

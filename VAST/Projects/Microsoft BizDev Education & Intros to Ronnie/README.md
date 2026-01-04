@@ -14,10 +14,6 @@ last_contact: unknown
 
 # Microsoft BizDev Education & Intros to Ronnie
 
-## Overview
-
-Educate Microsoft BizDev (density/power, single-namespace story) and secure intros to Ronnie via John Tinter.
-
 ## Status
 
 | Field | Value |
@@ -25,24 +21,9 @@ Educate Microsoft BizDev (density/power, single-namespace story) and secure intr
 | **Status** | complete |
 | **Owner** | Jason Vallery |
 
-## Current Blockers
+## Overview
 
-_No known blockers._
-
-## Next Steps
-
-_No next steps defined._
-
-## Collaborators
-
-| Person | Role | Company |
-|--------|------|---------|
-| [[Harish]] | BizDev leader (Joe Vane's boss) | Microsoft |
-| [[John Tinter]] | Executive sponsor (needed for access to Ronnie org) | Microsoft |
-| [[Joe Vane]] | BizDev | Microsoft |
-| [[Ronnie Booker]] | Owns chassis/layout/storage placement decisions for Apollo deployments | Microsoft |
-| [[Kurt Niebuhr]] | Global pre-sales lead for AI Infra | Microsoft |
-| [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
+Educate Microsoft BizDev (density/power, single-namespace story) and secure intros to Ronnie via John Tinter.
 
 ## Open Tasks
 
@@ -53,15 +34,11 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Carl to move to ProServe under Rob.
-- ✅ FRDs and detailed customer requirements will be authored/maintained in Confluence.
-- ✅ Jason will own multi-cloud strategy end-to-end and catalog in-flight opportunities from a product requirements lens.
-- ✅ Establish a monthly touchpoint between Jason and Brandon.
-- ✅ Pursue a BizDev-led path (Joe Vane/Harish) to secure executive sponsorship (John Tinter) and engage Ronnie Booker’s org, rather than focusing on Nidhi/Manish.
-- ✅ Treat the Azure Marketplace VM-based VAST offer as a checkbox while pushing a hardware/OEM storage-dense path for real density wins.
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
 
 ## Key Facts
 
@@ -75,38 +52,3 @@ SORT due ASC
 - Need a crisp, quantified Azure Storage gaps narrative ('dagger' slide) and a repeatable measurement rubric across clouds.
 - Win/loss analysis should be routine and tied to Sales Ops; cloud is a platform, product gaps apply across deployment environments.
 - Confluence is the engineering-respected source of truth for FRDs/requirements; coordinate taxonomy with Alon (A.L.) and Tomer.
-
-## Topics / Themes
-
-Microsoft Azure networking and egress minimization, Azure GA milestones and Lifter program alignment, ROI data usage validation for comparisons, LSv4/LSv5 vs OEM/ODM vs Azure Storage positioning, Microsoft BizDev enablement and introductions, Power savings translated to GPU capacity, Marketplace L-series offer expansion (SKUs/OEM path), Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft
-
-## Related People
-
-- [[Harish]]
-- [[John Tinter]]
-- [[Joe Vane]]
-- [[Ronnie Booker]]
-- [[Kurt Niebuhr]]
-- [[Jason Vallery]]
-
-## Related Customers
-
-- [[Microsoft]]
-
-## Recent Context
-
-- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

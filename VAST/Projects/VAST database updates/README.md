@@ -13,10 +13,6 @@ last_contact: '2025-12-19'
 
 # VAST database updates
 
-## Overview
-
-_Brief description of this project..._
-
 ## Status
 
 | Field | Value |
@@ -24,22 +20,9 @@ _Brief description of this project..._
 | **Status** | _Unknown_ |
 | **Owner** | _Unknown_ |
 
-## Current Blockers
+## Overview
 
-_No known blockers._
-
-## Next Steps
-
-_No next steps defined._
-
-## Collaborators
-
-_Who is working on this project?_
-
-| Person | Role | Company |
-|--------|------|---------|
-| _Name_ | _Role_ | _Company_ |
-
+_Brief description of this project..._
 
 ## Open Tasks
 
@@ -50,11 +33,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Do not prioritize building 'append blob' support speculatively for OpenAI; only consider if/when OpenAI asks or if pipelines will take years to move and VAST wants that data.
-- ✅ Define Blob API MVP for Microsoft AI as AZCopy compatibility rather than full Blob API breadth.
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
 
 ## Key Facts
 
@@ -68,28 +49,3 @@ SORT due ASC
 - VAST does not support Azure Key Vault integration today (gap for customer-managed keys).
 - Private Link / VNet boundary is a recurring constraint for integrating VAST with Azure managed services; first-party services may have deeper access (e.g., network security perimeter).
 - Jason is earmarked to present at SCO; Jeff wants him to be 'lord of all things cloud' and cover AI cloud building with VAST.
-
-## Topics / Themes
-
-Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal competition (Rockset/FoundationDB/RocksDB), AZCopy as Blob API MVP target, ABFS driver and Spark/Databricks integration considerations, Tiering/offload to Azure Blob and flash vs HDD supply dynamics, Namespace/metadata synchronization with existing cloud object data (change feed, eventual consistency), Azure Key Vault / customer-managed keys gap, Azure networking constraints (Private Link, first-party vs partner access), Foundry and Fabric integration opportunities, NeoCloud market shaping and packaging VAST portfolio, SCO session planning and messaging
-
-## Related Customers
-
-_Which customers/accounts is this project related to?_
-
-
-## Recent Context
-
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

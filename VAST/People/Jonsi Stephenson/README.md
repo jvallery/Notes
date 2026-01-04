@@ -7,20 +7,27 @@ last_contact: unknown
 
 # Jonsi Stephenson
 
-CEO of VAST Data.
+## Profile
+
+**Role**: CEO at VAST Data
+**Location**: Iceland (traveling; in Orlando during call)
+**Relationship**: Internal executive stakeholder
+
+**Background**:
+- Listed as a candidate for weekly/monthly 1:1 cadence.
+- CEO of VAST Data.
+- Discussed positioning VAST with Microsoft AI; noted a temporary restraining order was lifted and remaining legal focus is on solicitation.
+
+## Open Tasks
+
+- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
+- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
 
 ## Recent Context
 
-- unknown: [[Sources/Transcripts/2025/2025-10 - Jonsi Stephenson.md|Jonsi Stephenson]] — - [x] Align with Jonsi on travel to enable in-person working session. @Jason Vallery 🔼 ✅ 2025-11-08
-
 - 2026-01-03: [[Sources/Transcripts/2026/2026-01-03 - Prep for Microsoft AI talks.md|Prep for Microsoft AI talks]] — Jonsi and Jason aligned on positioning a “better together” story with Microsoft: VAST as GPU-adjacen...
-
-- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i.md|We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] — **Date:** 2025-11-07 · **Person:** Jonsi Stephenson · **Folder:** People/Jonsi Stephenson
-
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
-- unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers...
-- unknown: [[_Open Topics]] - Open topics note for Jonsi Stephenson that currently only contains a task query filtering for incomp...
 - 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi...
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i.md|We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] — **Date:** 2025-11-07 · **Person:** Jonsi Stephenson · **Folder:** People/Jonsi Stephenson
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
@@ -32,20 +39,12 @@ CEO of VAST Data.
 - 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
 - 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 - 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
-
-
 - 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on Jason’s decision to leave Microsoft due to... (via Jai Menon)
 - 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
-## Profile
-
-**Role**: CEO at VAST Data
-**Location**: Iceland (traveling; in Orlando during call)
-**Relationship**: Internal executive stakeholder
-
-**Background**:
-- Listed as a candidate for weekly/monthly 1:1 cadence.
-- CEO of VAST Data.
-- Discussed positioning VAST with Microsoft AI; noted a temporary restraining order was lifted and remaining legal focus is on solicitation.
+- unknown: [[Sources/Transcripts/2025/2025-10 - Jonsi Stephenson.md|Jonsi Stephenson]] — - [x] Align with Jonsi on travel to enable in-person working session. @Jason Vallery 🔼 ✅ 2025-11-08
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
+- unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers...
+- unknown: [[_Open Topics]] - Open topics note for Jonsi Stephenson that currently only contains a task query filtering for incomp...
 
 ## Key Facts
 
@@ -71,12 +70,14 @@ CEO of VAST Data.
 - Crusoe offer deadline is Wednesday; VAST has not set a decision deadline.
 - Microsoft cannot approach Crusoe-level compensation; any change would be modest and potentially insulting.
 - Apollo scope and responsibilities are unclear, making it hard to define a successful role or path to partner.
+
 ## Topics
 
 GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec
 
 
 Offer comparison (VAST vs Crusoe vs staying at Microsoft), Compensation structure and risk (commission vs equity), Apollo scope ambiguity and execution risk, Career trajectory and path to partner at Microsoft, Resignation timing and decision deadline pressure, Job offers comparison (VAST vs Crusoe vs Microsoft), Compensation structure risk (commission/equity variability), Apollo program scope ambiguity and execution risk, Resignation timeline
+
 ## Key Decisions
 
 - ✅ Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).
@@ -89,11 +90,6 @@ Offer comparison (VAST vs Crusoe vs staying at Microsoft), Compensation structur
 - ✅ Anchor enablement on workload scenarios rather than generic object features.
 - ✅ Avoid engaging in price-only competitions (e.g., MinIO) unless the workload merits VAST’s performance/value.
 - ✅ Do not pursue Microsoft compensation changes for Jason.
-
-## Open Tasks
-
-- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
-- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
 
 ## Related Customers
 

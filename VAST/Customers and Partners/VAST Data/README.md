@@ -13,10 +13,6 @@ tags:
 
 # VAST Data
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -36,27 +32,6 @@ _Brief description of this customer, their business, and relationship..._
 - [[Jonsi Stephenson]]
 - [[Jason Vallery]]
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-- ❌ Need for Azure qualification of VAST-optimized SKUs and potential NIC/DPU qualification work (Fungible/BlueField)
-- ❌ Offer compensation structure is complex and risky; equity viewed as disappointing
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -66,17 +41,11 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-- Hyperscaler penetration via Microsoft Apollo; qualify VAST-optimized hardware SKUs for Azure and run VAST on Azure storage clusters bare metal
-- Employment offer to Jason with PM/BD/sales-support scope; focus on OpenAI and Azure-related success
-- Competitive/partner reference point for NVIDIA alignment and agentic/key-value store vision
-
-## Key Decisions
-
-- ✅ Do not pursue a Microsoft counteroffer given compensation constraints and unclear scope.
-- ✅ Proceed toward a decision between VAST and Crusoe with intent to resign by Wednesday.
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
+- 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
 
 ## Key Facts
 
@@ -91,15 +60,11 @@ SORT due ASC
 - Jason Vallery moved from Microsoft Azure Storage to VAST Data to drive hyperscaler penetration and cloud product management.
 - Kushal Datta is on Microsoft's Apollo team.
 
-## Topics / Themes
+## Opportunities
 
-Job offers comparison (VAST vs Crusoe vs Microsoft), Compensation structure risk (commission/equity variability), Apollo program scope ambiguity and execution risk, Career trajectory and path to partner at Microsoft, Resignation timeline, Deploying VAST for Apollo training workloads on Azure, Azure Gen9 XIO bare metal vs Azure Storage software stack benchmarking, VAST ODM hardware options (performance-optimized vs capacity-optimized), Power and rack density constraints at exabyte scale, Read/write throughput requirements for large GPU clusters, NIC/DPU choices and qualification (Fungible vs NVIDIA BlueField), Blob API requirement vs NFS/S3 and impact on data loaders, Azure internal stakeholder alignment and politics, Dallas/Phoenix/Richmond site capacity timelines, Rewards/compensation dissatisfaction and retention risk
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
-- 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
+- Hyperscaler penetration via Microsoft Apollo; qualify VAST-optimized hardware SKUs for Azure and run VAST on Azure storage clusters bare metal
+- Employment offer to Jason with PM/BD/sales-support scope; focus on OpenAI and Azure-related success
+- Competitive/partner reference point for NVIDIA alignment and agentic/key-value store vision
 
 ## Collaborators
 
@@ -110,11 +75,3 @@ Job offers comparison (VAST vs Crusoe vs Microsoft), Compensation structure risk
 | [[Jeff Denworth]] |  |  |
 | [[Jan C. Stefansson]] |  |  |
 | [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
-
-## Related People
-
-- [[Renan]]
-- [[Glenn Lockwood]]
-- [[Jeff Denworth]]
-- [[Jan C. Stefansson]]
-- [[Jason Vallery]]

@@ -12,37 +12,14 @@ tags:
 
 # Michael Myrah
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | General Manager, Azure Storage Platform Systems and Advanced Technology |
-| **Company** | Microsoft |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Sammamish, Washington, United States |
+**Role**: Partner PM (Azure Storage Hardware) at Microsoft (Azure Storage Hardware (under Long’s team))
+**Relationship**: Partner stakeholder at Microsoft (target collaborator)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Michael Myrah has been with Microsoft since at least 2012, holding various positions including Senior PM Manager for Microsoft Azure, Principal PM Manager for Azure Storage Engineering, and currently serves as the General Manager for Azure Storage Platform Systems and Advanced Technology.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Owns Azure Storage hardware stack; potential partner to co-engineer a VAST-optimized Azure storage SKU; Jason knows him well but wants Kanchan/Nidhi-led intro to avoid premature escalation.
+- Proposed key partner to co-design a VAST-optimized Azure storage SKU enabling VAST bare metal on Azure storage hardware.
 
 ## Open Tasks
 
@@ -53,16 +30,11 @@ WHERE !completed AND contains(text, "Michael Myrah")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@MichaelMyrah") AND !completed
-SORT due ASC
-```
+- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
+- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
 
 ## Key Facts
 
@@ -87,27 +59,10 @@ SORT due ASC
 - Marketplace presence is viewed as important for credibility with some stakeholders.
 - OpenAI is described as the top strategic win; reported right of first refusal lifted enabling multi-cloud data plane.
 - Jason travel is heavy until mid-December; meeting Jeff in San Francisco next week for guidance.
-## Topics Discussed
 
-Project Apollo overview and requests to VAST, VAST POC rack shipment to Azure data center, Running VAST bare metal on Azure Storage hardware, Fungible DPU vs NVIDIA BlueField 3 risk/selection, MAI Dallas capacity (Dec/Apr) and storage plan-of-record uncertainty, Classic Azure interoperability needs (Overlake/SDN), UK Met Office POC in Azure Canary region, NVIDIA DGX Cloud storage performance requirements and leverage vs Azure Storage, Azure internal politics and stakeholder alignment (Manish resistance), Co-engineering a VAST-optimized Azure Storage SKU with Michael Myrah, Exec meeting planning with Nidhi and Renan (around Ignite), Azure Dedicated (Anand) as parallel bare-metal path, Licensing strategy: all-you-can-eat enterprise license, MAI and Project Apollo alignment and timelines, VAST bare metal on Azure storage hardware vs VM-based deployment
+## Background
 
-
-MAI meeting preparation and testing plan, Hardware vs VM support timeline, External sharing constraints for Azure Blob data, Deck improvements: observability and CSI driver, Microsoft internal politics and stakeholder management, Engaging Azure hardware leadership via sponsorship, Two-track cloud strategy: marketplace SaaS + first-party hardware wins, CSP prioritization: Azure primary, OCI secondary, AWS deprioritized, GCP program review and GKE-native integration approach, Resourcing/team structure and potential addition of Karl
-## Recent Context
-
-- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
-- 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
-
-
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
-## Profile
-
-**Role**: Partner PM (Azure Storage Hardware) at Microsoft (Azure Storage Hardware (under Long’s team))
-**Relationship**: Partner stakeholder at Microsoft (target collaborator)
-
-**Background**:
-- Owns Azure Storage hardware stack; potential partner to co-engineer a VAST-optimized Azure storage SKU; Jason knows him well but wants Kanchan/Nidhi-led intro to avoid premature escalation.
-- Proposed key partner to co-design a VAST-optimized Azure storage SKU enabling VAST bare metal on Azure storage hardware.
+Michael Myrah has been with Microsoft since at least 2012, holding various positions including Senior PM Manager for Microsoft Azure, Principal PM Manager for Azure Storage Engineering, and currently serves as the General Manager for Azure Storage Platform Systems and Advanced Technology.
 
 ## Key Decisions
 
@@ -127,9 +82,6 @@ MAI meeting preparation and testing plan, Hardware vs VM support timeline, Exter
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

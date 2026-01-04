@@ -14,10 +14,6 @@ last_contact: '2025-10-28'
 
 # PSC Interfaces for Cross-Project RDMA
 
-## Overview
-
-Assess requirement to use Private Service Connect interfaces (PSCI) for cross-project RDMA connectivity (VPC peering not supported) and implications for complexity, performance, and architecture.
-
 ## Status
 
 | Field | Value |
@@ -25,21 +21,9 @@ Assess requirement to use Private Service Connect interfaces (PSCI) for cross-pr
 | **Status** | active |
 | **Owner** | Google networking team |
 
-## Current Blockers
+## Overview
 
-- ❌ Unclear whether PSCI will meet performance/feature needs for the use case
-- ❌ Added complexity due to PSCI being load-balancer-based implementation
-
-## Next Steps
-
-- [ ] Evaluate PSCI requirements and implications for cross-project RDMA data plane
-- [ ] Confirm cross-project RDMA constraints and performance impact
-
-## Collaborators
-
-| Person | Role | Company |
-|--------|------|---------|
-| [[Billy Kettler]] |  | Google |
+Assess requirement to use Private Service Connect interfaces (PSCI) for cross-project RDMA connectivity (VPC peering not supported) and implications for complexity, performance, and architecture.
 
 ## Open Tasks
 
@@ -50,12 +34,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).
-- ✅ Engage Google networking for a follow-up deep dive on RDMA and cross-project connectivity.
-- ✅ Begin sizing work starting with testing projections, then customer projections.
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 
 ## Key Facts
 
@@ -69,31 +50,3 @@ SORT due ASC
 - Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
 - Ben is the new Google PM counterpart for this effort.
-
-## Topics / Themes
-
-GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation
-
-## Related People
-
-- [[Billy Kettler]]
-
-## Related Customers
-
-- [[Google]]
-
-## Recent Context
-
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

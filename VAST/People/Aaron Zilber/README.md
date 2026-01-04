@@ -11,37 +11,12 @@ tags:
 
 # Aaron Zilber
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** |  |
-| **Company** |  |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Relationship**: Internal technical stakeholder
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-_Career history, expertise, interests, personal details shared..._
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Investigating Azure Blob APIs for potential implementation and for Sync Engine to read Blob for migrations; OOO ~2.5 weeks during urgent timeline.
 
 ## Open Tasks
 
@@ -52,16 +27,9 @@ WHERE !completed AND contains(text, "Aaron Zilber")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@AaronZilber") AND !completed
-SORT due ASC
-```
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
 
 ## Key Facts
 
@@ -76,20 +44,9 @@ SORT due ASC
 - OpenAI architecture pattern described: multi-exabyte lakes in 3 Azure regions; GPUs in 50+ regions plus other providers; GPU-adjacent cache with checkpoints back to central.
 - Urgent need: Sync Engine must read from Azure Blob to support large migrations (wave.ai) on a December timeline; key engineer Aaron Zilber is OOO ~2.5 weeks.
 
-## Topics Discussed
+## Background
 
-Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics, Multi-tenancy backlog toward SaaS, OpenAI architecture and global data plane opportunity, Sync Engine ownership gap and Azure Blob-source migration needs
-
-## Recent Context
-
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-
-## Profile
-
-**Relationship**: Internal technical stakeholder
-
-**Background**:
-- Investigating Azure Blob APIs for potential implementation and for Sync Engine to read Blob for migrations; OOO ~2.5 weeks during urgent timeline.
+_Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
@@ -98,9 +55,6 @@ Roles and responsibilities between PM and Field CTO org, Documentation and field
 - ✅ Schedule a follow-up focused on OpenAI architecture and needs.
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

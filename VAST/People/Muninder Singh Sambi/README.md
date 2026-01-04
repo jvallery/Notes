@@ -12,51 +12,27 @@ tags:
 
 # Muninder Singh Sambi
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President and General Manager of Networking and Security |
-| **Company** | Google Cloud |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/muninders](https://www.linkedin.com/in/muninders) |
-| **Location** | Fremont, California, USA |
+**Role**: Leader for Google Distributed Cloud (GDC); oversees GDC supply chain (new in role) at Google (Google Distributed Cloud)
+**Relationship**: Partner stakeholder (Google)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Muninder Sambi is an accomplished executive with extensive experience in networking and security products. He has held senior leadership roles at Palo Alto Networks and Cisco. At Palo Alto Networks, he was Senior Vice President of Product Management from August 2020 to June 2022. During his tenure at Cisco from February 2012 to August 2020, he held multiple titles including Vice President of Product Management, overseeing significant product lines and managing a substantial portfolio. Early in his career, he worked as a Network Engineer at Microland Limited. Muninder holds an MBA in Marketing and Entrepreneurship from Santa Clara University and a B.Tech. in Electronics and Communication Engineering from Guru Nanak Dev University.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- New in role; focused on air-gapped/dark-site readiness, compliance, ops posture; requested proof of air-gapped support and joint customer validation; offered to share VM shapes and discuss RDMA tradeoffs; wants AI education from VAST perspective.
+- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
+- Known partner stakeholder; not substantively discussed in this note.
 
 ## Open Tasks
 
 - [ ] Schedule and conduct 1:1 with Muninder Sambi to review AI approach, VM shapes, RDMA, and hardware tradeoffs. @Alon Horev
 
-## Tasks They Own
+## Recent Context
 
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@MuninderSinghSambi") AND !completed
-SORT due ASC
-```
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
+- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture for high-perf... (via Silk)
 
 ## Key Facts
 
@@ -71,27 +47,9 @@ SORT due ASC
 - Typical scale cited: up to ~1 PB per data pod with tens of GB/s throughput and sub-ms latency.
 - Silk cited ~2–3M TPS with 64k transactions and noted single-VM DB performance is often the limiting factor.
 
-## Topics Discussed
+## Background
 
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Silk cloud storage architecture for databases, Performance characteristics (throughput, latency, TPS), AI-driven access to systems of record (real-time vs near-real-time), Positioning vs Azure native storage (Azure NetApp Files), RDMA requirement on Azure L-series and CPU overhead
-
-## Recent Context
-
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture for high-perf... (via Silk)
-
-## Profile
-
-**Role**: Leader for Google Distributed Cloud (GDC); oversees GDC supply chain (new in role) at Google (Google Distributed Cloud)
-**Relationship**: Partner stakeholder (Google)
-
-**Background**:
-- New in role; focused on air-gapped/dark-site readiness, compliance, ops posture; requested proof of air-gapped support and joint customer validation; offered to share VM shapes and discuss RDMA tradeoffs; wants AI education from VAST perspective.
-- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
-- Known partner stakeholder; not substantively discussed in this note.
+Muninder Sambi is an accomplished executive with extensive experience in networking and security products. He has held senior leadership roles at Palo Alto Networks and Cisco. At Palo Alto Networks, he was Senior Vice President of Product Management from August 2020 to June 2022. During his tenure at Cisco from February 2012 to August 2020, he held multiple titles including Vice President of Product Management, overseeing significant product lines and managing a substantial portfolio. Early in his career, he worked as a Network Engineer at Microland Limited. Muninder holds an MBA in Marketing and Entrepreneurship from Santa Clara University and a B.Tech. in Electronics and Communication Engineering from Guru Nanak Dev University.
 
 ## Key Decisions
 
@@ -106,19 +64,16 @@ Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness a
 - ✅ Schedule a follow-up focused on OpenAI architecture and needs.
 - ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
 
+## Related Customers
+
+- [[Google]]
+
 ## Related Projects
 
 - [[Google Distributed Cloud RFP]]
 - [[Fort Meade "Gemini as a service" on-prem validation]]
 
-## Related Customers
-
-- [[Google]]
-
 ## Related
-
-
-
 
 ---
 *Last updated: *

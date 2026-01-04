@@ -10,12 +10,26 @@ tags:
 
 # Noa Cohen
 
+## Profile
+
+**Role**: Program manager at VAST Data (Release planning)
+**Location**: Tel Aviv (implied)
+**Relationship**: Internal collaborator / meeting participant
+
+**Background**:
+- Referenced as a program manager to sync with.
+- Identified as release manager (with Eyal).
+- Jeff suggests the author should meet Noa; scheduling attempt occurred but she couldn't make it.
+
+## Open Tasks
+
+```tasks
+path includes Noa Cohen
+not done
+```
+
 ## Recent Context
 
-- unknown: [[Sources/Transcripts/2025/2025-10 - Noa Cohen.md|Noa Cohen]] — - [x] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Jason V...
-
-- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including...
-- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
 - 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
@@ -28,17 +42,9 @@ tags:
 - 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
 - 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on accelerating AI-first software developme... (via Tomer Hagay)
 - 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
-
-## Profile
-
-**Role**: Program manager at VAST Data (Release planning)
-**Location**: Tel Aviv (implied)
-**Relationship**: Internal collaborator / meeting participant
-
-**Background**:
-- Referenced as a program manager to sync with.
-- Identified as release manager (with Eyal).
-- Jeff suggests the author should meet Noa; scheduling attempt occurred but she couldn't make it.
+- unknown: [[Sources/Transcripts/2025/2025-10 - Noa Cohen.md|Noa Cohen]] — - [x] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Jason V...
+- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including...
+- unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
 
 ## Key Facts
 

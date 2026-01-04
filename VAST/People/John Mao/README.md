@@ -11,37 +11,14 @@ tags:
 
 # John Mao
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President, Strategic Alliances |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Austin, Texas, United States |
+**Role**: Alliances team lead (Alliances)
+**Relationship**: Unclear
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-John Mao has over 15 years of experience in the IT and cloud sectors. Prior to joining VAST Data, he served as Vice President of Business Development at Stratoscale from March 2014 to January 2020. His earlier roles include Director of Business Development at Calxeda, Inc., Principal Product Manager at CA Technologies, and Product Line Manager at NetQoS. He began his career as a Software Engineer and holds a BS in Computer Science from The University of Texas at Austin.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Referenced in a thread about OpenAI/Rockset acquisition and internal dynamics; used as context for OpenAI’s internal storage competition.
+- Runs alliances; technical staff sometimes use SE lab carve-outs for partner integration POCs.
 
 ## Open Tasks
 
@@ -52,16 +29,10 @@ WHERE !completed AND contains(text, "John Mao")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@JohnMao") AND !completed
-SORT due ASC
-```
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
 
 ## Key Facts
 
@@ -76,23 +47,9 @@ SORT due ASC
 - OpenAI architecture pattern described: multi-exabyte lakes in 3 Azure regions; GPUs in 50+ regions plus other providers; GPU-adjacent cache with checkpoints back to central.
 - Urgent need: Sync Engine must read from Azure Blob to support large migrations (wave.ai) on a December timeline; key engineer Aaron Zilber is OOO ~2.5 weeks.
 
-## Topics Discussed
+## Background
 
-Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics, Multi-tenancy backlog toward SaaS, OpenAI architecture and global data plane opportunity, Sync Engine ownership gap and Azure Blob-source migration needs, Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal competition (Rockset/FoundationDB/RocksDB), AZCopy as Blob API MVP target, ABFS driver and Spark/Databricks integration considerations, Tiering/offload to Azure Blob and flash vs HDD supply dynamics, Namespace/metadata synchronization with existing cloud object data (change feed, eventual consistency), Azure Key Vault / customer-managed keys gap
-
-## Recent Context
-
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
-
-## Profile
-
-**Role**: Alliances team lead (Alliances)
-**Relationship**: Unclear
-
-**Background**:
-- Referenced in a thread about OpenAI/Rockset acquisition and internal dynamics; used as context for OpenAI’s internal storage competition.
-- Runs alliances; technical staff sometimes use SE lab carve-outs for partner integration POCs.
+John Mao has over 15 years of experience in the IT and cloud sectors. Prior to joining VAST Data, he served as Vice President of Business Development at Stratoscale from March 2014 to January 2020. His earlier roles include Director of Business Development at Calxeda, Inc., Principal Product Manager at CA Technologies, and Product Line Manager at NetQoS. He began his career as a Software Engineer and holds a BS in Computer Science from The University of Texas at Austin.
 
 ## Key Decisions
 
@@ -107,9 +64,6 @@ Roles and responsibilities between PM and Field CTO org, Documentation and field
 - [[VAST on Azure Integration]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

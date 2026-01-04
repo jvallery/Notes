@@ -10,40 +10,6 @@ tags:
 
 # Jeff Denworth
 
-## Recent Context
-
-- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla.md|We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
-
-- 2025-10-27: [[Sources/Transcripts/2025/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md|Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] — Jason and Jeff aligned on near-term focus: synthesize a cloud pipeline view and requirements, deepen...
-
-- unknown: [[Sources/Transcripts/2025/2025-10 - Jeff Denworth.md|Jeff Denworth]] — - Travel
-
-- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md|Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas]] — Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jason (Azure-focused BD...
-
-- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md|Reviewed org landscape and key players; aligned that Jason will deeply understan]] — Here’s a tight, no‑nonsense readout that pulls the signal from both your notes and the transcript, f...
-
-- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md|We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
-
-- unknown: [[Sources/Transcripts/2025/2025-11-4 - Planning sessions.md|4 - Planning sessions]] — - Northstar & vision
-
-- 2025-12-19: [[Sources/Transcripts/2025/2025-12-19.md|2025-12-19]] — Jason Vallery
-
-- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
-- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat...
-- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac...
-- unknown: [[_Open Topics]] - A placeholder/open-topics note for Jeff Denworth that currently only contains a task query filtering...
-- unknown: [[2025-10 - Pricing Tasks]] - Checklist of completed pricing workstreams for cloud/private offers, discount policy, normalization ... (via Pricing)
-- 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi... (via Jonsi Stephenson)
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of...
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho...
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a...
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati...
-- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
-- 2025-11-07: [[2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc]] - Jason Vallery and Tomer Hagay discussed gaps in VAST’s product management discipline (OKRs/KRs, trac... (via Tomer Hagay)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
-
 ## Profile
 
 **Role**: Executive leader (Jason's manager; exact title not stated) at VAST Data (Go-to-market / Cloud)
@@ -67,6 +33,32 @@ tags:
 - [ ] Get decision from Jeff on naming the single-threaded product owner for MAI/Apollo (proposed: Myself).
 - [ ] Obtain green-light for headcount/budget: 1–2 Principal PMs (Cloud Platform; Azure/Microsoft), 1 TPM (release/readiness), 1 Product Ops lead, 1 Tech Writer, 1 Sales/SE Enablement PM.
 - [ ] Assign owners and draft Working Backwards artifacts (PR/FAQ + 6-pager) for “VAST Cloud” and “VAST in Apollo”.
+
+## Recent Context
+
+- 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi... (via Jonsi Stephenson)
+- 2025-12-19: [[Sources/Transcripts/2025/2025-12-19.md|2025-12-19]] — Jason Vallery
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of...
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla.md|We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md|Reviewed org landscape and key players; aligned that Jason will deeply understan]] — Here’s a tight, no‑nonsense readout that pulls the signal from both your notes and the transcript, f...
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md|We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho...
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati...
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
+- 2025-11-07: [[2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc]] - Jason Vallery and Tomer Hagay discussed gaps in VAST’s product management discipline (OKRs/KRs, trac... (via Tomer Hagay)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an in-person architecture whiteboarding session with Walmart’s Lakehouse team to d... (via Walmart)
+- 2025-10-27: [[Sources/Transcripts/2025/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md|Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] — Jason and Jeff aligned on near-term focus: synthesize a cloud pipeline view and requirements, deepen...
+- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md|Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas]] — Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jason (Azure-focused BD...
+- unknown: [[Sources/Transcripts/2025/2025-10 - Jeff Denworth.md|Jeff Denworth]] — - Travel
+- unknown: [[Sources/Transcripts/2025/2025-11-4 - Planning sessions.md|4 - Planning sessions]] — - Northstar & vision
+- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat...
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac...
+- unknown: [[_Open Topics]] - A placeholder/open-topics note for Jeff Denworth that currently only contains a task query filtering...
+- unknown: [[2025-10 - Pricing Tasks]] - Checklist of completed pricing workstreams for cloud/private offers, discount policy, normalization ... (via Pricing)
 
 ## Key Facts
 

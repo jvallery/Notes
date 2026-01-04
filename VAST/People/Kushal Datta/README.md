@@ -10,17 +10,29 @@ tags:
 
 # Kushal Datta
 
+## Profile
+
+**Role**: Apollo team member at Microsoft (Apollo team)
+**Relationship**: Partner-side collaborator for MAI execution (Microsoft context)
+
+**Background**:
+- Referenced as a single-threaded owner candidate on MAI motion (with Vipin) for Microsoft-side execution planning.
+- Key MAI stakeholder; owns the relationship between Microsoft AI and Azure.
+- Mentioned in note summary as someone to build ties with (SEs/alliances) and in known projects list context (EB power savings one-pager) but not materially discussed in this transcript.
+
+## Open Tasks
+
+- [ ] Drive Microsoft MAI/Apollo 30/60/90 plan: align success criteria + test plan (30d), get POC live with measurable perf (60d), produce scale plan and Go/No-Go for 2–3 more sites (90d).
+
 ## Recent Context
 
-- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo.md|Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] — Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training workloads on Azure inf...
-
-- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi... (via Jonsi Stephenson)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
 - 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
 - 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
+- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo.md|Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] — Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training workloads on Azure inf...
 - 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
 - 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST...
 - 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
@@ -29,6 +41,7 @@ tags:
 - 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
 - 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]] - Cloud BU leadership aligned on a dual-track cloud strategy: ship a near-term GCP marketplace MVP wit... (via Cloud)
 - 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 
 ## Key Facts
 
@@ -46,20 +59,6 @@ tags:
 ## Topics
 
 Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and AI WAN, MAI control plane fragility and GPU utilization constraints, Project Apollo (AKS-led slim control plane) and storage integration, Azure internal politics (Compute vs Storage incentives), Azure hardware qualification path and timelines, Liquid-cooled storage SKUs and data center cooling fungibility, Blob API vs S3 compatibility and multi-protocol strategy, Using MAI success as a wedge for broader Azure adoption, Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics, Multi-tenancy backlog toward SaaS
-
-## Profile
-
-**Role**: Apollo team member at Microsoft (Apollo team)
-**Relationship**: Partner-side collaborator for MAI execution (Microsoft context)
-
-**Background**:
-- Referenced as a single-threaded owner candidate on MAI motion (with Vipin) for Microsoft-side execution planning.
-- Key MAI stakeholder; owns the relationship between Microsoft AI and Azure.
-- Mentioned in note summary as someone to build ties with (SEs/alliances) and in known projects list context (EB power savings one-pager) but not materially discussed in this transcript.
-
-## Open Tasks
-
-- [ ] Drive Microsoft MAI/Apollo 30/60/90 plan: align success criteria + test plan (30d), get POC live with measurable perf (60d), produce scale plan and Go/No-Go for 2–3 more sites (90d).
 
 ## Key Decisions
 

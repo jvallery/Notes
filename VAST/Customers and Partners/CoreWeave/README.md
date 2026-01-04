@@ -13,10 +13,6 @@ tags:
 
 # CoreWeave
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -28,28 +24,6 @@ _Brief description of this customer, their business, and relationship..._
 
 - [[Gordon Brown]]
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-- ❌ Exceptional case; may not generalize
-- ❌ Strict SLA/SLO requirements with potential legal penalties
-- ❌ Operational coverage strain (weekends/off-shift knowledge transfer gaps)
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -59,17 +33,10 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-- Move faster than others; exemplar NeoCloud; expand services beyond GPUs over time
-- Define/validate SLA/SLO commitments and legal penalties; ensure staffing/on-call model meets requirements
-- Potentially treat as partner-like engagement model informing VAST-as-a-Service operations
-
-## Key Decisions
-
-- ✅ Do not prioritize building 'append blob' support speculatively for OpenAI; only consider if/when OpenAI asks or if pipelines will take years to move and VAST wants that data.
-- ✅ Define Blob API MVP for Microsoft AI as AZCopy compatibility rather than full Blob API breadth.
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
+- 2025-10-29: [[2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud]] - 1:1 between Jason Vallery and Rick Haselton covering Jason’s cloud-first VAST-as-a-Service vision an... (via Rick Haselton)
 
 ## Key Facts
 
@@ -84,14 +51,11 @@ SORT due ASC
 - Private Link / VNet boundary is a recurring constraint for integrating VAST with Azure managed services; first-party services may have deeper access (e.g., network security perimeter).
 - Jason is earmarked to present at SCO; Jeff wants him to be 'lord of all things cloud' and cover AI cloud building with VAST.
 
-## Topics / Themes
+## Opportunities
 
-Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal competition (Rockset/FoundationDB/RocksDB), AZCopy as Blob API MVP target, ABFS driver and Spark/Databricks integration considerations, Tiering/offload to Azure Blob and flash vs HDD supply dynamics, Namespace/metadata synchronization with existing cloud object data (change feed, eventual consistency), Azure Key Vault / customer-managed keys gap, Azure networking constraints (Private Link, first-party vs partner access), Foundry and Fabric integration opportunities, NeoCloud market shaping and packaging VAST portfolio, SCO session planning and messaging, VAST cloud-first vision (VAST-as-a-Service, multi-cloud), Customer Success operating model vs SRE model, CoreWeave and XAI on-prem operations, XAI workload patterns (training data, checkpointing, inferencing)
-
-## Recent Context
-
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-- 2025-10-29: [[2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud]] - 1:1 between Jason Vallery and Rick Haselton covering Jason’s cloud-first VAST-as-a-Service vision an... (via Rick Haselton)
+- Move faster than others; exemplar NeoCloud; expand services beyond GPUs over time
+- Define/validate SLA/SLO commitments and legal penalties; ensure staffing/on-call model meets requirements
+- Potentially treat as partner-like engagement model informing VAST-as-a-Service operations
 
 ## Collaborators
 
@@ -99,8 +63,3 @@ Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal c
 |--------|------|---------|
 | [[Rick Haselton]] | Tech lead (Customer Success; managed-services/SRE-style pod) | VAST Data |
 | [[Gordon Brown]] | CSM for CoreWeave | VAST Data |
-
-## Related People
-
-- [[Rick Haselton]]
-- [[Gordon Brown]]

@@ -13,10 +13,6 @@ tags:
 
 # Two Sigma
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -28,26 +24,6 @@ _Brief description of this customer, their business, and relationship..._
 
 _No key contacts identified._
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-- ❌ Need simple conversion/entitlement model across on-prem and cloud to avoid customer confusion
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -57,17 +33,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-- Hybrid ELA concept discussed (example: 60% on-prem / 40% on GCP) with marketplace burn-down preference
-
-## Key Decisions
-
-- ✅ Use capacity-only pricing for cloud private offers until 2025-02-01.
-- ✅ Do not disable or rate-limit vCPUs in cloud instances.
-- ✅ Target Feb 1 for broader pricing rollout aiming to align on-prem and cloud models.
-- ✅ Proceed with marketplace private offers (AWS, Azure, GCP, OCI) before public offers.
+- 2025-10-27: [[2025-10-27 - The team debated how to align cloud pricing with the new on‑prem model. Two opti]] - Group meeting transcript debating how to align VAST cloud pricing with the new on-prem core+capacity... (via Pricing)
 
 ## Key Facts
 
@@ -79,18 +47,6 @@ SORT due ASC
 - Hybrid ELAs and marketplace burn-down are important for large customers (example discussed: Two Sigma).
 - Initial market list price reference discussed: cloud capacity list around ~$0.07/GB/mo; on-prem list rework targets ~$13/TB plus core component.
 
-## Topics / Themes
+## Opportunities
 
-Cloud pricing model: capacity-only vs normalized cores-per-PB, Cross-cloud parity and customer perception of price discrepancies, Discount policy for cloud private offers vs on-prem discounting behavior, Marketplace private offers vs public PAYGO offers vs full SaaS timeline, Avoiding technical core disabling; commercial normalization only, TCO modeling inputs: reserved pricing, egress, infra COGS, Performance tiers / throughput-per-PB framing, Hybrid ELAs, marketplace burn-down, and entitlement tracking (Polaris/Uplink), Competitive landscape pricing models (capacity-based competitors)
-
-## Recent Context
-
-- 2025-10-27: [[2025-10-27 - The team debated how to align cloud pricing with the new on‑prem model. Two opti]] - Group meeting transcript debating how to align VAST cloud pricing with the new on-prem core+capacity... (via Pricing)
-
-## Related People
-
-_Internal team members working on this account..._
-
-
----
-*Last updated: *
+- Hybrid ELA concept discussed (example: 60% on-prem / 40% on GCP) with marketplace burn-down preference

@@ -11,37 +11,12 @@ tags:
 
 # Eric Wolfie
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | VP Sales Strategy, Enablement & Chief Of Staff |
-| **Company** | VAST Data |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Boston, United States |
+**Relationship**: Internal collaborator (unclear)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Erik Wolf has extensive experience in sales strategy and enablement. He has been serving as VP Sales Strategy, Enablement & Chief of Staff at VAST Data since December 2018. Prior to this role, he held various positions at Dell EMC from July 2007 to December 2018, including Sales Director, Enterprise Account Manager, and Financial Analyst. Erik earned a Bachelor of Business Administration in Investment Finance and Corporate Finance from the Isenberg School of Management at UMass Amherst and attended the University of Wollongong in 2006.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Asked about supply chain and demand; Jason replied with flash vs HBM/DRAM supply context.
 
 ## Open Tasks
 
@@ -52,16 +27,11 @@ WHERE !completed AND contains(text, "Eric Wolfie")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@EricWolfie") AND !completed
-SORT due ASC
-```
+- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -76,22 +46,9 @@ SORT due ASC
 - Private Link / VNet boundary is a recurring constraint for integrating VAST with Azure managed services; first-party services may have deeper access (e.g., network security perimeter).
 - Jason is earmarked to present at SCO; Jeff wants him to be 'lord of all things cloud' and cover AI cloud building with VAST.
 
-## Topics Discussed
+## Background
 
-Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal competition (Rockset/FoundationDB/RocksDB), AZCopy as Blob API MVP target, ABFS driver and Spark/Databricks integration considerations, Tiering/offload to Azure Blob and flash vs HDD supply dynamics, Namespace/metadata synchronization with existing cloud object data (change feed, eventual consistency), Azure Key Vault / customer-managed keys gap, Azure networking constraints (Private Link, first-party vs partner access), Foundry and Fabric integration opportunities, NeoCloud market shaping and packaging VAST portfolio, SCO session planning and messaging, Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition
-
-## Recent Context
-
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Relationship**: Internal collaborator (unclear)
-
-**Background**:
-- Asked about supply chain and demand; Jason replied with flash vs HBM/DRAM supply context.
+Erik Wolf has extensive experience in sales strategy and enablement. He has been serving as VP Sales Strategy, Enablement & Chief of Staff at VAST Data since December 2018. Prior to this role, he held various positions at Dell EMC from July 2007 to December 2018, including Sales Director, Enterprise Account Manager, and Financial Analyst. Erik earned a Bachelor of Business Administration in Investment Finance and Corporate Finance from the Isenberg School of Management at UMass Amherst and attended the University of Wollongong in 2006.
 
 ## Key Decisions
 
@@ -112,9 +69,6 @@ Azure Blob API vs Tuscany trade-offs, OpenAI storage architecture and internal c
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

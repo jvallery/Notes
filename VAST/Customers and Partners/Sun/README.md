@@ -12,10 +12,6 @@ tags:
 
 # Sun
 
-## Account Overview
-
-_Brief description of this customer, their business, and relationship..._
-
 ## Account Status
 
 | Field | Value |
@@ -27,26 +23,6 @@ _Brief description of this customer, their business, and relationship..._
 
 _No key contacts identified._
 
-## Active Projects
-
-_What projects/initiatives are active with this customer?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
-
-## Current Blockers
-
-_No known blockers._
-
-## Next Steps
-
-_What are the immediate next actions for this account?_
-
-
 ## Open Tasks
 
 ```dataview
@@ -56,15 +32,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Opportunities
-
-_No active opportunities._
-
-## Key Decisions
-
-- ✅ P0 priority: enable capacity scaling independent of performance via object/S3 offload for cloud viability.
-- ✅ Cloud team should spearhead GDC/neo-cloud single-tenant GPU-adjacent storage opportunities, coordinating required integrations.
+- 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
 
 ## Key Facts
 
@@ -74,18 +44,6 @@ _No active opportunities._
 - Edge/extended-zone footprints are large (~60–80 racks) and can fail if parent-region connectivity is lost.
 - Without object/S3 offload (capacity/perf decoupling), VAST lacks a viable cloud cost/perf model.
 
-## Topics / Themes
+## Opportunities
 
-VAST cloud strategy and multi-tenant SaaS vision, Google Distributed Cloud (GDC) RFP via Cisco, Control-plane integrations (API/monitoring/billing), Single-tenant GPU-adjacent storage patterns for neo-clouds, Global namespace portability and avoiding data gravity, Upstream integrations (Spark, Trino, Vertex AI, Bigtable), Object/S3 offload and capacity/performance decoupling, Org planning and potential reporting line for Karl
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
-
-## Related People
-
-_Internal team members working on this account..._
-
-
----
-*Last updated: *
+_No active opportunities._

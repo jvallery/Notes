@@ -12,37 +12,13 @@ tags:
 
 # David Klein
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Senior Engineering Manager |
-| **Company** | NVIDIA |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | Santa Clara, California, United States |
+**Role**: NVIDIA rep at NVIDIA
+**Relationship**: External connector
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-David Klein has been with NVIDIA since 2011, progressing through roles from Senior Software Engineer to Senior Engineering Manager. Prior to NVIDIA, he worked at Intel Corporation as a System Software Engineer and Senior System Software Engineer from 2004 to 2011. He holds a Bachelor of Computer Science from UC Irvine and a Master of Computer Science from UC San Diego.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- NVIDIA rep Rory can introduce; expected to help via event-based intros and possibly paths to specific accounts (e.g., He2).
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "David Klein")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@DavidKlein") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
 
 ## Key Facts
 
@@ -73,21 +42,9 @@ SORT due ASC
 - Warm-intro quality varies; weak LinkedIn mutuals can waste cycles.
 - Hyperscaler conflicts (Google/Microsoft) can block introductions.
 
-## Topics Discussed
+## Background
 
-Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVIDIA relationship strategy (events vs 1:1 intros), Outreach messaging strategy (pipeline components vs platform narrative), Persona targeting (data/pipeline teams vs exec-only), Salesforce history audit before re-engagement, Target account prioritization and expansion (e.g., Black Forest Labs)
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-
-## Profile
-
-**Role**: NVIDIA rep at NVIDIA
-**Relationship**: External connector
-
-**Background**:
-- NVIDIA rep Rory can introduce; expected to help via event-based intros and possibly paths to specific accounts (e.g., He2).
+David Klein has been with NVIDIA since 2011, progressing through roles from Senior Software Engineer to Senior Engineering Manager. Prior to NVIDIA, he worked at Intel Corporation as a System Software Engineer and Senior System Software Engineer from 2004 to 2011. He holds a Bachelor of Computer Science from UC Irvine and a Master of Computer Science from UC San Diego.
 
 ## Key Decisions
 
@@ -101,9 +58,6 @@ Warm intro mapping via LinkedIn mutuals, Investor vectors for introductions, NVI
 - [[Model Builder Turbine]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

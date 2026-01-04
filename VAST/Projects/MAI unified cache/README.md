@@ -14,10 +14,6 @@ last_contact: '2025-09-03'
 
 # MAI unified cache
 
-## Overview
-
-Define and deliver a single, pluggable caching solution for MAI that prioritizes training workloads first and later supports inference/KB caching; must scale to ~100k nodes and run on AKS + Spark, potentially with multi-region logical pooling.
-
 ## Status
 
 | Field | Value |
@@ -25,34 +21,9 @@ Define and deliver a single, pluggable caching solution for MAI that prioritizes
 | **Status** | active |
 | **Owner** | Jai Menon |
 
-## Current Blockers
+## Overview
 
-- ❌ Fragmentation risk if multiple caches are pursued in parallel
-- ❌ Unclear multi-region pooling requirement and expectations (latency/consistency)
-- ❌ Alternative solutions’ maturity/performance may not meet MAI timelines
-
-## Next Steps
-
-- [ ] Refine requirements using MAI pain points and Apollo documents
-- [ ] Validate scale targets and platform constraints (AKS + Spark)
-- [ ] Decide preferred approach after OpenAI cache evaluation and comparisons
-
-## Collaborators
-
-| Person | Role | Company |
-|--------|------|---------|
-| [[Jai Menon]] |  |  |
-| [[Nagendra]] |  |  |
-| [[Lukasz]] |  |  |
-| [[Sila]] | Lawyer / legal contact (implied) |  |
-| [[Pete]] |  |  |
-| [[Krishnan]] |  |  |
-| [[Manish]] |  |  |
-| [[Ong]] |  |  |
-| [[Wamshi]] |  |  |
-| [[Brendan]] |  |  |
-| [[Yumin]] |  |  |
-| [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
+Define and deliver a single, pluggable caching solution for MAI that prioritizes training workloads first and later supports inference/KB caching; must scale to ~100k nodes and run on AKS + Spark, potentially with multi-region logical pooling.
 
 ## Open Tasks
 
@@ -63,12 +34,9 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Jason will lead the OpenAI cache evaluation and comparison against internal/external options.
-- ✅ Design preference is a single, pluggable cache for training and inference (including KB caching), framework-agnostic; prioritize training first.
-- ✅ Near-term performance direction centers on Bifrost (including a direct read path) plus a distributed cache; DeltaZero positioned as follow-on.
+- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
 
 ## Key Facts
 
@@ -81,42 +49,3 @@ SORT due ASC
 - Compute for AI moved to Brendan’s org; AKS compute for MAI is led by a CVP referred to as 'Kiki'; Yumin is interfacing.
 - Possible MAI requirement: multi-region logical cache pooling (to confirm).
 - There is a morale/engagement risk related to Jason’s 'meets expectations' snapshot outcome; may require escalation discussions.
-
-## Topics / Themes
-
-MAI unified caching strategy (training-first, later inference/KB caching), OpenAI cache IP/code access and legal clearance, Scalability requirements (100k nodes; 400k/40k GPU targets), AKS + Spark integration constraints, Comparison of caching options (BlobFuse, Alluxio/DAX, AC Store, OpenAI cache), Blob performance roadmap: Bifrost direct read path and DeltaZero follow-on, Snapshot feedback and potential escalation path (Ong, Manish, Wamshi), Multi-region cache pooling possibility
-
-## Related People
-
-- [[Jai Menon]]
-- [[Nagendra]]
-- [[Lukasz]]
-- [[Sila]]
-- [[Pete]]
-- [[Krishnan]]
-- [[Manish]]
-- [[Ong]]
-- [[Wamshi]]
-- [[Brendan]]
-- [[Yumin]]
-- [[Jason Vallery]]
-
-## Related Customers
-
-- [[Microsoft]]
-
-## Recent Context
-
-- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

@@ -14,10 +14,6 @@ last_contact: '2025-09-03'
 
 # BlobFuse
 
-## Overview
-
-BlobFuse-based approaches considered for MAI caching/data access; must scale to ~100k nodes and integrate with AKS/Spark.
-
 ## Status
 
 | Field | Value |
@@ -25,25 +21,9 @@ BlobFuse-based approaches considered for MAI caching/data access; must scale to 
 | **Status** | active |
 | **Owner** | _Unknown_ |
 
-## Current Blockers
+## Overview
 
-- ❌ Unclear ability to scale to ~100k nodes
-- ❌ Potential limitations if only suitable for training vs unified cache goal
-- ❌ Unclear integration fit with AKS + Spark at MAI scale
-
-## Next Steps
-
-- [ ] Jason to review current BlobFuse/BlockFuse progress and performance numbers
-- [ ] Re-engage with Nagendra team for latest proposal and performance data
-- [ ] Collect scaling plans for side-by-side comparison
-
-## Collaborators
-
-| Person | Role | Company |
-|--------|------|---------|
-| [[Jai Menon]] |  |  |
-| [[Nagendra]] |  |  |
-| [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
+BlobFuse-based approaches considered for MAI caching/data access; must scale to ~100k nodes and integrate with AKS/Spark.
 
 ## Open Tasks
 
@@ -54,15 +34,10 @@ WHERE !completed
 SORT due ASC
 ```
 
+## Recent Context
 
-## Key Decisions
-
-- ✅ Evaluate OpenAI cache as a first concrete step toward MAI caching strategy.
-- ✅ Pursue a single pluggable cache design across training and inference, prioritizing training first.
-- ✅ Target deployment environment is AKS + Spark and must scale to ~100k nodes.
-- ✅ Jason will lead the OpenAI cache evaluation and comparison against internal/external options.
-- ✅ Design preference is a single, pluggable cache for training and inference (including KB caching), framework-agnostic; prioritize training first.
-- ✅ Near-term performance direction centers on Bifrost (including a direct read path) plus a distributed cache; DeltaZero positioned as follow-on.
+- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
+- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
 
 ## Key Facts
 
@@ -76,34 +51,3 @@ SORT due ASC
 - MAI targets 400k GPUs for training and 40k GPUs for inference within 2 years.
 - Cache must scale to ~100k nodes and run on AKS + Spark.
 - OpenAI cache IP may be usable by Microsoft, but legal/IP clearance and repo access must be confirmed (Pete and Sila involved).
-
-## Topics / Themes
-
-MAI caching strategy and unified cache goal, OpenAI cache code access and IP/licensing, Scaling requirements to ~100k nodes and AKS/Spark fit, Comparison of caching options (C-Store, Alluxio/DAX, BlobFuse/BlockFuse), Bifrost architecture and direct read path, MAI org changes (compute under AKS leadership), Performance snapshot feedback and follow-up conversations, MAI unified caching strategy (training-first, later inference/KB caching), OpenAI cache IP/code access and legal clearance, Scalability requirements (100k nodes; 400k/40k GPU targets), AKS + Spark integration constraints, Comparison of caching options (BlobFuse, Alluxio/DAX, AC Store, OpenAI cache), Blob performance roadmap: Bifrost direct read path and DeltaZero follow-on, Snapshot feedback and potential escalation path (Ong, Manish, Wamshi), Multi-region cache pooling possibility
-
-## Related People
-
-- [[Jai Menon]]
-- [[Nagendra]]
-- [[Jason Vallery]]
-
-## Related Customers
-
-- [[Microsoft]]
-
-## Recent Context
-
-- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
-- 2025-09-03: [[2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a near-term technical focus: evaluate OpenA... (via Jai Menon)
-
-## Artifacts
-
-```dataview
-TABLE file.mtime as "Modified"
-FROM ""
-WHERE type != "readme" AND type != "projects"
-SORT file.mtime DESC
-```
-
----
-*Last updated: *

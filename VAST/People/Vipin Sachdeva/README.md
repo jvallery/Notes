@@ -12,37 +12,14 @@ tags:
 
 # Vipin Sachdeva
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Member of Technical Staff |
-| **Company** | Microsoft AI |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | [https://www.linkedin.com/in/vipin-sachdeva](https://www.linkedin.com/in/vipin-sachdeva) |
-| **Location** | Greater Boston, United States |
+**Role**: Microsoft
+**Relationship**: Partner/customer-side contact (MAI within Microsoft ecosystem)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Vipin has over 23 years of experience in high-performance computing and AI. He joined Microsoft AI in March 2024. Prior to that, he served as a Member of Technical Staff at Inflection AI from September 2022 to March 2024, and as Head of HPC at Roivant Sciences from May 2021 to September 2022. His earlier roles include positions at IBM and academic research.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- MAI (ex-Inflection) contact; described as a strong VAST proponent; Koncha previously worked with him during Inflection.
+- MAI-aligned; described as a strong VAST proponent; to be re-engaged to reopen MAI conversation and align with Kushal.
 
 ## Open Tasks
 
@@ -53,16 +30,14 @@ WHERE !completed AND contains(text, "Vipin Sachdeva")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@VipinSachdeva") AND !completed
-SORT due ASC
-```
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-29: [[2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud]] - 1:1 between Jason Vallery and Rick Haselton covering Jason’s cloud-first VAST-as-a-Service vision an... (via Rick Haselton)
+- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
+- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
 
 ## Key Facts
 
@@ -77,27 +52,9 @@ SORT due ASC
 - Azure LSV4 is a poor fit for VAST (too many cores, weak networking, low NVMe density) leading to poor cost/perf and sticker shock.
 - LSV5 is committed by Egal’s team but roughly a year+ out; networking plans may still be insufficient for UK Met Office economics.
 
-## Topics Discussed
+## Background
 
-Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and AI WAN, MAI control plane fragility and GPU utilization constraints, Project Apollo (AKS-led slim control plane) and storage integration, Azure internal politics (Compute vs Storage incentives), Azure hardware qualification path and timelines, Liquid-cooled storage SKUs and data center cooling fungibility, Blob API vs S3 compatibility and multi-protocol strategy, Using MAI success as a wedge for broader Azure adoption, MAI as marquee win to drive Azure hardware alignment, UK Met Office opportunity and LSV5 networking economics, Azure LSV4/LSV5 VM shape limitations for VAST, Comparative economics deck (VAST vs Blob; on-prem vs Azure), Azure Marketplace offer progress and limitations, Neo clouds and GPU-adjacent storage for network disconnect resilience
-
-## Recent Context
-
-- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
-- 2025-10-29: [[2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud]] - 1:1 between Jason Vallery and Rick Haselton covering Jason’s cloud-first VAST-as-a-Service vision an... (via Rick Haselton)
-- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] - Weekly 1:1 between Jason Vallery and Alon Horev aligning on Microsoft AI (MAI) dynamics, Falcon capa... (via Alon Horev)
-- 2025-10-28: [[2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra ("Koncha") aligning on using MAI and UK Met Of... (via Kanchan Mehrotra)
-- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
-- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
-
-## Profile
-
-**Role**: Microsoft
-**Relationship**: Partner/customer-side contact (MAI within Microsoft ecosystem)
-
-**Background**:
-- MAI (ex-Inflection) contact; described as a strong VAST proponent; Koncha previously worked with him during Inflection.
-- MAI-aligned; described as a strong VAST proponent; to be re-engaged to reopen MAI conversation and align with Kushal.
+Vipin has over 23 years of experience in high-performance computing and AI. He joined Microsoft AI in March 2024. Prior to that, he served as a Member of Technical Staff at Inflection AI from September 2022 to March 2024, and as Head of HPC at Roivant Sciences from May 2021 to September 2022. His earlier roles include positions at IBM and academic research.
 
 ## Key Decisions
 
@@ -122,9 +79,6 @@ Microsoft AI (MAI) org landscape and stakeholders, Falcon capacity rollout and A
 - [[Cloud]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

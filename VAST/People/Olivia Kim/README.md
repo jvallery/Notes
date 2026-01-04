@@ -12,37 +12,13 @@ tags:
 
 # Olivia Kim
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | Vice President of Product |
-| **Company** | Google Workspace |
-| **Department** | _Unknown_ |
-| **Email** | _Unknown_ |
-| **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+**Role**: Google
+**Relationship**: Partner contact (Google)
 
-## Relationship
-
-_How do you work with this person? What is your dynamic?_
-
-## Background
-
-Previously worked at eBay and Facebook.
-
-
-## Projects
-
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
-
+**Background**:
+- Mentioned as 'from Google'; associated with Lior’s org context.
 
 ## Open Tasks
 
@@ -53,16 +29,9 @@ WHERE !completed AND contains(text, "Olivia Kim")
 SORT due ASC
 ```
 
+## Recent Context
 
-## Tasks They Own
-
-_Action items this person is responsible for:_
-
-```dataview
-TASK
-WHERE contains(text, "@OliviaKim") AND !completed
-SORT due ASC
-```
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
 
 ## Key Facts
 
@@ -75,21 +44,9 @@ SORT due ASC
 - Win/loss analysis should be routine and tied to Sales Ops; cloud is a platform, product gaps apply across deployment environments.
 - Confluence is the engineering-respected source of truth for FRDs/requirements; coordinate taxonomy with Alon (A.L.) and Tomer.
 
-## Topics Discussed
+## Background
 
-Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft, Google RFP triage and no-bid criteria for block/latency-heavy asks, Confluence as FRD system of record and documentation taxonomy, Win/loss cadence and product MBR rhythm
-
-## Recent Context
-
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-
-## Profile
-
-**Role**: Google
-**Relationship**: Partner contact (Google)
-
-**Background**:
-- Mentioned as 'from Google'; associated with Lior’s org context.
+Previously worked at eBay and Facebook.
 
 ## Key Decisions
 
@@ -107,9 +64,6 @@ Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi
 - [[Google RFP]]
 
 ## Related
-
-
-
 
 ---
 *Last updated: *

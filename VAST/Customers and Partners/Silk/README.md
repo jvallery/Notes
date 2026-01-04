@@ -10,15 +10,30 @@ tags:
 
 # Silk
 
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | Active |
+| **Industry** | Software-defined cloud storage |
+
+## Key Contacts
+
+- [[Jai Menon]]
+
+## Open Tasks
+
+```tasks
+path includes Silk
+not done
+```
+
 ## Recent Context
 
-- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas.md|Silk briefed Jason on their software-defined cloud storage for databases, emphas]] — Silk briefed Jason on their software-defined cloud storage for databases, emphasizing low-latency, h...
-
-- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re.md|Silk briefed Jason on its software-defined cloud storage for high-performance re]] — Silk briefed Jason on its software-defined cloud storage for high-performance relational databases, ...
-
-- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and.md|Silk briefed Jason on its cloud storage architecture optimized for databases and]] — Silk briefed Jason on its cloud storage architecture optimized for databases and rising AI-driven ac...
-
 - 2025-09-29: [[2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support]] - Weekly 1:1 between Maneesh Sah and Jason Vallery focused on Jason’s dissatisfaction with rewards, re... (via Maneesh Sah)
+- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas.md|Silk briefed Jason on their software-defined cloud storage for databases, emphas]] — Silk briefed Jason on their software-defined cloud storage for databases, emphasizing low-latency, h...
+- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re.md|Silk briefed Jason on its software-defined cloud storage for high-performance re]] — Silk briefed Jason on its software-defined cloud storage for high-performance relational databases, ...
+- 2025-09-15: [[Sources/Transcripts/2025/2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and.md|Silk briefed Jason on its cloud storage architecture optimized for databases and]] — Silk briefed Jason on its cloud storage architecture optimized for databases and rising AI-driven ac...
 - 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture for high-perf...
 - 2025-09-15: [[2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re]] - Silk briefed Jason on its software-defined cloud storage architecture for high-performance relationa...
 - 2025-09-15: [[2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas]] - Silk briefed Jason on their software-defined cloud storage for database workloads, focusing on low-l...
@@ -39,17 +54,6 @@ tags:
 ## Topics
 
 Silk cloud storage architecture for databases, Performance characteristics (throughput, latency, TPS), AI-driven access to systems of record (real-time vs near-real-time), Positioning vs Azure native storage (Azure NetApp Files), RDMA requirement on Azure L-series and CPU overhead, Executive introduction planning (Jay Menon via Ong), Silk architecture (performance layer, cache, durability options), AI-driven load on production relational databases (systems of record), Performance limits (TPS, throughput, latency) and IO sizing, Approaches: accelerate production DB vs near-real-time clones, RDMA support on Azure L-series / Duo Boost and CPU overhead reduction, Competitive context (Azure NetApp Files) and cost/performance positioning, Silk software-defined cloud storage for databases, Azure performance characteristics (Boost VMs, PV2, PPG), AI-driven load spikes on transactional systems of record
-
-## Account Status
-
-| Field | Value |
-|-------|-------|
-| **Status** | Active |
-| **Industry** | Software-defined cloud storage |
-
-## Key Contacts
-
-- [[Jai Menon]]
 
 ## Opportunities
 
@@ -72,17 +76,6 @@ Silk cloud storage architecture for databases, Performance characteristics (thro
 |--------|------|---------|
 | [[Jai Menon]] |  |  |
 | [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
-
-## Key Decisions
-
-- ✅ Proceed with connecting to Jai Menon through Ong.
-- ✅ Proceed with setting up a CEO-level introduction to Jai Menon.
-- ✅ Evaluate use case fit per customer: accelerate production DB vs near-real-time cloned copies.
-
-## Related People
-
-- [[Jai Menon]]
-- [[Jason Vallery]]
 
 ## Related
 
