@@ -1,7 +1,7 @@
 ---
 type: people
 title: Jeff Denworth
-last_contact: '2025-12-19'
+last_contact: unknown
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,20 +12,16 @@ tags:
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19]] - Jason Vallery and Jeff Denworth discuss strategy around supporting the Azure Blob API versus Microso...
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali...
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t...
+- unknown: [[2025-10 - Microsoft Tasks]] - Task list for Microsoft/Azure engagement work, including networking/egress planning, validating Azur... (via Microsoft)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
 
 ## Profile
 
-**Role**: VAST
-**Location**: Salt Lake (hotel room mentioned)
-**Relationship**: Internal collaborator / stakeholder (note entity)
+**Relationship**: Internal collaborator
 
 **Background**:
-- Discusses product/strategy trade-offs and pushes for broader market approach beyond initial customers.
-- Provides org landscape, sets priorities, and emphasizes a first-class homogenized cross-cloud platform strategy and hands-on field exposure.
-- Leads organizational alignment discussions; emphasizes understanding current state before changes; pushes for first-class platform across clouds and aligning work to company philosophy/values.
+- Assigned to draft a Microsoft networking engagement plan to minimize egress for VAST's Azure offerings and to validate Azure GA milestones aligned to program phases.
+- Jason Vallery reports to Jeff; Jeff not present but referenced for responsibility partitioning.
 
 ## Open Tasks
 
@@ -36,54 +32,39 @@ tags:
 
 ## Key Facts
 
-- Pete Eming reports to Vamshi and currently owns the Azure Storage relationship with OpenAI and Microsoft AI (previously owned by Jason).
-- OpenAI is reportedly replatforming away from Azure Blob API for some scenarios and building their own solution using rclone and other tools.
-- Discussion claim: Microsoft’s deal with OpenAI gives Microsoft exclusive ownership/rights to every line of code written at OpenAI until AGI is declared by OpenAI’s board; Microsoft can reuse that IP for Azure services.
-- Per discussion, OpenAI’s likely competition is internal (in-house storage/capacity management) rather than external vendors like Weka.
-- OpenAI infrastructure mentioned: L-series VMs, potential bare metal L-series, bare metal UltraDisk, and Blob Storage HDD clusters.
-- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
-- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
-- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
-- Rob’s customer success org is primarily support and systems engineering today.
-- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
+- Google Distributed Cloud (GDC) has connected and air-gapped variants; NetApp is the current storage partner in GDC deployments.
+- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and the pursuit is competitive/vendor due diligence.
+- Google’s emphasis areas: air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags integration.
+- Fort Meade on-prem "Gemini as a service" initiative is described as a Q4 commit and a strong candidate for rapid joint validation.
+- GDC hardware commonly runs on Dell; deployments may also involve HPE and Cisco.
+- VAST recently launched Google Marketplace offers; broader partnership is early-stage.
+- There may be ambiguity whether "Leo" is the same person as Lior Genzel; needs clarification.
+- Networking engagement plan emphasizes minimizing egress for VAST’s Azure offerings, including ExpressRoute Direct Local.
+- Azure GA milestone timing referenced as Feb GA vs Sep 1P milestone, to be aligned with Lifter program phases.
+- Need to validate what Microsoft-provided data is permissible for ROI comparisons before sharing externally (e.g., with Nidhi).
 
 ## Topics
 
-Blob API vs Tuscany trade-offs, MVP vs broader market surface area ('crawl, walk, run'), OpenAI moving away from Blob API, OpenAI internal storage stack and Rockset/RocksDB, Microsoft rights to OpenAI IP and AGI clause risk, Competitive landscape (internal vs external vendors), Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit)
+Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapped/dark-site operational readiness and support model, Compliance/attestations and ATO evidence (including DISA STIG), Multi-tenancy, quotas, encryption, tags integration, Hardware platform options (Dell/HPE/Cisco) and SKU recommendations, Commodity VM shapes and RDMA tradeoffs, Fort Meade on-prem Gemini validation/POC and rack-and-stack logistics, Alignment between Google corporate GDC and Google Federal/IC teams, Go-to-market linkage between VAST Federal and Google Federal sellers, Potential future partnership track around Google TPUs/model builders, Microsoft Azure networking and egress minimization, Azure GA milestones and program phase alignment, ROI comparison data governance, Competitive/positioning comparisons (LSv4, LSv5, OEM/ODM, Azure Storage), BizDev enablement and introductions
 
 ## Key Decisions
 
-- ✅ Initial framing decision: avoid focusing only on OpenAI and Microsoft AI as the only customers; aim for a broader 'in for a pound' approach (directional preference stated by Jeff).
-- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
-- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
-- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
-- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
-- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
-- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+- ✅ Greg Castellucci will run point with Google Federal and coordinate with the corporate GDC team over the next few weeks.
+- ✅ Jason Vallery will connect Greg with Google stakeholders and drive RFP content assembly.
+- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi on AI, VM shapes, RDMA, and storage/hardware tradeoffs.
+- ✅ "Leo" will own the end-to-end RFP response and submissions.
+- ✅ Use the Fort Meade on-prem "Gemini as a service" effort as the primary near-term validation path/reference.
+- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in proposals.
 
 ## Related Customers
 
-- [[VAST]]
-- [[Google]]
 - [[Microsoft]]
 
 ## Related Projects
 
-- [[Tuscany]]
-- [[Win/loss cadence]]
-- [[SCO]]
-- [[SE engagement at Tech Summit (Orlando)]]
-- [[Blob API]]
-- [[Cost model calculator review]]
-- [[Block storage]]
-- [[Confluence documentation process]]
-- [[Pipelines product]]
-- [[Cloud GTM plays (Foundry/Bedrock/Vertex)]]
-- [[Microsoft competitive positioning (Azure Storage gaps)]]
-- [[Google RFP (TPU angle)]]
-- [[Cross-cloud platform strategy]]
-- [[ProServe transition (Carl to Rob)]]
-- [[Multi-cloud strategy]]
+- [[Microsoft Azure Engagement Plan]]
+- [[Cloud]]
+- [[Azure GA Milestones Alignment (Lifter program)]]
 
 ## Related
 

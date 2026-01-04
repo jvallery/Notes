@@ -1,7 +1,7 @@
 ---
 type: people
 title: Lior Genzel
-last_contact: '2025-11-07'
+last_contact: '2025-11-14'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,16 +12,20 @@ tags:
 
 ## Recent Context
 
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
+- 2025-10-31: [[2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]] - Group meeting with Google partner stakeholders to align on the technical path for running VAST on GC... (via Google)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Group meeting aligning on an MVP launch on Google Cloud Marketplace using private offers with fixed ... (via Google)
 
 ## Profile
 
-**Relationship**: Primary owner of the listed follow-ups; collaborator on pipeline and partner coordination.
+**Role**: Sales/GT M stakeholder (pipeline visibility)
+**Relationship**: Internal collaborator
 
 **Background**:
-- Point person driving cloud/provider pipeline synthesis, performance/pricing/TCO discussions, and introductions across Google/Microsoft and customer solution teams.
-- Referenced as the entity for this note; no additional background provided in the content.
+- Referenced as being on a call with Olivia and supportive of helping federal; also mentioned as a possible confusion with "Leo" (RFP owner).
+- VAST participant; referenced as coordinating/hosting the discussion and attending Supercomputing; no additional role details provided in this note.
+- Meeting participant.
 
 ## Open Tasks
 
@@ -32,29 +36,41 @@ tags:
 
 ## Key Facts
 
-- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
-- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
-- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
-- Rob’s customer success org is primarily support and systems engineering today.
-- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
-- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
-- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
-- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
-- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
-- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
+- Google Distributed Cloud (GDC) has connected and air-gapped variants; NetApp is the current storage partner in GDC deployments.
+- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and the pursuit is competitive/vendor due diligence.
+- Google’s emphasis areas: air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags integration.
+- Fort Meade on-prem "Gemini as a service" initiative is described as a Q4 commit and a strong candidate for rapid joint validation.
+- GDC hardware commonly runs on Dell; deployments may also involve HPE and Cisco.
+- VAST recently launched Google Marketplace offers; broader partnership is early-stage.
+- There may be ambiguity whether "Leo" is the same person as Lior Genzel; needs clarification.
+- Z4M is the next Google storage-serving VM with higher storage and network density; Z3 exists today.
+- Z4M targets storage-serving use cases; CPU/RAM may be overprovisioned initially with planned pricing optimization.
+- Google is developing a Google Supercomputer (GSC) provisioning interface to optimize co-placement of storage and accelerators and potentially automate partner deployments like VAST.
 
 ## Topics
 
-Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications), Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle)
+Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapped/dark-site operational readiness and support model, Compliance/attestations and ATO evidence (including DISA STIG), Multi-tenancy, quotas, encryption, tags integration, Hardware platform options (Dell/HPE/Cisco) and SKU recommendations, Commodity VM shapes and RDMA tradeoffs, Fort Meade on-prem Gemini validation/POC and rack-and-stack logistics, Alignment between Google corporate GDC and Google Federal/IC teams, Go-to-market linkage between VAST Federal and Google Federal sellers, Potential future partnership track around Google TPUs/model builders, VAST on GCP architecture using Z4M storage-serving VMs, Local SSD vs HyperDisk vs object storage tiers, Metadata offload to object storage and need for a higher-performance object tier, Google Supercomputer (GSC) provisioning and co-placement/auto-deploy integration, RDMA and GPUDirect Storage (A5X GPUs) and TPU RDMA timeline
 
 ## Key Decisions
 
-- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
-- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
-- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
-- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
-- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
-- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+- ✅ Greg Castellucci will run point with Google Federal and coordinate with the corporate GDC team over the next few weeks.
+- ✅ Jason Vallery will connect Greg with Google stakeholders and drive RFP content assembly.
+- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi on AI, VM shapes, RDMA, and storage/hardware tradeoffs.
+- ✅ "Leo" will own the end-to-end RFP response and submissions.
+- ✅ Use the Fort Meade on-prem "Gemini as a service" effort as the primary near-term validation path/reference.
+- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in proposals.
+- ✅ Proceed with local SSD-based Z4M for initial VAST on GCP; evaluate object/HyperDisk tiers later.
+- ✅ Coordinate in-person sessions at Supercomputing and include key GCP stakeholders (Ilyas, Dean).
+- ✅ Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).
+- ✅ Engage Google networking for a follow-up deep dive on RDMA and cross-project connectivity.
+
+## Related Customers
+
+- [[Google]]
+
+## Related Projects
+
+- [[Cloud]]
 
 ## Related
 

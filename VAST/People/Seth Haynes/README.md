@@ -1,25 +1,67 @@
 ---
 type: people
-title: Josh Wentzell
-last_contact: '2025-11-14'
+title: Seth Haynes
 created: '2026-01-03'
+last_contact: '2025-11-14'
+auto_created: true
 tags:
 - type/people
-- generated
+- needs-review
 ---
 
-# Josh Wentzell
+# Seth Haynes
 
-## Recent Context
+## Contact Information
 
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
+| Field | Value |
+|-------|-------|
+| **Role** |  |
+| **Company** |  |
+| **Department** | _Unknown_ |
+| **Email** | _Unknown_ |
+| **Phone** | _Unknown_ |
+| **LinkedIn** | _Unknown_ |
+| **Location** | _Unknown_ |
 
-## Profile
+## Relationship
 
-**Relationship**: Internal collaborator (unclear)
+_How do you work with this person? What is your dynamic?_
 
-**Background**:
-- Mentioned as having redone a system to make it work on HPE Alletra hardware (context: Fort Meade / e-box config discussion).
+## Background
+
+_Career history, expertise, interests, personal details shared..._
+
+
+## Projects
+
+_What projects are you collaborating on with this person?_
+
+```dataview
+LIST
+FROM "VAST/Projects" OR "Personal/Projects"
+WHERE contains(file.outlinks, this.file.link)
+```
+
+
+## Open Tasks
+
+```dataview
+TASK
+FROM ""
+WHERE !completed AND contains(text, "Seth Haynes")
+SORT due ASC
+```
+
+
+## Tasks They Own
+
+_Action items this person is responsible for:_
+
+```dataview
+TASK
+WHERE contains(text, "@SethHaynes") AND !completed
+SORT due ASC
+```
 
 ## Key Facts
 
@@ -31,9 +73,20 @@ tags:
 - VAST recently launched Google Marketplace offers; broader partnership is early-stage.
 - There may be ambiguity whether "Leo" is the same person as Lior Genzel; needs clarification.
 
-## Topics
+## Topics Discussed
 
 Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapped/dark-site operational readiness and support model, Compliance/attestations and ATO evidence (including DISA STIG), Multi-tenancy, quotas, encryption, tags integration, Hardware platform options (Dell/HPE/Cisco) and SKU recommendations, Commodity VM shapes and RDMA tradeoffs, Fort Meade on-prem Gemini validation/POC and rack-and-stack logistics, Alignment between Google corporate GDC and Google Federal/IC teams, Go-to-market linkage between VAST Federal and Google Federal sellers, Potential future partnership track around Google TPUs/model builders
+
+## Recent Context
+
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
+
+## Profile
+
+**Relationship**: Unclear
+
+**Background**:
+- Referenced as a possible connection path to Muninder ("Seth Haynes connections").
 
 ## Key Decisions
 
@@ -46,4 +99,8 @@ Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapp
 
 ## Related
 
-<!-- Wikilinks to related entities -->
+
+
+
+---
+*Last updated: *

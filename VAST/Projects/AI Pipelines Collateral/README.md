@@ -1,7 +1,7 @@
 ---
 type: projects
 title: AI Pipelines Collateral
-last_contact: '2025-11-07'
+last_contact: '2025-11-13'
 created: '2026-01-03'
 tags:
 - type/projects
@@ -12,30 +12,26 @@ tags:
 
 ## Recent Context
 
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
+- 2025-11-13: [[2025-11-13 - GDC RFP meeting]] - Notes from a Google Distributed Cloud (GDC) RFP-focused discussion covering storage TCO (HDD vs QLC)... (via Google)
 
 ## Key Facts
 
-- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
-- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
-- Morty should remain focused on Neo while being onboarded to Jason’s team.
-- Rob’s org is labeled Customer Success but operates more like reactive support; Rob is head of systems engineering and his team is primarily systems engineers.
-- ByteDance example: bypassed Azure Storage by connecting their own datacenter to Azure via high-capacity WAN, illustrating China operational/technical constraints.
-- Jeff uses Apple Calendar alongside Google Calendar for meeting management (tooling preference mentioned).
+- GDC RFP discussion areas included HDD vs QLC TCO, SED, hardware partners, AZs, SyncEngine, and potential GCS API requirements.
+- Operational/security requirements discussed: separation of duties/two-sign rule, multi-tenancy (QoS/quotas, tags/policy-based management), network security, air-gapped certifications, remote patching, and troubleshooting/patch management.
 
 ## Topics
 
-Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle), Win/loss process and deal-flow-to-requirements loop, China market strategy and operational risk, Azure Storage limitations, Documentation workflow in Confluence, Role transition: Carl to ProServe under Rob, Hands-on technical experience for effective PM/strategy
+HDD vs QLC TCO, Self-encrypting drives (SED), Hardware partners and Dell shapes, Availability zones (AZs), SyncEngine, GCS API requirements, Federal connection for mutual customer, Separation of duties / two-sign rule, Multi-tenancy, QoS/quotas, Tags and policy-based management, Network security, Air-gapped security certifications, Remote patching, Operations: manage, troubleshoot, patch
 
 ## Overview
 
-_Brief description of this project..._
+Follow-up AI pipelines whiteboarding to discuss trade-offs (context: GDC RFP content/requirements).
 
 ## Status
 
 | Field | Value |
 |-------|-------|
-| **Status** | _Unknown_ |
+| **Status** | active |
 | **Owner** | _Unknown_ |
 
 ## Blockers
@@ -44,12 +40,16 @@ _No known blockers._
 
 ## Next Steps
 
-_No next steps defined._
+- [ ] Schedule/complete AI pipelines whiteboarding follow-up and document trade-offs
 
 ## Key Decisions
 
 - ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
 - ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+
+## Related Customers
+
+- [[Google]]
 
 ## Related
 

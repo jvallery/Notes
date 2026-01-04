@@ -1,7 +1,7 @@
 ---
 type: people
 title: Alon Horev
-last_contact: unknown
+last_contact: '2025-11-14'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,37 +12,49 @@ tags:
 
 ## Recent Context
 
-- unknown: [[_Open Topics]] - Open topics note for Alon Horev containing a task query that lists incomplete tasks mentioning @alon...
-- 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal team sync to align on Walmart’s big data initiative, focusing on clarifying disaster recove... (via Walmart)
-- 2025-10-28: [[2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]]
-- 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Weekly 1:1 between Jason Vallery and Erez Zilber aligning on delivering Azure Blob API support in VA... (via Erez Zilber)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
 
 ## Profile
 
+**Relationship**: Internal collaborator
 
 **Background**:
-- Referenced via @alon tag in a task query; no additional context provided.
+- Participated in meeting with Google; will do 1:1 with Muninder to discuss AI approach, VM shapes, RDMA, and hardware/storage tradeoffs.
 
 ## Open Tasks
 
-- [ ] Review incomplete tasks that include @alon (task query: not done; description includes @alon; sorted by created reverse).
+- [ ] Schedule and conduct 1:1 with Muninder Singh Sambi to review AI approach, VM shapes, RDMA, and hardware tradeoffs. @Alon Horev
 
 ## Key Facts
 
-- Architecture/whiteboarding session is gated on receiving definitive requirements from Walmart.
-- Key DR ambiguity: Walmart may need full VAST namespace access in cloud vs only a copy of data.
-- VM-based approaches in public cloud are not viable at the anticipated scale.
-- Hybrid roadmap is being driven, including deeper/more native Google Cloud Storage (GCS) integration.
-- Jason plans to meet engineering in Tel Aviv the week after next to shape the roadmap, with Walmart as a marquee design partner.
-- Walmart has ~1–1.5 months to choose between a minimum configuration and a larger phase-one proposal (main difference: D-boxes/capacity).
-- Opportunity scale discussed up to ~500 PB and framed as potentially up to a $300M deal.
-- A 30-minute expectations/vision call with Mingming is planned for 2025-11-14 after 2 pm PT.
-- This note is a placeholder/index that surfaces not-done tasks mentioning @alon.
-- Erez Zilber is VAST Protocols Architect (8+ years) leading field-driven protocol requirements.
+- Google Distributed Cloud (GDC) has connected and air-gapped variants; NetApp is the current storage partner in GDC deployments.
+- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and the pursuit is competitive/vendor due diligence.
+- Google’s emphasis areas: air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags integration.
+- Fort Meade on-prem "Gemini as a service" initiative is described as a Q4 commit and a strong candidate for rapid joint validation.
+- GDC hardware commonly runs on Dell; deployments may also involve HPE and Cisco.
+- VAST recently launched Google Marketplace offers; broader partnership is early-stage.
+- There may be ambiguity whether "Leo" is the same person as Lior Genzel; needs clarification.
 
 ## Topics
 
-Walmart big data initiative alignment, Disaster recovery (DR) requirements clarification, Architecture/whiteboarding session gating criteria, Hybrid cloud roadmap strategy, Native Google Cloud Storage (GCS) integration requirements, Proposal options: minimum config vs phase-one (D-box/capacity differences), Customer timeline and decision process, Scaling limitations of VM-based cloud deployments, Customer expectations/vision call planning, Open tasks related to Alon Horev, Azure Blob API support in VAST, Azure Marketplace enablement, OpenAI storage requirements (GPU-adjacent, offline/network autarky 72–96 hours), Entra ID managed identities, JWT bearer token validation offline (key caching and rotation)
+Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapped/dark-site operational readiness and support model, Compliance/attestations and ATO evidence (including DISA STIG), Multi-tenancy, quotas, encryption, tags integration, Hardware platform options (Dell/HPE/Cisco) and SKU recommendations, Commodity VM shapes and RDMA tradeoffs, Fort Meade on-prem Gemini validation/POC and rack-and-stack logistics, Alignment between Google corporate GDC and Google Federal/IC teams, Go-to-market linkage between VAST Federal and Google Federal sellers, Potential future partnership track around Google TPUs/model builders
+
+## Key Decisions
+
+- ✅ Greg Castellucci will run point with Google Federal and coordinate with the corporate GDC team over the next few weeks.
+- ✅ Jason Vallery will connect Greg with Google stakeholders and drive RFP content assembly.
+- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi on AI, VM shapes, RDMA, and storage/hardware tradeoffs.
+- ✅ "Leo" will own the end-to-end RFP response and submissions.
+- ✅ Use the Fort Meade on-prem "Gemini as a service" effort as the primary near-term validation path/reference.
+- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in proposals.
+
+## Related Customers
+
+- [[Google]]
+
+## Related Projects
+
+- [[Cloud]]
 
 ## Related
 

@@ -1,7 +1,7 @@
 ---
 type: people
 title: Tomer Hagay
-last_contact: '2025-11-07'
+last_contact: '2025-10-28'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,44 +12,47 @@ tags:
 
 ## Recent Context
 
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Group meeting aligning on an MVP launch on Google Cloud Marketplace using private offers with fixed ... (via Google)
 
 ## Profile
 
-**Role**: Product leader / PM (implied; counterpart in 1:1) at VAST (Tel Aviv team)
-**Location**: Tel Aviv
-**Relationship**: Engineering collaborator for 5.5 design alignment
+**Role**: Product/pricing stakeholder
+**Relationship**: Internal collaborator
 
 **Background**:
-- Involved in aligning on write-lease design and read redirection behaviors for the 5.5 release.
-- Discussed constraints and leadership dynamics impacting adoption of formal product management discipline; provided concrete pain points/examples to support a proposal.
+- Owner for defining overage policy and units of measurement for future pricing model (compute/capacity).
 
 ## Key Facts
 
-- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
-- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
-- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
-- Rob’s customer success org is primarily support and systems engineering today.
-- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
-- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
-- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
-- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
-- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
-- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
+- MVP pricing is $0.07/GB capacity with fixed term/fixed price via Google Cloud Marketplace private offers.
+- All MVP transactions go through marketplaces; BYOL is explicitly excluded for MVP.
+- Tackle.io is used as middleware to generate private offers and sync them with Salesforce opportunities.
+- Polaris is the source of truth for entitlements, usage, and metering; entitlements enforced via tokens (no license keys).
+- Considering ~10% overage allowance; goal is to charge overage at PAYGO list price, but GCP Marketplace may not support this natively.
+- EULA language must explicitly cover overage billing terms in marketplace offers.
+- Customer alerting exists for exceeding limits; internal CS/sales alerting was identified as missing and needed.
+- First GCP transactions targeted for Nov–Dec, with intent to replicate approach to other hyperscalers afterward.
+- Finance will not have a separate cloud P&L; cloud metrics will be reported within overall P&L, and SaaS/consumption metrics need definition before SaaS launch.
 
 ## Topics
 
-Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications), Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle)
+GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity pricing and $0.07/GB list price, Tackle.io integration with Salesforce for private offers, Polaris entitlements, call-home, metering, and token enforcement, Overage policy (10% allowance) and PAYGO list pricing workaround, Marketplace EULA language for overage billing, Internal alerting/dashboards for CS/sales on entitlement usage, Finance processes: billing, payout cadence, reconciliation, rev rec, Hybrid on-prem/cloud conversion and revenue recognition complexity, Multi-cloud pooling feasibility and hyperscaler messaging concerns, Unit-based pricing model for compute/capacity
 
 ## Key Decisions
 
-- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
-- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
-- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
-- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
-- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
-- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+- ✅ Transact exclusively through cloud marketplaces for MVP (no BYOL).
+- ✅ Use Tackle.io to generate and manage private offers integrated with Salesforce.
+- ✅ MVP pricing based on fixed capacity at $0.07/GB.
+- ✅ Polaris will manage entitlement, call-home registration, and usage reporting.
+
+## Related Customers
+
+- [[Google]]
+
+## Related Projects
+
+- [[Pricing]]
+- [[Cloud]]
 
 ## Related
 

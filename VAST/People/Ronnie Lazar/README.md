@@ -1,18 +1,67 @@
 ---
 type: people
-title: Karl Vietmeier
-last_contact: '2025-10-28'
+title: Ronnie Lazar
 created: '2026-01-03'
+last_contact: '2025-10-28'
+auto_created: true
 tags:
 - type/people
-- generated
+- needs-review
 ---
 
-# Karl Vietmeier
+# Ronnie Lazar
 
-## Recent Context
+## Contact Information
 
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
+| Field | Value |
+|-------|-------|
+| **Role** |  |
+| **Company** |  |
+| **Department** | _Unknown_ |
+| **Email** | _Unknown_ |
+| **Phone** | _Unknown_ |
+| **LinkedIn** | _Unknown_ |
+| **Location** | _Unknown_ |
+
+## Relationship
+
+_How do you work with this person? What is your dynamic?_
+
+## Background
+
+_Career history, expertise, interests, personal details shared..._
+
+
+## Projects
+
+_What projects are you collaborating on with this person?_
+
+```dataview
+LIST
+FROM "VAST/Projects" OR "Personal/Projects"
+WHERE contains(file.outlinks, this.file.link)
+```
+
+
+## Open Tasks
+
+```dataview
+TASK
+FROM ""
+WHERE !completed AND contains(text, "Ronnie Lazar")
+SORT due ASC
+```
+
+
+## Tasks They Own
+
+_Action items this person is responsible for:_
+
+```dataview
+TASK
+WHERE contains(text, "@RonnieLazar") AND !completed
+SORT due ASC
+```
 
 ## Key Facts
 
@@ -27,16 +76,20 @@ tags:
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
 - Ben (Google PM) is the new PM counterpart for this effort, replacing a prior counterpart (name not captured as a full name).
 
-## Topics
+## Topics Discussed
 
 GCP IP allocation/reservation semantics and failover race window, Static IP reservation via Terraform and MIG static IP pools, VIP/failover approaches: alias IP vs route-based vs ILB, RDMA networking constraints on Z4M shapes, Dual-interface (RDMA + TCP) topology and bandwidth allocation, Cross-project RDMA connectivity via Private Service Connect interfaces (PSCI) vs VPC peering, Testing scale planning and longer-term volume projections for capacity planning, GPU direct storage RDMA vs inter-node RDMA
 
+## Recent Context
+
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
+
 ## Profile
 
-**Relationship**: Internal/partner collaborator
+**Relationship**: Internal collaborator / meeting participant
 
 **Background**:
-- Asked questions about RDMA usage scope (client-to-cluster vs inter-node) and NIC/bandwidth behavior.
+- Discussed IP reassignment race window and MIG static IP pools; committed to share Terraform snippets and provide estimates and projections for RDMA Z4M testing and capacity planning.
 
 ## Key Decisions
 
@@ -50,4 +103,8 @@ GCP IP allocation/reservation semantics and failover race window, Static IP rese
 
 ## Related
 
-<!-- Wikilinks to related entities -->
+
+
+
+---
+*Last updated: *

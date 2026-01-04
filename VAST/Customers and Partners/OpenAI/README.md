@@ -1,7 +1,7 @@
 ---
 type: customer
 title: OpenAI
-last_contact: '2025-12-19'
+last_contact: '2025-11-12'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -12,19 +12,20 @@ tags:
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19]] - Jason Vallery and Jeff Denworth discuss strategy around supporting the Azure Blob API versus Microso... (via Jeff Denworth)
+- 2025-11-12: [[2025-11-12 - Announcements]] - Analysis of Microsoft’s updated AI capacity and monetization strategy (Azure Foundry/token APIs) and... (via Microsoft)
 
 ## Key Facts
 
-- Pete Eming reports to Vamshi and currently owns the Azure Storage relationship with OpenAI and Microsoft AI (previously owned by Jason).
-- OpenAI is reportedly replatforming away from Azure Blob API for some scenarios and building their own solution using rclone and other tools.
-- Discussion claim: Microsoft’s deal with OpenAI gives Microsoft exclusive ownership/rights to every line of code written at OpenAI until AGI is declared by OpenAI’s board; Microsoft can reuse that IP for Azure services.
-- Per discussion, OpenAI’s likely competition is internal (in-house storage/capacity management) rather than external vendors like Weka.
-- OpenAI infrastructure mentioned: L-series VMs, potential bare metal L-series, bare metal UltraDisk, and Blob Storage HDD clusters.
+- Microsoft’s 'Big Pause' is over; Microsoft is scrambling for near-term AI capacity across self-build, leases, and neocloud.
+- Microsoft monetization thesis: Tokens/API > IaaS; Azure Foundry positioned as a 'token factory'.
+- Accelerator dependencies: Nvidia remains primary; MAIA lags; Microsoft may use OpenAI’s ASIC.
+- Oct 28 agreement details: Azure API exclusivity for OpenAI continues; Microsoft IP rights extended to 2032; research IP access ends by AGI panel decision or 2030; OpenAI to purchase $250B+ of Azure services; no right-of-first-refusal for Microsoft; both can independently pursue AGI.
+- Training vs post-training/inference mix is shifting; post-training compute is ramping and latency-insensitive, enabling remote DC placement.
+- Economic life of GPUs expected to exceed 2–3 years, implying long-lived clusters with continual data growth needs (checkpoints, logs, evals, datasets).
 
 ## Topics
 
-Blob API vs Tuscany trade-offs, MVP vs broader market surface area ('crawl, walk, run'), OpenAI moving away from Blob API, OpenAI internal storage stack and Rockset/RocksDB, Microsoft rights to OpenAI IP and AGI clause risk, Competitive landscape (internal vs external vendors)
+Microsoft AI capacity planning (self-build, leases, neocloud), Azure Foundry monetization (tokens/API vs IaaS), Microsoft–OpenAI partnership terms (exclusivity, IP, ROFR, $250B Azure commitment), Accelerator roadmap uncertainty (Nvidia, MAIA, OpenAI ASIC), Storage positioning for training, post-training, and inference, Neocloud co-sell strategy and cross-cloud data mobility
 
 ## Open Tasks
 
@@ -34,8 +35,8 @@ Blob API vs Tuscany trade-offs, MVP vs broader market surface area ('crawl, walk
 
 | Field | Value |
 |-------|-------|
-| **Status** | Prospect |
-| **Industry** | AI / Technology |
+| **Status** | Active |
+| **Industry** | _Unknown_ |
 
 ## Key Contacts
 
@@ -43,13 +44,12 @@ _No key contacts identified._
 
 ## Opportunities
 
-- Potential conversations about providing a sync engine / storage capabilities
-- Blob API compatibility and/or alternative integration paths
+- Propose VAST as portable, consistent data fabric spanning multi-provider deployments (Azure and other providers) and future OpenAI ASIC pods.
+- Target OpenAI directly for multi-provider builds given no Microsoft ROFR; position VAST as common data layer across providers.
 
 ## Blockers
 
-- ❌ OpenAI reportedly replatforming away from Blob API in some scenarios
-- ❌ OpenAI may build in-house storage stack reducing need for external solutions
+- ❌ Operational loosened exclusivity constraints may increase multi-provider complexity; need consistent data layer.
 
 ## Key Decisions
 

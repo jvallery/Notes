@@ -1,7 +1,7 @@
 ---
 type: people
 title: Asaf Levy
-last_contact: unknown
+last_contact: '2025-10-28'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,33 +12,41 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Asaf Levy]] - Note tracks completed action items from working with Asaf Levy (chief architect) to align on persist...
-- 2025-10-20: [[2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto]] - Weekly 1:1 with Yogev Vankin focused on VAST multi-cloud architecture across AWS/GCP/Azure, centerin... (via Yogev Vankin)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
 
 ## Profile
 
-**Role**: Chief Architect at VAST
-**Relationship**: Architecture stakeholder/partner I met with to align on design decisions
+**Relationship**: Partner collaborator (Google discussions)
 
 **Background**:
-- Partnered on persistence design, object tiering, and QoS/governance; contributed by defining governance model, benchmarking metadata persistence storage options, and sharing DataSpaces architecture/persistence roadmap.
+- Meeting participant discussing GCP IP management and failover approaches for RDMA/Z4M.
 
 ## Key Facts
 
-- Asaf Levy is the chief architect involved in aligning persistence design, object tiering, and QoS/governance for DataSpaces.
-- QoS/governance model includes quotas and identity-based prioritization across throughput, TPS, and capacity.
-- Metadata persistence options under consideration include Premium Blob and S3 Express versus block storage.
-- Object-tiering design proposal spans Blob/S3/GCS and includes metadata persistence and consistency trade-offs.
-- DataSpaces architecture docs and persistence roadmap were shared with Jason.
-- Initial AWS design used a single VM (50 TB) as a global namespace cache; later persisted data to S3 and metadata to EBS with local SSD reads, at ~30% cost overhead.
-- GCP design moved to a clustered approach with a mix of data-storing and compute-only VMs; experimented with N and z3 instance families.
-- AWS and Azure clusters exist but are not production-grade; Oracle Cloud POC is completed.
-- There are no paying customers yet for this product track.
-- OpenAI pattern: central durable storage in hero regions with GPUs distributed across many regions/clouds; async pre-staging to GPU-adjacent stores.
+- GCP IP reassignment requires remove then reassign, creating a short race window during failover.
+- MIGs can use a pool of reserved static IPs for primary addresses; alias IP behavior differs.
+- Alias IPs are expected to be unsupported with RDMA; RDMA uses a separate subnet/interface.
+- Z4M will launch with inter-node RDMA; GPU-direct storage RDMA is a separate effort.
+- Two interfaces (RDMA and TCP) are expected per Z4M instance; may be same VPC on different subnets.
+- Cross-project RDMA will require Private Service Connect interfaces; VPC peering will not be supported.
+- Route-based failover has latency/convergence considerations; ILB introduces pricing/feature tradeoffs.
+- Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
+- Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
+- Ben (Google PM) is the new PM counterpart for this effort, replacing a prior counterpart (name not captured as a full name).
 
 ## Topics
 
-Persistence design, Object tiering, QoS and governance, Quotas and identity-based prioritization, Metadata persistence storage options, Consistency trade-offs, DataSpaces architecture and persistence roadmap, Benchmarking Premium Blob and S3 Express vs block storage, Multi-cloud architecture for VAST across AWS/GCP/Azure (and Oracle Cloud POC), Global namespace caching and durability via object-store tiering, GPU-adjacent caching, prefetch APIs, and cache-on-read semantics, Metadata persistence options (block storage vs Premium Blob/S3 Express) and latency concerns, Consistency models (strong vs eventual) for different workloads, QoS/governance (identity-based quotas and prioritization across throughput/TPS/capacity), API parity considerations between S3 and Blob
+GCP IP allocation/reservation semantics and failover race window, Static IP reservation via Terraform and MIG static IP pools, VIP/failover approaches: alias IP vs route-based vs ILB, RDMA networking constraints on Z4M shapes, Dual-interface (RDMA + TCP) topology and bandwidth allocation, Cross-project RDMA connectivity via Private Service Connect interfaces (PSCI) vs VPC peering, Testing scale planning and longer-term volume projections for capacity planning, GPU direct storage RDMA vs inter-node RDMA
+
+## Key Decisions
+
+- ✅ Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).
+- ✅ Engage Google networking for a follow-up deep dive on RDMA and cross-project connectivity.
+- ✅ Begin sizing work starting with testing projections, then customer projections.
+
+## Related Projects
+
+- [[Cloud]]
 
 ## Related
 
