@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Tomer Hagay/README.md",
+                "file": "VAST/People/Satya Nadella/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -154,7 +154,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "VAST/People/Tomer Hagay/README.md",
+                "file": "VAST/People/Satya Nadella/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -185,6 +185,11 @@
   },
   "active": "af216fe4a7d76c13",
   "lastOpenFiles": [
+    "VAST/People/Sam Hopewell/README.md",
+    "Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md",
+    "VAST/People/Tiffany Stonehill/README.md",
+    "VAST/People/Timo Pervane/README.md",
+    "VAST/People/Tomer Hagay/README.md",
     "VAST/Projects/BlobFuse/README.md",
     "VAST/People/_MANIFEST.md",
     "Sources/Transcripts/2025/2025-10-29 - Tackle and VAST kicked off onboarding to sell VAST’s SaaS via Google Cloud Marke.md",
@@ -206,11 +211,6 @@
     "Sources/Transcripts/2025/2025-10-30 - Weekly SE community call covering end-of-quarter push, Tech Summit logistics, an.md",
     "Sources/Transcripts/2025/2025-11-03 - Team reviewed the updated 5.5 plan feature freeze next week, beta in January, r.md",
     "Sources/Transcripts/2025/2025-10-31 - Teams aligned on a two-track evaluation for Apollo’s AI cloud storage (A) valid.md",
-    "Sources/Transcripts/2025/2025-10-29 - Team aligned on a dual-path approach 1) deliver an Azure-based VAST test on LSV.md",
-    "Sources/Transcripts/2025/2025-10-27 - Team aligned on making UK Met Office successful with dual paths Plan A on Azure.md",
-    "Sources/Transcripts/2025/2025-10-28 - Working session on UK Met Gen2 storagecompute plan. VaST to run a pilot to vali.md",
-    "Sources/Transcripts/2025/2025-10-29 - Teams aligned to run two tracks in parallel an Azure LSV4 test cluster for UK M.md",
-    "Sources/Transcripts/2025/2025-10-31 - Discussion comparing Azure Managed Lustre architecture, scaling, and pricing wit.md",
     "Workflow/scripts/migrate/__init__.py",
     "Workflow/scripts/migrate/consolidate_sources.py",
     "Sources/Transcripts/2026",
