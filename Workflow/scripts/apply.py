@@ -32,7 +32,7 @@ from scripts.utils import (
     backup_file,
     require_clean,
     is_git_repo,
-    add_files,
+    stage_content_dirs,
     commit,
     get_archive_path,
     safe_relative_path,
@@ -112,15 +112,8 @@ class TransactionalApply:
             # 6. Stage all changes and commit (if in git repo)
             commit_hash = ""
             if is_git_repo(self.vault_root):
-                all_files = self.created_files + self.modified_files
-                
-                # Add archived sources
-                for _, original in self.moved_sources:
-                    archive_path = get_archive_path(self.vault_root, original)
-                    all_files.append(archive_path)
-                
-                # Stage files
-                add_files(self.vault_root, all_files)
+                # Stage all content directories with -A to capture creates, modifies, deletes, renames
+                stage_content_dirs(self.vault_root)
                 
                 # Build commit message
                 summary = self._build_commit_message(changeplans)
@@ -138,7 +131,7 @@ class TransactionalApply:
     def _backup(self, file_path: Path) -> None:
         """Create backup of file before modification."""
         if file_path not in self.backed_up:
-            backup_path = backup_file(file_path, self.backup_dir)
+            backup_path = backup_file(file_path, self.backup_dir, self.vault_root)
             self.backed_up[file_path] = backup_path
     
     def _apply_operation(self, op: Operation, allow_overwrite: bool = False) -> None:

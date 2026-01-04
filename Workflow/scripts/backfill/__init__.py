@@ -142,6 +142,45 @@ class CrossLinks(BaseModel):
     project_to_customer: dict[str, list[str]] = Field(default_factory=dict)
 
 
+class BackfillExtractionLite(BaseModel):
+    """
+    Lightweight extraction model for OpenAI structured outputs.
+    
+    This minimal schema is what the LLM returns. It gets transformed
+    into the full BackfillExtraction with metadata by the extractor.
+    Designed to minimize token usage while capturing essential data.
+    """
+    
+    model_config = ConfigDict(extra="forbid")
+    
+    summary: str = Field(description="1-2 sentence summary of the note content")
+    suggested_title: str | None = Field(
+        default=None, 
+        description="Better title for the note if current is generic like 'New Recording'"
+    )
+    note_type: str | None = Field(
+        default=None,
+        description="Type: meeting, 1-1, project, email, call, etc."
+    )
+    mentions: Mentions = Field(default_factory=Mentions)
+    key_facts: list[str] = Field(
+        default_factory=list,
+        description="Key facts, decisions, or insights from the note"
+    )
+    topics_discussed: list[str] = Field(
+        default_factory=list,
+        description="Main topics covered in the note"
+    )
+    tasks: list[ExtractedTask] = Field(
+        default_factory=list,
+        description="Action items extracted from the note"
+    )
+    decisions: list[str] = Field(
+        default_factory=list,
+        description="Decisions made in the note"
+    )
+
+
 class BackfillExtraction(BaseModel):
     """Rich extraction result for a single note."""
     

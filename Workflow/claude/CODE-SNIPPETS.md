@@ -20,25 +20,25 @@ class ExtractionV1(BaseModel):
     version: Literal["1.0"] = Field(default="1.0")
     source_file: str = Field(default="")
     processed_at: datetime = Field(default_factory=datetime.now)
-    
+
     # Classification
     note_type: Literal[
         "customer", "people", "projects", "rob", "journal", "partners", "travel"
     ] = Field(description="Type of note this content represents")
     entity_name: str | None = Field(default=None)
-    
+
     # Core content
     title: str = Field(description="Brief descriptive title (3-7 words)")
     date: str = Field(description="Date in YYYY-MM-DD format")
     participants: list[str] = Field(default_factory=list)
     summary: str = Field(description="2-3 sentence summary")
-    
+
     # Extracted items
     tasks: list[TaskItem] = Field(default_factory=list)
     decisions: list[str] = Field(default_factory=list)
     facts: list[str] = Field(default_factory=list)
     mentions: Mentions = Field(default_factory=Mentions)
-    
+
     # Quality signals
     confidence: float = Field(default=1.0, ge=0.0, le=1.0)
     warnings: list[str] = Field(default_factory=list)
@@ -99,11 +99,11 @@ def parse_structured(
 ) -> tuple[BaseModel, dict]:
     """
     Parse structured response using OpenAI Responses API.
-    
+
     CRITICAL: Always uses store=False for privacy.
     """
     start_time = time.time()
-    
+
     response = client.responses.parse(
         model=model,
         input=[
@@ -114,9 +114,9 @@ def parse_structured(
         store=False,  # PRIVACY REQUIREMENT
         temperature=temperature,
     )
-    
+
     latency_ms = int((time.time() - start_time) * 1000)
-    
+
     return response.output_parsed, {
         "latency_ms": latency_ms,
         "total_tokens": response.usage.total_tokens,
@@ -133,19 +133,19 @@ def parse_structured(
 @dataclass
 class TransactionalApply:
     """Executes ChangePlans with rollback on failure."""
-    
+
     vault_root: Path
     run_id: str
     backup_dir: Path = field(init=False)
     created_files: list[Path] = field(default_factory=list)
     backed_up: dict[Path, Path] = field(default_factory=dict)
-    
+
     def execute_batch(self, changeplans: list[ChangePlan], source_files: list[Path]):
         """Execute ALL changeplans atomically."""
-        
+
         # 1. Require clean git tree
         require_clean(self.vault_root, allow_dirty=allow_dirty)
-        
+
         # 2. Validate ALL changeplans before touching disk
         all_issues = []
         for plan in changeplans:
@@ -154,7 +154,7 @@ class TransactionalApply:
                 all_issues.extend(issues)
         if all_issues:
             raise ValueError("Invalid changeplans")
-        
+
         try:
             # 3. Backup all files that will be modified
             for plan in changeplans:
@@ -162,23 +162,23 @@ class TransactionalApply:
                     target = self.vault_root / op.path
                     if target.exists() and op.op in [PATCH, LINK]:
                         self._backup(target)
-            
+
             # 4. Execute ALL operations
             for plan in changeplans:
                 for op in plan.operations:
                     self._apply_operation(op)
-            
+
             # 5. Archive sources, git commit
             for source_file in source_files:
                 self._archive_source(source_file)
-            
+
             commit_hash = commit(self.vault_root, summary)
-            
+
             # 6. Cleanup backups on success
             shutil.rmtree(self.backup_dir, ignore_errors=True)
-            
+
             return commit_hash
-            
+
         except Exception:
             self._rollback()  # Restore backups, delete new files
             raise
@@ -193,7 +193,7 @@ class TransactionalApply:
 
 def upsert_frontmatter(content: str, patches: list) -> str:
     """Update or insert frontmatter fields."""
-    
+
     # Parse existing frontmatter
     if content.startswith("---"):
         end = content.find("\n---", 3)
@@ -221,7 +221,7 @@ def append_under_heading(content: str, heading: str, text: str) -> str:
     lines = content.split("\n")
     heading_level = heading.count("#")
     heading_text = heading.lstrip("# ").strip()
-    
+
     # Find heading and insert before next heading of same/higher level
     for i, line in enumerate(lines):
         if heading_text in line and line.strip().startswith("#" * heading_level):
@@ -234,7 +234,7 @@ def append_under_heading(content: str, heading: str, text: str) -> str:
             # Insert before next heading
             lines.insert(j, text.rstrip())
             return "\n".join(lines)
-    
+
     # Heading not found, append at end
     return content + f"\n\n{heading}\n\n{text.rstrip()}\n"
 
@@ -260,16 +260,16 @@ def ensure_wikilinks(content: str, links: list[str]) -> str:
 def validate_changeplan(plan: ChangePlan) -> list[str]:
     """Strict validation of ChangePlan before disk writes."""
     issues = []
-    
+
     for i, op in enumerate(plan.operations):
         # Validate paths - no absolute, no traversal
         if op.path.startswith("/") or ".." in op.path:
             issues.append(f"Operation {i}: invalid path '{op.path}'")
-        
+
         # Check for forbidden operations
         if op.op.value not in ["create", "patch", "link"]:
             issues.append(f"Operation {i}: forbidden op type")
-        
+
         # Type-specific validation
         if op.op == OperationType.CREATE:
             if not op.template:
@@ -278,11 +278,11 @@ def validate_changeplan(plan: ChangePlan) -> list[str]:
                 issues.append(f"Operation {i}: forbidden template")
             if not op.context:
                 issues.append(f"Operation {i}: CREATE requires context")
-        
+
         elif op.op == OperationType.PATCH:
             if not op.patches:
                 issues.append(f"Operation {i}: PATCH requires patches list")
-    
+
     return issues
 ```
 
@@ -423,16 +423,16 @@ def require_clean(vault_root: Path, allow_dirty: bool = False):
     """Fail fast if git tree is dirty."""
     if allow_dirty:
         return
-    
+
     status = get_status(vault_root)
-    
+
     # Filter to only content directories
     relevant_changes = [
         f for f in status.changed_files
         if any(f.startswith(p) for p in CHECKED_PATHS)
         and not any(p in f for p in IGNORED_PATTERNS)
     ]
-    
+
     if relevant_changes:
         raise RuntimeError(
             f"Git working directory has uncommitted changes:\n"
@@ -456,34 +456,34 @@ def commit(vault_root: Path, message: str) -> str:
 def match_entity(name: str, entity_type: str, vault_root: Path) -> tuple[str, float]:
     """
     Match a name to an existing entity folder.
-    
+
     Returns (folder_name, confidence) or (None, 0.0)
     """
     entities = list_entities(entity_type, vault_root)
-    
+
     # Exact match
     if name in entities:
         return name, 1.0
-    
+
     # Check aliases
     aliases = load_aliases()
     for canonical, alias_list in aliases.get(entity_type, {}).items():
         if name.lower() in [a.lower() for a in alias_list]:
             return canonical, 0.95
-    
+
     # Fuzzy match
     from difflib import SequenceMatcher
     best_match = None
     best_score = 0.0
-    
+
     for entity in entities:
         score = SequenceMatcher(None, name.lower(), entity.lower()).ratio()
         if score > best_score:
             best_score = score
             best_match = entity
-    
+
     if best_score > 0.8:
         return best_match, best_score
-    
+
     return None, 0.0
 ```

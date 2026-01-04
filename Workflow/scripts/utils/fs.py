@@ -39,11 +39,33 @@ def safe_read_text(path: Path, encoding: str = "utf-8") -> str:
         return path.read_text(encoding="latin-1")
 
 
-def backup_file(source: Path, backup_dir: Path) -> Path:
-    """Copy file to backup directory, preserving relative structure."""
-    # Preserve the filename in backup dir
-    backup_path = backup_dir / source.name
+def backup_file(source: Path, backup_dir: Path, vault_root: Path = None) -> Path:
+    """
+    Copy file to backup directory, preserving vault-relative structure.
+    
+    T3 FIX: Preserves directory structure to prevent collisions when
+    multiple files share the same name (e.g., README.md in different folders).
+    
+    Args:
+        source: File to backup
+        backup_dir: Root of backup directory
+        vault_root: Vault root for relative path calculation (optional)
+        
+    Returns:
+        Path to the backup file
+    """
+    if vault_root is not None:
+        try:
+            # Preserve vault-relative path structure
+            rel_path = source.resolve().relative_to(vault_root.resolve())
+            backup_path = backup_dir / rel_path
+        except ValueError:
+            # Source not under vault_root, fall back to filename only
+            backup_path = backup_dir / source.name
+    else:
+        # Legacy behavior: filename only (kept for backward compatibility)
+        backup_path = backup_dir / source.name
+    
     backup_path.parent.mkdir(parents=True, exist_ok=True)
-
     shutil.copy2(source, backup_path)
     return backup_path

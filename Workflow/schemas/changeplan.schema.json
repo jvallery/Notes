@@ -71,11 +71,18 @@
                 },
                 {
                   "type": "object",
-                  "required": ["primitive", "heading", "content"],
+                  "required": ["primitive", "heading"],
                   "properties": {
                     "primitive": { "const": "append_under_heading" },
-                    "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
-                    "content": { "type": "string", "description": "Content to append" }
+                    "heading": {
+                      "type": "object",
+                      "required": ["heading", "content"],
+                      "properties": {
+                        "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
+                        "content": { "type": "string", "description": "Content to append" }
+                      },
+                      "additionalProperties": false
+                    }
                   }
                 },
                 {

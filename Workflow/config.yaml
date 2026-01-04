@@ -67,47 +67,48 @@ models:
     store: false
     api: "responses"
 
-  # Best overall for schema-first routing + extraction + planning (Dec 2025)
-  # Pin to snapshot for stability / reproducibility.
+  # Model selection: gpt-4o for quality, gpt-4o-mini for speed/cost
+  # Updated 2026-01-03 to use valid model names
   classify:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o-mini"
+    fallback: "gpt-4o"
     temperature: 0.0
     max_tokens: 800
 
   extract_transcript:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o"
+    fallback: "gpt-4o-mini"
     temperature: 0.0
     max_tokens: 8192
 
   extract_email:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o"
+    fallback: "gpt-4o-mini"
     temperature: 0.0
     max_tokens: 4096
 
   extract_voice:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o"
+    fallback: "gpt-4o-mini"
     temperature: 0.0
     max_tokens: 4096
 
   planning:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o"
+    fallback: "gpt-4o-mini"
     temperature: 0.0
     max_tokens: 8192
   # Backfill: Historical content extraction for README population
+  # Use mini for cost efficiency on bulk operations
   backfill:
     provider: "openai"
-    model: "gpt-5.2-2025-12-11"
-    fallback: "gpt-5.2"
+    model: "gpt-4o-mini"
+    fallback: "gpt-4o"
     temperature: 0.0
     max_tokens: 1024
   # Conflict resolution only

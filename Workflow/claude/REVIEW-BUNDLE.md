@@ -11,18 +11,18 @@ This is a **local-first Obsidian automation system** for processing meeting tran
 
 ### System Health: 🟡 Functional with Gaps
 
-| Area | Status | Notes |
-|------|--------|-------|
-| Core Pipeline | 🟢 Working | Extract → Plan → Apply flow operational |
-| Pydantic Models | 🟢 Complete | ExtractionV1, ChangePlan, TaskItem, etc. |
-| Templates | 🟢 Complete | 11 Jinja2 templates covering all note types |
-| Prompts | 🟡 Functional | 5 prompts, but aliases not loaded in planner |
-| Config | 🟡 Stale | References non-existent model `gpt-5.2-2025-12-11` |
-| Backfill | 🟡 Complete | Full pipeline but separate from main flow |
-| Entity Matching | 🟡 Partial | aliases.yaml exists but TODO in plan.py |
-| Documentation | 🟢 Good | README.md recently rewritten, DESIGN.md comprehensive |
-| Test Coverage | 🔴 Missing | No tests directory or test files found |
-| Inbox Queue | 🟡 Pending | 6 transcripts + 7 emails awaiting processing |
+| Area            | Status        | Notes                                                 |
+| --------------- | ------------- | ----------------------------------------------------- |
+| Core Pipeline   | 🟢 Working    | Extract → Plan → Apply flow operational               |
+| Pydantic Models | 🟢 Complete   | ExtractionV1, ChangePlan, TaskItem, etc.              |
+| Templates       | 🟢 Complete   | 11 Jinja2 templates covering all note types           |
+| Prompts         | 🟡 Functional | 5 prompts, but aliases not loaded in planner          |
+| Config          | 🟡 Stale      | References non-existent model `gpt-5.2-2025-12-11`    |
+| Backfill        | 🟡 Complete   | Full pipeline but separate from main flow             |
+| Entity Matching | 🟡 Partial    | aliases.yaml exists but TODO in plan.py               |
+| Documentation   | 🟢 Good       | README.md recently rewritten, DESIGN.md comprehensive |
+| Test Coverage   | 🔴 Missing    | No tests directory or test files found                |
+| Inbox Queue     | 🟡 Pending    | 6 transcripts + 7 emails awaiting processing          |
 
 ---
 
@@ -53,13 +53,13 @@ Inbox/Attachments/*     ──┘
 
 ### 2.3 File Counts
 
-| Location | Count | Notes |
-|----------|-------|-------|
-| VAST/People/ | ~125 folders | Each with README.md + dated notes |
-| VAST/Customers and Partners/ | ~39 folders | Account-level organization |
-| Personal/Projects/ | ~6 folders | Personal project tracking |
-| Inbox/Transcripts/ | 6 pending | Unprocessed transcripts |
-| Inbox/Email/ | 7 pending | Unprocessed emails |
+| Location                     | Count        | Notes                             |
+| ---------------------------- | ------------ | --------------------------------- |
+| VAST/People/                 | ~125 folders | Each with README.md + dated notes |
+| VAST/Customers and Partners/ | ~39 folders  | Account-level organization        |
+| Personal/Projects/           | ~6 folders   | Personal project tracking         |
+| Inbox/Transcripts/           | 6 pending    | Unprocessed transcripts           |
+| Inbox/Email/                 | 7 pending    | Unprocessed emails                |
 
 ---
 
@@ -67,88 +67,88 @@ Inbox/Attachments/*     ──┘
 
 ### 3.1 Core Scripts (`scripts/`)
 
-| File | Lines | Purpose | Dependencies |
-|------|-------|---------|--------------|
-| `extract.py` | 386 | Phase 1: Content → ExtractionV1 JSON | openai, profiles, prompts |
-| `plan.py` | 274 | Phase 2: Extraction → ChangePlan JSON | openai, entities |
-| `apply.py` | 382 | Phase 3: ChangePlan → File Updates | git_ops, templates, patch_primitives |
-| `process_inbox.py` | 456 | Full pipeline orchestrator | extract, plan, apply |
-| `backfill.py` | 645 | Historical content processing CLI | backfill/* modules |
-| `classify.py` | ~100 | Note type classification | openai |
-| `validate.py` | ~80 | Schema validation | pydantic |
-| `config.py` | ~60 | Config loading | yaml |
-| `migrate.py` | ~200 | Migration utilities | - |
+| File               | Lines | Purpose                               | Dependencies                         |
+| ------------------ | ----- | ------------------------------------- | ------------------------------------ |
+| `extract.py`       | 386   | Phase 1: Content → ExtractionV1 JSON  | openai, profiles, prompts            |
+| `plan.py`          | 274   | Phase 2: Extraction → ChangePlan JSON | openai, entities                     |
+| `apply.py`         | 382   | Phase 3: ChangePlan → File Updates    | git_ops, templates, patch_primitives |
+| `process_inbox.py` | 456   | Full pipeline orchestrator            | extract, plan, apply                 |
+| `backfill.py`      | 645   | Historical content processing CLI     | backfill/\* modules                  |
+| `classify.py`      | ~100  | Note type classification              | openai                               |
+| `validate.py`      | ~80   | Schema validation                     | pydantic                             |
+| `config.py`        | ~60   | Config loading                        | yaml                                 |
+| `migrate.py`       | ~200  | Migration utilities                   | -                                    |
 
 ### 3.2 Utility Modules (`scripts/utils/`)
 
-| Module | Purpose | Used By |
-|--------|---------|---------|
-| `config.py` | Load config.yaml, env vars | All scripts |
-| `openai_client.py` | API client with structured outputs | extract, plan, backfill |
-| `entities.py` | Entity matching, folder resolution | plan, extract |
-| `git_ops.py` | Git operations (require_clean, commit) | apply |
-| `patch_primitives.py` | upsert_frontmatter, append_under_heading | apply |
-| `templates.py` | Jinja2 template rendering | apply |
-| `profiles.py` | Load extraction profiles | extract |
-| `fs.py` | atomic_write, safe_read_text | all |
-| `paths.py` | Path resolution utilities | all |
-| `validation.py` | ChangePlan validation | plan, apply |
-| `standards_check.py` | Frontmatter/filename validation | apply |
-| `logging.py` | Structured logging | all |
+| Module                | Purpose                                  | Used By                 |
+| --------------------- | ---------------------------------------- | ----------------------- |
+| `config.py`           | Load config.yaml, env vars               | All scripts             |
+| `openai_client.py`    | API client with structured outputs       | extract, plan, backfill |
+| `entities.py`         | Entity matching, folder resolution       | plan, extract           |
+| `git_ops.py`          | Git operations (require_clean, commit)   | apply                   |
+| `patch_primitives.py` | upsert_frontmatter, append_under_heading | apply                   |
+| `templates.py`        | Jinja2 template rendering                | apply                   |
+| `profiles.py`         | Load extraction profiles                 | extract                 |
+| `fs.py`               | atomic_write, safe_read_text             | all                     |
+| `paths.py`            | Path resolution utilities                | all                     |
+| `validation.py`       | ChangePlan validation                    | plan, apply             |
+| `standards_check.py`  | Frontmatter/filename validation          | apply                   |
+| `logging.py`          | Structured logging                       | all                     |
 
 ### 3.3 Backfill Modules (`scripts/backfill/`)
 
-| Module | Purpose |
-|--------|---------|
-| `scanner.py` | Find notes needing backfill |
-| `extractor.py` | AI extraction for historical notes |
-| `aggregator.py` | Build README update plans |
-| `applier.py` | Transactional README updates |
-| `entities.py` | Entity discovery and enrichment |
+| Module          | Purpose                            |
+| --------------- | ---------------------------------- |
+| `scanner.py`    | Find notes needing backfill        |
+| `extractor.py`  | AI extraction for historical notes |
+| `aggregator.py` | Build README update plans          |
+| `applier.py`    | Transactional README updates       |
+| `entities.py`   | Entity discovery and enrichment    |
 
 ### 3.4 Models (`models/`)
 
-| Model | Fields | Notes |
-|-------|--------|-------|
+| Model          | Fields                                                                                                              | Notes                                  |
+| -------------- | ------------------------------------------------------------------------------------------------------------------- | -------------------------------------- |
 | `ExtractionV1` | note_type, entity_name, title, date, participants, summary, tasks, decisions, facts, mentions, confidence, warnings | Schema-enforced output from extraction |
-| `ChangePlan` | source_file, extraction_file, operations[], warnings[] | Batch of vault operations |
-| `Operation` | op, path, template, context, patches, links | Single vault operation |
-| `TaskItem` | text, owner, due, priority, confidence | Extracted task |
+| `ChangePlan`   | source_file, extraction_file, operations[], warnings[]                                                              | Batch of vault operations              |
+| `Operation`    | op, path, template, context, patches, links                                                                         | Single vault operation                 |
+| `TaskItem`     | text, owner, due, priority, confidence                                                                              | Extracted task                         |
 
 ### 3.5 Templates (`templates/`)
 
-| Template | Type | Used For |
-|----------|------|----------|
-| `people.md.j2` | Note | 1:1 meeting notes |
-| `customer.md.j2` | Note | Customer meeting notes |
-| `partners.md.j2` | Note | Partner meeting notes |
-| `projects.md.j2` | Note | Project notes |
-| `rob.md.j2` | Note | Rhythm of Business notes |
-| `journal.md.j2` | Note | Journal entries |
-| `travel.md.j2` | Note | Travel notes |
-| `readme-person.md.j2` | README | Person folder root doc |
-| `readme-customer.md.j2` | README | Account folder root doc |
-| `readme-project.md.j2` | README | Project folder root doc |
-| `readme-migration.md.j2` | README | Migration template |
+| Template                 | Type   | Used For                 |
+| ------------------------ | ------ | ------------------------ |
+| `people.md.j2`           | Note   | 1:1 meeting notes        |
+| `customer.md.j2`         | Note   | Customer meeting notes   |
+| `partners.md.j2`         | Note   | Partner meeting notes    |
+| `projects.md.j2`         | Note   | Project notes            |
+| `rob.md.j2`              | Note   | Rhythm of Business notes |
+| `journal.md.j2`          | Note   | Journal entries          |
+| `travel.md.j2`           | Note   | Travel notes             |
+| `readme-person.md.j2`    | README | Person folder root doc   |
+| `readme-customer.md.j2`  | README | Account folder root doc  |
+| `readme-project.md.j2`   | README | Project folder root doc  |
+| `readme-migration.md.j2` | README | Migration template       |
 
 ### 3.6 Prompts (`prompts/`)
 
-| Prompt | Purpose | Included By |
-|--------|---------|-------------|
-| `base.md.j2` | Universal rules (trust boundary, dates, tasks) | All extraction prompts |
-| `system-extractor.md.j2` | Main extraction prompt with profile injection | extract.py |
-| `system-planner.md.j2` | ChangePlan generation prompt | plan.py |
-| `backfill-extractor.md.j2` | Historical note summarization | backfill.py |
-| `audit-readme.md` | README quality assessment | manual |
+| Prompt                     | Purpose                                        | Included By            |
+| -------------------------- | ---------------------------------------------- | ---------------------- |
+| `base.md.j2`               | Universal rules (trust boundary, dates, tasks) | All extraction prompts |
+| `system-extractor.md.j2`   | Main extraction prompt with profile injection  | extract.py             |
+| `system-planner.md.j2`     | ChangePlan generation prompt                   | plan.py                |
+| `backfill-extractor.md.j2` | Historical note summarization                  | backfill.py            |
+| `audit-readme.md`          | README quality assessment                      | manual                 |
 
 ### 3.7 Profiles (`profiles/`)
 
-| Profile | Use Case | Key Focus Areas |
-|---------|----------|-----------------|
-| `work_sales.yaml` | Customer/partner meetings | Deal status, blockers, next steps |
-| `work_engineering.yaml` | Technical discussions | Architecture decisions, requirements |
-| `work_leadership.yaml` | Strategy/planning | Decisions, priorities, resources |
-| `personal.yaml` | Personal context | Personal priorities, home projects |
+| Profile                 | Use Case                  | Key Focus Areas                      |
+| ----------------------- | ------------------------- | ------------------------------------ |
+| `work_sales.yaml`       | Customer/partner meetings | Deal status, blockers, next steps    |
+| `work_engineering.yaml` | Technical discussions     | Architecture decisions, requirements |
+| `work_leadership.yaml`  | Strategy/planning         | Decisions, priorities, resources     |
+| `personal.yaml`         | Personal context          | Personal priorities, home projects   |
 
 ---
 
@@ -160,7 +160,8 @@ Inbox/Attachments/*     ──┘
 
 **Problem**: Zero test files in the codebase.
 
-**Impact**: 
+**Impact**:
+
 - Cannot verify pipeline behavior
 - Risky to refactor
 - No regression protection
@@ -168,8 +169,9 @@ Inbox/Attachments/*     ──┘
 **Files Affected**: All scripts
 
 **Recommendation**: Create `tests/` directory with:
+
 - `test_extraction.py` - Model validation
-- `test_changeplan.py` - Operation validation  
+- `test_changeplan.py` - Operation validation
 - `test_apply.py` - Transactional apply tests
 - `test_patch_primitives.py` - Frontmatter/heading operations
 
@@ -181,12 +183,13 @@ Inbox/Attachments/*     ──┘
 
 ```yaml
 classify:
-  model: "gpt-5.2-2025-12-11"  # ← This model doesn't exist
+  model: "gpt-5.2-2025-12-11" # ← This model doesn't exist
 ```
 
 **Impact**: Pipeline will fail on OpenAI API calls
 
 **Recommendation**: Update to valid model names:
+
 - `gpt-4o` or `gpt-4o-mini` for current production
 - `gpt-4.5-preview` if using preview features
 
@@ -205,6 +208,7 @@ aliases={},  # TODO: Load from entities/aliases.yaml
 **Impact**: Entity matching won't use nickname/abbreviation mappings
 
 **Recommendation**: Load aliases in `build_planner_prompt()`:
+
 ```python
 from scripts.utils.config import workflow_root
 import yaml
@@ -221,14 +225,15 @@ aliases = yaml.safe_load(aliases_path.read_text()) if aliases_path.exists() else
 
 ```yaml
 resources:
-  prompts: "Inbox/_bins/_prompts"        # ← Archived/deleted
-  subtemplates: "Inbox/_bins/_prompts/subtemplates"  # ← Archived/deleted
-  templates: "Inbox/_bins/_templates"    # ← Archived/deleted
+  prompts: "Inbox/_bins/_prompts" # ← Archived/deleted
+  subtemplates: "Inbox/_bins/_prompts/subtemplates" # ← Archived/deleted
+  templates: "Inbox/_bins/_templates" # ← Archived/deleted
 ```
 
 **Impact**: Scripts may fail if they use these config paths
 
 **Recommendation**: Update to actual locations:
+
 ```yaml
 resources:
   prompts: "Workflow/prompts"
@@ -240,6 +245,7 @@ resources:
 **Problem**: Some emails appear twice with different sequence numbers.
 
 **Files**:
+
 - `2025-12-14_125503_6117_Your-BetterDisplay-order.md`
 - `2025-12-14_125503_6741_Your-BetterDisplay-order.md`
 - `2025-12-15_173836_2490_Dont-miss-conversations...`
@@ -256,6 +262,7 @@ resources:
 **Problem**: Some transcripts have colons or emojis in filenames that may cause issues.
 
 **Files**:
+
 - `2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md`
 - `2025-12-17 13:53 - Google Chrome.md`
 
@@ -267,7 +274,8 @@ resources:
 
 **Problem**: `backfill.py` is a separate CLI with its own modules, not integrated with `process_inbox.py`.
 
-**Impact**: 
+**Impact**:
+
 - Duplicate code between `backfill/applier.py` and `apply.py`
 - Different patterns for similar operations
 
@@ -278,12 +286,14 @@ resources:
 **Problem**: JSON schemas exist but may not be in sync with Pydantic models.
 
 **Files**:
+
 - `schemas/extraction.schema.json`
 - `schemas/changeplan.schema.json`
 
 **Impact**: Schema drift between JSON schema files and Pydantic models
 
 **Recommendation**: Generate JSON schemas from Pydantic models:
+
 ```python
 from models.extraction import ExtractionV1
 print(ExtractionV1.model_json_schema())
@@ -291,9 +301,10 @@ print(ExtractionV1.model_json_schema())
 
 ### 4.4 Low Priority Issues 🟢
 
-#### 4.4.1 Legacy Files in _archive
+#### 4.4.1 Legacy Files in \_archive
 
 **Files in `Workflow/_archive/`**:
+
 - `IMPLEMENTATION.md` (5,289 lines) - Old implementation docs
 - `REFACTOR.md` - Old migration design
 - `REVIEW-BUNDLE.md` - Previous review artifact
@@ -304,6 +315,7 @@ print(ExtractionV1.model_json_schema())
 #### 4.4.2 Empty Placeholder Folders
 
 **Folders**:
+
 - `VAST/Journal/` - Empty
 - `Personal/Journal/` - Empty
 - `VAST/Travel/` - Empty
@@ -354,6 +366,7 @@ tests/
 **Current**: Errors move files to `_failed/` with error.txt
 
 **Enhancement**: Add structured error reporting:
+
 ```python
 {
     "file": "original.md",
@@ -370,6 +383,7 @@ tests/
 **Current**: Logs in `Workflow/logs/`
 
 **Enhancement**: Create `Workflow/claude/METRICS.md` with:
+
 - Files processed per day
 - Success/failure rates
 - Token usage tracking
@@ -378,6 +392,7 @@ tests/
 ### 5.4 Email Deduplication
 
 **Enhancement**: Add content hashing to detect duplicate emails:
+
 ```python
 import hashlib
 
@@ -392,6 +407,7 @@ def content_hash(content: str) -> str:
 **Current**: Manual profile selection based on folder
 
 **Enhancement**: Use LLM classification to auto-select profile:
+
 ```python
 def auto_select_profile(content: str) -> str:
     # Use cheap model for classification

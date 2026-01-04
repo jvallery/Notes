@@ -19,14 +19,10 @@ from openai import OpenAI
 
 from . import (
     BackfillExtraction,
+    BackfillExtractionLite,
     BackfillManifest,
     ExtractionBatch,
-    Mentions,
     NoteMetadata,
-    PersonDetails,
-    ProjectDetails,
-    CustomerDetails,
-    ExtractedTask,
     CrossLinks,
 )
 
@@ -160,11 +156,13 @@ def extract_from_content(
     note_date: str | None,
     entity_name: str,
     content: str,
-    model: str = "gpt-5.2",
+    model: str = "gpt-4o-mini",
     manifests: dict[str, str] | None = None,
-) -> tuple[dict, int]:
+) -> tuple[BackfillExtractionLite, int]:
     """
-    Call OpenAI to extract metadata from note content.
+    Call OpenAI to extract metadata from note content using structured outputs.
+    
+    Uses Pydantic model parsing for guaranteed schema adherence.
     
     Args:
         client: OpenAI client
@@ -172,57 +170,36 @@ def extract_from_content(
         note_date: Date of the note if known
         entity_name: Name of the parent entity
         content: Note content
-        model: Model to use
+        model: Model to use (must support structured outputs)
         manifests: Entity manifests for context
     
     Returns:
-        Tuple of (extraction_dict, tokens_used)
+        Tuple of (BackfillExtractionLite, tokens_used)
     """
     prompt = render_prompt(note_path, note_date, entity_name, content, manifests)
     
-    # No content truncation - let the model handle full notes
-    # Token costs are acceptable for high-value extraction
-    
-    response = client.chat.completions.create(
+    # Use structured outputs with Pydantic model parsing
+    response = client.beta.chat.completions.parse(
         model=model,
         messages=[
-            {"role": "system", "content": "You extract rich structured data from notes. Return valid JSON only."},
+            {"role": "system", "content": "You extract structured metadata from notes for indexing. Extract only what is clearly present."},
             {"role": "user", "content": prompt},
         ],
+        response_format=BackfillExtractionLite,
         temperature=0.1,
-        # No token limit during testing - let reasoning models use what they need
-        # Removed max_completion_tokens to allow unlimited output
-        # CRITICAL: Privacy - don't store
-        store=False,
+        store=False,  # CRITICAL: Privacy - never store
     )
-    
-    # Parse response
-    response_text = response.choices[0].message.content or ""
-    response_text = response_text.strip()
-    
-    # Handle markdown code fences
-    if response_text.startswith("```"):
-        lines = response_text.split("\n")
-        # Remove first and last lines (fences)
-        response_text = "\n".join(lines[1:-1])
     
     tokens_used = response.usage.total_tokens if response.usage else 0
     
-    try:
-        result = json.loads(response_text)
-    except json.JSONDecodeError:
-        # Return empty extraction on parse failure
-        result = {
-            "summary": "",
-            "mentions": {"people": [], "projects": [], "accounts": []},
-            "person_details": {},
-            "tasks": [],
-            "decisions": [],
-            "key_facts": [],
-            "topics_discussed": [],
-        }
+    # Get parsed result (guaranteed to match schema)
+    parsed = response.choices[0].message.parsed
     
-    return result, tokens_used
+    if parsed is None:
+        # Fallback on refusal or parse failure
+        parsed = BackfillExtractionLite(summary="")
+    
+    return parsed, tokens_used
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -252,18 +229,20 @@ def extract_note(
     note: NoteMetadata,
     entity_path: str,
     vault: Path,
-    model: str = "gpt-5.2",
+    model: str = "gpt-4o-mini",
     manifests: dict[str, str] | None = None,
 ) -> BackfillExtraction | None:
     """
     Extract metadata from a single note.
+    
+    Uses structured outputs for guaranteed schema adherence.
     
     Args:
         client: OpenAI client
         note: Note metadata from scan
         entity_path: Parent entity folder path
         vault: Path to vault root
-        model: Model to use
+        model: Model to use (must support structured outputs)
         manifests: Entity manifests (loaded automatically if not provided)
     
     Returns:
@@ -287,7 +266,7 @@ def extract_note(
         return None
     
     try:
-        result, tokens = extract_from_content(
+        lite_result, tokens = extract_from_content(
             client=client,
             note_path=note.path,
             note_date=note.date,
@@ -300,70 +279,27 @@ def extract_note(
         print(f"  Error extracting {note.path}: {e}")
         return None
     
-    # Build mentions
-    mentions_data = result.get("mentions", {})
-    mentions = Mentions(
-        people=mentions_data.get("people", []),
-        projects=mentions_data.get("projects", []),
-        accounts=mentions_data.get("accounts", []),
-    )
+    # Check for tasks in content (legacy detection)
+    has_tasks = "- [ ]" in content or "- [x]" in content or len(lite_result.tasks) > 0
     
-    # Parse person details
-    person_details_raw = result.get("person_details", {})
-    person_details = {}
-    for name, details in person_details_raw.items():
-        if isinstance(details, dict):
-            person_details[name] = PersonDetails(**details)
-    
-    # Parse project details
-    project_details_raw = result.get("project_details", {})
-    project_details = {}
-    for name, details in project_details_raw.items():
-        if isinstance(details, dict):
-            project_details[name] = ProjectDetails(**details)
-    
-    # Parse customer details
-    customer_details_raw = result.get("customer_details", {})
-    customer_details = {}
-    for name, details in customer_details_raw.items():
-        if isinstance(details, dict):
-            customer_details[name] = CustomerDetails(**details)
-    
-    # Parse cross-links
-    cross_links_raw = result.get("cross_links", {})
-    cross_links = CrossLinks(
-        person_to_project=cross_links_raw.get("person_to_project", {}),
-        person_to_customer=cross_links_raw.get("person_to_customer", {}),
-        project_to_customer=cross_links_raw.get("project_to_customer", {}),
-    )
-    
-    # Parse tasks
-    tasks_raw = result.get("tasks", [])
-    tasks = []
-    for task_data in tasks_raw:
-        if isinstance(task_data, dict) and task_data.get("text"):
-            tasks.append(ExtractedTask(**task_data))
-    
-    # Check for tasks in content (legacy)
-    has_tasks = "- [ ]" in content or "- [x]" in content or len(tasks) > 0
-    
+    # Transform BackfillExtractionLite → BackfillExtraction with metadata
     return BackfillExtraction(
         note_path=note.path,
         entity_path=entity_path,
         date=note.date or "unknown",
         title=note.title or note.filename,
-        suggested_title=result.get("suggested_title"),
-        note_type=result.get("note_type"),
-        summary=result.get("summary", ""),
-        mentions=mentions,
-        key_facts=result.get("key_facts", []),
-        person_details=person_details,
-        project_details=project_details,
-        customer_details=customer_details,
-        tasks=tasks,
-        decisions=result.get("decisions", []),
-        topics_discussed=result.get("topics_discussed", []),
-        cross_links=cross_links,
+        suggested_title=lite_result.suggested_title,
+        note_type=lite_result.note_type,
+        summary=lite_result.summary,
+        mentions=lite_result.mentions,
+        key_facts=lite_result.key_facts,
+        person_details={},  # Not in lite model
+        project_details={},  # Not in lite model
+        customer_details={},  # Not in lite model
+        tasks=lite_result.tasks,
+        decisions=lite_result.decisions,
+        topics_discussed=lite_result.topics_discussed,
+        cross_links=CrossLinks(),  # Not in lite model
         has_tasks=has_tasks,
         extracted_at=datetime.now(),
         model_used=model,
@@ -379,7 +315,7 @@ def extract_note(
 def extract_batch(
     manifest: BackfillManifest,
     vault: Path | None = None,
-    model: str = "gpt-5.2",
+    model: str = "gpt-4o-mini",
     limit: int | None = None,
     skip_existing: bool = False,
     output_dir: Path | None = None,
@@ -480,7 +416,7 @@ def extract_batch(
 def extract_batch_parallel(
     manifest: BackfillManifest,
     vault: Path | None = None,
-    model: str = "gpt-5.2",
+    model: str = "gpt-4o-mini",
     limit: int | None = None,
     skip_existing: bool = False,
     output_dir: Path | None = None,
@@ -659,7 +595,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Extract metadata from notes")
     parser.add_argument("--manifest", required=True, help="Input manifest JSON")
     parser.add_argument("-o", "--output", required=True, help="Output directory for extractions")
-    parser.add_argument("--model", default="gpt-5.2", help="Model to use (default: gpt-5.2)")
+    parser.add_argument("--model", default="gpt-4o-mini", help="Model to use (default: gpt-4o-mini)")
     parser.add_argument("--limit", type=int, help="Limit number of notes to process")
     parser.add_argument("--skip-existing", action="store_true", help="Skip already extracted")
     

@@ -104,7 +104,7 @@ def parse_structured(
     for attempt in range(max_retries):
         try:
             # Use beta.chat.completions.parse for structured outputs
-            # This is the current API as of 2024
+            # CRITICAL: store=False ensures prompts/responses are not stored by OpenAI
             response = client.beta.chat.completions.parse(
                 model=model,
                 messages=[
@@ -113,6 +113,7 @@ def parse_structured(
                 ],
                 response_format=response_model,
                 temperature=temperature,
+                store=False,  # Privacy: never store prompts/responses
             )
             
             latency_ms = int((time.time() - start_time) * 1000)

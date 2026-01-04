@@ -2,18 +2,31 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "extraction.schema.json",
   "title": "Extraction Output",
-  "description": "Structured data extracted from transcripts/emails. Flat structure matching LLM output.",
+  "description": "Structured data extracted from transcripts/emails. Flat structure matching LLM output. Some fields (version, source_file, processed_at) are system-set.",
   "type": "object",
-  "required": ["note_type", "entity_name", "title", "date", "participants"],
+  "required": ["note_type", "title", "date", "summary"],
   "properties": {
+    "version": {
+      "const": "1.0",
+      "description": "Schema version (system-set)"
+    },
+    "source_file": {
+      "type": "string",
+      "description": "Path to source file (system-set, not LLM-generated)"
+    },
+    "processed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Processing timestamp (system-set)"
+    },
     "note_type": {
       "type": "string",
       "enum": ["customer", "people", "projects", "rob", "journal", "partners", "travel"],
       "description": "Classification of the note content"
     },
     "entity_name": {
-      "type": "string",
-      "description": "Primary entity (person, project, account name)"
+      "type": ["string", "null"],
+      "description": "Primary entity (person, project, account name) - can be null"
     },
     "title": {
       "type": "string",
@@ -27,6 +40,7 @@
     "participants": {
       "type": "array",
       "items": { "type": "string" },
+      "default": [],
       "description": "List of people involved"
     },
     "summary": {

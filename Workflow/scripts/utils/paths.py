@@ -1,14 +1,38 @@
 """Path utilities for vault operations."""
 
 from pathlib import Path
-from datetime import date
+from datetime import date, datetime
 
 
 def get_archive_path(vault_root: Path, original_file: Path, archive_date: date | None = None) -> Path:
-    """Get archive destination for a source file."""
+    """
+    Get archive destination for a source file.
+    
+    Uses YYYY-MM-DD folder by default. If a file with the same name already
+    exists, appends a timestamp suffix to prevent collision.
+    
+    Args:
+        vault_root: Path to vault root
+        original_file: The source file being archived
+        archive_date: Date for archive folder (default: today)
+    
+    Returns:
+        Path to archive destination (unique, won't overwrite)
+    """
     if archive_date is None:
         archive_date = date.today()
-    return vault_root / "Inbox" / "_archive" / archive_date.isoformat() / original_file.name
+    
+    archive_dir = vault_root / "Inbox" / "_archive" / archive_date.isoformat()
+    base_path = archive_dir / original_file.name
+    
+    # Check for collision and add timestamp suffix if needed
+    if base_path.exists():
+        timestamp = datetime.now().strftime("%H%M%S")
+        stem = original_file.stem
+        suffix = original_file.suffix
+        return archive_dir / f"{stem}_{timestamp}{suffix}"
+    
+    return base_path
 
 
 def get_extraction_path(vault_root: Path, source_file: Path) -> Path:

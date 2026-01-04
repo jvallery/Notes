@@ -151,6 +151,23 @@ def add_files(repo_path: Path, files: list[Path]) -> None:
         raise RuntimeError(f"git add failed: {stderr}")
 
 
+def stage_content_dirs(repo_path: Path = None) -> None:
+    """
+    Stage all changes in content directories using git add -A.
+    
+    T4 FIX: This captures deletes, renames, and moves that add_files() misses.
+    Uses -A flag to stage all changes (adds, modifications, deletions).
+    """
+    if repo_path is None:
+        repo_path = vault_root()
+    
+    # Stage all changes in content directories
+    # Using -- to separate paths from options
+    code, _, stderr = _run_git(repo_path, "add", "-A", "--", *CHECKED_PATHS)
+    if code != 0:
+        raise RuntimeError(f"git add -A failed: {stderr}")
+
+
 def commit(repo_path: Path = None, message: str = None, files: list[str] = None) -> str:
     """
     Create commit and return commit hash.
