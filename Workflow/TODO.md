@@ -2460,8 +2460,8 @@ Most are intentionally unstructured, but should be documented.
 | ~~62~~     | ~~17 stale last_contact~~        | ~~HIGH~~ | ~~30 min~~ | ✅ WORKING          |
 | 75     | Deterministic extraction         | HIGH     | 2 hrs      | 🔴 HIGH            |
 | 76     | Persist run artifacts            | HIGH     | 60 min     | 🔴 HIGH            |
-| 28     | Duplicate notes                  | HIGH     | 30 min     | 🔴 HIGH            |
-| 43     | 20 duplicate meeting notes       | HIGH     | 30 min     | 🔴 HIGH            |
+| ~~28~~     | ~~Duplicate notes~~                  | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
+| ~~43~~     | ~~20 duplicate meeting notes~~       | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
 | 34     | Nested folder paths              | HIGH     | 30 min     | 🔴 HIGH            |
 | 63     | 792 overdue tasks                | HIGH     | 2 hrs      | 🔴 HIGH            |
 | 87     | 39 hallucinated note links       | HIGH     | 30 min     | 🔴 HIGH            |

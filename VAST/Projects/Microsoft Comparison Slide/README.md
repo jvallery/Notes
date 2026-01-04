@@ -1,21 +1,20 @@
 ---
 type: projects
-title: "Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM/Azure Storage)"
+title: "Microsoft Comparison Slide"
 created: "2026-01-03"
 last_updated: ""
 status: "complete"
 auto_created: true
 tags:
   - type/projects
-  - needs-review
   - status/complete
 ---
 
-# Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM/Azure Storage)
+# Microsoft Comparison Slide
 
 ## Overview
 
-Create a comparison slide for conversations covering LSv4, v5, OEM/ODM, and Azure Storage.
+Create a comparison slide for conversations covering LSv4, LSv5, OEM/ODM, and Azure Storage.
 
 ## Status
 

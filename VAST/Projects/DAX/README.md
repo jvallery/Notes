@@ -1,6 +1,6 @@
 ---
 type: projects
-title: Alluxio/DAX
+title: DAX
 created: '2026-01-03'
 last_updated: ''
 status: active
