@@ -22,7 +22,7 @@ The “How” (phased)
 Phase 1 (MVP):
 
 - Implement a VAST “Blob API façade” whose first contract is: AzCopy workflows work without code changes (configuration allowed).
-- Focus on service-to-service copy primitives (Put Blob From URL / Put Block From URL + Put Block List) and the minimum list/get operations that AzCopy depends on. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations?utm_source=chatgpt.com "Map of AzCopy v10 commands to Azure Blob Storage ..."))
+- Focus on service-to-service copy primitives (Put Blob From URL / Put Block From URL + Put Block List) and the minimum list/get operations that AzCopy depends on. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations "Map of AzCopy v10 commands to Azure Blob Storage ..."))
 
 Phase 2:
 
@@ -34,10 +34,10 @@ Phase 3:
 
 Key points uncovered (current)
 
-- AzCopy’s “server-side copy” primitives rely on Blob REST operations like Put Blob From URL and sometimes Put Block From URL + Put Block List. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations?utm_source=chatgpt.com "Map of AzCopy v10 commands to Azure Blob Storage ..."))
-- Azure Blob Change Feed provides an ordered, durable transaction log of blob changes—useful for namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
-- Microsoft Fabric supports “S3-compatible shortcuts” (not only AWS S3). This is a major “easy win” integration point for VAST’s S3 endpoint—no Blob emulation required for Fabric access patterns. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
-- The VAST + Microsoft partnership is positioned as bringing “VAST AI OS” to Azure for hybrid/multi-cloud AI workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai?utm_source=chatgpt.com "VAST Data Partners with Microsoft to Power the Next Wave ..."))
+- AzCopy’s “server-side copy” primitives rely on Blob REST operations like Put Blob From URL and sometimes Put Block From URL + Put Block List. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations "Map of AzCopy v10 commands to Azure Blob Storage ..."))
+- Azure Blob Change Feed provides an ordered, durable transaction log of blob changes—useful for namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
+- Microsoft Fabric supports “S3-compatible shortcuts” (not only AWS S3). This is a major “easy win” integration point for VAST’s S3 endpoint—no Blob emulation required for Fabric access patterns. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- The VAST + Microsoft partnership is positioned as bringing “VAST AI OS” to Azure for hybrid/multi-cloud AI workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai "VAST Data Partners with Microsoft to Power the Next Wave ..."))
 
 Research needed to complete this section
 
@@ -74,8 +74,8 @@ Non-goals (opinionated)
 
 Key points uncovered (current)
 
-- AzCopy depends on a bounded set of Blob operations for common copy/sync workflows (documented mapping exists). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations?utm_source=chatgpt.com "Map of AzCopy v10 commands to Azure Blob Storage ..."))
-- Fabric shortcut support includes S3-compatible endpoint URLs (good for VAST S3). ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- AzCopy depends on a bounded set of Blob operations for common copy/sync workflows (documented mapping exists). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations "Map of AzCopy v10 commands to Azure Blob Storage ..."))
+- Fabric shortcut support includes S3-compatible endpoint URLs (good for VAST S3). ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
 
 Research needed
 
@@ -107,8 +107,8 @@ Why now
 
 - Distributed GPU reality: GPUs are landing where power is, not where the central lake is.
 - Tooling inertia: Azure-native movement and orchestration often standardize on AzCopy-like primitives, and customers resist refactors.
-- Ecosystem adjacency: Fabric and OneLake are increasingly the “data UX,” and the fact that Fabric supports S3-compatible shortcuts gives VAST a low-friction analytics touchpoint immediately. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
-- Partnership momentum: VAST + Microsoft publicly position VAST AI OS as running on Azure to support hybrid/multi-cloud “agentic AI” workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai?utm_source=chatgpt.com "VAST Data Partners with Microsoft to Power the Next Wave ..."))
+- Ecosystem adjacency: Fabric and OneLake are increasingly the “data UX,” and the fact that Fabric supports S3-compatible shortcuts gives VAST a low-friction analytics touchpoint immediately. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- Partnership momentum: VAST + Microsoft publicly position VAST AI OS as running on Azure to support hybrid/multi-cloud “agentic AI” workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai "VAST Data Partners with Microsoft to Power the Next Wave ..."))
 
 Success metrics (what we should commit to)
 
@@ -127,8 +127,8 @@ Product success metrics (Phase 2+):
 
 Key points uncovered (current)
 
-- Public partnership messaging already frames VAST on Azure as enabling unified hybrid workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai?utm_source=chatgpt.com "VAST Data Partners with Microsoft to Power the Next Wave ..."))
-- Fabric provides an immediate integration path via S3-compatible shortcuts. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- Public partnership messaging already frames VAST on Azure as enabling unified hybrid workflows. ([VAST Data](https://www.vastdata.com/press-releases/vast-data-partners-with-microsoft-to-power-the-next-wave-of-agentic-ai "VAST Data Partners with Microsoft to Power the Next Wave ..."))
+- Fabric provides an immediate integration path via S3-compatible shortcuts. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
 
 Research needed
 
@@ -233,8 +233,8 @@ Research needed: service-by-service matrix (what requires RP integration vs supp
 
 Key points uncovered (current)
 
-- Fabric supports S3-compatible shortcuts, which should allow VAST S3 endpoints to present data to Fabric without Blob emulation. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
-- Azure Blob Change Feed provides ordered logs that can underpin namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
+- Fabric supports S3-compatible shortcuts, which should allow VAST S3 endpoints to present data to Fabric without Blob emulation. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- Azure Blob Change Feed provides ordered logs that can underpin namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
 
 ---
 
@@ -247,19 +247,19 @@ Integration layers
 |Layer|Integration Point|Examples|Notes|
 |---|---|---|---|
 |Data plane|Protocol endpoints|NFS/SMB/S3 today; Blob API façade proposed|Blob façade is compatibility-driven, not “new product surface for everyone”|
-|Data movement|Movers + server-side copy|AzCopy, Storage Mover-like primitives|AzCopy uses Put Blob From URL / Put Block From URL patterns ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url?utm_source=chatgpt.com "Put Blob From URL (REST API) - Azure Storage"))|
-|Metadata/namespace|Change log + indexing|Change Feed, Event Grid, periodic reconciliation|Change Feed is ordered/durable log ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))|
+|Data movement|Movers + server-side copy|AzCopy, Storage Mover-like primitives|AzCopy uses Put Blob From URL / Put Block From URL patterns ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url "Put Blob From URL (REST API) - Azure Storage"))|
+|Metadata/namespace|Change log + indexing|Change Feed, Event Grid, periodic reconciliation|Change Feed is ordered/durable log ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))|
 |Identity/auth|AuthN/Z|Entra ID, SAS/shared key, service principals|Blob façade must pick a limited auth set|
-|Networking|Private connectivity|Private Link / Private Link Service|Private Link supports partner services via private endpoint ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview?utm_source=chatgpt.com "What is Azure Private Link?"))|
-|Security perimeter|Exfiltration prevention|Azure NSP (PaaS), private endpoints|NSP is about logical boundaries for PaaS resources ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter?utm_source=chatgpt.com "Network Security Perimeter for Azure Storage"))|
+|Networking|Private connectivity|Private Link / Private Link Service|Private Link supports partner services via private endpoint ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview "What is Azure Private Link?"))|
+|Security perimeter|Exfiltration prevention|Azure NSP (PaaS), private endpoints|NSP is about logical boundaries for PaaS resources ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter "Network Security Perimeter for Azure Storage"))|
 |Control plane|Resource provider integration|“Pick a storage account” UX|Often Microsoft work required|
-|Ops|Observability & lifecycle|Telemetry, upgrade, support|VAST Uplink exists as SaaS mgmt layer (confirm integration with Azure Monitor) ([Vast Support Portal](https://support.vastdata.com/s/document-item?nocache=https%3A%2F%2Fsupport.vastdata.com%2Fs%2Fdocument-item%3FbundleId%3Duplink-user-guide%26_LANG%3Denus&utm_source=chatgpt.com "About VAST Uplink"))|
+|Ops|Observability & lifecycle|Telemetry, upgrade, support|VAST Uplink exists as SaaS mgmt layer (confirm integration with Azure Monitor) ([Vast Support Portal](https://support.vastdata.com/s/document-item?nocache=https%3A%2F%2Fsupport.vastdata.com%2Fs%2Fdocument-item%3FbundleId%3Duplink-user-guide%26_LANG%3Denus "About VAST Uplink"))|
 
 Key points uncovered (current)
 
-- Private Link covers access to PaaS and “Azure hosted customer-owned/partner services” using private endpoints. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview?utm_source=chatgpt.com "What is Azure Private Link?"))
-- Private Link Service includes destination-side NAT and can use TCP Proxy Protocol v2 for source IP metadata propagation patterns. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview?utm_source=chatgpt.com "What is Azure Private Link service?"))
-- Change Feed is a viable primitive for ordered namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
+- Private Link covers access to PaaS and “Azure hosted customer-owned/partner services” using private endpoints. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview "What is Azure Private Link?"))
+- Private Link Service includes destination-side NAT and can use TCP Proxy Protocol v2 for source IP metadata propagation patterns. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview "What is Azure Private Link service?"))
+- Change Feed is a viable primitive for ordered namespace sync. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
 
 Research needed
 
@@ -292,8 +292,8 @@ Decision matrix (opinionated)
 
 Key points uncovered (current)
 
-- The existence and importance of Put Blob From URL and Put Block From URL for server-side copy is documented and central to AzCopy. ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url?utm_source=chatgpt.com "Put Blob From URL (REST API) - Azure Storage"))
-- Fabric S3-compatible shortcuts reduce the need for Blob emulation in analytics scenarios. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- The existence and importance of Put Blob From URL and Put Block From URL for server-side copy is documented and central to AzCopy. ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url "Put Blob From URL (REST API) - Azure Storage"))
+- Fabric S3-compatible shortcuts reduce the need for Blob emulation in analytics scenarios. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
 
 Research needed
 
@@ -335,12 +335,12 @@ Treat AzCopy as the spec: we implement the minimum Blob REST surface that AzCopy
 
 Why this exists (and why S3 isn’t enough)
 
-AzCopy’s S3 support is AWS URL-pattern specific and historically rejects other S3 providers/endpoints, which undermines “just point AzCopy at a VAST S3 endpoint.” ([GitHub](https://github.com/Azure/azure-storage-azcopy/issues/1587?utm_source=chatgpt.com "AzCopy does not support S3 providers besides AWS #1587"))  
+AzCopy’s S3 support is AWS URL-pattern specific and historically rejects other S3 providers/endpoints, which undermines “just point AzCopy at a VAST S3 endpoint.” ([GitHub](https://github.com/Azure/azure-storage-azcopy/issues/1587 "AzCopy does not support S3 providers besides AWS #1587"))  
 Therefore, Blob compatibility is the pragmatic path for Azure-native movers.
 
 MVP Blob operations (initial list)
 
-This list is grounded by Microsoft’s published “AzCopy commands ↔ REST operations” mapping and Blob REST docs. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations?utm_source=chatgpt.com "Map of AzCopy v10 commands to Azure Blob Storage ..."))
+This list is grounded by Microsoft’s published “AzCopy commands ↔ REST operations” mapping and Blob REST docs. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations "Map of AzCopy v10 commands to Azure Blob Storage ..."))
 
 Required for enumeration and diff
 
@@ -350,16 +350,16 @@ Required for enumeration and diff
 
 Required for upload
 
-- Put Blob (single shot for small blobs) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob?utm_source=chatgpt.com "Put Blob (REST API) - Azure Storage"))
-- Put Block (stage blocks) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block?utm_source=chatgpt.com "Put Block (REST API) - Azure Storage"))
+- Put Blob (single shot for small blobs) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob "Put Blob (REST API) - Azure Storage"))
+- Put Block (stage blocks) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block "Put Block (REST API) - Azure Storage"))
 - Put Block List (commit block blob)
 
 Required for service-to-service copy (critical)
 
-- Put Blob From URL (copy entire source blob into destination) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url?utm_source=chatgpt.com "Put Blob From URL (REST API) - Azure Storage"))
-- Put Block From URL + Put Block List (partial updates / large objects) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block-from-url?utm_source=chatgpt.com "Put Block From URL (REST API) - Azure Storage"))
+- Put Blob From URL (copy entire source blob into destination) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url "Put Blob From URL (REST API) - Azure Storage"))
+- Put Block From URL + Put Block List (partial updates / large objects) ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-block-from-url "Put Block From URL (REST API) - Azure Storage"))
 
-Put Blob From URL copies the entire blob and isn’t for partial updates; for partial updates you use Put Block From URL + Put Block List. ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url?utm_source=chatgpt.com "Put Blob From URL (REST API) - Azure Storage"))
+Put Blob From URL copies the entire blob and isn’t for partial updates; for partial updates you use Put Block From URL + Put Block List. ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url "Put Blob From URL (REST API) - Azure Storage"))
 
 Required for delete/sync correctness
 
@@ -494,7 +494,7 @@ Research needed (critical)
 
 - Derive the exact REST calls, headers, and expected behaviors from AzCopy (code + runtime traces).
 - Validate whether AzCopy CLI can target the façade endpoint without code changes (DNS/TLS/endpoint inference constraints).
-- Decide whether the façade must support Put Blob From URL and/or Put Block From URL for the primary workflows (likely yes). ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url?utm_source=chatgpt.com "Put Blob From URL (REST API) - Azure Storage"))
+- Decide whether the façade must support Put Blob From URL and/or Put Block From URL for the primary workflows (likely yes). ([Microsoft Learn](https://learn.microsoft.com/en-us/rest/api/storageservices/put-blob-from-url "Put Blob From URL (REST API) - Azure Storage"))
 
 ---
 
@@ -564,8 +564,8 @@ Transparent mode only for:
 
 Key points uncovered (current)
 
-- Blob Change Feed can support ordered synchronization in transparent designs. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
-- Fabric can access VAST data via S3-compatible shortcuts, potentially reducing transparent-tiering pressure for analytics. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
+- Blob Change Feed can support ordered synchronization in transparent designs. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
+- Fabric can access VAST data via S3-compatible shortcuts, potentially reducing transparent-tiering pressure for analytics. ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))
 
 Research needed
 
@@ -578,8 +578,8 @@ Namespace + metadata synchronization
 
 Building blocks
 
-1. Azure Blob Change Feed: ordered, durable, immutable log of blob and metadata changes. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
-2. Event Grid: event-driven triggers for blob events (useful but not a full ordered log). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-overview?utm_source=chatgpt.com "Reacting to Blob storage events - Azure"))
+1. Azure Blob Change Feed: ordered, durable, immutable log of blob and metadata changes. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
+2. Event Grid: event-driven triggers for blob events (useful but not a full ordered log). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-event-overview "Reacting to Blob storage events - Azure"))
 3. Reconciliation scanner: periodic scan to heal missed events.
 
 Opinionated approach
@@ -602,9 +602,9 @@ Enterprises will not accept “public endpoint + IP allowlist” for core data p
 
 Recommended pattern: Azure Private Link Service for VAST endpoints
 
-Azure Private Link can provide private endpoint access to partner services. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview?utm_source=chatgpt.com "What is Azure Private Link?"))  
-Private Link Service performs destination-side NAT to avoid IP conflicts. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview?utm_source=chatgpt.com "What is Azure Private Link service?"))  
-It can be combined with TCP Proxy Protocol v2 to propagate original client IP information patterns. ([TECHCOMMUNITY.MICROSOFT.COM](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/tcp-proxy-protocol-v2-with-azure-private-link-service-deep-dive/ba-p/3574968?utm_source=chatgpt.com "TCP Proxy Protocol v2 with Azure Private Link Service"))
+Azure Private Link can provide private endpoint access to partner services. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview "What is Azure Private Link?"))  
+Private Link Service performs destination-side NAT to avoid IP conflicts. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-service-overview "What is Azure Private Link service?"))  
+It can be combined with TCP Proxy Protocol v2 to propagate original client IP information patterns. ([TECHCOMMUNITY.MICROSOFT.COM](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/tcp-proxy-protocol-v2-with-azure-private-link-service-deep-dive/ba-p/3574968 "TCP Proxy Protocol v2 with Azure Private Link Service"))
 
 Design sketch:
 
@@ -615,7 +615,7 @@ Design sketch:
 
 Network Security Perimeter (NSP) implications
 
-NSP creates logical isolation boundaries for PaaS resources (like Storage, Key Vault) and helps prevent unwanted data exfiltration from storage resources. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter?utm_source=chatgpt.com "Network Security Perimeter for Azure Storage"))  
+NSP creates logical isolation boundaries for PaaS resources (like Storage, Key Vault) and helps prevent unwanted data exfiltration from storage resources. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter "Network Security Perimeter for Azure Storage"))  
 Implication: VAST (IaaS/VM-based) won’t “be” an NSP resource, but it must interoperate with NSP-secured dependencies (Key Vault, etc.).
 
 Research needed
@@ -631,9 +631,9 @@ This is intentionally a first-pass list. We’ll expand to 50+ services in an ap
 
 |Azure service|Typical storage binding model|VAST integration path|Feasibility in Phase 1|
 |---|---|---|---|
-|Microsoft Fabric / OneLake|Shortcut-based virtualization|Use VAST S3 via S3-compatible shortcut ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut?utm_source=chatgpt.com "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))|High|
+|Microsoft Fabric / OneLake|Shortcut-based virtualization|Use VAST S3 via S3-compatible shortcut ([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric"))|High|
 |Azure AI Foundry / ML|Often workspace-linked storage accounts|Likely needs Azure-side integration or mount NFS/S3 at compute layer|Medium|
-|Data movement (AzCopy)|Direct REST to Blob endpoints|VAST Blob façade (AzCopy contract) ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations?utm_source=chatgpt.com "Map of AzCopy v10 commands to Azure Blob Storage ..."))|High (pending endpoint/TLS feasibility)|
+|Data movement (AzCopy)|Direct REST to Blob endpoints|VAST Blob façade (AzCopy contract) ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-reference-azcopy-map-commands-to-rest-operations "Map of AzCopy v10 commands to Azure Blob Storage ..."))|High (pending endpoint/TLS feasibility)|
 |AKS|CSI / NFS / S3 clients|Use NFS/S3 endpoints, optional Private Link|High|
 |Event-driven workflows|Blob events, Event Grid|If façade supports events, maybe; otherwise use change feed + integration glue|Medium|
 |Data Factory / Pipelines|Connector model, often storage-account centric|Likely requires Microsoft connector work or proxy approach|Low–Medium|
@@ -714,7 +714,7 @@ Risks, constraints, and mitigations
 |AzCopy endpoint/TLS constraints|Blob façade may be correct but unreachable by existing tooling|Validate early; document allowed config; consider joint Microsoft enablement|
 |Overbuilding Blob parity|Infinite scope|Strict MVP contract; defer long tail|
 |Transparent mode correctness|Consistency + security drift|Opaque-by-default; transparent only for validated cases|
-|Security posture mismatch|Public endpoints may be unacceptable|Private Link Service reference pattern ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview?utm_source=chatgpt.com "What is Azure Private Link?"))|
+|Security posture mismatch|Public endpoints may be unacceptable|Private Link Service reference pattern ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview "What is Azure Private Link?"))|
 |Ecosystem integration blocked by control plane|Services require storage accounts|Phase 3 proxy/RP integration strategy|
 
 ---
@@ -747,8 +747,8 @@ This is the “follow-ups we must defend” list—turned into a backlog we can 
 
 5) Networking + security posture
 
-- Validate Private Link Service scale limits, logging requirements, and proxy protocol needs. ([TECHCOMMUNITY.MICROSOFT.COM](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/tcp-proxy-protocol-v2-with-azure-private-link-service-deep-dive/ba-p/3574968?utm_source=chatgpt.com "TCP Proxy Protocol v2 with Azure Private Link Service"))
-- Define minimum acceptable posture for Microsoft internal usage (NSP implications, Key Vault, etc.). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter?utm_source=chatgpt.com "Network Security Perimeter for Azure Storage"))
+- Validate Private Link Service scale limits, logging requirements, and proxy protocol needs. ([TECHCOMMUNITY.MICROSOFT.COM](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/tcp-proxy-protocol-v2-with-azure-private-link-service-deep-dive/ba-p/3574968 "TCP Proxy Protocol v2 with Azure Private Link Service"))
+- Define minimum acceptable posture for Microsoft internal usage (NSP implications, Key Vault, etc.). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/common/storage-network-security-perimeter "Network Security Perimeter for Azure Storage"))
 
 ---
 
@@ -759,8 +759,8 @@ Appendix: glossary
 - Satellite region: smaller Azure region used for GPU placement close to power/capacity availability.
 - Opaque tiering: data is stored in Blob in VAST-managed internal format; Blob isn’t directly usable without VAST.
 - Transparent tiering: data stored as standard objects in Blob; VAST indexes/caches/stages and keeps namespace consistent.
-- Change Feed: ordered transaction log of blob changes in a storage account. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed?utm_source=chatgpt.com "Change feed support in Azure Blob Storage"))
-- Private Link / Private Link Service: private endpoint connectivity to PaaS and partner services. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview?utm_source=chatgpt.com "What is Azure Private Link?"))
+- Change Feed: ordered transaction log of blob changes in a storage account. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-change-feed "Change feed support in Azure Blob Storage"))
+- Private Link / Private Link Service: private endpoint connectivity to PaaS and partner services. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/private-link-overview "What is Azure Private Link?"))
 
 ---
 
@@ -1959,16 +1959,16 @@ o   **Managed VNet (service-managed)**
 |---|---|---|---|---|---|---|
 |Microsoft Fabric|OneLake **Shortcuts** (incl. “Amazon S3 compatible” shortcut)|Managed (service-managed)|Fabric uses **managed private endpoints** for supported Azure resources; for **network-restricted** sources use **on-premises data gateway** shortcuts|Use **S3-compatible shortcut** to VAST S3 endpoint; if VAST endpoint isn’t publicly reachable, use **on-premises data gateway** shortcut|Fabric MPE limitations (no FQDN / no PLS target); shortcuts + MPE support is evolving|([Microsoft Learn](https://learn.microsoft.com/en-us/fabric/onelake/create-s3-compatible-shortcut "Create an Amazon S3 compatible shortcut - Microsoft Fabric \| Microsoft Learn"))|
 |Azure AI Foundry|Foundry hub/projects support managed network + private endpoints to dependent resources (storage/kv/acr/etc.)|Hybrid (service-managed control plane + workload networking options)|Private link for Foundry hubs; supports managed network isolation|For training/inference compute running in customer network: mount/access VAST via NFS/S3; treat Foundry’s default storage as “control-plane required,” VAST as “data-plane high-perf tier”|Foundry private link is for hub/project resources; VAST as “storage account” isn’t a native option without Microsoft work|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/ai-foundry/how-to/hub-configure-private-link?view=foundry-classic "How to configure a private link for a Microsoft Foundry hub - Microsoft Foundry \| Microsoft Learn"))|
-|Azure Databricks|External locations/mounts via URLs + credentials (S3/ADLS/etc.)|Customer VNet (VNet injection available)|Private connectivity options via workspace networking features; data sources often reached via private endpoints|Use VAST **Spark connector** and/or access VAST via NFS/S3 from cluster nodes in same VNet/peered VNet|Distinguish Classic compute vs Serverless networking; pick the topology that keeps data paths private|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/databricks/security/network/classic/vnet-inject?utm_source=chatgpt.com "Deploy Azure Databricks in your Azure virtual network ..."))|
-|Azure Machine Learning|Datastores typically Azure Storage; compute can be network isolated|Customer VNet options + managed network features|Private Link for AML workspace/resources; network isolation controls|For high-perf training: bypass datastore abstraction where needed; mount VAST NFS/S3 on compute nodes in customer VNet|AML “storage account picker” doesn’t map to VAST; integration is via compute data plane|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-network-security-overview?view=azureml-api-2&utm_source=chatgpt.com "Secure workspace resources using virtual networks (VNets)"))|
+|Azure Databricks|External locations/mounts via URLs + credentials (S3/ADLS/etc.)|Customer VNet (VNet injection available)|Private connectivity options via workspace networking features; data sources often reached via private endpoints|Use VAST **Spark connector** and/or access VAST via NFS/S3 from cluster nodes in same VNet/peered VNet|Distinguish Classic compute vs Serverless networking; pick the topology that keeps data paths private|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/databricks/security/network/classic/vnet-inject "Deploy Azure Databricks in your Azure virtual network ..."))|
+|Azure Machine Learning|Datastores typically Azure Storage; compute can be network isolated|Customer VNet options + managed network features|Private Link for AML workspace/resources; network isolation controls|For high-perf training: bypass datastore abstraction where needed; mount VAST NFS/S3 on compute nodes in customer VNet|AML “storage account picker” doesn’t map to VAST; integration is via compute data plane|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/machine-learning/how-to-network-security-overview?view=azureml-api-2 "Secure workspace resources using virtual networks (VNets)"))|
 |Azure Synapse Analytics|Linked services / external tables typically bind to Azure storage resources|Often Managed VNet (Synapse workspace managed VNet option)|**Managed private endpoints** from Synapse workspace to Azure PaaS|If direct query to VAST is blocked, ingest from VAST via S3/NFS into ADLS/Blob, then analyze|Managed endpoints optimize Azure resource targets; third-party endpoints need workarounds|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/synapse-analytics/security/synapse-workspace-managed-private-endpoints "Managed private endpoints - Azure Synapse Analytics \| Microsoft Learn"))|
-|AKS|Kubernetes PV/PVC; storage reachable via VNet routing|Customer VNet|Private cluster option; nodes in VNet; service-to-storage often via private endpoints|**Gold path:** VAST CSI driver / NFS PVs; connect via VNet peering or Private Link Service|Primary integration target for inference + data services|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/private-clusters?utm_source=chatgpt.com "Create a private Azure Kubernetes Service (AKS) cluster"))|
+|AKS|Kubernetes PV/PVC; storage reachable via VNet routing|Customer VNet|Private cluster option; nodes in VNet; service-to-storage often via private endpoints|**Gold path:** VAST CSI driver / NFS PVs; connect via VNet peering or Private Link Service|Primary integration target for inference + data services|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/aks/private-clusters "Create a private Azure Kubernetes Service (AKS) cluster"))|
 |Azure Functions|Blob triggers/bindings are Azure Storage-account bound|Customer VNet integration (Premium/isolated)|Private endpoints for inbound; VNet integration for outbound|Prefer **webhook/event** pattern: VAST publishes to Event Grid or calls Functions over HTTP; avoid “Blob trigger” dependence|Blob triggers assume Azure Storage account types|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/azure-functions/functions-create-vnet "Use private endpoints to integrate Azure Functions with a virtual network \| Microsoft Learn"))|
-|Azure Batch|Pool supports mounting file systems|Customer VNet (pool can be placed in VNet)|Private networking via VNet configuration|Burst rendering/HPC: mount VAST NFS/SMB in pool configuration|Works well when Batch nodes are in same/peered VNet|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/batch/virtual-file-mount?utm_source=chatgpt.com "Mount a virtual file system on a Batch pool - Azure"))|
-|Azure App Service|Built-in storage mounts focus on Azure Storage; VNet integration exists|Customer VNet integration (outbound) + Private Endpoint (inbound)|Private endpoints supported for inbound access|Don’t treat App Service as primary for mounted VAST; prefer AKS/Container Apps; App Service can call VAST via S3/HTTPS if needed|App Service “mount storage” is Azure Storage oriented (not arbitrary NFS)|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage?utm_source=chatgpt.com "Mount Azure Storage as a local share in App Service"))|
+|Azure Batch|Pool supports mounting file systems|Customer VNet (pool can be placed in VNet)|Private networking via VNet configuration|Burst rendering/HPC: mount VAST NFS/SMB in pool configuration|Works well when Batch nodes are in same/peered VNet|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/batch/virtual-file-mount "Mount a virtual file system on a Batch pool - Azure"))|
+|Azure App Service|Built-in storage mounts focus on Azure Storage; VNet integration exists|Customer VNet integration (outbound) + Private Endpoint (inbound)|Private endpoints supported for inbound access|Don’t treat App Service as primary for mounted VAST; prefer AKS/Container Apps; App Service can call VAST via S3/HTTPS if needed|App Service “mount storage” is Azure Storage oriented (not arbitrary NFS)|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/app-service/configure-connect-to-azure-storage "Mount Azure Storage as a local share in App Service"))|
 |Azure Data Factory|Linked services + Integration Runtime|Managed VNet option exists for ADF; also self-hosted IR|Private Link support; managed VNet + managed private endpoints for Azure resources|**Self-hosted IR** VM inside VAST VNet to orchestrate data movement to/from VAST|Managed networking is optimized for Azure PaaS targets; third-party endpoints typically require IR bridging|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/data-factory/managed-virtual-network-private-endpoint "Managed virtual network and managed private endpoints - Azure Data Factory \| Microsoft Learn"))|
 |Azure Storage Mover|Endpoint-based migration tool (source/target types constrained)|Agent-based model|Agent runs where source is|Use where VAST can present a supported “source” interface; otherwise prefer AzCopy/Rclone/VAST Sync tooling|Storage Mover targets are Azure Storage services; VAST as target is unlikely without Microsoft changes||
-|Azure Event Grid|Custom topics/domains + webhook delivery|Service-managed|Private endpoints supported for topics/domains|VAST publishes events to Event Grid custom topic; Azure services subscribe|Event Grid is a clean “event bus” for VAST → Azure actions|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/event-grid/configure-private-endpoints?utm_source=chatgpt.com "Configure private endpoints for Azure Event Grid custom ..."))|
+|Azure Event Grid|Custom topics/domains + webhook delivery|Service-managed|Private endpoints supported for topics/domains|VAST publishes events to Event Grid custom topic; Azure services subscribe|Event Grid is a clean “event bus” for VAST → Azure actions|([Microsoft Learn](https://learn.microsoft.com/en-us/azure/event-grid/configure-private-endpoints "Configure private endpoints for Azure Event Grid custom ..."))|
 
 ### Research needed (to harden this section)
 
@@ -2349,7 +2349,7 @@ Bidirectional writes are a **Phase 3+** problem (leases/conflicts/security).
 
 **We need a first-class concept:** _External-Origin Global Folder_A folder in VAST DataSpaces whose “origin” is **not** a VAST cluster, but an **external object namespace** (Azure Blob).
 
-We can reuse the mental model of **Origin vs Satellite** used in global namespace/caching designs (origin holds full set; satellite caches locally). A third-party description of VAST’s origin/satellite global folder behavior (and caching satellites) aligns with this model. ([Blocks and Files](https://blocksandfiles.com/2025/02/12/a-vast-effort-data-estate-vectorization-and-data-storage-for-the-ai-era/?utm_source=chatgpt.com "A VAST effort: Data estate vectorization and storage for the ..."))
+We can reuse the mental model of **Origin vs Satellite** used in global namespace/caching designs (origin holds full set; satellite caches locally). A third-party description of VAST’s origin/satellite global folder behavior (and caching satellites) aligns with this model. ([Blocks and Files](https://blocksandfiles.com/2025/02/12/a-vast-effort-data-estate-vectorization-and-data-storage-for-the-ai-era/ "A VAST effort: Data estate vectorization and storage for the ..."))
 
 #### Recommended semantics for MVP
 
@@ -2737,7 +2737,7 @@ o   How many target “hero lakes” are HNS-enabled, and whether an “AI dis
 
 4.        **VAST-specific implementation gaps**
 
-o   Formal VAST spec for an “external-origin folder” behavior and supported consistency semantics across DataSpaces (we need official VAST references beyond third-party descriptions). ([Blocks and Files](https://blocksandfiles.com/2025/02/12/a-vast-effort-data-estate-vectorization-and-data-storage-for-the-ai-era/?utm_source=chatgpt.com "A VAST effort: Data estate vectorization and storage for the ..."))
+o   Formal VAST spec for an “external-origin folder” behavior and supported consistency semantics across DataSpaces (we need official VAST references beyond third-party descriptions). ([Blocks and Files](https://blocksandfiles.com/2025/02/12/a-vast-effort-data-estate-vectorization-and-data-storage-for-the-ai-era/ "A VAST effort: Data estate vectorization and storage for the ..."))
 
 ---
 
@@ -2758,7 +2758,7 @@ We will treat “VAST on Azure” as **three distinct deployment substrates**, n
 |**Substrate**|**What it is**|**Where it lives**|**What it optimizes for**|**What it sacrifices / constrains**|
 |---|---|---|---|---|
 |**1) VAST on ODM hardware (GPU-adjacent)**|VAST running on VAST-qualified ODM racks (CNodes + DBoxes) adjacent to GPU fleets|Customer DC, colo, “neo-cloud”, or dedicated footprint near GPU clusters|**Deterministic performance**, best rack efficiency, full hardware control, lowest latency to GPUs|Capex + lead times, physical ops, facility constraints (power/cooling), regionality is where you can deploy|
-|**2) VAST on Azure VMs (Central region / elastic)**|VAST deployed as IaaS on **storage-optimized VM families** with local NVMe (e.g., **Lasv4/Laosv4**)|Azure “hero” regions (and some satellite regions where quotas exist)|**Speed of provisioning**, Azure-native networking/governance, elastic scaling, co-location with Azure compute/services|**VM quota + SKU availability**, ephemeral local disks, virtualization overhead vs bare metal, throughput ceilings per VM family ([Microsoft Tech Community](https://techcommunity.microsoft.com/blog/azurecompute/announcing-the-general-availability-of-azure-laosv4-lasv4-and-lsv4-storage-optim/4422481?utm_source=chatgpt.com "Announcing the general availability of Azure Laosv4 ..."))|
+|**2) VAST on Azure VMs (Central region / elastic)**|VAST deployed as IaaS on **storage-optimized VM families** with local NVMe (e.g., **Lasv4/Laosv4**)|Azure “hero” regions (and some satellite regions where quotas exist)|**Speed of provisioning**, Azure-native networking/governance, elastic scaling, co-location with Azure compute/services|**VM quota + SKU availability**, ephemeral local disks, virtualization overhead vs bare metal, throughput ceilings per VM family ([Microsoft Tech Community](https://techcommunity.microsoft.com/blog/azurecompute/announcing-the-general-availability-of-azure-laosv4-lasv4-and-lsv4-storage-optim/4422481 "Announcing the general availability of Azure Laosv4 ..."))|
 |**3) VAST on Azure Storage-provided bare metal (co-engineered / future)**|VAST running directly on Azure-managed storage-class hardware (no hypervisor tax)|Azure-controlled infra, potentially exposed as a partner/managed offer|**Best-of-both**: cloud operational model with bare-metal performance density|Requires Microsoft partnership + productization (support boundaries, control plane wiring, security reviews); **not publicly specified** today (treat as roadmap)|
 
 **Non-negotiable principle:** all three substrates must present **the same client-facing contract** (NFS/SMB/S3, and the proposed Blob REST endpoint), and the same **global namespace semantics** (DataSpaces) — otherwise customers can’t move workloads without refactoring.
@@ -2773,7 +2773,7 @@ AI training/inference pipelines are routinely **storage-limited** (random read +
 
 #### 2) Supply chain volatility is now an architectural input
 
-NAND pricing and availability are **not stable** in this cycle. Trend reporting indicates major price spikes and constrained supply extending into 2026, with some industry commentary suggesting tightness could persist longer. ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up?utm_source=chatgpt.com "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))**Implication:** We need an architecture that can:
+NAND pricing and availability are **not stable** in this cycle. Trend reporting indicates major price spikes and constrained supply extending into 2026, with some industry commentary suggesting tightness could persist longer. ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))**Implication:** We need an architecture that can:
 
 ·       deploy on **whatever flash is actually obtainable** (ODM flexibility), and/or
 
@@ -2783,7 +2783,7 @@ NAND pricing and availability are **not stable** in this cycle. Trend reporting 
 
 #### 3) DRR (Data Reduction Ratio) determines whether flash is feasible
 
-VAST’s architecture emphasizes global data reduction (dedupe/compression/similarity). VAST publicly describes “Similarity” as delivering a weighted-average data reduction across its fleet. ([VAST Data](https://www.vastdata.com/blog/similarity-reduction-report-from-the-field?utm_source=chatgpt.com "Similarity Reduction: Report From the Field"))  
+VAST’s architecture emphasizes global data reduction (dedupe/compression/similarity). VAST publicly describes “Similarity” as delivering a weighted-average data reduction across its fleet. ([VAST Data](https://www.vastdata.com/blog/similarity-reduction-report-from-the-field "Similarity Reduction: Report From the Field"))  
 **Implication:** the feasibility of “all-flash at scale” depends heavily on what the dataset _actually is_ (see DRR section).
 
 ---
@@ -2828,7 +2828,7 @@ VAST’s architecture emphasizes global data reduction (dedupe/compression/simil
 
 **What we can say confidently today (public)**
 
-·       **Lasv4 / Laosv4** are Azure “storage optimized” VM families with **local NVMe** intended for high-throughput, low-latency workloads. ([Microsoft Tech Community](https://techcommunity.microsoft.com/blog/azurecompute/announcing-the-general-availability-of-azure-laosv4-lasv4-and-lsv4-storage-optim/4422481?utm_source=chatgpt.com "Announcing the general availability of Azure Laosv4 ..."))
+·       **Lasv4 / Laosv4** are Azure “storage optimized” VM families with **local NVMe** intended for high-throughput, low-latency workloads. ([Microsoft Tech Community](https://techcommunity.microsoft.com/blog/azurecompute/announcing-the-general-availability-of-azure-laosv4-lasv4-and-lsv4-storage-optim/4422481 "Announcing the general availability of Azure Laosv4 ..."))
 
 ·       They’re positioned specifically for heavy local storage + fast compute, which is exactly the building block you need for a VAST DASE-style deployment in Azure.
 
@@ -2843,7 +2843,7 @@ VAST’s architecture emphasizes global data reduction (dedupe/compression/simil
 **Core constraint you must design around**
 
 ·       **Local NVMe is not the same as durable managed storage**. A VM lifecycle event can destroy local disks.  
-Your VAST deployment must assume and tolerate node loss through redundancy/erasure coding and operational automation (replace nodes, rebalance). VAST resilience work explicitly discusses designing for larger failure domains such as racks and correlated failures — the same mental model applies to cloud failure domains. ([VAST Data](https://www.vastdata.com/blog/bringing-rack-level-resilience-to-vast-part-one?utm_source=chatgpt.com "Bringing Rack-Level Resilience to VAST - Part One"))
+Your VAST deployment must assume and tolerate node loss through redundancy/erasure coding and operational automation (replace nodes, rebalance). VAST resilience work explicitly discusses designing for larger failure domains such as racks and correlated failures — the same mental model applies to cloud failure domains. ([VAST Data](https://www.vastdata.com/blog/bringing-rack-level-resilience-to-vast-part-one "Bringing Rack-Level Resilience to VAST - Part One"))
 
 **My opinionated stance on VM-based VAST**
 
@@ -2913,7 +2913,7 @@ o   marketplace/commercial packaging
 
 ·       DRR is **workload-dependent**, not vendor-dependent.
 
-VAST describes its “Similarity” approach as delivering a weighted-average data reduction across its global fleet. ([VAST Data](https://www.vastdata.com/blog/similarity-reduction-report-from-the-field?utm_source=chatgpt.com "Similarity Reduction: Report From the Field"))  
+VAST describes its “Similarity” approach as delivering a weighted-average data reduction across its global fleet. ([VAST Data](https://www.vastdata.com/blog/similarity-reduction-report-from-the-field "Similarity Reduction: Report From the Field"))  
 Treat that as **directional**; you still need to measure your corpus.
 
 #### A.4.2 DRR expectations by dataset type (rule-of-thumb)
@@ -2960,7 +2960,7 @@ This is the table we should keep coming back to in reviews; it forces alignment 
 
 ### A.6 Supply chain strategy embedded in deployment choices
 
-Given the current NAND volatility signals (price spikes, constrained supply), the deployment strategy should explicitly support **supply substitution**: ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up?utm_source=chatgpt.com "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))
+Given the current NAND volatility signals (price spikes, constrained supply), the deployment strategy should explicitly support **supply substitution**: ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))
 
 1.        **Flash where it matters** (GPU-adjacent working set, hot metadata, checkpoints)
 
@@ -2974,7 +2974,7 @@ Given the current NAND volatility signals (price spikes, constrained supply), th
 
 ### A.7 Operational notes that must be in the main doc (but belong here as “appendix truth”)
 
-·       **Cloud failure domains are correlated.** Design for “rack-like” correlated failures (maintenance events, host groups) the same way you design for racks on-prem. VAST has explicitly discussed rack-level resilience techniques to tolerate larger failure domains efficiently. ([VAST Data](https://www.vastdata.com/blog/bringing-rack-level-resilience-to-vast-part-one?utm_source=chatgpt.com "Bringing Rack-Level Resilience to VAST - Part One"))
+·       **Cloud failure domains are correlated.** Design for “rack-like” correlated failures (maintenance events, host groups) the same way you design for racks on-prem. VAST has explicitly discussed rack-level resilience techniques to tolerate larger failure domains efficiently. ([VAST Data](https://www.vastdata.com/blog/bringing-rack-level-resilience-to-vast-part-one "Bringing Rack-Level Resilience to VAST - Part One"))
 
 ·       **VM local NVMe is a different durability contract** than managed disks; the deployment must assume node turnover as normal (automated replace + rebalance).
 
@@ -2990,7 +2990,7 @@ Given the current NAND volatility signals (price spikes, constrained supply), th
 
 3.        **Quantify performance per substrate** with the same benchmark harness (AI shard read, metadata ops/s, checkpoint write throughput).
 
-4.        **Supply chain evidence pack** (replace secondary sources with primary/industry analyst references if possible; keep Tom’s Hardware as supporting color, not the pillar). ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up?utm_source=chatgpt.com "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))
+4.        **Supply chain evidence pack** (replace secondary sources with primary/industry analyst references if possible; keep Tom’s Hardware as supporting color, not the pillar). ([Tom's Hardware](https://www.tomshardware.com/tech-industry/nand-wafer-shortage-pushes-november-contract-prices-up "NAND wafer shortages push November contract prices up by over 60% - market tightens as hyperscalers purchase capacity for AI data centers"))
 
 5.        **Bare metal feasibility memo**: required Microsoft primitives, packaging, and the control-plane path to make it “first-party-like.”
 
@@ -3375,7 +3375,7 @@ Add an operational appendix:
 
 ·       Managing many VAST clusters across tenants/subscriptions
 
-·       Use Azure Lighthouse delegated resource management concepts to centralize operations. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/create-private-link-service-portal?utm_source=chatgpt.com "Quickstart - Create a Private Link service - Azure portal"))
+·       Use Azure Lighthouse delegated resource management concepts to centralize operations. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/private-link/create-private-link-service-portal "Quickstart - Create a Private Link service - Azure portal"))
 
 ---
 

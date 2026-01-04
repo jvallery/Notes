@@ -151,9 +151,9 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 >     
 > - Near term: **private offers** (term commits) running in customer tenants. Later: **public PAYG**; eventual **SaaS**.
 >     
-> - Cloud shapes vary (e.g., Azure Lsv3, AWS i4i/i3en, GCP Local SSD), often **over‑provisioned on vCPU** for storage‑heavy use cases; networking (often ~100 Gbps east/west) can bottleneck. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series?utm_source=chatgpt.com "Lsv3 size series - Azure Virtual Machines"))
+> - Cloud shapes vary (e.g., Azure Lsv3, AWS i4i/i3en, GCP Local SSD), often **over‑provisioned on vCPU** for storage‑heavy use cases; networking (often ~100 Gbps east/west) can bottleneck. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series "Lsv3 size series - Azure Virtual Machines"))
 >     
-> - You debated: **capacity‑only** vs. **fixed cores per PiB** vs. **usage credits**; **never throttle/disable cores**; want clear discount logic aligned with **cloud commitments** (Azure Reserved Capacity, ANF Reservations, GCP CUDs). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+> - You debated: **capacity‑only** vs. **fixed cores per PiB** vs. **usage credits**; **never throttle/disable cores**; want clear discount logic aligned with **cloud commitments** (Azure Reserved Capacity, ANF Reservations, GCP CUDs). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
 >     
 
 ---
@@ -176,9 +176,9 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 **Pros**
 
-- **Simplest** to sell and compare (matches how storage services are listed). Azure NetApp Files and Azure Blob Storage both support **term‑discounted, capacity‑based** reservations (100 TiB/1 PiB blocks, 1‑ and 3‑year), so procurement is familiar. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/?utm_source=chatgpt.com "Azure NetApp Files – Pricing"))
+- **Simplest** to sell and compare (matches how storage services are listed). Azure NetApp Files and Azure Blob Storage both support **term‑discounted, capacity‑based** reservations (100 TiB/1 PiB blocks, 1‑ and 3‑year), so procurement is familiar. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/ "Azure NetApp Files – Pricing"))
     
-- Predictable; **no surprise “IOPS/throughput” meters** (a complaint about some competitors). For example, FSx for ONTAP charges on **multiple components** (SSD storage, SSD IOPS, capacity pool, throughput capacity, backups); you avoid that complexity. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/?utm_source=chatgpt.com "Amazon FSx for NetApp ONTAP Pricing"))
+- Predictable; **no surprise “IOPS/throughput” meters** (a complaint about some competitors). For example, FSx for ONTAP charges on **multiple components** (SSD storage, SSD IOPS, capacity pool, throughput capacity, backups); you avoid that complexity. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/ "Amazon FSx for NetApp ONTAP Pricing"))
     
 - Keeps field motion and quoting fast for **private offers**.
     
@@ -196,7 +196,7 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 - **MVP / Private‑offer phase**; burst use cases; storage‑centric POCs.
     
-- If you choose **A2 (tier‑weighted)**, keep cold/object weighted **lightly** so TCO stays acceptable at PB+ scale; S3/Blob/GCS already monetize those bytes & requests. ([Amazon Web Services, Inc.](https://aws.amazon.com/s3/pricing/?utm_source=chatgpt.com "S3 Pricing"))
+- If you choose **A2 (tier‑weighted)**, keep cold/object weighted **lightly** so TCO stays acceptable at PB+ scale; S3/Blob/GCS already monetize those bytes & requests. ([Amazon Web Services, Inc.](https://aws.amazon.com/s3/pricing/ "S3 Pricing"))
     
 
 ---
@@ -215,7 +215,7 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 **Pros**
 
-- **Cross‑cloud price parity**: customers see the same VAST software price even when Azure Lsv3 or AWS i4i expose very different vCPU counts. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series?utm_source=chatgpt.com "Lsv3 size series - Azure Virtual Machines"))
+- **Cross‑cloud price parity**: customers see the same VAST software price even when Azure Lsv3 or AWS i4i expose very different vCPU counts. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series "Lsv3 size series - Azure Virtual Machines"))
     
 - Keeps your **on‑prem “capacity + cores” narrative** consistent in concept while shielding cloud variability.
     
@@ -226,7 +226,7 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 - **Leave money on the table** for compute‑intensive adopters (once higher‑level services/AI kick in).
     
-- **Core != core** (generation, clock, ACU on Azure) so equivalence is imperfect; some buyers will question fairness. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu?utm_source=chatgpt.com "Constrained vCPU sizes - Azure Virtual Machines"))
+- **Core != core** (generation, clock, ACU on Azure) so equivalence is imperfect; some buyers will question fairness. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu "Constrained vCPU sizes - Azure Virtual Machines"))
     
 - If you later introduce usage‑based compute, this model may need to be **unwound**.
     
@@ -258,14 +258,14 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 - Scales revenue with **value delivered** (when customers run more data services, you earn more).
     
-- Mirrors modern cloud data platforms: **Snowflake’s credits** (per‑second with 60‑second minimum) and **Databricks’ DBUs** (normalized compute unit) are well‑known constructs; buyers accept them, especially with **commit discounts**. ([Snowflake Documentation](https://docs.snowflake.com/en/user-guide/cost-understanding-overall?utm_source=chatgpt.com "Understanding overall cost"))
+- Mirrors modern cloud data platforms: **Snowflake’s credits** (per‑second with 60‑second minimum) and **Databricks’ DBUs** (normalized compute unit) are well‑known constructs; buyers accept them, especially with **commit discounts**. ([Snowflake Documentation](https://docs.snowflake.com/en/user-guide/cost-understanding-overall "Understanding overall cost"))
     
 - Readies you for a **future SaaS** offer where you’ll own infrastructure risk.
     
 
 **Cons**
 
-- Introduces a **second meter**; some customers perceive credit models as **opaque** if not visualized well. (Databricks DBU complexity is a common industry complaint.) ([CloudZero](https://www.cloudzero.com/blog/databricks-pricing/?utm_source=chatgpt.com "How Databricks Pricing Works: A 2025 Cost Breakdown"))
+- Introduces a **second meter**; some customers perceive credit models as **opaque** if not visualized well. (Databricks DBU complexity is a common industry complaint.) ([CloudZero](https://www.cloudzero.com/blog/databricks-pricing/ "How Databricks Pricing Works: A 2025 Cost Breakdown"))
     
 - Requires **usage pipeline** and a cost cockpit at GA.
     
@@ -296,7 +296,7 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 **Cons**
 
-- **Customer confusion** and poor comparability in practice; similar unit models (e.g., DBUs) often require extra education and tooling to forecast. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/?utm_source=chatgpt.com "Azure Databricks Pricing"))
+- **Customer confusion** and poor comparability in practice; similar unit models (e.g., DBUs) often require extra education and tooling to forecast. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/ "Azure Databricks Pricing"))
     
 - Hard to keep “unit math” in sync with rapidly changing instance generations and network caps.
     
@@ -312,12 +312,12 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 **What you charge**
 
-- Price by **throughput/SLO class per PiB** (e.g., Standard, Performance, Extreme), akin to how **Azure NetApp Files** sells **service levels** and how public‑cloud storage often tiers by service class. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/?utm_source=chatgpt.com "Azure NetApp Files – Pricing"))
+- Price by **throughput/SLO class per PiB** (e.g., Standard, Performance, Extreme), akin to how **Azure NetApp Files** sells **service levels** and how public‑cloud storage often tiers by service class. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/ "Azure NetApp Files – Pricing"))
     
 
 **How to meter**
 
-- Tag deployments to a class. Back the class with **instance families** (e.g., i3en vs i4i, Azure Lsv3) and **network caps**; police only if telemetry shows chronic SLO miss. ([Amazon Web Services, Inc.](https://aws.amazon.com/ec2/instance-types/i4i/?utm_source=chatgpt.com "Amazon EC2 I4i Instances – Compute"))
+- Tag deployments to a class. Back the class with **instance families** (e.g., i3en vs i4i, Azure Lsv3) and **network caps**; police only if telemetry shows chronic SLO miss. ([Amazon Web Services, Inc.](https://aws.amazon.com/ec2/instance-types/i4i/ "Amazon EC2 I4i Instances – Compute"))
     
 
 **Pros**
@@ -404,7 +404,7 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 - Matches how large customers actually buy; simplifies multi‑cloud estates.
     
-- Mirrors cloud commitment programs: **Azure Storage/ANF reserved capacity** (100 TiB/1 PiB; 1‑/3‑year), **GCP spend‑based CUDs** for NetApp Volumes, etc. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+- Mirrors cloud commitment programs: **Azure Storage/ANF reserved capacity** (100 TiB/1 PiB; 1‑/3‑year), **GCP spend‑based CUDs** for NetApp Volumes, etc. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
     
 
 **Cons**
@@ -423,11 +423,11 @@ Below is a **menu of pricing options** for VAST in public cloud, organized to 
 
 ### Simple **Resiliency Class** uplift
 
-Apply a small factor on the **capacity** meter for multi‑AZ/dual‑region coordination overhead. Keep it transparent; customers already pay the cloud for extra **durability classes** (e.g., LRS/ZRS/GRS on Azure; S3 Standard vs. One Zone‑IA; GCS dual‑region). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+Apply a small factor on the **capacity** meter for multi‑AZ/dual‑region coordination overhead. Keep it transparent; customers already pay the cloud for extra **durability classes** (e.g., LRS/ZRS/GRS on Azure; S3 Standard vs. One Zone‑IA; GCS dual‑region). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
 
 ### Align discounting with cloud programs
 
-- **Term commits** (1‑/3‑year) on capacity and (if using credits) **reserved credit packs** — matches Azure **Storage/ANF Reserved Capacity** and GCP **CUDs** (spend‑based). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+- **Term commits** (1‑/3‑year) on capacity and (if using credits) **reserved credit packs** — matches Azure **Storage/ANF Reserved Capacity** and GCP **CUDs** (spend‑based). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
     
 - **Volume tiers** (PB‑scale step‑downs).
     
@@ -438,16 +438,16 @@ Apply a small factor on the **capacity** meter for multi‑AZ/dual‑region co
 
 ### What **not** to meter (customers dislike)
 
-- **IOPS/throughput fees** (FSx for ONTAP has them; keep VAST simpler). ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/?utm_source=chatgpt.com "Amazon FSx for NetApp ONTAP Pricing"))
+- **IOPS/throughput fees** (FSx for ONTAP has them; keep VAST simpler). ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/ "Amazon FSx for NetApp ONTAP Pricing"))
     
-- **Per‑API‑call** software charges on object (S3/Blob/GCS already do this). ([Amazon Web Services, Inc.](https://aws.amazon.com/s3/pricing/?utm_source=chatgpt.com "S3 Pricing"))
+- **Per‑API‑call** software charges on object (S3/Blob/GCS already do this). ([Amazon Web Services, Inc.](https://aws.amazon.com/s3/pricing/ "S3 Pricing"))
     
 
 ### Metering blueprint (if you use C or A2)
 
 - **Capacity by tier**: hourly **TiB** on NVMe (hot), block (warm), object (cold).
     
-- **Compute (credits)**: **vCPU‑seconds** per feature; show feature tags on the bill (like Snowflake/Databricks do). ([Snowflake Documentation](https://docs.snowflake.com/en/user-guide/cost-understanding-overall?utm_source=chatgpt.com "Understanding overall cost"))
+- **Compute (credits)**: **vCPU‑seconds** per feature; show feature tags on the bill (like Snowflake/Databricks do). ([Snowflake Documentation](https://docs.snowflake.com/en/user-guide/cost-understanding-overall "Understanding overall cost"))
     
 - **Caps for cold**: optionally cap chargeable cold/object bytes at **β× hot** so PB‑scale lakes don’t dominate TCO (cloud already charges those bytes).
     
@@ -456,13 +456,13 @@ Apply a small factor on the **capacity** meter for multi‑AZ/dual‑region co
 
 ## Competitive reality to anchor your pros/cons
 
-- **FSx for NetApp ONTAP** pricing involves **five components** (storage, IOPS, capacity pool, throughput, backups); great for fine‑tuning, but harder to forecast. Your **two meters** (capacity + optional credits) stay cleaner. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/?utm_source=chatgpt.com "Amazon FSx for NetApp ONTAP Pricing"))
+- **FSx for NetApp ONTAP** pricing involves **five components** (storage, IOPS, capacity pool, throughput, backups); great for fine‑tuning, but harder to forecast. Your **two meters** (capacity + optional credits) stay cleaner. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/ "Amazon FSx for NetApp ONTAP Pricing"))
     
-- **Azure NetApp Files** uses service levels and supports **100 TiB/1 PiB reservations** with 1‑/3‑year terms (familiar procurement motion). ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/?utm_source=chatgpt.com "Azure NetApp Files – Pricing"))
+- **Azure NetApp Files** uses service levels and supports **100 TiB/1 PiB reservations** with 1‑/3‑year terms (familiar procurement motion). ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/ "Azure NetApp Files – Pricing"))
     
-- **GCP NetApp Volumes** uses **spend‑based CUDs** (predictable discount mechanism). ([Google Cloud](https://cloud.google.com/netapp/volumes/docs/cuds?utm_source=chatgpt.com "Committed use discounts | NetApp Volumes"))
+- **GCP NetApp Volumes** uses **spend‑based CUDs** (predictable discount mechanism). ([Google Cloud](https://cloud.google.com/netapp/volumes/docs/cuds "Committed use discounts | NetApp Volumes"))
     
-- **Databricks** (DBUs) and **Snowflake** (credits) normalized compute consumption and sell **commit discounts**; good pattern for your higher‑level services later. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/?utm_source=chatgpt.com "Azure Databricks Pricing"))
+- **Databricks** (DBUs) and **Snowflake** (credits) normalized compute consumption and sell **commit discounts**; good pattern for your higher‑level services later. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/ "Azure Databricks Pricing"))
     
 
 ---
@@ -473,15 +473,15 @@ Apply a small factor on the **capacity** meter for multi‑AZ/dual‑region co
 
 **Choose Option A2 (capacity‑only, tier‑weighted)** with a **tiny Resiliency Class uplift**.
 
-- Why: maximum **simplicity**, clean **cross‑cloud** price list, and predictable TCO for buyers comparing against capacity‑priced services (ANF, etc.). ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/?utm_source=chatgpt.com "Azure NetApp Files – Pricing"))
+- Why: maximum **simplicity**, clean **cross‑cloud** price list, and predictable TCO for buyers comparing against capacity‑priced services (ANF, etc.). ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/ "Azure NetApp Files – Pricing"))
     
 - Implementation notes:
     
     - Weighting example: **Hot NVMe = 1.0×**, **Warm block = 0.25–0.35×**, **Cold object = 0.05–0.10×**, with **caps**on warm/cold vs hot to protect PB‑scale economics.
         
-    - Publish a short **shape‑to‑tier map** (e.g., Azure Lsv3 = Hot; AWS i4i/i3en = Hot; object buckets = Cold) and acknowledge **network** as the typical limiter. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series?utm_source=chatgpt.com "Lsv3 size series - Azure Virtual Machines"))
+    - Publish a short **shape‑to‑tier map** (e.g., Azure Lsv3 = Hot; AWS i4i/i3en = Hot; object buckets = Cold) and acknowledge **network** as the typical limiter. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series "Lsv3 size series - Azure Virtual Machines"))
         
-    - **Discount policy**: lower and tighter than on‑prem; mirror cloud programs: 1‑yr vs 3‑yr **Reserved Capacity/CUD** style bands for transparency. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+    - **Discount policy**: lower and tighter than on‑prem; mirror cloud programs: 1‑yr vs 3‑yr **Reserved Capacity/CUD** style bands for transparency. ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
         
 
 ### **Phase 2 — Public PAYG (≈ next wave)**
@@ -490,7 +490,7 @@ Layer in **Option C (credits)** **only** for **clearly compute‑heavy featu
 
 - An **included baseline** per TiB so routine ops remain “free.”
     
-- **Reserved credit packs** (1‑/3‑yr) for predictable jobs (nightly indexing, replication windows), mirroring **Databricks/Snowflake** commit patterns. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/?utm_source=chatgpt.com "Azure Databricks Pricing"))
+- **Reserved credit packs** (1‑/3‑yr) for predictable jobs (nightly indexing, replication windows), mirroring **Databricks/Snowflake** commit patterns. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/ "Azure Databricks Pricing"))
     
 - Keep the **capacity tiering** as in Phase 1.
     
@@ -507,8 +507,8 @@ Keep the **same two meters** (capacity + credits), but you roll cloud COGS int
 |---|---|---|---|---|---|
 |**A1** Flat capacity|**High**|Low|Medium|**Medium–Low**(depends on cold %)|Double‑charge perception on object|
 |**A2** Tier‑weighted capacity|**High**|Low|Medium|**High** (with caps)|Slightly more SKU logic|
-|**B** Fixed cores per PiB (no throttle)|**Med‑High**|Med (baseline only)|**High**|High|Leaves upside on the table; core quality varies (ACU, generations). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu?utm_source=chatgpt.com "Constrained vCPU sizes - Azure Virtual Machines"))|
-|**C** Credits for compute|Medium|**High**|High|**High**|Needs usage pipeline; credit models can feel opaque. ([CloudZero](https://www.cloudzero.com/blog/databricks-pricing/?utm_source=chatgpt.com "How Databricks Pricing Works: A 2025 Cost Breakdown"))|
+|**B** Fixed cores per PiB (no throttle)|**Med‑High**|Med (baseline only)|**High**|High|Leaves upside on the table; core quality varies (ACU, generations). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu "Constrained vCPU sizes - Azure Virtual Machines"))|
+|**C** Credits for compute|Medium|**High**|High|**High**|Needs usage pipeline; credit models can feel opaque. ([CloudZero](https://www.cloudzero.com/blog/databricks-pricing/ "How Databricks Pricing Works: A 2025 Cost Breakdown"))|
 |**D** Synthetic “VAST Unit”|Low|High|High|High|Most confusing in practice (sales friction).|
 |**E** Performance classes|**High**|Med (if uplifted)|**High**|High|Requires careful SLOs and shape mapping.|
 
@@ -516,24 +516,24 @@ Keep the **same two meters** (capacity + credits), but you roll cloud COGS int
 
 ## Guardrails & FAQs you’ll face
 
-- **“Why not charge IOPS/throughput?”** Because it complicates bills and customers already see that complexity elsewhere (e.g., FSx for ONTAP). We keep software billing to **capacity + (optional) compute credits**. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/?utm_source=chatgpt.com "Amazon FSx for NetApp ONTAP Pricing"))
+- **“Why not charge IOPS/throughput?”** Because it complicates bills and customers already see that complexity elsewhere (e.g., FSx for ONTAP). We keep software billing to **capacity + (optional) compute credits**. ([Amazon Web Services, Inc.](https://aws.amazon.com/fsx/netapp-ontap/pricing/ "Amazon FSx for NetApp ONTAP Pricing"))
     
-- **“Can you match my cloud commit structure?”** Yes. We mirror **Azure/ANF Reserved Capacity** and **GCP CUDs** with 1‑/3‑year commits (and private offers via marketplace). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity?utm_source=chatgpt.com "Optimize costs for Blob storage with reserved capacity"))
+- **“Can you match my cloud commit structure?”** Yes. We mirror **Azure/ANF Reserved Capacity** and **GCP CUDs** with 1‑/3‑year commits (and private offers via marketplace). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/storage/blobs/storage-blob-reserved-capacity "Optimize costs for Blob storage with reserved capacity"))
     
-- **“What about different VM generations/CPU speeds?”** We acknowledge variability (Azure **ACU** exists specifically to normalize performance across SKUs), so we don’t price **per actual vCPU** in cloud. We either normalize (Option B) or charge **compute by usage** (Option C). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu?utm_source=chatgpt.com "Constrained vCPU sizes - Azure Virtual Machines"))
+- **“What about different VM generations/CPU speeds?”** We acknowledge variability (Azure **ACU** exists specifically to normalize performance across SKUs), so we don’t price **per actual vCPU** in cloud. We either normalize (Option B) or charge **compute by usage** (Option C). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/constrained-vcpu "Constrained vCPU sizes - Azure Virtual Machines"))
     
-- **“Reserved capacity for S3?”** There’s no general S3 “reserved storage” construct; the exception is **provisioned capacity for Glacier expedited retrievals** (a different problem). ([AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html?utm_source=chatgpt.com "Understanding archive retrieval options"))
+- **“Reserved capacity for S3?”** There’s no general S3 “reserved storage” construct; the exception is **provisioned capacity for Glacier expedited retrievals** (a different problem). ([AWS Documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/restoring-objects-retrieval-options.html "Understanding archive retrieval options"))
     
 
 ---
 
 ### Bottom line
 
-- **Short term:** ship with **Capacity‑only, tier‑weighted (A2)** + **tight term discounts** aligned to Azure/ANF/GCP programs. This matches how storage is bought, is easy to compare, and protects PB‑scale TCO. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/?utm_source=chatgpt.com "Azure NetApp Files – Pricing"))
+- **Short term:** ship with **Capacity‑only, tier‑weighted (A2)** + **tight term discounts** aligned to Azure/ANF/GCP programs. This matches how storage is bought, is easy to compare, and protects PB‑scale TCO. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/netapp/ "Azure NetApp Files – Pricing"))
     
-- **Next:** add a **lightweight compute‑credits rail (C)** for the select services where you truly burn CPU; include a baseline so customers don’t feel nickel‑and‑dimed. Anchor discounting in **reserved credit packs** akin to DBU/credit commitments. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/?utm_source=chatgpt.com "Azure Databricks Pricing"))
+- **Next:** add a **lightweight compute‑credits rail (C)** for the select services where you truly burn CPU; include a baseline so customers don’t feel nickel‑and‑dimed. Anchor discounting in **reserved credit packs** akin to DBU/credit commitments. ([Microsoft Azure](https://azure.microsoft.com/en-us/pricing/details/databricks/ "Azure Databricks Pricing"))
     
-- **Always:** keep a **small resiliency uplift**, avoid IOPS/API fees, and publish a **clear shape‑to‑tier map** (Lsv3 / i4i / Local SSD as “Hot”). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series?utm_source=chatgpt.com "Lsv3 size series - Azure Virtual Machines"))
+- **Always:** keep a **small resiliency uplift**, avoid IOPS/API fees, and publish a **clear shape‑to‑tier map** (Lsv3 / i4i / Local SSD as “Hot”). ([Microsoft Learn](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes/storage-optimized/lsv3-series "Lsv3 size series - Azure Virtual Machines"))
     
 
 If you want, I can convert this into a one‑page **decision playbook** (with example billing line items and a shape‑to‑tier appendix) so sales can choose among A2, B, and C with consistent language and discount bands.
