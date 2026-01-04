@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az.md|Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] — Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Azure marketplace use ...
+
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
 - 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Jason Vallery and Erez Zilber aligned on implementing Azure Blob API support in VAST, primarily to e...

@@ -12,6 +12,14 @@ tags:
 
 ## Recent Context
 
+- 2025-10-30: [[Sources/Transcripts/2025/2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De.md|Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] — Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in Dec, small). Agreed to...
+
+- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home.md|Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] — Intro call exploring roles for Jason at VAST. Lior outlined three potential homes (Jay’s model build...
+
+- unknown: [[Sources/Transcripts/2025/2025-10 - Lior Genzel.md|Lior Genzel]] — - TPUs with Google
+
+- 2025-11-03: [[Sources/Transcripts/2025/2025-11-03.md|2025-11-03]] — - Hardware SKU from MSFT
+
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy...
 - 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)

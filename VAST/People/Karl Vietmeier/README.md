@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for.md|Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] — Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for a planet-scale, mult...
+
 - unknown: [[Available Capacity Calculations]] - Email-style note proposing replacing a fixed overhead percentage with a first-principles “available ... (via Cloud)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)

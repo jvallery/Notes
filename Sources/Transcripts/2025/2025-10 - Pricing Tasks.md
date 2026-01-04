@@ -1,0 +1,32 @@
+---
+entities:
+  projects:
+  - '[[Pricing]]'
+type: transcript
+source_type: unknown
+date: '2025-10-01'
+---
+
+- [x] Draft pricing/consumption model write-up and share with Jeff and Yancey for next discussion. @Jason Vallery ⏫ ✅ 2025-10-28
+- [x] Propose cloud private-offer pricing structure and discount guidance (capacity-only) for immediate use by field. @Tomer ⏫ ✅ 2025-11-08
+- [x] Define and publish a cloud-specific discount policy for private offers to avoid extreme discounts. @Pricing vTeam ⏫ ✅ 2025-11-08
+- [x] Decide whether to introduce fixed cores-per-PB normalization for cloud starting Feb 1 and document the model. @Pricing vTeam ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Define marketplace entitlements and pricing schema for Google private offer and begin approval process. @Yancey ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Develop public PAYGO offer (customer tenant) within ~6 months, including consumption metering and billing. @Product 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Plan full multi-tenant SaaS offering (our account), target timing likely FY28; align pricing and COGS model. @Product 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Deepen competitive pricing analysis vs Pure, NetApp, Isilon, WEKA, Hammerspace (models and price points). @Pricing vTeam 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Assess using performance tiers (instance class/throughput per PB) to simplify cloud pricing communication. @Product 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Define hybrid ELA conversion and deployment tracking across on‑prem and cloud in Polaris/Uplink. @Polaris team 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Evaluate feasibility and policy for an optional 'unlock all cores' add-on price in cloud (no core disabling). @Product 🔽[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Investigate Azure Compute Unit and other cross-gen normalization metrics for potential future use. @Tomer 🔽 ✅ 2025-11-08
+- [x] Tackle IO for overages/pricing EULA ✅ 2025-11-08
+- [x] - [ ] Draft a unit-based pricing proposal (with Databricks/Snowflake references) including ARR impact modeling and discount guardrails. @Jason Vallery ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Share investor valuation framework and metrics (how ARR is defined/measured and implications for Cloud Solutions). @Timo ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Define discounting policy and controls to prevent deal-level leakage when cloud SKUs are undiscountable. @Timo ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Progress hiring of Finance Business Partner for Cloud Solutions and embed them with the Cloud Solutions leadership team. @Timo ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Align messaging with finance to brief Brennan and Jeff on the pricing evolution rationale and ARR impact. @Jason Vallery ⏫[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Provide current pricing/discounting analysis (price-paid scatter by cohort) to inform normalization plan. @Timo 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Identify and prioritize exabyte-scale customers to pursue hyperscaler hardware commitments and escalation path. @Jason Vallery 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Schedule a deep-dive session on business metrics and ARR framework. @Jason Vallery 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Send pricing scatter/discounting data set and initial insights. @Timo 🔼[](app://obsidian.md/index.html# "Edit task") ✅ 2025-11-08
+- [x] Update on finance business partner hiring status after Renan interview. @Timo 🔽 ✅ 2025-11-08

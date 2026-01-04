@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Asaf Levy.md|Asaf Levy]] — - [x] Meet Asaf (chief architect) to align on persistence design, object tiering, and QoS/governance...
+
 - unknown: [[2025-10 - Asaf Levy]] - Completed action items from a working session with Asaf Levy to align on DataSpaces persistence desi...
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)

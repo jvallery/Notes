@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Noa Cohen.md|Noa Cohen]] — - [x] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Jason V...
+
 - unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including...
 - unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)

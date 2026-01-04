@@ -12,6 +12,12 @@ tags:
 
 ## Recent Context
 
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage.md|Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] — Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release management process, org st...
+
+- unknown: [[Sources/Transcripts/2025/2025-10 - Liraz Ben Or.md|Liraz Ben Or]] — - [x] Introduce yourself and sync with program managers (Liraz) ✅ 2025-11-08
+
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga.md|Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] — Liraz walked Jason through VAST’s non-traditional release management: 4 phase gates in a Waterfall m...
+
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - unknown: [[2025-10 - Liraz Ben Or]] - Checklist note tracking completion of initial sync activities with Liraz Ben Or, including introduct...
 - unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)

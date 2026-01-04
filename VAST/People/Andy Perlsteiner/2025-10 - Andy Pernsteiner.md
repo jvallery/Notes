@@ -1,1 +1,0 @@
-- [x] Set up a 1:1 with Andy Bernstein to learn meeting rhythms and channels. @Jason Vallery 🔼- - ✅ 2025-10-27

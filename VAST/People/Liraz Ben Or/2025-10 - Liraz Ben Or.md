@@ -1,2 +1,0 @@
-- [x] Introduce yourself and sync with program managers (Liraz) ✅ 2025-11-08
-- [x] Release gate meetings and cadence ✅ 2025-11-08

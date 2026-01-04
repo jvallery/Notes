@@ -12,6 +12,22 @@ tags:
 
 ## Recent Context
 
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla.md|We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
+
+- 2025-10-27: [[Sources/Transcripts/2025/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md|Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] — Jason and Jeff aligned on near-term focus: synthesize a cloud pipeline view and requirements, deepen...
+
+- unknown: [[Sources/Transcripts/2025/2025-10 - Jeff Denworth.md|Jeff Denworth]] — - Travel
+
+- 2025-09-16: [[Sources/Transcripts/2025/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md|Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas]] — Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jason (Azure-focused BD...
+
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md|Reviewed org landscape and key players; aligned that Jason will deeply understan]] — Here’s a tight, no‑nonsense readout that pulls the signal from both your notes and the transcript, f...
+
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md|We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] — **Date:** 2025-11-07 · **Person:** Jeff Denworth · **Folder:** People/Jeff Denworth
+
+- unknown: [[Sources/Transcripts/2025/2025-11-4 - Planning sessions.md|4 - Planning sessions]] — - Northstar & vision
+
+- 2025-12-19: [[Sources/Transcripts/2025/2025-12-19.md|2025-12-19]] — Jason Vallery
+
 - unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat...
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac...

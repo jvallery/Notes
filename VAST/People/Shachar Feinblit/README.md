@@ -12,6 +12,10 @@ tags:
 
 ## Recent Context
 
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s.md|Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s]] — Jason and Shachar aligned on setting a weekly 30-minute 1:1 and planning Jason’s Tel Aviv visit (Nov...
+
+- unknown: [[Sources/Transcripts/2025/2025-10 - Shachar Feinblit.md|Shachar Feinblit]] — - [x] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption...
+
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec...

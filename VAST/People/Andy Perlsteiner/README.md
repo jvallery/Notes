@@ -12,6 +12,10 @@ tags:
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Andy Pernsteiner.md|Andy Pernsteiner]] — - [x] Set up a 1:1 with Andy Bernstein to learn meeting rhythms and channels. @Jason Vallery 🔼- - ✅ ...
+
+- 2025-10-30: [[Sources/Transcripts/2025/2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four.md|Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] — Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four pillars (field escal...
+
 - unknown: [[2025-10 - Andy Pernsteiner]] - A completed action item to set up a 1:1 with Andy Bernstein to learn meeting rhythms and communicati...
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
 - 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)

@@ -12,6 +12,12 @@ tags:
 
 ## Recent Context
 
+- 2025-11-14: [[Sources/Transcripts/2025/2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a.md|Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] — **Date:** 2025-11-14 · **Customer:** Walmart · **Folder:** Customers/Walmart
+
+- 2025-11-05: [[Sources/Transcripts/2025/2025-11-05 - Walmart Analytics.md|Walmart Analytics]] — Requirements -
+
+- 2025-11-06: [[Sources/Transcripts/2025/2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake.md|Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] — **Date:** 2025-11-06 · **Customer:** Walmart · **Folder:** Customers/Walmart
+
 - 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
 - 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal sync to align on Walmart’s big data initiative, focusing on clarifying disaster recovery re...
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)

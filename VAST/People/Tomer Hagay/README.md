@@ -12,6 +12,16 @@ tags:
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Tomer Hagay.md|Tomer Hagay]] — - [x] Share FRD templates/examples for Jason’s review @Tomer Hagey 🔼 ✅ 2025-11-08
+
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc.md|Jason and Tomer aligned on the need to introduce clearer product management disc]] — **Date:** 2025-11-07 · **Person:** Tomer Hagay · **Folder:** People/Tomer Hagay
+
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Jason and Tomer aligned on shifting cloud work toward a PM-led model and the nee.md|Jason and Tomer aligned on shifting cloud work toward a PM-led model and the nee]] — Jason and Tomer aligned on shifting cloud work toward a PM-led model and the need for cloud-oriented...
+
+- 2025-10-24: [[Sources/Transcripts/2025/2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str.md|Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] — Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud strategy. They contrast...
+
+- 2025-10-24: [[Sources/Transcripts/2025/2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices.md|Jason and Tomer discussed accelerating AI-driven software development practices]] — Jason and Tomer discussed accelerating AI-driven software development practices at VAST, gaps in rel...
+
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)

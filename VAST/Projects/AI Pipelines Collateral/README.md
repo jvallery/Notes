@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-11-06: [[Sources/Transcripts/2025/2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p.md|Aaron walked through updated slides for next week’s SE conference covering two p]] — **Date:** 2025-11-06 · **Project:** AI Pipelines Collateral · **Folder:** Projects/AI Pipelines Coll...
+
 - 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
 - 2025-11-13: [[2025-11-13 - GDC RFP meeting]] - Notes from a Google Distributed Cloud (GDC) RFP-related discussion covering storage TCO (HDD vs QLC)... (via Google)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)

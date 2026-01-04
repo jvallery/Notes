@@ -12,6 +12,12 @@ tags:
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Eyal Traitel.md|Eyal Traitel]]
+
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i.md|Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] — Jason and Eyal discussed VAST’s release intake, planning, and execution model, including how majors,...
+
+- 2025-10-29: [[Sources/Transcripts/2025/2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf.md|Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] — Jason and Eyal aligned on how VAST plans and executes major/minor releases, hotfixes, and service pa...
+
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
 - 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h...

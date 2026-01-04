@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo.md|Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] — Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training workloads on Azure inf...
+
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi... (via Jonsi Stephenson)
 - 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)

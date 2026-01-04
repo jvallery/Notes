@@ -11,6 +11,12 @@ CEO of VAST Data.
 
 ## Recent Context
 
+- unknown: [[Sources/Transcripts/2025/2025-10 - Jonsi Stephenson.md|Jonsi Stephenson]] — - [x] Align with Jonsi on travel to enable in-person working session. @Jason Vallery 🔼 ✅ 2025-11-08
+
+- 2026-01-03: [[Sources/Transcripts/2026/2026-01-03 - Prep for Microsoft AI talks.md|Prep for Microsoft AI talks]] — Jonsi and Jason aligned on positioning a “better together” story with Microsoft: VAST as GPU-adjacen...
+
+- 2025-11-07: [[Sources/Transcripts/2025/2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i.md|We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] — **Date:** 2025-11-07 · **Person:** Jonsi Stephenson · **Folder:** People/Jonsi Stephenson
+
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
 - unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers...
 - unknown: [[_Open Topics]] - Open topics note for Jonsi Stephenson that currently only contains a task query filtering for incomp...

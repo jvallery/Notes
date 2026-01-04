@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-30: [[Sources/Transcripts/2025/2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob.md|Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] — Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3/Object course he built...
+
 - 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson aligning on cloud enablement messaging and...
 - 2025-10-30: [[2025-10-30 - Weekly SE community call covering end-of-quarter push, Tech Summit logistics, an]] - Weekly SE community call focused on end-of-quarter execution, Tech Summit logistics/expense policy, ... (via SRE)
 - 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)

@@ -1,0 +1,11 @@
+---
+entities:
+  projects:
+  - '[[Platform Learning]]'
+type: transcript
+source_type: unknown
+date: '2025-10-01'
+---
+
+- [x] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Jason Vallery 🔽 ✅ 2025-11-08
+- [x] Deepen product understanding: obtain R&D reading list/SOP and review Confluence/docs. @Jason Vallery ⏫ ✅ 2025-11-08

@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions.md|Introductory 1-1 covering backgrounds, finance org context, and cloud solutions]] — Introductory 1-1 covering backgrounds, finance org context, and cloud solutions strategy. Timo outli...
+
 - unknown: [[2025-10 - Pricing Tasks]] - Checklist of completed pricing workstreams for cloud/private offers, discount policy, normalization ... (via Pricing)
 - 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
 - 2025-10-30: [[2025-10-30 - The group aligned on the cloud support operating model (Customer Success, Suppor]] - Group meeting to align the cloud support operating model (Customer Success, Support, SRE), hyperscal... (via Cloud)

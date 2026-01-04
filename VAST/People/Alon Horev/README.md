@@ -12,6 +12,8 @@ tags:
 
 ## Recent Context
 
+- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam.md|Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam]] — Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynamics to align before ...
+
 - unknown: [[_Open Topics]] - Open topics note for Alon Horev that currently only contains a task query filtering for incomplete t...
 - unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
 - unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
