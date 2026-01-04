@@ -474,18 +474,26 @@ RUN PERIODICALLY:
 
 **Goal:** Catch regressions in core pipeline.
 
-**Status: IN PROGRESS** (@copilot-claude-20260105a, started: 2026-01-04 17:15)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+
+All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
+
+- **Path validation + rollback**: `test_apply.py` (TestApplyPathValidation, TestApplyRollbackBehavior)
+- **Round-trip tests**: `test_apply.py` (TestExtractionToChangePlanRoundTrip) with fixtures
+- **Schema consistency**: `test_apply.py` (TestSchemaConsistency) validates JSON schemas match Pydantic
 
 **Tasks**
 
-- Add unit test for `apply.py` path validation + rollback.
-- Add plan/apply round‑trip test using fixture extraction JSON.
-- Add schema vs Pydantic consistency tests.
+- [x] Add unit test for `apply.py` path validation + rollback.
+- [x] Add plan/apply round‑trip test using fixture extraction JSON.
+- [x] Add schema vs Pydantic consistency tests.
 
 **Success Criteria**
 
-- Tests fail when paths are unsafe or schema drift exists.
-- CI passes with new tests.
+- ✅ Tests fail when paths are unsafe or schema drift exists.
+- ✅ CI passes with new tests (94/94 pass).
 
 ---
 
