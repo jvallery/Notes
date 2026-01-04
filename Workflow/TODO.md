@@ -2142,40 +2142,21 @@ These may have placeholder content or inaccurate dates.
 
 ---
 
-## 70) Template File Doesn't Match Actual READMEs
+## 70) ✅ FIXED: Template File Doesn't Match Actual READMEs
 
 **Goal:** Sync readme-person.md.j2 with actual README structure.
 
-**Status: NOT STARTED**
+**Status: FIXED** (2026-01-04)
 
-**Discovery:**
+**Fix Applied:**
 
-`Workflow/templates/readme-person.md.j2` uses:
-
-- `## Contact Information`
-- `## Relationship`
-- `## Projects` (with Dataview)
-
-But 125 actual READMEs use:
-
-- `## Profile`
+Rewrote `Workflow/templates/readme-person.md.j2` to match actual vault structure:
+- `## Profile` (with Role, Location, Relationship, Background)
 - `## Open Tasks`
 - `## Recent Context`
 - `## Key Facts`
 - `## Key Decisions`
-
-**Impact:** HIGH - new entity creation will use wrong template
-
-**Effort:** 30 minutes
-
-**Tasks**
-
-- [ ] Update readme-person.md.j2 to match actual README structure
-- [ ] Or document why two formats exist
-
-**Success Criteria**
-
-- Template matches 125 existing READMEs
+- `## Topics Discussed`
 
 ---
 
@@ -2490,68 +2471,68 @@ Most are intentionally unstructured, but should be documented.
 
 # Priority Matrix (Quick Wins)
 
-| #   | Issue                           | Impact | Effort | Priority    |
-| --- | ------------------------------- | ------ | ------ | ----------- |
-| ~~26~~  | ~~Topics not extracted~~        | ~~HIGH~~ | ~~5 min~~ | ✅ FIXED |
-| 42  | Broken source_ref targets       | HIGH   | 60 min | 🔴 CRITICAL |
-| 70  | Template mismatch               | HIGH   | 30 min | 🔴 CRITICAL |
-| ~~90~~  | ~~LLM uses 1:1 in filenames~~   | ~~HIGH~~ | ~~10 min~~ | ✅ FIXED |
-| ~~91~~  | ~~LLM uses wrong entity paths~~ | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED |
-| ~~92~~  | ~~person_to_project schema err~~ | ~~HIGH~~ | ~~15 min~~ | ✅ FIXED |
-| ~~93~~  | ~~extra_tags undefined~~        | ~~MED~~ | ~~5 min~~ | ✅ FIXED (guarded) |
-| ~~94~~  | ~~note_type undefined~~         | ~~MED~~ | ~~5 min~~ | ✅ FIXED (guarded) |
-| 96  | Archive filename mismatch       | HIGH   | TBD    | 🔴 CRITICAL |
-| 97  | MacWhisper captures app title   | HIGH   | 30 min | 🔴 CRITICAL |
-| 98  | Source attribution broken       | HIGH   | 60 min | 🔴 CRITICAL |
-| 95  | 19 people notes misclassified   | HIGH   | 30 min | 🔴 HIGH     |
-| 62  | 17 stale last_contact           | HIGH   | 30 min | 🔴 HIGH     |
-| 75  | Deterministic extraction        | HIGH   | 2 hrs  | 🔴 HIGH     |
-| 76  | Persist run artifacts           | HIGH   | 60 min | 🔴 HIGH     |
-| 28  | Duplicate notes                 | HIGH   | 30 min | 🔴 HIGH     |
-| 43  | 20 duplicate meeting notes      | HIGH   | 30 min | 🔴 HIGH     |
-| 34  | Nested folder paths             | HIGH   | 30 min | 🔴 HIGH     |
-| 63  | 792 overdue tasks               | HIGH   | 2 hrs  | 🔴 HIGH     |
-| 87  | 39 hallucinated note links      | HIGH   | 30 min | 🔴 HIGH     |
-| 88  | VAST internal as customer       | MED    | 15 min | 🟡 MEDIUM   |
-| 68  | 1:1 vs 1-1 wikilinks            | MED    | 10 min | 🟡 MEDIUM   |
-| 69  | 10 old-template READMEs         | MED    | 30 min | 🟡 MEDIUM   |
-| 48  | Broken first-name wikilinks     | MED    | 30 min | 🟡 MEDIUM   |
-| 49  | Typo person names               | MED    | 15 min | 🟡 MEDIUM   |
-| 27  | Inconsistent @Owner             | MED    | 15 min | 🟡 MEDIUM   |
-| 64  | 44 @TBD tasks                   | MED    | 30 min | 🟡 MEDIUM   |
-| 65  | 207 tasks no due date           | MED    | 1 hr   | 🟡 MEDIUM   |
-| 66  | Malformed task syntax           | MED    | 1 hr   | 🟡 MEDIUM   |
-| 40  | Special chars in folders        | MED    | 30 min | 🟡 MEDIUM   |
-| 44  | Empty Related Projects          | MED    | 20 min | 🟡 MEDIUM   |
-| 58  | MS subfolders wrong location    | MED    | 15 min | 🟡 MEDIUM   |
-| 71  | ROB note at root                | MED    | 10 min | 🟡 MEDIUM   |
-| 73  | Role extraction quality         | MED    | 30 min | 🟡 MEDIUM   |
-| 74  | Task vs checklist semantics     | MED    | 60 min | 🟡 MEDIUM   |
-| 105 | README frontmatter gaps         | MED    | 15 min | 🟡 MEDIUM   |
-| 107 | Empty participants (5 notes)    | MED    | 10 min | 🟡 MEDIUM   |
-| 81  | Nidhi missing README            | LOW    | 5 min  | 🟡 MEDIUM   |
-| 82  | 65+ misspelled wikilinks        | MED    | 30 min | 🟡 MEDIUM   |
-| 83  | Short name wikilinks            | MED    | 20 min | 🟡 MEDIUM   |
-| 84  | Orphan people wikilinks         | LOW    | 30 min | 🟢 LOW      |
-| 85  | [[Note Title]] placeholder      | LOW    | 5 min  | 🟢 LOW      |
-| 86  | Project wikilinks no folder     | LOW    | 30 min | 🟢 LOW      |
-| 89  | 33 customer README-only         | LOW    | N/A    | 🟢 LOW      |
-| 99  | projects type never used        | MED    | 15 min | 🟡 MEDIUM   |
-| 100 | 3 empty ROB subfolders          | LOW    | 10 min | 🟢 LOW      |
-| 101 | Participant name variations     | MED    | 30 min | 🟡 MEDIUM   |
-| 102 | Duplicate files (AI Talk)       | LOW    | 10 min | 🟢 LOW      |
-| 103 | Archive colons in filenames     | LOW    | 15 min | 🟢 LOW      |
-| 106 | Tag hygiene                     | LOW    | 30 min | 🟢 LOW      |
-| 29  | 4 Untitled files                | LOW    | 10 min | 🟢 LOW      |
-| 52  | Duplicate emails                | LOW    | 5 min  | 🟢 LOW      |
-| 53  | Spam emails                     | LOW    | 5 min  | 🟢 LOW      |
-| 54  | 15 empty folders                | LOW    | 10 min | 🟢 LOW      |
-| 55  | Self-referential links          | LOW    | 5 min  | 🟢 LOW      |
-| 61  | Uncommitted changes             | LOW    | 5 min  | 🟢 LOW      |
-| 67  | 25 backfill notes               | LOW    | 1 hr   | 🟢 LOW      |
-| 72  | 112 #needs-review               | LOW    | 3 hrs  | 🟢 LOW      |
-| 79  | Unprocessed personal transcript | LOW    | 15 min | 🟢 LOW      |
-| 80  | 45 files without frontmatter    | LOW    | 30 min | 🟢 LOW      |
+| #      | Issue                            | Impact   | Effort     | Priority           |
+| ------ | -------------------------------- | -------- | ---------- | ------------------ |
+| ~~26~~ | ~~Topics not extracted~~         | ~~HIGH~~ | ~~5 min~~  | ✅ FIXED           |
+| 42     | Broken source_ref targets        | HIGH     | 60 min     | 🔴 CRITICAL        |
+| ~~70~~     | ~~Template mismatch~~            | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED           |
+| ~~90~~ | ~~LLM uses 1:1 in filenames~~    | ~~HIGH~~ | ~~10 min~~ | ✅ FIXED           |
+| ~~91~~ | ~~LLM uses wrong entity paths~~  | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED           |
+| ~~92~~ | ~~person_to_project schema err~~ | ~~HIGH~~ | ~~15 min~~ | ✅ FIXED           |
+| ~~93~~ | ~~extra_tags undefined~~         | ~~MED~~  | ~~5 min~~  | ✅ FIXED (guarded) |
+| ~~94~~ | ~~note_type undefined~~          | ~~MED~~  | ~~5 min~~  | ✅ FIXED (guarded) |
+| 96     | Archive filename mismatch        | HIGH     | TBD        | 🔴 CRITICAL        |
+| 97     | MacWhisper captures app title    | HIGH     | 30 min     | 🔴 CRITICAL        |
+| 98     | Source attribution broken        | HIGH     | 60 min     | 🔴 CRITICAL        |
+| 95     | 19 people notes misclassified    | HIGH     | 30 min     | 🔴 HIGH            |
+| 62     | 17 stale last_contact            | HIGH     | 30 min     | 🔴 HIGH            |
+| 75     | Deterministic extraction         | HIGH     | 2 hrs      | 🔴 HIGH            |
+| 76     | Persist run artifacts            | HIGH     | 60 min     | 🔴 HIGH            |
+| 28     | Duplicate notes                  | HIGH     | 30 min     | 🔴 HIGH            |
+| 43     | 20 duplicate meeting notes       | HIGH     | 30 min     | 🔴 HIGH            |
+| 34     | Nested folder paths              | HIGH     | 30 min     | 🔴 HIGH            |
+| 63     | 792 overdue tasks                | HIGH     | 2 hrs      | 🔴 HIGH            |
+| 87     | 39 hallucinated note links       | HIGH     | 30 min     | 🔴 HIGH            |
+| 88     | VAST internal as customer        | MED      | 15 min     | 🟡 MEDIUM          |
+| 68     | 1:1 vs 1-1 wikilinks             | MED      | 10 min     | 🟡 MEDIUM          |
+| 69     | 10 old-template READMEs          | MED      | 30 min     | 🟡 MEDIUM          |
+| 48     | Broken first-name wikilinks      | MED      | 30 min     | 🟡 MEDIUM          |
+| 49     | Typo person names                | MED      | 15 min     | 🟡 MEDIUM          |
+| 27     | Inconsistent @Owner              | MED      | 15 min     | 🟡 MEDIUM          |
+| 64     | 44 @TBD tasks                    | MED      | 30 min     | 🟡 MEDIUM          |
+| 65     | 207 tasks no due date            | MED      | 1 hr       | 🟡 MEDIUM          |
+| 66     | Malformed task syntax            | MED      | 1 hr       | 🟡 MEDIUM          |
+| 40     | Special chars in folders         | MED      | 30 min     | 🟡 MEDIUM          |
+| 44     | Empty Related Projects           | MED      | 20 min     | 🟡 MEDIUM          |
+| 58     | MS subfolders wrong location     | MED      | 15 min     | 🟡 MEDIUM          |
+| 71     | ROB note at root                 | MED      | 10 min     | 🟡 MEDIUM          |
+| 73     | Role extraction quality          | MED      | 30 min     | 🟡 MEDIUM          |
+| 74     | Task vs checklist semantics      | MED      | 60 min     | 🟡 MEDIUM          |
+| 105    | README frontmatter gaps          | MED      | 15 min     | 🟡 MEDIUM          |
+| 107    | Empty participants (5 notes)     | MED      | 10 min     | 🟡 MEDIUM          |
+| 81     | Nidhi missing README             | LOW      | 5 min      | 🟡 MEDIUM          |
+| 82     | 65+ misspelled wikilinks         | MED      | 30 min     | 🟡 MEDIUM          |
+| 83     | Short name wikilinks             | MED      | 20 min     | 🟡 MEDIUM          |
+| 84     | Orphan people wikilinks          | LOW      | 30 min     | 🟢 LOW             |
+| 85     | [[Note Title]] placeholder       | LOW      | 5 min      | 🟢 LOW             |
+| 86     | Project wikilinks no folder      | LOW      | 30 min     | 🟢 LOW             |
+| 89     | 33 customer README-only          | LOW      | N/A        | 🟢 LOW             |
+| 99     | projects type never used         | MED      | 15 min     | 🟡 MEDIUM          |
+| 100    | 3 empty ROB subfolders           | LOW      | 10 min     | 🟢 LOW             |
+| 101    | Participant name variations      | MED      | 30 min     | 🟡 MEDIUM          |
+| 102    | Duplicate files (AI Talk)        | LOW      | 10 min     | 🟢 LOW             |
+| 103    | Archive colons in filenames      | LOW      | 15 min     | 🟢 LOW             |
+| 106    | Tag hygiene                      | LOW      | 30 min     | 🟢 LOW             |
+| 29     | 4 Untitled files                 | LOW      | 10 min     | 🟢 LOW             |
+| 52     | Duplicate emails                 | LOW      | 5 min      | 🟢 LOW             |
+| 53     | Spam emails                      | LOW      | 5 min      | 🟢 LOW             |
+| 54     | 15 empty folders                 | LOW      | 10 min     | 🟢 LOW             |
+| 55     | Self-referential links           | LOW      | 5 min      | 🟢 LOW             |
+| 61     | Uncommitted changes              | LOW      | 5 min      | 🟢 LOW             |
+| 67     | 25 backfill notes                | LOW      | 1 hr       | 🟢 LOW             |
+| 72     | 112 #needs-review                | LOW      | 3 hrs      | 🟢 LOW             |
+| 79     | Unprocessed personal transcript  | LOW      | 15 min     | 🟢 LOW             |
+| 80     | 45 files without frontmatter     | LOW      | 30 min     | 🟢 LOW             |
 
 ---
 

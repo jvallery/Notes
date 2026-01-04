@@ -1,4 +1,4 @@
-{#- README Template for Person Entities -#}
+{#- README Template for Person Entities - Matches actual vault READMEs -#}
 ---
 type: people
 title: "{{ entity_name }}"
@@ -15,53 +15,23 @@ tags:
 {%- if company %}
   - company/{{ company | lower | replace(' ', '-') }}
 {% endif %}
-{%- if department %}
-  - dept/{{ department | lower | replace(' ', '-') }}
-{% endif %}
 ---
 
 # {{ entity_name }}
 
-## Contact Information
+## Profile
 
-| Field | Value |
-|-------|-------|
-| **Role** | {{ role | default('_Unknown_') }} |
-| **Company** | {{ company | default('_Unknown_') }} |
-| **Department** | {{ department | default('_Unknown_') }} |
-| **Email** | {{ email | default('_Unknown_') }} |
-| **Phone** | {{ phone | default('_Unknown_') }} |
-| **LinkedIn** | {{ linkedin | default('_Unknown_') }} |
-| **Location** | {{ location | default('_Unknown_') }} |
-
-## Relationship
-
-{{ relationship | default('_How do you work with this person? What is your dynamic?_') }}
-
-## Background
+**Role**: {{ role | default('_TBD_') }}
+{% if location -%}
+**Location**: {{ location }}
+{% endif -%}
+**Relationship**: {{ relationship | default('_TBD_') }}
 
 {% if background -%}
+**Background**:
 {% for bg in background -%}
 - {{ bg }}
 {% endfor -%}
-{% else -%}
-_Career history, expertise, interests, personal details shared..._
-{% endif %}
-
-## Projects
-
-{% if projects -%}
-{% for project in projects -%}
-- [[{{ project }}]]
-{% endfor -%}
-{% else -%}
-_What projects are you collaborating on with this person?_
-
-```dataview
-LIST
-FROM "VAST/Projects" OR "Personal/Projects"
-WHERE contains(file.outlinks, this.file.link)
-```
 {% endif %}
 
 ## Open Tasks
@@ -72,23 +42,19 @@ WHERE contains(file.outlinks, this.file.link)
 
 {% endfor -%}
 {% else -%}
-```dataview
-TASK
-FROM this.file.folder
-WHERE !completed AND contains(text, "{{ entity_name }}")
-SORT due ASC
-```
+_Tasks for or from this person will appear here..._
 {% endif %}
 
-## Tasks They Own
+## Recent Context
 
-_Action items this person is responsible for:_
+{% if context_entries -%}
+{% for entry in context_entries -%}
+- {{ entry.date }}: [[{{ entry.note_title }}]]{% if entry.via_entity %} (via {{ entry.via_entity }}){% endif %}
 
-```dataview
-TASK
-WHERE contains(text, "@{{ entity_name }}") AND !completed
-SORT due ASC
-```
+{% endfor -%}
+{% else -%}
+_Recent interactions will be populated here..._
+{% endif %}
 
 ## Key Facts
 
@@ -100,6 +66,16 @@ SORT due ASC
 _Important things to remember about this person..._
 {% endif %}
 
+## Key Decisions
+
+{% if key_decisions -%}
+{% for decision in key_decisions -%}
+- {{ decision }}
+{% endfor -%}
+{% else -%}
+_Decisions made with or by this person..._
+{% endif %}
+
 ## Topics Discussed
 
 {% if topics -%}
@@ -107,32 +83,3 @@ _Important things to remember about this person..._
 {% else -%}
 _Common themes in conversations with this person..._
 {% endif %}
-
-## Recent Context
-
-{% if context_entries -%}
-{% for entry in context_entries -%}
-- {{ entry.date }}: [[{{ entry.note_path | basename | replace('.md', '') }}]]{% if entry.summary %} - {{ entry.summary }}{% endif %}{% if entry.via_entity %} (via {{ entry.via_entity }}){% endif %}
-
-{% endfor -%}
-{% else -%}
-_Recent interactions will be populated here..._
-{% endif %}
-
-## Related
-
-{% if related_customers -%}
-### Customers
-{% for customer in related_customers -%}
-- [[{{ customer }}]]
-{% endfor -%}
-{% endif %}
-{% if related_people -%}
-### Other People
-{% for person in related_people -%}
-- [[{{ person }}]]
-{% endfor -%}
-{% endif %}
-
----
-*Last updated: {{ updated_date | default('') }}*
