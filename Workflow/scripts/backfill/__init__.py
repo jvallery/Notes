@@ -74,10 +74,38 @@ class Mentions(BaseModel):
     accounts: list[str] = Field(default_factory=list)
 
 
-class BackfillExtraction(BaseModel):
-    """Lightweight extraction result for a single note."""
+class PersonDetails(BaseModel):
+    """Rich details about a person extracted from notes."""
     
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="ignore")  # Allow extra fields for flexibility
+    
+    role: str | None = None
+    company: str | None = None
+    department: str | None = None
+    email: str | None = None
+    phone: str | None = None
+    linkedin: str | None = None
+    location: str | None = None
+    background: str | None = None
+    relationship: str | None = None
+
+
+class ExtractedTask(BaseModel):
+    """A task extracted from a note."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    text: str
+    owner: str | None = None
+    due: str | None = None
+    related_person: str | None = None
+    status: str = "open"
+
+
+class BackfillExtraction(BaseModel):
+    """Rich extraction result for a single note."""
+    
+    model_config = ConfigDict(extra="ignore")  # Allow extra fields
     
     # Source info
     note_path: str  # Relative to vault root
@@ -89,11 +117,19 @@ class BackfillExtraction(BaseModel):
     summary: str  # 1-2 sentences
     mentions: Mentions = Field(default_factory=Mentions)
     key_facts: list[str] = Field(default_factory=list)
+    
+    # Rich person data
+    person_details: dict[str, PersonDetails] = Field(default_factory=dict)
+    tasks: list[ExtractedTask] = Field(default_factory=list)
+    decisions: list[str] = Field(default_factory=list)
+    topics_discussed: list[str] = Field(default_factory=list)
+    
+    # Legacy field (kept for compatibility)
     has_tasks: bool = False
     
     # Processing metadata
     extracted_at: datetime = Field(default_factory=datetime.now)
-    model_used: str = "gpt-4o-mini"
+    model_used: str = "gpt-5.2"
     tokens_used: int = 0
 
 
@@ -130,6 +166,22 @@ class ContextEntry(BaseModel):
     via_entity: str | None = None  # If cross-referenced from another entity
 
 
+class AggregatedPersonDetails(BaseModel):
+    """Merged person details from all extractions."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    role: str | None = None
+    company: str | None = None
+    department: str | None = None
+    email: str | None = None
+    phone: str | None = None
+    linkedin: str | None = None
+    location: str | None = None
+    background: list[str] = Field(default_factory=list)  # Multiple snippets
+    relationship: str | None = None
+
+
 class ReadmeUpdate(BaseModel):
     """Planned update for a single README.md."""
     
@@ -137,8 +189,18 @@ class ReadmeUpdate(BaseModel):
     
     entity_path: str  # e.g., "VAST/People/Jeff Denworth"
     readme_path: str  # e.g., "VAST/People/Jeff Denworth/README.md"
+    entity_type: str = "people"  # people, accounts, projects
     last_contact: str | None = None  # Most recent date
+    
+    # Rich profile data (for people)
+    profile: AggregatedPersonDetails | None = None
+    
+    # Context and tasks
     context_entries: list[ContextEntry] = Field(default_factory=list)
+    open_tasks: list[ExtractedTask] = Field(default_factory=list)
+    key_facts: list[str] = Field(default_factory=list)
+    topics: list[str] = Field(default_factory=list)
+    
     interaction_count: int = 0
 
 

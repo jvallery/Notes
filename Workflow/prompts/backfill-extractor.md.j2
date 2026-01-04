@@ -1,9 +1,9 @@
 {# System Prompt: Backfill Extraction #}
-{# Lightweight extraction for existing notes - metadata only #}
+{# Rich extraction for existing notes - profile data, tasks, and context #}
 
 ## Task
 
-You are extracting structured metadata from an existing note for indexing purposes. This is NOT for creating new content - we just need to understand what this note contains so we can update entity README files.
+You are extracting structured data from an existing note to build rich entity profiles. Extract ALL relevant information about people, their roles, contact details, tasks, and relationship context.
 
 ## Output Format
 
@@ -19,11 +19,33 @@ Return valid JSON only. No markdown fences, no explanations.
     "projects": ["Project Name"],
     "accounts": ["Company/Account Name"]
   },
+  "person_details": {
+    "Person Name": {
+      "role": "Job title or role if mentioned",
+      "company": "Company or organization",
+      "department": "Team or department if mentioned",
+      "email": "Email address if found",
+      "phone": "Phone number if found",
+      "linkedin": "LinkedIn URL if found",
+      "location": "City/region if mentioned",
+      "background": "Brief background, expertise, or context about this person",
+      "relationship": "How you interact with them (e.g., 'My manager', 'Customer contact', 'Engineering lead I work with')"
+    }
+  },
+  "tasks": [
+    {
+      "text": "Action item or next step",
+      "owner": "Person responsible (use 'Myself' for first-person)",
+      "due": "YYYY-MM-DD or null",
+      "related_person": "Person this task is related to",
+      "status": "open or completed"
+    }
+  ],
+  "decisions": ["Key decision made"],
   "key_facts": [
-    "Important fact 1",
-    "Important fact 2",
-    "Important fact 3"
-  ]
+    "Important fact worth remembering about a person or topic"
+  ],
+  "topics_discussed": ["Topic 1", "Topic 2"]
 }
 ```
 
@@ -32,18 +54,24 @@ Return valid JSON only. No markdown fences, no explanations.
 ### Summary
 - Be concise: 1-2 sentences max
 - Focus on the outcome or topic, not the process
-- Example: "Aligned on GDC integration timeline with Google team. Agreed to share encryption architecture doc."
 
-### Mentions
-- **people**: Full names of individuals mentioned (not "the team" or "everyone")
-- **projects**: Named initiatives, products, or workstreams
-- **accounts**: Companies, customers, or partner organizations
-- Only include entities explicitly mentioned, not inferred
+### Person Details
+- Extract details for EVERY person mentioned in the note
+- Include partial information - any detail is valuable
+- Role examples: "VP of Engineering", "Account Executive", "PM for Cloud team"
+- Relationship examples: "Direct report", "Customer sponsor", "Weekly 1:1 partner"
+- Background: Technical expertise, career history, interests if mentioned
+
+### Tasks
+- Extract ALL action items, next steps, follow-ups
+- Owner = who needs to do it ("Myself" for the note author)
+- related_person = who the task is about or for
+- Mark as "completed" only if explicitly stated as done
 
 ### Key Facts
-- Up to 3 most important facts worth remembering
-- Prioritize: decisions, commitments, deadlines, status changes
-- Skip: obvious context, meeting logistics, pleasantries
+- Things worth remembering about people (preferences, working style, goals)
+- Important context for the relationship
+- Personal details shared (kids, hobbies, career goals)
 
 ## Note Context
 

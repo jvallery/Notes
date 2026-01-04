@@ -20,6 +20,8 @@ from . import (
     BackfillPlan,
     ReadmeUpdate,
     ApplyResult,
+    AggregatedPersonDetails,
+    ExtractedTask,
 )
 from .aggregator import format_recent_context_section
 from utils.config import vault_root
@@ -167,8 +169,90 @@ def append_or_replace_section(content: str, heading: str, new_content: str) -> s
     return "\n".join(result)
 
 
+# ─────────────────────────────────────────────────────────────────────────────
+# Rich Section Formatters
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def format_profile_section(profile: AggregatedPersonDetails) -> str:
+    """Format person profile as markdown."""
+    lines: list[str] = []
+    
+    if profile.role or profile.company:
+        role_line = ""
+        if profile.role:
+            role_line = profile.role
+        if profile.company:
+            role_line += f" at {profile.company}" if role_line else profile.company
+        if profile.department:
+            role_line += f" ({profile.department})"
+        if role_line:
+            lines.append(f"**Role**: {role_line}")
+    
+    if profile.location:
+        lines.append(f"**Location**: {profile.location}")
+    
+    if profile.relationship:
+        lines.append(f"**Relationship**: {profile.relationship}")
+    
+    if profile.background:
+        lines.append("")
+        lines.append("**Background**:")
+        for bg in profile.background[:3]:  # Limit to top 3
+            lines.append(f"- {bg}")
+    
+    return "\n".join(lines) if lines else ""
+
+
+def format_contact_section(profile: AggregatedPersonDetails) -> str:
+    """Format contact info as markdown."""
+    lines: list[str] = []
+    
+    if profile.email:
+        lines.append(f"- **Email**: {profile.email}")
+    if profile.phone:
+        lines.append(f"- **Phone**: {profile.phone}")
+    if profile.linkedin:
+        lines.append(f"- **LinkedIn**: {profile.linkedin}")
+    
+    return "\n".join(lines) if lines else ""
+
+
+def format_tasks_section(tasks: list[ExtractedTask]) -> str:
+    """Format tasks as Obsidian Tasks plugin format."""
+    lines: list[str] = []
+    
+    for task in tasks[:10]:  # Limit to 10 tasks
+        # Build task line: - [ ] text @owner 📅 due
+        task_line = f"- [ ] {task.text}"
+        
+        if task.owner and task.owner.lower() != "myself":
+            task_line += f" @{task.owner}"
+        
+        if task.due:
+            task_line += f" 📅 {task.due}"
+        
+        lines.append(task_line)
+    
+    return "\n".join(lines) if lines else ""
+
+
+def format_key_facts_section(facts: list[str]) -> str:
+    """Format key facts as bullet list."""
+    lines = [f"- {fact}" for fact in facts[:10]]
+    return "\n".join(lines) if lines else ""
+
+
+def format_topics_section(topics: list[str]) -> str:
+    """Format topics as inline tags/badges."""
+    if not topics:
+        return ""
+    # Format as a comma-separated list
+    return ", ".join(topics[:15])
+
+
 def apply_readme_update(vault: Path, update: ReadmeUpdate) -> None:
-    """Apply a single README update."""
+    """Apply a single README update with rich profile data."""
     readme_path = vault / update.readme_path
     
     if not readme_path.exists():
@@ -180,7 +264,37 @@ def apply_readme_update(vault: Path, update: ReadmeUpdate) -> None:
     if update.last_contact:
         content = upsert_frontmatter_field(content, "last_contact", update.last_contact)
     
-    # Format and update Recent Context section
+    # For people entities, add rich profile sections
+    if update.entity_type == "people" and update.profile:
+        # Profile section (role, location, relationship, background)
+        profile_content = format_profile_section(update.profile)
+        if profile_content:
+            content = append_or_replace_section(content, "## Profile", profile_content)
+        
+        # Contact section (email, phone, linkedin)
+        contact_content = format_contact_section(update.profile)
+        if contact_content:
+            content = append_or_replace_section(content, "## Contact", contact_content)
+    
+    # Open tasks section
+    if update.open_tasks:
+        tasks_content = format_tasks_section(update.open_tasks)
+        if tasks_content:
+            content = append_or_replace_section(content, "## Open Tasks", tasks_content)
+    
+    # Key facts section
+    if update.key_facts:
+        facts_content = format_key_facts_section(update.key_facts)
+        if facts_content:
+            content = append_or_replace_section(content, "## Key Facts", facts_content)
+    
+    # Topics section (things we've discussed)
+    if update.topics:
+        topics_content = format_topics_section(update.topics)
+        if topics_content:
+            content = append_or_replace_section(content, "## Topics", topics_content)
+    
+    # Recent Context section (meeting summaries with wikilinks)
     if update.context_entries:
         context_content = format_recent_context_section(update.context_entries)
         content = append_or_replace_section(content, "## Recent Context", context_content)

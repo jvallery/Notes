@@ -19,6 +19,8 @@ from . import (
     ExtractionBatch,
     Mentions,
     NoteMetadata,
+    PersonDetails,
+    ExtractedTask,
 )
 
 # Import from existing utils
@@ -116,11 +118,11 @@ def extract_from_content(
     response = client.chat.completions.create(
         model=model,
         messages=[
-            {"role": "system", "content": "You extract structured metadata from notes. Return valid JSON only."},
+            {"role": "system", "content": "You extract rich structured data from notes. Return valid JSON only."},
             {"role": "user", "content": prompt},
         ],
         temperature=0.1,
-        max_completion_tokens=500,
+        max_completion_tokens=2000,  # Increased for rich extraction
         # CRITICAL: Privacy - don't store
         store=False,
     )
@@ -143,7 +145,11 @@ def extract_from_content(
         result = {
             "summary": "",
             "mentions": {"people": [], "projects": [], "accounts": []},
+            "person_details": {},
+            "tasks": [],
+            "decisions": [],
             "key_facts": [],
+            "topics_discussed": [],
         }
     
     return result, tokens_used
@@ -208,8 +214,22 @@ def extract_note(
         accounts=mentions_data.get("accounts", []),
     )
     
-    # Check for tasks in content
-    has_tasks = "- [ ]" in content or "- [x]" in content
+    # Parse person details
+    person_details_raw = result.get("person_details", {})
+    person_details = {}
+    for name, details in person_details_raw.items():
+        if isinstance(details, dict):
+            person_details[name] = PersonDetails(**details)
+    
+    # Parse tasks
+    tasks_raw = result.get("tasks", [])
+    tasks = []
+    for task_data in tasks_raw:
+        if isinstance(task_data, dict) and task_data.get("text"):
+            tasks.append(ExtractedTask(**task_data))
+    
+    # Check for tasks in content (legacy)
+    has_tasks = "- [ ]" in content or "- [x]" in content or len(tasks) > 0
     
     return BackfillExtraction(
         note_path=note.path,
@@ -219,6 +239,10 @@ def extract_note(
         summary=result.get("summary", ""),
         mentions=mentions,
         key_facts=result.get("key_facts", []),
+        person_details=person_details,
+        tasks=tasks,
+        decisions=result.get("decisions", []),
+        topics_discussed=result.get("topics_discussed", []),
         has_tasks=has_tasks,
         extracted_at=datetime.now(),
         model_used=model,

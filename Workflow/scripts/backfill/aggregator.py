@@ -20,9 +20,142 @@ from . import (
     ContextEntry,
     ReadmeUpdate,
     BackfillPlan,
+    AggregatedPersonDetails,
+    ExtractedTask,
 )
 
 from utils.config import vault_root
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Person Details Merging
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def merge_person_details(
+    extractions: list[BackfillExtraction],
+    person_name: str,
+) -> AggregatedPersonDetails:
+    """
+    Merge person details from multiple extractions.
+    
+    Strategy: Use most recently non-null value for each field,
+    except background which concatenates all unique snippets.
+    """
+    details = AggregatedPersonDetails()
+    backgrounds: list[str] = []
+    
+    # Sort extractions by date (most recent first)
+    sorted_exts = sorted(extractions, key=lambda e: e.date, reverse=True)
+    
+    for ext in sorted_exts:
+        # Check if this extraction has details for this person
+        person_details = ext.person_details.get(person_name)
+        if not person_details:
+            # Try normalized name matching
+            for name, pd in ext.person_details.items():
+                if normalize_entity_name(name) == normalize_entity_name(person_name):
+                    person_details = pd
+                    break
+        
+        if not person_details:
+            continue
+        
+        # Update fields (most recent non-null wins)
+        if person_details.role and not details.role:
+            details.role = person_details.role
+        if person_details.company and not details.company:
+            details.company = person_details.company
+        if person_details.department and not details.department:
+            details.department = person_details.department
+        if person_details.email and not details.email:
+            details.email = person_details.email
+        if person_details.phone and not details.phone:
+            details.phone = person_details.phone
+        if person_details.linkedin and not details.linkedin:
+            details.linkedin = person_details.linkedin
+        if person_details.location and not details.location:
+            details.location = person_details.location
+        if person_details.relationship and not details.relationship:
+            details.relationship = person_details.relationship
+        
+        # Accumulate unique background snippets
+        if person_details.background:
+            bg = person_details.background.strip()
+            if bg and bg not in backgrounds:
+                backgrounds.append(bg)
+    
+    details.background = backgrounds
+    return details
+
+
+def collect_tasks_for_entity(
+    extractions: list[BackfillExtraction],
+    entity_name: str,
+) -> list[ExtractedTask]:
+    """
+    Collect all open tasks related to an entity.
+    
+    Tasks are matched by related_person field or owner field.
+    """
+    tasks: list[ExtractedTask] = []
+    seen_texts: set[str] = set()
+    normalized_name = normalize_entity_name(entity_name)
+    
+    for ext in extractions:
+        for task in ext.tasks:
+            # Skip completed tasks
+            if task.status == "completed":
+                continue
+            
+            # Check if task is related to this entity
+            related = task.related_person or ""
+            owner = task.owner or ""
+            
+            if (normalize_entity_name(related) == normalized_name or
+                normalize_entity_name(owner) == normalized_name):
+                
+                # Deduplicate by text
+                text_key = task.text.lower().strip()
+                if text_key not in seen_texts:
+                    seen_texts.add(text_key)
+                    tasks.append(task)
+    
+    return tasks
+
+
+def collect_key_facts(
+    extractions: list[BackfillExtraction],
+) -> list[str]:
+    """Collect unique key facts from all extractions."""
+    facts: list[str] = []
+    seen: set[str] = set()
+    
+    for ext in extractions:
+        for fact in ext.key_facts:
+            fact_normalized = fact.lower().strip()
+            if fact_normalized and fact_normalized not in seen:
+                seen.add(fact_normalized)
+                facts.append(fact)
+    
+    return facts[:10]  # Limit to top 10
+
+
+def collect_topics(
+    extractions: list[BackfillExtraction],
+) -> list[str]:
+    """Collect unique topics discussed from all extractions."""
+    topics: list[str] = []
+    seen: set[str] = set()
+    
+    for ext in extractions:
+        for topic in ext.topics_discussed:
+            topic_normalized = topic.lower().strip()
+            if topic_normalized and topic_normalized not in seen:
+                seen.add(topic_normalized)
+                topics.append(topic)
+    
+    return topics[:15]  # Limit to top 15
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -164,6 +297,19 @@ def create_context_entry(
     )
 
 
+def get_entity_type(entity_path: str) -> str:
+    """Determine entity type from path."""
+    if "/People/" in entity_path:
+        return "people"
+    elif "/Customers and Partners/" in entity_path:
+        return "accounts"
+    elif "/Projects/" in entity_path:
+        return "projects"
+    elif "/ROB/" in entity_path:
+        return "rob"
+    return "other"
+
+
 def aggregate_extractions(
     extractions: list[BackfillExtraction],
     vault: Path | None = None,
@@ -176,7 +322,8 @@ def aggregate_extractions(
     1. Builds entity maps for matching
     2. Maps each extraction to all relevant entities
     3. Deduplicates and sorts entries
-    4. Creates ReadmeUpdate for each entity
+    4. Merges person details and collects tasks
+    5. Creates ReadmeUpdate for each entity
     
     Args:
         extractions: List of BackfillExtraction from extract phase
@@ -205,6 +352,13 @@ def aggregate_extractions(
     total_entries = 0
     
     for entity_path, ext_list in entity_extractions.items():
+        # Get all extractions for this entity (without the via_entity tuples)
+        all_extractions = [ext for ext, _ in ext_list]
+        
+        # Determine entity type and name
+        entity_type = get_entity_type(entity_path)
+        entity_name = Path(entity_path).name
+        
         # Create context entries
         entries: list[ContextEntry] = []
         seen_notes: set[str] = set()
@@ -227,13 +381,30 @@ def aggregate_extractions(
         # Calculate last_contact from most recent entry
         last_contact = entries[0].date if entries else None
         
+        # Build profile for people
+        profile = None
+        if entity_type == "people":
+            profile = merge_person_details(all_extractions, entity_name)
+        
+        # Collect tasks related to this entity
+        open_tasks = collect_tasks_for_entity(all_extractions, entity_name)
+        
+        # Collect key facts and topics
+        key_facts = collect_key_facts(all_extractions)
+        topics = collect_topics(all_extractions)
+        
         # Build update
         readme_path = f"{entity_path}/README.md"
         update = ReadmeUpdate(
             entity_path=entity_path,
             readme_path=readme_path,
+            entity_type=entity_type,
             last_contact=last_contact,
+            profile=profile,
             context_entries=entries,
+            open_tasks=open_tasks,
+            key_facts=key_facts,
+            topics=topics,
             interaction_count=len(seen_notes),
         )
         
