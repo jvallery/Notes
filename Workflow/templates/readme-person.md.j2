@@ -86,7 +86,7 @@ _Action items this person is responsible for:_
 
 ```dataview
 TASK
-WHERE contains(text, "@{{ entity_name | replace(' ', '') }}") AND !completed
+WHERE contains(text, "@{{ entity_name }}") AND !completed
 SORT due ASC
 ```
 

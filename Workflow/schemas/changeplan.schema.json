@@ -31,7 +31,7 @@
         "properties": {
           "op": {
             "type": "string",
-            "enum": ["create", "patch", "link"],
+            "enum": ["create", "patch", "link", "update_entity"],
             "description": "Operation type (archive handled by Python)"
           },
           "path": {
@@ -87,6 +87,22 @@
                 },
                 {
                   "type": "object",
+                  "required": ["primitive", "heading"],
+                  "properties": {
+                    "primitive": { "const": "prepend_under_heading" },
+                    "heading": {
+                      "type": "object",
+                      "required": ["heading", "content"],
+                      "properties": {
+                        "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
+                        "content": { "type": "string", "description": "Content to prepend (for reverse-chronological ledgers)" }
+                      },
+                      "additionalProperties": false
+                    }
+                  }
+                },
+                {
+                  "type": "object",
                   "required": ["primitive", "wikilinks"],
                   "properties": {
                     "primitive": { "const": "ensure_wikilinks" },
@@ -104,6 +120,44 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "Wikilinks to insert (for link op)"
+          },
+          "entity_update": {
+            "type": "object",
+            "description": "Entity details for update_entity op",
+            "required": ["entity_type", "entity_name", "source_date", "source_note"],
+            "properties": {
+              "entity_type": { 
+                "type": "string", 
+                "enum": ["person", "project", "account"],
+                "description": "Type of entity being updated"
+              },
+              "entity_name": { "type": "string", "description": "Name of the entity" },
+              "source_date": { "type": "string", "format": "date", "description": "Date of source content" },
+              "source_note": { "type": "string", "description": "Wikilink to source note" },
+              "role": { "type": ["string", "null"] },
+              "company": { "type": ["string", "null"] },
+              "department": { "type": ["string", "null"] },
+              "email": { "type": ["string", "null"] },
+              "phone": { "type": ["string", "null"] },
+              "linkedin": { "type": ["string", "null"] },
+              "location": { "type": ["string", "null"] },
+              "background": { "type": ["string", "null"] },
+              "relationship": { "type": ["string", "null"] },
+              "status": { "type": ["string", "null"] },
+              "description": { "type": ["string", "null"] },
+              "owner": { "type": ["string", "null"] },
+              "blockers": { "type": "array", "items": { "type": "string" } },
+              "next_steps": { "type": "array", "items": { "type": "string" } },
+              "collaborators": { "type": "array", "items": { "type": "string" } },
+              "industry": { "type": ["string", "null"] },
+              "account_relationship": { "type": ["string", "null"] },
+              "key_contacts": { "type": "array", "items": { "type": "string" } },
+              "opportunities": { "type": "array", "items": { "type": "string" } },
+              "related_projects": { "type": "array", "items": { "type": "string" } },
+              "related_accounts": { "type": "array", "items": { "type": "string" } },
+              "new_facts": { "type": "array", "items": { "type": "string" } },
+              "context_line": { "type": ["string", "null"], "description": "Line to add under ## Recent Context" }
+            }
           }
         }
       }

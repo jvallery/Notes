@@ -37,44 +37,9 @@ not done
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19]] - Discussion between Jeff Denworth and Jason Vallery on VAST’s Microsoft/Azure strategy: what level of... (via Jeff Denworth)
-- 2025-11-14: [[Sources/Transcripts/2025/2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud.md|VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] — **Date:** 2025-11-14 · **Partner:** Google · **Folder:** Partners/Google
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne...
-- 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal sync to align on Walmart’s big data initiative, focusing on clarifying disaster recovery re... (via Walmart)
-- 2025-11-13: [[Sources/Transcripts/2025/2025-11-13 - GDC RFP meeting.md|GDC RFP meeting]] — Key topics -
-- 2025-11-13: [[2025-11-13 - GDC RFP meeting]] - Notes from a Google Distributed Cloud (GDC) RFP-related discussion covering storage TCO (HDD vs QLC)...
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
-- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
-- 2025-11-07: [[2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc]] - Jason Vallery and Tomer Hagay discussed gaps in VAST’s product management discipline (OKRs/KRs, trac... (via Tomer Hagay)
-- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
-- 2025-10-31: [[Sources/Transcripts/2025/2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora.md|GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]] — GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher storage/network density, ...
-- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing.md|Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] — Team aligned on MVP launch on GCP via private offers with fixed capacity pricing transacted through ...
-- 2025-10-28: [[Sources/Transcripts/2025/2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou.md|The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] — The teams discussed IP management and failover approaches on GCP (alias IPs, route-based, ILB) and t...
-- unknown: [[Sources/Transcripts/2025/2025-10 - Google Tasks.md|Google Tasks]] — - [x] Confirm GCP GA timing post bottleneck fix and align first 2–3 lighthouse customers. @Cloud Tea...
-- unknown: [[Untitled]] - Forwardable email draft instructing the Performance team how to populate Google’s GDC Storage RFP Ex...
-- unknown: [[2025-10 - Google Tasks]] - A completed task to confirm Google Cloud Platform GA timing after a bottleneck fix and align the fir...
-- unknown: [[2025-10 - Lior Genzel]] - Note captures discussion points and completed follow-ups with Lior Genzel around Google TPU strategy... (via Lior Genzel)
-- unknown: [[Available Capacity Calculations]] - Email-style note proposing replacing a fixed overhead percentage with a first-principles “available ... (via Cloud)
-- unknown: [[2025-10 - Pricing Tasks]] - Checklist of completed pricing workstreams for cloud/private offers, discount policy, normalization ... (via Pricing)
-
 ## Key Facts
 
-- Google Distributed Cloud has connected and air-gapped variants; NetApp is the incumbent storage partner.
-- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and is undergoing vendor due diligence.
-- Google’s emphasis areas include air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags.
-- Fort Meade "Gemini as a service" on-prem initiative is described as a Q4 commit and a near-term joint validation path.
-- GDC deployments commonly run on Dell; HPE and Cisco are also in scope for hardware options.
-- VAST recently launched Google Marketplace offers; broader partnership is still early.
-- Resource risk: Greg may be heavily focused on Leidos next year, potentially impacting continuity.
-- GDC RFP discussion topics included HDD vs QLC TCO, SED, hardware partners, availability zones, SyncEngine, and potential GCS API considerations.
-- Operational/security focus areas: multi-tenancy, QoS/quotas, tags and policy-based management, network security, air-gapped security certifications, remote patching, and troubleshooting/patching processes.
-- Dell was referenced for hardware recommendation shapes.
-
 ## Topics
-
-Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, HDD vs QLC TCO, SED (self-encrypting drives), Hardware partners and sizing (Dell shapes), Availability zones (AZs), SyncEngine
 
 ## Opportunities
 

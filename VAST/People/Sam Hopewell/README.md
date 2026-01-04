@@ -33,5 +33,3 @@ not done
 
 ## Recent Context
 
-- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md|OpenAI storage strategy and VAST POC]] — Sam (primary storage owner for research at OpenAI) discussed VAST as "warm storage" adjacent to GPU fleets, global namespace concerns, and near-term POC path. Status on hold due to firefighting.
-- 2025-10-22: [[Sources/Transcripts/2025/2025-10-22 - Jason (VAST) reconnected with Sam (OpenAI) to discuss VAST as GPU-adjacent warm.md|Reconnect on VAST as GPU-adjacent warm storage]] — Discussed VAST positioning as warm tier for OpenAI's research clusters.

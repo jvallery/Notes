@@ -37,4 +37,3 @@ SORT due ASC
 
 ## Key Facts
 
-_Important context and information about this project..._

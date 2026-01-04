@@ -43,8 +43,10 @@ from scripts.utils import (
 from scripts.utils.patch_primitives import (
     upsert_frontmatter,
     append_under_heading,
+    prepend_under_heading,
     ensure_wikilinks,
 )
+from scripts.utils.fs import sanitize_path
 
 
 # validate_changeplan is imported from scripts.utils.validation
@@ -136,8 +138,9 @@ class TransactionalApply:
     
     def _apply_operation(self, op: Operation, allow_overwrite: bool = False) -> None:
         """Apply a single operation."""
-        # Resolve path safely
-        rel = safe_relative_path(self.vault_root, op.path)
+        # Sanitize and resolve path safely
+        sanitized_path = sanitize_path(op.path)
+        rel = safe_relative_path(self.vault_root, sanitized_path)
         target = self.vault_root / rel
         
         if op.op == OperationType.CREATE:
@@ -185,6 +188,44 @@ class TransactionalApply:
             content = ensure_wikilinks(content, op.links)
             atomic_write(target, content)
             self.modified_files.append(target)
+        
+        elif op.op == OperationType.UPDATE_ENTITY:
+            if not target.exists():
+                raise FileNotFoundError(f"Target not found for UPDATE_ENTITY: {target}")
+            
+            content = safe_read_text(target)
+            content = self._apply_entity_update(content, op.entity_update)
+            atomic_write(target, content)
+            self.modified_files.append(target)
+    
+    def _apply_entity_update(self, content: str, update) -> str:
+        """Apply entity update by converting to patch primitives."""
+        # Determine date field based on entity type
+        date_field = "last_updated" if update.entity_type == "project" else "last_contact"
+        
+        # Update frontmatter with date
+        from models.changeplan import FrontmatterPatch
+        date_patches = [FrontmatterPatch(key=date_field, value=update.source_date)]
+        content = upsert_frontmatter(content, date_patches)
+        
+        # Add context line if provided
+        if update.context_line:
+            content = prepend_under_heading(
+                content,
+                "## Recent Context",
+                update.context_line
+            )
+        
+        # Add new facts if provided
+        if update.new_facts:
+            for fact in update.new_facts:
+                content = append_under_heading(
+                    content,
+                    "## Key Facts",
+                    f"- {fact}\n"
+                )
+        
+        return content
     
     def _apply_patch(self, content: str, spec) -> str:
         """Apply a single patch primitive."""
@@ -192,6 +233,12 @@ class TransactionalApply:
             return upsert_frontmatter(content, spec.frontmatter)
         elif spec.primitive == PatchPrimitive.APPEND_UNDER_HEADING:
             return append_under_heading(
+                content,
+                spec.heading.heading,
+                spec.heading.content
+            )
+        elif spec.primitive == PatchPrimitive.PREPEND_UNDER_HEADING:
+            return prepend_under_heading(
                 content,
                 spec.heading.heading,
                 spec.heading.content

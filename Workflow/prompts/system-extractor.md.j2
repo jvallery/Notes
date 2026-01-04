@@ -32,7 +32,10 @@ When extracting information, prioritize:
 
 ## Content Classification
 
-Based on the content, determine the most appropriate note type:
+The note type has been pre-classified by the system. Echo the provided classification in your output.
+If the content clearly contradicts the classification, add a warning but still use the system-provided type.
+
+Note type definitions (for reference):
 - **people**: 1-on-1 meetings, personal relationship notes
 - **customer**: Multi-party account meetings with external customers
 - **partners**: Partner organization meetings
@@ -40,6 +43,8 @@ Based on the content, determine the most appropriate note type:
 - **rob**: Rhythm of Business forums (recurring team syncs)
 - **journal**: Personal reflections, daily notes
 - **travel**: Trip planning, logistics, itineraries
+
+**System-Provided Classification**: {{ note_type }}
 
 ## Confidence Scoring
 
@@ -56,7 +61,7 @@ You MUST return valid JSON matching this exact structure:
 
 ```json
 {
-  "note_type": "people|customer|partners|projects|rob|journal",
+  "note_type": "people|customer|partners|projects|rob|journal|travel",
   "entity_name": "string - Primary entity (person name, account name, project name, etc.)",
   "title": "string - Brief descriptive title (3-7 words)",
   "date": "YYYY-MM-DD - Date of the meeting/content",

@@ -62,8 +62,5 @@ SORT due ASC
 
 ## Key Facts
 
-_Important things to remember about this person..._
-
 ## Recent Context
 
-_Notes from recent interactions (reverse chronological):_

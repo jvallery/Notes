@@ -20,8 +20,6 @@ _Project description and goals..._
 
 ## Recent Context
 
-_Updates and progress..._
-
 ## Tasks
 
 ```dataview
@@ -30,4 +28,3 @@ WHERE !completed
 ```
 
 ## Related
-

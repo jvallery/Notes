@@ -122,6 +122,92 @@ def append_under_heading(content: str, heading: str, text: str) -> str:
     return "\n".join(new_lines)
 
 
+def prepend_under_heading(content: str, heading: str, text: str) -> str:
+    """
+    Prepend text at the TOP of a section, immediately after the heading (idempotent).
+    
+    Used for "Recent Context" and other ledgers that should be reverse-chronological.
+    
+    CRITICAL: Requires EXACT heading level match.
+    - "## Context" matches only "## Context", not "### Context"
+    - Creates heading if not found
+    - Ensures proper newline spacing
+    - IDEMPOTENT: If text already exists under heading, returns unchanged
+    """
+    lines = content.split("\n")
+    heading_prefix = heading.split()[0]  # e.g., "##" from "## Context"
+    heading_text = heading[len(heading_prefix):].strip()
+
+    # Find the target heading
+    target_line = None
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        # Must start with exact prefix and have matching text
+        if stripped.startswith(heading_prefix + " "):
+            line_text = stripped[len(heading_prefix):].strip()
+            if line_text.lower() == heading_text.lower():
+                target_line = i
+                break
+
+    if target_line is None:
+        # Heading not found - append at end with the heading
+        if not content.endswith("\n"):
+            content += "\n"
+        content += f"\n{heading}\n\n{text.rstrip()}\n"
+        return content
+
+    # Find end of section (next heading of same or higher level, or EOF)
+    heading_level = len(heading_prefix)  # Number of #
+    end_line = len(lines)
+
+    for i in range(target_line + 1, len(lines)):
+        stripped = lines[i].strip()
+        if stripped.startswith("#"):
+            # Count the heading level
+            current_level = 0
+            for char in stripped:
+                if char == "#":
+                    current_level += 1
+                else:
+                    break
+            if current_level <= heading_level:
+                end_line = i
+                break
+
+    # Extract section content for idempotency check
+    section_content = "\n".join(lines[target_line + 1:end_line])
+    
+    # IDEMPOTENT: Check if text already exists in section
+    text_stripped = text.strip()
+    if text_stripped in section_content:
+        return content  # Already present, don't duplicate
+
+    # Find first content line after heading (skip blank lines)
+    first_content_line = target_line + 1
+    while first_content_line < end_line and not lines[first_content_line].strip():
+        first_content_line += 1
+
+    # Insert at the top of the section, right after heading + blank line
+    new_lines = lines[:target_line + 1]  # Include heading
+    new_lines.append("")  # Blank line after heading
+    new_lines.append(text_stripped)  # New content at top
+    
+    # Add remaining section content (skip leading blank lines since we added one)
+    remaining_start = target_line + 1
+    while remaining_start < end_line and not lines[remaining_start].strip():
+        remaining_start += 1
+    
+    if remaining_start < end_line:
+        # There's existing content - add blank line before it
+        new_lines.append("")
+        new_lines.extend(lines[remaining_start:end_line])
+    
+    # Add rest of document
+    new_lines.extend(lines[end_line:])
+
+    return "\n".join(new_lines)
+
+
 def ensure_wikilinks(content: str, links: list[str]) -> str:
     """
     Ensure wikilinks exist somewhere in content.

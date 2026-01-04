@@ -86,7 +86,7 @@ Return valid JSON only. No markdown fences, no explanations.
       "related_person": "Person this task is about or assigned to",
       "related_project": "Project this task belongs to",
       "related_customer": "Customer this task is for",
-      "priority": "high | medium | low",
+      "priority": "highest | high | medium | low | lowest",
       "status": "open | completed"
     }
   ],
@@ -103,7 +103,9 @@ Return valid JSON only. No markdown fences, no explanations.
     "person_to_project": {"Person Name": ["Project 1", "Project 2"]},
     "person_to_customer": {"Person Name": ["Customer 1"]},
     "project_to_customer": {"Project Name": ["Customer 1"]}
-  }
+  },
+  
+  "warnings": ["Any entities not found in known lists, ambiguities, or concerns"]
 }
 ```
 
@@ -151,7 +153,7 @@ Return valid JSON only. No markdown fences, no explanations.
 ## Known Entities (Use for Matching)
 
 CRITICAL: Use these manifests to match entity names consistently. Use the EXACT spelling from these lists.
-If you find a new entity not in these lists, include `"needs_review": true` in your output.
+If you find a new entity not in these lists, add a warning to the "warnings" array.
 
 {{ manifests }}
 

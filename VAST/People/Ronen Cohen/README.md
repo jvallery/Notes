@@ -31,11 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- unknown: [[_Open Topics]] - Open topics note for Shachar Feinblit, listing key internal Slack contacts by functional area (suppo... (via Shachar Feinblit)
-
 ## Key Facts
-
-- Internal Slack contacts for Shachar Feinblit: Omri (support), Ronnie Lazar and Maxim Dunaivicher (cloud), Liron (UX), Yaniv Sharon (QA cloud), Ronen Cohen and Dotan Arnin (solution).
 
 ## Background
 

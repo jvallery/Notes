@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "extraction.schema.json",
   "title": "Extraction Output",
-  "description": "Structured data extracted from transcripts/emails. Flat structure matching LLM output. Some fields (version, source_file, processed_at) are system-set.",
+  "description": "Structured data extracted from transcripts/emails. Includes entity details for graph building. Some fields (version, source_file, processed_at) are system-set.",
   "type": "object",
   "required": ["note_type", "title", "date", "summary"],
   "properties": {
@@ -61,6 +61,9 @@
             "enum": ["highest", "high", "medium", "low", "lowest"],
             "default": "medium"
           },
+          "related_person": { "type": ["string", "null"], "description": "Person this task is about" },
+          "related_project": { "type": ["string", "null"], "description": "Project this task belongs to" },
+          "related_account": { "type": ["string", "null"], "description": "Account this task is for" },
           "confidence": {
             "type": "number",
             "minimum": 0,
@@ -80,6 +83,11 @@
       "type": "array",
       "items": { "type": "string" },
       "description": "Key facts or context to remember"
+    },
+    "topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Topics discussed in the meeting/content"
     },
     "mentions": {
       "type": "object",
@@ -101,6 +109,125 @@
         }
       },
       "description": "Cross-references to other entities"
+    },
+    "person_details": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "role": { "type": ["string", "null"], "description": "Job title or role" },
+          "company": { "type": ["string", "null"], "description": "Company or organization" },
+          "department": { "type": ["string", "null"], "description": "Team or department" },
+          "email": { "type": ["string", "null"], "description": "Email address" },
+          "phone": { "type": ["string", "null"], "description": "Phone number" },
+          "linkedin": { "type": ["string", "null"], "description": "LinkedIn URL" },
+          "location": { "type": ["string", "null"], "description": "City/region" },
+          "background": { "type": ["string", "null"], "description": "Brief background or expertise" },
+          "relationship": { "type": ["string", "null"], "description": "How I interact with them" },
+          "projects": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Projects they work on"
+          }
+        }
+      },
+      "description": "Rich profiles for people mentioned (name -> details)"
+    },
+    "project_details": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "status": { 
+            "type": ["string", "null"],
+            "enum": ["active", "blocked", "on-hold", "complete", "proposed", null],
+            "description": "Current project state" 
+          },
+          "description": { "type": ["string", "null"], "description": "Brief project description" },
+          "owner": { "type": ["string", "null"], "description": "Project owner/lead" },
+          "blockers": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Current blockers"
+          },
+          "next_steps": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Immediate actions needed"
+          },
+          "collaborators": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "People working on it"
+          },
+          "related_accounts": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Customers involved"
+          }
+        }
+      },
+      "description": "Metadata for projects mentioned (name -> details)"
+    },
+    "account_details": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "industry": { "type": ["string", "null"], "description": "Industry or sector" },
+          "relationship": { 
+            "type": ["string", "null"],
+            "enum": ["prospect", "active", "partner", "at-risk", "churned", null],
+            "description": "Account status" 
+          },
+          "key_contacts": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "People at this account"
+          },
+          "opportunities": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Active deals or projects"
+          },
+          "blockers": { 
+            "type": "array", 
+            "items": { "type": "string" },
+            "description": "Issues or concerns"
+          }
+        }
+      },
+      "description": "Metadata for accounts mentioned (name -> details)"
+    },
+    "cross_links": {
+      "type": "object",
+      "properties": {
+        "person_to_project": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": "Map person names to their projects"
+        },
+        "person_to_account": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": "Map person names to their accounts"
+        },
+        "project_to_account": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "description": "Map projects to related accounts"
+        }
+      },
+      "description": "Relationship mappings between entities"
     },
     "confidence": {
       "type": "number",

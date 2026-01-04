@@ -1,6 +1,10 @@
 # Information Flow Diagram – Notes Vault Automation
 
-This document describes how context enters the pipeline, which prompts/templates are used, what data is produced, and how it updates the vault. It reflects the *current implementation* in `Workflow/scripts/*` and assets under `Workflow/prompts` and `Workflow/templates`.
+> **Last Updated**: 2026-01-03  
+> **Status**: Current Implementation  
+> **Canonical Contracts**: See [CONTRACTS.md](CONTRACTS.md) for authoritative specifications
+
+This document describes how context enters the pipeline, which prompts/templates are used, what data is produced, and how it updates the vault. It reflects the _current implementation_ in `Workflow/scripts/*` and assets under `Workflow/prompts` and `Workflow/templates`.
 
 ---
 
@@ -20,7 +24,9 @@ Inbox/Attachments] --> E1
 
   %% Extract
   E1[Extract Phase
-scripts/extract.py] -->|ExtractionV1 JSON| X1[Inbox/_extraction/*.extraction.json]
+scripts/extract.py] -->|ExtractionV1 JSON| N1[Normalize Phase
+scripts/normalize.py]
+  N1 -->|Normalized JSON| X1[Inbox/_extraction/*.extraction.json]
 
   %% Plan
   X1 --> P1[Plan Phase
@@ -31,7 +37,7 @@ scripts/plan.py]
   C1 --> APL[Apply Phase
 scripts/apply.py]
   APL --> V1[VAST/...
-Personal/...] 
+Personal/...]
   APL --> ARC[Inbox/_archive/YYYY-MM-DD]
 
   %% Backfill
@@ -53,82 +59,162 @@ scripts/backfill/applier.py]
 
 ### 2.1 Ingestion Sources
 
-| Source | Location | Expected Format | Notes |
-|---|---|---|---|
-| Transcript | `Inbox/Transcripts/*.md` | Markdown | Primary meeting input |
-| Email | `Inbox/Email/*.md` + `.eml` | Markdown + raw | Extracted by mail shortcut |
-| Voice | `Inbox/Voice/*.md` | Markdown | MacWhisper output |
-| Attachments | `Inbox/Attachments/*` | Any | Not yet fully automated |
+| Source      | Location                    | Expected Format | Notes                      |
+| ----------- | --------------------------- | --------------- | -------------------------- |
+| Transcript  | `Inbox/Transcripts/*.md`    | Markdown        | Primary meeting input      |
+| Email       | `Inbox/Email/*.md` + `.eml` | Markdown + raw  | Extracted by mail shortcut |
+| Voice       | `Inbox/Voice/*.md`          | Markdown        | MacWhisper output          |
+| Attachments | `Inbox/Attachments/*`       | Any             | Not yet fully automated    |
 
 ### 2.2 Extract Phase
 
 **Script:** `Workflow/scripts/extract.py`
 
 **Inputs:**
+
 - Source file path (from Inbox)
 - Content (read from file)
-- Classification output (`scripts/classify.py` – heuristics)
+- Classification output (`scripts/classify.py` – heuristics, authoritative for note_type)
 - Entity lists (`scripts/utils/entities.py`)
 
+**Classification Contract:**
+
+- Heuristics determine `note_type` AND profile selection
+- LLM echoes classification; may add warning if mismatch
+- No dual classification (model does not independently classify)
+
 **Prompt:**
+
 - `Workflow/prompts/system-extractor.md.j2`
 - Includes `base.md.j2`
-- Template variables: `current_date`, `known_entities`, `profile_*`, `source_file`, `content`, etc.
+- Template variables: `current_date`, `meeting_date`, `known_entities`, `profile_*`, `source_file`, `content`, etc.
 
 **Profile Selection:**
+
 - `scripts/utils/profiles.select_profile()`
 - Uses `classify()` output to infer `note_type` and likely domain.
 
 **Output:**
+
 - `ExtractionV1` Pydantic object
 - Saved to: `Inbox/_extraction/{source}.extraction.json`
 
 **Data Produced (ExtractionV1):**
+
 - `note_type`, `entity_name`, `title`, `date`, `participants`, `summary`
-- `tasks[]`, `decisions[]`, `facts[]`, `mentions{people,projects,accounts}`
+- `tasks[]`, `decisions[]`, `facts[]`, `topics[]`, `mentions{people,projects,accounts}`
+- `person_details{}`, `project_details{}`, `account_details{}`, `cross_links{}`
 - `confidence`, `warnings`
+
+**API Contract:**
+
+- Model: `gpt-4o`, Temperature: 0.2
+- All calls use `store=False` (privacy guarantee)
+- Uses Pydantic structured outputs for schema enforcement
 
 ---
 
-### 2.3 Plan Phase
+### 2.3 Normalize Phase (NEW)
+
+**Script:** `Workflow/scripts/normalize.py`
+
+**Inputs:**
+
+- ExtractionV1 JSON from Extract phase
+- Entity aliases from `entities/aliases.yaml`
+- Known entity folders from vault scan
+
+**Actions:**
+
+- Normalize entity names to canonical forms
+- Validate entity names against known entities
+- Normalize dates to ISO-8601
+- Flag unknown entities in warnings array
+
+**Output:**
+
+- Updated ExtractionV1 JSON (in-place or new file)
+
+---
+
+### 2.4 Plan Phase
 
 **Script:** `Workflow/scripts/plan.py`
 
 **Inputs:**
-- `ExtractionV1` JSON
+
+- `ExtractionV1` JSON (normalized)
 - Entity context (names + metadata)
 
 **Prompt:**
+
 - `Workflow/prompts/system-planner.md.j2`
 - Includes `base.md.j2`
 - Variables: `entity_folders`, `aliases`, `extraction`
+- Extraction data wrapped in `<untrusted_content>` tags (security)
+
+**Mention Filtering:**
+
+- Only patch entities with MEANINGFUL participation
+- Maximum 5 mentioned entities per extraction
+- Skip entities without existing folders
 
 **Output:**
+
 - `ChangePlan` Pydantic object
 - Saved to: `Inbox/_extraction/{source}.changeplan.json`
 
 **ChangePlan Operations:**
+
 - `create` – new dated note
 - `patch` – update README(s) or existing notes
 - `link` – add wikilinks
+- `update_entity` – update entity README with rich details
+
+**Patch Primitives:**
+
+- `upsert_frontmatter` – add/update YAML fields
+- `append_under_heading` – add to END of section (chronological)
+- `prepend_under_heading` – add to TOP of section (reverse-chrono for ledgers)
+- `ensure_wikilinks` – ensure links exist (idempotent)
+
+**API Contract:**
+
+- Model: `gpt-4o`, Temperature: 0.1
+- All calls use `store=False` (privacy guarantee)
 
 ---
 
-### 2.4 Apply Phase
+### 2.5 Apply Phase
 
 **Script:** `Workflow/scripts/apply.py`
 
 **Inputs:**
+
 - One or more ChangePlan JSON files
 
+**Preconditions:**
+
+- Git working tree must be clean (content dirs: `VAST/`, `Personal/`, `Inbox/`)
+- All ChangePlans must pass validation
+
 **Actions:**
+
 - Validate ChangePlan (`scripts/utils/validation.py`)
 - Backup files (`scripts/utils/fs.py`)
+- Sanitize paths (`scripts/utils/fs.py:sanitize_path()`)
 - Execute operations using patch primitives (`scripts/utils/patch_primitives.py`)
 - Archive source to `Inbox/_archive/YYYY-MM-DD/`
 - Git commit batch
 
+**Transactional Guarantee:**
+
+- Atomic: all operations succeed or all rollback
+- On failure: restore backups, delete created files
+- Single git commit per batch
+
 **Templates Used (CREATE):**
+
 - `Workflow/templates/people.md.j2`
 - `Workflow/templates/customer.md.j2`
 - `Workflow/templates/projects.md.j2`
@@ -137,7 +223,14 @@ scripts/backfill/applier.py]
 - `Workflow/templates/journal.md.j2`
 - `Workflow/templates/travel.md.j2`
 
+**Source Linking:**
+
+- Format: `[[{full_vault_relative_path}|{display_name}]]`
+- Example: `[[Inbox/_archive/2026-01-03/meeting.md|meeting]]`
+- Full path prevents collisions across archive folders
+
 **Outputs:**
+
 - New dated notes in entity folders
 - Updated README.md files
 - Archived sources
@@ -146,13 +239,14 @@ scripts/backfill/applier.py]
 
 ## 3) Backfill Pipeline Details
 
-Backfill is for *existing notes already in entity folders*.
+Backfill is for _existing notes already in entity folders_. Uses **deep knowledge graph extraction** (not lightweight).
 
 ### 3.1 Scan
 
 **Script:** `Workflow/scripts/backfill/scanner.py`
 
 **Output:**
+
 - Backfill manifest (notes grouped by entity)
 
 ### 3.2 Extract
@@ -160,9 +254,11 @@ Backfill is for *existing notes already in entity folders*.
 **Script:** `Workflow/scripts/backfill/extractor.py`
 
 **Prompt:**
+
 - `Workflow/prompts/backfill-extractor.md.j2`
 
 **Output:**
+
 - `BackfillExtraction` objects (summary, mentions, tasks, facts, details)
 
 ### 3.3 Aggregate
@@ -170,6 +266,7 @@ Backfill is for *existing notes already in entity folders*.
 **Script:** `Workflow/scripts/backfill/aggregator.py`
 
 **Output:**
+
 - Aggregated README update plan
 
 ### 3.4 Apply
@@ -177,24 +274,26 @@ Backfill is for *existing notes already in entity folders*.
 **Script:** `Workflow/scripts/backfill/applier.py`
 
 **Templates Used (README updates):**
+
 - `Workflow/templates/readme-person.md.j2`
 - `Workflow/templates/readme-customer.md.j2`
 - `Workflow/templates/readme-project.md.j2`
 
 **Output:**
+
 - Updated README.md files with Recent Context + metadata
 
 ---
 
 ## 4) Data Artifacts & Their Roles
 
-| Artifact | Path | Produced By | Consumed By | Role |
-|---|---|---|---|---|
-| Extraction JSON | `Inbox/_extraction/*.extraction.json` | Extract | Plan | Structured data from source |
-| ChangePlan JSON | `Inbox/_extraction/*.changeplan.json` | Plan | Apply | Explicit operations to apply |
-| Archived Source | `Inbox/_archive/YYYY-MM-DD/*` | Apply | Human | Preserves raw input |
-| README.md | `{Domain}/{Entity}/README.md` | Apply/Backfill | Apply/Backfill | Root doc for entity |
-| Dated Note | `{Entity}/YYYY-MM-DD - Title.md` | Apply | Human | Historical notes |
+| Artifact        | Path                                  | Produced By    | Consumed By    | Role                         |
+| --------------- | ------------------------------------- | -------------- | -------------- | ---------------------------- |
+| Extraction JSON | `Inbox/_extraction/*.extraction.json` | Extract        | Plan           | Structured data from source  |
+| ChangePlan JSON | `Inbox/_extraction/*.changeplan.json` | Plan           | Apply          | Explicit operations to apply |
+| Archived Source | `Inbox/_archive/YYYY-MM-DD/*`         | Apply          | Human          | Preserves raw input          |
+| README.md       | `{Domain}/{Entity}/README.md`         | Apply/Backfill | Apply/Backfill | Root doc for entity          |
+| Dated Note      | `{Entity}/YYYY-MM-DD - Title.md`      | Apply          | Human          | Historical notes             |
 
 ---
 
@@ -202,43 +301,46 @@ Backfill is for *existing notes already in entity folders*.
 
 ### Prompts
 
-| Prompt | Used By | Purpose |
-|---|---|---|
-| `base.md.j2` | Extract / Plan | Shared system guardrails |
-| `system-extractor.md.j2` | Extract | LLM extraction schema |
-| `system-planner.md.j2` | Plan | ChangePlan generation |
+| Prompt                     | Used By          | Purpose                         |
+| -------------------------- | ---------------- | ------------------------------- |
+| `base.md.j2`               | Extract / Plan   | Shared system guardrails        |
+| `system-extractor.md.j2`   | Extract          | LLM extraction schema           |
+| `system-planner.md.j2`     | Plan             | ChangePlan generation           |
 | `backfill-extractor.md.j2` | Backfill Extract | Lightweight metadata extraction |
-| `audit-readme.md` | Cleanup/Audit | README audit feedback |
+| `audit-readme.md`          | Cleanup/Audit    | README audit feedback           |
 
 ### Templates
 
-| Template | Used By | Output |
-|---|---|---|
-| `people.md.j2` | Apply CREATE | People note |
-| `customer.md.j2` | Apply CREATE | Customer note |
-| `projects.md.j2` | Apply CREATE | Project note |
-| `rob.md.j2` | Apply CREATE | ROB note |
-| `partners.md.j2` | Apply CREATE | Partner note |
-| `journal.md.j2` | Apply CREATE | Journal note |
-| `travel.md.j2` | Apply CREATE | Travel note |
-| `readme-person.md.j2` | Backfill/Migration | Person README |
-| `readme-customer.md.j2` | Backfill/Migration | Customer README |
-| `readme-project.md.j2` | Backfill/Migration | Project README |
-| `readme-migration.md.j2` | Migration | Placeholder README |
+| Template                 | Used By            | Output             |
+| ------------------------ | ------------------ | ------------------ |
+| `people.md.j2`           | Apply CREATE       | People note        |
+| `customer.md.j2`         | Apply CREATE       | Customer note      |
+| `projects.md.j2`         | Apply CREATE       | Project note       |
+| `rob.md.j2`              | Apply CREATE       | ROB note           |
+| `partners.md.j2`         | Apply CREATE       | Partner note       |
+| `journal.md.j2`          | Apply CREATE       | Journal note       |
+| `travel.md.j2`           | Apply CREATE       | Travel note        |
+| `readme-person.md.j2`    | Backfill/Migration | Person README      |
+| `readme-customer.md.j2`  | Backfill/Migration | Customer README    |
+| `readme-project.md.j2`   | Backfill/Migration | Project README     |
+| `readme-migration.md.j2` | Migration          | Placeholder README |
 
 ---
 
 ## 6) Where Data Flows Into the Vault
 
 1. **New Notes**
+
    - Dated notes created in entity folders.
    - Fields and content derived from Extraction + ChangePlan context.
 
 2. **README Updates**
+
    - Updated via patch primitives (frontmatter + Recent Context).
    - Backfill aggregates historical notes to populate README sections.
 
 3. **Links**
+
    - `link` ops insert wikilinks to related entities.
 
 4. **Archive**
@@ -333,7 +435,7 @@ For new/unknown entities, include them but mark confidence as lower.
 
 ### `Workflow/prompts/system-extractor.md.j2`
 
-```jinja
+````jinja
 {# System Prompt: Content Extraction #}
 {# Assembles: Base Layer + Profile Layer + Extraction Instructions #}
 
@@ -417,7 +519,7 @@ You MUST return valid JSON matching this exact structure:
   "confidence": 0.0-1.0,
   "warnings": ["any concerns or ambiguities"]
 }
-```
+````
 
 ## Content to Extract From
 
@@ -427,7 +529,8 @@ You MUST return valid JSON matching this exact structure:
 <untrusted_content>
 {{ content }}
 </untrusted_content>
-```
+
+````
 
 ---
 
@@ -495,7 +598,7 @@ Creates a new file from a template.
     "source_ref": "Inbox/_archive/2026-01-03/original.md"
   }
 }
-```
+````
 
 Available templates: `people.md.j2`, `customer.md.j2`, `partners.md.j2`, `projects.md.j2`, `rob.md.j2`, `journal.md.j2`, `travel.md.j2`
 
@@ -510,9 +613,7 @@ Uses structured patch primitives (NOT regex):
   "patches": [
     {
       "primitive": "upsert_frontmatter",
-      "frontmatter": [
-        {"key": "last_contact", "value": "2026-01-03"}
-      ]
+      "frontmatter": [{ "key": "last_contact", "value": "2026-01-03" }]
     },
     {
       "primitive": "append_under_heading",
@@ -524,6 +625,7 @@ Uses structured patch primitives (NOT regex):
 ```
 
 Patch primitives:
+
 - `upsert_frontmatter`: Add/update YAML frontmatter fields
 - `append_under_heading`: Append text under a markdown heading
 - `ensure_wikilinks`: Ensure wikilinks exist in the file
@@ -543,15 +645,18 @@ Patch primitives:
 For each extraction, you MUST generate:
 
 1. **CREATE** a dated note in the appropriate entity folder
+
    - Path format: `{EntityFolder}/{YYYY-MM-DD} - {Title}.md`
    - Template must match note_type
    - Include ALL context from extraction
 
 2. **PATCH** the PRIMARY entity's README.md (if it exists)
+
    - Update `last_contact` frontmatter field
    - Append summary to `## Recent Context`
 
 3. **PATCH** ALL MENTIONED entity READMEs (multi-entity support)
+
    - Cross-reference format: `- {date}: [[{note title}]] (via {primary entity})`
 
 4. **LINK** mentioned entities as wikilinks in the new note
@@ -574,7 +679,8 @@ For each extraction, you MUST generate:
 ## Extraction Data
 
 {{ extraction | tojson(indent=2) }}
-```
+
+````
 
 ---
 
@@ -637,7 +743,7 @@ tags:
 ---
 
 *Source: [[{{ source_ref | basename | strip_extension }}]]*
-```
+````
 
 ---
 
@@ -1010,7 +1116,7 @@ tags:
 
 ### `Workflow/templates/readme-person.md.j2`
 
-```jinja
+````jinja
 {#- README Template for Person Entities -#}
 ---
 type: people
@@ -1067,7 +1173,7 @@ _Career history, expertise, interests, personal details shared..._
 LIST
 FROM "VAST/Projects" OR "Personal/Projects"
 WHERE contains(file.outlinks, this.file.link)
-```
+````
 
 ## Open Tasks
 
@@ -1089,7 +1195,8 @@ LIST FROM "{{ folder_path | default('') }}"
 WHERE file.name != "README"
 SORT file.cday DESC
 ```
-```
+
+````
 
 ---
 
@@ -1151,8 +1258,9 @@ _Chronological updates from meetings and interactions._
 LIST FROM "{{ folder_path | default('') }}"
 WHERE file.name != "README"
 SORT file.cday DESC
-```
-```
+````
+
+````
 
 ---
 
@@ -1200,7 +1308,7 @@ TASK
 FROM "{{ folder_path | default('') }}"
 WHERE !completed
 SORT due ASC
-```
+````
 
 ## Recent Context
 
@@ -1213,7 +1321,8 @@ LIST FROM "{{ folder_path | default('') }}"
 WHERE file.name != "README"
 SORT file.cday DESC
 ```
-```
+
+````
 
 ---
 
@@ -1252,12 +1361,12 @@ ignore:
 # Rules for task extraction
 task_rules:
   confidence_threshold: 0.75
-  
+
   owner_inference: |
     If the speaker (user) commits to an action, owner is "Myself".
     If a named participant commits, use their first name.
     If ownership is ambiguous, use "TBD".
-  
+
   due_date_inference: |
     Anchor all relative dates to the meeting date.
     "tomorrow" = meeting_date + 1 day
@@ -1292,7 +1401,7 @@ extraction:
   max_tasks: 10
   max_decisions: 5
   max_facts: 10
-```
+````
 
 ---
 
@@ -1328,13 +1437,13 @@ ignore:
 # Rules for task extraction
 task_rules:
   confidence_threshold: 0.70
-  
+
   owner_inference: |
     If the speaker commits to implementation, owner is "Myself".
     If a specific engineer is assigned, use their name.
     For team tasks, use "Team" as owner.
     If ownership unclear, use "TBD".
-  
+
   due_date_inference: |
     Anchor to meeting date.
     "by EOD" = meeting_date
@@ -1399,12 +1508,12 @@ sensitive_topics:
 # Rules for task extraction
 task_rules:
   confidence_threshold: 0.65
-  
+
   owner_inference: |
     Default owner is "Myself" for personal tasks.
     If involving family member, use their first name.
     For shared tasks, use "Us" or "Family".
-  
+
   due_date_inference: |
     Anchor to meeting/note date.
     "tomorrow" = date + 1 day
@@ -1427,14 +1536,21 @@ entity_matching:
 
 This bundle provides a complete reference for the automation pipeline:
 
-| Phase | Input | AI Call | Key Prompt | Output |
-|-------|-------|---------|------------|--------|
-| **Extract** | Source `.md` | `gpt-4o` | `system-extractor.md.j2` | `.extraction.json` |
-| **Plan** | `.extraction.json` | `gpt-4o` | `system-planner.md.j2` | `.changeplan.json` |
-| **Apply** | `.changeplan.json` | None | Note templates | Vault updates |
+| Phase         | Input              | AI Call  | Key Prompt               | Output             |
+| ------------- | ------------------ | -------- | ------------------------ | ------------------ |
+| **Extract**   | Source `.md`       | `gpt-4o` | `system-extractor.md.j2` | `.extraction.json` |
+| **Normalize** | `.extraction.json` | None     | N/A                      | Normalized JSON    |
+| **Plan**      | `.extraction.json` | `gpt-4o` | `system-planner.md.j2`   | `.changeplan.json` |
+| **Apply**     | `.changeplan.json` | None     | Note templates           | Vault updates      |
 
 **Templates**: 7 note templates + 3 README templates  
 **Profiles**: 3 extraction profiles (sales, engineering, personal)  
-**Privacy**: All API calls use `store=False`  
-**Safety**: Transactional apply with backup and rollback
+**Privacy**: All API calls use `store=False` (enforced in code)  
+**Safety**: Transactional apply with backup and rollback  
+**Ledgers**: `## Recent Context` uses `prepend_under_heading` (reverse-chrono)
 
+**Canonical Contracts**: See [CONTRACTS.md](CONTRACTS.md) for authoritative specifications including:
+
+- Stage contracts (inputs, outputs, guarantees)
+- README schema (canonical section structure)
+- Prompt variable contract (system-provided vs LLM-inferred)

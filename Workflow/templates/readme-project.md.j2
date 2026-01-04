@@ -3,7 +3,7 @@
 type: projects
 title: "{{ entity_name }}"
 created: "{{ created_date | default('') }}"
-last_updated: "{{ last_contact | default('') }}"
+last_updated: "{{ last_updated | default(last_contact | default('')) }}"
 status: "{{ status | default('active') }}"
 {%- if auto_created %}
 auto_created: true

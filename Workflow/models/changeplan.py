@@ -12,6 +12,7 @@ class OperationType(str, Enum):
     CREATE = "create"
     PATCH = "patch"
     LINK = "link"
+    UPDATE_ENTITY = "update_entity"  # High-level entity update from extraction details
 
 
 class PatchPrimitive(str, Enum):
@@ -19,6 +20,7 @@ class PatchPrimitive(str, Enum):
 
     UPSERT_FRONTMATTER = "upsert_frontmatter"
     APPEND_UNDER_HEADING = "append_under_heading"
+    PREPEND_UNDER_HEADING = "prepend_under_heading"  # For reverse-chronological ledgers
     ENSURE_WIKILINKS = "ensure_wikilinks"
 
 
@@ -85,6 +87,50 @@ class CreateContext(BaseModel):
     destination: str | None = Field(default=None, description="Destination for travel notes")
 
 
+class EntityUpdateContext(BaseModel):
+    """Context for UPDATE_ENTITY operations. Merges entity details into README."""
+    
+    model_config = ConfigDict(extra="forbid")
+    
+    entity_type: Literal["person", "project", "account"] = Field(description="Type of entity being updated")
+    entity_name: str = Field(description="Name of the entity")
+    source_date: str = Field(description="Date of source content (for last_contact/last_updated)")
+    source_note: str = Field(description="Wikilink to the source note for cross-reference")
+    
+    # Person fields (optional)
+    role: str | None = Field(default=None)
+    company: str | None = Field(default=None)
+    department: str | None = Field(default=None)
+    email: str | None = Field(default=None)
+    phone: str | None = Field(default=None)
+    linkedin: str | None = Field(default=None)
+    location: str | None = Field(default=None)
+    background: str | None = Field(default=None)
+    relationship: str | None = Field(default=None)
+    
+    # Project fields (optional)
+    status: str | None = Field(default=None)
+    description: str | None = Field(default=None)
+    owner: str | None = Field(default=None)
+    blockers: list[str] = Field(default_factory=list)
+    next_steps: list[str] = Field(default_factory=list)
+    collaborators: list[str] = Field(default_factory=list)
+    
+    # Account fields (optional)
+    industry: str | None = Field(default=None)
+    account_relationship: str | None = Field(default=None)
+    key_contacts: list[str] = Field(default_factory=list)
+    opportunities: list[str] = Field(default_factory=list)
+    
+    # Cross-links (projects/accounts this entity is connected to)
+    related_projects: list[str] = Field(default_factory=list)
+    related_accounts: list[str] = Field(default_factory=list)
+    
+    # New facts/context to add
+    new_facts: list[str] = Field(default_factory=list)
+    context_line: str | None = Field(default=None, description="Line to add under ## Recent Context")
+
+
 class Operation(BaseModel):
     """A single vault operation."""
 
@@ -96,6 +142,7 @@ class Operation(BaseModel):
     context: CreateContext | None = Field(default=None, description="Template variables for CREATE ops - MUST be populated from extraction")
     patches: list[PatchSpec] | None = Field(default=None, description="Patch specs for PATCH ops")
     links: list[str] | None = Field(default=None, description="Wikilinks for LINK ops (e.g., ['[[Person]]'])")
+    entity_update: EntityUpdateContext | None = Field(default=None, description="Entity details for UPDATE_ENTITY ops")
 
 
 class ChangePlan(BaseModel):

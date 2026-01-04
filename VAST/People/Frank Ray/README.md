@@ -31,16 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-09-16: [[2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] - 1:1 intro call between Lior Genzel and Jason Vallery exploring Jason joining VAST, with discussion o... (via Lior Genzel)
-
 ## Key Facts
-
-- Jason Vallery has ~13 years at Microsoft Azure Storage and led major AI storage engagements including OpenAI; recently moved into an architect role after a sabbatical.
-- VAST signed Microsoft Lifter and is building a SaaS on Azure; cloud GTM team scaling from 1 to 10–15+.
-- Potential org fits discussed: Jai Menon’s model builders GTM, Lior Genzel’s hyperscalers/Azure GTM, or CTO Office.
-- Cloud GA plan discussed: GCP (October), AWS MVP (December), Azure GA (February), with an additional Azure Lifter milestone around September next year.
-- Network egress is a major risk; ExpressRoute Direct Local proposed as a mitigation to enable fixed-price high-bandwidth data movement.
-- Microsoft’s regret with ANF/NetApp-style partnerships cited as a strategic constraint (avoid single-source vendor tie-in and margin sharing).
 
 ## Background
 
@@ -48,16 +39,9 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
-- ✅ Proceed with interviews for Jason at VAST.
-- ✅ Focus Jason initially on Azure GTM/business side rather than cross-cloud, with option to expand scope later.
-
 ## Related Customers
 
-- [[Microsoft]]
-
 ## Related Projects
-
-- [[Cloud]]
 
 ## Related
 

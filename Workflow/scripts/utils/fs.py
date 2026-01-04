@@ -3,7 +3,67 @@
 from pathlib import Path
 import tempfile
 import os
+import re
 import shutil
+
+
+def sanitize_filename(name: str) -> str:
+    """
+    Sanitize a filename by replacing/removing invalid filesystem characters.
+    
+    This is called deterministically in Python, NOT by the LLM.
+    
+    Rules:
+    - `:` → `-` (common in titles like "Google: Update")
+    - `/` → `-` (path separator)
+    - `\\` → `-` (Windows path separator)
+    - `|`, `<`, `>`, `"`, `?`, `*` → removed
+    - Multiple consecutive `-` or spaces → single
+    - Trim leading/trailing whitespace and dashes
+    
+    Args:
+        name: The filename to sanitize (without extension)
+        
+    Returns:
+        Sanitized filename safe for all filesystems
+    """
+    # Replace common problematic characters with dash
+    result = name.replace(":", "-").replace("/", "-").replace("\\", "-")
+    
+    # Remove other invalid characters
+    result = re.sub(r'[|<>"?*]', '', result)
+    
+    # Collapse multiple dashes or spaces
+    result = re.sub(r'[-\s]+', ' ', result)
+    result = result.replace(' - ', ' - ')  # Preserve intentional " - " separators
+    
+    # Trim
+    result = result.strip(' -')
+    
+    return result
+
+
+def sanitize_path(path: str) -> str:
+    """
+    Sanitize a vault-relative path, handling both directory and filename.
+    
+    Applies sanitize_filename to the final component only (the filename),
+    preserving the directory structure.
+    
+    Args:
+        path: Vault-relative path like "VAST/People/Name/2026-01-03 - Title.md"
+        
+    Returns:
+        Path with sanitized filename
+    """
+    p = Path(path)
+    if p.suffix:
+        # Has extension - sanitize stem only
+        sanitized_name = sanitize_filename(p.stem) + p.suffix
+        return str(p.parent / sanitized_name)
+    else:
+        # No extension - sanitize the whole name
+        return str(p.parent / sanitize_filename(p.name))
 
 
 def atomic_write(path: Path, content: str, encoding: str = "utf-8") -> None:
