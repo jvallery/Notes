@@ -424,16 +424,26 @@ RUN PERIODICALLY:
 
 **Goal:** Bring vault to SOT compliance for entity roots.
 
-**Status: IN PROGRESS** (@copilot-claude-20260105a, started: 2026-01-04 17:00)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+
+- Created missing README for `VAST/People/Nidhi/` (only missing entity README)
+- All VAST/People, VAST/Customers and Partners, VAST/Projects folders now have READMEs
+- All Personal/Projects folders already had READMEs
+- Documented exemptions in STANDARDS.md section 1.3:
+  - `Personal/Homelab/*` — Technical docs hierarchy, not entities
+  - `Personal/People/`, `Personal/Journal/`, `Personal/Travel/` — Empty, not in use
+  - `*/ROB/*/` — Forum subfolders exempt until meetings processed
 
 **Tasks**
 
-- Run migration to create missing READMEs (People, Projects, Customers).
-- Decide on Personal READMEs strategy and either create or explicitly exempt.
+- [x] Run migration to create missing READMEs (People, Projects, Customers).
+- [x] Decide on Personal READMEs strategy and either create or explicitly exempt.
 
 **Success Criteria**
 
-- All entity folders have README.md, or exemptions are documented.
+- ✅ All entity folders have README.md, or exemptions are documented.
 
 ---
 
