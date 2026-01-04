@@ -42,14 +42,14 @@ The discussion focused on the strategic relationship between VAST and Microsoft,
 ## Related
 
 - [[Jason]]
-- [[Manish]]
+- Manish
 - [[Jeff]]
-- [[Ong]]
+- Ong
 - [[Kushaldada]]
 - [[Leo]]
 - [[Bilal]]
 - [[Vamsi]]
-- [[Renan]]
+- Renan
 - [[Shahar]]
 - [[Bifrost]]
 - [[Apollo]]

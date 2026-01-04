@@ -19,65 +19,65 @@ tags:
 
 ## Key Contacts
 
-- [[Renan]]
+- Renan
 - [[Manish Sah]]
 - [[Cliff Henson]]
 - [[Joe Green]]
 - [[Michael Myrah]]
-- [[Kui]]
-- [[Krishnan]]
+- Kui
+- Krishnan
 - [[Qi]]
 - [[Andrew]]
 - [[Kishore Inampudi]]
-- [[Suresh]]
+- Suresh
 - [[Juergen Willis]]
-- [[Pradeep]]
+- Pradeep
 - [[Paul Clark]]
 - [[Nidhi]]
-- [[Harish]]
+- Harish
 - [[Aung]]
 - [[Jason Taylor]]
 - [[Michael Myra]]
 - [[Jack Kabat]]
 - [[Jay Parikh]]
-- [[Nagendra]]
+- Nagendra
 - [[John Tinter]]
-- [[Lukasz]]
+- Lukasz
 - [[Girish]]
 - [[Ronnie Booker]]
-- [[Long]]
+- Long
 - [[Juergen]]
 - [[Egal]]
 - [[Jason Vallery]]
 - [[Qiu Ke]]
-- [[Mustafa]]
+- Mustafa
 - [[Joe Vane]]
-- [[Narayan]]
+- Narayan
 - [[Maneesh Sah]]
 - [[Kurt Niebuhr]]
 - [[Keek]]
 - [[Vipin Sachdeva]]
 - [[Arun Krishna]]
-- [[Manish]]
+- Manish
 - [[Ganesh]]
-- [[Yumin]]
+- Yumin
 - [[Karthik]]
 - [[Satya Nadella]]
 - [[Igal]]
 - [[Mike Kiernan]]
 - [[Jai Menon]]
 - [[Frank Ray]]
-- [[Vipin]]
+- Vipin
 - [[Jay Jagant]]
 - [[Ronnie Borker]]
 - [[Kanchan Mehrotra]]
 - [[John Lee]]
 - [[Kushal Datta]]
 - [[Qi Ke]]
-- [[Pete]]
+- [[Pete Emig]]
 - [[Brendan]]
-- [[Wamshi]]
-- [[Ong]]
+- Wamshi
+- Ong
 - [[Anson]]
 - [[Amy Hood]]
 - [[Anand]]
@@ -189,10 +189,10 @@ not done
 |--------|------|---------|
 | [[Manish Sah]] |  |  |
 | [[Michael Myrah]] | Partner PM (Azure Storage Hardware) | Microsoft |
-| [[Yumin]] |  |  |
-| [[Pradeep]] |  | Microsoft |
+| Yumin |  |  |
+| Pradeep |  | Microsoft |
 | [[Jack Kabat]] |  | Microsoft |
-| [[Nagendra]] |  |  |
+| Nagendra |  |  |
 | [[Juergen Willis]] | CVP of Azure Storage (retired) | Microsoft |
 | [[Alon Horev]] |  |  |
 | [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
@@ -202,8 +202,8 @@ not done
 | [[Frank Ray]] | Likely Azure Networking commercial lead (uncertain) | Microsoft |
 | [[Ronnie Borker]] | Runs Azure hardware | Microsoft |
 | [[Qi Ke]] | CVP | Microsoft |
-| [[Pete]] |  |  |
-| [[Ong]] |  | Microsoft |
+| [[Pete Emig]] |  |  |
+| Ong |  | Microsoft |
 | [[Greg Castellucci]] |  | VAST Data |
 | [[Amy Hood]] | CFO | Microsoft |
 | [[Ronnie Booker]] | Owns chassis/layout/storage placement decisions for Apollo deployments | Microsoft |
@@ -211,17 +211,17 @@ not done
 | [[Cliff Henson]] | Runs CSCP (Azure capacity supply chain / logistics partner org) | Microsoft |
 | [[Qi]] | CVP (Azure Kubernetes, per transcript) | Microsoft |
 | [[Kishore Inampudi]] |  |  |
-| [[Suresh]] |  | Microsoft |
+| Suresh |  | Microsoft |
 | [[Paul Clark]] | Runs CO&I/CNLI (Azure datacenter org; per transcript) | Microsoft |
 | [[Jay Parikh]] |  | Microsoft |
 | [[Girish]] |  | Microsoft |
 | [[Pete Eming]] |  |  |
 | [[Joe Vane]] | BizDev | Microsoft |
-| [[Narayan]] | Azure Networking leader (overarching; uncertain) | Microsoft |
+| Narayan | Azure Networking leader (overarching; uncertain) | Microsoft |
 | [[Maneesh Sah]] |  |  |
 | [[Arun Krishna]] |  |  |
 | [[Vipin Sachdeva]] |  | Microsoft |
-| [[Manish]] |  | Microsoft |
+| Manish |  | Microsoft |
 | [[Igal]] |  | Microsoft |
 | [[Mike Kiernan]] |  | Microsoft |
 | [[Kushal Datta]] |  |  |
@@ -230,8 +230,8 @@ not done
 | [[Brendan]] |  | Microsoft |
 | [[Anand]] |  | Microsoft |
 | [[Joe Green]] |  | Microsoft |
-| [[Kui]] |  | Microsoft |
-| [[Krishnan]] |  |  |
+| Kui |  | Microsoft |
+| Krishnan |  |  |
 | [[Andrew]] |  | Microsoft |
 | [[Lior Genzel]] |  |  |
 | [[Jeff Denworth]] |  |  |
@@ -239,22 +239,22 @@ not done
 | [[Timo Pervane]] |  |  |
 | [[Vishnu Charan TJ]] |  |  |
 | [[Erez Zilber]] | Protocols architect | VAST Data |
-| [[Long]] |  | Microsoft |
+| Long |  | Microsoft |
 | [[Egal]] |  | Microsoft |
 | [[Soraya Alami]] |  | VAST Data |
-| [[Mustafa]] |  | Microsoft |
+| Mustafa |  | Microsoft |
 | [[Kurt Niebuhr]] |  |  |
 | [[Keek]] |  | Microsoft |
 | [[Kanchan Mehrotra]] |  |  |
-| [[Wamshi]] |  |  |
-| [[Renan]] | CEO | VAST Data |
+| Wamshi |  |  |
+| Renan | CEO | VAST Data |
 | [[SILA legal]] | Legal |  |
 | [[Sam Hopewell]] |  |  |
-| [[Harish]] | BizDev leader (Joe Vane's boss) | Microsoft |
+| Harish | BizDev leader (Joe Vane's boss) | Microsoft |
 | [[Aung]] |  | Microsoft |
 | [[Jason Taylor]] |  | Microsoft |
 | [[Michael Myra]] |  | Microsoft |
-| [[Lukasz]] |  |  |
+| Lukasz |  |  |
 | [[John Tinter]] |  |  |
 | [[Yonce]] |  |  |
 | [[Juergen]] |  | Microsoft |
@@ -262,7 +262,7 @@ not done
 | [[Rosanne Kincaid–Smith]] |  | VAST Data |
 | [[Jonsi Stephenson]] | CEO | VAST Data |
 | [[Jai Menon]] |  |  |
-| [[Vipin]] |  | Microsoft |
+| Vipin |  | Microsoft |
 | [[John Lee]] |  | Microsoft |
 
 ## Related

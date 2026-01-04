@@ -19,7 +19,7 @@ tags:
 
 ## Key Contacts
 
-- [[Vandana]]
+- Vandana
 
 ## Open Tasks
 
@@ -68,7 +68,7 @@ not done
 | [[Mikey]] |  |  |
 | [[Alon Horev]] |  |  |
 | [[Josh Wentzell]] | Automation/DevOps; lab tooling; customer-facing API automation | VAST Data |
-| [[Vandana]] |  | Walmart |
+| Vandana |  | Walmart |
 | [[Lior Genzel]] | Cloud ("cloud guy") |  |
 | [[Jeff Denworth]] |  |  |
 | [[Avi]] | Architecture (DataSpaces/replication/global namespace) |  |

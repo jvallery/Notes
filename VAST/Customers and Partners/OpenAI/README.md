@@ -20,9 +20,9 @@ tags:
 ## Key Contacts
 
 - [[Greg Brockman]]
-- [[Louie]]
+- Louie
 - [[Rory]]
-- [[Uday]]
+- Uday
 - [[Sam Altman]]
 - [[Kevin Park]]
 - [[Glenn Lockwood]]
@@ -90,9 +90,9 @@ tags:
 | [[Kevin Park]] | Finance/capacity leader (manager of Melissa Du) | OpenAI |
 | [[Jonsi Stephenson]] | CEO | VAST Data |
 | [[Jai Menon]] |  |  |
-| [[Louie]] |  | OpenAI |
-| [[Uday]] | Runs infrastructure at OpenAI (reports to Greg Brockman) | OpenAI |
-| [[Pete]] |  |  |
+| Louie |  | OpenAI |
+| Uday | Runs infrastructure at OpenAI (reports to Greg Brockman) | OpenAI |
+| [[Pete Emig]] |  |  |
 
 ## Related
 

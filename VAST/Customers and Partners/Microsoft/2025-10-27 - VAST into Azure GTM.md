@@ -73,7 +73,7 @@ Jason and Kurt aligned on a go-to-market approach to bring VAST’s high-density
 - [[Kurt Niebuhr]]
 - [[Jason Vallery]]
 - [[Joe Vane]]
-- [[Harish]]
+- Harish
 - [[John Tinter]]
 - [[Ronnie Booker]]
 - [[Kanchan Mehrotra]]

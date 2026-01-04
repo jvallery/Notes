@@ -63,5 +63,5 @@ Jonsi and Jason aligned on a “better together” positioning with Microsoft: A
 - [[Jeff Denworth]]
 - [[Shachar Feinblit]]
 - [[Alon Horev]]
-- [[Ong]]
-- [[Manish]]
+- Ong
+- Manish
