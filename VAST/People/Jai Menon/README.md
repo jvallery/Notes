@@ -1,32 +1,18 @@
 ---
-type: people
-title: Jai Menon
-last_contact: '2025-10-06'
-created: '2026-01-03'
+type: "people"
+title: "Jai Menon"
+last_contact: null
+created: "2026-01-03"
 tags:
-- type/people
-- generated
+  - "type/people"
+  - "generated"
 ---
 
 # Jai Menon
 
 ## Recent Context
 
-- 2025-10-06: [[2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex]] - 1:1 between Jai Menon and Jason Vallery discussing Jason’s high-variance offer from VAST versus an e...
-- 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Jason discussed choosing between a risky, sales-linked VAST offer and a more stable Crusoe offer, co...
-- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Jason briefed Jai on competing offers from VAST and Crusoe and concluded that staying at Microsoft i...
-- 2025-10-06: [[2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr]] - 1:1 between Jai Menon and Jason Vallery discussing Jason’s external offers from VAST and Crusoe vers...
-- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]] - 1:1 between Jai Menon and Jason Vallery focused on Jason’s retention risk as he pursues external off...
-- 2025-09-30: [[2025-09-30 - Jason shared he has multiple external management opportunities and plans to deci]] - 1:1 with Jai Menon discussing Jason Vallery’s potential departure from Microsoft due to multiple ext...
-- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Ong and seeing rewards, he began exploring]] - In a 1:1 with Jai Menon, Jason Vallery shared he is actively exploring external opportunities after ...
-- 2025-09-22: [[2025-09-22 - Jason and Jai discussed Apollo’s target workloads and deployment model (scale pe]] - Jason Vallery and Jai Menon aligned on Apollo’s target workloads and deployment model, focusing on p...
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Silk briefed Jason on its software-defined cloud storage architecture optimized for high-performance... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re]] - Silk briefed Jason on its software-defined cloud storage for high-performance relational databases, ... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas]] - Silk briefed Jason on its software-defined cloud storage optimized for database workloads, highlight... (via Silk)
-- 2025-09-15: [[2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned]] - 1:1 with Jai Menon focused on distributed cache strategy for MAI and BlobFuse PP readiness, comparin...
-- 2025-09-15: [[2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t]] - Jason Vallery and Jai Menon aligned on next steps for evaluating a distributed cache strategy for MA...
-- 2025-09-15: [[2025-09-15 - Jason and Jai discussed options and strategy for distributed caching (BlobFuse v]] - Jason Vallery and Jai Menon aligned on evaluating and selecting a distributed caching strategy for M...
-- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - 1:1 between Jai Menon and Jason Vallery aligning on evaluating OpenAI’s cache code to inform Microso...
+<!-- Populated by automation -->
 
 ## Related
 
