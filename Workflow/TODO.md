@@ -1174,9 +1174,14 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 **Goal:** Verify source_ref links are valid after archive moves.
 
-**Status: NOT STARTED**
+**Status: ✅ FIXED**
 
-**Discovery:**
+**Resolution:** Created `scripts/fix_source_refs.py`:
+- 97 source_refs fixed (wrong date folders)
+- 6 source_refs removed (files not found)
+- 23 already valid
+
+**Discovery (historical):**
 
 **123** meeting notes have `source_ref`, but **100** point to missing files.
 
@@ -2441,7 +2446,7 @@ Most are intentionally unstructured, but should be documented.
 | #      | Issue                            | Impact   | Effort     | Priority           |
 | ------ | -------------------------------- | -------- | ---------- | ------------------ |
 | ~~26~~ | ~~Topics not extracted~~         | ~~HIGH~~ | ~~5 min~~  | ✅ FIXED           |
-| 42     | Broken source_ref targets        | HIGH     | 60 min     | 🔴 CRITICAL        |
+| ~~42~~     | ~~Broken source_ref targets~~        | ~~HIGH~~     | ~~60 min~~     | ✅ FIXED           |
 | ~~70~~     | ~~Template mismatch~~            | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED           |
 | ~~90~~ | ~~LLM uses 1:1 in filenames~~    | ~~HIGH~~ | ~~10 min~~ | ✅ FIXED           |
 | ~~91~~ | ~~LLM uses wrong entity paths~~  | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED           |
