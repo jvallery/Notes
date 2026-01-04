@@ -474,7 +474,7 @@ RUN PERIODICALLY:
 
 **Goal:** Catch regressions in core pipeline.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-claude-20260105a, started: 2026-01-04 17:15)
 
 **Tasks**
 
