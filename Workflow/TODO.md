@@ -2392,6 +2392,7 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 **Discovery:**
 
 `Personal/Projects/NextWave/2025-12-15 1240 - AI Discussion at Longmont Museum.md`:
+
 - 810 lines of raw MacWhisper transcript
 - No frontmatter
 - Sitting in Projects folder instead of Inbox/Transcripts
@@ -2421,6 +2422,7 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 **Discovery:**
 
 45 markdown files lack frontmatter (excluding OVA docs):
+
 - 3 `_MANIFEST.md` files (auto-generated)
 - 4 `_Open Topics.md` files
 - 2 `_Tasks/*.md` files (Dataview queries)
@@ -2447,107 +2449,108 @@ Most are intentionally unstructured, but should be documented.
 
 # Priority Matrix (Quick Wins)
 
-| #   | Issue                        | Impact | Effort | Priority    |
-| --- | ---------------------------- | ------ | ------ | ----------- |
-| 26  | Topics not extracted         | HIGH   | 5 min  | 🔴 CRITICAL |
-| 42  | Broken source_ref targets    | HIGH   | 60 min | 🔴 CRITICAL |
-| 70  | Template mismatch            | HIGH   | 30 min | 🔴 CRITICAL |
-| 90  | LLM uses 1:1 in filenames    | HIGH   | 10 min | 🔴 CRITICAL |
-| 91  | LLM uses wrong entity paths  | HIGH   | 30 min | 🔴 CRITICAL |
-| 92  | person_to_project schema err | HIGH   | 15 min | 🔴 CRITICAL |
-| 93  | extra_tags undefined         | MED    | 5 min  | 🔴 CRITICAL |
-| 94  | note_type undefined          | MED    | 5 min  | 🔴 CRITICAL |
-| 96  | Archive filename mismatch    | HIGH   | TBD    | 🔴 CRITICAL |
-| 97  | MacWhisper captures app title| HIGH   | 30 min | 🔴 CRITICAL |
-| 98  | Source attribution broken    | HIGH   | 60 min | 🔴 CRITICAL |
-| 95  | 19 people notes misclassified| HIGH   | 30 min | 🔴 HIGH     |
-| 62  | 17 stale last_contact        | HIGH   | 30 min | 🔴 HIGH     |
-| 75  | Deterministic extraction     | HIGH   | 2 hrs  | 🔴 HIGH     |
-| 76  | Persist run artifacts        | HIGH   | 60 min | 🔴 HIGH     |
-| 28  | Duplicate notes              | HIGH   | 30 min | 🔴 HIGH     |
-| 43  | 20 duplicate meeting notes   | HIGH   | 30 min | 🔴 HIGH     |
-| 34  | Nested folder paths          | HIGH   | 30 min | 🔴 HIGH     |
-| 63  | 792 overdue tasks            | HIGH   | 2 hrs  | 🔴 HIGH     |
-| 87  | 39 hallucinated note links   | HIGH   | 30 min | 🔴 HIGH     |
-| 88  | VAST internal as customer    | MED    | 15 min | 🟡 MEDIUM   |
-| 68  | 1:1 vs 1-1 wikilinks         | MED    | 10 min | 🟡 MEDIUM   |
-| 69  | 10 old-template READMEs      | MED    | 30 min | 🟡 MEDIUM   |
-| 48  | Broken first-name wikilinks  | MED    | 30 min | 🟡 MEDIUM   |
-| 49  | Typo person names            | MED    | 15 min | 🟡 MEDIUM   |
-| 27  | Inconsistent @Owner          | MED    | 15 min | 🟡 MEDIUM   |
-| 64  | 44 @TBD tasks                | MED    | 30 min | 🟡 MEDIUM   |
-| 65  | 207 tasks no due date        | MED    | 1 hr   | 🟡 MEDIUM   |
-| 66  | Malformed task syntax        | MED    | 1 hr   | 🟡 MEDIUM   |
-| 40  | Special chars in folders     | MED    | 30 min | 🟡 MEDIUM   |
-| 44  | Empty Related Projects       | MED    | 20 min | 🟡 MEDIUM   |
-| 58  | MS subfolders wrong location | MED    | 15 min | 🟡 MEDIUM   |
-| 71  | ROB note at root             | MED    | 10 min | 🟡 MEDIUM   |
-| 73  | Role extraction quality      | MED    | 30 min | 🟡 MEDIUM   |
-| 81  | Nidhi missing README         | LOW    | 5 min  | 🟡 MEDIUM   |
-| 82  | 65+ misspelled wikilinks     | MED    | 30 min | 🟡 MEDIUM   |
-| 83  | Short name wikilinks         | MED    | 20 min | 🟡 MEDIUM   |
-| 84  | Orphan people wikilinks      | LOW    | 30 min | 🟢 LOW      |
-| 85  | [[Note Title]] placeholder   | LOW    | 5 min  | 🟢 LOW      |
-| 86  | Project wikilinks no folder  | LOW    | 30 min | 🟢 LOW      |
-| 89  | 33 customer README-only      | LOW    | N/A    | 🟢 LOW      |
-| 99  | projects type never used     | MED    | 15 min | 🟡 MEDIUM   |
-| 100 | 3 empty ROB subfolders       | LOW    | 10 min | 🟢 LOW      |
-| 101 | Participant name variations  | MED    | 30 min | 🟡 MEDIUM   |
-| 102 | Duplicate files (AI Talk)    | LOW    | 10 min | 🟢 LOW      |
-| 29  | 4 Untitled files             | LOW    | 10 min | 🟢 LOW      |
-| 52  | Duplicate emails             | LOW    | 5 min  | 🟢 LOW      |
-| 53  | Spam emails                  | LOW    | 5 min  | 🟢 LOW      |
-| 54  | 15 empty folders             | LOW    | 10 min | 🟢 LOW      |
-| 55  | Self-referential links       | LOW    | 5 min  | 🟢 LOW      |
-| 61  | Uncommitted changes          | LOW    | 5 min  | 🟢 LOW      |
-| 67  | 25 backfill notes            | LOW    | 1 hr   | 🟢 LOW      |
-| 72  | 112 #needs-review            | LOW    | 3 hrs  | 🟢 LOW      |
-| 79  | Unprocessed personal transcript | LOW | 15 min | 🟢 LOW      |
-| 80  | 45 files without frontmatter | LOW    | 30 min | 🟢 LOW      |
+| #   | Issue                           | Impact | Effort | Priority    |
+| --- | ------------------------------- | ------ | ------ | ----------- |
+| 26  | Topics not extracted            | HIGH   | 5 min  | 🔴 CRITICAL |
+| 42  | Broken source_ref targets       | HIGH   | 60 min | 🔴 CRITICAL |
+| 70  | Template mismatch               | HIGH   | 30 min | 🔴 CRITICAL |
+| 90  | LLM uses 1:1 in filenames       | HIGH   | 10 min | 🔴 CRITICAL |
+| 91  | LLM uses wrong entity paths     | HIGH   | 30 min | 🔴 CRITICAL |
+| 92  | person_to_project schema err    | HIGH   | 15 min | 🔴 CRITICAL |
+| 93  | extra_tags undefined            | MED    | 5 min  | 🔴 CRITICAL |
+| 94  | note_type undefined             | MED    | 5 min  | 🔴 CRITICAL |
+| 96  | Archive filename mismatch       | HIGH   | TBD    | 🔴 CRITICAL |
+| 97  | MacWhisper captures app title   | HIGH   | 30 min | 🔴 CRITICAL |
+| 98  | Source attribution broken       | HIGH   | 60 min | 🔴 CRITICAL |
+| 95  | 19 people notes misclassified   | HIGH   | 30 min | 🔴 HIGH     |
+| 62  | 17 stale last_contact           | HIGH   | 30 min | 🔴 HIGH     |
+| 75  | Deterministic extraction        | HIGH   | 2 hrs  | 🔴 HIGH     |
+| 76  | Persist run artifacts           | HIGH   | 60 min | 🔴 HIGH     |
+| 28  | Duplicate notes                 | HIGH   | 30 min | 🔴 HIGH     |
+| 43  | 20 duplicate meeting notes      | HIGH   | 30 min | 🔴 HIGH     |
+| 34  | Nested folder paths             | HIGH   | 30 min | 🔴 HIGH     |
+| 63  | 792 overdue tasks               | HIGH   | 2 hrs  | 🔴 HIGH     |
+| 87  | 39 hallucinated note links      | HIGH   | 30 min | 🔴 HIGH     |
+| 88  | VAST internal as customer       | MED    | 15 min | 🟡 MEDIUM   |
+| 68  | 1:1 vs 1-1 wikilinks            | MED    | 10 min | 🟡 MEDIUM   |
+| 69  | 10 old-template READMEs         | MED    | 30 min | 🟡 MEDIUM   |
+| 48  | Broken first-name wikilinks     | MED    | 30 min | 🟡 MEDIUM   |
+| 49  | Typo person names               | MED    | 15 min | 🟡 MEDIUM   |
+| 27  | Inconsistent @Owner             | MED    | 15 min | 🟡 MEDIUM   |
+| 64  | 44 @TBD tasks                   | MED    | 30 min | 🟡 MEDIUM   |
+| 65  | 207 tasks no due date           | MED    | 1 hr   | 🟡 MEDIUM   |
+| 66  | Malformed task syntax           | MED    | 1 hr   | 🟡 MEDIUM   |
+| 40  | Special chars in folders        | MED    | 30 min | 🟡 MEDIUM   |
+| 44  | Empty Related Projects          | MED    | 20 min | 🟡 MEDIUM   |
+| 58  | MS subfolders wrong location    | MED    | 15 min | 🟡 MEDIUM   |
+| 71  | ROB note at root                | MED    | 10 min | 🟡 MEDIUM   |
+| 73  | Role extraction quality         | MED    | 30 min | 🟡 MEDIUM   |
+| 81  | Nidhi missing README            | LOW    | 5 min  | 🟡 MEDIUM   |
+| 82  | 65+ misspelled wikilinks        | MED    | 30 min | 🟡 MEDIUM   |
+| 83  | Short name wikilinks            | MED    | 20 min | 🟡 MEDIUM   |
+| 84  | Orphan people wikilinks         | LOW    | 30 min | 🟢 LOW      |
+| 85  | [[Note Title]] placeholder      | LOW    | 5 min  | 🟢 LOW      |
+| 86  | Project wikilinks no folder     | LOW    | 30 min | 🟢 LOW      |
+| 89  | 33 customer README-only         | LOW    | N/A    | 🟢 LOW      |
+| 99  | projects type never used        | MED    | 15 min | 🟡 MEDIUM   |
+| 100 | 3 empty ROB subfolders          | LOW    | 10 min | 🟢 LOW      |
+| 101 | Participant name variations     | MED    | 30 min | 🟡 MEDIUM   |
+| 102 | Duplicate files (AI Talk)       | LOW    | 10 min | 🟢 LOW      |
+| 103 | Archive colons in filenames     | LOW    | 15 min | 🟢 LOW      |
+| 29  | 4 Untitled files                | LOW    | 10 min | 🟢 LOW      |
+| 52  | Duplicate emails                | LOW    | 5 min  | 🟢 LOW      |
+| 53  | Spam emails                     | LOW    | 5 min  | 🟢 LOW      |
+| 54  | 15 empty folders                | LOW    | 10 min | 🟢 LOW      |
+| 55  | Self-referential links          | LOW    | 5 min  | 🟢 LOW      |
+| 61  | Uncommitted changes             | LOW    | 5 min  | 🟢 LOW      |
+| 67  | 25 backfill notes               | LOW    | 1 hr   | 🟢 LOW      |
+| 72  | 112 #needs-review               | LOW    | 3 hrs  | 🟢 LOW      |
+| 79  | Unprocessed personal transcript | LOW    | 15 min | 🟢 LOW      |
+| 80  | 45 files without frontmatter    | LOW    | 30 min | 🟢 LOW      |
 
 ---
 
 # Summary Statistics (2026-01-04 Audit)
 
-| Category      | Metric                  | Count                    |
-| ------------- | ----------------------- | ------------------------ |
-| **Scale**     | Total .md files         | 442                      |
-|               | People entities         | 138 (112 need review)    |
-|               | Customer entities       | 42                       |
-|               | Project entities        | 60                       |
-|               | ROB forums              | 3 (1 misplaced note)     |
-| **Pending**   | Transcripts to process  | 3                        |
-|               | Emails to process       | 7 (4 duplicates, 2 spam) |
-| **Quality**   | Tasks with full format  | ~800                     |
-|               | Tasks missing format    | ~113                     |
-|               | Overdue tasks (Oct/Nov) | 792                      |
-|               | Tasks with @TBD owner   | 44                       |
-|               | Tasks missing due date  | 207                      |
-|               | Broken source_ref links | 100                      |
-|               | Decisions captured      | 332                      |
-|               | Topics captured         | 0 (not extracted!)       |
-|               | Key Facts populated     | 32/135 (24%)             |
-|               | Stale last_contact      | 17 people                |
-|               | Broken 1:1 wikilinks    | 7                        |
-|               | Old-template READMEs    | 10                       |
-|               | Unknown/bad roles       | 24 people                |
-| **Coverage**  | People with notes       | 35/138 (25%)             |
-|               | People README-only      | 103 (75%)                |
-|               | Projects with notes     | 7/60 (12%)               |
-| **Issues**    | Nested folder paths     | 15+                      |
-|               | Duplicate meeting notes | 20                       |
-|               | Broken wikilinks        | 57+                      |
-|               | Typo person names       | 15                       |
-|               | Empty folders           | 15                       |
-|               | Self-referential links  | 3                        |
-|               | Template mismatch       | 1 (critical)             |
-| **New Items** | Added to TODO.md        | 77 (items 26-102)        |
-|               | Critical pipeline bugs  | 8 (items 90-94, 96-98)   |
-|               | Hallucinated note links | 39 (27% broken)          |
-|               | LLM path errors         | 14+ (from logs)          |
-|               | Misclassified notes     | 22 (19 people + 3 project)|
-|               | Archive integrity issues| 3+ (filename mismatches) |
-|               | Participant variations  | 6+ name inconsistencies  |
+| Category      | Metric                   | Count                      |
+| ------------- | ------------------------ | -------------------------- |
+| **Scale**     | Total .md files          | 442                        |
+|               | People entities          | 138 (112 need review)      |
+|               | Customer entities        | 42                         |
+|               | Project entities         | 60                         |
+|               | ROB forums               | 3 (1 misplaced note)       |
+| **Pending**   | Transcripts to process   | 3                          |
+|               | Emails to process        | 7 (4 duplicates, 2 spam)   |
+| **Quality**   | Tasks with full format   | ~800                       |
+|               | Tasks missing format     | ~113                       |
+|               | Overdue tasks (Oct/Nov)  | 792                        |
+|               | Tasks with @TBD owner    | 44                         |
+|               | Tasks missing due date   | 207                        |
+|               | Broken source_ref links  | 100                        |
+|               | Decisions captured       | 332                        |
+|               | Topics captured          | 0 (not extracted!)         |
+|               | Key Facts populated      | 32/135 (24%)               |
+|               | Stale last_contact       | 17 people                  |
+|               | Broken 1:1 wikilinks     | 7                          |
+|               | Old-template READMEs     | 10                         |
+|               | Unknown/bad roles        | 24 people                  |
+| **Coverage**  | People with notes        | 35/138 (25%)               |
+|               | People README-only       | 103 (75%)                  |
+|               | Projects with notes      | 7/60 (12%)                 |
+| **Issues**    | Nested folder paths      | 15+                        |
+|               | Duplicate meeting notes  | 20                         |
+|               | Broken wikilinks         | 57+                        |
+|               | Typo person names        | 15                         |
+|               | Empty folders            | 15                         |
+|               | Self-referential links   | 3                          |
+|               | Template mismatch        | 1 (critical)               |
+| **New Items** | Added to TODO.md         | 79 (items 26-104)          |
+|               | Critical pipeline bugs   | 8 (items 90-94, 96-98)     |
+|               | Hallucinated note links  | 39 (27% broken)            |
+|               | LLM path errors          | 14+ (from logs)            |
+|               | Misclassified notes      | 22 (19 people + 3 project) |
+|               | Archive integrity issues | 3+ (filename mismatches)   |
+|               | Participant variations   | 6+ name inconsistencies    |
 
 ---
 
@@ -2556,6 +2559,7 @@ Most are intentionally unstructured, but should be documented.
 **Found**: 2025-01-04
 
 Only person folder without a README:
+
 - `VAST/People/Nidhi/` - has 1 note but no README.md
 
 **Fix**: Create README from template or determine if folder should be merged elsewhere.
@@ -2568,15 +2572,16 @@ Only person folder without a README:
 
 Misspelled wikilinks pointing to non-existent paths:
 
-| Wrong | Correct | Count |
-|-------|---------|-------|
-| `[[Tomer Hagey]]` | `[[Tomer Hagay]]` | 65 |
-| `[[Manish Sah]]` | `[[Maneesh Sah]]` | ? |
-| `[[Jonsi Stemmelsson]]` | `[[Jonsi Stephenson]]` | ? |
-| `[[Yonsi Stephenson]]` | `[[Jonsi Stephenson]]` | ? |
-| `[[Jason Valeri]]` | `[[Jason Vallery]]` | ? |
+| Wrong                   | Correct                | Count |
+| ----------------------- | ---------------------- | ----- |
+| `[[Tomer Hagey]]`       | `[[Tomer Hagay]]`      | 65    |
+| `[[Manish Sah]]`        | `[[Maneesh Sah]]`      | ?     |
+| `[[Jonsi Stemmelsson]]` | `[[Jonsi Stephenson]]` | ?     |
+| `[[Yonsi Stephenson]]`  | `[[Jonsi Stephenson]]` | ?     |
+| `[[Jason Valeri]]`      | `[[Jason Vallery]]`    | ?     |
 
-**Fix**: 
+**Fix**:
+
 1. Add misspellings to `aliases.yaml`
 2. Find-replace in source files
 
@@ -2587,6 +2592,7 @@ Misspelled wikilinks pointing to non-existent paths:
 **Found**: 2025-01-04
 
 Short names used instead of full names:
+
 - `[[Vishnu]]` - 70 times (should be `[[Vishnu Charan TJ]]`)
 - `[[Rosanne]]` - 23 times (should be `[[Rosanne Kincaid–Smith]]`)
 - `[[Jason]]` - 24 times (ambiguous - me or someone else?)
@@ -2600,6 +2606,7 @@ Short names used instead of full names:
 **Found**: 2025-01-04
 
 Real people referenced but no folder exists:
+
 - `[[Scott Guthrie]]` - Microsoft EVP
 - `[[Mustafa Suleyman]]` - Microsoft AI CEO
 - `[[Brendan Burns]]` - 16 references
@@ -2626,6 +2633,7 @@ Real people referenced but no folder exists:
 **Found**: 2025-01-04
 
 Project references without corresponding folders:
+
 - `[[Project Apollo]]`
 - `[[Project Stargate]]`
 - `[[Platform Learning]]`
@@ -2646,12 +2654,14 @@ The LLM is creating wikilinks to notes that don't exist - appears to be inventin
 ```
 
 **Stats**:
+
 - 144 unique date-title wikilinks found
 - 39 point to non-existent notes (27% broken rate)
 
 **Root Cause**: LLM generating `[[2025-XX-XX - Summary]]` links instead of looking up actual note titles.
 
-**Fix**: 
+**Fix**:
+
 1. Post-process to strip these fake links
 2. Or: modify prompt to NOT generate note-title wikilinks (only entity links)
 
@@ -2662,6 +2672,7 @@ The LLM is creating wikilinks to notes that don't exist - appears to be inventin
 **Found**: 2025-01-04
 
 Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrectly classified as "customer" type:
+
 - `2025-09-16 - VAST Azure GTM hiring.md`
 - `2025-10-24 - AI-first dev and cloud maturity.md`
 - `2025-10-24 - Engineering maturity and cloud strategy.md`
@@ -2670,6 +2681,7 @@ Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrec
 **Root Cause**: LLM extracting "VAST" as customer when it's an internal strategy meeting.
 
 **Fix**:
+
 1. Reclassify as ROB or Projects notes
 2. Add rule to prompt: "VAST is the employer, never a customer"
 3. Move notes to appropriate folders
@@ -2681,10 +2693,12 @@ Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrec
 **Found**: 2025-01-04
 
 Out of 41 customer/partner folders, 33 have only README.md - no meeting notes filed:
+
 - Amazon, Anthropic, Avanade, Cisco, CoreWeave, Crusoe, Databricks, Dell...
 - Goldman Sachs, HPE, Intel, Lambda, Leidos, McDonald's, Micron, NBCU...
 
 Only 8 folders have actual notes:
+
 - Microsoft (28), Google (11), OpenAI (4), Silk (3), Walmart (3), EY (1), Dhammak (1)
 
 **Impact**: Low (stubs for future use)
@@ -2698,6 +2712,7 @@ Only 8 folders have actual notes:
 **Found**: 2025-01-04
 
 From processing logs, LLM generates paths like:
+
 ```
 VAST/People/Rick Haselton/2025-10-29 - Intro 1:1 on CS ops.md
 VAST/People/Liraz Ben Or/2025-10-29 - Intro 1:1 on release process.md
@@ -2708,7 +2723,8 @@ macOS doesn't allow `:` in filenames - these fail at apply phase!
 
 **Root Cause**: LLM not sanitizing output; prompt doesn't specify filename constraints.
 
-**Fix**: 
+**Fix**:
+
 1. Add to prompt: "Use `-` not `:` in filenames"
 2. Post-process paths to replace `:` with `-` in apply phase
 
@@ -2719,6 +2735,7 @@ macOS doesn't allow `:` in filenames - these fail at apply phase!
 **Found**: 2025-01-04
 
 From logs, multiple path structure errors:
+
 - `VAST/Accounts/` instead of `VAST/Customers and Partners/`
 - `VAST/Customers and Partners/_NEW_Jeff Denworth/` (should be `VAST/People/`)
 - `VAST/Customers and Partners/_NEW_Deandre Jackson/` (should be `VAST/People/`)
@@ -2727,6 +2744,7 @@ From logs, multiple path structure errors:
 **Root Cause**: LLM doesn't have reliable path structure context, or confuses entity types.
 
 **Fix**: Add explicit folder schema to planner prompt:
+
 ```
 People → VAST/People/{Name}/
 Customers → VAST/Customers and Partners/{Company}/
@@ -2740,9 +2758,10 @@ ROB → VAST/ROB/{Forum Name}/  (not person names)
 **Found**: 2025-01-04
 
 OpenAI API rejects extraction calls:
+
 ```
-Invalid schema for response_format 'ExtractionV1': 
-'required' is required to be supplied and to be an array including every key in properties. 
+Invalid schema for response_format 'ExtractionV1':
+'required' is required to be supplied and to be an array including every key in properties.
 Extra required key 'person_to_project' supplied.
 ```
 
@@ -2761,6 +2780,7 @@ Log error: `'extra_tags' is undefined`
 **Root Cause**: Template uses `{{ extra_tags }}` but extraction doesn't provide it.
 
 **Fix**: Either:
+
 1. Add `extra_tags` to extraction schema
 2. Remove from template or make conditional `{% if extra_tags %}`
 
@@ -2783,12 +2803,14 @@ Log error: `'note_type' is undefined`
 **Found**: 2025-01-04
 
 Notes filed in `VAST/People/` are misclassified with customer frontmatter:
+
 ```yaml
 type: "customer"
-account: "Jeff Denworth"  # Should be person:
+account: "Jeff Denworth" # Should be person:
 ```
 
 **Affected files**:
+
 - `VAST/People/Jeff Denworth/2025-10-27 - Jeff 1-1 cloud priorities.md`
 - All 10+ Jai Menon meeting notes
 - `VAST/People/Jack Kabat/2025-09-18 - VAST CoreWeave storage strategy deep dive.md`
@@ -2797,6 +2819,7 @@ account: "Jeff Denworth"  # Should be person:
 **Root Cause**: LLM classifies internal 1:1s with colleagues as "customer" meetings.
 
 **Fix**:
+
 1. Add to extraction prompt: "Colleagues (VAST employees) are NEVER customers. Use type=people"
 2. Fix existing 19 notes: change `type:` and `account:` → `person:`
 
@@ -2807,10 +2830,12 @@ account: "Jeff Denworth"  # Should be person:
 **Found**: 2025-01-04
 
 The archive file `Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md` contains:
+
 - **Actual content**: Strategic Microsoft/VAST discussion (Jason + colleague discussing MAI, Bifrost, etc.)
 - **Filename suggests**: "G24 Flight School" training content
 
 The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussion.md` has:
+
 - `source_ref` pointing to the Flight School file
 - Content extracted from the strategic discussion (correct content, wrong source attribution)
 
@@ -2819,9 +2844,11 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 **Impact**: Critical - source_ref traceability is broken. Can't trust archive file names.
 
 **Investigation Needed**:
+
 1. Check if `Inbox/Transcripts/` had duplicate/misnamed files
 2. Verify archive process preserves original filenames
 3. May need to re-ingest from MacWhisper exports
+
 ---
 
 ## 97) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
@@ -2830,24 +2857,27 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 
 Deep investigation of archive reveals **3 additional files with wrong names**:
 
-| Archive Filename | Actual Content |
-|------------------|----------------|
-| `2025-12-17 13:53 - Google Chrome.md` | Call with Avinash from Welliptic about blockchain agent execution platform |
-| `2025-12-19 09:50 - New Recording.md` | Detailed Google GDC RFP call with Kamal, Malikarjan, David (encryption, benchmarking) |
-| `2025-12-16 08:35 - G24 Flight School...md` | Strategic Microsoft/VAST discussion (MAI, Bifrost, supply chain) |
+| Archive Filename                            | Actual Content                                                                        |
+| ------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `2025-12-17 13:53 - Google Chrome.md`       | Call with Avinash from Welliptic about blockchain agent execution platform            |
+| `2025-12-19 09:50 - New Recording.md`       | Detailed Google GDC RFP call with Kamal, Malikarjan, David (encryption, benchmarking) |
+| `2025-12-16 08:35 - G24 Flight School...md` | Strategic Microsoft/VAST discussion (MAI, Bifrost, supply chain)                      |
 
 **Root Cause**: MacWhisper picks up the **foreground app window title** when recording starts, not the meeting title.
+
 - "Google Chrome" = browser was active
 - "New Recording" = default placeholder
 - "G24 Flight School" = Zoom window title from previous meeting?
 
 **Impact**: CRITICAL
+
 - Archive filenames are unreliable as source_ref
 - Content-filename mismatch breaks traceability
 - ~3/132 (2.3%) of archive files confirmed wrong
 - Unknown how many more have subtle mismatches
 
 **Fix**:
+
 1. **Immediate**: Manually audit and rename problematic archives
 2. **Process**: Configure MacWhisper to prompt for title after recording ends
 3. **Fallback**: Have LLM propose corrected filename during extraction phase
@@ -2860,23 +2890,28 @@ Deep investigation of archive reveals **3 additional files with wrong names**:
 **Found**: 2025-01-04
 
 The `source_ref` field in extracted notes links to archive files, but:
+
 - Archive filenames can be wrong (item 96, 97)
 - No verification that source_ref file content matches extracted note content
 - Cannot reliably trace back from a note to its source material
 
 **Example**:
 `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussion.md` has:
+
 ```yaml
 source_ref: "Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School...md"
 ```
+
 This points to a file whose NAME suggests Flight School training, but whose CONTENT is the Microsoft discussion.
 
 **Impact**: Medium-High
+
 - Audit/provenance trail is broken
 - Cannot regenerate notes from source if needed
 - Compliance/legal discovery scenarios compromised
 
 **Fix**:
+
 1. Store content hash of source at extraction time
 2. Add `source_hash` field to frontmatter
 3. Validation can compare archive file hash to stored hash
@@ -2890,6 +2925,7 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 Schema defines 7 types: `customer`, `people`, `projects`, `rob`, `journal`, `partners`, `travel`
 
 But scanning all notes in vault:
+
 ```
 72 type: "customer"
 48 type: "people"
@@ -2898,6 +2934,7 @@ But scanning all notes in vault:
 ```
 
 3 notes in `**/Projects/` folders have wrong types:
+
 - `VAST/Projects/Cloud Marketplace MVP/2025-10-01 - Cloud Marketplace MVP checklist.md` → `type: "people"`
 - `VAST/Projects/Pricing/2025-10-01 - Pricing vTeam action list.md` → `type: "customer"`
 - `Personal/Projects/LPM/2025-10-27 - LPM board AI discussion.md` → `type: "people"`
@@ -2905,6 +2942,7 @@ But scanning all notes in vault:
 **Root Cause**: LLM extraction classifies by participant relationship, not destination folder.
 
 **Fix**:
+
 1. Add to extraction prompt: "Notes about project work use type=projects, not people/customer"
 2. Alternatively: derive type from destination folder path in plan phase
 3. Fix 3 existing notes
@@ -2916,6 +2954,7 @@ But scanning all notes in vault:
 **Found**: 2025-01-04
 
 All ROB subfolders are empty (no notes, no READMEs):
+
 - `VAST/ROB/Phase Gate 1/` - empty
 - `VAST/ROB/SRE/` - empty
 - `VAST/ROB/VAST on Cloud Office Hours/` - empty
@@ -2925,6 +2964,7 @@ Only note is misplaced at ROB root level (item 71).
 **Root Cause**: No ROB meetings processed yet, or all filed incorrectly.
 
 **Fix**:
+
 1. Add README.md to each ROB forum folder
 2. Re-file any ROB notes that ended up elsewhere
 3. Consider whether these forums are still active
@@ -2937,22 +2977,24 @@ Only note is misplaced at ROB root level (item 71).
 
 Participant names have multiple variations across notes:
 
-| Canonical | Variations |
-|-----------|------------|
-| Jason Vallery | "Jason" (4x), "Jason Valleri", "Jason Valeri" |
-| Jonsi Stephenson | "Jonsi Stefansson" (3x), "Jonsi Stemmelsson" |
-| Tomer Hagay | "Tomer" (4x) |
-| Jeff Denworth | "Jeff" (3x) |
-| Lior Genzel | "Lior" (multiple) |
+| Canonical        | Variations                                    |
+| ---------------- | --------------------------------------------- |
+| Jason Vallery    | "Jason" (4x), "Jason Valleri", "Jason Valeri" |
+| Jonsi Stephenson | "Jonsi Stefansson" (3x), "Jonsi Stemmelsson"  |
+| Tomer Hagay      | "Tomer" (4x)                                  |
+| Jeff Denworth    | "Jeff" (3x)                                   |
+| Lior Genzel      | "Lior" (multiple)                             |
 
 Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", "Chris", "John"
 
 **Impact**: Medium
+
 - Can't aggregate meetings by participant reliably
 - Dataview queries won't group correctly
 - Graph view links will be fragmented
 
 **Fix**:
+
 1. Add name normalization to extraction output validation
 2. Maintain canonical name list in `Workflow/entities/aliases.yaml`
 3. Post-process participants to resolve to full names
@@ -2965,17 +3007,19 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 
 Content hash analysis found exact duplicate files:
 
-| Hash | File 1 | File 2 |
-|------|--------|--------|
-| `cda0dbf7...` | `Personal/Projects/AI Talk/Outline.md` | `VAST/Projects/AI Talk/Outline.md` |
+| Hash          | File 1                                    | File 2                                          |
+| ------------- | ----------------------------------------- | ----------------------------------------------- |
+| `cda0dbf7...` | `Personal/Projects/AI Talk/Outline.md`    | `VAST/Projects/AI Talk/Outline.md`              |
 | `d41d8cd9...` | `Personal/Homelab/VMs/Frigate.md` (empty) | `VAST/Projects/OVA/Proxmox/Untitled.md` (empty) |
 
 **Impact**: Low
+
 - Confusion about canonical location
 - Risk of divergent edits
 - Wasted space
 
 **Fix**:
+
 1. Determine canonical location for AI Talk project (Personal or VAST?)
 2. Delete empty placeholder files
 
@@ -2986,6 +3030,7 @@ Content hash analysis found exact duplicate files:
 **Found**: 2025-01-04
 
 macOS allows colons in filenames (internally stored as `/`). Archive has files with colons:
+
 ```
 2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md
 ```
@@ -2993,11 +3038,13 @@ macOS allows colons in filenames (internally stored as `/`). Archive has files w
 This file was created by MacWhisper from a Zoom meeting title.
 
 **Impact**: Low-Medium
+
 - Colons display as `:` but are stored as `/` internally
 - May cause issues when copying to non-macOS systems
 - Git handles it fine but could confuse tools
 
 **Fix**:
+
 1. Rename archive files to remove colons
 2. Configure MacWhisper to sanitize output filenames
 3. Already handled in `sanitize_path()` for new files
@@ -3008,23 +3055,24 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 **Snapshot**: 2025-01-04
 
-| Metric | Count |
-|--------|-------|
-| Total items in TODO.md | 104 |
-| CRITICAL priority items | 8 |
-| HIGH priority items | 12 |
-| MEDIUM priority items | 18 |
-| LOW priority items | 20+ |
-| Notes with type field | 123 |
-| Broken source_refs | 100 |
-| People folders | 138 |
-| Customer folders | 42 |
-| Project folders | 60+ |
-| ROB forums | 3 (all empty) |
-| Pending transcripts | 3 |
-| Pending emails | 7 (4 dupe, 2 spam) |
+| Metric                  | Count              |
+| ----------------------- | ------------------ |
+| Total items in TODO.md  | 104                |
+| CRITICAL priority items | 8                  |
+| HIGH priority items     | 12                 |
+| MEDIUM priority items   | 18                 |
+| LOW priority items      | 20+                |
+| Notes with type field   | 123                |
+| Broken source_refs      | 100                |
+| People folders          | 138                |
+| Customer folders        | 42                 |
+| Project folders         | 60+                |
+| ROB forums              | 3 (all empty)      |
+| Pending transcripts     | 3                  |
+| Pending emails          | 7 (4 dupe, 2 spam) |
 
 **Audit Coverage**:
+
 - ✅ Folder structure
 - ✅ Wikilinks (broken, misspelled, orphan)
 - ✅ Task format consistency
@@ -3035,4 +3083,5 @@ This file was created by MacWhisper from a Zoom meeting title.
 - ✅ Template variable checks
 - ✅ Participant name variations
 - ✅ Duplicate content detection
+
 3. Consider symlinks or redirects for multi-context items
