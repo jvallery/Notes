@@ -121,7 +121,7 @@ Managing professional and personal knowledge across multiple input channels (mee
 
 - OpenAI API budget: ~$50/month cap
 - Model selection policy-based (see AI Model Policy below)
-- Use `gpt-4o-mini` for classification, `gpt-4o` for extraction/planning
+- Classification uses heuristics (no API call); extraction/planning use LLM
 
 ### 3.3 Reliability (ETL Best Practices)
 
@@ -152,12 +152,12 @@ Managing professional and personal knowledge across multiple input channels (mee
 
 Models are selected **policy-based** rather than hardcoded.
 
-| Task           | Model          | Fallback | Notes                       |
-| -------------- | -------------- | -------- | --------------------------- |
-| Classification | `gpt-4o-mini`  | `gpt-4o` | Fast, cheap routing         |
-| Extraction     | `gpt-4o`       | —        | Structured outputs required |
-| Planning       | `gpt-4o`       | —        | Structured outputs required |
-| Review         | VS Code `auto` | —        | Human-in-the-loop           |
+| Task           | Model           | Fallback | Notes                                    |
+| -------------- | --------------- | -------- | ---------------------------------------- |
+| Classification | *Heuristics*    | —        | Pattern matching, no API call            |
+| Extraction     | `gpt-5.2`       | `gpt-4o` | Structured outputs required              |
+| Planning       | `gpt-5.2`       | `gpt-4o` | Structured outputs required              |
+| Review         | VS Code `auto`  | —        | Human-in-the-loop                        |
 
 ### 4.2 API Configuration
 

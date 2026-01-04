@@ -114,8 +114,10 @@ Inbox/Transcripts/             Inbox/_extraction/               Inbox/_extractio
 
 ### Profile Selection Flow
 
+Classification uses **heuristics** (pattern matching on filename/content), not LLM:
+
 ```
-Source File → Classify (AI) → Select Profile → Build Extraction Prompt
+Source File → Classify (Heuristics) → Select Profile → Build Extraction Prompt
                     │
                     ▼
               ┌─────────────────────────────────────┐
@@ -124,6 +126,13 @@ Source File → Classify (AI) → Select Profile → Build Extraction Prompt
               │ profiles/work_leadership.yaml       │  Strategy/planning
               │ profiles/personal.yaml              │  Personal context
               └─────────────────────────────────────┘
+
+Patterns checked (in order):
+1. ROB: "office hours", "team sync", "standup", "flight school"
+2. Customer: "rfp", "proposal", known account names
+3. People: "1-1", "1:1", "weekly with", "sync with"
+4. Projects: "sprint", "architecture", "design review"
+5. Fallback: Transcripts → people, Emails → customer
 ```
 
 ---
