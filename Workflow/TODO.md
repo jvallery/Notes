@@ -2875,3 +2875,79 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 1. Store content hash of source at extraction time
 2. Add `source_hash` field to frontmatter
 3. Validation can compare archive file hash to stored hash
+
+---
+
+## 99) `type: "projects"` Never Used - 3 Project Notes Have Wrong Types
+
+**Found**: 2025-01-04
+
+Schema defines 7 types: `customer`, `people`, `projects`, `rob`, `journal`, `partners`, `travel`
+
+But scanning all notes in vault:
+```
+72 type: "customer"
+48 type: "people"
+ 3 type: "rob"
+ 0 type: "projects"  ← NEVER USED!
+```
+
+3 notes in `**/Projects/` folders have wrong types:
+- `VAST/Projects/Cloud Marketplace MVP/2025-10-01 - Cloud Marketplace MVP checklist.md` → `type: "people"`
+- `VAST/Projects/Pricing/2025-10-01 - Pricing vTeam action list.md` → `type: "customer"`
+- `Personal/Projects/LPM/2025-10-27 - LPM board AI discussion.md` → `type: "people"`
+
+**Root Cause**: LLM extraction classifies by participant relationship, not destination folder.
+
+**Fix**:
+1. Add to extraction prompt: "Notes about project work use type=projects, not people/customer"
+2. Alternatively: derive type from destination folder path in plan phase
+3. Fix 3 existing notes
+
+---
+
+## 100) 3 Empty ROB Subfolders
+
+**Found**: 2025-01-04
+
+All ROB subfolders are empty (no notes, no READMEs):
+- `VAST/ROB/Phase Gate 1/` - empty
+- `VAST/ROB/SRE/` - empty
+- `VAST/ROB/VAST on Cloud Office Hours/` - empty
+
+Only note is misplaced at ROB root level (item 71).
+
+**Root Cause**: No ROB meetings processed yet, or all filed incorrectly.
+
+**Fix**:
+1. Add README.md to each ROB forum folder
+2. Re-file any ROB notes that ended up elsewhere
+3. Consider whether these forums are still active
+
+---
+
+## 101) Participant Name Inconsistencies
+
+**Found**: 2025-01-04
+
+Participant names have multiple variations across notes:
+
+| Canonical | Variations |
+|-----------|------------|
+| Jason Vallery | "Jason" (4x), "Jason Valleri", "Jason Valeri" |
+| Jonsi Stephenson | "Jonsi Stefansson" (3x), "Jonsi Stemmelsson" |
+| Tomer Hagay | "Tomer" (4x) |
+| Jeff Denworth | "Jeff" (3x) |
+| Lior Genzel | "Lior" (multiple) |
+
+Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", "Chris", "John"
+
+**Impact**: Medium
+- Can't aggregate meetings by participant reliably
+- Dataview queries won't group correctly
+- Graph view links will be fragmented
+
+**Fix**:
+1. Add name normalization to extraction output validation
+2. Maintain canonical name list in `Workflow/entities/aliases.yaml`
+3. Post-process participants to resolve to full names
