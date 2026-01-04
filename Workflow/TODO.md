@@ -2978,4 +2978,61 @@ Content hash analysis found exact duplicate files:
 **Fix**:
 1. Determine canonical location for AI Talk project (Personal or VAST?)
 2. Delete empty placeholder files
+
+---
+
+## 103) Archive Files Have Colons in Filenames (macOS Quirk)
+
+**Found**: 2025-01-04
+
+macOS allows colons in filenames (internally stored as `/`). Archive has files with colons:
+```
+2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md
+```
+
+This file was created by MacWhisper from a Zoom meeting title.
+
+**Impact**: Low-Medium
+- Colons display as `:` but are stored as `/` internally
+- May cause issues when copying to non-macOS systems
+- Git handles it fine but could confuse tools
+
+**Fix**:
+1. Rename archive files to remove colons
+2. Configure MacWhisper to sanitize output filenames
+3. Already handled in `sanitize_path()` for new files
+
+---
+
+## 104) Vault-Wide Statistics Summary
+
+**Snapshot**: 2025-01-04
+
+| Metric | Count |
+|--------|-------|
+| Total items in TODO.md | 104 |
+| CRITICAL priority items | 8 |
+| HIGH priority items | 12 |
+| MEDIUM priority items | 18 |
+| LOW priority items | 20+ |
+| Notes with type field | 123 |
+| Broken source_refs | 100 |
+| People folders | 138 |
+| Customer folders | 42 |
+| Project folders | 60+ |
+| ROB forums | 3 (all empty) |
+| Pending transcripts | 3 |
+| Pending emails | 7 (4 dupe, 2 spam) |
+
+**Audit Coverage**:
+- ✅ Folder structure
+- ✅ Wikilinks (broken, misspelled, orphan)
+- ✅ Task format consistency
+- ✅ Frontmatter fields
+- ✅ Archive integrity
+- ✅ Pipeline logs analysis
+- ✅ Schema/model validation
+- ✅ Template variable checks
+- ✅ Participant name variations
+- ✅ Duplicate content detection
 3. Consider symlinks or redirects for multi-context items
