@@ -1,11 +1,11 @@
 ---
 type: people
 title: Sam Hopewell
-last_contact: '2025-10-22'
-created: '2026-01-03'
+last_contact: "2025-10-22"
+created: "2026-01-03"
 tags:
-- type/people
-- entity/Sam Hopewell
+  - type/people
+  - entity/Sam Hopewell
 ---
 
 # Sam Hopewell
@@ -17,6 +17,7 @@ tags:
 **Relationship**: Key technical contact for OpenAI storage initiative
 
 **Background**:
+
 - Primary storage owner for OpenAI research infrastructure
 - Reports up through Rory Carmichael (infra/supercomputers) → Uday → Greg Brockman
 - Evaluating VAST as "warm storage" adjacent to GPU fleets for training isolation

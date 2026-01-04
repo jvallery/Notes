@@ -3,6 +3,7 @@
 You are auditing an entity README file for quality, consistency, and accuracy. Review the content and provide specific, actionable feedback.
 
 ## Entity Type: {entity_type}
+
 ## Entity Name: {entity_name}
 
 ---
@@ -20,6 +21,7 @@ You are auditing an entity README file for quality, consistency, and accuracy. R
 ### Structure (required sections in order)
 
 **For People:**
+
 1. [ ] Frontmatter with type, title, last_contact, created, tags
 2. [ ] `## Profile` with Role, Organization, Location, Relationship
 3. [ ] `## Open Tasks` with tasks query
@@ -27,6 +29,7 @@ You are auditing an entity README file for quality, consistency, and accuracy. R
 5. [ ] `## Key Facts` (if any facts captured)
 
 **For Customers:**
+
 1. [ ] Frontmatter with type, title, last_contact, created, tags
 2. [ ] `## Account Status` with Industry, Stage table
 3. [ ] `## Key Contacts` with wikilinks to people
@@ -35,6 +38,7 @@ You are auditing an entity README file for quality, consistency, and accuracy. R
 6. [ ] `## Opportunities` and `## Blockers` (if applicable)
 
 **For Projects:**
+
 1. [ ] Frontmatter with type, title, last_contact, created, tags
 2. [ ] `## Status` with Owner, Stage table
 3. [ ] `## Overview` with brief description
@@ -67,26 +71,34 @@ You are auditing an entity README file for quality, consistency, and accuracy. R
 Provide your audit in this format:
 
 ### Summary
+
 One paragraph assessment of README quality (Good/Needs Work/Poor).
 
 ### Issues Found
+
 List each issue with:
+
 - **Type**: REMOVE / MERGE / UPDATE / ADD / FIX
 - **Location**: Which section
 - **Description**: What's wrong
 - **Suggested Fix**: How to fix it
 
 ### Recommended Ledger Entries to Keep
+
 List the entries that should remain in Recent Context (by date), with brief justification.
 
 ### Recommended Ledger Entries to Remove
+
 List entries that should be removed, with reason (duplicate, wrong entity, tangential, etc.)
 
 ### Profile Updates Needed
+
 Specific updates to Profile/Status section based on source material.
 
 ### Overall Score
+
 Rate 1-5:
+
 - 5: Complete, accurate, well-structured
 - 4: Minor issues only
 - 3: Needs some cleanup
