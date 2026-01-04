@@ -170,6 +170,7 @@ RUN PERIODICALLY:
 **For Humans**: Copy the prompt text and paste it into a new chat with an AI agent (Copilot, Claude, etc.). The agent will execute the workflow.
 
 **For Agents**: Reference the prompt by number when given a task:
+
 - "Follow PROMPT 1 to add this issue..."
 - "Use PROMPT 2 to find work"
 - "Complete this item per PROMPT 3"
@@ -195,7 +196,6 @@ RUN PERIODICALLY:
 | Blocked     | `grep -c "Status: ⏸️ BLOCKED" Workflow/TODO.md`   | `grep -B5 "Status: ⏸️ BLOCKED" Workflow/TODO.md`   |
 
 ---
-
 
 ---
 
@@ -225,7 +225,7 @@ RUN PERIODICALLY:
 
 **Goal:** Prevent data loss and dirty repos during Apply/Migration/Backfill.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 15:30)
 
 **Tasks**
 
@@ -1255,12 +1255,8 @@ Same transcripts in inbox multiple times → multiple notes created:
 All 92 People READMEs have empty `## Related Projects` sections:
 
 ```markdown
-
 ---
-
 ## Related Projects
-
-
 ---
 
 ## Related
