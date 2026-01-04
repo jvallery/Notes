@@ -127,6 +127,62 @@ BLOCKED (waiting on dependency):
 
 </details>
 
+<details>
+<summary><strong>🧹 PROMPT 4: Clean Up Completed Items</strong></summary>
+
+```
+Remove all completed items from TODO.md and renumber remaining items:
+
+1. Run the cleanup script:
+   cd ~/Documents/Notes/Workflow && source .venv/bin/activate
+   python scripts/cleanup_todo.py
+
+2. Review what was removed (script prints summary)
+
+3. Commit the cleanup:
+   git add Workflow/TODO.md && git commit -m "[todo] Clean up: remove completed items, renumber to {N}"
+
+WHAT THE SCRIPT REMOVES:
+- Items with "Status: ✅ COMPLETED" in content
+- Items with ✅ in the header (e.g., "## 42) ✅ FIXED: ...")
+- Meta sections: Priority Matrix, Summary Statistics, Notes, etc.
+- Unnumbered completed sections (Post-Run Cleanup, etc.)
+
+WHAT THE SCRIPT DOES:
+- Parses all ## sections
+- Filters out completed/meta sections
+- Renumbers remaining items sequentially (1, 2, 3...)
+- Preserves the header/instructions section
+- Cleans up excess blank lines
+
+RUN PERIODICALLY:
+- After completing several items
+- Before starting a new work session
+- When the file becomes cluttered with completed work
+```
+
+</details>
+
+---
+
+### How to Use These Prompts
+
+**For Humans**: Copy the prompt text and paste it into a new chat with an AI agent (Copilot, Claude, etc.). The agent will execute the workflow.
+
+**For Agents**: Reference the prompt by number when given a task:
+- "Follow PROMPT 1 to add this issue..."
+- "Use PROMPT 2 to find work"
+- "Complete this item per PROMPT 3"
+- "Run PROMPT 4 to clean up the file"
+
+**Quick Commands** (paste into chat):
+| Task | Prompt |
+|------|--------|
+| Add new issue | "Read Workflow/TODO.md and add item: {description}" |
+| Find work | "Read Workflow/TODO.md, claim an available item, and complete it" |
+| Mark complete | "Mark item {N} as completed in Workflow/TODO.md" |
+| Clean up | "Run the cleanup script for Workflow/TODO.md" |
+
 ---
 
 ## Work Item Index
