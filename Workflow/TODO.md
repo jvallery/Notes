@@ -2464,7 +2464,7 @@ Most are intentionally unstructured, but should be documented.
 | ~~43~~     | ~~20 duplicate meeting notes~~       | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
 | ~~34~~     | ~~Nested folder paths~~              | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
 | 63     | 792 overdue tasks                | HIGH     | 2 hrs      | 🔴 HIGH            |
-| 87     | 39 hallucinated note links       | HIGH     | 30 min     | 🔴 HIGH            |
+| ~~87~~     | ~~39 hallucinated note links~~       | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED (63 total) |
 | 88     | VAST internal as customer        | MED      | 15 min     | 🟡 MEDIUM          |
 | 68     | 1:1 vs 1-1 wikilinks             | MED      | 10 min     | 🟡 MEDIUM          |
 | 69     | 10 old-template READMEs          | MED      | 30 min     | 🟡 MEDIUM          |
