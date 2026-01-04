@@ -83,13 +83,13 @@ The system follows a **ChangePlan Pattern** that strictly separates AI reasoning
 
 ### Key Principles
 
-| Principle | Implementation |
-|-----------|----------------|
-| **AI reasons, Python executes** | Extract/Plan use AI; Apply is deterministic |
-| **Transactional safety** | All-or-nothing apply with automatic rollback |
-| **Audit trail** | Every change is git-committed |
-| **Privacy** | `store=False` on all OpenAI API calls |
-| **Schema enforcement** | Pydantic models + OpenAI Structured Outputs |
+| Principle                       | Implementation                               |
+| ------------------------------- | -------------------------------------------- |
+| **AI reasons, Python executes** | Extract/Plan use AI; Apply is deterministic  |
+| **Transactional safety**        | All-or-nothing apply with automatic rollback |
+| **Audit trail**                 | Every change is git-committed                |
+| **Privacy**                     | `store=False` on all OpenAI API calls        |
+| **Schema enforcement**          | Pydantic models + OpenAI Structured Outputs  |
 
 ---
 
@@ -103,7 +103,7 @@ Source File                    Extraction JSON                  ChangePlan JSON 
 Inbox/Transcripts/             Inbox/_extraction/               Inbox/_extraction/                VAST/People/{Name}/
   2026-01-03 Meeting.md    →     2026-01-03 Meeting            2026-01-03 Meeting              2026-01-03 - Title.md
                                    .extraction.json          →   .changeplan.json           →  README.md (patched)
-                                                                                                 
+
                                  Contains:                      Contains:                       + archived to:
                                  - note_type                    - create ops                    Inbox/_archive/2026-01-03/
                                  - entity_name                  - patch ops                       original.md
@@ -120,7 +120,7 @@ Source File → Classify (AI) → Select Profile → Build Extraction Prompt
                     ▼
               ┌─────────────────────────────────────┐
               │ profiles/work_sales.yaml            │  Customer/partner meetings
-              │ profiles/work_engineering.yaml      │  Technical discussions  
+              │ profiles/work_engineering.yaml      │  Technical discussions
               │ profiles/work_leadership.yaml       │  Strategy/planning
               │ profiles/personal.yaml              │  Personal context
               └─────────────────────────────────────┘
@@ -155,7 +155,7 @@ python scripts/extract.py --file "Inbox/Transcripts/meeting.md"
 # Extract all pending transcripts
 python scripts/extract.py --all --scope transcripts
 
-# Extract all pending emails  
+# Extract all pending emails
 python scripts/extract.py --all --scope email
 
 # Dry run
@@ -163,6 +163,7 @@ python scripts/extract.py --all --dry-run
 ```
 
 **Uses:**
+
 - `prompts/system-extractor.md.j2` (includes `base.md.j2`)
 - `profiles/*.yaml` for extraction focus
 - Outputs: `Inbox/_extraction/*.extraction.json`
@@ -181,6 +182,7 @@ python scripts/plan.py --all --dry-run
 ```
 
 **Uses:**
+
 - `prompts/system-planner.md.j2` (includes `base.md.j2`)
 - `templates/*.md.j2` referenced in plan
 - Outputs: `Inbox/_extraction/*.changeplan.json`
@@ -199,6 +201,7 @@ python scripts/apply.py --all --allow-overwrite
 ```
 
 **Uses:**
+
 - `templates/*.md.j2` for CREATE operations
 - `utils/patch_primitives.py` for PATCH operations
 - No AI calls - purely deterministic
@@ -225,6 +228,7 @@ python scripts/backfill.py run --scope VAST --dry-run
 ```
 
 **Additional commands:**
+
 ```bash
 # Sync entity folders with manifests
 python scripts/backfill.py sync-manifests
@@ -255,13 +259,13 @@ python scripts/cleanup/readme_auditor.py --file "VAST/People/Name/README.md"
 
 ### Prompt Files (`prompts/`)
 
-| File | Used By | Purpose |
-|------|---------|---------|
-| `base.md.j2` | All prompts | Trust boundary, date standards, task rules |
-| `system-extractor.md.j2` | `extract.py` | Content extraction with profile injection |
-| `system-planner.md.j2` | `plan.py` | ChangePlan generation with vault context |
-| `backfill-extractor.md.j2` | `backfill.py` | Historical note summarization |
-| `audit-readme.md` | `readme_auditor.py` | Quality assessment prompts |
+| File                       | Used By             | Purpose                                    |
+| -------------------------- | ------------------- | ------------------------------------------ |
+| `base.md.j2`               | All prompts         | Trust boundary, date standards, task rules |
+| `system-extractor.md.j2`   | `extract.py`        | Content extraction with profile injection  |
+| `system-planner.md.j2`     | `plan.py`           | ChangePlan generation with vault context   |
+| `backfill-extractor.md.j2` | `backfill.py`       | Historical note summarization              |
+| `audit-readme.md`          | `readme_auditor.py` | Quality assessment prompts                 |
 
 ### Prompt Composition
 
@@ -272,7 +276,7 @@ system-extractor.md.j2
 ├── Classification rules           ← Note type detection
 └── ExtractionV1 schema           ← Required JSON structure
 
-system-planner.md.j2  
+system-planner.md.j2
 ├── {% include 'base.md.j2' %}     ← Universal rules
 ├── Path security rules            ← VAST/ and Personal/ only
 ├── Vault context injection        ← Known entities, folders
@@ -282,34 +286,34 @@ system-planner.md.j2
 
 ### Template Files (`templates/`)
 
-| Template | Note Type | Creates |
-|----------|-----------|---------|
-| `people.md.j2` | people | Individual meeting notes |
-| `customer.md.j2` | customer | Multi-party account meetings |
-| `partners.md.j2` | partners | Partner org meetings |
-| `projects.md.j2` | projects | Project work notes |
-| `rob.md.j2` | rob | Rhythm of Business syncs |
-| `journal.md.j2` | journal | Personal reflections |
-| `travel.md.j2` | travel | Trip notes |
+| Template         | Note Type | Creates                      |
+| ---------------- | --------- | ---------------------------- |
+| `people.md.j2`   | people    | Individual meeting notes     |
+| `customer.md.j2` | customer  | Multi-party account meetings |
+| `partners.md.j2` | partners  | Partner org meetings         |
+| `projects.md.j2` | projects  | Project work notes           |
+| `rob.md.j2`      | rob       | Rhythm of Business syncs     |
+| `journal.md.j2`  | journal   | Personal reflections         |
+| `travel.md.j2`   | travel    | Trip notes                   |
 
 **README Templates (for backfill):**
 
-| Template | Entity Type | Creates |
-|----------|-------------|---------|
-| `readme-person.md.j2` | Person | Contact info, relationship, context |
-| `readme-customer.md.j2` | Account | Company info, stakeholders, activity |
-| `readme-project.md.j2` | Project | Goals, status, milestones |
+| Template                | Entity Type | Creates                              |
+| ----------------------- | ----------- | ------------------------------------ |
+| `readme-person.md.j2`   | Person      | Contact info, relationship, context  |
+| `readme-customer.md.j2` | Account     | Company info, stakeholders, activity |
+| `readme-project.md.j2`  | Project     | Goals, status, milestones            |
 
 ### Profile Files (`profiles/`)
 
 Profiles are **extraction rubrics** (not personas) that control what to prioritize:
 
-| Profile | When Used | Focus |
-|---------|-----------|-------|
-| `work_sales.yaml` | Customer/partner meetings | Deals, blockers, next steps |
-| `work_engineering.yaml` | Technical discussions | Architecture, decisions, code |
-| `work_leadership.yaml` | Strategy/planning | OKRs, priorities, org changes |
-| `personal.yaml` | Personal context | Relationships, life events |
+| Profile                 | When Used                 | Focus                         |
+| ----------------------- | ------------------------- | ----------------------------- |
+| `work_sales.yaml`       | Customer/partner meetings | Deals, blockers, next steps   |
+| `work_engineering.yaml` | Technical discussions     | Architecture, decisions, code |
+| `work_leadership.yaml`  | Strategy/planning         | OKRs, priorities, org changes |
+| `personal.yaml`         | Personal context          | Relationships, life events    |
 
 ---
 
@@ -322,19 +326,19 @@ class ExtractionV1(BaseModel):
     # Classification
     note_type: Literal["customer", "people", "projects", "rob", "journal", "partners", "travel"]
     entity_name: str | None        # Primary entity (person, account, project)
-    
+
     # Core content
     title: str                     # Brief title (3-7 words)
     date: str                      # YYYY-MM-DD
     participants: list[str]
     summary: str                   # 2-3 sentence summary
-    
+
     # Extracted items
     tasks: list[TaskItem]          # Action items with owner, due, priority
     decisions: list[str]
     facts: list[str]
     mentions: Mentions             # people, projects, accounts
-    
+
     # Confidence
     confidence: float              # 0.0-1.0
     warnings: list[str]            # Flags for review
@@ -388,7 +392,7 @@ paths:
 
 # Privacy
 api:
-  store: false  # CRITICAL: Never store content in OpenAI
+  store: false # CRITICAL: Never store content in OpenAI
 ```
 
 ### Environment (`.env`)
@@ -531,32 +535,32 @@ for readme in vault.rglob('README.md'):
 
 ### Pipeline Troubleshooting
 
-| Issue | Check | Fix |
-|-------|-------|-----|
-| Extraction fails | API key valid? Content readable? | Check `.env`, verify file exists |
-| Plan generates no ops | Extraction complete? Entity exists? | Check `.extraction.json`, verify folder |
-| Apply fails | Git clean? Paths valid? | Run `git status`, check ChangePlan paths |
-| Rollback triggered | Check error message | Review failed file in `Inbox/_failed/` |
+| Issue                 | Check                               | Fix                                      |
+| --------------------- | ----------------------------------- | ---------------------------------------- |
+| Extraction fails      | API key valid? Content readable?    | Check `.env`, verify file exists         |
+| Plan generates no ops | Extraction complete? Entity exists? | Check `.extraction.json`, verify folder  |
+| Apply fails           | Git clean? Paths valid?             | Run `git status`, check ChangePlan paths |
+| Rollback triggered    | Check error message                 | Review failed file in `Inbox/_failed/`   |
 
 ### File Naming Conventions
 
-| Type | Pattern | Example |
-|------|---------|---------|
+| Type         | Pattern                       | Example                           |
+| ------------ | ----------------------------- | --------------------------------- |
 | Source files | `YYYY-MM-DD HH MM - Title.md` | `2026-01-03 14 30 - Team Sync.md` |
-| Dated notes | `YYYY-MM-DD - Title.md` | `2026-01-03 - Weekly 1-1.md` |
-| Extraction | `{source}.extraction.json` | `meeting.extraction.json` |
-| ChangePlan | `{source}.changeplan.json` | `meeting.changeplan.json` |
+| Dated notes  | `YYYY-MM-DD - Title.md`       | `2026-01-03 - Weekly 1-1.md`      |
+| Extraction   | `{source}.extraction.json`    | `meeting.extraction.json`         |
+| ChangePlan   | `{source}.changeplan.json`    | `meeting.changeplan.json`         |
 
 ---
 
 ## Related Documentation
 
-| Document | Purpose |
-|----------|---------|
-| [DESIGN.md](DESIGN.md) | Full architecture specification |
-| [REQUIREMENTS.md](REQUIREMENTS.md) | Functional requirements |
-| [STANDARDS.md](STANDARDS.md) | File naming, frontmatter conventions |
-| [SOURCES_ARCHITECTURE.md](SOURCES_ARCHITECTURE.md) | Source file organization |
-| [BACKFILL-DESIGN.md](BACKFILL-DESIGN.md) | Historical processing details |
-| [AGENTS.md](../AGENTS.md) | AI agent autonomy settings |
-| [copilot-instructions.md](../.github/copilot-instructions.md) | Vault context for AI |
+| Document                                                      | Purpose                              |
+| ------------------------------------------------------------- | ------------------------------------ |
+| [DESIGN.md](DESIGN.md)                                        | Full architecture specification      |
+| [REQUIREMENTS.md](REQUIREMENTS.md)                            | Functional requirements              |
+| [STANDARDS.md](STANDARDS.md)                                  | File naming, frontmatter conventions |
+| [SOURCES_ARCHITECTURE.md](SOURCES_ARCHITECTURE.md)            | Source file organization             |
+| [BACKFILL-DESIGN.md](BACKFILL-DESIGN.md)                      | Historical processing details        |
+| [AGENTS.md](../AGENTS.md)                                     | AI agent autonomy settings           |
+| [copilot-instructions.md](../.github/copilot-instructions.md) | Vault context for AI                 |
