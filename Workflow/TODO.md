@@ -424,7 +424,7 @@ RUN PERIODICALLY:
 
 **Goal:** Bring vault to SOT compliance for entity roots.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-claude-20260105a, started: 2026-01-04 17:00)
 
 **Tasks**
 
