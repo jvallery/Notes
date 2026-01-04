@@ -12,5 +12,4 @@ Internal company notes.
 
 ## Recent Context
 
-- 2025-12-17: [[2025-12-17 - Discussion on Distributed Compute Platform]] (via Avinash)
 ## Notes

@@ -7,15 +7,15 @@ last_updated: "{{ last_updated | default(last_contact | default('')) }}"
 status: "{{ status | default('active') }}"
 {%- if auto_created %}
 auto_created: true
-{%- endif %}
+{% endif %}
 tags:
   - type/projects
 {%- if auto_created %}
   - needs-review
-{%- endif %}
+{% endif %}
 {%- if status %}
   - status/{{ status | lower | replace(' ', '-') }}
-{%- endif %}
+{% endif %}
 ---
 
 # {{ entity_name }}

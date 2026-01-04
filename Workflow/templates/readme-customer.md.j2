@@ -7,18 +7,18 @@ last_contact: "{{ last_contact | default('') }}"
 status: "{{ status | default('active') }}"
 {%- if auto_created %}
 auto_created: true
-{%- endif %}
+{% endif %}
 tags:
   - type/customer
 {%- if auto_created %}
   - needs-review
-{%- endif %}
+{% endif %}
 {%- if industry %}
   - industry/{{ industry | lower | replace(' ', '-') }}
-{%- endif %}
+{% endif %}
 {%- if status %}
   - status/{{ status | lower | replace(' ', '-') }}
-{%- endif %}
+{% endif %}
 ---
 
 # {{ entity_name }}

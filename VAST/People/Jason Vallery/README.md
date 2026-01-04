@@ -38,11 +38,6 @@ tags:
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19 - Encryption and Performance Discussion]] (via Jason Vallery)
-
-- 2025-12-15: [[2025-12-15 - Google GDC RFP Discussion]] (via Google)
-
-- 2025-12-16: [[2025-12-16 - Discussion on Azure and VAST]] (via Jonsi Stephenson)
 ## Key Facts
 
 ## Background

@@ -135,6 +135,7 @@ def build_extraction_prompt(
     entity_names: dict,
     source_file: str,
     content: str,
+    note_type: str = "people",
 ) -> tuple[str, str]:
     """
     Build the extraction system and user prompts.
@@ -154,6 +155,9 @@ def build_extraction_prompt(
         "current_date": today.isoformat(),
         "tomorrow": tomorrow.isoformat(),
         "next_week": next_week.isoformat(),
+        
+        # Note type (system-provided, model echoes)
+        "note_type": note_type,
         
         # Entity context (limit to prevent context explosion)
         "known_entities": {
@@ -210,9 +214,10 @@ def extract_file(source: Path, client) -> tuple[ExtractionV1, dict]:
     
     # Classify to select profile
     classification = classify(source_str, content)
+    note_type = classification.get("note_type", "people")
     profile_name = select_profile(
         classification.get("likely_domain_path_prefix", source_str),
-        note_type=classification.get("note_type")
+        note_type=note_type
     )
     profile = load_profile(profile_name)
     
@@ -227,13 +232,14 @@ def extract_file(source: Path, client) -> tuple[ExtractionV1, dict]:
         entity_names=entity_names,
         source_file=relative_path,
         content=content,
+        note_type=note_type,
     )
     
     # Get model config
     models_config = config.get("models", {})
     model_key = f"extract_{source_type}"
     model_config = models_config.get(model_key, models_config.get("extract_transcript", {}))
-    model_name = model_config.get("model", "gpt-4o")
+    model_name = model_config.get("model", "gpt-5.2")
     temperature = model_config.get("temperature", 0.0)
     
     # Call OpenAI with structured output

@@ -1,0 +1,10 @@
+---
+entities:
+  people:
+  - '[[Andy Perlsteiner]]'
+type: transcript
+source_type: unknown
+date: '2025-10-01'
+---
+
+- [x] Set up a 1:1 with Andy Bernstein to learn meeting rhythms and channels. @Jason Vallery 🔼- - ✅ 2025-10-27

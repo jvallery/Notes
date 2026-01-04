@@ -31,7 +31,6 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19 - Encryption and Performance Discussion]] (via Jason Vallery)
 ## Key Facts
 
 ## Background

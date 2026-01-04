@@ -2,7 +2,7 @@
 
 from pydantic import BaseModel, Field, ConfigDict
 from datetime import datetime
-from typing import Literal
+from typing import Literal, Optional
 
 
 class TaskItem(BaseModel):
@@ -142,23 +142,9 @@ class ExtractionV1(BaseModel):
         description="Entities mentioned in content"
     )
     
-    # Entity details (optional rich profiles)
-    person_details: dict[str, PersonDetails] = Field(
-        default_factory=dict,
-        description="Rich profiles for people mentioned (name -> details)"
-    )
-    project_details: dict[str, ProjectDetails] = Field(
-        default_factory=dict,
-        description="Metadata for projects mentioned (name -> details)"
-    )
-    account_details: dict[str, AccountDetails] = Field(
-        default_factory=dict,
-        description="Metadata for accounts mentioned (name -> details)"
-    )
-    cross_links: CrossLinks = Field(
-        default_factory=CrossLinks,
-        description="Relationship mappings between entities"
-    )
+    # NOTE: Rich entity details (person_details, project_details, account_details, cross_links)
+    # have been removed due to OpenAI Structured Outputs incompatibility with dict[str, Model] types.
+    # These can be re-added in a future version using a different schema approach.
     
     # Confidence and warnings
     confidence: float = Field(

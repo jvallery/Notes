@@ -6,18 +6,18 @@ created: "{{ created_date | default('') }}"
 last_contact: "{{ last_contact | default('') }}"
 {%- if auto_created %}
 auto_created: true
-{%- endif %}
+{% endif %}
 tags:
   - type/people
 {%- if auto_created %}
   - needs-review
-{%- endif %}
+{% endif %}
 {%- if company %}
   - company/{{ company | lower | replace(' ', '-') }}
-{%- endif %}
+{% endif %}
 {%- if department %}
   - dept/{{ department | lower | replace(' ', '-') }}
-{%- endif %}
+{% endif %}
 ---
 
 # {{ entity_name }}

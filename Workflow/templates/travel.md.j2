@@ -4,7 +4,7 @@ title: "{{ title }}"
 date: "{{ date }}"
 {%- if destination is defined and destination %}
 destination: "{{ destination }}"
-{%- endif %}
+{% endif %}
 participants: {{ participants | tojson }}
 source: "{{ source | default('transcript') }}"
 source_ref: "{{ source_ref | default('') }}"
@@ -12,13 +12,13 @@ tags:
   - "type/travel"
 {%- if destination is defined and destination %}
   - "destination/{{ destination | slugify }}"
-{%- endif %}
+{% endif %}
   - "generated"
-{%- if extra_tags is defined and extra_tags %}
-{%- for tag in extra_tags %}
+{% if extra_tags is defined and extra_tags %}
+{% for tag in extra_tags %}
   - "{{ tag }}"
-{%- endfor %}
-{%- endif %}
+{% endfor -%}
+{% endif %}
 ---
 
 # {{ title }}
@@ -26,7 +26,7 @@ tags:
 **Date**: {{ date }}
 {%- if destination is defined and destination %}
 **Destination**: {{ destination }}
-{%- endif %}
+{% endif %}
 **Travelers**: {{ participants | join(", ") }}
 
 ## Summary
@@ -37,22 +37,22 @@ tags:
 ## Action Items
 {% for task in tasks %}
 - [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task
-{%- endfor %}
-{%- endif %}
+{% endfor -%}
+{% endif %}
 {%- if decisions %}
 
 ## Decisions
 {% for decision in decisions %}
 - {{ decision }}
-{%- endfor %}
-{%- endif %}
+{% endfor -%}
+{% endif %}
 {%- if facts %}
 
 ## Logistics & Details
 {% for fact in facts %}
 - {{ fact }}
-{%- endfor %}
-{%- endif %}
+{% endfor -%}
+{% endif %}
 
 ---
 

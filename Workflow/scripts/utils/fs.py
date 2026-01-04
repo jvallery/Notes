@@ -33,9 +33,11 @@ def sanitize_filename(name: str) -> str:
     # Remove other invalid characters
     result = re.sub(r'[|<>"?*]', '', result)
     
-    # Collapse multiple dashes or spaces
-    result = re.sub(r'[-\s]+', ' ', result)
-    result = result.replace(' - ', ' - ')  # Preserve intentional " - " separators
+    # Collapse multiple spaces only (not dashes - they're meaningful in dates like 2025-12-15)
+    result = re.sub(r' {2,}', ' ', result)
+    
+    # Collapse multiple dashes, but not when surrounded by digits (preserve date formats)
+    result = re.sub(r'(?<!\d)-{2,}(?!\d)', '-', result)
     
     # Trim
     result = result.strip(' -')

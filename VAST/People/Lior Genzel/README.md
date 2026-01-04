@@ -26,9 +26,6 @@ tags:
 
 ## Recent Context
 
-- 2025-12-19: [[2025-12-19 - Encryption and Performance Discussion]] (via Jason Vallery)
-
-- 2025-12-15: [[2025-12-15 - Weekly Call with Lior Genzel]] (via Microsoft)
 ## Key Facts
 
 ## Topics

@@ -60,6 +60,9 @@ paths:
 # CRITICAL: All API calls must use:
 #   - OpenAI Responses API (not Chat Completions)
 #   - store: false (privacy requirement)
+#
+# NOTE: max_tokens is intentionally omitted - let the model determine output length.
+# GPT-5.2 handles variable-length structured outputs better without artificial constraints.
 
 models:
   default_provider: "openai"
@@ -68,50 +71,50 @@ models:
     store: false
     api: "responses"
 
-  # Model selection: gpt-4o for quality, gpt-4o-mini for speed/cost
-  # Updated 2026-01-03 to use valid model names
+  # Model selection: gpt-5.2 for quality, gpt-4o-mini for speed/cost
+  # Updated 2026-01-04: Use GPT-5.2, remove max_tokens constraints
   classify:
     provider: "openai"
     model: "gpt-4o-mini"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
-    max_tokens: 800
+    # No max_tokens - let model determine
 
   extract_transcript:
     provider: "openai"
-    model: "gpt-4o"
-    fallback: "gpt-4o-mini"
+    model: "gpt-5.2"
+    fallback: "gpt-4o"
     temperature: 0.0
-    max_tokens: 8192
+    # No max_tokens - transcripts can be long
 
   extract_email:
     provider: "openai"
-    model: "gpt-4o"
-    fallback: "gpt-4o-mini"
+    model: "gpt-5.2"
+    fallback: "gpt-4o"
     temperature: 0.0
-    max_tokens: 4096
+    # No max_tokens
 
   extract_voice:
     provider: "openai"
-    model: "gpt-4o"
-    fallback: "gpt-4o-mini"
+    model: "gpt-5.2"
+    fallback: "gpt-4o"
     temperature: 0.0
-    max_tokens: 4096
+    # No max_tokens
 
   planning:
     provider: "openai"
-    model: "gpt-4o"
-    fallback: "gpt-4o-mini"
+    model: "gpt-5.2"
+    fallback: "gpt-4o"
     temperature: 0.0
-    max_tokens: 8192
+    # No max_tokens - plans can be complex
   # Backfill: Historical content extraction for README population
   # Use mini for cost efficiency on bulk operations
   backfill:
     provider: "openai"
     model: "gpt-4o-mini"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
-    max_tokens: 1024
+    # No max_tokens
   # Conflict resolution only
   # If you want “best possible” and you’re willing to switch stacks: use OpenAI Codex with gpt-5.2-codex.
   # If staying in Copilot: pick Claude Opus 4.5 explicitly.

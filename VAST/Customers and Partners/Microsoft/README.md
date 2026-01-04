@@ -91,7 +91,6 @@ not done
 
 ## Recent Context
 
-- 2025-12-15: [[2025-12-15 - Weekly Call with Lior Genzel]] (via Lior Genzel)
 ## Key Facts
 
 ## Topics

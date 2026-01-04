@@ -38,12 +38,13 @@ def audit_readme(path: Path, entity_type: str, client: OpenAI) -> dict:
     )
     
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5.2",
         messages=[
             {"role": "system", "content": "You are a meticulous knowledge management auditor. Review the README and provide specific, actionable feedback."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.2
+        temperature=0.2,
+        store=False,  # Privacy: never store prompts/responses
     )
     
     return {

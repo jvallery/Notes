@@ -53,6 +53,7 @@ def validate_changeplan(plan: ChangePlan) -> list[str]:
                     allowed_primitives = [
                         PatchPrimitive.UPSERT_FRONTMATTER,
                         PatchPrimitive.APPEND_UNDER_HEADING,
+                        PatchPrimitive.PREPEND_UNDER_HEADING,
                         PatchPrimitive.ENSURE_WIKILINKS,
                     ]
                     if patch.primitive not in allowed_primitives:

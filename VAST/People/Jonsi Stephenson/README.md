@@ -25,7 +25,6 @@ last_contact: '2025-12-16'
 
 ## Recent Context
 
-- 2025-12-16: [[2025-12-16 - Discussion on Azure and VAST]] (via Jason Vallery)
 ## Key Facts
 
 ## Topics

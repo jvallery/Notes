@@ -101,16 +101,21 @@ def get_model_config(task: str) -> dict[str, Any]:
 
     task_config = models.get(task, {})
 
-    # Apply defaults
-    return {
+    # Apply defaults - prefer gpt-5.2, no max_tokens constraint
+    result = {
         "provider": task_config.get(
             "provider", models.get("default_provider", "openai")
         ),
-        "model": task_config.get("model", "gpt-4o"),
+        "model": task_config.get("model", "gpt-5.2"),
         "fallback": task_config.get("fallback"),
-        "temperature": task_config.get("temperature", 0.2),
-        "max_tokens": task_config.get("max_tokens", 4096),
+        "temperature": task_config.get("temperature", 0.0),
     }
+    
+    # Only include max_tokens if explicitly set in config
+    if "max_tokens" in task_config:
+        result["max_tokens"] = task_config["max_tokens"]
+    
+    return result
 
 
 def get_persona(note_type: str, sub_type: str = None) -> str | None:

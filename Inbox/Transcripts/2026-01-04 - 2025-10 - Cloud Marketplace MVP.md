@@ -1,0 +1,12 @@
+---
+entities:
+  projects:
+  - '[[Cloud]]'
+type: transcript
+source_type: unknown
+date: '2025-10-01'
+---
+
+- [x] Define GA acceptance criteria for cloud MVP (spin up/down, DR/offload, etc.) and when to begin field marketing. @Product ⏫ ✅ 2025-11-08
+- [x] Assemble pricing and go‑to‑market package (pricing model, user stories, roadmap NDA/non‑NDA) ahead of February SCO. @Product and Marketing ⏫ ✅ 2025-11-08
+- [x] Prepare competitive performance and pricing comparisons vs Weka and Hammerspace on equivalent L‑series VM types. @Performance Team 🔼 ✅ 2025-11-08

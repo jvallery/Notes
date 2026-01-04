@@ -37,7 +37,6 @@ not done
 
 ## Recent Context
 
-- 2025-12-15: [[2025-12-15 - Google GDC RFP Discussion]] (via Google)
 ## Key Facts
 
 ## Topics

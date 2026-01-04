@@ -145,7 +145,7 @@ def generate_plan(extraction_path: Path, client, config) -> tuple[ChangePlan, di
     # Get planning model config
     models_config = config.get("models", {})
     model_config = models_config.get("planning", {})
-    model = model_config.get("model", "gpt-4o")
+    model = model_config.get("model", "gpt-5.2")
     temperature = model_config.get("temperature", 0.1)
 
     plan, metadata = parse_structured(

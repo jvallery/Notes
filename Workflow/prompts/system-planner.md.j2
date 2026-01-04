@@ -31,7 +31,7 @@ Any path outside these prefixes will cause the plan to fail. Never generate path
 
 ### 1. `create` - Create a new dated note
 
-Creates a new file from a template.
+Creates a new file from a template. **CRITICAL: CREATE operations must ONLY contain `op`, `path`, `template`, and `context`. Do NOT include `patches` or `links` fields in CREATE operations - those belong in separate PATCH and LINK operations.**
 
 ```json
 {
