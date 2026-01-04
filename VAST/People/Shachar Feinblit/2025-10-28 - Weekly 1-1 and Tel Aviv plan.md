@@ -25,11 +25,11 @@ tags:
 
 Jason and Shachar agreed to establish a weekly 30-minute 1:1 and planned Jason’s Tel Aviv visit (2025-11-23 to 2025-11-26) to meet key teams, share cloud platform knowledge, and run cloud architecture/design planning sessions. They discussed AI/automation usage (e.g., Cursor; previously Copilot; evaluating Windsurf) and the tradeoffs of a formal AI center of excellence versus organic innovation. Shachar emphasized the need to strengthen product’s technical depth and end-to-end involvement, noting architects currently write detailed FRDs.
 ## Action Items
-- [ ] Propose a time for a weekly 30-minute 1:1 sync with Jason Vallery @Shachar Feinblit 📅 2025-11-08 ⏫ #task
+- [ ] Propose a time for a weekly 30-minute 1:1 sync with Jason Vallery @Shachar Feinblit Feinblit 📅 2025-11-08 ⏫ #task
 - [ ] Draft Tel Aviv visit agenda (knowledge-sharing session, cloud architecture/design planning, key team meetings) for 2025-11-23 to 2025-11-26 @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Provide a list of recommended contacts for Jason to meet (e.g., Ronnie, Max, Liron, Roit Suhr, Orly, Omri, Ronen, Dotan) @Shachar Feinblit 📅 2025-11-08 ⏫ #task
+- [ ] Provide a list of recommended contacts for Jason to meet (e.g., Ronnie, Max, Liron, Roit Suhr, Orly, Omri, Ronen, Dotan) @Shachar Feinblit Feinblit 📅 2025-11-08 ⏫ #task
 - [ ] Set up intros/1:1s with key contacts ahead of or during the Tel Aviv visit @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Check feasibility of moving the monthly team all-hands to the week of 2025-11-23 so Jason can join in person @Shachar Feinblit 📅 2025-11-08 ⏫ #task
+- [ ] Check feasibility of moving the monthly team all-hands to the week of 2025-11-23 so Jason can join in person @Shachar Feinblit Feinblit 📅 2025-11-08 ⏫ #task
 - [ ] Sync with Jeff and then connect with Mordechai Blaunstein regarding potential team move/placement @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Prepare and deliver a cloud platform knowledge-sharing session during the Tel Aviv visit @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Align cloud architecture/design planning sessions with Yogev and Asaf during the Tel Aviv visit @Myself 📅 2025-11-08 ⏫ #task

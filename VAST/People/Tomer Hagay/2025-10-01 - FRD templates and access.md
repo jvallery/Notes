@@ -21,8 +21,8 @@ tags:
 
 Two action items were tracked for Tomer: sharing FRD templates/examples for Jason’s review and providing access to PM SFDC RFE/Feature dashboards plus Jira links. Both items are marked complete with a due date of 2025-11-08 and indicated as high priority.
 ## Action Items
-- [ ] Share FRD templates/examples for Jason’s review @Tomer 📅 2025-11-08 ⏫ #task
-- [ ] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer 📅 2025-11-08 ⏫ #task
+- [ ] Share FRD templates/examples for Jason’s review @Tomer Hagay 📅 2025-11-08 ⏫ #task
+- [ ] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer Hagay 📅 2025-11-08 ⏫ #task
 
 ## Key Information
 - Both action items are marked complete.

@@ -24,7 +24,7 @@ sort by due
   - [ ] Prepare knowledge-sharing session (cloud platform) @Myself #task #TelAviv #enablement ⏫
   - [ ] Align architecture/design planning sessions w/ **Yogev & Asaf** @Myself #task #TelAviv #architecture ⏫
 - [ ] **Ignite**: define plan with **Lior**; arrange introductions and meetings @Myself #task #Ignite #Microsoft #events 🔺
-- [ ] **re:Invent**: confirm plan/need to attend @Myself @Jonsi @Lior #task #AWS #reInvent #events ⏫
+- [ ] **re:Invent**: confirm plan/need to attend @Myself @Jonsi Stephenson @Lior Genzel #task #AWS #reInvent #events ⏫
 
 ## Walmart Program
 - [ ] **Secure Walmart stakeholders** (Lakehouse, vector DB) & coordinate design session @Mikey ⏫ #task #walmart #designsession  
@@ -35,7 +35,7 @@ sort by due
 
 ## Google / TPU / GDC
 - [ ] **Prepare Google RFP (TPU angle)**: compile questions, qualify scope, ensure not block-I/O latency sensitive @Myself #task #Google #GCP #TPU #RFP ⏫
-- [x] **Share TPU benchmark write-up & numbers** for Google meetings @Jonsi Stephenson #task #Google #TPU #benchmarks 🔺 📅 2025-11-14 ✅ 2025-11-12
+- [x] **Share TPU benchmark write-up & numbers** for Google meetings @Jonsi Stephenson Stephenson #task #Google #TPU #benchmarks 🔺 📅 2025-11-14 ✅ 2025-11-12
 - [x] **Join/coordinate GDC sessions** and follow-ups (leadership & team) @Myself #task #Google #GDC 🔼 ✅ 2025-11-12
 - [ ] Validate **GCS change-feed support path** for SyncEngine; outline eng. work @Avi ⏫ #task #GCP #SyncEngine  
 - [x] Define path/timeline for **RDMA enablement on TPUs** & implications for VAST @Billy #task #Google #TPU #RDMA 🔽 ✅ 2025-11-08
@@ -47,12 +47,12 @@ sort by due
 - [ ] **Dagger slide** quantifying Azure Storage gaps vs VAST (exec conversations) @Myself #task #Azure #competitive 🔺
 - [ ] Prepare **power/space & GPU-throughput tables** (capacity-/GPU-indexed) for Microsoft (Nidhi briefing) @Myself #task #Azure #GPU #capacity 🔺
 - [ ] Coordinate with **Kanchan** and brief **Nidhi** on Apollo, MAI, UK Met, Azure Storage HW plan @Myself ⏫ #task #Azure #Apollo #MAI #UKMet  
-- [ ] **Ask** Azure Storage if **NVIDIA DGX storage** benchmarking/compliance has been requested; confirm DGX perf requirements @Kanchan Mehrotra 🔽 #task #Azure #NVIDIA #DGX  
+- [ ] **Ask** Azure Storage if **NVIDIA DGX storage** benchmarking/compliance has been requested; confirm DGX perf requirements @Kanchan Mehrotra Mehrotra 🔽 #task #Azure #NVIDIA #DGX  
 - [x] **Confirm Azure large-VM** (≈300 TB) shape availability timeline @Myself #task #Azure #VM #capacity 🔽 ✅ 2025-11-08
 - [x] Track **Apollo POC** (rack arrival, VAST on Azure storage HW, DPU: **Fungible vs BlueField-3**) @Myself #task #Azure #Apollo #DPU 🔼 ✅ 2025-11-12
-- [x] **Support apples-to-apples test** on Gen9 XIO (Azure Storage stack vs VAST bare-metal) @Kushal Datta #task #Azure #benchmark 🔽 ✅ 2025-11-12
+- [x] **Support apples-to-apples test** on Gen9 XIO (Azure Storage stack vs VAST bare-metal) @Kushal Datta Datta #task #Azure #benchmark 🔽 ✅ 2025-11-12
 - [x] **Provide TPU global-namespace demo notes** for cloud workflow examples @Karl V #task #Azure #TPU #reference 🔼 ✅ 2025-11-08
-- [x] Explore **Azure Dedicated** (Anand) as parallel bare-metal path for UK Met @Kanchan Mehrotra #task #Azure #UKMet #baremetal 🔽 ✅ 2025-11-12
+- [x] Explore **Azure Dedicated** (Anand) as parallel bare-metal path for UK Met @Kanchan Mehrotra Mehrotra #task #Azure #UKMet #baremetal 🔽 ✅ 2025-11-12
 
 ## Pricing, Marketplace, EULA, Finance
 - [x] Define **pricing & overage strategy** (units, discounts, finance treatment) for private offers @Myself #task #pricing #marketplace #finance 🔼 ✅ 2025-11-12
@@ -62,19 +62,19 @@ sort by due
 - [x] Provide **multi-meter** examples (TB, seats, CPU; penny-meter pattern) @Peter Kapsashi #task #Tackle #GCP #metering 🔼 ✅ 2025-11-08
 - [x] Confirm in **GCP** if **overage-meter discounts** can be independent of fixed-price PO discounts @Peter Kapsashi #task #GCP #marketplace #pricing 🔼 ✅ 2025-11-08
 - [x] Align **Salesforce** data fields/integration for passing offer & entitlement metadata @Myself #task #Salesforce #marketplace 🔼 ✅ 2025-11-08
-- [ ] **Draft unit-based pricing proposal** (Databricks/Snowflake refs) incl. ARR impact model & discount guardrails @Myself @Timo @Jonsi @Tomer @Jeff #task #pricing #ARR 🔼
+- [ ] **Draft unit-based pricing proposal** (Databricks/Snowflake refs) incl. ARR impact model & discount guardrails @Myself @Timo Pervane @Jonsi Stephenson @Tomer Hagay @Jeff Denworth #task #pricing #ARR 🔼
 - [x] Decide on **fixed cores-per-PB normalization** starting Feb 1; document the model @Pricing vTeam #task #pricing #normalization ⏫ ✅ 2025-11-08
 - [x] Deepen competitive pricing vs **Pure/NetApp/Isilon/WEKA/Hammerspace** @Pricing vTeam #task #pricing #competitive 🔼 ✅ 2025-11-08
 - [x] Assess **performance tiers** (instance class / throughput per PB) to simplify cloud pricing comms @Product #task #pricing #product 🔼 ✅ 2025-11-08
-- [x] Define **discounting policy & controls** (prevent leakage when cloud SKUs undiscountable) @Timo #task #pricing #finance #policy ⏫ ✅ 2025-11-08
-- [x] Progress hiring of **Finance Business Partner** for Cloud Solutions @Timo #task #hiring #finance #CloudSolutions ⏫ ✅ 2025-11-08
-- [x] Share **investor valuation** framework & metrics (ARR definition/measurement) @Timo #task #finance #ARR ⏫ ✅ 2025-11-08
+- [x] Define **discounting policy & controls** (prevent leakage when cloud SKUs undiscountable) @Timo Pervane #task #pricing #finance #policy ⏫ ✅ 2025-11-08
+- [x] Progress hiring of **Finance Business Partner** for Cloud Solutions @Timo Pervane #task #hiring #finance #CloudSolutions ⏫ ✅ 2025-11-08
+- [x] Share **investor valuation** framework & metrics (ARR definition/measurement) @Timo Pervane #task #finance #ARR ⏫ ✅ 2025-11-08
 - [x] Align messaging with finance to brief **Brennan & Jeff** on pricing evolution & ARR impact @Myself #task #pricing #finance #exec ⏫ ✅ 2025-11-08
 
 ## Cloud Strategy, FRDs & Product (Cross-Cloud)
 - [x] Deliver **MAI presentation** (storyline, solution diagram, deck) aligned to K8s-led control plane & Polaris @Cloud BU engineering #task #MAI #Kubernetes #Polaris 🔼 ✅ 2025-11-12
 - [ ] Draft **cross-cloud product strategy** (incl. Neo clouds) & outline GTM plays for Foundry, Bedrock, Vertex — v0.1 @Myself #task #strategy #GTM #Foundry #Bedrock #Vertex 🔼
-- [ ] Build **synthesized pipeline & requirements** view for Oracle, Microsoft, AWS, Google; map product fit **Catalog in-flight opportunities in Salesforce** (PR requirements; pursue vs walk-away) & engage target customers @Lior @Myself #task #Salesforce #pipeline #roadmap #pipeline ⏫
+- [ ] Build **synthesized pipeline & requirements** view for Oracle, Microsoft, AWS, Google; map product fit **Catalog in-flight opportunities in Salesforce** (PR requirements; pursue vs walk-away) & engage target customers @Lior Genzel @Myself #task #Salesforce #pipeline #roadmap #pipeline ⏫
 - [ ] Draft **FRD for Blob API** (auth model, RBAC/ABAC, Append Blob, PutBlobFromURL, offline token validation) @Erez Zilber #task #FRD #Blob #security 🔼
 - [ ] Draft **cloud support/CS/SRE** operating plan (24/7 desk, on-call rotations) @Rob Banga #task #SRE #support #operations 🔼
 - [ ] **Push Product Marketing** to deliver customer/internal/CSP-seller decks + battlecards/datasheets; share latest deck @Aaron ⏫ #task #PMM #enablement  
@@ -83,8 +83,8 @@ sort by due
 - [x] Define **managed cloud billing unit** (vCPU+capacity) and circulate for buy-in @Myself #task #pricing #billing ⏫ ✅ 2025-11-08
 
 ## Multi-Tenancy, Releases & Phase Gates
-- [ ] Align with **Tomer** on multi-tenancy backlog priorities for VAST on Cloud/SaaS @Myself @Tomer @Eyal #task #multitenancy #SaaS ⏫
-- [ ] Review **5.5 plan**  to prioritize cloud-critical items @Shachar #task #release #5_5 #cloud ⏫
+- [ ] Align with **Tomer** on multi-tenancy backlog priorities for VAST on Cloud/SaaS @Myself @Tomer Hagay @Eyal #task #multitenancy #SaaS ⏫
+- [ ] Review **5.5 plan**  to prioritize cloud-critical items @Shachar Feinblit #task #release #5_5 #cloud ⏫
 - [ ] **Confirm 5.6 Phase Gate 1** date; ensure attendance & implications for multi-tenancy @Myself 🔼 #task #release #5_6 #phasegate  
 - [x] Obtain access to **per-release wikis, QTest views, weekly status deck** @Myself #task #release #QTest #status 🔼 ✅ 2025-11-12
 - [ ] **Place FRDs/requirements** in Confluence; align structure with **A.L. & Tomer** @Myself 🔼 #task #FRD #Confluence  
@@ -95,7 +95,7 @@ sort by due
 ## Engineering Interfaces, DataSpaces, SyncEngine
 - [ ] Share **DataSpaces** architecture & persistence roadmap with Jason @Asaf 🔼 #task #DataSpaces #architecture  
 - [ ] Align with **Polaris/Iceland** teams on gaps addressable in **control plane vs cluster** @Myself 🔼 #task #Polaris #Iceland #architecture  
-- [x] Validate **SyncEngine** ownership/process; avoid ad-hoc gap-filling @Jeff #task #SyncEngine #process 🔼 ✅ 2025-11-08
+- [x] Validate **SyncEngine** ownership/process; avoid ad-hoc gap-filling @Jeff Denworth #task #SyncEngine #process 🔼 ✅ 2025-11-08
 - [x] Align with **Alon & Andy** on SyncEngine pattern and Wave lessons @Avi #task #SyncEngine #Wave 🔼 ✅ 2025-11-08
 
 ## SE / Field Enablement & Events
@@ -104,7 +104,7 @@ sort by due
 - [x] Prepare and distribute **gaming night sign-up sheets** @Dre #task #TechSummit #events 🔼 ✅ 2025-11-08
 - [x] Re-send **Tech Summit expense policy** reminder @Stacy #task #TechSummit #ops 🔼 ✅ 2025-11-08
 - [x] **SE Toolbox**: schedule recurring slots (1–2/month) & collect submissions @JB #task #enablement #tooling 🔼 ✅ 2025-11-08
-- [x] **Port Mapper**: add **Arista 24-port switch profile**; confirm profile available; ask SEs to try & provide feedback @Jeff Moeller #task #SE #tooling #PortMapper 🔼 ✅ 2025-11-08
+- [x] **Port Mapper**: add **Arista 24-port switch profile**; confirm profile available; ask SEs to try & provide feedback @Jeff Denworth Moeller #task #SE #tooling #PortMapper 🔼 ✅ 2025-11-08
 - [x] **UserCon**: monitor registrations vs goal; adjust outreach @SE Leadership #task #UserCon #events 🔼 ✅ 2025-11-08
 - [ ] Share consolidated field pain points for cloud/hyperscaler use @Rob Benoit 🔼 #task #field #roadmap  
 
@@ -118,33 +118,33 @@ sort by due
 - [x] Ask **Grant Lee** for intro to **Noah Yonick** or **Kevin/Tony Wu** at Perplexity @Myself #task #alliances #Perplexity 🔼 ✅ 2025-11-08
 - [x] Coordinate with **AI Circle / Katie / Lindsay** to plan **NVIDIA-customer model-builder event** @Chris Carpenter #task #events #NVIDIA 🔼 ✅ 2025-11-08
 - [x] Ask **Rory** to intro **David Klein (NVIDIA)**; align next steps @Chris Carpenter #task #NVIDIA #alliances 🔼 ✅ 2025-11-08
-- [x] Engage **Bond** for intro to **Yuri** at Physical Intelligence @Jeff Edwards #task #alliances 🔼 ✅ 2025-11-08
-- [x] Re-ping investor thread (**Jeff Yonker**, **Bo Wang** @ Zara) to secure meeting slot @Jeff Edwards #task #investors 🔼 ✅ 2025-11-08
+- [x] Engage **Bond** for intro to **Yuri** at Physical Intelligence @Jeff Denworth Edwards #task #alliances 🔼 ✅ 2025-11-08
+- [x] Re-ping investor thread (**Jeff Yonker**, **Bo Wang** @ Zara) to secure meeting slot @Jeff Denworth Edwards #task #investors 🔼 ✅ 2025-11-08
 
 ## Tel Aviv Program (Nov 23–26)
 - [x] **Schedule and send calendar invites** for Tel Aviv face-to-face sessions (Nov 23–26) @Erez Zilber #task #TelAviv #meetings 🔼 ✅ 2025-11-08
 - [x] Draft **visit agenda**: knowledge-sharing, cloud arch/design planning, key team meetings @Myself #task #TelAviv #agenda 🔼 ✅ 2025-11-08
 - [x] Introduce/sync with **program managers** (Liraz, Daphnas, Eyal Tritle, Noa) @Myself #task #TelAviv #program 🔼 ✅ 2025-11-12
 - [x] Set up intros/1:1s with **Ronnie, Max, Liron, Roit Suhr, Orly, Omri, Ronen, Dotan** @Myself #task #TelAviv #people 🔼 ✅ 2025-11-12
-- [x] Check feasibility of moving **monthly all-hands** to week of Nov 23 so I can join in person @Shachar Feinblit #task #TelAviv #allhands 🔼 ✅ 2025-11-12
-- [x] Provide **final contact list** for Tel Aviv meetings @Shachar Feinblit #task #TelAviv #ops 🔼 ✅ 2025-11-08
+- [x] Check feasibility of moving **monthly all-hands** to week of Nov 23 so I can join in person @Shachar Feinblit Feinblit #task #TelAviv #allhands 🔼 ✅ 2025-11-12
+- [x] Provide **final contact list** for Tel Aviv meetings @Shachar Feinblit Feinblit #task #TelAviv #ops 🔼 ✅ 2025-11-08
 
 ## Sales Ops, Reporting & Analytics
 - [x] **Catalog in-flight opportunities in Salesforce** (PR requirements; pursue vs walk-away) & engage target customers @Myself #task #Salesforce #pipeline ⏫ ✅ 2025-11-08
 - [x] Schedule **deep-dive session on business metrics & ARR** framework @Myself #task #metrics #ARR 🔼 ✅ 2025-11-08
-- [x] **Send pricing scatter/discounting** dataset & initial insights @Timo #task #pricing #analytics 🔼 ✅ 2025-11-08
+- [x] **Send pricing scatter/discounting** dataset & initial insights @Timo Pervane #task #pricing #analytics 🔼 ✅ 2025-11-08
 - [x] Scope **reporting/analytics** needed for consumption forecasting; ensure resourcing @Joe #task #analytics #forecasting 🔼 ✅ 2025-11-08
-- [x] Assess & confirm **Salesforce/Tableau licenses** needed for cloud ops @Timo #task #Salesforce #Tableau #ops 🔼 ✅ 2025-11-08
+- [x] Assess & confirm **Salesforce/Tableau licenses** needed for cloud ops @Timo Pervane #task #Salesforce #Tableau #ops 🔼 ✅ 2025-11-08
 - [x] Propose **role-based access & data segmentation** across Salesforce, Polaris, support tooling @Myself #task #security #governance 🔼 ✅ 2025-11-08
 
 ## Telemetry, Uplink & Polaris
 - [x] **Template/checklist** to create **Uplink subdomains** and link to SFDC accounts/opps @Adar #task #Uplink #Salesforce 🔼 ✅ 2025-11-08
 - [x] Specify **Terraform/Polaris** changes to auto-register clusters with Uplink (subdomain at deploy) @John #task #Terraform #Polaris #Uplink 🔼 ✅ 2025-11-08
-- [x] Document **PSNT-to-SFDC matching** & Godfather handling (required fields, errors) @Tomer #task #Salesforce #ops 🔼 ✅ 2025-11-08
-- [x] Propose approach to **minimize telemetry egress** (on-demand bundles, Polaris proxy, S3 staging) with cost estimates @Tomer #task #telemetry #cost 🔼 ✅ 2025-11-08
+- [x] Document **PSNT-to-SFDC matching** & Godfather handling (required fields, errors) @Tomer Hagay #task #Salesforce #ops 🔼 ✅ 2025-11-08
+- [x] Propose approach to **minimize telemetry egress** (on-demand bundles, Polaris proxy, S3 staging) with cost estimates @Tomer Hagay #task #telemetry #cost 🔼 ✅ 2025-11-08
 - [x] Confirm/document **tenant-level opt-out** policy in multi-tenant SaaS @Myself #task #SaaS #policy 🔼 ✅ 2025-11-08
-- [x] Evaluate **‘hello/adopt’ endpoint** feasibility & security for unregistered clusters @Tomer #task #security #registration 🔼 ✅ 2025-11-08
-- [x] Select **telemetry transport** (direct to GCS vs Polaris proxy vs S3 staging) & define activation criteria for bundles @Tomer #task #telemetry #architecture 🔼 ✅ 2025-11-08
+- [x] Evaluate **‘hello/adopt’ endpoint** feasibility & security for unregistered clusters @Tomer Hagay #task #security #registration 🔼 ✅ 2025-11-08
+- [x] Select **telemetry transport** (direct to GCS vs Polaris proxy vs S3 staging) & define activation criteria for bundles @Tomer Hagay #task #telemetry #architecture 🔼 ✅ 2025-11-08
 
 ## XAI & Support Ops
 - [x] Draft **operating model** for **VAST-as-a-Service** (SRE vs CS roles, on-call, comms, SLAs) @Myself #task #SRE #SaaS #ops 🔼 ✅ 2025-11-12
@@ -174,29 +174,29 @@ sort by due
 - [ ] Set up **monthly 1:1** with **Renen** (if not already recurring) @Myself 🔼 #task #cadence #leadership  
 - [x] Align with **Lior** on priority opportunities & inclusion in right customer meetings @Myself #task #pipeline #leadership 🔼 ✅ 2025-11-12
 - [x] Provide **recommended contact list** for Jason to meet (per Shachar) @Myself #task #onboarding #people 🔼 ✅ 2025-11-12
-- [ ] Confirm preferred time windows for the **regular weekly sync** @Shachar Feinblit 🔽 #task #cadence  
+- [ ] Confirm preferred time windows for the **regular weekly sync** @Shachar Feinblit Feinblit 🔽 #task #cadence  
 
 ## “For/With Jason” (ownership varies; kept explicit)
-- [ ] Get added to **5.5 implementation reviews** (via Galit/Orly) @Jason Vallery ⏫ #task #5_5 #process  
+- [ ] Get added to **5.5 implementation reviews** (via Galit/Orly) @Myself ⏫ #task #5_5 #process  
 - [ ] Add Jason to **biweekly Tomer–Octo/field sync** distro & invites @Andy Pernstiner ⏫ #task #cadence  
-- [ ] **Deep-dive** to walk **Andy** through OpenAI architecture/data flows/pain points @Jason Vallery ⏫ #task #architecture #OpenAI  
-- [x] Align wave.ai migration strategy with **Yonce/cloud** to avoid conflicts @Jason Vallery #task #migration ⏫ ✅ 2025-11-08
+- [ ] **Deep-dive** to walk **Andy** through OpenAI architecture/data flows/pain points @Myself ⏫ #task #architecture #OpenAI  
+- [x] Align wave.ai migration strategy with **Yonce/cloud** to avoid conflicts @Myself #task #migration ⏫ ✅ 2025-11-08
 - [ ] Send **multi-tenancy gaps** Confluence page to Jason @Eyal Tritel ⏫ #task #multitenancy  
-- [ ] 1:1 with **John (alliances)**; align partnerships/control-plane ecosystem @Jason Vallery ⏫ #task #alliances  
-- [ ] Meet **Sagi** (pipelines/serverless roadmap, cloud packaging gaps) @Jason Vallery 🔼 #task #serverless #roadmap  
+- [ ] 1:1 with **John (alliances)**; align partnerships/control-plane ecosystem @Myself ⏫ #task #alliances  
+- [ ] Meet **Sagi** (pipelines/serverless roadmap, cloud packaging gaps) @Myself 🔼 #task #serverless #roadmap  
 - [x] Catalog **in-flight opportunities**; map product requirements; recommend pursue/defer/drop @Myself #task #pipeline #product ⏫ ✅ 2025-11-08
-- [ ] **Draft cloud strategy** per cloud (Azure/AWS/GCP/Oracle), incl. Foundry/Bedrock/Vertex plays @Jason Vallery ⏫ #task #strategy  
-- [ ] **Prepare for Google RFP** discussions; confirm not block/latency heavy (NetApp strength) @Jason Vallery ⏫ #task #Google #RFP  
-- [ ] Design **‘cloud in a box’** blueprint for Tier-2 clouds (G Corp, Ori, Arna, Rafe); involve **Morty** @Jason Vallery ⏫ #task #strategy  
-- [x] Align with **Polaris/Iceland** on control-plane vs cluster gap placement @Jason Vallery #task #Polaris #Iceland 🔼 ✅ 2025-11-12
-- [x] Confirm **5.6 phase-gate** timeline & implications for multi-tenancy @Jason Vallery #task #5_6 #phasegate 🔼 ✅ 2025-11-12
-- [ ] **Deploy OVA** in home lab; validate S3/NFS/SMB @Jason Vallery 🔼 #task #lab #OVA  
-- [ ] Review **Confluence 5.4 ‘dev’ page**, FRDs, implementation review recordings @Jason Vallery 🔼 #task #5_4 #FRD  
-- [ ] Clarify internal **cloud status** messaging for SEs (no marketplace; Google private offers; AWS/Azure roadmap) @Jason Vallery 🔼 #task #enablement #cloud  
-- [ ] Schedule **Tel Aviv** meetings, prep materials, and knowledge sharing (see “Tel Aviv Program”) @Jason Vallery 🔼 #task #TelAviv  
-- [ ] Connect with **Asaf/architecture** to align thematic cloud-driven features entering core @Jason Vallery 🔼 #task #roadmap  
-- [ ] Confirm invitation/attendance for **5.6 Phase Gate 1** @Jason Vallery 🔼 #task #phasegate  
-- [x] Access **QTest** and weekly release status decks @Jason Vallery #task #release #QTest 🔽 ✅ 2025-11-12
-- [x] Discuss documenting **phase gate process** (RACI, artifacts, exit criteria) @Jason Vallery #task #process 🔽 ✅ 2025-11-12
-- [x] Coordinate **5.5 anchor features & beta customers** relevant to cloud with field @Jason Vallery #task #5_5 #beta 🔽 ✅ 2025-11-12
+- [ ] **Draft cloud strategy** per cloud (Azure/AWS/GCP/Oracle), incl. Foundry/Bedrock/Vertex plays @Myself ⏫ #task #strategy  
+- [ ] **Prepare for Google RFP** discussions; confirm not block/latency heavy (NetApp strength) @Myself ⏫ #task #Google #RFP  
+- [ ] Design **‘cloud in a box’** blueprint for Tier-2 clouds (G Corp, Ori, Arna, Rafe); involve **Morty** @Myself ⏫ #task #strategy  
+- [x] Align with **Polaris/Iceland** on control-plane vs cluster gap placement @Myself #task #Polaris #Iceland 🔼 ✅ 2025-11-12
+- [x] Confirm **5.6 phase-gate** timeline & implications for multi-tenancy @Myself #task #5_6 #phasegate 🔼 ✅ 2025-11-12
+- [ ] **Deploy OVA** in home lab; validate S3/NFS/SMB @Myself 🔼 #task #lab #OVA  
+- [ ] Review **Confluence 5.4 ‘dev’ page**, FRDs, implementation review recordings @Myself 🔼 #task #5_4 #FRD  
+- [ ] Clarify internal **cloud status** messaging for SEs (no marketplace; Google private offers; AWS/Azure roadmap) @Myself 🔼 #task #enablement #cloud  
+- [ ] Schedule **Tel Aviv** meetings, prep materials, and knowledge sharing (see “Tel Aviv Program”) @Myself 🔼 #task #TelAviv  
+- [ ] Connect with **Asaf/architecture** to align thematic cloud-driven features entering core @Myself 🔼 #task #roadmap  
+- [ ] Confirm invitation/attendance for **5.6 Phase Gate 1** @Myself 🔼 #task #phasegate  
+- [x] Access **QTest** and weekly release status decks @Myself #task #release #QTest 🔽 ✅ 2025-11-12
+- [x] Discuss documenting **phase gate process** (RACI, artifacts, exit criteria) @Myself #task #process 🔽 ✅ 2025-11-12
+- [x] Coordinate **5.5 anchor features & beta customers** relevant to cloud with field @Myself #task #5_5 #beta 🔽 ✅ 2025-11-12
 

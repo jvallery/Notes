@@ -32,14 +32,14 @@ Jason and Kanchan aligned to prioritize Microsoft AI (MAI) and the UK Met Office
 - [ ] Engage Igal to discuss LSV5 shape, networking needs, and customer-driven pipeline (MAI, UK Met Office). @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Meet UK Met Office leaders (Mike Kiernan, Nico, Alan) at Supercomputing to push the VAST approach. @Myself 📅 2025-11-08 🔺 #task
 - [ ] Coordinate Supercomputing/Ignite joint story and VAST booth content with Kanchan, Lior, and Andrew. @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Set up a session with Nidhi to review MAI + UK Met Office case and the economics deck (post-Supercomputing if needed). @Kanchan 📅 2025-11-08 ⏫ #task
-- [ ] Confirm whether Suresh will attend Supercomputing and, if yes, schedule a discussion on Neo-cloud GPU-adjacent storage. @Kanchan 📅 2025-11-08 ⏫ #task
+- [ ] Set up a session with Nidhi to review MAI + UK Met Office case and the economics deck (post-Supercomputing if needed). @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task
+- [ ] Confirm whether Suresh will attend Supercomputing and, if yes, schedule a discussion on Neo-cloud GPU-adjacent storage. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task
 - [ ] Advance the Azure Marketplace offer with Yancey’s team (control plane integration, listing, billing). @Myself 📅 2025-11-08 🔺 #task
 - [ ] Sync next week after the MAI Friday call to decide the support plan. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Check with Lior on outcomes from dinner with Igal and capture any asks. @Myself 📅 2025-11-08 🔽 #task
-- [ ] Verify Nidhi’s availability (Supercomputing or post-Supercomputing) and confirm a meeting. @Kanchan 📅 2025-11-08 ⏫ #task
-- [ ] Confirm Wave’s current GPU status and whether a VAST proposal is viable on Azure. @Kanchan 📅 2025-11-08 🔽 #task
-- [ ] Validate UK Met Office networking constraints vs planned LSV5 with Igal’s team. @Kanchan 📅 2025-11-08 ⏫ #task
+- [ ] Verify Nidhi’s availability (Supercomputing or post-Supercomputing) and confirm a meeting. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task
+- [ ] Confirm Wave’s current GPU status and whether a VAST proposal is viable on Azure. @Kanchan Mehrotra 📅 2025-11-08 🔽 #task
+- [ ] Validate UK Met Office networking constraints vs planned LSV5 with Igal’s team. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task
 
 ## Decisions
 - Near-term focus on MAI and UK Met Office over a broad sales motion.

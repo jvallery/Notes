@@ -27,7 +27,7 @@ tags:
 
 The note lists completed outreach/scheduling items related to Supercomputing (SC25), including setting a small-group meeting with Nidhi and a relevant teammate (e.g., Jack). It also records completed touchpoints/meetings with Kurt Neibuhr and with Kushal Datta/Vipin Sachdeva, each with completion dates.
 ## Action Items
-- [ ] Set a small-group meeting at Supercomputing with Nidhi (and a relevant teammate, e.g., Jack). @Jason Vallery 📅 2025-11-05 ⏫ #task
+- [ ] Set a small-group meeting at Supercomputing with Nidhi (and a relevant teammate, e.g., Jack). @Myself 📅 2025-11-05 ⏫ #task
 
 ## Key Information
 - A small-group meeting at Supercomputing (SC25) was scheduled/completed with Nidhi and a relevant teammate (e.g., Jack), tracked as completed on 2025-11-05.

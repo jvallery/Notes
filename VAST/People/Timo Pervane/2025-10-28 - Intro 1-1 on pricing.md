@@ -26,15 +26,15 @@ tags:
 Introductory 1:1 between Jason and Timo covering backgrounds and finance org context, with emphasis on Cloud Solutions strategy and the need to evolve pricing. They aligned on exploring a unit-based pricing model tied to ARR-focused investor metrics, improving discount discipline, and using finance analytics to support internal alignment with founders.
 ## Action Items
 - [ ] Draft a unit-based pricing proposal (with Databricks/Snowflake references) including ARR impact modeling and discount guardrails. @Myself 📅 2025-10-28 ⏫ #task
-- [ ] Share investor valuation framework and metrics (how ARR is defined/measured and implications for Cloud Solutions). @Timo 📅 2025-10-28 ⏫ #task
-- [ ] Provide current pricing/discounting analysis (price-paid scatter by cohort) to inform normalization plan. @Timo 📅 2025-10-28 ⏫ #task
-- [ ] Define discounting policy and controls to prevent deal-level leakage when cloud SKUs are undiscountable. @Timo 📅 2025-10-28 ⏫ #task
-- [ ] Progress hiring of Finance Business Partner for Cloud Solutions and embed them with the Cloud Solutions leadership team. @Timo 📅 2025-10-28 ⏫ #task
+- [ ] Share investor valuation framework and metrics (how ARR is defined/measured and implications for Cloud Solutions). @Timo Pervane 📅 2025-10-28 ⏫ #task
+- [ ] Provide current pricing/discounting analysis (price-paid scatter by cohort) to inform normalization plan. @Timo Pervane 📅 2025-10-28 ⏫ #task
+- [ ] Define discounting policy and controls to prevent deal-level leakage when cloud SKUs are undiscountable. @Timo Pervane 📅 2025-10-28 ⏫ #task
+- [ ] Progress hiring of Finance Business Partner for Cloud Solutions and embed them with the Cloud Solutions leadership team. @Timo Pervane 📅 2025-10-28 ⏫ #task
 - [ ] Identify and prioritize exabyte-scale customers to pursue hyperscaler hardware commitments and escalation path. @Myself 📅 2025-10-28 ⏫ #task
 - [ ] Align messaging with finance to brief Brennan and Jeff on the pricing evolution rationale and ARR impact. @Myself 📅 2025-10-28 ⏫ #task
 - [ ] Schedule a deep-dive session on business metrics and ARR framework. @Myself 📅 2025-10-28 #task
-- [ ] Send pricing scatter/discounting data set and initial insights. @Timo 📅 2025-10-28 #task
-- [ ] Update on finance business partner hiring status after Renan interview. @Timo 📅 2025-10-28 🔽 #task
+- [ ] Send pricing scatter/discounting data set and initial insights. @Timo Pervane 📅 2025-10-28 #task
+- [ ] Update on finance business partner hiring status after Renan interview. @Timo Pervane 📅 2025-10-28 🔽 #task
 
 ## Key Information
 - Timo leads Corporate Finance (FP&A, planning, IR, corp dev) and joined ~11 months prior under CFO Amy Shapiro.

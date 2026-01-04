@@ -23,10 +23,10 @@ tags:
 
 Jonsi and Jason aligned on positioning a “better together” story with Microsoft: VAST as GPU-adjacent high-performance storage with deep Azure Blob integration, while Blob remains the exabyte-scale data lake. They discussed Microsoft AI (MAI) politics around Bifrost/Apollo, a likely performance bake-off vs Azure, and timeline slippage (POC in January; decision around March; go-live around May) plus supply-chain risk (flash constraints).
 ## Action Items
-- [ ] Send Jonsi the slide deck/comparison (power/footprint/throughput) to use before the Ong/Manish meetings. @Jason ⏫ #task
-- [ ] Review the Azure Blob deep-integration document with Jeff on Friday. @Jason #task
+- [ ] Send Jonsi the slide deck/comparison (power/footprint/throughput) to use before the Ong/Manish meetings. @Myself ⏫ #task
+- [ ] Review the Azure Blob deep-integration document with Jeff on Friday. @Myself #task
 - [ ] Text Jason after the meeting with Ong and Manish and debrief to formulate forward strategy. @Myself #task
-- [ ] Add Jonsi to the thread and send notes previously shared with the team regarding supply-chain/flash constraints. @Jason #task
+- [ ] Add Jonsi to the thread and send notes previously shared with the team regarding supply-chain/flash constraints. @Myself #task
 
 ## Decisions
 - Position the partnership as Blob for central exabyte-scale data lakes and VAST for GPU-adjacent storage, enabled by deep integration between VAST and Azure Blob.

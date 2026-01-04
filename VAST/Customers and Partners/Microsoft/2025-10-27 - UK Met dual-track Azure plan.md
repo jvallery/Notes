@@ -28,7 +28,7 @@ tags:
 
 Team aligned on a dual-track approach to win UK Met Office: Plan A is VAST on new Azure Compute (targeting an 800 Gb network / 300 TB local SSD VM) and Plan B is VAST on Specialized/ODM hardware to de-risk Microsoft timeline risk. UK Met has verbally selected VAST pending software/performance validation and expects Microsoft spec confirmation mid-November, with Azure testing access targeted for the first week of December. Product/GTM needs clear GA/MVP acceptance criteria (spin up/down, DR/offload) plus competitive performance/TCO comparisons versus Managed Lustre, Weka, and Hammerspace.
 ## Action Items
-- [ ] Communicate first-week-of-December Azure testing availability to UK Met Office. @Lior 📅 2025-12-01 🔺 #task
+- [ ] Communicate first-week-of-December Azure testing availability to UK Met Office. @Lior Genzel 📅 2025-12-01 🔺 #task
 
 ## Decisions
 - Pursue UK Met Office Plan A (Azure Compute) and Plan B (Specialized/ODM) concurrently.

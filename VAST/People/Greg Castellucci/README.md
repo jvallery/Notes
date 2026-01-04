@@ -24,7 +24,7 @@ tags:
 
 ## Open Tasks
 
-- [ ] Send intro email connecting Greg to Google GDC corporate and Federal stakeholders; share the RFP package. @Jason Vallery
+- [ ] Send intro email connecting Greg to Google GDC corporate and Federal stakeholders; share the RFP package. @Myself
 - [ ] Run point with Google Federal and GDC corporate; coordinate near-term meetings and joint validation path. @Greg Castellucci
 - [ ] Coordinate with Google/Cisco on Fort Meade rack-and-stack progress and confirm validation scope for Q4. @Greg Castellucci
 - [ ] Set near-term meeting with Google GDC team to review RFP Q&A and air-gapped ops posture. @Greg Castellucci

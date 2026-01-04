@@ -50,7 +50,7 @@ Following the GDC RFP walkthrough with Google, technical questions came up about
 ## Action Items
 
 - [ ] Follow up with Violet for detailed encryption architecture answers 📅 2025-12-18 🔼 #task
-- [ ] Clarify Google's SED requirement source @Tomer 🔽 #task
+- [ ] Clarify Google's SED requirement source @Tomer Hagay 🔽 #task
 
 ## Contacts
 

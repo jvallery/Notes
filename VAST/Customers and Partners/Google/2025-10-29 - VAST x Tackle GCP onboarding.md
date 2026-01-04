@@ -37,14 +37,14 @@ Tackle and VAST kicked off onboarding to sell VAST’s SaaS via Google Cloud Mar
 - [ ] Upload GCP service account JSON key for Tackle and grant required IAM roles @A.K. Rapsone 📅 2025-11-08 ⏫ #task
 - [ ] Enable Google Marketplace reporting export for Tackle ingestion @A.K. Rapsone 📅 2025-11-08 🔺 #task
 - [ ] Pre-populate listing content in Tackle based on the existing GCP listing @Peter Kapsashi 📅 2025-11-08 🔺 #task
-- [ ] Review and update listing content (overview, identifiers, support docs) and confirm if EULA needs refresh @Jason Vallery 📅 2025-11-08 ⏫ #task
-- [ ] Define pricing and overage policy for private offers (rates, discounts, behavior on expansion) @Jason Vallery 📅 2025-11-08 ⏫ #task
-- [ ] Decide on meter design (units, multiple meters, penny-based approach) for overage charging @Jason Vallery 📅 2025-11-08 🔺 #task
-- [ ] Design metadata model to tie fixed-price offers to capacity entitlements and map to Salesforce @Jason Vallery 📅 2025-11-08 🔺 #task
+- [ ] Review and update listing content (overview, identifiers, support docs) and confirm if EULA needs refresh @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Define pricing and overage policy for private offers (rates, discounts, behavior on expansion) @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Decide on meter design (units, multiple meters, penny-based approach) for overage charging @Myself 📅 2025-11-08 🔺 #task
+- [ ] Design metadata model to tie fixed-price offers to capacity entitlements and map to Salesforce @Myself 📅 2025-11-08 🔺 #task
 - [ ] Define subscription/fulfillment event notification flow from Marketplace to Polaris (including SSO approach) @A.K. Rapsone 📅 2025-11-08 🔺 #task
 - [ ] Confirm in GCP whether overage meter discounts can be independent from fixed-price private offer discounts @Peter Kapsashi 📅 2025-11-08 ⏫ #task
 - [ ] Share Tackle metering API and CSV upload documentation with VAST @Peter Kapsashi 📅 2025-11-08 🔽 #task
-- [ ] Align on Salesforce data fields and integration for passing offer and entitlement metadata @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Align on Salesforce data fields and integration for passing offer and entitlement metadata @Myself 📅 2025-11-08 ⏫ #task
 
 ## Decisions
 - Start with Google Cloud Marketplace first; public offers may follow later.

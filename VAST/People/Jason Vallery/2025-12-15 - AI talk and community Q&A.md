@@ -29,7 +29,7 @@ Jason Vallery (Vast Data) presented an overview of rapid AI progress (agents, ro
 ## Action Items
 - [ ] Host/attend the next Longmont Next Wave Initiative discussion at Longmont Public Media (5:30 p.m.). @TBD 📅 2026-01-15 #task
 - [ ] Share the Longmont Next Wave Initiative survey link/QR code with friends/neighbors to gather community sentiment. @TBD #task
-- [ ] Send participants a copy of the slide deck and follow-up resources to those who provided an email via the QR survey. @Jason #task
+- [ ] Send participants a copy of the slide deck and follow-up resources to those who provided an email via the QR survey. @Myself #task
 
 ## Key Information
 - Jason Vallery is VP of Product Management at Vast Data; previously spent ~13 years at Microsoft working on storage/data infrastructure for AI customers including OpenAI.

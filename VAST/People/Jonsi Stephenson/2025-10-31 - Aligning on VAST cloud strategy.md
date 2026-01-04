@@ -26,11 +26,11 @@ tags:
 Jason and Karl aligned on a cloud-first strategy for VAST, including a long-term vision toward a planet-scale multi-tenant/SaaS platform spanning hyperscalers and neo-clouds, with emphasis on GPU-adjacent storage, global namespace, smart caching, and cloud economics. They discussed a Google Distributed Cloud (GDC) RFP surfaced via Cisco and the need for control-plane integrations (API/monitoring/billing), plus a critical product requirement to decouple capacity from performance via object/S3 offload. Next steps include reviewing the GDC RFP, engaging Jonesy’s team for integration requirements, and syncing at Supercomputing while Jason finalizes org/ownership planning with Jeff.
 ## Action Items
 - [ ] Obtain and review the Google Distributed Cloud (GDC) RFP and clarify whether VAST is requested as a managed service offering vs backend distributed storage for GDC sites @Karl Vietmeier 📅 2025-11-08 ⏫ #task
-- [ ] Loop in Jonesy’s team to assess API, monitoring, and billing integration requirements for a GDC-aligned VAST deployment @Jason Vallery 📅 2025-11-08 ⏫ #task
-- [ ] Finalize cloud product ownership and org plan with Jeff, including potential reporting line for Karl @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Loop in Jonesy’s team to assess API, monitoring, and billing integration requirements for a GDC-aligned VAST deployment @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Finalize cloud product ownership and org plan with Jeff, including potential reporting line for Karl @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Define and document cloud 'now what' use cases and upstream integrations (Spark, Trino, Vertex AI, Bigtable) to showcase differentiated workflows @Karl Vietmeier 📅 2025-11-08 ⏫ #task
-- [ ] Drive design and plans for capacity/performance decoupling via object/S3 offload with Yancey’s team @Jason Vallery 📅 2025-11-08 ⏫ #task
-- [ ] Coordinate a coffee sync at Supercomputing to continue cloud strategy and GDC planning @Jason Vallery 📅 2025-11-08 #task
+- [ ] Drive design and plans for capacity/performance decoupling via object/S3 offload with Yancey’s team @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Coordinate a coffee sync at Supercomputing to continue cloud strategy and GDC planning @Myself 📅 2025-11-08 #task
 - [ ] Share Karl’s GitHub repo link for review of automation and tooling @Karl Vietmeier 📅 2025-11-08 🔽 #task
 - [ ] Provide notes/artifacts from the TPU global-namespace demo to inform cloud workflow examples @Karl Vietmeier 📅 2025-11-08 #task
 - [ ] Confirm whether Google intends to procure VAST via Cisco for GDCs and the expected commercial model @Karl Vietmeier 📅 2025-11-08 #task

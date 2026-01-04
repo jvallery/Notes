@@ -38,14 +38,14 @@ Team aligned on launching an MVP on Google Cloud Marketplace using private offer
 - [ ] Confirm with Tackle.io the feasibility and configuration for overage handling and pricing on GCP @Eirikur Hrafnsson 📅 2025-11-08 🔺 #task
 - [ ] Implement automation to create Uplink organization endpoints from Salesforce metadata for call-home registration @Polaris team 📅 2025-11-08 🔺 #task
 - [ ] Design and implement internal alerting for CS/sales when customers approach or exceed entitlement @Polaris team 📅 2025-11-08 🔺 #task
-- [ ] Define overage policy (thresholds, grace, pricing) and reflect in offer terms and EULA @Tomer Hagay 📅 2025-11-08 🔺 #task
+- [ ] Define overage policy (thresholds, grace, pricing) and reflect in offer terms and EULA @Tomer Hagay Hagay 📅 2025-11-08 🔺 #task
 - [ ] Set up finance processes for marketplace billing, receivables reconciliation, and revenue recognition for fixed capacity and overages @Finance 📅 2025-11-08 🔺 #task
 - [ ] Provide finance with access to GCP marketplace reporting/portal and sample/mock payout reports @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task
 - [ ] Schedule and run a detailed walkthrough of the Tackle-to-Salesforce private offer flow and data sync @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task
-- [ ] Define VAST units of measurement for compute and capacity for future pricing model @Tomer Hagay 📅 2025-11-08 ⏫ #task
+- [ ] Define VAST units of measurement for compute and capacity for future pricing model @Tomer Hagay Hagay 📅 2025-11-08 ⏫ #task
 - [ ] Plan for cloud customer success coverage to drive expansion and manage entitlement/usage @Lihi Rotchild 📅 2025-11-08 ⏫ #task
-- [ ] Prepare pipeline visibility for expected first GCP transactions and timelines @Lior Genzel 📅 2025-11-08 ⏫ #task
-- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Jason Vallery 📅 2025-11-08 🔺 #task
+- [ ] Prepare pipeline visibility for expected first GCP transactions and timelines @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task
+- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Myself 📅 2025-11-08 🔺 #task
 - [ ] Set session to define billing, invoicing, payout cadence, and reconciliation across Polaris, Tackle, and GCP @Finance 📅 2025-11-08 🔺 #task
 - [ ] Decide whether to permit automatic expansion beyond entitlement or require account approval @Product 📅 2025-11-08 ⏫ #task
 - [ ] Outline rev rec approach for future hybrid conversion model (on-prem ↔ cloud) @Finance 📅 2025-11-08 ⏫ #task

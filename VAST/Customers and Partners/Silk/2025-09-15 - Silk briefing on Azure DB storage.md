@@ -28,7 +28,7 @@ Silk briefed Jason on its software-defined cloud storage optimized for structure
 ## Action Items
 - [ ] Confirm RDMA support/timeline for L-series front-end access with Azure contacts (Gal Piglin’s team) and report back. @Silk engineering 📅 2025-10-26 🔺 #task
 - [ ] Schedule and prepare a follow-up meeting with Jay Menon; define agenda to ensure value for all parties. @Chris 📅 2025-10-26 ⏫ #task
-- [ ] Flag customer opportunities where native Azure storage cannot meet performance and consider Silk. @Jason 📅 2025-10-26 🔽 #task
+- [ ] Flag customer opportunities where native Azure storage cannot meet performance and consider Silk. @Myself 📅 2025-10-26 🔽 #task
 - [ ] Compile concrete customer use cases requiring real-time MCP access vs near-real-time clones for discussion with Jay. @Silk product 📅 2025-10-26 ⏫ #task
 
 ## Decisions

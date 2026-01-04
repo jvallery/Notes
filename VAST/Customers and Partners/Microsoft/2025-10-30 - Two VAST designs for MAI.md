@@ -31,10 +31,10 @@ Team aligned to present Microsoft MAI two VAST storage design options: an NVIDIA
 - [ ] Produce side-by-side table and rack diagrams for both designs; update existing EnScale/Portugal deck templates @Paul 📅 2025-10-30 🔺 #task
 - [ ] Provide consolidated sustained read/write performance estimates (TB/s) and total power figures for both designs @Ray 📅 2025-10-30 🔺 #task
 - [ ] Add Kubernetes integration (CSI/COSI), file+object support, monitoring/logging, and offline auth/DNS resiliency notes into the deck @Paul 📅 2025-10-30 ⏫ #task
-- [ ] Create Azure Blob comparison columns (racks, performance, power, capacity) and prepare a one-slide view for MAI @Jason Valleri 📅 2025-10-31 🔺 #task
-- [ ] Confirm with Kushal the cluster sizes, site count, and checkpointing approach to refine performance targets @Jason Valleri 📅 2025-10-31 ⏫ #task
+- [ ] Create Azure Blob comparison columns (racks, performance, power, capacity) and prepare a one-slide view for MAI @Myself Valleri 📅 2025-10-31 🔺 #task
+- [ ] Confirm with Kushal the cluster sizes, site count, and checkpointing approach to refine performance targets @Myself Valleri 📅 2025-10-31 ⏫ #task
 - [ ] Validate offline identity and RBAC behavior (JWT claims caching, internal DNS/routing) and document limits @Ray 📅 2025-11-05 ⏫ #task
-- [ ] Align on MAI data movement strategy (azcopy vs service-to-service vs Sync Engine) and required tooling @Jason Valleri 📅 2025-11-07 🔽 #task
+- [ ] Align on MAI data movement strategy (azcopy vs service-to-service vs Sync Engine) and required tooling @Myself Valleri 📅 2025-11-07 🔽 #task
 
 ## Decisions
 - Lead with NVIDIA NCP reference architecture for credibility and consistency with InScale.

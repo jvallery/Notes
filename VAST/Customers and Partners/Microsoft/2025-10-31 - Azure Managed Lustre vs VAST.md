@@ -30,9 +30,9 @@ The group compared Azure Managed Lustre’s architecture, scaling limits, resili
 - [ ] Define backup/recovery strategy for VAST on Azure (RPO/RTO, snapshot/offload, rehydration) @TBD 📅 2025-11-08 ⏫ #task
 - [ ] Confirm whether Azure Managed Lustre supports Premium Disk v2 (Direct Drive) and share timelines @TBD 📅 2025-11-08 ⏫ #task
 - [ ] Coordinate guest RDMA enablement timeline between VMs and implications for Lustre/VAST @TBD 📅 2025-11-08 🔺 #task
-- [ ] Hold roadmap discussion with VMSS Flex/Jerry Steele’s team on fault domains and Lsv5 readiness @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Hold roadmap discussion with VMSS Flex/Jerry Steele’s team on fault domains and Lsv5 readiness @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Share SKU pricing/availability guidance for L192/Lsv5 to inform cost comparisons @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Schedule Supercomputing meetup and add Jason to existing session @Lior 📅 2025-11-08 🔽 #task
+- [ ] Schedule Supercomputing meetup and add Jason to existing session @Lior Genzel 📅 2025-11-08 🔽 #task
 - [ ] Document current AZ pinning/locality guarantees for Managed Disks and Lustre VMs @TBD 📅 2025-11-08 🔽 #task
 - [ ] Assess feasibility to expose HSM state/automation hooks for users waiting on Blob archive completion @TBD 📅 2025-11-08 ⏫ #task
 - [ ] Advance Marketplace listing work toward February GA @TBD 📅 2025-11-08 ⏫ #task

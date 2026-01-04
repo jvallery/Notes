@@ -1,1 +1,1 @@
-- [x] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5. @Tomer Hagay 🔽 ✅ 2025-11-08
+- [x] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5. @Tomer Hagay Hagay 🔽 ✅ 2025-11-08

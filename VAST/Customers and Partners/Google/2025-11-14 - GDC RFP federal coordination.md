@@ -29,8 +29,8 @@ tags:
 
 VAST cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace NetApp storage, with heavy emphasis on air-gapped/dark-site readiness, compliance evidence, and operational posture. The team agreed to use the in-flight Fort Meade “Gemini as a service” on-prem effort as a near-term joint validation path and to tighten coordination between Google corporate GDC and Google Federal stakeholders. Ownership was clarified across RFP response, stakeholder engagement, and technical follow-ups (including a 1:1 with Muninder Singh Sambi and an upcoming architecture review).
 ## Action Items
-- [ ] Send intro email connecting Greg Castellucci to Google GDC corporate and Federal stakeholders and share the RFP package @Jason ⏫ #task
-- [ ] Assemble RFP supplements covering compliance/attestations (e.g., DISA STIG), encryption/certifications, multi-tenancy, quotas, tags integration, troubleshooting practices, and operations model @Jason ⏫ #task
+- [ ] Send intro email connecting Greg Castellucci to Google GDC corporate and Federal stakeholders and share the RFP package @Myself ⏫ #task
+- [ ] Assemble RFP supplements covering compliance/attestations (e.g., DISA STIG), encryption/certifications, multi-tenancy, quotas, tags integration, troubleshooting practices, and operations model @Myself ⏫ #task
 - [ ] Own and submit the formal Google Distributed Cloud RFP response coordinating inputs across teams @Leo ⏫ #task
 - [ ] Run point with Google Federal and corporate GDC teams; coordinate near-term meetings and the joint validation path @Greg ⏫ #task
 - [ ] Schedule and conduct a 1:1 with Muninder Singh Sambi to review AI approach, VM shapes, RDMA, and hardware tradeoffs @Alon ⏫ #task
@@ -38,9 +38,9 @@ VAST cloud and federal teams aligned on responding to Google Distributed Cloud�
 - [ ] Provide federal compliance/ATO summaries and links to public artifacts for inclusion in the RFP @Jeremiah ⏫ #task
 - [ ] Coordinate with Google and Cisco on Fort Meade rack-and-stack progress and confirm validation scope for Q4 @Greg ⏫ #task
 - [ ] Prepare an EBC-style briefing on AI workloads, storage patterns, and air-gapped operations for Google @Randy #task
-- [ ] Draft recommended Dell and HPE hardware SKUs and deployment patterns for GDC air-gapped @Jason ⏫ #task
+- [ ] Draft recommended Dell and HPE hardware SKUs and deployment patterns for GDC air-gapped @Myself ⏫ #task
 - [ ] Set a near-term meeting with Google GDC team to review RFP Q&A and air-gapped operations posture @Greg ⏫ #task
-- [ ] Schedule an architecture review to decide on Dell/HPE/Cisco vs commodity VM deployment approach @Jason ⏫ #task
+- [ ] Schedule an architecture review to decide on Dell/HPE/Cisco vs commodity VM deployment approach @Myself ⏫ #task
 - [ ] Link VAST Federal sellers with Google Federal for FBI, State, and Army opportunities @Greg #task
 - [ ] Confirm whether Fort Meade status can be cited in the RFP as active validation/past performance reference @Jennifer #task
 

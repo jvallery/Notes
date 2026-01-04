@@ -22,13 +22,13 @@ tags:
 
 Task list for Microsoft/Azure engagement workstreams, including networking/egress minimization, validating Azure GA milestones vs Lifter phases, and ensuring compliant ROI data usage. Additional deliverables include comparison slides, BizDev education and intros, a power-savings-to-GPU one-pager, and evaluating higher-density storage SKUs or an OEM hardware path for Marketplace offers.
 ## Action Items
-- [ ] Draft a Microsoft networking engagement plan focused on minimizing egress (e.g., ExpressRoute Direct Local) for VAST’s Azure offerings. @Jeff 📅 2025-11-08 🔺 #task
-- [ ] Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep 1P milestone). @Jeff 📅 2025-11-08 ⏫ #task
-- [ ] Validate what Microsoft data can be used in ROI comparisons before sharing with Nidhi. @Jason 📅 2025-11-08 🔺 #task
+- [ ] Draft a Microsoft networking engagement plan focused on minimizing egress (e.g., ExpressRoute Direct Local) for VAST’s Azure offerings. @Jeff Denworth 📅 2025-11-08 🔺 #task
+- [ ] Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep 1P milestone). @Jeff Denworth 📅 2025-11-08 ⏫ #task
+- [ ] Validate what Microsoft data can be used in ROI comparisons before sharing with Nidhi. @Myself 📅 2025-11-08 🔺 #task
 - [ ] Create a comparison slide for conversations (LSv4, v5, OEM/ODM, Azure Storage). @TBD 📅 2025-11-08 #task
-- [ ] Educate Microsoft BizDev (density/power, single-namespace story) and secure intros to Ronnie via John Tinter. @Jason 📅 2025-11-08 🔺 #task
-- [ ] Create a one-pager converting VAST EB power savings into additional GPUs per site; share with MAI (Mustafa), Kushal, and Vipin. @Jason 📅 2025-11-08 🔺 #task
-- [ ] Assess complementing the Marketplace L-series offer with higher-density storage SKUs or an OEM hardware path. @Jason 📅 2025-11-08 ⏫ #task
+- [ ] Educate Microsoft BizDev (density/power, single-namespace story) and secure intros to Ronnie via John Tinter. @Myself 📅 2025-11-08 🔺 #task
+- [ ] Create a one-pager converting VAST EB power savings into additional GPUs per site; share with MAI (Mustafa), Kushal, and Vipin. @Myself 📅 2025-11-08 🔺 #task
+- [ ] Assess complementing the Marketplace L-series offer with higher-density storage SKUs or an OEM hardware path. @Myself 📅 2025-11-08 ⏫ #task
 
 ## Key Information
 - Focus area includes minimizing Azure egress costs (e.g., ExpressRoute Direct Local) for VAST offerings.

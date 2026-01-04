@@ -39,8 +39,8 @@ Weekly SE community call focused on end-of-quarter push, Tech Summit logistics (
 - [ ] Fix hotel confirmation verbiage and ensure hotel confirmation emails are sent @Dre 📅 2025-11-04 🔺 #task
 - [ ] Re-send Tech Summit expense policy reminder to attendees @Stacy 📅 2025-11-08 ⏫ #task
 - [ ] Prepare and distribute sign-up sheets for the Tech Summit gaming night @Dre 📅 2025-11-08 ⏫ #task
-- [ ] Add Arista 24-port switch profile to Port Mapper @Jeff Moeller 📅 2025-11-08 ⏫ #task
-- [ ] Establish versioning/hosting (e.g., GitHub) for Port Mapper @Jeff Moeller 📅 2025-11-08 🔽 #task
+- [ ] Add Arista 24-port switch profile to Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 ⏫ #task
+- [ ] Establish versioning/hosting (e.g., GitHub) for Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 🔽 #task
 - [ ] Schedule recurring SE Toolbox slots (1–2 per month) and collect submissions @JB 📅 2025-11-08 ⏫ #task
 - [ ] Consider scheduling an SCO session to cover Port Mapper @JB 📅 2025-11-08 🔽 #task
 - [ ] Try the Port Mapper tool and provide feedback to Jeff @TBD 📅 2025-11-08 ⏫ #task

@@ -28,8 +28,8 @@ Jason and Tomer aligned that VAST needs clearer product management discipline (O
 - [ ] Map current cloud–core workflow interfaces and handoffs to ensure any PM process spans the full stack. @Myself 📅 2025-11-08 #task
 - [ ] Schedule a joint review with Jeff (and invite Sahar) to discuss the proposal after the Tel Aviv onsite. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Meet in person in Tel Aviv to observe processes and align on proposal approach. @Myself 📅 2025-11-10 #task
-- [ ] Compile concrete pain points and examples (e.g., epic/ticket gaps, release slippage like MD migrate) to inform the proposal. @Tomer 📅 2025-11-08 #task
-- [ ] Reconnect post–Tel Aviv to finalize proposal scope and presentation plan for leadership. @Tomer 📅 2025-11-08 #task
+- [ ] Compile concrete pain points and examples (e.g., epic/ticket gaps, release slippage like MD migrate) to inform the proposal. @Tomer Hagay 📅 2025-11-08 #task
+- [ ] Reconnect post–Tel Aviv to finalize proposal scope and presentation plan for leadership. @Tomer Hagay 📅 2025-11-08 #task
 
 ## Decisions
 - Defer proposal drafting until after the Tel Aviv onsite next week.

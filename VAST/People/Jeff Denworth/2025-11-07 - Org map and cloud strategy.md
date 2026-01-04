@@ -30,8 +30,8 @@ Reviewed the org landscape and clarified near-term priorities around building a 
 - [ ] Schedule a recurring monthly 1:1 with Brandon to align on cloud platform priorities @Myself #task
 - [ ] Document Walmart and future customer FRDs in Confluence; align structure with A.L. and Tomer @Myself #task
 - [ ] Evaluate the cost calculator Jeff shared and provide feedback on assumptions @Myself 🔽 #task
-- [ ] Formalize Carl’s move to ProServe under Rob and communicate to stakeholders @Jeff Denworth ⏫ #task
-- [ ] Confirm Morty’s transition to my team while preserving Neo cloud commitments @Jeff Denworth #task
+- [ ] Formalize Carl’s move to ProServe under Rob and communicate to stakeholders @Jeff Denworth Denworth ⏫ #task
+- [ ] Confirm Morty’s transition to my team while preserving Neo cloud commitments @Jeff Denworth Denworth #task
 - [ ] Engage Ryan (overlay team) and FWOD (DB/pipeline SEs) to understand current go-to-market motions @Myself 🔽 #task
 - [ ] Embed with SEs at next week’s events to build relationships and gather field feedback @Myself #task
 - [ ] Align with Lior to be pulled into strategic customer meetings and maintain visibility on pipeline @Myself #task

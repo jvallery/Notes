@@ -29,8 +29,8 @@ Jason Vallery expressed disappointment with his rewards, anxiety about scope/own
 - [ ] Define proposed Apollo role and ownership scope for Jason Vallery, including collaboration model with leadership @Maneesh 📅 2025-10-26 ⏫ #task
 - [ ] Plan approach to build Microsoft storage advocacy and roadmap alignment with NVIDIA @Maneesh 📅 2025-10-26 ⏫ #task
 - [ ] Consider mid-term compensation adjustments for Jason Vallery over the next 6–9 months @Maneesh 📅 2025-10-26 #task
-- [ ] Inform Maneesh of decision/status on external offers and interest in Apollo @Jason Vallery 📅 2025-10-26 ⏫ #task
-- [ ] Share a short proposal on Apollo strategy for agentic memory/KVCache and GPU-adjacent caching, including NeoCloud partnership model @Jason Vallery 📅 2025-10-26 #task
+- [ ] Inform Maneesh of decision/status on external offers and interest in Apollo @Myself 📅 2025-10-26 ⏫ #task
+- [ ] Share a short proposal on Apollo strategy for agentic memory/KVCache and GPU-adjacent caching, including NeoCloud partnership model @Myself 📅 2025-10-26 #task
 - [ ] Schedule deeper working session on Apollo architecture and Jason Vallery's ownership areas @Maneesh 📅 2025-10-26 #task
 
 ## Key Information

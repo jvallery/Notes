@@ -31,19 +31,19 @@ The group aligned on a cloud support operating model separating Customer Success
 ## Action Items
 - [ ] Draft a clear cloud support/Customer Success/SRE operating plan including 24/7 support desk and on-call rotations for marketplace phases, and bring back to this group for review. @Rob Banga 📅 2025-11-08 ⏫ #task
 - [ ] Begin recruiting initial SREs and support engineers with hyperscaler experience (GCP/Azure/AWS). @Rob Banga 📅 2025-11-08 ⏫ #task
-- [ ] Schedule an offline working session with Rob to detail the SRE/support model and lessons learned from Microsoft/OCI. @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Schedule an offline working session with Rob to detail the SRE/support model and lessons learned from Microsoft/OCI. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Schedule a Salesforce/Tackle integration deep-dive covering customer registration, entitlements, and data flows. @Christina 📅 2025-10-31 ⏫ #task
 - [ ] Define telemetry and metrics to push from Polaris to Tableau for churn, feature utilization, and cloud customer health views. @Yancey 📅 2025-11-08 ⏫ #task
 - [ ] Scope reporting and analytics needed for consumption forecasting and ensure resourcing. @Joe 📅 2025-11-08 ⏫ #task
-- [ ] Assess and confirm additional Salesforce and Tableau licenses/seats needed for cloud operations. @Timo Pervane 📅 2025-11-08 ⏫ #task
+- [ ] Assess and confirm additional Salesforce and Tableau licenses/seats needed for cloud operations. @Timo Pervane Pervane 📅 2025-11-08 ⏫ #task
 - [ ] Evaluate Carl as the initial leader for cloud implementation/support and define the team structure. @Rob Banga 📅 2025-11-08 ⏫ #task
-- [ ] Propose a role-based access and data segmentation model across Salesforce, Polaris, and support tooling. @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Propose a role-based access and data segmentation model across Salesforce, Polaris, and support tooling. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Prepare an enablement and documentation plan for end-customer and sell-to-hyperscaler motions (including SKO content). @Product Marketing 📅 2025-11-08 ⏫ #task
 - [ ] Consolidate notes and circulate action items from this session. @Daniel 📅 2025-10-31 🔽 #task
 - [ ] Initiate a legal/compliance workstream to define data custodian obligations for SaaS and the path to SOC2/FedRAMP. @Legal 📅 2025-11-08 ⏫ #task
 - [ ] Attend the GCP meeting to defend TPU test methodology and results (with Nirav and Rich Shanshee). @Yancey 📅 2025-11-08 ⏫ #task
 - [ ] Confirm target customer list and POC sequencing by hyperscaler (Microsoft, UKMET, NBCU, Sigma, Jump Trading, Citadel, Zoom). @Yancey 📅 2025-11-08 ⏫ #task
-- [ ] Define overage policy mechanics for private offers (thresholds, pricing, billing). @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Define overage policy mechanics for private offers (thresholds, pricing, billing). @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Detail metering, entitlement, and billing integration flows between Polaris, hyperscaler marketplaces, and ERP. @Yancey 📅 2025-11-08 ⏫ #task
 - [ ] Plan SKO sessions for cloud go-to-market, support model, and SE enablement. @Benoit 📅 2025-11-08 ⏫ #task
 

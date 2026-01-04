@@ -30,13 +30,13 @@ tags:
 
 Cloud BU leadership aligned on a dual-track go-to-market: (1) ship the GCP MVP via marketplace with strong collateral and demos, and (2) pursue hyperscaler-scale opportunities (notably Microsoft/MAI) with a hardware-optimized story and Polaris-managed operations. Key blockers are collateral readiness, QA/support and break-glass procedures, deployment preflight variability, and maintenance/HA handling across failure domains. The team confirmed GCP MVP networking will use routable IPs (customer-provided range) and will proceed with marketplace activation while tuning private offer pricing components.
 ## Action Items
-- [ ] Share GCP performance Excel and introduce Jason to the performance lead and product marketing owner for the field sizing calculator @Lior Genzel 📅 2025-10-29 ⏫ #task
+- [ ] Share GCP performance Excel and introduce Jason to the performance lead and product marketing owner for the field sizing calculator @Lior Genzel Genzel 📅 2025-10-29 ⏫ #task
 - [ ] Push Product Marketing to deliver customer, internal, and CSP seller decks plus battlecards/datasheets; share latest deck @Brian Moore 📅 2025-10-31 ⏫ #task
-- [ ] Review decks/positioning and propose a standard performance/TCO benchmark frame across clouds @Jason Vallery 📅 2025-10-31 ⏫ #task
+- [ ] Review decks/positioning and propose a standard performance/TCO benchmark frame across clouds @Myself 📅 2025-10-31 ⏫ #task
 - [ ] Schedule and run internal working session with Enscale technical team to refine the MAI storyline and architecture @Asaf Levy 📅 2025-10-29 ⏫ #task
 - [ ] Deliver MAI presentation (storyline, solution diagram, deck) aligned to Kubernetes-led control plane and Polaris @Cloud BU engineering 📅 2025-10-31 🔺 #task
-- [ ] Meet with MAI’s Kushal Datta to align on requirements and next steps @Jason Vallery 📅 2025-10-31 ⏫ #task
-- [ ] Reconnect Product Marketing with Jason/Jonsi and include Polaris/marketplace content requirements @Lior Genzel 📅 2025-10-29 ⏫ #task
+- [ ] Meet with MAI’s Kushal Datta to align on requirements and next steps @Myself 📅 2025-10-31 ⏫ #task
+- [ ] Reconnect Product Marketing with Jason/Jonsi and include Polaris/marketplace content requirements @Lior Genzel Genzel 📅 2025-10-29 ⏫ #task
 - [ ] Implement GCP MVP deployment flow using routable IPs and require customer-provided IP range @Eirikur Hrafnsson ⏫ #task
 - [ ] Kick off Salesforce integration for marketplace transaction flow and data sync @Cloud BU ops 📅 2025-10-29 ⏫ #task
 - [ ] Tune GCP marketplace private offer components and pricing; confirm no new approvals needed @John Downey 📅 2025-11-01 ⏫ #task

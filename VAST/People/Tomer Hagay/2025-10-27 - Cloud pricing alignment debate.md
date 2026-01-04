@@ -30,16 +30,16 @@ tags:
 
 The group debated how to align cloud pricing with the upcoming on-prem core+capacity model given large cross-cloud differences in vCPU density and infrastructure costs. They converged on launching cloud private offers with capacity-only pricing and stricter discount guidance, while targeting a broader unified pricing model decision by 2026-02-01 and reaffirming a three-phase GTM (private offers now, public PAYGO in ~6 months, full SaaS likely FY28). They rejected disabling/rate-limiting excess vCPUs and focused near-term on delivering an NBCU TCO and defining marketplace entitlements/discounts (notably for Google private offers).
 ## Action Items
-- [ ] Propose cloud private-offer pricing structure and discount guidance (capacity-only) for immediate use by field. @Tomer 📅 2025-10-27 🔺 #task
+- [ ] Propose cloud private-offer pricing structure and discount guidance (capacity-only) for immediate use by field. @Tomer Hagay 📅 2025-10-27 🔺 #task
 - [ ] Forward NBCU TCO call invite to the core group (Jason, Lior, Eiki, Tomer, Wolfie, Eric). @Yancey 📅 2025-10-27 🔺 #task
 - [ ] Join and support NBCU TCO working session; align on inputs (reserved pricing, egress, infra COGS). @Eric 📅 2025-10-27 🔺 #task
-- [ ] Join NBCU TCO working session; validate pricing approach and competitive posture. @Jason Vallery 📅 2025-10-27 ⏫ #task
-- [ ] Add core stakeholders to NBCU TCO sync invite. @Tomer 📅 2025-10-27 ⏫ #task
+- [ ] Join NBCU TCO working session; validate pricing approach and competitive posture. @Myself 📅 2025-10-27 ⏫ #task
+- [ ] Add core stakeholders to NBCU TCO sync invite. @Tomer Hagay 📅 2025-10-27 ⏫ #task
 - [ ] Define and publish a cloud-specific discount policy for private offers to avoid extreme discounts. @Pricing vTeam 📅 2025-10-27 🔺 #task
 - [ ] Complete NBCU TCO analysis and share with customer by Wednesday. @Eric 📅 2025-10-29 ⏫ #task
 - [ ] Decide whether to introduce fixed cores-per-PB normalization for cloud starting Feb 1 and document the model. @Pricing vTeam 📅 2025-10-27 🔺 #task
 - [ ] Define marketplace entitlements and pricing schema for Google private offer and begin approval process. @Yancey 📅 2025-10-27 🔺 #task
-- [ ] Plan and document a unified Feb 1 pricing rollout that keeps on-prem and cloud consistent. @Tomer 📅 2026-02-01 🔺 #task
+- [ ] Plan and document a unified Feb 1 pricing rollout that keeps on-prem and cloud consistent. @Tomer Hagay 📅 2026-02-01 🔺 #task
 
 ## Decisions
 - Launch cloud private offers with capacity-only pricing in the near term.

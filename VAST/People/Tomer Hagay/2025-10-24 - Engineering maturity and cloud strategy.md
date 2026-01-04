@@ -34,11 +34,11 @@ Jason and Tomer aligned on using VAST’s cloud initiative to drive engineering 
 - [ ] Read Google Anywhere Cache documentation and compare to VAST Global Namespace; summarize gaps/opportunities @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Myself 📅 2025-10-27 🔽 #task
 - [ ] Schedule follow-up 1-1 for next week @Myself 📅 2025-10-26 ⏫ #task
-- [ ] Plan Tel Aviv discussion on write-lease semantics and redirection model for Global Namespace @Tomer 📅 2025-10-27 ⏫ #task
+- [ ] Plan Tel Aviv discussion on write-lease semantics and redirection model for Global Namespace @Tomer Hagay 📅 2025-10-27 ⏫ #task
 - [ ] Connect with Rich to map full customer support structure and escalation paths @Myself 📅 2025-10-26 🔽 #task
-- [ ] Share FRD templates/examples for Jason’s review @Tomer 📅 2025-10-27 ⏫ #task
-- [ ] Introduce Jason to Eyal Tritel and Noah Cohen for planning cadence and scoping @Tomer 📅 2025-10-27 ⏫ #task
-- [ ] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer 📅 2025-10-27 ⏫ #task
+- [ ] Share FRD templates/examples for Jason’s review @Tomer Hagay 📅 2025-10-27 ⏫ #task
+- [ ] Introduce Jason to Eyal Tritel and Noah Cohen for planning cadence and scoping @Tomer Hagay 📅 2025-10-27 ⏫ #task
+- [ ] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer Hagay 📅 2025-10-27 ⏫ #task
 - [ ] Send Google Anywhere Cache reference links to Tomer @Myself 📅 2025-10-26 🔽 #task
 
 ## Decisions

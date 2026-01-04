@@ -25,16 +25,16 @@ tags:
 
 ## Open Tasks
 
-- [ ] Send intro email connecting Greg to Google GDC corporate and Federal stakeholders; share the RFP package. @Jason Vallery
-- [ ] Assemble RFP supplements: compliance/attestations (e.g., DISA STIG), encryption/certs, multi-tenancy, quotas, tags integration, troubleshooting and ops model. @Jason Vallery
-- [ ] Draft recommended Dell and HPE hardware SKUs and deployment patterns for GDC air-gapped. @Jason Vallery
-- [ ] Schedule architecture review to decide on Dell/HPE/Cisco vs. commodity VM deployment approach. @Jason Vallery
-- [ ] Lead the customer call and position current capabilities and hybrid roadmap @Jason Vallery 📅 2025-11-14
-- [ ] Notify Alon about the 2 pm PT discussion and share context in case he can join @Jason Vallery 📅 2025-11-14
-- [ ] Coordinate Tel Aviv engineering sessions to define native GCS integration requirements @Jason Vallery
-- [ ] Based on clarified requirements, schedule architecture/whiteboarding session with appropriate SMEs @Jason Vallery
-- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
-- [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Jason Vallery
+- [ ] Send intro email connecting Greg to Google GDC corporate and Federal stakeholders; share the RFP package. @Myself
+- [ ] Assemble RFP supplements: compliance/attestations (e.g., DISA STIG), encryption/certs, multi-tenancy, quotas, tags integration, troubleshooting and ops model. @Myself
+- [ ] Draft recommended Dell and HPE hardware SKUs and deployment patterns for GDC air-gapped. @Myself
+- [ ] Schedule architecture review to decide on Dell/HPE/Cisco vs. commodity VM deployment approach. @Myself
+- [ ] Lead the customer call and position current capabilities and hybrid roadmap @Myself 📅 2025-11-14
+- [ ] Notify Alon about the 2 pm PT discussion and share context in case he can join @Myself 📅 2025-11-14
+- [ ] Coordinate Tel Aviv engineering sessions to define native GCS integration requirements @Myself
+- [ ] Based on clarified requirements, schedule architecture/whiteboarding session with appropriate SMEs @Myself
+- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson Stephenson
+- [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Myself
 
 ## Recent Context
 

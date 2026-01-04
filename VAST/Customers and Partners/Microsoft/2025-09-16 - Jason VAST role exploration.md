@@ -26,13 +26,13 @@ tags:
 Intro call to explore Jason Vallery joining VAST, with Lior outlining potential fits (Azure/hyperscalers GTM, model builders GTM, or CTO Office). Key discussion centered on VAST’s cloud GTM plans on Azure (including Microsoft Lifter) and the major adoption risk of cloud egress/networking costs, with ExpressRoute Direct Local proposed as a mitigation path. They agreed to proceed with a formal interview process and initially lean toward placing Jason on the Azure business/BD lead track with a strong technical counterpart.
 ## Action Items
 - [ ] Initiate official candidate process for Jason and schedule interviews with relevant leaders/founders @HR 📅 2025-10-26 🔺 #task
-- [ ] Set up Jason’s next conversation(s) and define the interview loop @Lior Genzel 📅 2025-10-26 ⏫ #task
-- [ ] Share role descriptions for Azure BD lead and technical counterpart with Jason @Lior Genzel 📅 2025-10-26 ⏫ #task
-- [ ] Engage Microsoft networking to evaluate ExpressRoute Direct Local and define an egress/pricing strategy @Lior Genzel 📅 2025-10-26 🔺 #task
-- [ ] Identify and reach out to the correct Azure Networking commercial lead (e.g., Frank Ray) and align on partner options @Lior Genzel 📅 2025-10-26 🔺 #task
-- [ ] Plan introductions for Jason to Alon and Jay as part of role exploration @Lior Genzel 📅 2025-10-26 ⏫ #task
-- [ ] Confirm preferred role scope (Azure BD lead vs. technical) and share availability for interviews @Jason Vallery 📅 2025-10-26 ⏫ #task
-- [ ] Provide introductions or contact details for Azure Networking (e.g., Frank Ray, Narayan) when appropriate @Jason Vallery 📅 2025-10-26 🔺 #task
+- [ ] Set up Jason’s next conversation(s) and define the interview loop @Lior Genzel Genzel 📅 2025-10-26 ⏫ #task
+- [ ] Share role descriptions for Azure BD lead and technical counterpart with Jason @Lior Genzel Genzel 📅 2025-10-26 ⏫ #task
+- [ ] Engage Microsoft networking to evaluate ExpressRoute Direct Local and define an egress/pricing strategy @Lior Genzel Genzel 📅 2025-10-26 🔺 #task
+- [ ] Identify and reach out to the correct Azure Networking commercial lead (e.g., Frank Ray) and align on partner options @Lior Genzel Genzel 📅 2025-10-26 🔺 #task
+- [ ] Plan introductions for Jason to Alon and Jay as part of role exploration @Lior Genzel Genzel 📅 2025-10-26 ⏫ #task
+- [ ] Confirm preferred role scope (Azure BD lead vs. technical) and share availability for interviews @Myself 📅 2025-10-26 ⏫ #task
+- [ ] Provide introductions or contact details for Azure Networking (e.g., Frank Ray, Narayan) when appropriate @Myself 📅 2025-10-26 🔺 #task
 
 ## Decisions
 - Proceed with interviews for Jason at VAST.

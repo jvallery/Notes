@@ -32,11 +32,11 @@ Jason and Tomer discussed accelerating AI-first software development practices a
 - [ ] Schedule the next 1:1 for next week to continue on cloud plan and process changes @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end @Myself 📅 2025-10-27 🔽 #task
 - [ ] Confirm with leadership (Brendan/Jeff) that Cloud is P0 and clarify resourcing expectations @Myself 📅 2025-10-26 ⏫ #task
-- [ ] Review Google Anywhere Cache documentation and compare policy/prefetch capabilities to VAST Global Namespace @Tomer 📅 2025-10-26 ⏫ #task
-- [ ] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption targets @Tomer 📅 2025-10-27 🔺 #task
+- [ ] Review Google Anywhere Cache documentation and compare policy/prefetch capabilities to VAST Global Namespace @Tomer Hagay 📅 2025-10-26 ⏫ #task
+- [ ] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption targets @Tomer Hagay 📅 2025-10-27 🔺 #task
 - [ ] Clarify VAST’s end-to-end dev lifecycle (gates, signoffs, source control, CI/CD, release) with engineering (Eyal Tritel/Noa Cohen) or documentation @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5 @Tomer 📅 2025-10-27 🔽 #task
-- [ ] Proceed with Slack multi-channel polling capability with IT and report feasibility/timeline @Tomer 📅 2025-10-26 🔽 #task
+- [ ] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5 @Tomer Hagay 📅 2025-10-27 🔽 #task
+- [ ] Proceed with Slack multi-channel polling capability with IT and report feasibility/timeline @Tomer Hagay 📅 2025-10-26 🔽 #task
 
 ## Key Information
 - VAST has approximately 400 developers.

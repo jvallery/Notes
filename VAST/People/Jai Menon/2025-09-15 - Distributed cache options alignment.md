@@ -25,9 +25,9 @@ tags:
 
 Jason Vallery and Jai Menon aligned on how to evaluate distributed caching options (BlobFuse PP/AC Store model, OSS like Alluxio/JuiceFS, and internal options like Manifold/Singularity and OpenAI TensorCache) using scenario-based comparisons (fan-out writes/reads, fan-in reads, and KV cache). They discussed MAI’s current checkpointing approach (local NVMe with async copy to Blob) and the need to build an MAI-oriented narrative backed by benchmarks, while also addressing concerns about BlobFuse readiness, performance (Go/FUSE vs C++/kernel), and metadata strategy (consistent hashing vs high-TPS metadata store). An offsite was confirmed for 2025-10-15 in Silicon Valley with intent to include inferencing/KV cache and DPU/FunOS sessions, and a shared Teams room will centralize collateral and discussions.
 ## Action Items
-- [ ] Create a shared Teams room and add all current distributed caching docs/links; share access with stakeholders (Jason, Jean, Jagan, etc.). @Jai Menon 📅 2025-10-26 🔺 #task
-- [ ] Coordinate with Vipul to schedule a Manifold (Singularity) team briefing and Q&A session. @Jai Menon 📅 2025-10-26 🔺 #task
-- [ ] Share Manifold slides/docs and the Manifold vs TensorCache comparison link in the Teams room. @Jai Menon 📅 2025-10-26 ⏫ #task
+- [ ] Create a shared Teams room and add all current distributed caching docs/links; share access with stakeholders (Jason, Jean, Jagan, etc.). @Jai Menon Menon 📅 2025-10-26 🔺 #task
+- [ ] Coordinate with Vipul to schedule a Manifold (Singularity) team briefing and Q&A session. @Jai Menon Menon 📅 2025-10-26 🔺 #task
+- [ ] Share Manifold slides/docs and the Manifold vs TensorCache comparison link in the Teams room. @Jai Menon Menon 📅 2025-10-26 ⏫ #task
 - [ ] Obtain BlobFuse PP bits and deployment guide from Vishnu; stand up tests (including fan-out writes) and collect performance at target scale. @Myself 📅 2025-10-26 🔺 #task
 - [ ] Evaluate OpenAI TensorCache and compare with Manifold and BlobFuse on functionality, performance, and stability. @Myself 📅 2025-10-26 🔺 #task
 - [ ] Restructure the evaluation document by scenarios (fan-out writes, fan-out reads, fan-in reads, KV cache) and map candidate solutions to each. @Myself 📅 2025-10-26 ⏫ #task
@@ -35,16 +35,16 @@ Jason Vallery and Jai Menon aligned on how to evaluate distributed caching optio
 - [ ] Set up a requirements call with MAI (with Pete/partners) to validate needs and adoption criteria. @Myself 📅 2025-10-27 🔺 #task
 - [ ] Analyze metadata strategy trade-offs (consistent hashing vs high-TPS metadata store) and implications for scale-in/out. @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Assess BlobFuse implementation choices (Go/FUSE) vs potential C++/kernel client for performance and time-to-market trade-offs. @Myself 📅 2025-10-26 ⏫ #task
-- [ ] Reach out to Rajat Monga to invite an inferencing/KV cache session at the offsite. @Jai Menon 📅 2025-10-26 ⏫ #task
+- [ ] Reach out to Rajat Monga to invite an inferencing/KV cache session at the offsite. @Jai Menon Menon 📅 2025-10-26 ⏫ #task
 - [ ] Book travel for the Silicon Valley offsite on 2025-10-15. @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Share BlobFuse PP bits and guide with the inferencing team once available and collect feedback. @Myself 📅 2025-10-26 ⏫ #task
-- [ ] Draft the offsite agenda (including DPU/FunOS and inferencing sessions) and circulate. @Jai Menon 📅 2025-10-26 ⏫ #task
+- [ ] Draft the offsite agenda (including DPU/FunOS and inferencing sessions) and circulate. @Jai Menon Menon 📅 2025-10-26 ⏫ #task
 - [ ] Confirm BlobFuse PP availability and 100-node test results with Vishnu; capture metrics and any bottlenecks. @Myself 📅 2025-10-26 🔺 #task
 - [ ] Verify Manifold’s approach to scale-in/out with consistent hashing and any rebalancing strategy. @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Determine stability and roadmap status of OpenAI TensorCache relevant to near-term evaluations. @Myself 📅 2025-10-26 ⏫ #task
 - [ ] Clarify Alluxio IP/China concerns and runtime stack implications for enterprise adoption. @Myself 📅 2025-10-26 🔽 #task
-- [ ] Confirm attendance/logistics for the Girish storage discussion and adjust travel if needed. @Jai Menon 📅 2025-10-26 🔽 #task
-- [ ] Align on long-term hardware offload/kernel-mode driver vision vs interim user-space path. @Jai Menon 📅 2025-10-26 ⏫ #task
+- [ ] Confirm attendance/logistics for the Girish storage discussion and adjust travel if needed. @Jai Menon Menon 📅 2025-10-26 🔽 #task
+- [ ] Align on long-term hardware offload/kernel-mode driver vision vs interim user-space path. @Jai Menon Menon 📅 2025-10-26 ⏫ #task
 
 ## Decisions
 - Hold team offsite in Silicon Valley on 2025-10-15 (day and a half).

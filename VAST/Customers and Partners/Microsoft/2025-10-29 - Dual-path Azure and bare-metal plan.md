@@ -47,8 +47,8 @@ Team aligned on a parallel approach for UK Met: deliver an 8-node Azure LSV4 VAS
 - [ ] Verify if Ignite announcements include east-west VM-to-VM RDMA for LSV4 and capture preview/GA dates. @Nico 📅 2025-11-18 #task
 - [ ] Discuss with Anand who will purchase/own the bare-metal POC system; target an answer around Supercomputing. @Mike 📅 2025-11-20 ⏫ #task
 - [ ] Define a non-marketplace procurement path for VAST software for internal Microsoft subscriptions. @Microsoft Procurement ⏫ #task
-- [ ] Coordinate with Ed Kim on OEM sourcing and transacting route; align OEM shortlist. @Jason Vallery #task
-- [ ] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stephenson #task
+- [ ] Coordinate with Ed Kim on OEM sourcing and transacting route; align OEM shortlist. @Myself #task
+- [ ] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stephenson Stephenson #task
 - [ ] Set up a separate engineering track for OEM/bare-metal automation (hardware/switch APIs). @James #task
 - [ ] Ping Sarah to confirm mid-November commitment on EGAL platform update. @Tiff 📅 2025-11-15 ⏫ #task
 

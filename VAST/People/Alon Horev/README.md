@@ -23,7 +23,7 @@ tags:
 ## Open Tasks
 
 - [ ] Schedule and conduct 1:1 with Muninder Sambi to review AI approach, VM shapes, RDMA, and hardware tradeoffs. @Alon Horev
-- [ ] Notify Alon about the 2 pm PT discussion and share context in case he can join @Jason Vallery 📅 2025-11-14
+- [ ] Notify Alon about the 2 pm PT discussion and share context in case he can join @Myself 📅 2025-11-14
 
 ## Recent Context
 

@@ -31,12 +31,12 @@ Team aligned on presenting Microsoft MAI two exabyte-scale storage options: an N
 - [ ] Design capacity-optimized Maverick 5400 exabyte option and rack layout; include C:D ratio variants (e.g., 420:210 and 105:210). @Paul 📅 2025-10-30 ⏫ #task
 - [ ] Model read/write performance and power for the Maverick option at chosen C:D ratios and validate backend media limits. @Ray 📅 2025-10-30 🔺 #task
 - [ ] Add bullets on Kubernetes (CSI/COSI), file+object support, single-pane monitoring/logging, and offline auth/DNS resiliency to the deck. @Paul 📅 2025-10-30 🔺 #task
-- [ ] Create a one-slide/Excel view adding Azure Blob comparison columns for the 1 EB reference. @Jason Vallery 📅 2025-10-31 🔺 #task
+- [ ] Create a one-slide/Excel view adding Azure Blob comparison columns for the 1 EB reference. @Myself 📅 2025-10-31 🔺 #task
 - [ ] Join MAI call to present the architecture and answer technical questions. @Paul 📅 2025-10-31 🔺 #task
 - [ ] Join MAI call to present performance/power modeling and NCP alignment. @Ray 📅 2025-10-31 🔺 #task
-- [ ] Confirm MAI checkpointing method and sustained write throughput targets during 1:1. @Jason Vallery 📅 2025-10-31 ⏫ #task
-- [ ] Validate distribution of 160k GPUs across sites/pods and max non-blocking cluster size with MAI. @Jason Vallery 📅 2025-10-31 ⏫ #task
-- [ ] Clarify MAI data movement standard (azcopy vs PutBlobFromURL pipelines vs Sync Engine) and implications for design. @Jason Vallery 📅 2025-11-05 ⏫ #task
+- [ ] Confirm MAI checkpointing method and sustained write throughput targets during 1:1. @Myself 📅 2025-10-31 ⏫ #task
+- [ ] Validate distribution of 160k GPUs across sites/pods and max non-blocking cluster size with MAI. @Myself 📅 2025-10-31 ⏫ #task
+- [ ] Clarify MAI data movement standard (azcopy vs PutBlobFromURL pipelines vs Sync Engine) and implications for design. @Myself 📅 2025-11-05 ⏫ #task
 - [ ] Confirm NVIDIA acceptance/certification posture for Maverick-based capacity-optimized design. @Ray 📅 2025-11-05 ⏫ #task
 
 ## Decisions

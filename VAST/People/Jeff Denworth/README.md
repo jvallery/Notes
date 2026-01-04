@@ -27,8 +27,8 @@ tags:
 - [ ] Clarify expected latency/performance targets for object-tier range-read rehydration approach before committing implementation
 - [ ] Create a real near-term roadmap and define 'attack vectors' for Microsoft sell-to/sell-through expansion aligned to revenue plan
 - [ ] Prepare SCO session content for 'Building an AI cloud with VAST' (NeoCloud-in-a-box narrative, multi-tenancy, control plane direction, mapping VAST portfolio to AI cloud services)
-- [ ] Jeff to have a conversation with Aaron about being over-rotated on building pipelines @Jeff Denworth
-- [ ] Jeff to text Idsoc regarding block storage and getting to critical mass of business @Jeff Denworth
+- [ ] Jeff to have a conversation with Aaron about being over-rotated on building pipelines @Jeff Denworth Denworth
+- [ ] Jeff to text Idsoc regarding block storage and getting to critical mass of business @Jeff Denworth Denworth
 - [ ] Secure Jeff approval for proposed scope/ownership and the Rhythm of Business (ROB) cadence (WBR, RFE triage, design review, release readiness, decision council, MBR, PI/OKR planning).
 - [ ] Get decision from Jeff on naming the single-threaded product owner for MAI/Apollo (proposed: Myself).
 - [ ] Obtain green-light for headcount/budget: 1–2 Principal PMs (Cloud Platform; Azure/Microsoft), 1 TPM (release/readiness), 1 Product Ops lead, 1 Tech Writer, 1 Sales/SE Enablement PM.

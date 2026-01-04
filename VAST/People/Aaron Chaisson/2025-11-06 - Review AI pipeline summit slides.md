@@ -31,7 +31,7 @@ Aaron reviewed updated AI pipeline slides for next week’s VAST SE Tech Summit,
 - [ ] Depict Kafka as an event-stream ingestion head and RL feedback path; remove Kafka from the core storage lane in the diagrams @Aaron Chaisson 📅 2025-11-08 ⏫ #task
 - [ ] Add Database to data preparation and logging/archives in the diagrams; note optional role around KV cache metadata @Aaron Chaisson 📅 2025-11-08 ⏫ #task
 - [ ] Consult SE leadership on whether/how to include Data Engine and function triggers in the SE conference deck @Aaron Chaisson 📅 2025-11-08 ⏫ #task
-- [ ] Share Ray workflow diagrams/links in the Product Marketing drive and notify Aaron @Jason Vallery 📅 2025-11-08 ⏫ #task
+- [ ] Share Ray workflow diagrams/links in the Product Marketing drive and notify Aaron @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Present the updated deck at next week’s SE conference @Aaron Chaisson 📅 2025-11-08 ⏫ #task
 - [ ] Confirm final decision on Data Engine inclusion after SE leadership review @Aaron Chaisson 📅 2025-11-08 ⏫ #task
 - [ ] Validate with Glenn that KV cache representation (current NFS, future GPU-direct-to-object) matches engineering reality @Aaron Chaisson 📅 2025-11-08 ⏫ #task

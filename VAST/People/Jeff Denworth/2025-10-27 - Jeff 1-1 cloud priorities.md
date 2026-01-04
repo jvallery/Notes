@@ -27,7 +27,7 @@ Jason and Jeff aligned on near-term priorities: synthesize a unified cloud pipel
 ## Action Items
 - [ ] Draft a pricing/consumption model write-up and share with Jeff and Yancey for discussion. @Myself ⏫ #task
 - [ ] Schedule a cloud alignment working session (whiteboard day) with Jeff and Yancey. @Myself ⏫ #task
-- [ ] Move designated team members under Jason’s scope and communicate the changes. @Jeff Denworth ⏫ #task
+- [ ] Move designated team members under Jason’s scope and communicate the changes. @Jeff Denworth Denworth ⏫ #task
 - [ ] Connect with Mordechai Blaunstein (Morty) and align on second-tier cloud coverage. @Myself ⏫ #task
 - [ ] Set up a regular 1:1 with Shahar and define cadence. @Myself ⏫ #task
 - [ ] Reach out to Shahar to plan the Tel Aviv agenda and sub-meetings. @Myself ⏫ #task

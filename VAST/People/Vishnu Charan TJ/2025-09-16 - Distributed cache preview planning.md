@@ -32,7 +32,7 @@ Reviewed status of the distributed cache for checkpointing: implementation is co
 ## Action Items
 - [ ] Run 100–200 node scale tests for distributed cache and record performance/resilience results @Akanksha 📅 2025-10-26 🔺 #task
 - [ ] Capture network throughput reduction to Blob with and without cache during scale tests @Akanksha 📅 2025-10-26 🔺 #task
-- [ ] Measure TPS per node to metadata/blob and extrapolate scalability to 10k–100k nodes @Tomer 📅 2025-10-26 🔺 #task
+- [ ] Measure TPS per node to metadata/blob and extrapolate scalability to 10k–100k nodes @Tomer Hagay 📅 2025-10-26 🔺 #task
 - [ ] Finalize AKS Linux mount integration steps and prepare demo @Amit 📅 2025-10-26 ⏫ #task
 - [ ] Hand off AKS setup and build to Vishnu for validation @Amit 📅 2025-10-26 ⏫ #task
 - [ ] Prepare private preview plan (customers, docs, enablement) and align stakeholders @Vishnu 📅 2025-10-26 🔺 #task
@@ -47,7 +47,7 @@ Reviewed status of the distributed cache for checkpointing: implementation is co
 - [ ] Confirm Figure AI preview timing and environment details (VMSS vs AKS) and next steps @Vishnu 📅 2025-10-26 🔺 #task
 - [ ] Share AKS Linux mount setup instructions with stakeholders for trial @Amit 📅 2025-10-26 ⏫ #task
 - [ ] Align on measurement methodology and tooling for throughput and TPS metrics @Akanksha 📅 2025-10-26 🔺 #task
-- [ ] Re-engage MAI after metrics and scalability narrative are ready @Jason Vallery 📅 2025-10-26 ⏫ #task
+- [ ] Re-engage MAI after metrics and scalability narrative are ready @Myself 📅 2025-10-26 ⏫ #task
 
 ## Decisions
 - Proceed toward a private preview by end of September with Figure AI; defer MAI until metrics and a scale narrative are ready.

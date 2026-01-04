@@ -24,20 +24,20 @@ tags:
 
 Jason Vallery and Kanchan Mehrotra aligned on using MAI and the UK Met Office as marquee wins to create executive pull for a VAST-suitable Azure hardware shape, given LSV4’s poor fit and LSV5’s long timeline. They agreed to run a dual track: progress an Azure Marketplace offer while simultaneously pushing leadership for better VM/storage shapes and networking to meet economics. Supercomputing/Ignite coordination and internal advocacy (notably Nidhi) were highlighted as key levers to advance the plan.
 ## Action Items
-- [ ] Meet Kushal (MAI) Friday to discuss VAST opportunities and clarify the "not really Azure" capacity hint. @Jason 📅 2025-11-08 🔺 #task
-- [ ] Reconnect with Vipin Sachdeva (MAI) to re-engage VAST. @Jason 📅 2025-11-08 ⏫ #task
+- [ ] Meet Kushal (MAI) Friday to discuss VAST opportunities and clarify the "not really Azure" capacity hint. @Myself 📅 2025-11-08 🔺 #task
+- [ ] Reconnect with Vipin Sachdeva (MAI) to re-engage VAST. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Build internal comparative deck for a 1 EB deployment (VAST on LSV4/LSV5/on-prem vs Blob HDD/Flash) to support the hardware shape ask. @Myself 📅 2025-11-08 🔺 #task
 - [ ] Coordinate a review with Nidhi to walk through the deck and align on the MAI + UK Met Office plan. @Koncha 📅 2025-11-08 ⏫ #task
-- [ ] Meet UK Met Office stakeholders (Mike Kiernan, Nico, Allen) at Supercomputing to push the VAST path and surface LSV5 networking needs. @Jason 📅 2025-11-08 ⏫ #task
-- [ ] Speak with Egal to push on LSV5 shape and networking/bandwidth requirements and align timelines. @Jason 📅 2025-11-08 ⏫ #task
+- [ ] Meet UK Met Office stakeholders (Mike Kiernan, Nico, Allen) at Supercomputing to push the VAST path and surface LSV5 networking needs. @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Speak with Egal to push on LSV5 shape and networking/bandwidth requirements and align timelines. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Align the joint VAST–Azure story for Supercomputing/Ignite (booths/panel) with Andrew, Joe Green, and Lior. @Koncha 📅 2025-11-08 ⏫ #task
 - [ ] Check if Suresh will attend Supercomputing; if yes, set up a Neo cloud storage discussion with Jason; if not, schedule later. @Koncha 📅 2025-11-08 #task
-- [ ] Provide input/content for Egal’s keynote slide referencing VAST. @Jason 📅 2025-11-08 #task
+- [ ] Provide input/content for Egal’s keynote slide referencing VAST. @Myself 📅 2025-11-08 #task
 - [ ] Progress the Azure Marketplace offer (initial LSV4-based) and track ETA; be ready to brief sellers once credible. @VAST PM team 📅 2025-11-08 ⏫ #task
-- [ ] Clarify MAI’s incremental opportunity and capacity location after the Friday meeting. @Jason 📅 2025-11-08 ⏫ #task
+- [ ] Clarify MAI’s incremental opportunity and capacity location after the Friday meeting. @Myself 📅 2025-11-08 ⏫ #task
 - [ ] Validate GPU-adjacent storage ratio guidance for Neo clouds with Suresh/Anand and explore Microsoft usage models (lease vs 1P vs Azure-sold). @Koncha 📅 2025-11-08 #task
-- [ ] Keep Kurt informed so sellers remember VAST when qualifying 3P GPU deals. @Jason 📅 2025-11-08 🔽 #task
-- [ ] Track Wave’s 40 PB request and assess a viable Azure configuration or alternatives; report back. @Jason 📅 2025-11-08 #task
+- [ ] Keep Kurt informed so sellers remember VAST when qualifying 3P GPU deals. @Myself 📅 2025-11-08 🔽 #task
+- [ ] Track Wave’s 40 PB request and assess a viable Azure configuration or alternatives; report back. @Myself 📅 2025-11-08 #task
 - [ ] Confirm Nidhi’s Ignite/Supercomputing schedule and lock a time to review the deck. @Koncha 📅 2025-11-08 #task
 
 ## Decisions
