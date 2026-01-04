@@ -2,7 +2,7 @@
 type: people
 title: "Jack Kabat"
 created: "2026-01-03"
-last_contact: unknown
+last_contact: "2025-09-18"
 auto_created: true
 tags:
   - type/people

@@ -2,7 +2,7 @@
 type: people
 title: Rory Carmichael
 created: '2026-01-03'
-last_contact: unknown
+last_contact: "2025-10-22"
 auto_created: true
 tags:
 - type/people
