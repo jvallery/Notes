@@ -374,6 +374,7 @@ RUN PERIODICALLY:
 **Status: ✅ COMPLETED** (2026-01-04)
 
 **Completion Notes:**
+
 - `entity_paths` now preserves multiple folders per name (VAST + Personal) instead of overwriting.
 - Planner prompt includes `mentioned_entities` plus explicit disambiguation guidance.
 
