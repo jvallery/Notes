@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Personal/Projects/Home Infra/03_compute-storage/storage-local.md",
+                "file": "VAST/People/Tomer Hagay/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "storage-local"
+              "title": "README"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 238.5
+    "width": 400.5
   },
   "right": {
     "id": "7096985b6aa08152",
@@ -154,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Personal/Projects/Home Infra/03_compute-storage/storage-local.md",
+                "file": "VAST/People/Tomer Hagay/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of storage-local"
+              "title": "Outline of README"
             }
           }
         ],
@@ -183,44 +183,44 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "af216fe4a7d76c13",
+  "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
-    "VAST/Projects/VAST on Azure Integration/README.md",
-    "VAST/Projects/OVA/README.md",
-    "VAST/Projects/Cloud/README.md",
-    "VAST/Projects/AI Pipelines Collateral/README.md",
-    "VAST/People/Tomer Hagay/README.md",
-    "VAST/People/Timo Pervane/README.md",
-    "VAST/People/Shachar Feinblit/README.md",
-    "VAST/People/Noa Cohen/README.md",
-    "VAST/People/Liraz Ben Or/README.md",
-    "VAST/People/Lior Genzel/README.md",
-    "VAST/People/Kushal Datta/README.md",
-    "VAST/People/Karl Vietmeier/README.md",
-    "VAST/People/Josh Wentzell/README.md",
-    "VAST/People/Jeff Denworth/README.md",
-    "VAST/People/Jai Menon/README.md",
-    "VAST/People/Eyal Traitel/README.md",
-    "VAST/People/Erez Zilber/README.md",
-    "VAST/People/Deandre Jackson/README.md",
-    "VAST/People/Asaf Levy/README.md",
-    "VAST/People/Andy Perlsteiner/README.md",
-    "VAST/People/Alon Horev/README.md",
-    "VAST/Customers and Partners/Walmart/README.md",
-    "VAST/Customers and Partners/Silk/README.md",
-    "VAST/Customers and Partners/OpenAI/README.md",
-    "VAST/Customers and Partners/Microsoft/README.md",
-    "VAST/Customers and Partners/Google/README.md",
-    "Inbox/_extraction/backfill-plan-20260103_174753.json",
-    "Inbox/_extraction/backfill-extractions-20260103_174753.json",
-    "Inbox/_extraction/backfill-manifest-20260103_174753.json",
-    "Inbox/_extraction/backfill-extractions-20260103_174724.json",
-    "Inbox/_extraction/backfill-manifest-20260103_174724.json",
-    "Inbox/_extraction/backfill-manifest.json",
-    "Workflow/scripts/backfill/__pycache__/extractor.cpython-313.pyc",
-    "Workflow/scripts/backfill/__pycache__/applier.cpython-313.pyc",
-    "Workflow/scripts/backfill/__pycache__/aggregator.cpython-313.pyc",
-    "Workflow/scripts/backfill/__pycache__/scanner.cpython-313.pyc",
+    "Inbox/_extraction/backfill-plan-20260103_195859.json",
+    "VAST/Projects/Microsoft ROI Data Usage Validation/README.md",
+    "VAST/Projects/Microsoft ROI Data Usage Validation",
+    "VAST/Projects/EB Power Savings to GPUs One-Pager/README.md",
+    "VAST/Projects/EB Power Savings to GPUs One-Pager",
+    "VAST/Projects/Microsoft Azure Engagement Plan/README.md",
+    "VAST/Projects/Microsoft Azure Engagement Plan",
+    "VAST/Projects/Azure GA Milestones Alignment (Lifter program)/README.md",
+    "VAST/Projects/Azure GA Milestones Alignment (Lifter program)",
+    "VAST/Projects/Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM/Azure Storage)/README.md",
+    "VAST/Projects/Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM/Azure Storage)",
+    "VAST/Projects/Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM",
+    "VAST/Projects/Microsoft Comparison Slide (LSv4/LSv5",
+    "VAST/Projects/Microsoft Comparison Slide (LSv4",
+    "VAST/Projects/Microsoft BizDev Education & Intros to Ronnie/README.md",
+    "VAST/Projects/Microsoft BizDev Education & Intros to Ronnie",
+    "VAST/Projects/Marketplace L-series Offer Complement (SKUs/OEM path)/README.md",
+    "VAST/Projects/Marketplace L-series Offer Complement (SKUs/OEM path)",
+    "VAST/People/Jason Ainsworth/README.md",
+    "VAST/Customers and Partners/Anthropic/README.md",
+    "VAST/Customers and Partners/NetApp/README.md",
+    "VAST/Customers and Partners/Leidos/README.md",
+    "VAST/Customers and Partners/McDonald's/README.md",
+    "VAST/Customers and Partners/Cisco/README.md",
+    "VAST/Customers and Partners/Dell/README.md",
+    "VAST/Customers and Partners/HPE/README.md",
+    "VAST/People/Great Gralic/README.md",
+    "VAST/People/Mordechai Blaunstein/README.md",
+    "VAST/People/Jason Valeri/README.md",
+    "VAST/People/Seth Haynes/README.md",
+    "VAST/People/Jason Vallery/README.md",
+    "VAST/People/Olivia Bouree/README.md",
+    "VAST/People/Ronnie Lazar/README.md",
+    "VAST/People/Jeremiah Hinrichs/README.md",
+    "VAST/People/John Downey/README.md",
+    "VAST/People/Jan Niemus/README.md",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",

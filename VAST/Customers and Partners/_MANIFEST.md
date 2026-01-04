@@ -13,6 +13,13 @@
 | OpenAI | customer |  | active |  |
 | Silk | customer |  | active |  |
 | Walmart | customer |  | active |  |
+| HPE | Partner |  | active | Discovered in notes |
+| Dell | Partner |  | active | Discovered in notes |
+| Cisco | Partner |  | active | Discovered in notes |
+| McDonald's | Active |  | active | Discovered in notes |
+| Leidos | Partner |  | active | Discovered in notes |
+| NetApp | Partner |  | active | Discovered in notes |
+| Anthropic | Partner |  | active | Discovered in notes |
 
 ## Aliases
 
