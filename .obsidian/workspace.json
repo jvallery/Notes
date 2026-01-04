@@ -185,6 +185,7 @@
   },
   "active": "af216fe4a7d76c13",
   "lastOpenFiles": [
+    "Workflow/scripts/migrate_old_readmes.py",
     "VAST/People/Jonsi Stephenson/2025-10-31 - Aligning on VAST cloud strategy.md",
     "VAST/People/Tomer Hagay/2025-10-24 - Engineering maturity and cloud strategy.md",
     "VAST/People/Tomer Hagay/2025-10-24 - AI-first dev and cloud maturity.md",
@@ -220,7 +221,6 @@
     "Inbox/_archive/2026-01-04/2025-12-15 14 59 - Jason Lior Weekly Call_123751.md",
     "VAST/Customers and Partners/Microsoft/2025-12-15 - Microsoft MAI strategy and next steps.md",
     "VAST/People/Shachar Feinblit/2025-10-28 - Weekly 1-1 and Tel Aviv plan.md",
-    "VAST/People/Shachar Feinblit/2025-10-01 - Shachar org roles and actions.md",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",
