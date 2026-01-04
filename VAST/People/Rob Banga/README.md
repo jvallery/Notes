@@ -66,10 +66,10 @@ SORT due ASC
 
 - 2025-10-30: Cloud support operating model alignment across CS/Support/SRE; hyperscaler priority (GCP→Azure→AWS); marketplace phased rollout; readiness target 2026-02-01. [[2025-10-30 - Cloud support operating model alignment]]
 
-- 2025-10-30: [[2025-10-30 - Maturing VAST SaaS support model]] (via VAST)
+- 2025-10-30: 2025-10-30 - Maturing VAST SaaS support model (via VAST)
 
 - 2025-10-30: [[2025-10-30 - Cloud support roles and readiness]] (via Microsoft)
 
 - 2025-10-31: [[2025-10-31 - VAST cloud strategy and enablement]] (via Rob Benoit)
 
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy (via Jeff Denworth)

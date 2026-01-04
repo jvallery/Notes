@@ -34,13 +34,13 @@ SORT due ASC
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
 
-- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+- 2025-10-27: 2025-10-27 - Jeff 1:1 cloud priorities (via Jeff Denworth)
 
-- 2025-10-28: [[2025-10-28 - Weekly 1:1 and Tel Aviv plan]] (via Shachar Feinblit)
+- 2025-10-28: 2025-10-28 - Weekly 1:1 and Tel Aviv plan (via Shachar Feinblit)
 
 - 2025-10-28: [[2025-10-28 - GCP RDMA IP failover options]] (via Google)
 
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy (via Jeff Denworth)
 
 - 2025-12-19: [[2025-12-19 - Microsoft strategy and SCO prep]] (via Microsoft)
 

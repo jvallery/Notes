@@ -36,7 +36,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+- 2025-10-27: 2025-10-27 - Jeff 1:1 cloud priorities (via Jeff Denworth)
 
 - 2025-10-01: [[2025-10-01 - Microsoft Azure engagement tasks]] (via Microsoft)
 ## Key Facts

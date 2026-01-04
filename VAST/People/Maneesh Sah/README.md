@@ -19,8 +19,8 @@ tags:
 
 - 2025-09-30: [[2025-09-30 - Retention discussion and Apollo scope]] (via Jai Menon)
 - 2025-09-16: [[2025-09-16 - VAST Azure GTM hiring]] (via VAST)
-- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
-- 2025-09-03: [[2025-09-03 - Align on OpenAI cache evaluation]] (via Jai Menon)
+- 2025-09-15: 2025-09-15 - Distributed cache strategy alignment (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Align on OpenAI cache evaluation (via Jai Menon)
 
 ## Open Tasks
 

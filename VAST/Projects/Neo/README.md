@@ -44,7 +44,7 @@ SORT due ASC
 
 - 2025-10-28: [[2025-10-28 - Align on MAI and UK Met]] (via Kanchan Mehrotra)
 
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy (via Jeff Denworth)
 
 - 2025-10-01: [[2025-10-01 - Neo-cloud partnership pipeline updates]] (via Kurt Niebuhr)
 ## Key Facts

@@ -28,9 +28,9 @@ _Project description and goals..._
 
 - 2025-10-27: [[2025-10-27 - UK Met dual-track Azure plan]] (via Microsoft)
 
-- 2025-10-28: [[2025-10-28 - Weekly 1:1 and Tel Aviv plan]] (via Shachar Feinblit)
+- 2025-10-28: 2025-10-28 - Weekly 1:1 and Tel Aviv plan (via Shachar Feinblit)
 
-- 2025-10-29: [[2025-10-29 - Intro 1:1 on release process]] (via Liraz Ben Or)
+- 2025-10-29: 2025-10-29 - Intro 1:1 on release process (via Liraz Ben Or)
 
 - 2025-10-29: [[2025-10-29 - PM-led cloud model alignment]] (via Tomer Hagay)
 

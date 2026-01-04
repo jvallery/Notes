@@ -33,7 +33,7 @@ not done
 
 - 2025-10-29: Release process walkthrough and phase-gate model; aligned on sharing 5.4/5.5 materials and follow-up.
 
-- 2025-10-29: [[2025-10-29 - Intro 1:1 on release process]]
+- 2025-10-29: 2025-10-29 - Intro 1:1 on release process
 ## Key Facts
 
 ## Topics

@@ -22,13 +22,13 @@ _Project description and goals..._
 
 - 2025-09-03: [[2025-09-03 - MAI caching strategy evaluation]] (via Microsoft)
 
-- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Evaluate OpenAI cache for MAI (via Jai Menon)
 
 - 2025-09-15: [[2025-09-15 - Distributed cache options alignment]] (via Jai Menon)
 
 - 2025-09-15: [[Distributed cache evaluation alignment]] (via Jai Menon)
 
-- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
+- 2025-09-15: 2025-09-15 - Distributed cache strategy alignment (via Jai Menon)
 ## Tasks
 
 ```dataview

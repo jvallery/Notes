@@ -31,7 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-31: [[2025-10-31 - Intro 1:1 on VAST on Cloud]] (via Josh Wentzell)
+- 2025-10-31: 2025-10-31 - Intro 1:1 on VAST on Cloud (via Josh Wentzell)
 ## Key Facts
 
 ## Background

@@ -185,6 +185,7 @@
   },
   "active": "af216fe4a7d76c13",
   "lastOpenFiles": [
+    "Workflow/scripts/fix_broken_wikilinks.py",
     "VAST/Projects/Cisco POC DoD-IC/README.md",
     "VAST/Projects/Cisco POC DoD-IC",
     "VAST/Projects/Marketplace L-series SKU/README.md",
@@ -220,7 +221,6 @@
     "VAST/People/Roy Sterman/2025-11-03 - 5.5 plan timeline review.md",
     "VAST/People/Nidhi/2025-10-01 - SC25 small-group meeting planning.md",
     "Personal/Projects/LPM/2025-10-27 - LPM board AI discussion.md",
-    "VAST/People/John Mao/2025-11-03 - Cloud clusters to SFDC mapping.md",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",

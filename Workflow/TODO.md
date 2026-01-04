@@ -494,8 +494,8 @@ Added wikilink-based deduplication to `append_under_heading` primitive in `scrip
 
 ```
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]]
-- 2025-11-07: [[2025-11-07 - Org map and cloud focus]]     ← Similar note, should merge?
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]]  ← Third variant
+- 2025-11-07: 2025-11-07 - Org map and cloud focus     ← Similar note, should merge?
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy  ← Third variant
 ```
 
 **Tasks**
@@ -2049,13 +2049,13 @@ These may have placeholder content or inaccurate dates.
 7 unique wikilinks use `1:1` but files are named with `1-1`:
 
 ```
-[[2025-10-27 - Jeff 1:1 cloud priorities]] → file is "Jeff 1-1 cloud priorities.md"
-[[2025-10-28 - Intro 1:1 on pricing]]
-[[2025-10-28 - Weekly 1:1 and Tel Aviv plan]]
-[[2025-10-29 - Intro 1:1 on CS ops]]
-[[2025-10-29 - Intro 1:1 on release process]]
-[[2025-10-30 - Intro 1:1 on cloud enablement]]
-[[2025-10-31 - Intro 1:1 on VAST on Cloud]]
+2025-10-27 - Jeff 1:1 cloud priorities → file is "Jeff 1-1 cloud priorities.md"
+2025-10-28 - Intro 1:1 on pricing
+2025-10-28 - Weekly 1:1 and Tel Aviv plan
+2025-10-29 - Intro 1:1 on CS ops
+2025-10-29 - Intro 1:1 on release process
+2025-10-30 - Intro 1:1 on cloud enablement
+2025-10-31 - Intro 1:1 on VAST on Cloud
 ```
 
 **Root Cause:** LLM generated links with colons, but file sanitization converts `:` to `-`
@@ -2462,7 +2462,7 @@ Most are intentionally unstructured, but should be documented.
 | 76     | Persist run artifacts            | HIGH     | 60 min     | 🔴 HIGH            |
 | ~~28~~     | ~~Duplicate notes~~                  | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
 | ~~43~~     | ~~20 duplicate meeting notes~~       | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
-| 34     | Nested folder paths              | HIGH     | 30 min     | 🔴 HIGH            |
+| ~~34~~     | ~~Nested folder paths~~              | ~~HIGH~~     | ~~30 min~~     | ✅ FIXED            |
 | 63     | 792 overdue tasks                | HIGH     | 2 hrs      | 🔴 HIGH            |
 | 87     | 39 hallucinated note links       | HIGH     | 30 min     | 🔴 HIGH            |
 | 88     | VAST internal as customer        | MED      | 15 min     | 🟡 MEDIUM          |

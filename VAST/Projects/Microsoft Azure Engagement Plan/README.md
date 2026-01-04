@@ -38,7 +38,7 @@ SORT due ASC
 
 - 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
-- 2025-11-07: [[2025-11-07 - Org map and cloud focus]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org map and cloud focus (via Jeff Denworth)
 
 - 2025-09-16: [[2025-09-16 - Jason VAST role exploration]] (via Microsoft)
 

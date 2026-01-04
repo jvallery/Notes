@@ -34,7 +34,7 @@ SORT due ASC
 
 - 2025-10-28: [[2025-10-28 - MAI Falcon and Apollo path]] (via Microsoft)
 
-- 2025-10-29: [[2025-10-29 - VAST on Cloud GTM alignment]] (via Lior Genzel)
+- 2025-10-29: 2025-10-29 - VAST on Cloud GTM alignment (via Lior Genzel)
 
 - 2025-10-29: [[2025-10-29 - VAST on Cloud alignment]] (via Lior Genzel)
 ## Key Facts

@@ -40,7 +40,7 @@ SORT due ASC
 
 - 2025-10-06: [[2025-10-06 - Jason weighing VAST vs Crusoe]] (via Microsoft)
 
-- 2025-09-03: [[2025-09-03 - Align on OpenAI cache evaluation]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Align on OpenAI cache evaluation (via Jai Menon)
 
 - 2025-09-16: [[2025-09-16 - Distributed cache preview planning]] (via Vishnu Charan TJ)
 

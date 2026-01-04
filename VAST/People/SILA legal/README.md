@@ -30,9 +30,9 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Evaluate OpenAI cache for MAI (via Jai Menon)
 
-- 2025-09-03: [[2025-09-03 - Align on OpenAI cache evaluation]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Align on OpenAI cache evaluation (via Jai Menon)
 ## Key Facts
 
 ## Background

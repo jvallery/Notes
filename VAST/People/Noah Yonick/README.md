@@ -31,7 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-29: [[2025-10-29 - Intro 1:1 on release process]] (via Liraz Ben Or)
+- 2025-10-29: 2025-10-29 - Intro 1:1 on release process (via Liraz Ben Or)
 ## Key Facts
 
 ## Background

@@ -78,7 +78,7 @@ tags:
 
 - 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)
 
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy (via Jeff Denworth)
 
 - 2025-11-07: [[2025-11-07 - EY design partner SI strategy]] (via EY)
 

@@ -31,7 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-29: [[2025-10-29 - VAST on Cloud GTM alignment]] (via Lior Genzel)
+- 2025-10-29: 2025-10-29 - VAST on Cloud GTM alignment (via Lior Genzel)
 ## Key Facts
 
 ## Background

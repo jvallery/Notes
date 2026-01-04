@@ -42,15 +42,15 @@ tags:
 
 - 2025-11-07: Discussed org map, cross-cloud strategy, and “cloud in a box” motion. [[2025-11-07 - Org map and cloud strategy]]
 
-- 2025-11-07: [[2025-11-07 - Org map and cloud focus]]
+- 2025-11-07: 2025-11-07 - Org map and cloud focus
 
-- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]]
+- 2025-11-07: 2025-11-07 - Org landscape and cloud strategy
 
 - 2025-11-01: Planning-session operating model for cloud-first execution, ROB cadence, and 30/60/90 MAI/Apollo plan ([[2025-11-01 - Planning sessions operating model]])
 
 - 2025-10-30: [[2025-10-30 - MAI exabyte storage options]] (via Microsoft)
 
-- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+- 2025-10-27: 2025-10-27 - Jeff 1:1 cloud priorities (via Jeff Denworth)
 
 - 2025-10-06: [[2025-10-06 - Jason weighing VAST vs Crusoe]] (via Microsoft)
 
@@ -60,15 +60,15 @@ tags:
 
 - 2025-10-24: [[2025-10-24 - Engineering maturity and cloud strategy]] (via VAST)
 
-- 2025-10-28: [[2025-10-28 - Intro 1:1 on pricing]] (via Timo Pervane)
+- 2025-10-28: 2025-10-28 - Intro 1:1 on pricing (via Timo Pervane)
 
-- 2025-10-28: [[2025-10-28 - Weekly 1:1 and Tel Aviv plan]] (via Shachar Feinblit)
+- 2025-10-28: 2025-10-28 - Weekly 1:1 and Tel Aviv plan (via Shachar Feinblit)
 
-- 2025-10-29: [[2025-10-29 - Intro 1:1 on release process]] (via Liraz Ben Or)
+- 2025-10-29: 2025-10-29 - Intro 1:1 on release process (via Liraz Ben Or)
 
 - 2025-10-29: [[2025-10-29 - PM-led cloud model alignment]] (via Tomer Hagay)
 
-- 2025-10-30: [[2025-10-30 - Intro 1:1 on cloud enablement]] (via Deandre Jackson)
+- 2025-10-30: 2025-10-30 - Intro 1:1 on cloud enablement (via Deandre Jackson)
 
 - 2025-10-30: [[2025-10-30 - MAI testing path and deck]] (via Lior Genzel)
 

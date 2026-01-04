@@ -38,7 +38,7 @@ SORT due ASC
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
 
-- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+- 2025-10-27: 2025-10-27 - Jeff 1:1 cloud priorities (via Jeff Denworth)
 
 - 2025-11-01: [[2025-11-01 - Planning sessions operating model]] (via Jeff Denworth)
 

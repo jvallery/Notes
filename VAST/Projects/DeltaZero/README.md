@@ -38,6 +38,6 @@ SORT due ASC
 
 - 2025-09-03: [[2025-09-03 - MAI caching strategy evaluation]] (via Microsoft)
 
-- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Evaluate OpenAI cache for MAI (via Jai Menon)
 ## Key Facts
 

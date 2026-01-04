@@ -31,7 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-29: [[2025-10-29 - Intro 1:1 on CS ops]] (via Rick Haselton)
+- 2025-10-29: 2025-10-29 - Intro 1:1 on CS ops (via Rick Haselton)
 
 - 2025-10-29: [[2025-10-29 - Cloud-first vision and CS model]] (via Rick Haselton)
 ## Key Facts

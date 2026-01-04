@@ -44,7 +44,7 @@ SORT due ASC
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
 
-- 2025-11-07: [[2025-11-07 - Org map and cloud focus]] (via Jeff Denworth)
+- 2025-11-07: 2025-11-07 - Org map and cloud focus (via Jeff Denworth)
 
 - 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
 

@@ -32,7 +32,7 @@ SORT due ASC
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - Intro 1:1 on pricing]] (via Timo Pervane)
+- 2025-10-28: 2025-10-28 - Intro 1:1 on pricing (via Timo Pervane)
 ## Key Facts
 
 ## Background

@@ -31,7 +31,7 @@ SORT due ASC
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
 
-- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Evaluate OpenAI cache for MAI (via Jai Menon)
 
 - 2025-10-24: [[2025-10-24 - AI-first dev and cloud maturity]] (via VAST)
 

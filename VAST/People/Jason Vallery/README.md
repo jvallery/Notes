@@ -42,7 +42,7 @@ tags:
 
 - 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
-- 2025-10-01: [[2025-10-01 - VAST Cloud SaaS operating model]]
+- 2025-10-01: 2025-10-01 - VAST Cloud SaaS operating model
 
 - 2025-10-01: [[2025-10-01 - SC25 small-group meeting planning]] (via Nidhi)
 
@@ -52,7 +52,7 @@ tags:
 
 - 2025-10-30: [[2025-10-30 - MAI exabyte storage options]] (via Microsoft)
 
-- 2025-10-30: [[2025-10-30 - Maturing VAST SaaS support model]] (via VAST)
+- 2025-10-30: 2025-10-30 - Maturing VAST SaaS support model (via VAST)
 
 - 2025-10-28: [[2025-10-28 - Dual-track GCP MVP launch]] (via Google)
 
@@ -64,13 +64,13 @@ tags:
 
 - 2025-09-16: [[2025-09-16 - Jason VAST role exploration]] (via Microsoft)
 
-- 2025-09-03: [[2025-09-03 - Align on OpenAI cache evaluation]] (via Jai Menon)
+- 2025-09-03: 2025-09-03 - Align on OpenAI cache evaluation (via Jai Menon)
 
 - 2025-09-15: [[2025-09-15 - Distributed caching preview alignment]] (via Vishnu Charan TJ)
 
 - 2025-09-15: [[Distributed cache evaluation alignment]] (via Jai Menon)
 
-- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
+- 2025-09-15: 2025-09-15 - Distributed cache strategy alignment (via Jai Menon)
 
 - 2025-09-16: [[2025-09-16 - VAST Azure GTM hiring]] (via VAST)
 
@@ -80,7 +80,7 @@ tags:
 
 - 2025-09-22: [[2025-09-22 - Apollo workload targets and storage]] (via Jai Menon)
 
-- 2025-09-30: [[2025-09-30 - Retention risk and Apollo scope]] (via Jai Menon)
+- 2025-09-30: 2025-09-30 - Retention risk and Apollo scope (via Jai Menon)
 
 - 2025-10-06: [[2025-10-06 - Jai update on VAST Cruso]] (via Microsoft)
 
@@ -92,7 +92,7 @@ tags:
 
 - 2025-10-28: [[2025-10-28 - Align on Azure Blob API]] (via OpenAI)
 
-- 2025-10-28: [[2025-10-28 - Weekly 1:1 and Tel Aviv plan]] (via Shachar Feinblit)
+- 2025-10-28: 2025-10-28 - Weekly 1:1 and Tel Aviv plan (via Shachar Feinblit)
 
 - 2025-10-29: [[2025-10-29 - Release planning and SaaS gaps]] (via Eyal Traitel)
 
@@ -104,7 +104,7 @@ tags:
 
 - 2025-10-29: [[2025-10-29 - Dual-path Azure and bare-metal plan]] (via Microsoft)
 
-- 2025-10-29: [[2025-10-29 - VAST on Cloud GTM alignment]] (via Lior Genzel)
+- 2025-10-29: 2025-10-29 - VAST on Cloud GTM alignment (via Lior Genzel)
 
 - 2025-10-29: [[2025-10-29 - VAST on Cloud alignment]] (via Lior Genzel)
 

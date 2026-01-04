@@ -101,7 +101,7 @@ Extraction already captures `mentions`:
       "patches": [
         { "primitive": "upsert_frontmatter", "frontmatter": [{"key": "last_contact", "value": "2025-11-14"}] },
         { "primitive": "append_under_heading", "heading": "## Recent Context",
-          "content": "- 2025-11-14: [[2025-11-14 - GDC Alignment|GDC Alignment]] (via Google)" }
+          "content": "- 2025-11-14: 2025-11-14 - GDC Alignment|GDC Alignment (via Google)" }
       ]
     },
     { "op": "patch", "path": "VAST/People/Karl Vietmeier/README.md", ... }
