@@ -443,7 +443,7 @@ RUN PERIODICALLY:
 
 **Goal:** Remove stale/duplicate docs and align all references.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260104-5, started: 2026-01-04 15:00)
 
 **Tasks**
 
