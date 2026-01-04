@@ -1,10 +1,10 @@
 ---
-type: project
+type: projects
 title: "Cloud Marketplace MVP"
 created: '2026-01-04'
 status: active
 tags:
-  - type/project
+  - type/projects
 ---
 
 # Cloud Marketplace MVP

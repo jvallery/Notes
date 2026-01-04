@@ -1,21 +1,21 @@
 ---
-type: "rob"
+type: people
 title: "Shachar org roles and actions"
 date: "2025-10-01"
-rob_forum: "Shachar Feinblit"
+person: "Shachar Feinblit"
 participants: ["Shachar Feinblit"]
 source: "transcript"
 source_ref: "Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - Shachar Feinblit.md"
 tags:
-  - "type/rob"
-  - "rob/shachar-feinblit"
+  - "type/people"
+  - "person/shachar-feinblit"
   - "generated"
 ---
 
 # Shachar org roles and actions
 
 **Date**: 2025-10-01
-**Forum**: [[Shachar Feinblit]]
+**Person**: [[Shachar Feinblit]]
 **Attendees**: Shachar Feinblit
 
 ## Summary

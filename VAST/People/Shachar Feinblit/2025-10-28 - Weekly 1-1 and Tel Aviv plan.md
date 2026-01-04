@@ -1,24 +1,24 @@
 ---
-type: rob
+type: people
 title: Weekly 1:1 and Tel Aviv plan
 date: '2025-10-28'
-rob_forum: Shachar Feinblit
+person: Shachar Feinblit
 participants:
 - Jason Vallery
 - Shachar Feinblit
 source: transcript
 source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Jason and Shachar aligned on setting
-  a weekly 30-minute 11 and planning Jason’s.md
+  a weekly 30-minute 11 and planning Jason's.md
 tags:
-- type/rob
-- rob/shachar-feinblit
+- type/people
+- person/shachar-feinblit
 - generated
 ---
 
 # Weekly 1:1 and Tel Aviv plan
 
 **Date**: 2025-10-28
-**Forum**: [[Shachar Feinblit]]
+**Person**: [[Shachar Feinblit]]
 **Attendees**: Jason Vallery, Shachar Feinblit
 
 ## Summary
