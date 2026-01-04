@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Google
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -36,6 +36,8 @@ not done
 ```
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Google GDC RFP review]]
 
 - 2025-10-01: Confirmed need to validate GCP GA timing post-bottleneck fix and align on first 2–3 lighthouse customers. [[2025-10-01 - Confirm GCP GA timing]]
 

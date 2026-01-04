@@ -2,7 +2,7 @@
 name: Jonsi Stephenson
 role: CEO
 company: VAST Data
-last_contact: '2025-10-01'
+last_contact: '2025-12-16'
 ---
 
 # Jonsi Stephenson
@@ -24,6 +24,8 @@ last_contact: '2025-10-01'
 - [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
 
 ## Recent Context
+
+- 2025-12-16: Discussed Microsoft AI (MAI) positioning (Blob + VAST GPU-adjacent), Bifrost/Apollo politics, POC/bake-off timing, and flash supply-chain constraints. [[2025-12-16 - Prep for Microsoft AI talks]]
 
 - 2025-10-01: Align on travel for in-person working session. ([[2025-10-01 - Align on travel plans]])
 

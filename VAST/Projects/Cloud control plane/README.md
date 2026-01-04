@@ -2,7 +2,7 @@
 type: projects
 title: Cloud control plane
 created: '2026-01-03'
-last_updated: '2025-11-01'
+last_updated: '2025-12-16'
 status: active
 auto_created: true
 tags:
@@ -61,5 +61,7 @@ SORT due ASC
 - 2025-11-03: [[2025-11-03 - Cloud clusters to SFDC mapping]] (via John)
 
 - 2025-11-01: [[2025-11-01 - Planning sessions operating model]] (via Jeff Denworth)
+
+- 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
 ## Key Facts
 

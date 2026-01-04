@@ -26,6 +26,8 @@ tags:
 
 ## Recent Context
 
+- 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)
+
 - 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)

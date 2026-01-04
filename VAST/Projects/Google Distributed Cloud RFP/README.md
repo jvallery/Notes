@@ -2,7 +2,7 @@
 type: projects
 title: Google Distributed Cloud RFP
 created: '2026-01-03'
-last_updated: '2025-11-14'
+last_updated: '2025-12-15'
 status: active
 auto_created: true
 tags:
@@ -35,6 +35,8 @@ SORT due ASC
 ```
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)
 
 - 2025-11-14: [[2025-11-14 - GDC RFP federal coordination]] (via Google)
 

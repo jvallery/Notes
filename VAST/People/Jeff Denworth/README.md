@@ -1,7 +1,7 @@
 ---
 type: people
 title: Jeff Denworth
-last_contact: '2025-12-15'
+last_contact: '2025-12-16'
 created: '2026-01-03'
 tags:
 - type/people
@@ -83,6 +83,8 @@ tags:
 - 2025-12-19: [[2025-12-19 - Microsoft strategy and SCO prep]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - Microsoft Azure engagement tasks]] (via Microsoft)
+
+- 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
 ## Key Facts
 
 ## Topics

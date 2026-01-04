@@ -38,6 +38,8 @@ tags:
 
 ## Recent Context
 
+- 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)
+
 - 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - VAST Cloud SaaS operating model]]

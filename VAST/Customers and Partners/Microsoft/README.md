@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: '2025-12-15'
+last_contact: '2025-12-16'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -156,6 +156,8 @@ not done
 - 2025-11-03: Discussed Microsoft hardware SKU and a potential MAI POC; VoC implications raised; Google mentioned.
 
 - 2025-10-01: [[2025-10-01 - Azure Extended Zones coordination]] (via Kishore Inampudi)
+
+- 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
 ## Key Facts
 
 ## Topics
