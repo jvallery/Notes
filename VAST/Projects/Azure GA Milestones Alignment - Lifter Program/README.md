@@ -1,6 +1,6 @@
 ---
 type: projects
-title: Azure GA Milestones Alignment (Lifter program)
+title: Azure GA Milestones Alignment - Lifter Program
 created: '2026-01-03'
 last_updated: ''
 status: complete
@@ -12,7 +12,7 @@ tags:
 last_contact: "2025-10-28"
 ---
 
-# Azure GA Milestones Alignment (Lifter program)
+# Azure GA Milestones Alignment - Lifter Program
 
 ## Status
 

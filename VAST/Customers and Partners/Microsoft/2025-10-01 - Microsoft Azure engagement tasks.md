@@ -46,4 +46,4 @@ Task list for Microsoft/Azure engagement workstreams, including networking/egres
 - [[Jeff Denworth]]
 - [[Jason Vallery]]
 - [[Microsoft ROI Data Usage Validation]]
-- [[Microsoft BizDev Education & Intros to Ronnie]]
+- [[Microsoft BizDev Education and Intros to Ronnie]]

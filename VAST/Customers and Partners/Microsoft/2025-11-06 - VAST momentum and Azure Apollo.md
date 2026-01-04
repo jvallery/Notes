@@ -68,7 +68,7 @@ Jason and Kanchan discussed VAST’s momentum (including a ~$1.2B CoreWeave soft
 - [[Jeff Denworth]]
 - [[John Lee]]
 - [[Mike Requa]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]
 - [[Microsoft Azure Engagement Plan]]
 - [[Neo]]
 - [[Enscale deck]]

@@ -3,7 +3,7 @@ last_contact: '2025-11-14'
 last_updated: '2025-11-14'
 ---
 
-# Fort Meade "Gemini as a service" on-prem validation
+# Fort Meade Gemini-as-a-Service On-Prem Validation
 
 ## Status
 

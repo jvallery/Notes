@@ -1,6 +1,6 @@
 ---
 type: projects
-title: Cloud-in-a-box (Tier-2 clouds)
+title: Cloud-in-a-box Tier-2 Clouds
 created: '2026-01-03'
 last_updated: '2025-12-19'
 status: proposed
@@ -12,7 +12,7 @@ tags:
 last_contact: '2025-11-07'
 ---
 
-# Cloud-in-a-box (Tier-2 clouds)
+# Cloud-in-a-box Tier-2 Clouds
 
 ## Status
 

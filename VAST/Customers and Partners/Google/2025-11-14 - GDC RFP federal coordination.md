@@ -76,7 +76,7 @@ VAST cloud and federal teams aligned on responding to Google Distributed Cloudâ€
 - [[AWS]]
 - [[Leidos]]
 - [[Google Distributed Cloud RFP]]
-- [[Fort Meade "Gemini as a service" on-prem validation]]
+- [[Fort Meade Gemini-as-a-Service On-Prem Validation]]
 - [[Jennifer Azzolina]]
 - [[Jeremiah Hinrichs]]
 - [[Greg Castellucci]]

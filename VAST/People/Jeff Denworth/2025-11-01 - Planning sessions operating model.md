@@ -45,7 +45,7 @@ Planning-session notes outline a cloud-first product/program charter, decision r
 ## Related
 
 - [[Jeff Denworth]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]
 - [[Cloud control plane]]
 - [[5.5 Features]]
 - [[Amazon]]

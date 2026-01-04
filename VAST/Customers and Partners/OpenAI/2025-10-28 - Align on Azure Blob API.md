@@ -61,4 +61,4 @@ Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az
 - [[Amazon]]
 - [[Erez Zilber]]
 - [[Jason Vallery]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]

@@ -69,7 +69,7 @@ Jason and Andy aligned on how to collaborate between PM and Andy’s Field CTO/O
 - [[OVA]]
 - [[Cloud control plane]]
 - [[5.5 Features]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]
 - [[Microsoft]]
 - [[Amazon]]
 - [[Google]]

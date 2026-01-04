@@ -61,7 +61,7 @@ Jason and Jeff aligned on Microsoft strategy, focusing on what Blob API support 
 - [[Kishore Inampudi]]
 - [[Lior Genzel]]
 - [[Cloud control plane]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]
 - [[Microsoft Azure Engagement Plan]]
 - [[VAST database updates]]
 - [[OpenAI]]

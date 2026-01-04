@@ -79,4 +79,4 @@ Jason and Kanchan aligned to prioritize Microsoft AI (MAI) and the UK Met Office
 - [[Joe Green]]
 - [[Lior Genzel]]
 - [[Neo]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]

@@ -45,5 +45,5 @@ Sam Hopewell outlined OpenAI’s storage tiering model (Azure Blob as cold, VAST
 - [[Greg Brockman]]
 - [[Melissa Du]]
 - [[Kevin Park]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]
 - [[Neo]]

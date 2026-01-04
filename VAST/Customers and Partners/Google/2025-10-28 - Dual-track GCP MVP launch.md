@@ -94,4 +94,4 @@ Cloud BU leadership aligned on a dual-track go-to-market: (1) ship the GCP MVP v
 - [[Rob Banga]]
 - [[Enscale deck]]
 - [[Cloud control plane]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]

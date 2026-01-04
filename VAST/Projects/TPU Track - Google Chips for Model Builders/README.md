@@ -1,6 +1,6 @@
 ---
 type: projects
-title: TPU track (Google chips for model builders)
+title: TPU Track - Google Chips for Model Builders
 created: '2026-01-03'
 last_updated: ''
 status: proposed
@@ -12,7 +12,7 @@ tags:
 last_contact: '2025-11-14'
 ---
 
-# TPU track (Google chips for model builders)
+# TPU Track - Google Chips for Model Builders
 
 ## Status
 

@@ -1,6 +1,6 @@
 ---
 type: projects
-title: Z4M RDMA Networking (GCP)
+title: Z4M RDMA Networking - GCP
 created: '2026-01-03'
 last_updated: ''
 status: active
@@ -12,7 +12,7 @@ tags:
 last_contact: '2025-10-28'
 ---
 
-# Z4M RDMA Networking (GCP)
+# Z4M RDMA Networking - GCP
 
 ## Status
 

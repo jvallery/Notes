@@ -57,4 +57,4 @@ Jason Vallery (Vast Data) presented an overview of rapid AI progress (agents, ro
 - [[Intel]]
 - [[Sam Altman]]
 - [[David Holz]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]

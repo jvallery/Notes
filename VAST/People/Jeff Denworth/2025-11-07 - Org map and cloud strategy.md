@@ -97,7 +97,7 @@ Reviewed the org landscape and clarified near-term priorities around building a 
 - [[Timo Pervane]]
 - [[Maneesh Sah]]
 - [[Neo]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]
 - [[Cloud control plane]]
 - [[Google Distributed Cloud RFP]]
 - [[Microsoft Azure Engagement Plan]]

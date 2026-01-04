@@ -78,4 +78,4 @@ Jonsi and Jason aligned on positioning a “better together” story with Micros
 - [[Toshiba]]
 - [[Intel]]
 - [[Cloud control plane]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]

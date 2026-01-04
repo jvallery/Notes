@@ -70,4 +70,4 @@ Discussion focused on accelerating VAST adoption inside Microsoft via Apollo and
 - [[Cloud control plane]]
 - [[Microsoft Azure Engagement Plan]]
 - [[Enscale deck]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]

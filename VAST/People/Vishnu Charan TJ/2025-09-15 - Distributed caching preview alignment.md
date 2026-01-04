@@ -58,4 +58,4 @@ Jason and Vishnu aligned on Jason’s new focus areas (distributed caching and K
 - [[Amazon]]
 - [[Google]]
 - [[NVIDIA]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]

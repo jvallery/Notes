@@ -1,6 +1,6 @@
 ---
 type: projects
-title: OpenAI VAST POC (CoreWeave cluster)
+title: OpenAI VAST POC - CoreWeave Cluster
 created: '2026-01-03'
 last_updated: '2025-10-28'
 status: on-hold
@@ -12,7 +12,7 @@ tags:
 last_contact: '2025-11-14'
 ---
 
-# OpenAI VAST POC (CoreWeave cluster)
+# OpenAI VAST POC - CoreWeave Cluster
 
 ## Status
 

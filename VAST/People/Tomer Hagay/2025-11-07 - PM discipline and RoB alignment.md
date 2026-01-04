@@ -58,7 +58,7 @@ Jason and Tomer aligned that VAST needs clearer product management discipline (O
 - [[Microsoft ROI Data Usage Validation]]
 - [[5.5 Features]]
 - [[Cloud control plane]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]
 - [[Microsoft Azure Engagement Plan]]
 - [[Google Distributed Cloud RFP]]
 - [[Microsoft]]

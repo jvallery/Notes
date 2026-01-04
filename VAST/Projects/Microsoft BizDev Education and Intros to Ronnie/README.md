@@ -1,6 +1,6 @@
 ---
 type: projects
-title: Microsoft BizDev Education & Intros to Ronnie
+title: Microsoft BizDev Education and Intros to Ronnie
 created: '2026-01-03'
 last_updated: '2025-10-01'
 status: complete
@@ -12,7 +12,7 @@ tags:
 last_contact: '2025-11-07'
 ---
 
-# Microsoft BizDev Education & Intros to Ronnie
+# Microsoft BizDev Education and Intros to Ronnie
 
 ## Status
 

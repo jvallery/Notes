@@ -62,7 +62,7 @@ Jason Vallery (VAST) and Sam Hopewell (OpenAI) reconnected to position VAST as G
 - [[Kevin Park]]
 - [[Ronen Cohen]]
 - [[Neo]]
-- [[OpenAI VAST POC (CoreWeave cluster)]]
+- [[OpenAI VAST POC - CoreWeave Cluster]]
 - [[VAST]]
 - [[Microsoft]]
 - [[CoreWeave]]

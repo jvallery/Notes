@@ -75,5 +75,5 @@ Jason and Jeff aligned on near-term priorities: synthesize a unified cloud pipel
 - [[Amazon]]
 - [[CoreWeave]]
 - [[Tesla]]
-- [[Cloud-in-a-box (Tier-2 clouds)]]
+- [[Cloud-in-a-box Tier-2 Clouds]]
 - [[Microsoft ROI Data Usage Validation]]
