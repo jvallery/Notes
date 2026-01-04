@@ -34,67 +34,10 @@ class Mentions(BaseModel):
     accounts: list[str] = Field(default_factory=list, description="Companies/accounts referenced")
 
 
-class PersonDetails(BaseModel):
-    """Rich profile data for a person mentioned in content."""
-    
-    model_config = ConfigDict(extra="forbid")
-    
-    role: str | None = Field(default=None, description="Job title or role")
-    company: str | None = Field(default=None, description="Company or organization")
-    department: str | None = Field(default=None, description="Team or department")
-    email: str | None = Field(default=None, description="Email address")
-    phone: str | None = Field(default=None, description="Phone number")
-    linkedin: str | None = Field(default=None, description="LinkedIn URL")
-    location: str | None = Field(default=None, description="City/region")
-    background: str | None = Field(default=None, description="Brief background or expertise")
-    relationship: str | None = Field(default=None, description="How I interact with them")
-    projects: list[str] = Field(default_factory=list, description="Projects they work on")
-
-
-class ProjectDetails(BaseModel):
-    """Metadata for a project mentioned in content."""
-    
-    model_config = ConfigDict(extra="forbid")
-    
-    status: Literal["active", "blocked", "on-hold", "complete", "proposed"] | None = Field(
-        default=None, description="Current project state"
-    )
-    description: str | None = Field(default=None, description="Brief project description")
-    owner: str | None = Field(default=None, description="Project owner/lead")
-    blockers: list[str] = Field(default_factory=list, description="Current blockers")
-    next_steps: list[str] = Field(default_factory=list, description="Immediate actions needed")
-    collaborators: list[str] = Field(default_factory=list, description="People working on it")
-    related_accounts: list[str] = Field(default_factory=list, description="Customers involved")
-
-
-class AccountDetails(BaseModel):
-    """Metadata for a customer/account mentioned in content."""
-    
-    model_config = ConfigDict(extra="forbid")
-    
-    industry: str | None = Field(default=None, description="Industry or sector")
-    relationship: Literal["prospect", "active", "partner", "at-risk", "churned"] | None = Field(
-        default=None, description="Account status"
-    )
-    key_contacts: list[str] = Field(default_factory=list, description="People at this account")
-    opportunities: list[str] = Field(default_factory=list, description="Active deals or projects")
-    blockers: list[str] = Field(default_factory=list, description="Issues or concerns")
-
-
-class CrossLinks(BaseModel):
-    """Relationship mappings between entities."""
-    
-    model_config = ConfigDict(extra="forbid")
-    
-    person_to_project: dict[str, list[str]] = Field(
-        default_factory=dict, description="Map person names to their projects"
-    )
-    person_to_account: dict[str, list[str]] = Field(
-        default_factory=dict, description="Map person names to their accounts"
-    )
-    project_to_account: dict[str, list[str]] = Field(
-        default_factory=dict, description="Map projects to related accounts"
-    )
+# NOTE: The following classes have been removed due to OpenAI Structured Outputs
+# incompatibility with dict[str, Model] types which causes "Extra required key" errors:
+# - PersonDetails, ProjectDetails, AccountDetails, CrossLinks
+# These can be re-added in a future version using a list-based approach instead of dict.
 
 
 class ExtractionV1(BaseModel):
