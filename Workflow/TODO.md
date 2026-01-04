@@ -203,7 +203,9 @@ RUN PERIODICALLY:
 
 **Goal:** Align all OpenAI usage with documented privacy requirements and a single API surface.
 
-**Status: IN PROGRESS** (@codex-20260104-1, started: 2026-01-04 13:47)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Note:** Standardized Structured Outputs on `client.responses.parse(...)` + enforced privacy via `models.privacy.*` config.
 
 **Tasks**
 
