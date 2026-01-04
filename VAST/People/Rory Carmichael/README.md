@@ -1,13 +1,13 @@
 ---
 type: people
 title: Rory Carmichael
-created: '2026-01-03'
+created: "2026-01-03"
 last_contact: "2025-10-22"
 auto_created: true
 tags:
-- type/people
-- needs-review
-- company/openai
+  - type/people
+  - needs-review
+  - company/openai
 ---
 
 # Rory Carmichael
@@ -18,6 +18,7 @@ tags:
 **Relationship**: Customer stakeholder (management chain)
 
 **Background**:
+
 - Leads research infra/supercomputers; management chain above Sam.
 
 ## Open Tasks
@@ -44,4 +45,5 @@ _Career history, expertise, interests, personal details shared..._
 ## Related
 
 ---
-*Last updated: 2026-01-03*
+
+_Last updated: 2026-01-03_

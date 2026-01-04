@@ -20,6 +20,7 @@ tags:
 
 **Background**:
 _Career history, expertise, interests..._
+
 ## Projects
 
 _What projects are you collaborating on with this person?_
@@ -52,4 +53,3 @@ SORT due ASC
 ## Key Facts
 
 ## Recent Context
-
