@@ -382,94 +382,37 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 # Post-Run Cleanup (2026-01-04 Pipeline)
 
-## 17) Merge _NEW_ Entity Folders into Existing Entities
+## ✅ COMPLETE: Merge _NEW_ Entity Folders into Existing Entities
 
-**Goal:** Consolidate content from incorrectly-created `_NEW_*` folders into existing entity folders.
+**Status:** Completed 2026-01-04 (commit b86ff10)
 
-**Discovered Issues (18 folders):**
+Merged 18 `_NEW_*` folders into correct destinations:
 
-```
-VAST/Customers and Partners/_NEW_Jai Menon/     → VAST/People/Jai Menon/ (exists!)
-VAST/Customers and Partners/_NEW_Jeff Denworth/ → VAST/People/Jeff Denworth/ (exists!)
-VAST/Customers and Partners/_NEW_Maneesh Sah/   → VAST/People/Maneesh Sah/ (if exists)
-VAST/Customers and Partners/_NEW_Timo Pervane/  → VAST/People/Timo Pervane/ (exists!)
-VAST/Customers and Partners/_NEW_Deandre Jackson/ → VAST/People/Deandre Jackson/ (exists!)
-VAST/Customers and Partners/_NEW_Yogev Vankin/  → VAST/People/Yogev Vankin/ (if exists)
-VAST/Customers and Partners/_NEW_VAST/          → DELETE (invalid - VAST is the company)
-VAST/Customers and Partners/_NEW_Pricing/       → VAST/Projects/Pricing/ (if exists)
-VAST/Customers and Partners/_NEW_Dhammak/       → NEW ACCOUNT - keep as customer
-VAST/Customers and Partners/_NEW_/Asaf Levy/    → VAST/People/Asaf Levy/
-VAST/Customers and Partners/_NEW_/Jonsi Stephenson/ → VAST/People/Jonsi Stephenson/
-VAST/People/_NEW_Nidhi/                         → VAST/People/Nidhi/ (normalize)
-VAST/People/_NEW_JB/                            → VAST/People/JB/ or identify
-VAST/People/_NEW_Tomer/                         → VAST/People/Tomer Hagay/ (merge)
-VAST/People/_NEW_Roy/                           → Identify or delete
-VAST/People/_NEW_John/                          → Identify or delete
-VAST/People/_NEW_Cloud Marketplace MVP/         → VAST/Projects/Cloud Marketplace/
-VAST/People/_NEW_Longmont Public Media/         → Personal/Projects/ (not VAST)
-```
+- People misplaced in Customers → moved to VAST/People/
+- Projects misplaced in People → moved to VAST/Projects/
+- Personal content → moved to Personal/Projects/
+- Created cleanup script: `scripts/cleanup_new_entities.py`
+---
 
-**Tasks**
+## ✅ COMPLETE: Delete Invalid VAST/Accounts Folder
 
-- [ ] Create script `scripts/cleanup_new_entities.py` to merge content
-- [ ] Move notes from `_NEW_*` into correct destination
-- [ ] Update wikilinks in moved notes
-- [ ] Delete empty `_NEW_*` folders
-- [ ] Add `#needs-review` tag to merged READMEs
+**Status:** Completed 2026-01-04 (commit b86ff10)
 
-**Success Criteria**
+Deleted `VAST/Accounts/` folder with 3 incorrect stub READMEs.
+Correct path is `VAST/Customers and Partners/`.
 
-- Zero `_NEW_*` folders remain
-- All notes accessible via correct entity folders
-- Wikilinks updated to correct paths
+**Remaining:** Fix planner prompt to use correct path (see item 24).
 
 ---
 
-## 18) Delete Invalid VAST/Accounts Folder
+## ✅ COMPLETE: Fix Person Entities Misplaced in Customers Folder
 
-**Goal:** Remove incorrectly-created `VAST/Accounts/` path (should be `VAST/Customers and Partners/`).
+**Status:** Completed 2026-01-04 (commit b86ff10)
 
-**Discovered Issues (3 stub READMEs):**
+- Moved Jack Kabat from Customers to People
+- People misclassified as customers handled by cleanup script
 
-```
-VAST/Accounts/Google/README.md    → Already exists at VAST/Customers and Partners/Google/
-VAST/Accounts/Microsoft/README.md → Already exists at VAST/Customers and Partners/Microsoft/
-VAST/Accounts/OpenAI/README.md    → Already exists at VAST/Customers and Partners/OpenAI/
-```
-
-**Tasks**
-
-- [ ] Delete `VAST/Accounts/` folder entirely
-- [ ] Fix planner prompt to use `Customers and Partners` not `Accounts`
-
-**Success Criteria**
-
-- No `VAST/Accounts/` folder
-- Planner generates correct paths
-
----
-
-## 19) Fix Person Entities Misplaced in Customers Folder
-
-**Goal:** Move person entities incorrectly placed under `Customers and Partners/`.
-
-**Discovered Issues:**
-
-```
-VAST/Customers and Partners/Jack Kabat/  → VAST/People/Jack Kabat/
-VAST/Customers and Partners/EY/          → Legitimate customer, keep
-```
-
-**Tasks**
-
-- [ ] Move `Jack Kabat/` to `VAST/People/`
-- [ ] Review planner logic for entity type detection
-- [ ] People are never "customers" - add validation
-
-**Success Criteria**
-
-- People always placed in `People/` folder
-- Planner correctly distinguishes person vs customer
+**Remaining:** Fix planner logic to prevent recurrence (see item 23).
 
 ---
 
