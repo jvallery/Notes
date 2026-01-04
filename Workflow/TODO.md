@@ -308,7 +308,7 @@ RUN PERIODICALLY:
 
 **Goal:** Make backfill extraction deterministic, privacy‑safe, and schema‑enforced.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260104-3, started: 2026-01-04 14:30)
 
 **Tasks**
 
