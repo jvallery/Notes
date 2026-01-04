@@ -12,20 +12,21 @@ tags:
 
 ## Recent Context
 
-- unknown: [[Untitled]] - Forwardable guidance for populating Google’s “VAST Data – GDC Storage RFP” spreadsheet with normaliz...
-- unknown: [[2025-10 - Google Tasks]] - Task to confirm Google Cloud Platform (GCP) general availability timing after a bottleneck fix and a...
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on how to respond to Google Distributed Cloud’s US-based RFP ...
+- unknown: [[Untitled]] - Forwardable guidance for completing Google’s “VAST Data – GDC Storage RFP” Excel template with norma...
+- unknown: [[2025-10 - Google Tasks]] - Task to confirm Google Cloud Platform general availability timing after a bottleneck fix and align o...
+- unknown: [[2025-11-4 - Planning sessions]] - Planning-session outline for defining VAST’s cloud-first product vision and execution plan, includin... (via Jeff Denworth)
+- unknown: [[2025-10 - Lior Genzel]] - Note tracks Lior Genzel’s action items around cloud partner alignment (Google TPUs, Microsoft Manage... (via Lior Genzel)
+- unknown: [[Available Capacity Calculations]] - The note argues against using a single fixed overhead percentage for "available capacity" across all... (via Cloud)
+- unknown: [[2025-10 - Pricing Tasks]] - Task list for October–November 2025 to define and operationalize cloud pricing, discount policies, p... (via Pricing)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s US-based RFP to r...
 - 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal team sync to align on Walmart’s big data initiative, focusing on clarifying disaster recove... (via Walmart)
 - 2025-11-13: [[2025-11-13 - GDC RFP meeting]] - Discussion with Google on a GDC RFP covering storage TCO (HDD vs QLC), security/compliance (SED, air...
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep for an architecture whiteboarding session with Walmart’s Lakehouse team to design a hy... (via Walmart)
-- 2025-11-05: [[2025-11-05 - Walmart Analytics]] - Captured Walmart’s requirements for a hybrid analytics data lake where BigQuery on GCP ingests/proce... (via Walmart)
-- 2025-10-31: [[2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]] - Discussion with Google Cloud on the roadmap to run VAST on upcoming Z4M storage-serving VMs, includi...
-- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson focused on VAST cloud status and SE enable... (via Deandre Jackson)
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Meeting with Google and Parallels/VAST teams on GCP networking for VIP/IP management and failover, f...
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Aligned on an MVP launch on Google Cloud Platform using GCP Marketplace private offers with fixed ca...
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Silk briefed Jason on Silk’s software-defined cloud storage architecture optimized for high-performa... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re]] - Silk briefed Jason on its software-defined cloud storage optimized for high-performance relational d... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas]] - Silk briefed Jason on its software-defined cloud storage optimized for database workloads, highlight... (via Silk)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - 1:1 between Jason and Jeff Denworth reviewing VAST’s org landscape, key players, and operating model... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - Discussion with Jeff Denworth to map the org, clarify ownership changes, and align on a pragmatic cr... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - Sync with Jonsi Stephenson on hyperscaler strategy across Google and Microsoft, focusing on Google D... (via Jonsi Stephenson)
+- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]] - Internal prep to shape an architecture whiteboarding session with Walmart’s Lakehouse team for a hyb... (via Walmart)
+- 2025-11-05: [[2025-11-05 - Walmart Analytics]] - Captured Walmart’s hybrid analytics requirements to replicate a hot working set from BigQuery on GCP... (via Walmart)
+- 2025-11-03: [[2025-11-03]] - Brief note capturing topics to clarify around a Microsoft hardware SKU, a POC with MAI, and broader ... (via Lior Genzel)
 
 ## Related
 

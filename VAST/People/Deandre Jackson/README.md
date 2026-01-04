@@ -12,7 +12,7 @@ tags:
 
 ## Recent Context
 
-- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson focused on VAST cloud status and SE enable...
+- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre "Dre" Jackson to align on VAST cloud positioning and SE ...
 
 ## Related
 
