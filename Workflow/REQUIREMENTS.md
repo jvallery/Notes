@@ -17,14 +17,14 @@ Managing professional and personal knowledge across multiple input channels (mee
 
 ### 1.1 Key Architectural Principles
 
-| Principle                   | Description                                                           |
-| --------------------------- | --------------------------------------------------------------------- |
-| **Local-first**             | All processing runs on-device; no cloud storage of raw content        |
-| **Headless operation**      | Pipeline runs without Obsidian open; no plugin dependencies           |
-| **Separation of concerns**  | Reasoning (AI) is strictly separated from execution (Python)          |
-| **Schema-enforced outputs** | Use Pydantic models with `responses.parse()` for guaranteed structure |
-| **Transactional apply**     | Batch operations succeed or fail atomically with rollback             |
-| **Privacy by default**      | All API calls explicitly disable training (`store=False`)             |
+| Principle                   | Description                                                                              |
+| --------------------------- | ---------------------------------------------------------------------------------------- |
+| **Local-first**             | All processing runs on-device; no cloud storage of raw content                           |
+| **Headless operation**      | Pipeline runs without Obsidian open; no plugin dependencies                              |
+| **Separation of concerns**  | Reasoning (AI) is strictly separated from execution (Python)                             |
+| **Schema-enforced outputs** | Use Pydantic models with `client.beta.chat.completions.parse()` for guaranteed structure |
+| **Transactional apply**     | Batch operations succeed or fail atomically with rollback                                |
+| **Privacy by default**      | All API calls explicitly disable training (`store=False`)                                |
 
 ---
 
@@ -43,21 +43,21 @@ Managing professional and personal knowledge across multiple input channels (mee
 
 ### 2.2 Extraction Layer (Raw Context → Structured JSON)
 
-| ID     | Requirement                                                                          | Priority | Implementation                |
-| ------ | ------------------------------------------------------------------------------------ | -------- | ----------------------------- |
-| EXT-01 | **Schema-enforced extraction** using `client.responses.parse()` with Pydantic models | P0       | OpenAI Structured Outputs     |
-| EXT-02 | Extract tasks, decisions, facts, and participants from transcripts                   | P0       | ExtractionV1 model            |
-| EXT-03 | Extract action items and key info from emails                                        | P0       | ExtractionV1 model            |
-| EXT-04 | Classify note type using profile-based rubrics (not personas)                        | P0       | Profiles in `profiles/*.yaml` |
-| EXT-05 | Identify existing entities (people, projects, accounts) to link against              | P1       | Local fuzzy match + aliases   |
-| EXT-06 | **All API calls must use `store=False`**                                             | P0       | Privacy requirement           |
-| EXT-07 | Output extraction to `Inbox/_extraction/{source}.extraction.json`                    | P0       | Python script                 |
+| ID     | Requirement                                                                                      | Priority | Implementation                |
+| ------ | ------------------------------------------------------------------------------------------------ | -------- | ----------------------------- |
+| EXT-01 | **Schema-enforced extraction** using `client.beta.chat.completions.parse()` with Pydantic models | P0       | OpenAI Structured Outputs     |
+| EXT-02 | Extract tasks, decisions, facts, and participants from transcripts                               | P0       | ExtractionV1 model            |
+| EXT-03 | Extract action items and key info from emails                                                    | P0       | ExtractionV1 model            |
+| EXT-04 | Classify note type using profile-based rubrics (not personas)                                    | P0       | Profiles in `profiles/*.yaml` |
+| EXT-05 | Identify existing entities (people, projects, accounts) to link against                          | P1       | Local fuzzy match + aliases   |
+| EXT-06 | **All API calls must use `store=False`**                                                         | P0       | Privacy requirement           |
+| EXT-07 | Output extraction to `Inbox/_extraction/{source}.extraction.json`                                | P0       | Python script                 |
 
 ### 2.3 Planning Layer (Extraction → ChangePlan)
 
 | ID     | Requirement                                                                                                  | Priority | Implementation           |
 | ------ | ------------------------------------------------------------------------------------------------------------ | -------- | ------------------------ |
-| PLN-01 | **Schema-enforced ChangePlan** using `client.responses.parse()` with Pydantic models                         | P0       | ChangePlan model         |
+| PLN-01 | **Schema-enforced ChangePlan** using `client.beta.chat.completions.parse()` with Pydantic models             | P0       | ChangePlan model         |
 | PLN-02 | LLM plans only: `create`, `patch`, `link` operations                                                         | P0       | No archive in LLM output |
 | PLN-03 | **Structured patch primitives** (no regex): `upsert_frontmatter`, `append_under_heading`, `ensure_wikilinks` | P0       | Safe, deterministic ops  |
 | PLN-04 | **No direct file modifications by AI** — planning only                                                       | P0       | Architecture             |
@@ -163,10 +163,10 @@ Models are selected **policy-based** rather than hardcoded.
 
 ```python
 # All OpenAI API calls MUST use Structured Outputs:
-response = client.responses.parse(
+response = client.beta.chat.completions.parse(
     model="gpt-4o",
-    input=[...],
-    text_format=PydanticModel,  # Schema-enforced
+    messages=[...],
+    response_format=PydanticModel,  # Schema-enforced
     store=False  # CRITICAL: Disable training
 )
 ```

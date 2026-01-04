@@ -390,17 +390,17 @@ def extract_content(source_file: Path, client: OpenAI, profile: dict) -> Extract
     system_prompt = build_prompt(profile)
 
     # Schema-enforced extraction via Pydantic
-    response = client.responses.parse(
+    response = client.beta.chat.completions.parse(
         model="gpt-4o",
-        input=[
+        messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": content}
         ],
-        text_format=ExtractionV1,  # Pydantic model
+        response_format=ExtractionV1,  # Pydantic model
         store=False  # CRITICAL: Privacy
     )
 
-    extraction = response.output_parsed
+    extraction = response.choices[0].message.parsed
     extraction.source_file = str(source_file)
 
     return extraction
@@ -437,20 +437,20 @@ def generate_changeplan(extraction: ExtractionV1, client: OpenAI) -> ChangePlan:
         "aliases": load_aliases()
     }
 
-    response = client.responses.parse(
+    response = client.beta.chat.completions.parse(
         model="gpt-4o",
-        input=[
+        messages=[
             {"role": "system", "content": PLANNER_PROMPT},
             {"role": "user", "content": json.dumps({
                 "extraction": extraction.model_dump(),
                 "vault_context": vault_context
             })}
         ],
-        text_format=ChangePlan,  # Pydantic model
+        response_format=ChangePlan,  # Pydantic model
         store=False
     )
 
-    return response.output_parsed
+    return response.choices[0].message.parsed
 ```
 
 ### 4.5 Apply Phase (Transactional)
@@ -807,10 +807,10 @@ api:
 ```python
 # All API calls MUST use Structured Outputs + store=False
 
-response = client.responses.parse(
+response = client.beta.chat.completions.parse(
     model="gpt-4o",
-    input=[...],
-    text_format=PydanticModel,  # Schema-enforced
+    messages=[...],
+    response_format=PydanticModel,  # Schema-enforced
     store=False  # Privacy
 )
 ```
@@ -828,7 +828,7 @@ response = client.responses.parse(
 
 ### Phase 2: Extract + Plan
 
-- [ ] Implement `extract.py` with `responses.parse()`
+- [ ] Implement `extract.py` with `client.beta.chat.completions.parse()`
 - [ ] Implement `plan.py` with schema-enforced output
 - [ ] Test with 5 existing transcripts
 

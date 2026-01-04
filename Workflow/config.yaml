@@ -28,11 +28,12 @@ paths:
     extraction: "Inbox/_extraction"      # JSON output from AI extraction
     archive: "Inbox/_archive"            # Processed source files
   
-  # Resources (prompts, templates)
+  # Resources (prompts, templates) - relative to Workflow/
   resources:
-    prompts: "Inbox/_bins/_prompts"
-    subtemplates: "Inbox/_bins/_prompts/subtemplates"
-    templates: "Inbox/_bins/_templates"
+    prompts: "Workflow/prompts"
+    templates: "Workflow/templates"
+    profiles: "Workflow/profiles"
+    entities: "Workflow/entities"
   
   # Work destinations (VAST)
   work:

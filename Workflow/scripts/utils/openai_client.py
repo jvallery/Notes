@@ -4,7 +4,7 @@ OpenAI client wrapper with Structured Outputs support.
 
 Provides:
 - Environment-based client initialization
-- Pydantic schema-enforced parsing via responses.parse()
+- Pydantic schema-enforced parsing via client.beta.chat.completions.parse()
 - Privacy enforcement (store=False always)
 - Retry logic with exponential backoff
 - Latency and token tracking
@@ -61,7 +61,7 @@ def parse_structured(
     """
     Call OpenAI with Pydantic schema enforcement.
     
-    Uses the responses.parse() API for structured outputs that are
+    Uses client.beta.chat.completions.parse() API for structured outputs that are
     guaranteed to match the Pydantic schema.
     
     Args:
