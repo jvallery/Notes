@@ -312,6 +312,7 @@ RUN PERIODICALLY:
 **Status: ✅ COMPLETED** (2026-01-04)
 
 **Completion Notes:**
+
 - Web enrichment uses Responses API + Pydantic schemas (no regex JSON parsing).
 - Added config gate `features.backfill_web_enrichment` (default false) and disk cache under `Workflow/_cache/backfill_web_enrichment` (gitignored).
 - `backfill.py enrich` fails fast when disabled; added unit tests for caching + gating.
@@ -340,12 +341,14 @@ RUN PERIODICALLY:
 **Decision:** Heuristic-only classification (no LLM).
 
 **Rationale:**
+
 - Current `scripts/classify.py` uses regex pattern matching, no API calls
 - Faster (no latency), cheaper (no tokens), deterministic (same input = same output)
 - DESIGN.md already specified "no LLM classification step" - code matches design
 - Patterns cover common cases: ROB, customer, people, projects
 
 **Documentation Updated:**
+
 - `README.md`: Changed "Classify (AI)" to "Classify (Heuristics)", added pattern list
 - `REQUIREMENTS.md`: Updated model table to show "Heuristics" not "gpt-4o-mini"
 - `config.yaml`: Added note that classify config is reserved for future use
@@ -368,7 +371,7 @@ RUN PERIODICALLY:
 
 **Goal:** Avoid ambiguous entities and improve plan accuracy.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260104-4, started: 2026-01-04 14:47)
 
 **Tasks**
 
