@@ -287,3 +287,204 @@ This list is ordered by risk and dependency. Each task includes success criteria
 - This TODO intentionally prioritizes safety/consistency fixes before quality improvements.
 - For each task, update `Workflow/codex/FULL-REVIEW.md` when completed.
 - Items 13-16 added 2026-01-04 based on pipeline run observations.
+- Items 17-22 added 2026-01-04 based on full review of 126-file pipeline run results.
+
+---
+
+# Post-Run Cleanup (2026-01-04 Pipeline)
+
+## 17) Merge _NEW_ Entity Folders into Existing Entities
+
+**Goal:** Consolidate content from incorrectly-created `_NEW_*` folders into existing entity folders.
+
+**Discovered Issues (18 folders):**
+```
+VAST/Customers and Partners/_NEW_Jai Menon/     → VAST/People/Jai Menon/ (exists!)
+VAST/Customers and Partners/_NEW_Jeff Denworth/ → VAST/People/Jeff Denworth/ (exists!)
+VAST/Customers and Partners/_NEW_Maneesh Sah/   → VAST/People/Maneesh Sah/ (if exists)
+VAST/Customers and Partners/_NEW_Timo Pervane/  → VAST/People/Timo Pervane/ (exists!)
+VAST/Customers and Partners/_NEW_Deandre Jackson/ → VAST/People/Deandre Jackson/ (exists!)
+VAST/Customers and Partners/_NEW_Yogev Vankin/  → VAST/People/Yogev Vankin/ (if exists)
+VAST/Customers and Partners/_NEW_VAST/          → DELETE (invalid - VAST is the company)
+VAST/Customers and Partners/_NEW_Pricing/       → VAST/Projects/Pricing/ (if exists)
+VAST/Customers and Partners/_NEW_Dhammak/       → NEW ACCOUNT - keep as customer
+VAST/Customers and Partners/_NEW_/Asaf Levy/    → VAST/People/Asaf Levy/
+VAST/Customers and Partners/_NEW_/Jonsi Stephenson/ → VAST/People/Jonsi Stephenson/
+VAST/People/_NEW_Nidhi/                         → VAST/People/Nidhi/ (normalize)
+VAST/People/_NEW_JB/                            → VAST/People/JB/ or identify
+VAST/People/_NEW_Tomer/                         → VAST/People/Tomer Hagay/ (merge)
+VAST/People/_NEW_Roy/                           → Identify or delete
+VAST/People/_NEW_John/                          → Identify or delete
+VAST/People/_NEW_Cloud Marketplace MVP/         → VAST/Projects/Cloud Marketplace/
+VAST/People/_NEW_Longmont Public Media/         → Personal/Projects/ (not VAST)
+```
+
+**Tasks**
+- [ ] Create script `scripts/cleanup_new_entities.py` to merge content
+- [ ] Move notes from `_NEW_*` into correct destination
+- [ ] Update wikilinks in moved notes
+- [ ] Delete empty `_NEW_*` folders
+- [ ] Add `#needs-review` tag to merged READMEs
+
+**Success Criteria**
+- Zero `_NEW_*` folders remain
+- All notes accessible via correct entity folders
+- Wikilinks updated to correct paths
+
+---
+
+## 18) Delete Invalid VAST/Accounts Folder
+
+**Goal:** Remove incorrectly-created `VAST/Accounts/` path (should be `VAST/Customers and Partners/`).
+
+**Discovered Issues (3 stub READMEs):**
+```
+VAST/Accounts/Google/README.md    → Already exists at VAST/Customers and Partners/Google/
+VAST/Accounts/Microsoft/README.md → Already exists at VAST/Customers and Partners/Microsoft/
+VAST/Accounts/OpenAI/README.md    → Already exists at VAST/Customers and Partners/OpenAI/
+```
+
+**Tasks**
+- [ ] Delete `VAST/Accounts/` folder entirely
+- [ ] Fix planner prompt to use `Customers and Partners` not `Accounts`
+
+**Success Criteria**
+- No `VAST/Accounts/` folder
+- Planner generates correct paths
+
+---
+
+## 19) Fix Person Entities Misplaced in Customers Folder
+
+**Goal:** Move person entities incorrectly placed under `Customers and Partners/`.
+
+**Discovered Issues:**
+```
+VAST/Customers and Partners/Jack Kabat/  → VAST/People/Jack Kabat/
+VAST/Customers and Partners/EY/          → Legitimate customer, keep
+```
+
+**Tasks**
+- [ ] Move `Jack Kabat/` to `VAST/People/`
+- [ ] Review planner logic for entity type detection
+- [ ] People are never "customers" - add validation
+
+**Success Criteria**
+- People always placed in `People/` folder
+- Planner correctly distinguishes person vs customer
+
+---
+
+## 20) Fix README Task Format (Missing Dates/Priorities)
+
+**Goal:** Tasks in entity READMEs should have full Obsidian Tasks format.
+
+**Discovered Issues:**
+- Meeting notes have proper format: `@Owner 📅 YYYY-MM-DD 🔺 #task`
+- Entity READMEs have plain format: `- [ ] Task text` (no dates, no priorities)
+
+**Example (Jeff Denworth README):**
+```
+- [ ] Define Blob API MVP as AZCopy compatibility...  ← MISSING: @Owner 📅 date 🔺 #task
+```
+
+**Tasks**
+- [ ] Update entity README patch template to include task metadata
+- [ ] Propagate owner, due date, priority from extraction to README patches
+- [ ] Add `#task` tag to all task lines
+
+**Success Criteria**
+- All tasks in READMEs have: owner, due date (if known), priority, `#task` tag
+- Tasks plugin can query READMEs same as notes
+
+---
+
+## 21) Remove Duplicate Context Entries
+
+**Goal:** Prevent duplicate lines in `## Recent Context` section.
+
+**Discovered Issues:**
+- Jeff Denworth README has duplicate context entries
+- `append_under_heading` is not idempotent
+
+**Example:**
+```
+- 2025-11-07: [[2025-11-07 - Org map and cloud strategy]]
+- 2025-11-07: [[2025-11-07 - Org map and cloud focus]]     ← Similar note, should merge?
+- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]]  ← Third variant
+```
+
+**Tasks**
+- [ ] Add deduplication logic to `append_under_heading` primitive
+- [ ] Consider using date as key for context entries
+- [ ] Review duplicate source transcripts that generated similar notes
+
+**Success Criteria**
+- No duplicate context lines for same date/note
+- Re-running apply on same sources is idempotent
+
+---
+
+## 22) Review and Clean 24 Auto-Stub READMEs
+
+**Goal:** Replace auto-generated stub READMEs with proper templates.
+
+**Discovered Issues (24 stubs):**
+- All marked with `> ⚠️ Auto-created stub - needs review`
+- Have minimal frontmatter and empty sections
+- Located in: `VAST/Accounts/`, `VAST/Customers and Partners/_NEW_*/`, `VAST/People/_NEW_*/`, etc.
+
+**Tasks**
+- [ ] List all stubs: `grep -l "Auto-created stub" VAST/*/*/README.md`
+- [ ] For each stub: either populate from template or delete folder
+- [ ] Remove stubs for entities that don't exist (e.g., `Lihi Rotchild` typo for existing person)
+
+**Success Criteria**
+- Zero "Auto-created stub" READMEs remain
+- All entity READMEs use proper templates with real content
+
+---
+
+# Planner Improvements (Prevent Future Issues)
+
+## 23) Improve Entity Matching in Planner
+
+**Goal:** Planner should match existing entities before creating `_NEW_*` folders.
+
+**Root Causes:**
+- Planner doesn't have full visibility into existing entity folders
+- People classified as "customer" note type go to wrong folder
+- Aliases not being used for matching
+
+**Tasks**
+- [ ] Pass complete entity folder list to planner context
+- [ ] Add fuzzy matching for names (Jai Menon, Jai, etc.)
+- [ ] Validate note_type matches destination (people → People/, customer → Customers/)
+- [ ] Use `entities/aliases.yaml` for normalization
+
+**Success Criteria**
+- Zero `_NEW_*` folders created for known entities
+- Entity name variations (Jai vs Jai Menon) resolve correctly
+
+---
+
+## 24) Add Post-Plan Validation for Path Correctness
+
+**Goal:** Catch invalid paths before apply phase.
+
+**Discovered Issues:**
+- `VAST/Accounts/` path should never exist
+- Person names in `Customers and Partners/` path
+- Colons in filenames (fixed, but should prevent at plan time)
+
+**Tasks**
+- [ ] Add path pattern validation in `plan.py`
+- [ ] Reject plans with `VAST/Accounts/` path
+- [ ] Warn if person name appears in customer path
+- [ ] Sanitize filenames at plan generation, not apply time
+
+**Success Criteria**
+- Invalid paths caught at PLAN phase, not APPLY phase
+- Clear warnings in plan output for suspicious paths
+
+
