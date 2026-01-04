@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -90,6 +90,8 @@ not done
 ```
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] — MAI stakeholder mapping; exec meeting strategy; Azure Blob integration MVP; January travel planning.
 
 - 2025-10-01: Microsoft Azure engagement task list covering egress minimization, GA milestone alignment, ROI data usage compliance, and collateral/offer packaging.
 

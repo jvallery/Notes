@@ -2,7 +2,7 @@
 type: people
 title: Jason Vallery
 created: '2026-01-03'
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 auto_created: true
 tags:
 - type/people
@@ -37,6 +37,8 @@ tags:
 - [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Jason Vallery
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - VAST Cloud SaaS operating model]]
 

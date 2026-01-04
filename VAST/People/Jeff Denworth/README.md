@@ -1,7 +1,7 @@
 ---
 type: people
 title: Jeff Denworth
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/people
@@ -35,6 +35,8 @@ tags:
 - [ ] Assign owners and draft Working Backwards artifacts (PR/FAQ + 6-pager) for “VAST Cloud” and “VAST in Apollo”.
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - Planning and alignment with Jeff]] (via Jeff Denworth)
 

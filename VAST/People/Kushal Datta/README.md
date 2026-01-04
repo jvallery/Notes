@@ -1,7 +1,7 @@
 ---
 type: people
 title: Kushal Datta
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/people
@@ -25,6 +25,8 @@ tags:
 - [ ] Drive Microsoft MAI/Apollo 30/60/90 plan: align success criteria + test plan (30d), get POC live with measurable perf (60d), produce scale plan and Go/No-Go for 2–3 more sites (90d).
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - SC25 small-group meeting planning]] (via Nidhi)
 

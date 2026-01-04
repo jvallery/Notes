@@ -1,7 +1,7 @@
 ---
 type: people
 title: Lior Genzel
-last_contact: '2025-10-01'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/people
@@ -25,6 +25,8 @@ tags:
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
 

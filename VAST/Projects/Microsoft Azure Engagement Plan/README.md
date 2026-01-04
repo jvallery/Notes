@@ -2,7 +2,7 @@
 type: projects
 title: Microsoft Azure Engagement Plan
 created: '2026-01-03'
-last_updated: '2025-12-19'
+last_updated: '2025-12-15'
 status: complete
 auto_created: true
 tags:
@@ -35,6 +35,8 @@ SORT due ASC
 ```
 
 ## Recent Context
+
+- 2025-12-15: [[2025-12-15 - Microsoft MAI strategy and next steps]] (via Microsoft)
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud focus]] (via Jeff Denworth)
 
