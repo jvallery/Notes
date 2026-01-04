@@ -2,13 +2,13 @@
 type: "rob"
 title: "VAST and Microsoft Strategic Discussion"
 date: "2025-12-16"
-rob_forum: "VAST"
+rob_forum: "Internal"
 participants: ["Jason", "Manish", "Jeff", "Ong", "Kushaldada", "Leo", "Bilal", "Vamsi", "Renan", "Shahar"]
 source: "transcript"
 source_ref: "Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md"
 tags:
   - "type/rob"
-  - "rob/vast"
+  - "rob/internal"
   - "generated"
 ---
 
