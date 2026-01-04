@@ -1,245 +1,273 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "extraction.schema.json",
-  "title": "Extraction Output",
-  "description": "Structured data extracted from transcripts/emails. Includes entity details for graph building. Some fields (version, source_file, processed_at) are system-set.",
-  "type": "object",
-  "required": ["note_type", "title", "date", "summary"],
+  "$defs": {
+    "Mentions": {
+      "additionalProperties": false,
+      "description": "Entities mentioned in the content.",
+      "properties": {
+        "people": {
+          "description": "Names of people mentioned",
+          "items": {
+            "type": "string"
+          },
+          "title": "People",
+          "type": "array"
+        },
+        "projects": {
+          "description": "Projects referenced",
+          "items": {
+            "type": "string"
+          },
+          "title": "Projects",
+          "type": "array"
+        },
+        "accounts": {
+          "description": "Companies/accounts referenced",
+          "items": {
+            "type": "string"
+          },
+          "title": "Accounts",
+          "type": "array"
+        }
+      },
+      "title": "Mentions",
+      "type": "object"
+    },
+    "TaskItem": {
+      "additionalProperties": false,
+      "description": "A single extracted task/action item.",
+      "properties": {
+        "text": {
+          "description": "The action item text",
+          "title": "Text",
+          "type": "string"
+        },
+        "owner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Person responsible, use 'Myself' for first-person",
+          "title": "Owner"
+        },
+        "due": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Due date in YYYY-MM-DD format",
+          "title": "Due"
+        },
+        "priority": {
+          "default": "medium",
+          "description": "Task priority level",
+          "enum": [
+            "highest",
+            "high",
+            "medium",
+            "low",
+            "lowest"
+          ],
+          "title": "Priority",
+          "type": "string"
+        },
+        "related_person": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Person this task is about",
+          "title": "Related Person"
+        },
+        "related_project": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Project this task belongs to",
+          "title": "Related Project"
+        },
+        "related_account": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Account this task is for",
+          "title": "Related Account"
+        },
+        "confidence": {
+          "default": 1.0,
+          "description": "Confidence in this task extraction",
+          "maximum": 1.0,
+          "minimum": 0.0,
+          "title": "Confidence",
+          "type": "number"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "TaskItem",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Schema for extracted meeting/email content. Version 1.0.\n\nUsed with OpenAI Structured Outputs to guarantee schema adherence.",
   "properties": {
     "version": {
       "const": "1.0",
-      "description": "Schema version (system-set)"
+      "default": "1.0",
+      "description": "Schema version",
+      "title": "Version",
+      "type": "string"
     },
     "source_file": {
-      "type": "string",
-      "description": "Path to source file (system-set, not LLM-generated)"
+      "default": "",
+      "description": "Path to source file (set by system)",
+      "title": "Source File",
+      "type": "string"
     },
     "processed_at": {
-      "type": "string",
+      "description": "Processing timestamp (set by system)",
       "format": "date-time",
-      "description": "Processing timestamp (system-set)"
+      "title": "Processed At",
+      "type": "string"
     },
     "note_type": {
-      "type": "string",
-      "enum": ["customer", "people", "projects", "rob", "journal", "partners", "travel"],
-      "description": "Classification of the note content"
+      "description": "Type of note this content represents",
+      "enum": [
+        "customer",
+        "people",
+        "projects",
+        "rob",
+        "journal",
+        "partners",
+        "travel"
+      ],
+      "title": "Note Type",
+      "type": "string"
     },
     "entity_name": {
-      "type": ["string", "null"],
-      "description": "Primary entity (person, project, account name) - can be null"
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "description": "Primary entity (person name, account name, project name)",
+      "title": "Entity Name"
     },
     "title": {
-      "type": "string",
-      "description": "Generated note title (3-7 words)"
+      "description": "Brief descriptive title (3-7 words)",
+      "title": "Title",
+      "type": "string"
     },
     "date": {
-      "type": "string",
-      "format": "date",
-      "description": "Meeting/content date (YYYY-MM-DD)"
+      "description": "Date of the meeting/email in YYYY-MM-DD format",
+      "title": "Date",
+      "type": "string"
     },
     "participants": {
-      "type": "array",
-      "items": { "type": "string" },
-      "default": [],
-      "description": "List of people involved"
+      "description": "List of participant names",
+      "items": {
+        "type": "string"
+      },
+      "title": "Participants",
+      "type": "array"
     },
     "summary": {
-      "type": "string",
-      "description": "2-3 sentence summary of key points"
+      "description": "2-3 sentence summary of key points",
+      "title": "Summary",
+      "type": "string"
     },
     "tasks": {
-      "type": "array",
+      "description": "Action items extracted",
       "items": {
-        "type": "object",
-        "required": ["text"],
-        "properties": {
-          "text": { "type": "string", "description": "The action item" },
-          "owner": { "type": "string", "default": "Myself", "description": "Person responsible" },
-          "due": { "type": ["string", "null"], "format": "date", "description": "Due date or null" },
-          "priority": { 
-            "type": "string", 
-            "enum": ["highest", "high", "medium", "low", "lowest"],
-            "default": "medium"
-          },
-          "related_person": { "type": ["string", "null"], "description": "Person this task is about" },
-          "related_project": { "type": ["string", "null"], "description": "Project this task belongs to" },
-          "related_account": { "type": ["string", "null"], "description": "Account this task is for" },
-          "confidence": {
-            "type": "number",
-            "minimum": 0,
-            "maximum": 1,
-            "description": "Extraction confidence for this task"
-          }
-        }
+        "$ref": "#/$defs/TaskItem"
       },
-      "description": "Action items extracted from content"
+      "title": "Tasks",
+      "type": "array"
     },
     "decisions": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Decisions made during meeting/thread"
+      "description": "Decisions made",
+      "items": {
+        "type": "string"
+      },
+      "title": "Decisions",
+      "type": "array"
     },
     "facts": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Key facts or context to remember"
+      "description": "Key facts to remember",
+      "items": {
+        "type": "string"
+      },
+      "title": "Facts",
+      "type": "array"
     },
     "topics": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Topics discussed in the meeting/content"
+      "description": "Topics discussed",
+      "items": {
+        "type": "string"
+      },
+      "title": "Topics",
+      "type": "array"
     },
     "mentions": {
-      "type": "object",
-      "properties": {
-        "people": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Names of people mentioned"
-        },
-        "projects": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Projects referenced" 
-        },
-        "accounts": { 
-          "type": "array", 
-          "items": { "type": "string" },
-          "description": "Companies/accounts referenced"
-        }
-      },
-      "description": "Cross-references to other entities"
-    },
-    "person_details": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "role": { "type": ["string", "null"], "description": "Job title or role" },
-          "company": { "type": ["string", "null"], "description": "Company or organization" },
-          "department": { "type": ["string", "null"], "description": "Team or department" },
-          "email": { "type": ["string", "null"], "description": "Email address" },
-          "phone": { "type": ["string", "null"], "description": "Phone number" },
-          "linkedin": { "type": ["string", "null"], "description": "LinkedIn URL" },
-          "location": { "type": ["string", "null"], "description": "City/region" },
-          "background": { "type": ["string", "null"], "description": "Brief background or expertise" },
-          "relationship": { "type": ["string", "null"], "description": "How I interact with them" },
-          "projects": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Projects they work on"
-          }
-        }
-      },
-      "description": "Rich profiles for people mentioned (name -> details)"
-    },
-    "project_details": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "status": { 
-            "type": ["string", "null"],
-            "enum": ["active", "blocked", "on-hold", "complete", "proposed", null],
-            "description": "Current project state" 
-          },
-          "description": { "type": ["string", "null"], "description": "Brief project description" },
-          "owner": { "type": ["string", "null"], "description": "Project owner/lead" },
-          "blockers": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Current blockers"
-          },
-          "next_steps": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Immediate actions needed"
-          },
-          "collaborators": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "People working on it"
-          },
-          "related_accounts": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Customers involved"
-          }
-        }
-      },
-      "description": "Metadata for projects mentioned (name -> details)"
-    },
-    "account_details": {
-      "type": "object",
-      "additionalProperties": {
-        "type": "object",
-        "properties": {
-          "industry": { "type": ["string", "null"], "description": "Industry or sector" },
-          "relationship": { 
-            "type": ["string", "null"],
-            "enum": ["prospect", "active", "partner", "at-risk", "churned", null],
-            "description": "Account status" 
-          },
-          "key_contacts": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "People at this account"
-          },
-          "opportunities": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Active deals or projects"
-          },
-          "blockers": { 
-            "type": "array", 
-            "items": { "type": "string" },
-            "description": "Issues or concerns"
-          }
-        }
-      },
-      "description": "Metadata for accounts mentioned (name -> details)"
-    },
-    "cross_links": {
-      "type": "object",
-      "properties": {
-        "person_to_project": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "description": "Map person names to their projects"
-        },
-        "person_to_account": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "description": "Map person names to their accounts"
-        },
-        "project_to_account": {
-          "type": "object",
-          "additionalProperties": {
-            "type": "array",
-            "items": { "type": "string" }
-          },
-          "description": "Map projects to related accounts"
-        }
-      },
-      "description": "Relationship mappings between entities"
+      "$ref": "#/$defs/Mentions",
+      "description": "Entities mentioned in content"
     },
     "confidence": {
-      "type": "number",
-      "minimum": 0,
-      "maximum": 1,
-      "description": "Overall extraction confidence"
+      "default": 1.0,
+      "description": "Overall confidence in extraction (0.0-1.0)",
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
     },
     "warnings": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Concerns or ambiguities to flag for review"
+      "description": "Any concerns or ambiguities to flag for review",
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
     }
   },
-  "additionalProperties": false
+  "required": [
+    "note_type",
+    "title",
+    "date",
+    "summary"
+  ],
+  "title": "ExtractionV1",
+  "type": "object"
 }

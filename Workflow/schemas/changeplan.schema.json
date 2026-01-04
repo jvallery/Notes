@@ -1,172 +1,758 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "changeplan.schema.json",
-  "title": "ChangePlan",
-  "description": "Schema for deterministic file operations using patch primitives",
-  "type": "object",
-  "required": ["version", "source_file", "extraction_file", "created_at", "operations"],
+  "$defs": {
+    "CreateContext": {
+      "additionalProperties": false,
+      "description": "Template context for CREATE operations. Populated from extraction.",
+      "properties": {
+        "title": {
+          "description": "Note title from extraction",
+          "title": "Title",
+          "type": "string"
+        },
+        "date": {
+          "description": "Date in YYYY-MM-DD format from extraction",
+          "title": "Date",
+          "type": "string"
+        },
+        "summary": {
+          "description": "Meeting/content summary from extraction",
+          "title": "Summary",
+          "type": "string"
+        },
+        "participants": {
+          "description": "List of participant names",
+          "items": {
+            "type": "string"
+          },
+          "title": "Participants",
+          "type": "array"
+        },
+        "tasks": {
+          "description": "Tasks from extraction",
+          "items": {
+            "$ref": "#/$defs/TaskContext"
+          },
+          "title": "Tasks",
+          "type": "array"
+        },
+        "decisions": {
+          "description": "Decisions from extraction",
+          "items": {
+            "type": "string"
+          },
+          "title": "Decisions",
+          "type": "array"
+        },
+        "facts": {
+          "description": "Key facts from extraction",
+          "items": {
+            "type": "string"
+          },
+          "title": "Facts",
+          "type": "array"
+        },
+        "topics": {
+          "description": "Topics discussed from extraction",
+          "items": {
+            "type": "string"
+          },
+          "title": "Topics",
+          "type": "array"
+        },
+        "source": {
+          "default": "transcript",
+          "description": "Source type: transcript or email",
+          "title": "Source",
+          "type": "string"
+        },
+        "source_ref": {
+          "default": "",
+          "description": "Path to archived source file",
+          "title": "Source Ref",
+          "type": "string"
+        },
+        "person": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Person name for people notes",
+          "title": "Person"
+        },
+        "account": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Account name for customer notes",
+          "title": "Account"
+        },
+        "project": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Project name for project notes",
+          "title": "Project"
+        },
+        "rob_forum": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "ROB forum name for ROB notes",
+          "title": "Rob Forum"
+        },
+        "partner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Partner name for partner notes",
+          "title": "Partner"
+        },
+        "destination": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Destination for travel notes",
+          "title": "Destination"
+        }
+      },
+      "required": [
+        "title",
+        "date",
+        "summary"
+      ],
+      "title": "CreateContext",
+      "type": "object"
+    },
+    "EntityUpdateContext": {
+      "additionalProperties": false,
+      "description": "Context for UPDATE_ENTITY operations. Merges entity details into README.",
+      "properties": {
+        "entity_type": {
+          "description": "Type of entity being updated",
+          "enum": [
+            "person",
+            "project",
+            "account"
+          ],
+          "title": "Entity Type",
+          "type": "string"
+        },
+        "entity_name": {
+          "description": "Name of the entity",
+          "title": "Entity Name",
+          "type": "string"
+        },
+        "source_date": {
+          "description": "Date of source content (for last_contact/last_updated)",
+          "title": "Source Date",
+          "type": "string"
+        },
+        "source_note": {
+          "description": "Wikilink to the source note for cross-reference",
+          "title": "Source Note",
+          "type": "string"
+        },
+        "role": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Role"
+        },
+        "company": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Company"
+        },
+        "department": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Department"
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Email"
+        },
+        "phone": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Phone"
+        },
+        "linkedin": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Linkedin"
+        },
+        "location": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Location"
+        },
+        "background": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Background"
+        },
+        "relationship": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relationship"
+        },
+        "status": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Status"
+        },
+        "description": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Description"
+        },
+        "owner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Owner"
+        },
+        "blockers": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Blockers",
+          "type": "array"
+        },
+        "next_steps": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Next Steps",
+          "type": "array"
+        },
+        "collaborators": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Collaborators",
+          "type": "array"
+        },
+        "industry": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Industry"
+        },
+        "account_relationship": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Account Relationship"
+        },
+        "key_contacts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Key Contacts",
+          "type": "array"
+        },
+        "opportunities": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Opportunities",
+          "type": "array"
+        },
+        "related_projects": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Projects",
+          "type": "array"
+        },
+        "related_accounts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Related Accounts",
+          "type": "array"
+        },
+        "new_facts": {
+          "items": {
+            "type": "string"
+          },
+          "title": "New Facts",
+          "type": "array"
+        },
+        "context_line": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Line to add under ## Recent Context",
+          "title": "Context Line"
+        }
+      },
+      "required": [
+        "entity_type",
+        "entity_name",
+        "source_date",
+        "source_note"
+      ],
+      "title": "EntityUpdateContext",
+      "type": "object"
+    },
+    "FrontmatterPatch": {
+      "additionalProperties": false,
+      "description": "A single frontmatter field update.",
+      "properties": {
+        "key": {
+          "title": "Key",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ],
+      "title": "FrontmatterPatch",
+      "type": "object"
+    },
+    "HeadingPatch": {
+      "additionalProperties": false,
+      "description": "Content to append under a specific heading.",
+      "properties": {
+        "heading": {
+          "title": "Heading",
+          "type": "string"
+        },
+        "content": {
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "heading",
+        "content"
+      ],
+      "title": "HeadingPatch",
+      "type": "object"
+    },
+    "Operation": {
+      "additionalProperties": false,
+      "description": "A single vault operation.",
+      "properties": {
+        "op": {
+          "$ref": "#/$defs/OperationType"
+        },
+        "path": {
+          "description": "Relative path from vault root",
+          "title": "Path",
+          "type": "string"
+        },
+        "template": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Template name for CREATE ops (e.g., 'people.md.j2')",
+          "title": "Template"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CreateContext"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Template variables for CREATE ops - MUST be populated from extraction"
+        },
+        "patches": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/PatchSpec"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Patch specs for PATCH ops",
+          "title": "Patches"
+        },
+        "links": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Wikilinks for LINK ops (e.g., ['[[Person]]'])",
+          "title": "Links"
+        },
+        "entity_update": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EntityUpdateContext"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Entity details for UPDATE_ENTITY ops"
+        }
+      },
+      "required": [
+        "op",
+        "path"
+      ],
+      "title": "Operation",
+      "type": "object"
+    },
+    "OperationType": {
+      "description": "Allowed operation types for ChangePlan.",
+      "enum": [
+        "create",
+        "patch",
+        "link",
+        "update_entity"
+      ],
+      "title": "OperationType",
+      "type": "string"
+    },
+    "PatchPrimitive": {
+      "description": "Allowed patch primitives - no regex, only structured operations.",
+      "enum": [
+        "upsert_frontmatter",
+        "append_under_heading",
+        "prepend_under_heading",
+        "ensure_wikilinks"
+      ],
+      "title": "PatchPrimitive",
+      "type": "string"
+    },
+    "PatchSpec": {
+      "additionalProperties": false,
+      "description": "Specification for a single patch operation.",
+      "properties": {
+        "primitive": {
+          "$ref": "#/$defs/PatchPrimitive"
+        },
+        "frontmatter": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/FrontmatterPatch"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Frontmatter"
+        },
+        "heading": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/HeadingPatch"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "wikilinks": {
+          "anyOf": [
+            {
+              "items": {
+                "type": "string"
+              },
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wikilinks"
+        }
+      },
+      "required": [
+        "primitive"
+      ],
+      "title": "PatchSpec",
+      "type": "object"
+    },
+    "TaskContext": {
+      "additionalProperties": false,
+      "description": "Task item for template context.",
+      "properties": {
+        "text": {
+          "description": "The task description",
+          "title": "Text",
+          "type": "string"
+        },
+        "owner": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Task owner name or 'Myself'",
+          "title": "Owner"
+        },
+        "due": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Due date in YYYY-MM-DD format",
+          "title": "Due"
+        },
+        "priority": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "description": "Priority: highest, high, medium, low, lowest",
+          "title": "Priority"
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "title": "TaskContext",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "description": "Complete plan for vault modifications. NO archive ops - those are deterministic.",
   "properties": {
     "version": {
       "const": "1.0",
-      "description": "Schema version"
+      "default": "1.0",
+      "title": "Version",
+      "type": "string"
     },
     "source_file": {
-      "type": "string",
-      "description": "Path to original source file"
+      "title": "Source File",
+      "type": "string"
     },
     "extraction_file": {
-      "type": "string",
-      "description": "Path to extraction JSON"
+      "title": "Extraction File",
+      "type": "string"
     },
     "created_at": {
-      "type": "string",
       "format": "date-time",
-      "description": "Plan creation timestamp"
+      "title": "Created At",
+      "type": "string"
     },
     "operations": {
-      "type": "array",
       "items": {
-        "type": "object",
-        "required": ["op", "path"],
-        "properties": {
-          "op": {
-            "type": "string",
-            "enum": ["create", "patch", "link", "update_entity"],
-            "description": "Operation type (archive handled by Python)"
-          },
-          "path": {
-            "type": "string",
-            "description": "Target file path (relative to vault root)"
-          },
-          "template": {
-            "type": "string",
-            "description": "Jinja2 template name (for create)"
-          },
-          "context": {
-            "type": "object",
-            "description": "Template variables (for create)"
-          },
-          "patches": {
-            "type": "array",
-            "description": "Structured patch primitives (for patch)",
-            "items": {
-              "oneOf": [
-                {
-                  "type": "object",
-                  "required": ["primitive", "frontmatter"],
-                  "properties": {
-                    "primitive": { "const": "upsert_frontmatter" },
-                    "frontmatter": {
-                      "type": "array",
-                      "items": {
-                        "type": "object",
-                        "required": ["key", "value"],
-                        "properties": {
-                          "key": { "type": "string" },
-                          "value": { "type": ["string", "array", "null"] }
-                        }
-                      }
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "required": ["primitive", "heading"],
-                  "properties": {
-                    "primitive": { "const": "append_under_heading" },
-                    "heading": {
-                      "type": "object",
-                      "required": ["heading", "content"],
-                      "properties": {
-                        "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
-                        "content": { "type": "string", "description": "Content to append" }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "required": ["primitive", "heading"],
-                  "properties": {
-                    "primitive": { "const": "prepend_under_heading" },
-                    "heading": {
-                      "type": "object",
-                      "required": ["heading", "content"],
-                      "properties": {
-                        "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
-                        "content": { "type": "string", "description": "Content to prepend (for reverse-chronological ledgers)" }
-                      },
-                      "additionalProperties": false
-                    }
-                  }
-                },
-                {
-                  "type": "object",
-                  "required": ["primitive", "wikilinks"],
-                  "properties": {
-                    "primitive": { "const": "ensure_wikilinks" },
-                    "wikilinks": {
-                      "type": "array",
-                      "items": { "type": "string" },
-                      "description": "Wikilinks to ensure exist"
-                    }
-                  }
-                }
-              ]
-            }
-          },
-          "links": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "Wikilinks to insert (for link op)"
-          },
-          "entity_update": {
-            "type": "object",
-            "description": "Entity details for update_entity op",
-            "required": ["entity_type", "entity_name", "source_date", "source_note"],
-            "properties": {
-              "entity_type": { 
-                "type": "string", 
-                "enum": ["person", "project", "account"],
-                "description": "Type of entity being updated"
-              },
-              "entity_name": { "type": "string", "description": "Name of the entity" },
-              "source_date": { "type": "string", "format": "date", "description": "Date of source content" },
-              "source_note": { "type": "string", "description": "Wikilink to source note" },
-              "role": { "type": ["string", "null"] },
-              "company": { "type": ["string", "null"] },
-              "department": { "type": ["string", "null"] },
-              "email": { "type": ["string", "null"] },
-              "phone": { "type": ["string", "null"] },
-              "linkedin": { "type": ["string", "null"] },
-              "location": { "type": ["string", "null"] },
-              "background": { "type": ["string", "null"] },
-              "relationship": { "type": ["string", "null"] },
-              "status": { "type": ["string", "null"] },
-              "description": { "type": ["string", "null"] },
-              "owner": { "type": ["string", "null"] },
-              "blockers": { "type": "array", "items": { "type": "string" } },
-              "next_steps": { "type": "array", "items": { "type": "string" } },
-              "collaborators": { "type": "array", "items": { "type": "string" } },
-              "industry": { "type": ["string", "null"] },
-              "account_relationship": { "type": ["string", "null"] },
-              "key_contacts": { "type": "array", "items": { "type": "string" } },
-              "opportunities": { "type": "array", "items": { "type": "string" } },
-              "related_projects": { "type": "array", "items": { "type": "string" } },
-              "related_accounts": { "type": "array", "items": { "type": "string" } },
-              "new_facts": { "type": "array", "items": { "type": "string" } },
-              "context_line": { "type": ["string", "null"], "description": "Line to add under ## Recent Context" }
-            }
-          }
-        }
-      }
+        "$ref": "#/$defs/Operation"
+      },
+      "title": "Operations",
+      "type": "array"
     },
     "warnings": {
-      "type": "array",
-      "items": { "type": "string" },
-      "description": "Issues to flag for human review"
+      "items": {
+        "type": "string"
+      },
+      "title": "Warnings",
+      "type": "array"
     }
   },
-  "additionalProperties": false
+  "required": [
+    "source_file",
+    "extraction_file",
+    "created_at"
+  ],
+  "title": "ChangePlan",
+  "type": "object"
 }
