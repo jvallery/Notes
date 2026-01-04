@@ -259,6 +259,7 @@ RUN PERIODICALLY:
 **Status: ✅ COMPLETED** (2026-01-04)
 
 **Completion Notes:**
+
 - Fixed `readme-migration.md.j2`: Changed `type: "readme"` to `type: "{{ entity_type }}"` so it renders correct type per entity
 - Standardized all 7 note templates to use unquoted type values (per STANDARDS.md)
 - Fixed `VAST/Projects/Cloud Marketplace MVP/README.md`: Changed `type: project` to `type: projects`
@@ -329,7 +330,7 @@ RUN PERIODICALLY:
 
 **Goal:** Ensure correct profile selection for Inbox sources.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 16:15)
 
 **Tasks**
 
