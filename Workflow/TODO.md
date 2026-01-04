@@ -256,20 +256,28 @@ RUN PERIODICALLY:
 
 **Goal:** Resolve conflicts between `STANDARDS.md`, templates, and validators.
 
-**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 15:45)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+- Fixed `readme-migration.md.j2`: Changed `type: "readme"` to `type: "{{ entity_type }}"` so it renders correct type per entity
+- Standardized all 7 note templates to use unquoted type values (per STANDARDS.md)
+- Fixed `VAST/Projects/Cloud Marketplace MVP/README.md`: Changed `type: project` to `type: projects`
+- Fixed 2 misclassified notes in `VAST/People/Shachar Feinblit/`: Changed `type: rob` to `type: people`
+- Verified scanner EXPECTED_TYPES already matches STANDARDS.md
+- Scanner reports 0 wrong_type issues for People scope
 
 **Tasks**
 
-- Choose one README root schema (`person-root` vs `people`) and update:
+- [x] Choose one README root schema (`person-root` vs `people`) and update:
   - `STANDARDS.md`
   - README templates (`readme-*.md.j2`)
   - Migration checks (`migration/scanner.py` expected types)
-- Update tag taxonomy rules if nested tags are ever allowed.
+- [x] Update tag taxonomy rules if nested tags are ever allowed.
 
 **Success Criteria**
 
-- README templates produce frontmatter that matches `STANDARDS.md`.
-- Migration scanner reports no false positives for correct README types.
+- ✅ README templates produce frontmatter that matches `STANDARDS.md`.
+- ✅ Migration scanner reports no false positives for correct README types.
 
 ---
 
