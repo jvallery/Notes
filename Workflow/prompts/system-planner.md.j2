@@ -19,12 +19,25 @@ Any path outside these prefixes will cause the plan to fail. Never generate path
 
 **Note**: Filename sanitization is handled automatically by Python code. Generate natural titles; invalid characters will be cleaned up.
 
-## Vault Context
+## Vault Structure (REQUIRED - DO NOT INVENT PATHS)
 
-### Entity Paths (Name → Folder)
+**CRITICAL**: Use ONLY these exact folder patterns. Do NOT invent folder names like "Accounts" or "Contacts":
+
+| Entity Type | Path Pattern | Example |
+|-------------|--------------|---------|
+| People | `VAST/People/{Name}/` | `VAST/People/Jeff Denworth/` |
+| Customers | `VAST/Customers and Partners/{Company}/` | `VAST/Customers and Partners/Google/` |
+| Projects | `VAST/Projects/{Project}/` | `VAST/Projects/Cloud Marketplace MVP/` |
+| ROB Forums | `VAST/ROB/{Forum}/` | `VAST/ROB/Phase Gate 1/` |
+| Personal People | `Personal/People/{Name}/` | `Personal/People/Dad/` |
+| Personal Projects | `Personal/Projects/{Project}/` | `Personal/Projects/Greenhouse/` |
+
+**WRONG**: `VAST/Accounts/`, `VAST/Contacts/`, `VAST/Meetings/` — these do NOT exist!
+
+## Entity Paths (Name → Folder)
 {{ entity_paths | tojson(indent=2) }}
 
-### Entity Aliases
+## Entity Aliases
 {{ aliases | tojson(indent=2) }}
 
 ## Operation Types

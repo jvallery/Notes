@@ -286,26 +286,33 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure README task queries and timestamps render correctly after import.
 
-**Status: REGRESSION (re-scan 2026-01-04)**
+**Status: NOT STARTED (re-scan 2026-01-04)**
 
 Re-scan results (current vault):
 
-- `rg -l "FROM \"\"" VAST Personal -g 'README.md'` → **179** READMEs
-- `rg -l "Last updated: \\*" VAST Personal -g 'README.md'` → **103** READMEs
+- `rg -l -g 'README.md' 'FROM ""' VAST Personal` → **0** READMEs (good)
+- `rg -l -g 'README.md' 'FROM this.file.folder' VAST Personal` → **179** READMEs
+- `rg -l -g 'README.md' 'FROM "' VAST Personal` → **36** READMEs (hard-coded scopes)
+- `rg -l -g 'README.md' '^last_updated: ""$' VAST Personal` → **15** READMEs
+- `rg -l -g 'README.md' "^last_updated: ''$" VAST Personal` → **34** READMEs
+- `rg --files-without-match -g 'README.md' '^last_updated:' VAST Personal` → **181** READMEs
 
-This means the README template changes and/or backfill did not apply cleanly to the current import results.
+This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` scopes are not standardized.
 
 **Tasks**
 
-- [ ] Update README templates to use `FROM this.file.folder` (no empty folder scopes).
-- [ ] Ensure `last_updated` is always set (frontmatter + footer line).
-- [ ] Backfill existing auto‑created READMEs to remove blank task scopes/timestamps.
+- [ ] Standardize README task query scopes:
+  - Default: `FROM this.file.folder`
+  - Allow explicit multi-folder scopes only when intentional (documented exceptions)
+- [ ] Ensure `last_updated` is always set and updated (frontmatter field; no body-level placeholder).
+- [ ] Backfill existing READMEs to normalize task scopes + populate `last_updated`.
 - [ ] Add an audit gate to fail runs when README queries/timestamps are blank (see item 21).
 
 **Success Criteria**
 
-- `rg -l "FROM \"\"" VAST Personal -g 'README.md'` returns 0.
-- `rg -l "Last updated: \\*" VAST Personal -g 'README.md'` returns 0.
+- `rg -l -g 'README.md' '^last_updated: ""$' VAST Personal` returns 0.
+- `rg -l -g 'README.md' "^last_updated: ''$" VAST Personal` returns 0.
+- `rg --files-without-match -g 'README.md' '^last_updated:' VAST Personal` returns 0.
 
 ---
 
@@ -375,6 +382,7 @@ This means the README template changes and/or backfill did not apply cleanly to 
   - broken `source_ref` targets (including 0-byte archive files)
   - note type ↔ destination mismatches (e.g., `VAST/People/*` notes with `type: customer`)
   - empty `participants: []` when `source` is a transcript/meeting
+  - invalid tags (uppercase, punctuation, deep nesting, etc.)
   - unsafe title→path characters or nested folder splits
 - Add a Runbook step to execute audit after each full import.
 
@@ -431,7 +439,7 @@ Correct path is `VAST/Customers and Partners/`.
 
 ---
 
-## 20) Fix README Task Format (Missing Dates/Priorities)
+## Post-Run: Fix README Task Format (Missing Dates/Priorities)
 
 **Goal:** Tasks in entity READMEs should have full Obsidian Tasks format.
 
@@ -469,7 +477,7 @@ Note: Existing READMEs have inline tasks without proper format. These would need
 
 ---
 
-## 21) Remove Duplicate Context Entries
+## Post-Run: Remove Duplicate Context Entries
 
 **Goal:** Prevent duplicate lines in `## Recent Context` section.
 
@@ -867,9 +875,9 @@ Mixed formats in vault:
 
 **Discovery:**
 
-Current scan shows **806/1234** tasks have `📅 YYYY-MM-DD`, and **0** tasks use a non-ISO `📅` date format.
+Current scan (VAST + Personal) shows **806/1226** tasks have `📅 YYYY-MM-DD`, and **0** tasks use a non-ISO `📅` date format.
 
-The real gap is **missing due dates** (and implied dates like “next week” that could be inferred from the meeting date).
+The real gap is **missing due dates** (and implied dates like “next week” that could be inferred from the meeting date). See item 65 for the open `#task` subset.
 
 **Impact:** Medium - task scheduling/queries don't work properly
 
@@ -1206,15 +1214,15 @@ Observed failure modes:
 | Metric                  | Count              |
 | ----------------------- | ------------------ |
 | Total .md files         | 442                |
-| People entities         | 138                |
-| Customer entities       | 42                 |
-| Project entities        | 60                 |
-| ROB forums              | 5                  |
+| People entities         | 136                |
+| Customer entities       | 41                 |
+| Project entities        | 59                 |
+| ROB forums              | 3                  |
 | Pending transcripts     | 3                  |
 | Pending emails          | 7                  |
 | Archived files          | 149                |
-| Tasks with full format  | ~800               |
-| Tasks missing format    | ~113               |
+| Tasks with full format  | 750                |
+| Tasks missing format    | 116                |
 | Decisions captured      | 332                |
 | Topics captured         | 0 (not extracted!) |
 | People with no notes    | 103                |
@@ -2275,6 +2283,43 @@ Examples:
 
 ---
 
+## 74) Checkbox Semantics: Tasks vs Checklists (OVA Docs Skew Task Audits)
+
+**Goal:** Decide whether checkbox items in documentation (e.g., OVA docs) are “tasks” and how they should appear in dashboards/audits.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Scan results (VAST + Personal):
+
+- `rg -P -g'*.md' -l '^- \\[ \\](?!.*#task\\b)' VAST Personal` → **22** files
+- `rg -P -g'*.md' -n '^- \\[ \\](?!.*#task\\b)' VAST Personal | wc -l` → **116** open checkbox items missing `#task`
+
+Most are checklist-style docs under `VAST/Projects/OVA/docs/**`, but a few are in entity READMEs (e.g., `VAST/People/Jeff Denworth/README.md`).
+
+If we treat all `- [ ]` items as tasks, these docs will dominate “missing format” reports; if we don’t, audits must explicitly exclude them.
+
+**Impact:** Medium - either dashboard noise or inconsistent conventions.
+
+**Effort:** 30–60 minutes (policy + audit rules), plus optional backfill
+
+**Tasks**
+
+- [ ] Decide policy:
+  - All checkboxes are tasks → enforce `#task` + format everywhere (including docs), OR
+  - Checklists are allowed → whitelist paths (e.g., `VAST/Projects/OVA/docs/**`) and exclude them from task-format audits.
+- [ ] Update `Workflow/STANDARDS.md` to codify the policy.
+- [ ] Update `Workflow/scripts/audit_import.py` to implement the chosen rule.
+- [ ] Optional: backfill affected files to conform (add/remove `#task`, add due dates only where appropriate).
+
+**Success Criteria**
+
+- Audit report clearly distinguishes task violations from checklist docs.
+- “Tasks missing format” metric is stable and explainable.
+
+---
+
 ## 75) Deterministic Extraction for Structured `Sources/Transcripts/*` Notes
 
 **Goal:** Avoid expensive LLM extraction when sources are already structured.
@@ -2454,11 +2499,11 @@ Most are intentionally unstructured, but should be documented.
 | 26  | Topics not extracted            | HIGH   | 5 min  | 🔴 CRITICAL |
 | 42  | Broken source_ref targets       | HIGH   | 60 min | 🔴 CRITICAL |
 | 70  | Template mismatch               | HIGH   | 30 min | 🔴 CRITICAL |
-| 90  | LLM uses 1:1 in filenames       | HIGH   | 10 min | 🔴 CRITICAL |
-| 91  | LLM uses wrong entity paths     | HIGH   | 30 min | 🔴 CRITICAL |
-| 92  | person_to_project schema err    | HIGH   | 15 min | 🔴 CRITICAL |
-| 93  | extra_tags undefined            | MED    | 5 min  | 🔴 CRITICAL |
-| 94  | note_type undefined             | MED    | 5 min  | 🔴 CRITICAL |
+| ~~90~~  | ~~LLM uses 1:1 in filenames~~   | ~~HIGH~~ | ~~10 min~~ | ✅ FIXED |
+| ~~91~~  | ~~LLM uses wrong entity paths~~ | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED |
+| ~~92~~  | ~~person_to_project schema err~~ | ~~HIGH~~ | ~~15 min~~ | ✅ FIXED |
+| ~~93~~  | ~~extra_tags undefined~~        | ~~MED~~ | ~~5 min~~ | ✅ FIXED (guarded) |
+| ~~94~~  | ~~note_type undefined~~         | ~~MED~~ | ~~5 min~~ | ✅ FIXED (guarded) |
 | 96  | Archive filename mismatch       | HIGH   | TBD    | 🔴 CRITICAL |
 | 97  | MacWhisper captures app title   | HIGH   | 30 min | 🔴 CRITICAL |
 | 98  | Source attribution broken       | HIGH   | 60 min | 🔴 CRITICAL |
@@ -2485,6 +2530,9 @@ Most are intentionally unstructured, but should be documented.
 | 58  | MS subfolders wrong location    | MED    | 15 min | 🟡 MEDIUM   |
 | 71  | ROB note at root                | MED    | 10 min | 🟡 MEDIUM   |
 | 73  | Role extraction quality         | MED    | 30 min | 🟡 MEDIUM   |
+| 74  | Task vs checklist semantics     | MED    | 60 min | 🟡 MEDIUM   |
+| 105 | README frontmatter gaps         | MED    | 15 min | 🟡 MEDIUM   |
+| 107 | Empty participants (5 notes)    | MED    | 10 min | 🟡 MEDIUM   |
 | 81  | Nidhi missing README            | LOW    | 5 min  | 🟡 MEDIUM   |
 | 82  | 65+ misspelled wikilinks        | MED    | 30 min | 🟡 MEDIUM   |
 | 83  | Short name wikilinks            | MED    | 20 min | 🟡 MEDIUM   |
@@ -2497,6 +2545,7 @@ Most are intentionally unstructured, but should be documented.
 | 101 | Participant name variations     | MED    | 30 min | 🟡 MEDIUM   |
 | 102 | Duplicate files (AI Talk)       | LOW    | 10 min | 🟢 LOW      |
 | 103 | Archive colons in filenames     | LOW    | 15 min | 🟢 LOW      |
+| 106 | Tag hygiene                     | LOW    | 30 min | 🟢 LOW      |
 | 29  | 4 Untitled files                | LOW    | 10 min | 🟢 LOW      |
 | 52  | Duplicate emails                | LOW    | 5 min  | 🟢 LOW      |
 | 53  | Spam emails                     | LOW    | 5 min  | 🟢 LOW      |
@@ -2515,14 +2564,14 @@ Most are intentionally unstructured, but should be documented.
 | Category      | Metric                   | Count                      |
 | ------------- | ------------------------ | -------------------------- |
 | **Scale**     | Total .md files          | 442                        |
-|               | People entities          | 138 (112 need review)      |
-|               | Customer entities        | 42                         |
-|               | Project entities         | 60                         |
+|               | People entities          | 136 (112 need review)      |
+|               | Customer entities        | 41                         |
+|               | Project entities         | 59                         |
 |               | ROB forums               | 3 (1 misplaced note)       |
 | **Pending**   | Transcripts to process   | 3                          |
 |               | Emails to process        | 7 (4 duplicates, 2 spam)   |
-| **Quality**   | Tasks with full format   | ~800                       |
-|               | Tasks missing format     | ~113                       |
+| **Quality**   | Tasks with full format   | 750                        |
+|               | Tasks missing format     | 116                        |
 |               | Overdue tasks (Oct/Nov)  | 792                        |
 |               | Tasks with @TBD owner    | 44                         |
 |               | Tasks missing due date   | 207                        |
@@ -2534,9 +2583,9 @@ Most are intentionally unstructured, but should be documented.
 |               | Broken 1:1 wikilinks     | 7                          |
 |               | Old-template READMEs     | 10                         |
 |               | Unknown/bad roles        | 24 people                  |
-| **Coverage**  | People with notes        | 35/138 (25%)               |
-|               | People README-only       | 103 (75%)                  |
-|               | Projects with notes      | 7/60 (12%)                 |
+| **Coverage**  | People with notes        | 33/136 (24%)               |
+|               | People README-only       | 103/136 (76%)              |
+|               | Projects with notes      | 6/59 (10%)                 |
 | **Issues**    | Nested folder paths      | 15+                        |
 |               | Duplicate meeting notes  | 20                         |
 |               | Broken wikilinks         | 57+                        |
@@ -2544,7 +2593,7 @@ Most are intentionally unstructured, but should be documented.
 |               | Empty folders            | 15                         |
 |               | Self-referential links   | 3                          |
 |               | Template mismatch        | 1 (critical)               |
-| **New Items** | Added to TODO.md         | 79 (items 26-104)          |
+| **New Items** | Added to TODO.md         | 82 (items 26-107)          |
 |               | Critical pipeline bugs   | 8 (items 90-94, 96-98)     |
 |               | Hallucinated note links  | 39 (27% broken)            |
 |               | LLM path errors          | 14+ (from logs)            |
@@ -2556,7 +2605,7 @@ Most are intentionally unstructured, but should be documented.
 
 ## 81) Nidhi Folder Missing README
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Only person folder without a README:
 
@@ -2568,7 +2617,7 @@ Only person folder without a README:
 
 ## 82) Wikilink Name Misspellings (65+ broken links)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Misspelled wikilinks pointing to non-existent paths:
 
@@ -2589,7 +2638,7 @@ Misspelled wikilinks pointing to non-existent paths:
 
 ## 83) Short Name Wikilinks (Alias Resolution Needed)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Short names used instead of full names:
 
@@ -2603,7 +2652,7 @@ Short names used instead of full names:
 
 ## 84) Orphan Wikilinks - Notable People Without Folders
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Real people referenced but no folder exists:
 
@@ -2620,7 +2669,7 @@ Real people referenced but no folder exists:
 
 ## 85) Template Artifact in Wikilinks
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 - `[[Note Title]]` appears in content - template placeholder not replaced
 
@@ -2630,7 +2679,7 @@ Real people referenced but no folder exists:
 
 ## 86) Project Wikilinks Without Folders
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Project references without corresponding folders:
 
@@ -2645,7 +2694,7 @@ Project references without corresponding folders:
 
 ## 87) LLM Hallucinated Note Wikilinks (39 Broken)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 The LLM is creating wikilinks to notes that don't exist - appears to be inventing note titles:
 
@@ -2669,7 +2718,7 @@ The LLM is creating wikilinks to notes that don't exist - appears to be inventin
 
 ## 88) Internal VAST Meetings Misclassified as Customer
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrectly classified as "customer" type:
 
@@ -2690,7 +2739,7 @@ Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrec
 
 ## 89) 33 Customer Folders with Only README (No Notes)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Out of 41 customer/partner folders, 33 have only README.md - no meeting notes filed:
 
@@ -2707,57 +2756,45 @@ Only 8 folders have actual notes:
 
 ---
 
-## 90) CRITICAL: LLM Generates `1:1` in Filenames (Invalid Path)
+## 90) ✅ FIXED: LLM Generates `1:1` in Filenames (Invalid Path)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
+**Fixed**: Already handled by `sanitize_path()` in apply.py
 
 From processing logs, LLM generates paths like:
 
 ```
 VAST/People/Rick Haselton/2025-10-29 - Intro 1:1 on CS ops.md
-VAST/People/Liraz Ben Or/2025-10-29 - Intro 1:1 on release process.md
-VAST/People/Josh Wentzell/2025-10-31 - Intro 1:1 on VAST on Cloud.md
 ```
 
-macOS doesn't allow `:` in filenames - these fail at apply phase!
+macOS doesn't allow `:` in filenames.
 
-**Root Cause**: LLM not sanitizing output; prompt doesn't specify filename constraints.
-
-**Fix**:
-
-1. Add to prompt: "Use `-` not `:` in filenames"
-2. Post-process paths to replace `:` with `-` in apply phase
+**Status**: `sanitize_path()` in `scripts/utils/fs.py` replaces `:` with `-` before writing. The logged errors were from before this sanitization was applied consistently.
 
 ---
 
-## 91) CRITICAL: LLM Uses Wrong Entity Paths
+## 91) ✅ FIXED: LLM Uses Wrong Entity Paths
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
+**Fixed**: 2026-01-04 - Added explicit path table to planner prompt
 
 From logs, multiple path structure errors:
 
 - `VAST/Accounts/` instead of `VAST/Customers and Partners/`
 - `VAST/Customers and Partners/_NEW_Jeff Denworth/` (should be `VAST/People/`)
-- `VAST/Customers and Partners/_NEW_Deandre Jackson/` (should be `VAST/People/`)
-- `VAST/ROB/Shachar Feinblit/` (people don't go in ROB)
 
-**Root Cause**: LLM doesn't have reliable path structure context, or confuses entity types.
+**Root Cause**: LLM ignoring entity_paths context and inventing folder names.
 
-**Fix**: Add explicit folder schema to planner prompt:
-
-```
-People → VAST/People/{Name}/
-Customers → VAST/Customers and Partners/{Company}/
-ROB → VAST/ROB/{Forum Name}/  (not person names)
-```
+**Fix Applied**: Added explicit "Vault Structure" table to `system-planner.md.j2` with REQUIRED path patterns and explicit "WRONG" examples.
 
 ---
 
-## 92) Schema Error: `person_to_project` Not in Required
+## 92) ✅ FIXED: Schema Error: `person_to_project` Not in Required
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
+**Fixed**: 2026-01-04
 
-OpenAI API rejects extraction calls:
+OpenAI API was rejecting extraction calls:
 
 ```
 Invalid schema for response_format 'ExtractionV1':
@@ -2765,42 +2802,41 @@ Invalid schema for response_format 'ExtractionV1':
 Extra required key 'person_to_project' supplied.
 ```
 
-**Root Cause**: Pydantic model has `person_to_project` in schema but not marked correctly.
+**Root Cause**: Unused `CrossLinks`, `PersonDetails`, `ProjectDetails`, `AccountDetails` classes were defined in `models/extraction.py`. OpenAI Structured Outputs picks up all classes in module scope.
 
-**Fix**: Audit `ExtractionV1` Pydantic model - ensure all fields in schema are in `required` or marked `Optional`.
+**Fix Applied**: Removed all unused classes from `models/extraction.py`. Only `TaskItem`, `Mentions`, and `ExtractionV1` remain.
 
 ---
 
-## 93) Template Variable Missing: `extra_tags`
+## 93) ✅ FIXED: Template Variable Missing: `extra_tags`
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
+**Fixed**: Already guarded in templates
 
 Log error: `'extra_tags' is undefined`
 
 **Root Cause**: Template uses `{{ extra_tags }}` but extraction doesn't provide it.
 
-**Fix**: Either:
-
-1. Add `extra_tags` to extraction schema
-2. Remove from template or make conditional `{% if extra_tags %}`
+**Status**: All templates now have `{% if extra_tags is defined and extra_tags %}` guards. No action needed.
 
 ---
 
-## 94) Template Variable Missing: `note_type`
+## 94) ✅ FIXED: Template Variable Missing: `note_type`
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
+**Fixed**: Templates hardcode type
 
 Log error: `'note_type' is undefined`
 
-**Root Cause**: Template uses `{{ note_type }}` but extraction/context doesn't provide it.
+**Root Cause**: Template context doesn't provide `note_type`.
 
-**Fix**: Ensure `note_type` is passed to template context in plan/apply phase.
+**Status**: Templates hardcode `type: "people"` / `type: "customer"` etc directly. The frontmatter `type` field is set by the template itself, not from context. No action needed.
 
 ---
 
 ## 95) 19 People Notes Have `type: customer` + `account:` (Misclassified)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Notes filed in `VAST/People/` are misclassified with customer frontmatter:
 
@@ -2827,7 +2863,7 @@ account: "Jeff Denworth" # Should be person:
 
 ## 96) CRITICAL: Archive Filename Mismatch - Wrong Content Association
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 The archive file `Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md` contains:
 
@@ -2853,7 +2889,7 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 
 ## 97) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Deep investigation of archive reveals **3 additional files with wrong names**:
 
@@ -2887,7 +2923,7 @@ Deep investigation of archive reveals **3 additional files with wrong names**:
 
 ## 98) Source Attribution Chain Is Broken
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 The `source_ref` field in extracted notes links to archive files, but:
 
@@ -2920,7 +2956,7 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 
 ## 99) `type: "projects"` Never Used - 3 Project Notes Have Wrong Types
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Schema defines 7 types: `customer`, `people`, `projects`, `rob`, `journal`, `partners`, `travel`
 
@@ -2951,7 +2987,7 @@ But scanning all notes in vault:
 
 ## 100) 3 Empty ROB Subfolders
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 All ROB subfolders are empty (no notes, no READMEs):
 
@@ -2973,7 +3009,7 @@ Only note is misplaced at ROB root level (item 71).
 
 ## 101) Participant Name Inconsistencies
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Participant names have multiple variations across notes:
 
@@ -3003,7 +3039,7 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 
 ## 102) Duplicate Files Across Personal/VAST
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 Content hash analysis found exact duplicate files:
 
@@ -3027,7 +3063,7 @@ Content hash analysis found exact duplicate files:
 
 ## 103) Archive Files Have Colons in Filenames (macOS Quirk)
 
-**Found**: 2025-01-04
+**Found**: 2026-01-04
 
 macOS allows colons in filenames (internally stored as `/`). Archive has files with colons:
 
@@ -3053,20 +3089,20 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 ## 104) Vault-Wide Statistics Summary
 
-**Snapshot**: 2025-01-04
+**Snapshot**: 2026-01-04
 
 | Metric                  | Count              |
 | ----------------------- | ------------------ |
-| Total items in TODO.md  | 104                |
-| CRITICAL priority items | 8                  |
-| HIGH priority items     | 12                 |
-| MEDIUM priority items   | 18                 |
-| LOW priority items      | 20+                |
-| Notes with type field   | 123                |
+| Total items in TODO.md  | 107                |
+| CRITICAL priority items | 11                 |
+| HIGH priority items     | 9                  |
+| MEDIUM priority items   | 22                 |
+| LOW priority items      | 18                 |
+| Notes with `source_ref` | 123                |
 | Broken source_refs      | 100                |
-| People folders          | 138                |
-| Customer folders        | 42                 |
-| Project folders         | 60+                |
+| People folders          | 136                |
+| Customer folders        | 41                 |
+| Project folders         | 59                 |
 | ROB forums              | 3 (all empty)      |
 | Pending transcripts     | 3                  |
 | Pending emails          | 7 (4 dupe, 2 spam) |
@@ -3084,4 +3120,80 @@ This file was created by MacWhisper from a Zoom meeting title.
 - ✅ Participant name variations
 - ✅ Duplicate content detection
 
-3. Consider symlinks or redirects for multi-context items
+- Consider symlinks or redirects for multi-context items
+
+---
+
+## 105) README Frontmatter Gaps (2 files)
+
+**Found**: 2026-01-04
+
+Two entity READMEs have frontmatter that does not match standards/templates (missing required keys like `type`, `title`, `created`, `tags`):
+
+- `VAST/People/Jonsi Stephenson/README.md`
+- `VAST/Projects/Fort Meade "Gemini as a service" on-prem validation/README.md`
+
+**Impact**: Medium - standards checks and queries become unreliable; template drift risk.
+
+**Tasks**
+
+- [ ] Migrate both READMEs onto the current templates (preserve any unique content).
+- [ ] Add audit rule: fail if an entity README is missing required keys (`type`, `title`, `created`, `tags`).
+- [ ] Decide whether `last_updated` is required in frontmatter and backfill accordingly.
+
+**Success Criteria**
+
+- `Workflow/scripts/audit_import.py` reports 0 entity READMEs with missing required frontmatter keys.
+
+---
+
+## 106) Tag Hygiene (Invalid Characters + Deep Paths)
+
+**Found**: 2026-01-04
+
+Observed tags that violate normalization / conventions (uppercase, punctuation, or multi-level nesting), e.g.:
+
+- `company/ssi-(safe-superintelligence-inc.)`
+- `entity/Sam Hopewell`
+- `industry/automotive-/-technology`
+- `industry/semiconductors-/-ai-infrastructure`
+
+**Impact**: Low-Medium - taxonomy inconsistency; validators/queries can break if tag grammar tightens.
+
+**Tasks**
+
+- [ ] Confirm allowed tag grammar in `Workflow/STANDARDS.md` (slash depth, allowed chars).
+- [ ] Add a `normalize_tag()` step during extraction/apply (lowercase, strip punctuation, collapse separators).
+- [ ] Run a cleanup pass to rewrite existing invalid tags to canonical forms.
+
+**Success Criteria**
+
+- `rg -n \"company/ssi-\\(safe-superintelligence-inc\\.\\)\" VAST Personal` returns 0.
+- `rg -n \"industry/.*-/-\" VAST Personal` returns 0.
+
+---
+
+## 107) Meeting Notes with Empty `participants: []` (5 files)
+
+**Found**: 2026-01-04
+
+5 generated notes have `participants: []` and render an empty “Attendees” line; most appear to be checklist/article-style sources mislabeled as transcripts:
+
+- `VAST/Customers and Partners/Google/2025-10-01 - Confirm GCP GA timing.md`
+- `VAST/Customers and Partners/Google/2025-11-13 - GDC RFP security and ops.md`
+- `VAST/Customers and Partners/Microsoft/2025-11-12 - Microsoft AI capacity and VAST.md`
+- `VAST/Customers and Partners/Microsoft/2025-12-18 - VAST Azure integration outline.md`
+- `VAST/Projects/Cloud Marketplace MVP/2025-10-01 - Cloud Marketplace MVP checklist.md`
+
+**Impact**: Medium - weak context, poor people graph, and likely indicates `source_kind` misclassification (see item 77).
+
+**Tasks**
+
+- [ ] If `source_kind=transcript`, require non-empty participants (or explicitly mark unknown).
+- [ ] If `source_kind=checklist|article`, omit participants and omit “Attendees” line in templates.
+- [ ] Backfill the 5 affected notes to set correct `source_kind` and/or participants.
+
+**Success Criteria**
+
+- `Workflow/scripts/audit_import.py` reports 0 transcript-kind notes with empty participants.
+- Generated notes never render an empty `**Attendees**:` line.
