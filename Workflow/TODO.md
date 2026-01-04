@@ -282,6 +282,95 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 ---
 
+## 17) Post‑Import README Template Fixes
+
+**Goal:** Ensure README task queries and timestamps render correctly after import.
+
+**Tasks**
+
+- Populate `folder_path` (or switch to `FROM this.file.folder`) in README templates.
+- Ensure `last_updated` is always set (frontmatter + footer line).
+- Backfill existing auto‑created READMEs to remove blank task scopes/timestamps.
+
+**Success Criteria**
+
+- `rg -l "FROM \"\"" VAST Personal -g 'README.md'` returns 0.
+- `rg -l "Last updated: \\*" VAST Personal -g 'README.md'` returns 0.
+
+---
+
+## 18) Title → Path Sanitization (Slashes, Nested Folders)
+
+**Goal:** Prevent title text (e.g., `A/B`) from creating unintended nested directories.
+
+**Tasks**
+
+- Centralize a path‑safe slug function (replace `/`, `\\`, `:` with `-`, normalize whitespace).
+- Use sanitized names for folder/file paths while preserving full `title` in frontmatter.
+- Migrate existing nested folders created by `/` in titles and update backlinks.
+
+**Success Criteria**
+
+- New notes with `/` in titles are created in a single folder path.
+- No project/people/customer folder names are partial segments of a `title` split by `/`.
+
+---
+
+## 19) `_NEW_` Entity Triage + Duplicate Merge
+
+**Goal:** Eliminate `_NEW_*` placeholders and dedupe mis‑typed entities.
+
+**Tasks**
+
+- Block empty entity names; route unknowns to a triage list instead of `_NEW_`.
+- Add alias/fuzzy matching to resolve near‑matches (e.g., Maneesh vs Manish).
+- Merge existing `_NEW_*` folders into canonical entities and update links.
+
+**Success Criteria**
+
+- `find VAST -type d -name "_NEW_*"` returns 0.
+- Known duplicates are consolidated (e.g., `_NEW_Jeff Denworth`, `_NEW_Jai Menon`).
+
+---
+
+## 20) Note Naming + Missing Metadata Cleanup
+
+**Goal:** Avoid `Untitled.md` and missing date/title fields in created notes.
+
+**Tasks**
+
+- Enforce `title` in extraction (fallback to source filename/ID if missing).
+- Guarantee filename format `YYYY-MM-DD - Title.md` (use source date or processed_at).
+- Rename existing `Untitled*.md` and any date‑less notes; update backlinks.
+
+**Success Criteria**
+
+- `find VAST Personal -name "Untitled*.md"` returns 0.
+- All generated notes include a date in filename and frontmatter.
+
+---
+
+## 21) Post‑Import QC Audit Script
+
+**Goal:** Automate validation of import outputs before human review.
+
+**Tasks**
+
+- Add `Workflow/scripts/audit_import.py` (or similar) to scan for:
+  - blank `FROM ""` in README dataview blocks
+  - missing `last_updated`
+  - `_NEW_*` directories
+  - `Untitled*.md` files
+  - unsafe title→path characters or nested folder splits
+- Add a Runbook step to execute audit after each full import.
+
+**Success Criteria**
+
+- Audit produces a concise report and exits non‑zero on violations.
+- Post‑import remediation reduces audit report to zero findings.
+
+---
+
 # Notes
 
 - This TODO intentionally prioritizes safety/consistency fixes before quality improvements.
@@ -298,6 +387,7 @@ This list is ordered by risk and dependency. Each task includes success criteria
 **Goal:** Consolidate content from incorrectly-created `_NEW_*` folders into existing entity folders.
 
 **Discovered Issues (18 folders):**
+
 ```
 VAST/Customers and Partners/_NEW_Jai Menon/     → VAST/People/Jai Menon/ (exists!)
 VAST/Customers and Partners/_NEW_Jeff Denworth/ → VAST/People/Jeff Denworth/ (exists!)
@@ -320,6 +410,7 @@ VAST/People/_NEW_Longmont Public Media/         → Personal/Projects/ (not VAST
 ```
 
 **Tasks**
+
 - [ ] Create script `scripts/cleanup_new_entities.py` to merge content
 - [ ] Move notes from `_NEW_*` into correct destination
 - [ ] Update wikilinks in moved notes
@@ -327,6 +418,7 @@ VAST/People/_NEW_Longmont Public Media/         → Personal/Projects/ (not VAST
 - [ ] Add `#needs-review` tag to merged READMEs
 
 **Success Criteria**
+
 - Zero `_NEW_*` folders remain
 - All notes accessible via correct entity folders
 - Wikilinks updated to correct paths
@@ -338,6 +430,7 @@ VAST/People/_NEW_Longmont Public Media/         → Personal/Projects/ (not VAST
 **Goal:** Remove incorrectly-created `VAST/Accounts/` path (should be `VAST/Customers and Partners/`).
 
 **Discovered Issues (3 stub READMEs):**
+
 ```
 VAST/Accounts/Google/README.md    → Already exists at VAST/Customers and Partners/Google/
 VAST/Accounts/Microsoft/README.md → Already exists at VAST/Customers and Partners/Microsoft/
@@ -345,10 +438,12 @@ VAST/Accounts/OpenAI/README.md    → Already exists at VAST/Customers and Partn
 ```
 
 **Tasks**
+
 - [ ] Delete `VAST/Accounts/` folder entirely
 - [ ] Fix planner prompt to use `Customers and Partners` not `Accounts`
 
 **Success Criteria**
+
 - No `VAST/Accounts/` folder
 - Planner generates correct paths
 
@@ -359,17 +454,20 @@ VAST/Accounts/OpenAI/README.md    → Already exists at VAST/Customers and Partn
 **Goal:** Move person entities incorrectly placed under `Customers and Partners/`.
 
 **Discovered Issues:**
+
 ```
 VAST/Customers and Partners/Jack Kabat/  → VAST/People/Jack Kabat/
 VAST/Customers and Partners/EY/          → Legitimate customer, keep
 ```
 
 **Tasks**
+
 - [ ] Move `Jack Kabat/` to `VAST/People/`
 - [ ] Review planner logic for entity type detection
 - [ ] People are never "customers" - add validation
 
 **Success Criteria**
+
 - People always placed in `People/` folder
 - Planner correctly distinguishes person vs customer
 
@@ -380,20 +478,24 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 **Goal:** Tasks in entity READMEs should have full Obsidian Tasks format.
 
 **Discovered Issues:**
+
 - Meeting notes have proper format: `@Owner 📅 YYYY-MM-DD 🔺 #task`
 - Entity READMEs have plain format: `- [ ] Task text` (no dates, no priorities)
 
 **Example (Jeff Denworth README):**
+
 ```
 - [ ] Define Blob API MVP as AZCopy compatibility...  ← MISSING: @Owner 📅 date 🔺 #task
 ```
 
 **Tasks**
+
 - [ ] Update entity README patch template to include task metadata
 - [ ] Propagate owner, due date, priority from extraction to README patches
 - [ ] Add `#task` tag to all task lines
 
 **Success Criteria**
+
 - All tasks in READMEs have: owner, due date (if known), priority, `#task` tag
 - Tasks plugin can query READMEs same as notes
 
@@ -404,10 +506,12 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 **Goal:** Prevent duplicate lines in `## Recent Context` section.
 
 **Discovered Issues:**
+
 - Jeff Denworth README has duplicate context entries
 - `append_under_heading` is not idempotent
 
 **Example:**
+
 ```
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]]
 - 2025-11-07: [[2025-11-07 - Org map and cloud focus]]     ← Similar note, should merge?
@@ -415,11 +519,13 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 ```
 
 **Tasks**
+
 - [ ] Add deduplication logic to `append_under_heading` primitive
 - [ ] Consider using date as key for context entries
 - [ ] Review duplicate source transcripts that generated similar notes
 
 **Success Criteria**
+
 - No duplicate context lines for same date/note
 - Re-running apply on same sources is idempotent
 
@@ -430,16 +536,19 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 **Goal:** Replace auto-generated stub READMEs with proper templates.
 
 **Discovered Issues (24 stubs):**
+
 - All marked with `> ⚠️ Auto-created stub - needs review`
 - Have minimal frontmatter and empty sections
 - Located in: `VAST/Accounts/`, `VAST/Customers and Partners/_NEW_*/`, `VAST/People/_NEW_*/`, etc.
 
 **Tasks**
+
 - [ ] List all stubs: `grep -l "Auto-created stub" VAST/*/*/README.md`
 - [ ] For each stub: either populate from template or delete folder
 - [ ] Remove stubs for entities that don't exist (e.g., `Lihi Rotchild` typo for existing person)
 
 **Success Criteria**
+
 - Zero "Auto-created stub" READMEs remain
 - All entity READMEs use proper templates with real content
 
@@ -452,17 +561,20 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 **Goal:** Planner should match existing entities before creating `_NEW_*` folders.
 
 **Root Causes:**
+
 - Planner doesn't have full visibility into existing entity folders
 - People classified as "customer" note type go to wrong folder
 - Aliases not being used for matching
 
 **Tasks**
+
 - [ ] Pass complete entity folder list to planner context
 - [ ] Add fuzzy matching for names (Jai Menon, Jai, etc.)
 - [ ] Validate note_type matches destination (people → People/, customer → Customers/)
 - [ ] Use `entities/aliases.yaml` for normalization
 
 **Success Criteria**
+
 - Zero `_NEW_*` folders created for known entities
 - Entity name variations (Jai vs Jai Menon) resolve correctly
 
@@ -473,18 +585,19 @@ VAST/Customers and Partners/EY/          → Legitimate customer, keep
 **Goal:** Catch invalid paths before apply phase.
 
 **Discovered Issues:**
+
 - `VAST/Accounts/` path should never exist
 - Person names in `Customers and Partners/` path
 - Colons in filenames (fixed, but should prevent at plan time)
 
 **Tasks**
+
 - [ ] Add path pattern validation in `plan.py`
 - [ ] Reject plans with `VAST/Accounts/` path
 - [ ] Warn if person name appears in customer path
 - [ ] Sanitize filenames at plan generation, not apply time
 
 **Success Criteria**
+
 - Invalid paths caught at PLAN phase, not APPLY phase
 - Clear warnings in plan output for suspicious paths
-
-
