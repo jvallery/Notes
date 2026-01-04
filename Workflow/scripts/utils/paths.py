@@ -8,8 +8,11 @@ def get_archive_path(vault_root: Path, original_file: Path, archive_date: date |
     """
     Get archive destination for a source file.
     
-    Uses YYYY-MM-DD folder by default. If a file with the same name already
-    exists, appends a timestamp suffix to prevent collision.
+    Preserves source subfolder structure to prevent collisions:
+    - Inbox/Transcripts/foo.md -> _archive/YYYY-MM-DD/Transcripts/foo.md
+    - Inbox/Email/foo.md -> _archive/YYYY-MM-DD/Email/foo.md
+    
+    If a file with the same name already exists, appends a timestamp suffix.
     
     Args:
         vault_root: Path to vault root
@@ -22,7 +25,34 @@ def get_archive_path(vault_root: Path, original_file: Path, archive_date: date |
     if archive_date is None:
         archive_date = date.today()
     
+    # Determine source subfolder (Transcripts, Email, Voice, Attachments, etc.)
+    # Try to get relative path from Inbox
+    try:
+        inbox_path = vault_root / "Inbox"
+        if original_file.is_absolute():
+            rel_to_inbox = original_file.relative_to(inbox_path)
+        else:
+            # Try resolving relative paths
+            resolved = (vault_root / original_file).resolve()
+            rel_to_inbox = resolved.relative_to(inbox_path.resolve())
+        
+        # Get the subfolder (first part of relative path, if any)
+        parts = rel_to_inbox.parts
+        if len(parts) > 1:
+            # Has subfolder: Transcripts/foo.md -> preserve Transcripts/
+            source_subfolder = parts[0]
+        else:
+            # Directly in Inbox (no subfolder)
+            source_subfolder = None
+    except (ValueError, TypeError):
+        # File not in Inbox or other error - no subfolder
+        source_subfolder = None
+    
+    # Build archive path with subfolder
     archive_dir = vault_root / "Inbox" / "_archive" / archive_date.isoformat()
+    if source_subfolder:
+        archive_dir = archive_dir / source_subfolder
+    
     base_path = archive_dir / original_file.name
     
     # Check for collision and add timestamp suffix if needed
