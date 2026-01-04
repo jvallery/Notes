@@ -1,26 +1,26 @@
 ---
 type: projects
 title: DAX
-created: '2026-01-03'
-last_updated: ''
+created: "2026-01-03"
+last_updated: ""
 status: active
 auto_created: true
 tags:
-- type/projects
-- needs-review
-- status/active
+  - type/projects
+  - needs-review
+  - status/active
 ---
 
 # Alluxio/DAX
 
 ## Status
 
-| Field | Value |
-|-------|-------|
-| **Status** | active |
-| **Priority** | _High / Medium / Low_ |
-| **Target Date** | _Unknown_ |
-| **Owner** |  |
+| Field           | Value                 |
+| --------------- | --------------------- |
+| **Status**      | active                |
+| **Priority**    | _High / Medium / Low_ |
+| **Target Date** | _Unknown_             |
+| **Owner**       |                       |
 
 ## Overview
 

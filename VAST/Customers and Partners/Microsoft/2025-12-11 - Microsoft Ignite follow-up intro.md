@@ -1,16 +1,16 @@
 ---
 type: customer
 title: Microsoft Ignite follow-up - intro to Sushant
-date: '2025-12-11'
+date: "2025-12-11"
 account: Microsoft
 participants:
-- Lior Genzel
-- Sushant Rewaskar
-- Jason Vallery
+  - Lior Genzel
+  - Sushant Rewaskar
+  - Jason Vallery
 source: email
 tags:
-- type/customer
-- account/microsoft
+  - type/customer
+  - account/microsoft
 ---
 
 # Microsoft Ignite Follow-up - Intro to Sushant

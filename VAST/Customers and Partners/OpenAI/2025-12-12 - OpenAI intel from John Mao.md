@@ -1,14 +1,14 @@
 ---
 type: customer
 title: OpenAI intel from John Mao
-date: '2025-12-12'
+date: "2025-12-12"
 account: OpenAI
 participants:
-- John Mao
+  - John Mao
 source: email
 tags:
-- type/customer
-- account/openai
+  - type/customer
+  - account/openai
 ---
 
 # OpenAI Intel from John Mao
@@ -27,7 +27,6 @@ OpenAI is organized into three major teams:
 
 1. **Applications** - ChatGPT, etc. Deals with "online data". John's friend sits here.
    - Two largest platforms: Rockset (vector database, persists to Azure Blob) and Snowflake (one of largest SNOW customers)
-   
 2. **Scaling** - Sits between Applications and Research teams. Not a Platform team per se.
 
 3. **Research** - Data scientists reporting to Jakob Pachoki. "Offline" data used for training GPT on large frontier supercomputing clusters in OCI etc.

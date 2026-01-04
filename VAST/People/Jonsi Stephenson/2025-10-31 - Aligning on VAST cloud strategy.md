@@ -1,8 +1,8 @@
 ---
-type: customer
+type: people
 title: Aligning on VAST cloud strategy
 date: '2025-10-31'
-account: VAST
+person: Jonsi Stephenson
 participants:
 - Jason Vallery
 - Karl Vietmeier
@@ -10,8 +10,8 @@ source: transcript
 source_ref: Inbox/_archive/2026-01-04/2025-10-31 - Introductory 1-1 aligning on VAST’s
   cloud strategy. Jason outlined a vision for.md
 tags:
-- type/customer
-- account/vast
+- type/people
+- person/jonsi-stephenson
 - generated
 ---
 

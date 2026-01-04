@@ -1,18 +1,18 @@
 ---
 type: customer
 title: GDC RFP encryption key questions
-date: '2025-12-15'
+date: "2025-12-15"
 account: Google
 participants:
-- Jason Vallery
-- Alon Horev
-- Tomer Hagay
-- Violet
+  - Jason Vallery
+  - Alon Horev
+  - Tomer Hagay
+  - Violet
 source: email
 tags:
-- type/customer
-- account/google
-- project/gdc-rfp
+  - type/customer
+  - account/google
+  - project/gdc-rfp
 ---
 
 # GDC RFP Encryption Key Questions
@@ -34,7 +34,7 @@ Following the GDC RFP walkthrough with Google, technical questions came up about
 - Customer Managed Keys as "Encryption Groups" at tenant level
 - Encrypted Paths - new encryption group per sub-directory
 - Unique key per encrypted path capability
-- S3 SSE-C support via x-amz-server-side-encryption-customer-* headers
+- S3 SSE-C support via x-amz-server-side-encryption-customer-\* headers
 - How buckets, encrypted paths, and views work with customer managed keys in multi-tenant setup
 
 ## Answers from Tomer

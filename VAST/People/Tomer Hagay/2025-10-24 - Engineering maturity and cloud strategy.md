@@ -1,8 +1,8 @@
 ---
-type: customer
+type: people
 title: Engineering maturity and cloud strategy
 date: '2025-10-24'
-account: VAST
+person: Tomer Hagay
 participants:
 - Jason Vallery
 - Tomer Hagay
@@ -10,8 +10,8 @@ source: transcript
 source_ref: Inbox/_archive/2026-01-04/2025-10-24 - Jason and Tomer discussed accelerating
   VAST’s engineering maturity and cloud str.md
 tags:
-- type/customer
-- account/vast
+- type/people
+- person/tomer-hagay
 - generated
 ---
 
