@@ -73,12 +73,15 @@ models:
 
   # Model selection: gpt-5.2 for quality, gpt-4o-mini for speed/cost
   # Updated 2026-01-04: Use GPT-5.2, remove max_tokens constraints
+  
+  # NOTE: Classification uses heuristics (scripts/classify.py), not LLM.
+  # This config is reserved for future LLM-based classification if needed.
   classify:
     provider: "openai"
     model: "gpt-4o-mini"
     fallback: "gpt-5.2"
     temperature: 0.0
-    # No max_tokens - let model determine
+    # Currently unused - classification is heuristic-based
 
   extract_transcript:
     provider: "openai"
@@ -381,6 +384,9 @@ features:
   # Multi-part transcript merging
   merge_transcripts: false
   
+  # Backfill web enrichment (costly; requires explicit enable)
+  backfill_web_enrichment: false
+
   # Weekly digest generation
   weekly_digest: false
   

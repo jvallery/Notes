@@ -5,6 +5,7 @@ __pycache__/
 *.pyc
 logs/
 *.log
+_cache/
 
 # But keep the example
 !.env.example

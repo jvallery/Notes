@@ -14,6 +14,7 @@ Manifest files (_MANIFEST.md) are the source of truth for:
 - Status flags (active/inactive for projects)
 """
 
+import hashlib
 import json
 import re
 from datetime import datetime
@@ -22,6 +23,9 @@ from typing import Any
 
 from jinja2 import Environment, FileSystemLoader
 from openai import OpenAI
+from pydantic import BaseModel, ConfigDict, Field
+
+from utils.config import load_config, workflow_root
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -577,12 +581,113 @@ _No interactions yet._
 # Web Search Enrichment
 # ─────────────────────────────────────────────────────────────────────────────
 
+DEFAULT_WEB_ENRICHMENT_MODEL = "gpt-4o"
+
+
+class PersonWebEnrichment(BaseModel):
+    """Structured output for person enrichment via web search."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    role: str | None = None
+    company: str | None = None
+    linkedin: str | None = None
+    location: str | None = None
+    background: str | None = None
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+
+
+class CustomerWebEnrichment(BaseModel):
+    """Structured output for customer enrichment via web search."""
+
+    model_config = ConfigDict(extra="ignore")
+
+    industry: str | None = None
+    location: str | None = None
+    size: str | None = None
+    description: str | None = None
+    website: str | None = None
+    confidence: float = Field(default=0.0, ge=0.0, le=1.0)
+
+
+def _backfill_web_enrichment_enabled(config: dict[str, Any] | None = None) -> bool:
+    if config is None:
+        config = load_config()
+    return bool(config.get("features", {}).get("backfill_web_enrichment", False))
+
+
+def _default_enrichment_cache_dir() -> Path:
+    return workflow_root() / "_cache" / "backfill_web_enrichment"
+
+
+def _slugify(value: str, max_len: int = 60) -> str:
+    slug = re.sub(r"[^A-Za-z0-9]+", "-", value).strip("-").lower()
+    if not slug:
+        slug = "entity"
+    return slug[:max_len]
+
+
+def _enrichment_cache_key(
+    entity_type: str,
+    entity_name: str,
+    context: str,
+    model: str,
+) -> str:
+    raw = json.dumps(
+        {
+            "entity_type": entity_type,
+            "entity_name": entity_name,
+            "context": context,
+            "model": model,
+        },
+        sort_keys=True,
+        ensure_ascii=False,
+    )
+    return hashlib.sha256(raw.encode("utf-8")).hexdigest()
+
+
+def _enrichment_cache_path(
+    cache_dir: Path,
+    entity_type: str,
+    entity_name: str,
+    context: str,
+    model: str,
+) -> Path:
+    key = _enrichment_cache_key(entity_type, entity_name, context, model)
+    name = _slugify(entity_name)
+    return cache_dir / entity_type / f"{name}--{key[:12]}.json"
+
+
+def _read_enrichment_cache(path: Path) -> dict[str, Any] | None:
+    if not path.exists():
+        return None
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return None
+    result = data.get("result")
+    if isinstance(result, dict):
+        return result
+    return None
+
+
+def _write_enrichment_cache(path: Path, payload: dict[str, Any]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(
+        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
+
 
 def enrich_entity_with_web_search(
     entity_type: str,
     entity_name: str,
     context: str = "",
     client: OpenAI | None = None,
+    *,
+    cache_dir: Path | None = None,
+    config: dict[str, Any] | None = None,
+    model: str = DEFAULT_WEB_ENRICHMENT_MODEL,
 ) -> dict[str, Any]:
     """
     Use OpenAI web search to enrich entity details.
@@ -592,13 +697,35 @@ def enrich_entity_with_web_search(
         entity_name: Name of entity to research
         context: Additional context (company, role, etc.)
         client: OpenAI client (creates new if not provided)
+        cache_dir: Optional override for cache directory
+        config: Optional override for Workflow config (for tests)
+        model: Model to use for enrichment
     
     Returns:
         Dict with enriched metadata
     """
+    if entity_type not in ("people", "customers"):
+        return {}  # No web search for projects/unknowns
+
+    if not _backfill_web_enrichment_enabled(config):
+        raise RuntimeError(
+            "Backfill web enrichment is disabled. "
+            "Set features.backfill_web_enrichment: true in Workflow/config.yaml to enable."
+        )
+
+    if cache_dir is None:
+        cache_dir = _default_enrichment_cache_dir()
+
+    cache_path = _enrichment_cache_path(cache_dir, entity_type, entity_name, context, model)
+    cached = _read_enrichment_cache(cache_path)
+    if cached is not None:
+        return cached
+
     if client is None:
         client = OpenAI()
-    
+
+    response_model: type[BaseModel]
+
     if entity_type == "people":
         query = f"Find information about {entity_name}"
         if context:
@@ -607,52 +734,48 @@ def enrich_entity_with_web_search(
             # Default context for VAST-related people
             query += " who works at or is associated with VAST Data (enterprise storage company)"
         query += ". Look for: current job title, company, LinkedIn profile, location, professional background."
-        
-        response_format = """Return JSON with these fields:
-        {
-            "role": "Current job title",
-            "company": "Current company",
-            "linkedin": "LinkedIn URL if found",
-            "location": "City/region",
-            "background": "Brief professional background",
-            "confidence": 0.0-1.0
-        }"""
-    
+        response_model = PersonWebEnrichment
     elif entity_type == "customers":
         query = f"Find information about {entity_name} company"
         if context:
             query += f" in the {context} industry"
         query += ". Look for: industry, headquarters location, company size, key products/services."
-        
-        response_format = """Return JSON with these fields:
-        {
-            "industry": "Primary industry",
-            "location": "Headquarters location",
-            "size": "Company size (employees or revenue)",
-            "description": "Brief company description",
-            "website": "Company website",
-            "confidence": 0.0-1.0
-        }"""
-    
-    else:
-        return {}  # No web search for projects
-    
+        response_model = CustomerWebEnrichment
+
     try:
-        response = client.responses.create(
-            model="gpt-4o",
+        response = client.responses.parse(
+            model=model,
             tools=[{"type": "web_search_preview"}],
-            input=f"{query}\n\n{response_format}",
+            instructions=(
+                "You enrich entities using web search results. "
+                "Return only fields supported by the schema; use null/empty when unknown. "
+                "Include a confidence score between 0.0 and 1.0."
+            ),
+            input=query,
+            text_format=response_model,
+            temperature=0.0,
             store=False,
         )
-        
-        # Extract JSON from response
-        output_text = response.output_text if hasattr(response, 'output_text') else str(response.output)
-        
-        # Try to parse JSON from response
-        json_match = re.search(r'\{[^{}]*\}', output_text, re.DOTALL)
-        if json_match:
-            return json.loads(json_match.group())
-        
+
+        parsed = response.output_parsed
+        result: dict[str, Any] = {}
+        if parsed is not None:
+            result = parsed.model_dump(mode="json", exclude_none=True)
+
+        _write_enrichment_cache(
+            cache_path,
+            {
+                "cached_at": datetime.now().isoformat(),
+                "entity_type": entity_type,
+                "entity_name": entity_name,
+                "context": context,
+                "model": model,
+                "result": result,
+            },
+        )
+
+        return result
+
     except Exception as e:
         print(f"  Web search failed for {entity_name}: {e}")
     
@@ -665,6 +788,10 @@ def enrich_entities_batch(
     entity_names: list[str],
     client: OpenAI | None = None,
     workers: int = 3,
+    *,
+    cache_dir: Path | None = None,
+    config: dict[str, Any] | None = None,
+    model: str = DEFAULT_WEB_ENRICHMENT_MODEL,
 ) -> dict[str, dict]:
     """
     Enrich multiple entities with web search (parallelized).
@@ -676,6 +803,15 @@ def enrich_entities_batch(
     
     if client is None:
         client = OpenAI()
+
+    if entity_type in ("people", "customers") and not _backfill_web_enrichment_enabled(config):
+        raise RuntimeError(
+            "Backfill web enrichment is disabled. "
+            "Set features.backfill_web_enrichment: true in Workflow/config.yaml to enable."
+        )
+
+    if cache_dir is None:
+        cache_dir = _default_enrichment_cache_dir()
     
     # Pre-load manifest context
     manifest_path = get_manifest_path(vault, entity_type)
@@ -688,7 +824,15 @@ def enrich_entities_batch(
     
     def enrich_one(name: str) -> tuple[str, dict]:
         context = context_map.get(name, "")
-        enriched = enrich_entity_with_web_search(entity_type, name, context, client)
+        enriched = enrich_entity_with_web_search(
+            entity_type,
+            name,
+            context,
+            client,
+            cache_dir=cache_dir,
+            config=config,
+            model=model,
+        )
         return name, enriched
     
     results = {}
@@ -829,6 +973,14 @@ def process_discovered_entities(
     Returns:
         Dict with lists of created entity names per type
     """
+    config = load_config() if enrich_with_web else None
+
+    if enrich_with_web and not _backfill_web_enrichment_enabled(config):
+        raise RuntimeError(
+            "Backfill web enrichment is disabled. "
+            "Set features.backfill_web_enrichment: true in Workflow/config.yaml to enable."
+        )
+
     # Ensure manifests exist
     known = get_known_entities(vault)
     
@@ -892,7 +1044,11 @@ def process_discovered_entities(
         # Web enrichment
         if enrich_with_web and client:
             enriched = enrich_entity_with_web_search(
-                "people", person, metadata.get("company", ""), client
+                "people",
+                person,
+                metadata.get("company", ""),
+                client,
+                config=config,
             )
             if enriched.get("confidence", 0) > 0.5:
                 metadata.update({k: v for k, v in enriched.items() if v and k != "confidence"})
@@ -918,7 +1074,11 @@ def process_discovered_entities(
         # Web enrichment
         if enrich_with_web and client:
             enriched = enrich_entity_with_web_search(
-                "customers", customer, metadata.get("industry", ""), client
+                "customers",
+                customer,
+                metadata.get("industry", ""),
+                client,
+                config=config,
             )
             if enriched.get("confidence", 0) > 0.5:
                 metadata.update({k: v for k, v in enriched.items() if v and k != "confidence"})
@@ -1332,4 +1492,3 @@ def propose_merges(vault: Path) -> dict[str, list[dict]]:
                 })
     
     return proposals
-

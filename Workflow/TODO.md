@@ -309,7 +309,12 @@ RUN PERIODICALLY:
 
 **Goal:** Make backfill extraction deterministic, privacy‑safe, and schema‑enforced.
 
-**Status: IN PROGRESS** (@codex-20260104-3, started: 2026-01-04 14:30)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+- Web enrichment uses Responses API + Pydantic schemas (no regex JSON parsing).
+- Added config gate `features.backfill_web_enrichment` (default false) and disk cache under `Workflow/_cache/backfill_web_enrichment` (gitignored).
+- `backfill.py enrich` fails fast when disabled; added unit tests for caching + gating.
 
 **Tasks**
 

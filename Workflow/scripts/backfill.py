@@ -46,7 +46,7 @@ from backfill.entities import (  # noqa: E402
     propose_merges,
     merge_entities,
 )
-from utils.config import vault_root  # noqa: E402
+from utils.config import load_config, vault_root  # noqa: E402
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -344,6 +344,14 @@ def cmd_rename(args: argparse.Namespace) -> int:
 def cmd_enrich(args: argparse.Namespace) -> int:
     """Enrich entities with web search."""
     vault = vault_root()
+
+    config = load_config()
+    if not config.get("features", {}).get("backfill_web_enrichment", False):
+        print(
+            "Web enrichment is disabled. Set features.backfill_web_enrichment: true "
+            "in Workflow/config.yaml to enable."
+        )
+        return 2
     
     from openai import OpenAI
     client = OpenAI()
@@ -361,7 +369,14 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     
     print(f"Enriching {len(entities)} {entity_type} with web search...")
     
-    results = enrich_entities_batch(vault, entity_type, entities, client, workers=args.workers)
+    results = enrich_entities_batch(
+        vault,
+        entity_type,
+        entities,
+        client,
+        workers=args.workers,
+        config=config,
+    )
     
     # Apply enrichment to READMEs
     updated_count = 0
@@ -375,8 +390,6 @@ def cmd_enrich(args: argparse.Namespace) -> int:
         for key, value in data.items():
             if key != "confidence" and value:
                 print(f"    {key}: {value}")
-    
-    return 0
     
     return 0
 

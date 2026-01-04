@@ -45,6 +45,7 @@ from backfill.applier import (  # noqa: E402
     upsert_frontmatter_field,
     append_or_replace_section,
 )
+from backfill.entities import enrich_entity_with_web_search  # noqa: E402
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -370,6 +371,81 @@ class TestExtractor:
         
         assert batch.successful == 3
         assert len(batch.extractions) == 3
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Entities / Enrichment Tests (Mocked)
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+class _FakeParsedResponse:
+    def __init__(self, parsed):
+        self.output_parsed = parsed
+
+
+class _FakeResponses:
+    def __init__(self, payload):
+        self.payload = payload
+        self.calls = 0
+
+    def parse(self, **kwargs):
+        self.calls += 1
+        response_model = kwargs["text_format"]
+        parsed = response_model(**self.payload)
+        return _FakeParsedResponse(parsed)
+
+
+class _FakeClient:
+    def __init__(self, payload):
+        self.responses = _FakeResponses(payload)
+
+
+class TestEntitiesEnrichment:
+    def test_web_enrichment_disabled_raises(self, tmp_path: Path):
+        config = {"features": {"backfill_web_enrichment": False}}
+        client = _FakeClient({"role": "CTO", "company": "Acme", "confidence": 0.9})
+
+        with pytest.raises(RuntimeError):
+            enrich_entity_with_web_search(
+                "people",
+                "Jane Doe",
+                "Acme",
+                client,
+                cache_dir=tmp_path,
+                config=config,
+            )
+
+        assert client.responses.calls == 0
+
+    def test_web_enrichment_uses_cache(self, tmp_path: Path):
+        config = {"features": {"backfill_web_enrichment": True}}
+        client = _FakeClient({"role": "CTO", "company": "Acme", "confidence": 0.9})
+
+        result1 = enrich_entity_with_web_search(
+            "people",
+            "Jane Doe",
+            "Acme",
+            client,
+            cache_dir=tmp_path,
+            config=config,
+        )
+
+        assert result1["role"] == "CTO"
+        assert client.responses.calls == 1
+
+        # Second call should hit cache (no additional API calls)
+        client2 = _FakeClient({"role": "SHOULD NOT BE USED", "confidence": 0.1})
+        result2 = enrich_entity_with_web_search(
+            "people",
+            "Jane Doe",
+            "Acme",
+            client2,
+            cache_dir=tmp_path,
+            config=config,
+        )
+
+        assert result2["role"] == "CTO"
+        assert client2.responses.calls == 0
 
 
 # ─────────────────────────────────────────────────────────────────────────────
