@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: "2026-01-03"
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -91,6 +91,7 @@ not done
 
 ## Recent Context
 
+- 2025-12-15: [[2025-12-15 - Weekly Call with Lior Genzel]] (via Lior Genzel)
 ## Key Facts
 
 ## Topics

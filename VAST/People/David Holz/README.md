@@ -2,7 +2,7 @@
 type: people
 title: David Holz
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-19: [[2025-12-19 - Encryption and Performance Discussion]] (via Jason Vallery)
 ## Key Facts
 
 ## Background

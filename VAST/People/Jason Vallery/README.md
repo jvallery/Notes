@@ -2,7 +2,7 @@
 type: people
 title: Jason Vallery
 created: '2026-01-03'
-last_contact: "2025-11-07"
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
@@ -38,6 +38,11 @@ tags:
 
 ## Recent Context
 
+- 2025-12-19: [[2025-12-19 - Encryption and Performance Discussion]] (via Jason Vallery)
+
+- 2025-12-15: [[2025-12-15 - Google GDC RFP Discussion]] (via Google)
+
+- 2025-12-16: [[2025-12-16 - Discussion on Azure and VAST]] (via Jonsi Stephenson)
 ## Key Facts
 
 ## Background

@@ -2,7 +2,7 @@
 name: Jonsi Stephenson
 role: CEO
 company: VAST Data
-last_contact: "2026-01-03"
+last_contact: '2025-12-16'
 ---
 
 # Jonsi Stephenson
@@ -25,6 +25,7 @@ last_contact: "2026-01-03"
 
 ## Recent Context
 
+- 2025-12-16: [[2025-12-16 - Discussion on Azure and VAST]] (via Jason Vallery)
 ## Key Facts
 
 ## Topics

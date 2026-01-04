@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Google
-last_contact: "2025-12-19"
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -37,6 +37,7 @@ not done
 
 ## Recent Context
 
+- 2025-12-15: [[2025-12-15 - Google GDC RFP Discussion]] (via Google)
 ## Key Facts
 
 ## Topics
