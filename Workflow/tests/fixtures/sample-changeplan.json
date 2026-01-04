@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "source_file": "Inbox/Transcripts/2025-01-15 10 00 - Weekly Sync with Jeff Denworth.md",
+  "extraction_file": "Inbox/_extraction/2025-01-15 10 00 - Weekly Sync with Jeff Denworth.extraction.json",
+  "created_at": "2025-01-15T18:05:00Z",
+  "operations": [
+    {
+      "op": "create",
+      "path": "VAST/People/Jeff Denworth/2025-01-15 - Weekly Sync.md",
+      "template": "people.md.j2",
+      "context": {
+        "title": "Weekly Sync",
+        "date": "2025-01-15",
+        "person": "Jeff Denworth",
+        "participants": ["Jason", "Jeff Denworth"],
+        "summary": "Discussed Google deal status (final contract review, closing EOW), enterprise pricing at $50k/month, and Walmart presentation prep. Decision to delay OVA 2.0 to Q2 to align with GDC launch.",
+        "source": "transcript",
+        "source_ref": "Inbox/_archive/2025-01-15/2025-01-15 10 00 - Weekly Sync with Jeff Denworth.md",
+        "tasks": [
+          {
+            "text": "Follow up with Google procurement team on professional services",
+            "owner": "Myself",
+            "due": "2025-01-17",
+            "priority": "high"
+          },
+          {
+            "text": "Send updated deck for Walmart presentation to Jeff",
+            "owner": "Myself",
+            "due": "2025-01-20",
+            "priority": "medium"
+          }
+        ],
+        "decisions": ["Delay OVA 2.0 release to Q2 to align with GDC launch"],
+        "facts": [
+          "Google deal in final contract review, expected to close EOW",
+          "Enterprise tier pricing agreed at $50k/month"
+        ]
+      }
+    },
+    {
+      "op": "patch",
+      "path": "VAST/People/Jeff Denworth/README.md",
+      "patches": [
+        {
+          "primitive": "upsert_frontmatter",
+          "frontmatter": [
+            {"key": "last_contact", "value": "2025-01-15"}
+          ]
+        },
+        {
+          "primitive": "append_under_heading",
+          "heading": {
+            "heading": "## Recent Context",
+            "content": "- 2025-01-15: Weekly sync - discussed Google deal, Walmart deck, OVA 2.0 delay to Q2"
+          }
+        }
+      ]
+    },
+    {
+      "op": "link",
+      "path": "VAST/People/Jeff Denworth/2025-01-15 - Weekly Sync.md",
+      "links": ["[[Google]]", "[[Walmart]]", "[[OVA 2.0]]"]
+    }
+  ],
+  "warnings": []
+}

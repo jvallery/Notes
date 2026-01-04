@@ -1,0 +1,54 @@
+
+==============================================
+VAST Data 5.4 - Proxmox Installation Script
+==============================================
+
+Log file: /home/centos/vast_install_20251229_183119.log
+
+
+[0;34m==>[0m [0;34mPhase 1: System checks[0m
+[0;32m[INFO][0m Management IP: 192.168.30.109
+[0;32m[INFO][0m Management Interface: eth0
+[1;33m[WARN][0m Only 12 CPU cores available (24 minimum, 32 recommended)
+[1;33m[WARN][0m 117GB RAM available (128GB recommended for safety margin)
+[0;32m[INFO][0m Disk space: 992GB ✓
+[0;32m[INFO][0m Virtualization: KVM/Proxmox ✓
+[0;32m[INFO][0m VAST bundle found ✓
+[0;32m[INFO][0m Bootstrap script found ✓
+
+[0;34m==>[0m [0;34mPhase 2: Docker installation[0m
+[0;32m[INFO][0m Docker already installed ✓
+[0;32m[INFO][0m Docker access confirmed ✓
+[0;32m[INFO][0m Docker is accessible ✓
+
+[0;34m==>[0m [0;34mPhase 3: Proxmox integration[0m
+[0;32m[INFO][0m qemu-guest-agent already installed ✓
+
+[0;34m==>[0m [0;34mPhase 4: Network configuration[0m
+[0;32m[INFO][0m IPv6 disabled on eth0 ✓
+[0;32m[INFO][0m Firewall not active, skipping ✓
+
+[0;34m==>[0m [0;34mPhase 5: Preparing VAST directories[0m
+[0;32m[INFO][0m Directories created ✓
+[0;32m[INFO][0m Local registry cache configured ✓
+[0;32m[INFO][0m Adding registry DNS entry to /etc/hosts...
+[0;32m[INFO][0m Registry DNS configured ✓
+[0;32m[INFO][0m Configuring Docker for local registry...
+[0;32m[INFO][0m Docker registry configuration ✓
+[0;32m[INFO][0m VAST OS release configured ✓
+
+[0;34m==>[0m [0;34mPhase 6: SSH key setup[0m
+[0;32m[INFO][0m Setting up SSH keys...
+[0;32m[INFO][0m SSH keys configured ✓
+
+[0;34m==>[0m [0;34mPhase 7: Cleaning up any previous installation[0m
+[0;32m[INFO][0m Stopping existing VAST containers...
+[0;32m[INFO][0m Hugepages cleared ✓
+[0;32m[INFO][0m Cleanup complete ✓
+
+[0;34m==>[0m [0;34mPhase 8: Running VAST bootstrap[0m
+[0;32m[INFO][0m This will take 10-20 minutes. Please wait...
+Taking first package
+using package ./vastdata_release_2043819.vast.tar.gz
+using build 2043819
+unpacking ./vastdata_release_2043819.vast.tar.gz

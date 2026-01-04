@@ -1,0 +1,57 @@
+---
+type: "readme"
+title: "{{ entity_name }}"
+entity_type: "{{ entity_type }}"
+created: "{{ created_date }}"
+last_contact: "{{ last_contact | default('') }}"
+tags:
+  - "type/{{ entity_type }}"
+  - "{{ entity_type }}/{{ entity_name | slugify }}"
+---
+
+# {{ entity_name }}
+
+{% if entity_type == "people" %}
+## Contact Information
+
+<!-- Add contact details here -->
+
+{% elif entity_type == "accounts" %}
+## Account Overview
+
+<!-- Add account context here -->
+
+{% elif entity_type == "projects" %}
+## Project Overview
+
+<!-- Add project description here -->
+
+{% endif %}
+## Recent Context
+
+{% if recent_context %}
+{% for item in recent_context %}
+- {{ item.date }}: {{ item.summary }}
+{% endfor %}
+{% else %}
+<!-- Recent interactions will be added here -->
+{% endif %}
+
+## Active Tasks
+
+```dataview
+TASK
+FROM "{{ folder_path }}"
+WHERE !completed
+SORT due ASC
+```
+
+## Notes
+
+```dataview
+TABLE date as "Date", title as "Title"
+FROM "{{ folder_path }}"
+WHERE type != "readme"
+SORT date DESC
+LIMIT 10
+```

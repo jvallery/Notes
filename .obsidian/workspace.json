@@ -1,0 +1,235 @@
+{
+  "main": {
+    "id": "702d3b07b9b388d4",
+    "type": "split",
+    "children": [
+      {
+        "id": "baf56d36c1cecf68",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "af216fe4a7d76c13",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Personal/Projects/Home Infra/03_compute-storage/storage-local.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "storage-local"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "18793600c3038b0f",
+    "type": "split",
+    "children": [
+      {
+        "id": "e2de0d085b06dbe9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c2c00970aedeeb55",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": true
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Files"
+            }
+          },
+          {
+            "id": "b351b59132e7b9f8",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Search"
+            }
+          },
+          {
+            "id": "4a566c4a8be7560f",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Bookmarks"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 238.5
+  },
+  "right": {
+    "id": "7096985b6aa08152",
+    "type": "split",
+    "children": [
+      {
+        "id": "d282decc87f7d795",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "1215dd91f101a83f",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Backlinks"
+            }
+          },
+          {
+            "id": "f6ce082b5db0b81d",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Outgoing links"
+            }
+          },
+          {
+            "id": "6f80e5586e6ef808",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Tags"
+            }
+          },
+          {
+            "id": "559f06af1044c0b4",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "03fc513c9b3023bb",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Personal/Projects/Home Infra/03_compute-storage/storage-local.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Outline of storage-local"
+            }
+          }
+        ],
+        "currentTab": 4
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false,
+      "bases:Create new base": false,
+      "audio-recorder:Start/stop recording": false
+    }
+  },
+  "active": "af216fe4a7d76c13",
+  "lastOpenFiles": [
+    "VAST/Projects/VAST on Azure Integration/README.md",
+    "VAST/Projects/OVA/README.md",
+    "VAST/Projects/Cloud/README.md",
+    "VAST/Projects/AI Pipelines Collateral/README.md",
+    "VAST/People/Tomer Hagay/README.md",
+    "VAST/People/Timo Pervane/README.md",
+    "VAST/People/Shachar Feinblit/README.md",
+    "VAST/People/Noa Cohen/README.md",
+    "VAST/People/Liraz Ben Or/README.md",
+    "VAST/People/Lior Genzel/README.md",
+    "VAST/People/Kushal Datta/README.md",
+    "VAST/People/Karl Vietmeier/README.md",
+    "VAST/People/Josh Wentzell/README.md",
+    "VAST/People/Jeff Denworth/README.md",
+    "VAST/People/Jai Menon/README.md",
+    "VAST/People/Eyal Traitel/README.md",
+    "VAST/People/Erez Zilber/README.md",
+    "VAST/People/Deandre Jackson/README.md",
+    "VAST/People/Asaf Levy/README.md",
+    "VAST/People/Andy Perlsteiner/README.md",
+    "VAST/People/Alon Horev/README.md",
+    "VAST/Customers and Partners/Walmart/README.md",
+    "VAST/Customers and Partners/Silk/README.md",
+    "VAST/Customers and Partners/OpenAI/README.md",
+    "VAST/Customers and Partners/Microsoft/README.md",
+    "VAST/Customers and Partners/Google/README.md",
+    "Inbox/_extraction/backfill-plan-20260103_174753.json",
+    "Inbox/_extraction/backfill-extractions-20260103_174753.json",
+    "Inbox/_extraction/backfill-manifest-20260103_174753.json",
+    "Inbox/_extraction/backfill-extractions-20260103_174724.json",
+    "Inbox/_extraction/backfill-manifest-20260103_174724.json",
+    "Inbox/_extraction/backfill-manifest.json",
+    "Workflow/scripts/backfill/__pycache__/extractor.cpython-313.pyc",
+    "Workflow/scripts/backfill/__pycache__/applier.cpython-313.pyc",
+    "Workflow/scripts/backfill/__pycache__/aggregator.cpython-313.pyc",
+    "Workflow/scripts/backfill/__pycache__/scanner.cpython-313.pyc",
+    "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
+    "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
+    "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",
+    "Personal/Projects/Frigate/snapshots/storageyard_1.jpg",
+    "Personal/Projects/Frigate/snapshots/southyard_3.jpg",
+    "Personal/Projects/Frigate/snapshots/southyard_2.jpg",
+    "Personal/Projects/Frigate/snapshots/southyard_1.jpg",
+    "Personal/Projects/Frigate/snapshots/skycam_west.jpg",
+    "Personal/Projects/Frigate/snapshots/skycam_east.jpg",
+    "Personal/Projects/Frigate/snapshots/pool_2.jpg"
+  ]
+}

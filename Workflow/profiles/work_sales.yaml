@@ -1,0 +1,80 @@
+# Profile: Sales/Customer Context
+# For customer and partner meetings, deal discussions, pipeline reviews
+
+name: "Sales/Customer Context"
+description: "For customer and partner meetings with revenue-focused outcomes"
+
+# What to prioritize during extraction
+focus:
+  - Deal status and stage changes
+  - Blockers and objections raised
+  - Competitive mentions (products, vendors)
+  - Next steps and explicit commitments
+  - Budget and timeline signals
+  - Decision makers and influencers identified
+  - Pain points and requirements expressed
+  - Pricing discussions and proposals
+  - Contract and legal topics
+
+# What to de-emphasize or skip
+ignore:
+  - Small talk and pleasantries
+  - Deep technical implementation details (summarize at high level)
+  - Internal process discussions not relevant to deal
+  - Off-topic tangents
+
+# Rules for task extraction
+task_rules:
+  # Only extract tasks with this confidence or higher
+  confidence_threshold: 0.75
+  
+  # How to infer task owner from speaker context
+  owner_inference: |
+    If the speaker (user) commits to an action, owner is "Myself".
+    If a named participant commits, use their first name.
+    If ownership is ambiguous, use "TBD".
+  
+  # How to calculate due dates from relative references
+  due_date_inference: |
+    Anchor all relative dates to the meeting date.
+    "tomorrow" = meeting_date + 1 day
+    "next week" = meeting_date + 7 days
+    "end of week" = next Friday from meeting_date
+    "next month" = first of next month
+    If no date mentioned, leave due_date empty.
+
+# Rules for entity matching
+entity_matching:
+  # Auto-create new entity folder if confidence >= this threshold
+  auto_create_threshold: 0.90
+  
+  # Flag for human review if confidence between these thresholds
+  needs_review_threshold: 0.80
+  
+  # Prefer these entity types for ambiguous matches
+  preferred_types:
+    - account
+    - partner
+    - person
+
+# Note type hints based on context
+type_hints:
+  # If these patterns appear, suggest these note types
+  patterns:
+    - pattern: "1-1|one-on-one|1:1"
+      suggests: "people"
+    - pattern: "RFP|proposal|deal|pipeline"
+      suggests: "customer"
+    - pattern: "partner|alliance|integration"
+      suggests: "partners"
+
+# Extraction behavior
+extraction:
+  # Include quotes for key statements
+  include_quotes: true
+  quote_threshold: 0.85  # Only include high-confidence quotes
+  
+  # Max items per section
+  max_tasks: 10
+  max_decisions: 5
+  max_facts: 10

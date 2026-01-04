@@ -1,0 +1,74 @@
+# Profile: Engineering/Technical Context
+# For technical discussions, architecture reviews, project work
+
+name: "Engineering/Technical Context"
+description: "For technical discussions, code reviews, architecture, and project work"
+
+# What to prioritize during extraction
+focus:
+  - Technical decisions and rationale
+  - Architecture choices and trade-offs
+  - API design and interface contracts
+  - Performance considerations and benchmarks
+  - Security and compliance requirements
+  - Integration points and dependencies
+  - Bug reports and issue resolution
+  - Code review feedback and action items
+  - Documentation needs
+  - Testing strategy and coverage
+
+# What to de-emphasize or skip
+ignore:
+  - Off-topic personal discussions
+  - Scheduling logistics
+  - Administrative topics not related to technical work
+  - Repeated explanations of known concepts
+
+# Rules for task extraction
+task_rules:
+  confidence_threshold: 0.70  # Lower threshold for technical tasks
+  
+  owner_inference: |
+    If the speaker commits to implementation, owner is "Myself".
+    If a specific engineer is assigned, use their name.
+    For team tasks, use "Team" as owner.
+    If ownership unclear, use "TBD".
+  
+  due_date_inference: |
+    Anchor to meeting date.
+    "by EOD" = meeting_date
+    "tomorrow" = meeting_date + 1 day
+    "next sprint" = meeting_date + 14 days
+    "next release" = next Friday from meeting_date
+    If no date, leave empty.
+
+# Rules for entity matching
+entity_matching:
+  auto_create_threshold: 0.85
+  needs_review_threshold: 0.70
+  
+  preferred_types:
+    - project
+    - person
+
+# Note type hints
+type_hints:
+  patterns:
+    - pattern: "sprint|backlog|standup|retro"
+      suggests: "projects"
+    - pattern: "1-1|sync|check-in"
+      suggests: "people"
+    - pattern: "architecture|design|review"
+      suggests: "projects"
+
+# Extraction behavior
+extraction:
+  include_quotes: true
+  quote_threshold: 0.80
+  
+  # Include code references if mentioned
+  include_code_refs: true
+  
+  max_tasks: 15  # More tasks typical in technical discussions
+  max_decisions: 10
+  max_facts: 15

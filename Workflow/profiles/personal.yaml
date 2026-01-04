@@ -1,0 +1,86 @@
+# Profile: Personal Context
+# For personal notes, journal entries, non-work content
+
+name: "Personal Context"
+description: "For personal notes, journal entries, home projects, and non-work content"
+
+# What to prioritize during extraction
+focus:
+  - Personal goals and commitments
+  - Health and wellness notes
+  - Family and relationship items
+  - Home projects and tasks
+  - Personal learning and development
+  - Travel and event planning
+  - Financial and administrative items
+  - Creative projects and hobbies
+  - Reflections and insights
+
+# What to de-emphasize or skip
+ignore:
+  - Work-related content (route to work profiles)
+  - Detailed financial figures (account numbers, balances)
+
+# Sensitive information handling
+sensitive_topics:
+  redact:
+    - Social security numbers
+    - Credit card numbers
+    - Bank account numbers
+    - Passwords and PINs
+  summarize_only:
+    - Medical diagnoses (use general terms)
+    - Therapy/counseling details
+    - Legal matters (note existence, not details)
+  flag_for_review:
+    - Financial decisions over $1000
+    - Major life decisions
+    - Relationship conflicts
+
+# Rules for task extraction
+task_rules:
+  confidence_threshold: 0.65  # Lower threshold for personal reminders
+  
+  owner_inference: |
+    Default owner is "Myself" for personal tasks.
+    If involving family member, use their first name.
+    For shared tasks, use "Us" or "Family".
+  
+  due_date_inference: |
+    Anchor to meeting/note date.
+    "tomorrow" = date + 1 day
+    "this weekend" = next Saturday
+    "next week" = date + 7 days
+    If no date, leave empty.
+
+# Rules for entity matching
+entity_matching:
+  auto_create_threshold: 0.85
+  needs_review_threshold: 0.75
+  
+  preferred_types:
+    - person
+    - project
+
+# Note type hints
+type_hints:
+  patterns:
+    - pattern: "journal|reflect|thoughts"
+      suggests: "journal"
+    - pattern: "project|build|create"
+      suggests: "projects"
+    - pattern: "trip|travel|vacation"
+      suggests: "travel"
+    - pattern: "meet|coffee|dinner|call with"
+      suggests: "people"
+
+# Extraction behavior
+extraction:
+  include_quotes: false  # Less formal for personal
+  
+  # Be more lenient with structure
+  allow_freeform: true
+  
+  max_tasks: 10
+  max_decisions: 5
+  max_facts: 10

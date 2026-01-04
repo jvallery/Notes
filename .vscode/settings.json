@@ -1,0 +1,70 @@
+{
+  // ===========================================
+  // VS CODE WORKSPACE SETTINGS - GOD MODE
+  // Full autonomy for AI agents in this folder
+  // ===========================================
+
+  // ----- COPILOT AGENT AUTONOMY (GOD MODE) -----
+  
+  // Auto-approve all agent tool calls (file edits, terminal, etc.)
+  "github.copilot.chat.agent.autoApprove": true,
+  
+  // Enable command execution from chat
+  "github.copilot.chat.runCommand.enabled": true,
+  
+  // Enable experimental MCP support
+  "github.copilot.chat.experimental.mcp.enabled": true,
+  
+  // Skip confirmations for file operations
+  "github.copilot.chat.confirmEditRequests": false,
+  
+  // Allow agent to create files without confirmation
+  "github.copilot.chat.agent.runTasks": true,
+  
+  // ----- PYTHON ENVIRONMENT -----
+  
+  "python.defaultInterpreterPath": "${workspaceFolder}/Workflow/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.extraPaths": ["${workspaceFolder}/Workflow/scripts"],
+  
+  // ----- TERMINAL -----
+  
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.env.osx": {
+    "NOTES_ROOT": "${workspaceFolder}",
+    "PYTHONPATH": "${workspaceFolder}/Workflow/scripts"
+  },
+  
+  // ----- FILES -----
+  
+  "files.associations": {
+    "*.md": "markdown"
+  },
+  
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/Workflow/.venv": true
+  },
+  
+  "search.exclude": {
+    "**/Workflow/.venv": true,
+    "**/.obsidian/workspace*.json": true
+  },
+  
+  // ----- MARKDOWN -----
+  
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": false,
+      "strings": false
+    }
+  },
+  
+  // ----- GIT -----
+  
+  "git.enableSmartCommit": true,
+  "git.confirmSync": false,
+  "git.autofetch": true
+}

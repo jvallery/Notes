@@ -1,0 +1,53 @@
+---
+type: "customer"
+title: "{{ title }}"
+date: "{{ date }}"
+account: "{{ account }}"
+participants: {{ participants | tojson }}
+source: "{{ source | default('transcript') }}"
+source_ref: "{{ source_ref | default('') }}"
+tags:
+  - "type/customer"
+  - "account/{{ account | slugify }}"
+  - "generated"
+{%- if extra_tags is defined and extra_tags %}
+{%- for tag in extra_tags %}
+  - "{{ tag }}"
+{%- endfor %}
+{%- endif %}
+---
+
+# {{ title }}
+
+**Date**: {{ date }}
+**Account**: [[{{ account }}]]
+**Attendees**: {{ participants | join(", ") }}
+
+## Summary
+
+{{ summary }}
+{%- if tasks %}
+
+## Action Items
+{% for task in tasks %}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task
+{%- endfor %}
+{%- endif %}
+{%- if decisions %}
+
+## Decisions
+{% for decision in decisions %}
+- {{ decision }}
+{%- endfor %}
+{%- endif %}
+{%- if facts %}
+
+## Key Information
+{% for fact in facts %}
+- {{ fact }}
+{%- endfor %}
+{%- endif %}
+
+---
+
+*Source: [[{{ source_ref | basename | strip_extension }}]]*

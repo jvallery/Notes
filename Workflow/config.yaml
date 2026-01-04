@@ -1,0 +1,383 @@
+# ============================================================================
+# Notes Vault Configuration
+# ============================================================================
+# Runtime settings for the local-first Obsidian automation system.
+# 
+# Architecture: Extract → Plan → Apply (ChangePlan pattern)
+# See DESIGN.md for full system documentation.
+#
+# Environment variables (from .env) override values here using ${VAR} syntax.
+# Relative paths are resolved from vault_root.
+#
+# Version: 0.2.0
+# Last Updated: 2026-01-03
+# ============================================================================
+
+# === PATHS ===
+# All paths relative to vault_root unless absolute
+paths:
+  vault_root: "${NOTES_ROOT:-/Users/jason/Documents/Notes}"
+  
+  # Inbox structure (incoming content)
+  inbox:
+    root: "Inbox"
+    email: "Inbox/Email"
+    transcripts: "Inbox/Transcripts"
+    voice: "Inbox/Voice"
+    attachments: "Inbox/Attachments"
+    extraction: "Inbox/_extraction"      # JSON output from AI extraction
+    archive: "Inbox/_archive"            # Processed source files
+  
+  # Resources (prompts, templates)
+  resources:
+    prompts: "Inbox/_bins/_prompts"
+    subtemplates: "Inbox/_bins/_prompts/subtemplates"
+    templates: "Inbox/_bins/_templates"
+  
+  # Work destinations (VAST)
+  work:
+    root: "VAST"
+    people: "VAST/People"
+    projects: "VAST/Projects"
+    accounts: "VAST/Customers and Partners"
+    rob: "VAST/ROB"
+    tasks: "VAST/_Tasks"
+    journal: "VAST/Journal"
+  
+  # Personal destinations
+  personal:
+    root: "Personal"
+    people: "Personal/People"
+    projects: "Personal/Projects"
+    tasks: "Personal/_Tasks"
+    journal: "Personal/Journal"
+
+# === AI MODELS ===
+# Policy-based model selection (not hardcoded)
+# See REQUIREMENTS.md Section 4 for model policy details
+#
+# CRITICAL: All API calls must use:
+#   - OpenAI Responses API (not Chat Completions)
+#   - store: false (privacy requirement)
+
+models:
+  default_provider: "openai"
+
+  privacy:
+    store: false
+    api: "responses"
+
+  # Best overall for schema-first routing + extraction + planning (Dec 2025)
+  # Pin to snapshot for stability / reproducibility.
+  classify:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 800
+
+  extract_transcript:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 8192
+
+  extract_email:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 4096
+
+  extract_voice:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 4096
+
+  planning:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 8192
+  # Backfill: Historical content extraction for README population
+  backfill:
+    provider: "openai"
+    model: "gpt-5.2-2025-12-11"
+    fallback: "gpt-5.2"
+    temperature: 0.0
+    max_tokens: 1024
+  # Conflict resolution only
+  # If you want “best possible” and you’re willing to switch stacks: use OpenAI Codex with gpt-5.2-codex.
+  # If staying in Copilot: pick Claude Opus 4.5 explicitly.
+  agent:
+    provider: "copilot"
+    preference: "claude-opus-4.5"
+    scope: "conflict-resolution-only"
+
+  embeddings:
+    provider: "openai"
+    model: "text-embedding-3-large"
+
+
+
+# === NOTE TYPES ===
+# Maps note types to their destinations and templates
+note_types:
+  customer:
+    template: "customer.md"
+    destinations:
+      - "VAST/Customers and Partners/{entity}"
+    entity_key: "account"
+  
+  people:
+    template: "people.md"
+    destinations:
+      - "VAST/People/{entity}"
+      - "Personal/People/{entity}"
+    entity_key: "person"
+  
+  projects:
+    template: "projects.md"
+    destinations:
+      - "VAST/Projects/{entity}"
+      - "Personal/Projects/{entity}"
+    entity_key: "project"
+  
+  rob:
+    template: "rob.md"
+    destinations:
+      - "VAST/ROB/{entity}"
+    entity_key: "rob_forum"
+  
+  journal:
+    template: "journal.md"
+    destinations:
+      - "Personal/Journal"
+      - "VAST/Journal"
+    entity_key: "journal"
+  
+  partners:
+    template: "partners.md"
+    destinations:
+      - "VAST/Customers and Partners/{entity}"
+    entity_key: "partner"
+  
+  travel:
+    template: "travel.md"
+    destinations:
+      - "Personal/Travel"
+      - "VAST/Travel"
+    entity_key: "trip"
+
+# === PROCESSING RULES ===
+# ChangePlan pattern: Extract → Plan → Apply
+# See DESIGN.md Section 2 for full pattern documentation
+processing:
+  # Pipeline phases
+  phases:
+    extract: true                        # Content → extraction.json
+    plan: true                           # extraction.json → changeplan.json
+    apply: true                          # changeplan.json → file updates
+  
+  # Execution mode
+  headless: true                         # No Obsidian/plugin dependencies
+  template_engine: "jinja2"              # NOT Templater plugin
+  
+  # ChangePlan validation
+  validate_schema: true                  # Validate against JSON schema
+  schema_path: "Workflow/schemas/changeplan.schema.json"
+  
+  # Source file handling
+  auto_archive: true                     # Move processed files to archive
+  archive_date_folders: true             # Organize archive by YYYY-MM-DD
+  save_partial_extractions: true         # Save JSON even if errors occur
+  
+  # File age limits
+  max_file_age_days: 30                  # Skip files older than this
+  
+  # Duplicate detection
+  check_duplicates: true                 # Warn if similar content exists
+  duplicate_threshold: 0.85              # Similarity threshold (0-1)
+  
+  # Retry behavior
+  max_retries: 3                         # Retry failed API calls
+  retry_delay_seconds: 2                 # Delay between retries
+  
+  # Dry run support
+  dry_run: false                         # Set true to preview without writing
+
+# === ENTITY MATCHING ===
+# How to match names/references to existing folders
+entity_matching:
+  # Strategy: exact, fuzzy, embeddings
+  strategy: "fuzzy"
+  
+  # Fuzzy matching threshold (0-1, higher = stricter)
+  fuzzy_threshold: 0.8
+  
+  # Create new entity folders automatically?
+  auto_create_entities: false            # If false, flag for manual review
+  
+  # Alias file for nicknames/abbreviations
+  alias_file: "Workflow/entities/aliases.yaml"
+  
+  # Known entities cache (auto-generated)
+  cache_file: "Workflow/entities/cache.json"
+
+# === TASK MANAGEMENT ===
+# Obsidian Tasks plugin format
+# IMPORTANT: Tasks live in source notes only. Dashboard files contain Dataview queries.
+tasks:
+  # Storage policy
+  storage:
+    location: "source-notes-only"        # Tasks stay where they're created
+    dashboards: "dataview-queries"       # _Tasks/*.md are query-only
+    no_duplication: true                 # Never copy tasks to aggregate files
+  
+  # Obsidian Tasks plugin format
+  format:
+    priority_markers:
+      highest: "🔺"
+      high: "⏫"
+      medium: "🔼"
+      low: "🔽"
+      lowest: "⏬"
+    date_markers:
+      due: "📅"
+      scheduled: "⏳"
+      start: "🛫"
+      recurrence: "🔁"
+      done: "✅"
+  
+  # Default owner for first-person tasks
+  default_owner: "Myself"
+  
+  # Global tag for all extracted tasks
+  global_tag: "#task"
+
+# === GIT INTEGRATION ===
+git:
+  enabled: true
+  auto_commit: true
+  auto_push: false                       # Require manual push
+  commit_message_prefix: "[auto]"
+  
+  # Commit strategy: per-file, per-batch, daily
+  commit_strategy: "per-batch"
+  
+  # Include source file path in commit message
+  include_source_in_message: true
+  
+  # Clean check configuration
+  # Only check these paths for uncommitted changes (prevents false positives)
+  check_paths:
+    - "Inbox/"
+    - "VAST/"
+    - "Personal/"
+  
+  # Ignore these paths when checking for clean state
+  # (Obsidian config changes, logs, venv shouldn't block automation)
+  ignore_paths:
+    - ".obsidian/"
+    - "Workflow/logs/"
+    - "Workflow/.venv/"
+
+# === LOGGING ===
+logging:
+  level: "INFO"                          # DEBUG, INFO, WARNING, ERROR
+  console: true                          # Print to console
+  file: "Workflow/logs/automation.log"
+  
+  # Log rotation
+  max_size_mb: 10
+  backup_count: 5
+  
+  # Separate logs for different components
+  components:
+    extraction: "Workflow/logs/extraction.log"
+    agent: "Workflow/logs/agent.log"
+    errors: "Workflow/logs/errors.log"
+
+# === NOTIFICATIONS ===
+notifications:
+  enabled: true
+  
+  # macOS notifications via osascript
+  macos:
+    on_success: true
+    on_error: true
+    sound: true
+  
+  # Future: Slack, email, etc.
+  # slack:
+  #   webhook_url: "${SLACK_WEBHOOK_URL}"
+  #   on_error: true
+
+# === EMAIL INGESTION ===
+# Critical: Save raw .eml for HTML fidelity, not just AppleScript content
+email:
+  # Source preservation
+  save_raw_eml: true                     # Export actual .eml source
+  save_markdown: true                    # Also save readable .md conversion
+  eml_export_method: "applescript_source"  # Use 'source' property, not 'content'
+  
+  # Do NOT rely on:
+  # - AppleScript 'content' property (lossy)
+  # - echo commands (encoding issues)
+  # - Pandoc HTML conversion without source
+
+# === SCHEDULING ===
+# Daily Loop workflow (see DESIGN.md Section 5)
+scheduling:
+  # End-of-day processing trigger
+  workflow: "manual"                     # Manual trigger, not scheduled
+  
+  # Future: launchd job times (24h format)
+  # process_times:
+  #   - "18:00"                          # 6 PM daily
+  
+  # Days to run (0=Sunday, 6=Saturday)
+  # process_days: [1, 2, 3, 4, 5]        # Weekdays only
+  
+  # Timezone
+  timezone: "America/Denver"
+
+# === SENSITIVE CONTENT ===
+# Flag content matching these patterns for manual review
+sensitive_content:
+  enabled: true
+  
+  # Keywords that trigger manual review
+  keywords:
+    - "salary"
+    - "compensation"
+    - "confidential"
+    - "NDA"
+    - "legal"
+    - "lawsuit"
+    - "medical"
+    - "health"
+  
+  # Regex patterns (optional)
+  patterns:
+    - "\\$[0-9,]+[kKmM]?"                # Dollar amounts
+    - "SSN|social security"              # SSN references
+
+# === FEATURE FLAGS ===
+# Enable/disable experimental features
+features:
+  # Entity matching with embeddings
+  use_embeddings: false
+  
+  # Multi-part transcript merging
+  merge_transcripts: false
+  
+  # Weekly digest generation
+  weekly_digest: false
+  
+  # Calendar integration for meeting context
+  calendar_integration: false

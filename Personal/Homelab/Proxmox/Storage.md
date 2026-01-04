@@ -1,0 +1,9 @@
+I have 4x1TiB SSDs in my Synology DSM 7.2 hosted SAN which I would like to use for all my durable storage for "databases". I think connecting them to Proxmox to manage iSCSI makes sense? How can I setup a VM to have a disk on this which will failover between hosts? Is this ZFS on iSCSI? What's the right way to configure DSM and Proxmox to mount an iSCSI LUN on the Synology and let me create virtual disks on the volume which move with the VM when it moves between hosts? I'd like this as a virtual pool of capacity that I can manage from proxmox. Consider all the settings in Synology DSM 7.2 and Proxmox 9.1.1 and give me the optimized step-by-step instructions for configuring this scenario.
+
+I have an NFS share on the same synology (backed by hard drives) which I would like to add to proxmox and have VM backups stored there. What are the capabilities here in terms of point in time restore? ransomware protection? Etc..
+
+What are the other ways I should integrate my Promox cluster with my Synology DSM SAN/NAS? Identity? Etc?
+
+I want my local NVMe on each host to be replicated for VM storage so that I can still remain available and failover if the Synology is down. I do want to ensure that the Synology doesn't become a SPOF except for cases where the VM or container is limited to it's data (e.g., the iSCSI LUN or the NFS shares). But otherwise, I do want to make sure if the Synology goes offline the VMs reamin up (this we're using the ZFS "tank" pool). All 3 of my hosts have identical hardware for Proxmox, so this should all be doable.
+
+Help me rationalize the full storage plan and configure proxmox and DSM accordingly.

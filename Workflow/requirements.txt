@@ -1,0 +1,30 @@
+# Notes Vault - Python Dependencies
+# Version: 1.0.0 (ChangePlan Architecture)
+#
+# IMPORTANT: Versions are pinned for stability.
+# OpenAI's Structured Outputs API and Pydantic v2 have breaking changes between versions.
+# Update versions intentionally after testing.
+
+# === Core ===
+openai==1.59.5             # OpenAI Responses API for extraction (pin for Structured Outputs stability)
+jinja2==3.1.5              # Template rendering (prompts & notes)
+pyyaml==6.0.2              # Parse config.yaml
+python-dotenv==1.0.1       # Load .env files
+
+# === Data Handling ===
+pydantic==2.10.4           # Data validation for JSON schemas (v2 required for Structured Outputs)
+python-frontmatter==1.1.0  # Parse/write YAML frontmatter in markdown
+
+# === Utilities ===
+rich==13.9.4               # Pretty console output & logging
+click==8.1.8               # CLI argument parsing
+rapidfuzz>=3.0.0           # Fuzzy string matching for entities (unpinned for Python 3.14 compat)
+jsonschema>=4.0.0          # JSON schema validation
+
+# === Testing ===
+pytest>=9.0.0              # Test framework
+pytest-mock>=3.15.0        # Mocking utilities for tests
+
+# === Future / Optional ===
+# tiktoken>=0.5.0          # Token counting for context management
+# numpy>=1.24.0            # If using embeddings

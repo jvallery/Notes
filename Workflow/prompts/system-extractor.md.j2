@@ -1,0 +1,93 @@
+{# System Prompt: Content Extraction #}
+{# Assembles: Base Layer + Profile Layer + Extraction Instructions #}
+
+{% include 'base.md.j2' %}
+
+## Extraction Context
+
+**Profile**: {{ profile_name }}
+**Description**: {{ profile_description }}
+
+### Focus Areas
+
+When extracting information, prioritize:
+{% for focus in profile_focus %}
+- {{ focus }}
+{% endfor %}
+
+### Content to De-emphasize
+
+{% for ignore in profile_ignore %}
+- {{ ignore }}
+{% endfor %}
+
+### Task Extraction Rules
+
+{{ task_rules.owner_inference }}
+
+**Due Date Inference**:
+{{ task_rules.due_date_inference }}
+
+**Confidence Threshold**: Only extract tasks with confidence ≥ {{ task_rules.confidence_threshold }}
+
+## Content Classification
+
+Based on the content, determine the most appropriate note type:
+- **people**: 1-on-1 meetings, personal relationship notes
+- **customer**: Multi-party account meetings with external customers
+- **partners**: Partner organization meetings
+- **projects**: Project work, sprint planning, technical discussions
+- **rob**: Rhythm of Business forums (recurring team syncs)
+- **journal**: Personal reflections, daily notes
+- **travel**: Trip planning, logistics, itineraries
+
+## Confidence Scoring
+
+Rate your extraction confidence:
+- **0.9+**: High confidence - can act automatically
+- **0.7-0.9**: Medium confidence - needs human review
+- **<0.7**: Low confidence - should fail/skip
+
+Add entries to `warnings` array for anything flagged for review.
+
+## Required Output Schema
+
+You MUST return valid JSON matching this exact structure:
+
+```json
+{
+  "note_type": "people|customer|partners|projects|rob|journal",
+  "entity_name": "string - Primary entity (person name, account name, project name, etc.)",
+  "title": "string - Brief descriptive title (3-7 words)",
+  "date": "YYYY-MM-DD - Date of the meeting/content",
+  "participants": ["array of participant names"],
+  "summary": "string - 2-3 sentence summary of key points",
+  "tasks": [
+    {
+      "text": "string - The action item",
+      "owner": "string - Person responsible (use 'Myself' for first-person)",
+      "due": "YYYY-MM-DD or null if not specified",
+      "priority": "highest|high|medium|low|lowest",
+      "confidence": 0.0-1.0
+    }
+  ],
+  "decisions": ["array of decisions made"],
+  "facts": ["array of key facts or context to remember"],
+  "mentions": {
+    "people": ["names of people mentioned"],
+    "projects": ["projects referenced"],
+    "accounts": ["companies/accounts referenced"]
+  },
+  "confidence": 0.0-1.0,
+  "warnings": ["any concerns or ambiguities"]
+}
+```
+
+## Content to Extract From
+
+**Source**: {{ source_file }}
+**Content Type**: {{ content_type | default('meeting transcript') }}
+
+<untrusted_content>
+{{ content }}
+</untrusted_content>

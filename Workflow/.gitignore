@@ -1,0 +1,10 @@
+# Workflow folder ignores
+.env
+.venv/
+__pycache__/
+*.pyc
+logs/
+*.log
+
+# But keep the example
+!.env.example

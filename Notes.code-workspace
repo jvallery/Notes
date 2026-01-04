@@ -1,0 +1,160 @@
+{
+  "folders": [
+    {
+      "name": "Notes",
+      "path": "."
+    }
+  ],
+  "settings": {
+    // ===========================================
+    // COPILOT / CLAUDE AGENT SETTINGS
+    // ===========================================
+    
+    // Allow agents to run terminal commands without confirmation
+    "chat.commandCenter.enabled": true,
+    
+    // Auto-approve tool calls in agent mode (full autonomy)
+    "github.copilot.chat.agent.autoApprove": true,
+    
+    // Allow terminal command execution
+    "github.copilot.chat.runCommand.enabled": true,
+    
+    // MCP server configurations (if using Claude direct)
+    "github.copilot.chat.experimental.mcp.enabled": true,
+    
+    // ===========================================
+    // PYTHON ENVIRONMENT
+    // ===========================================
+    
+    // Use the local venv for this workspace
+    "python.defaultInterpreterPath": "${workspaceFolder}/Workflow/.venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    
+    // ===========================================
+    // TERMINAL SETTINGS
+    // ===========================================
+    
+    // Default shell
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    
+    // Environment variables for scripts
+    "terminal.integrated.env.osx": {
+      "NOTES_ROOT": "${workspaceFolder}",
+      "PYTHONPATH": "${workspaceFolder}/Workflow/scripts"
+    },
+    
+    // ===========================================
+    // FILE ASSOCIATIONS
+    // ===========================================
+    
+    "files.associations": {
+      "*.md": "markdown"
+    },
+    
+    // Exclude from search/explorer
+    "files.exclude": {
+      "**/.DS_Store": true,
+      "**/.obsidian/workspace*.json": true,
+      "**/Workflow/.venv": true
+    },
+    
+    "search.exclude": {
+      "**/Workflow/.venv": true,
+      "**/.obsidian": true
+    },
+    
+    // ===========================================
+    // MARKDOWN SETTINGS
+    // ===========================================
+    
+    "[markdown]": {
+      "editor.wordWrap": "on",
+      "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": false
+      }
+    },
+    
+    // ===========================================
+    // GIT SETTINGS
+    // ===========================================
+    
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true
+  },
+  
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "name": "Python: Extract Transcript",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/Workflow/scripts/extract_transcript.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "NOTES_ROOT": "${workspaceFolder}"
+        }
+      },
+      {
+        "name": "Python: Process All Inbox",
+        "type": "debugpy",
+        "request": "launch",
+        "program": "${workspaceFolder}/Workflow/scripts/process_inbox.py",
+        "console": "integratedTerminal",
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "NOTES_ROOT": "${workspaceFolder}"
+        }
+      }
+    ]
+  },
+  
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Setup Python Environment",
+        "type": "shell",
+        "command": "cd ${workspaceFolder}/Workflow && python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements.txt",
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Process Inbox",
+        "type": "shell",
+        "command": "${workspaceFolder}/Workflow/.venv/bin/python ${workspaceFolder}/Workflow/scripts/process_inbox.py",
+        "problemMatcher": [],
+        "group": "build"
+      },
+      {
+        "label": "Extract Single Transcript",
+        "type": "shell",
+        "command": "${workspaceFolder}/Workflow/.venv/bin/python ${workspaceFolder}/Workflow/scripts/extract_transcript.py ${input:transcriptFile}",
+        "problemMatcher": [],
+        "group": "build"
+      }
+    ],
+    "inputs": [
+      {
+        "id": "transcriptFile",
+        "type": "promptString",
+        "description": "Path to transcript file to process"
+      }
+    ]
+  },
+  
+  "extensions": {
+    "recommendations": [
+      "github.copilot",
+      "github.copilot-chat",
+      "ms-python.python",
+      "ms-python.vscode-pylance",
+      "yzhang.markdown-all-in-one",
+      "bierner.markdown-mermaid"
+    ]
+  }
+}

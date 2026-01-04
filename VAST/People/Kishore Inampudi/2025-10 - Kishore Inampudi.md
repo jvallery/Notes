@@ -1,0 +1,1 @@
+- [x] Coordinate with Kishore Enamapuri on Azure Extended Zones once A2N is approved; align on storage needs. @Jason Vallery 🔼 ✅ 2025-11-08

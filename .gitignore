@@ -1,0 +1,28 @@
+# ============================================================================
+# Notes Vault - Root .gitignore
+# ============================================================================
+
+# === Workflow Automation ===
+Workflow/.venv/
+Workflow/.env
+Workflow/logs/*.log
+Workflow/__pycache__/
+Workflow/**/__pycache__/
+Workflow/**/*.pyc
+
+# === Inbox Processing ===
+Inbox/_extraction/*.json
+.workflow_backups/
+
+# === macOS ===
+.DS_Store
+**/.DS_Store
+
+# === Obsidian ===
+# Uncomment if you don't want to sync Obsidian settings
+# .obsidian/
+
+# === Temporary Files ===
+*.tmp
+*.bak
+*~

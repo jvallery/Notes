@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "changeplan.schema.json",
+  "title": "ChangePlan",
+  "description": "Schema for deterministic file operations using patch primitives",
+  "type": "object",
+  "required": ["version", "source_file", "extraction_file", "created_at", "operations"],
+  "properties": {
+    "version": {
+      "const": "1.0",
+      "description": "Schema version"
+    },
+    "source_file": {
+      "type": "string",
+      "description": "Path to original source file"
+    },
+    "extraction_file": {
+      "type": "string",
+      "description": "Path to extraction JSON"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Plan creation timestamp"
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["op", "path"],
+        "properties": {
+          "op": {
+            "type": "string",
+            "enum": ["create", "patch", "link"],
+            "description": "Operation type (archive handled by Python)"
+          },
+          "path": {
+            "type": "string",
+            "description": "Target file path (relative to vault root)"
+          },
+          "template": {
+            "type": "string",
+            "description": "Jinja2 template name (for create)"
+          },
+          "context": {
+            "type": "object",
+            "description": "Template variables (for create)"
+          },
+          "patches": {
+            "type": "array",
+            "description": "Structured patch primitives (for patch)",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "required": ["primitive", "frontmatter"],
+                  "properties": {
+                    "primitive": { "const": "upsert_frontmatter" },
+                    "frontmatter": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "required": ["key", "value"],
+                        "properties": {
+                          "key": { "type": "string" },
+                          "value": { "type": ["string", "array", "null"] }
+                        }
+                      }
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "required": ["primitive", "heading", "content"],
+                  "properties": {
+                    "primitive": { "const": "append_under_heading" },
+                    "heading": { "type": "string", "description": "Markdown heading (e.g., '## Recent Context')" },
+                    "content": { "type": "string", "description": "Content to append" }
+                  }
+                },
+                {
+                  "type": "object",
+                  "required": ["primitive", "wikilinks"],
+                  "properties": {
+                    "primitive": { "const": "ensure_wikilinks" },
+                    "wikilinks": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "description": "Wikilinks to ensure exist"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "links": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "Wikilinks to insert (for link op)"
+          }
+        }
+      }
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Issues to flag for human review"
+    }
+  },
+  "additionalProperties": false
+}

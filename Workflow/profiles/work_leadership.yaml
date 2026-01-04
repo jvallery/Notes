@@ -1,0 +1,77 @@
+# Profile: Leadership/Strategy Context
+# For ROB forums, planning sessions, all-hands, executive discussions
+
+name: "Leadership/Strategy Context"
+description: "For ROB forums, strategic planning, all-hands, and executive discussions"
+
+# What to prioritize during extraction
+focus:
+  - Strategic decisions and direction changes
+  - Organizational announcements
+  - Priority shifts and resource allocation
+  - Cross-team dependencies and coordination
+  - Metrics and KPI discussions
+  - Quarterly/annual planning items
+  - Headcount and hiring plans
+  - Process changes and new initiatives
+  - Escalations and blockers requiring leadership attention
+  - Recognition and team highlights
+
+# What to de-emphasize or skip
+ignore:
+  - Detailed technical implementation
+  - Individual task-level items (capture at summary level)
+  - Scheduling details
+  - Administrative logistics
+
+# Rules for task extraction
+task_rules:
+  confidence_threshold: 0.80  # Higher bar for leadership tasks
+  
+  owner_inference: |
+    If a leader commits to action, use their name.
+    If speaker commits, owner is "Myself".
+    For org-wide actions, use "Leadership" or team name.
+    If delegated to a team, use team name.
+  
+  due_date_inference: |
+    Anchor to meeting date.
+    "by EOQ" = end of current quarter
+    "next week" = meeting_date + 7 days
+    "next quarter" = first of next quarter
+    "by EOY" = December 31 of current year
+    If no date, leave empty.
+
+# Rules for entity matching
+entity_matching:
+  auto_create_threshold: 0.90
+  needs_review_threshold: 0.85
+  
+  preferred_types:
+    - rob_forum
+    - person
+    - project
+
+# Note type hints
+type_hints:
+  patterns:
+    - pattern: "office hours|sync|standup|weekly"
+      suggests: "rob"
+    - pattern: "1-1|one-on-one"
+      suggests: "people"
+    - pattern: "all-hands|town hall|QBR"
+      suggests: "rob"
+    - pattern: "planning|roadmap|strategy"
+      suggests: "projects"
+
+# Extraction behavior
+extraction:
+  include_quotes: true
+  quote_threshold: 0.90  # Only highest confidence quotes
+  
+  # Capture metrics mentioned
+  include_metrics: true
+  
+  max_tasks: 8  # Fewer but higher-impact tasks
+  max_decisions: 10
+  max_facts: 10

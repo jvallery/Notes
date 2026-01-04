@@ -1,0 +1,65 @@
+# Entity Aliases
+# Maps nicknames, abbreviations, and alternate names to canonical folder names.
+# Used by entity matching to resolve references in transcripts/emails.
+#
+# Format:
+#   canonical_name:
+#     - alias1
+#     - alias2
+
+# === PEOPLE ===
+people:
+  # Example entries - add your actual aliases here
+  "Jeff Denworth":
+    - "Jeff"
+    - "JD"
+  
+  "Jonsi Stephenson":
+    - "Jonsi"
+    - "JS"
+  
+  "Lior Genzel":
+    - "Lior"
+  
+  "Kanchan Mehrotra":
+    - "Kanchan"
+
+# === ACCOUNTS ===
+accounts:
+  "Google":
+    - "GCP"
+    - "Google Cloud"
+    - "GDC"
+    - "Google Distributed Cloud"
+  
+  "Microsoft":
+    - "MSFT"
+    - "Azure"
+    - "MS"
+  
+  "OpenAI":
+    - "OAI"
+
+# === PROJECTS ===
+projects:
+  "AI Pipelines Collateral":
+    - "AI Pipelines"
+    - "AI Collateral"
+  
+  "OVA":
+    - "VAST OVA"
+    - "Loopback"
+  
+  "VAST on Azure Integration":
+    - "Azure Integration"
+    - "VoA"
+
+# === ROB FORUMS ===
+rob:
+  "VAST on Cloud Office Hours":
+    - "Cloud Office Hours"
+    - "Office Hours"
+  
+  "Phase Gate 1":
+    - "PG1"
+    - "Phase Gate"
