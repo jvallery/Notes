@@ -2457,8 +2457,10 @@ Most are intentionally unstructured, but should be documented.
 | 92  | person_to_project schema err | HIGH   | 15 min | 🔴 CRITICAL |
 | 93  | extra_tags undefined         | MED    | 5 min  | 🔴 CRITICAL |
 | 94  | note_type undefined          | MED    | 5 min  | 🔴 CRITICAL |
-| 95  | 19 people notes misclassified| HIGH   | 30 min | 🔴 HIGH     |
 | 96  | Archive filename mismatch    | HIGH   | TBD    | 🔴 CRITICAL |
+| 97  | MacWhisper captures app title| HIGH   | 30 min | 🔴 CRITICAL |
+| 98  | Source attribution broken    | HIGH   | 60 min | 🔴 CRITICAL |
+| 95  | 19 people notes misclassified| HIGH   | 30 min | 🔴 HIGH     |
 | 62  | 17 stale last_contact        | HIGH   | 30 min | 🔴 HIGH     |
 | 75  | Deterministic extraction     | HIGH   | 2 hrs  | 🔴 HIGH     |
 | 76  | Persist run artifacts        | HIGH   | 60 min | 🔴 HIGH     |
@@ -2535,12 +2537,12 @@ Most are intentionally unstructured, but should be documented.
 |               | Empty folders           | 15                       |
 |               | Self-referential links  | 3                        |
 |               | Template mismatch       | 1 (critical)             |
-| **New Items** | Added to TODO.md        | 71 (items 26-96)         |
-|               | Critical pipeline bugs  | 6 (items 90-94, 96)      |
+| **New Items** | Added to TODO.md        | 73 (items 26-98)         |
+|               | Critical pipeline bugs  | 8 (items 90-94, 96-98)   |
 |               | Hallucinated note links | 39 (27% broken)          |
 |               | LLM path errors         | 14+ (from logs)          |
 |               | Misclassified notes     | 19 (type=customer wrong) |
-|               | Archive integrity issue | 1 (filename mismatch)    |
+|               | Archive integrity issues| 3+ (filename mismatches) |
 
 ---
 
@@ -2815,3 +2817,61 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 1. Check if `Inbox/Transcripts/` had duplicate/misnamed files
 2. Verify archive process preserves original filenames
 3. May need to re-ingest from MacWhisper exports
+---
+
+## 97) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
+
+**Found**: 2025-01-04
+
+Deep investigation of archive reveals **3 additional files with wrong names**:
+
+| Archive Filename | Actual Content |
+|------------------|----------------|
+| `2025-12-17 13:53 - Google Chrome.md` | Call with Avinash from Welliptic about blockchain agent execution platform |
+| `2025-12-19 09:50 - New Recording.md` | Detailed Google GDC RFP call with Kamal, Malikarjan, David (encryption, benchmarking) |
+| `2025-12-16 08:35 - G24 Flight School...md` | Strategic Microsoft/VAST discussion (MAI, Bifrost, supply chain) |
+
+**Root Cause**: MacWhisper picks up the **foreground app window title** when recording starts, not the meeting title.
+- "Google Chrome" = browser was active
+- "New Recording" = default placeholder
+- "G24 Flight School" = Zoom window title from previous meeting?
+
+**Impact**: CRITICAL
+- Archive filenames are unreliable as source_ref
+- Content-filename mismatch breaks traceability
+- ~3/132 (2.3%) of archive files confirmed wrong
+- Unknown how many more have subtle mismatches
+
+**Fix**:
+1. **Immediate**: Manually audit and rename problematic archives
+2. **Process**: Configure MacWhisper to prompt for title after recording ends
+3. **Fallback**: Have LLM propose corrected filename during extraction phase
+4. **Validation**: Add content-vs-filename sanity check to pipeline
+
+---
+
+## 98) Source Attribution Chain Is Broken
+
+**Found**: 2025-01-04
+
+The `source_ref` field in extracted notes links to archive files, but:
+- Archive filenames can be wrong (item 96, 97)
+- No verification that source_ref file content matches extracted note content
+- Cannot reliably trace back from a note to its source material
+
+**Example**:
+`VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussion.md` has:
+```yaml
+source_ref: "Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School...md"
+```
+This points to a file whose NAME suggests Flight School training, but whose CONTENT is the Microsoft discussion.
+
+**Impact**: Medium-High
+- Audit/provenance trail is broken
+- Cannot regenerate notes from source if needed
+- Compliance/legal discovery scenarios compromised
+
+**Fix**:
+1. Store content hash of source at extraction time
+2. Add `source_hash` field to frontmatter
+3. Validation can compare archive file hash to stored hash
