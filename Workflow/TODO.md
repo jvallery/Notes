@@ -2490,6 +2490,10 @@ Most are intentionally unstructured, but should be documented.
 | 85  | [[Note Title]] placeholder   | LOW    | 5 min  | 🟢 LOW      |
 | 86  | Project wikilinks no folder  | LOW    | 30 min | 🟢 LOW      |
 | 89  | 33 customer README-only      | LOW    | N/A    | 🟢 LOW      |
+| 99  | projects type never used     | MED    | 15 min | 🟡 MEDIUM   |
+| 100 | 3 empty ROB subfolders       | LOW    | 10 min | 🟢 LOW      |
+| 101 | Participant name variations  | MED    | 30 min | 🟡 MEDIUM   |
+| 102 | Duplicate files (AI Talk)    | LOW    | 10 min | 🟢 LOW      |
 | 29  | 4 Untitled files             | LOW    | 10 min | 🟢 LOW      |
 | 52  | Duplicate emails             | LOW    | 5 min  | 🟢 LOW      |
 | 53  | Spam emails                  | LOW    | 5 min  | 🟢 LOW      |
@@ -2537,12 +2541,13 @@ Most are intentionally unstructured, but should be documented.
 |               | Empty folders           | 15                       |
 |               | Self-referential links  | 3                        |
 |               | Template mismatch       | 1 (critical)             |
-| **New Items** | Added to TODO.md        | 73 (items 26-98)         |
+| **New Items** | Added to TODO.md        | 77 (items 26-102)        |
 |               | Critical pipeline bugs  | 8 (items 90-94, 96-98)   |
 |               | Hallucinated note links | 39 (27% broken)          |
 |               | LLM path errors         | 14+ (from logs)          |
-|               | Misclassified notes     | 19 (type=customer wrong) |
+|               | Misclassified notes     | 22 (19 people + 3 project)|
 |               | Archive integrity issues| 3+ (filename mismatches) |
+|               | Participant variations  | 6+ name inconsistencies  |
 
 ---
 
@@ -2951,3 +2956,26 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 1. Add name normalization to extraction output validation
 2. Maintain canonical name list in `Workflow/entities/aliases.yaml`
 3. Post-process participants to resolve to full names
+
+---
+
+## 102) Duplicate Files Across Personal/VAST
+
+**Found**: 2025-01-04
+
+Content hash analysis found exact duplicate files:
+
+| Hash | File 1 | File 2 |
+|------|--------|--------|
+| `cda0dbf7...` | `Personal/Projects/AI Talk/Outline.md` | `VAST/Projects/AI Talk/Outline.md` |
+| `d41d8cd9...` | `Personal/Homelab/VMs/Frigate.md` (empty) | `VAST/Projects/OVA/Proxmox/Untitled.md` (empty) |
+
+**Impact**: Low
+- Confusion about canonical location
+- Risk of divergent edits
+- Wasted space
+
+**Fix**:
+1. Determine canonical location for AI Talk project (Personal or VAST?)
+2. Delete empty placeholder files
+3. Consider symlinks or redirects for multi-context items
