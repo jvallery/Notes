@@ -152,3 +152,131 @@ The agent loads context from these files to understand the vault:
 3. **`Inbox/_bins/_prompts/`** - Extraction prompts
    - JSON schema
    - Type-specific guidance
+
+---
+
+## TODO Workflow (Multi-Agent)
+
+> **Purpose**: Enable multiple agents to work on `Workflow/TODO.md` simultaneously without conflicts.
+
+### Core Principles
+
+1. **Atomic Claims**: Always commit immediately after claiming an item
+2. **Git as Lock**: Use git commits to prevent race conditions
+3. **Fail Fast**: If a claim commit fails, another agent got there first
+4. **Time Limits**: Claims expire after 4 hours of inactivity
+5. **Lower = Higher Priority**: Item numbers indicate priority (lower = more important)
+
+### Work Item Lifecycle
+
+```
+NOT STARTED → IN PROGRESS → COMPLETED
+                    ↓
+                BLOCKED ←→ NOT STARTED (released)
+```
+
+### Status Markers (Exact Format Required)
+
+```markdown
+**Status: NOT STARTED**
+**Status: IN PROGRESS** (@agent-id, started: 2026-01-04 14:30)
+**Status: ✅ COMPLETED** (2026-01-04)
+**Status: ⏸️ BLOCKED** (waiting on item 5)
+```
+
+### Agent ID Convention
+
+Use a unique, traceable identifier:
+- `copilot-{session-hash}` - GitHub Copilot sessions
+- `claude-{session-id}` - Claude Code sessions  
+- `codex-{run-id}` - OpenAI Codex runs
+- `manual` - Human edits
+
+### Claiming Protocol (Step-by-Step)
+
+```bash
+# 1. Ensure clean state and latest TODO
+cd ~/Documents/Notes
+git pull --rebase
+
+# 2. Find available work
+grep -n "Status: NOT STARTED" Workflow/TODO.md | head -5
+
+# 3. Read the item you want to claim (e.g., item 27)
+grep -A30 "^## 27)" Workflow/TODO.md
+
+# 4. Edit TODO.md to change status (use sed or editor)
+# Replace: **Status: NOT STARTED**
+# With:    **Status: IN PROGRESS** (@copilot-abc123, started: 2026-01-04 14:30)
+
+# 5. Commit IMMEDIATELY (this is your "lock")
+git add Workflow/TODO.md
+git commit -m "[todo] Claim item 27: Inconsistent Task Owner Names"
+
+# 6. If commit succeeds, you own the item. Start working.
+# 7. If commit fails (conflict), someone else claimed it. Pick another.
+```
+
+### Conflict Resolution
+
+| Scenario | Resolution |
+|----------|------------|
+| Two agents claim same item | First successful commit wins; other agent picks different item |
+| Claim older than 4 hours | Any agent can reclaim (add note: "Reclaimed from stale @{old-agent}") |
+| Agent crashes mid-work | On restart, agent should complete or release its claims |
+| Merge conflict on TODO.md | Pull latest, re-check item status, re-claim if still available |
+
+### Commit Message Conventions
+
+```bash
+# Claiming
+[todo] Claim item {N}: {Title}
+
+# Completing (with the actual fix)
+[fix] {Description} (item {N})
+
+# Releasing
+[todo] Release item {N}: {reason}
+
+# Blocking
+[todo] Block item {N}: {reason}
+
+# Adding new item
+[todo] Add item {N}: {Title}
+```
+
+### Stale Claim Detection
+
+An agent can reclaim a stale item if:
+1. Status shows `IN PROGRESS` with timestamp > 4 hours ago
+2. No commits from that agent in the last 4 hours
+3. The reclaiming agent adds a note: `**Note:** Reclaimed from stale @{old-agent} on {date}`
+
+### Best Practices
+
+1. **Claim one item at a time** - Complete before claiming another
+2. **Make progress commits** - Commit partial work every 30-60 minutes
+3. **Release if stuck** - Don't hold items you can't complete
+4. **Lower numbers first** - Priority is implied by item number
+5. **Check dependencies** - Some items depend on others (noted in description)
+6. **Verify success criteria** - Don't mark complete until criteria are met
+7. **Document blockers** - If blocked, explain why in the status
+
+### Quick Commands
+
+```bash
+# Count items by status
+echo "Available: $(grep -c 'Status: NOT STARTED' Workflow/TODO.md)"
+echo "In Progress: $(grep -c 'Status: IN PROGRESS' Workflow/TODO.md)"
+echo "Completed: $(grep -c 'Status: ✅ COMPLETED' Workflow/TODO.md)"
+echo "Blocked: $(grep -c 'Status: ⏸️ BLOCKED' Workflow/TODO.md)"
+
+# Find my claimed items (replace agent-id)
+grep -B10 "@copilot-abc123" Workflow/TODO.md
+
+# Find stale claims (>4 hours old) - requires date comparison
+grep "Status: IN PROGRESS" Workflow/TODO.md
+
+# List available high-priority items (first 10)
+grep -B5 "Status: NOT STARTED" Workflow/TODO.md | head -50
+```

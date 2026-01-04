@@ -1,6 +1,7 @@
 # Copilot Instructions for Notes Vault
 
 > **Agent Autonomy**: Full autonomy granted within this vault. See [AGENTS.md](../AGENTS.md) for details.
+> **TODO Workflow**: For multi-agent task coordination, see [AGENTS.md#todo-workflow](../AGENTS.md#todo-workflow-multi-agent) and [Workflow/TODO.md](../Workflow/TODO.md).
 
 This is an **Obsidian-based knowledge management vault** for personal and work (VAST Data) notes, meeting transcripts, tasks, and relationship tracking.
 
@@ -12,6 +13,7 @@ You have **full autonomy** to:
 - ✅ Run terminal commands (Python scripts, git, file operations)
 - ✅ Execute Python scripts from `Workflow/scripts/`
 - ✅ Commit changes to git
+- ✅ Claim and complete TODO items (see `Workflow/TODO.md`)
 
 **Do not ask for permission** — execute directly. This vault is version-controlled; all changes can be rolled back.
 

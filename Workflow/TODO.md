@@ -4,9 +4,147 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 ---
 
+## 🤖 Agent Instructions
+
+> **Multi-Agent Workflow**: Multiple agents can work on this list simultaneously.
+> See `AGENTS.md#todo-workflow` for full protocol.
+
+### Quick Reference
+
+| Status | Meaning | Marker |
+|--------|---------|--------|
+| `NOT STARTED` | Available for any agent | `**Status: NOT STARTED**` |
+| `IN PROGRESS` | Claimed by an agent | `**Status: IN PROGRESS** (@agent-id, started: YYYY-MM-DD HH:MM)` |
+| `COMPLETED` | Finished and verified | `**Status: ✅ COMPLETED** (YYYY-MM-DD)` |
+| `BLOCKED` | Waiting on dependency | `**Status: ⏸️ BLOCKED** (reason)` |
+
+### Prompts for Agents
+
+<details>
+<summary><strong>📥 PROMPT 1: Add New Work Item</strong></summary>
+
+```
+Read Workflow/TODO.md and add a new work item following this protocol:
+
+1. Find the highest existing item number: `grep "^## [0-9]*)" Workflow/TODO.md | tail -1`
+2. Create new item with next sequential number
+3. Use this exact template:
+
+## {N}) {Title}
+
+**Goal:** {One-line goal statement}
+
+**Status: NOT STARTED**
+
+**Discovery:**
+{How was this issue found? What evidence?}
+
+**Impact:** {Critical|High|Medium|Low} - {brief reason}
+
+**Effort:** {estimated time}
+
+**Tasks**
+- [ ] {specific action 1}
+- [ ] {specific action 2}
+
+**Success Criteria**
+- {Verifiable outcome 1}
+- {Verifiable outcome 2}
+
+4. Commit: `git add Workflow/TODO.md && git commit -m "[todo] Add item {N}: {Title}"`
+```
+
+</details>
+
+<details>
+<summary><strong>🔍 PROMPT 2: Find and Claim Work</strong></summary>
+
+```
+Read Workflow/TODO.md and claim an available work item:
+
+1. Search for available items:
+   grep -n "Status: NOT STARTED" Workflow/TODO.md | head -10
+
+2. Pick ONE item matching your capabilities (prefer lower numbers = higher priority)
+
+3. ATOMICALLY claim it by replacing:
+   **Status: NOT STARTED**
+   with:
+   **Status: IN PROGRESS** (@{agent-id}, started: {YYYY-MM-DD HH:MM})
+
+   Where {agent-id} is a unique identifier (e.g., "copilot-1", "claude-a", "agent-xyz")
+
+4. Commit IMMEDIATELY before starting work:
+   git add Workflow/TODO.md && git commit -m "[todo] Claim item {N}: {Title}"
+
+5. Now perform the work described in the item's Tasks section
+
+6. After completing work, update status (see PROMPT 3)
+
+CONFLICT PREVENTION:
+- Always `git pull --rebase` before claiming
+- If commit fails (conflict), abort claim and retry with different item
+- Never hold a claim for more than 2 hours without progress commits
+- Stale claims (>4 hours) can be reclaimed by other agents
+```
+
+</details>
+
+<details>
+<summary><strong>✅ PROMPT 3: Complete or Release Work</strong></summary>
+
+```
+After finishing work on a TODO item:
+
+COMPLETE (success):
+1. Replace status line:
+   **Status: IN PROGRESS** (@{agent-id}, started: {timestamp})
+   with:
+   **Status: ✅ COMPLETED** ({YYYY-MM-DD})
+
+2. Add completion note if needed (what was done, any caveats)
+
+3. Commit:
+   git add -A && git commit -m "[fix] {Description of fix} (item {N})"
+
+RELEASE (cannot complete):
+1. Replace status line back to:
+   **Status: NOT STARTED**
+
+2. Add a note explaining why:
+   **Note:** Released by @{agent-id} on {date} - {reason}
+
+3. Commit:
+   git add Workflow/TODO.md && git commit -m "[todo] Release item {N}: {reason}"
+
+BLOCKED (waiting on dependency):
+1. Replace status line:
+   **Status: ⏸️ BLOCKED** (waiting on item {X} / {external dependency})
+
+2. Commit:
+   git add Workflow/TODO.md && git commit -m "[todo] Block item {N}: {reason}"
+```
+
+</details>
+
+---
+
+## Work Item Index
+
+| Status | Count | Command to list |
+|--------|-------|-----------------|
+| Available | `grep -c "Status: NOT STARTED" Workflow/TODO.md` | `grep -B5 "Status: NOT STARTED" Workflow/TODO.md` |
+| In Progress | `grep -c "Status: IN PROGRESS" Workflow/TODO.md` | `grep -B5 "Status: IN PROGRESS" Workflow/TODO.md` |
+| Completed | `grep -c "Status: ✅ COMPLETED" Workflow/TODO.md` | `grep -B5 "Status: ✅ COMPLETED" Workflow/TODO.md` |
+| Blocked | `grep -c "Status: ⏸️ BLOCKED" Workflow/TODO.md` | `grep -B5 "Status: ⏸️ BLOCKED" Workflow/TODO.md` |
+
+---
+
 ## 1) Privacy + API Compliance (Blocker)
 
 **Goal:** Align all OpenAI usage with documented privacy requirements and a single API surface.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -26,6 +164,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Prevent data loss and dirty repos during Apply/Migration/Backfill.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Update `backup_file()` to preserve vault-relative structure for all callers.
@@ -42,6 +182,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 3) Standards Consistency (Docs + Templates + Validators)
 
 **Goal:** Resolve conflicts between `STANDARDS.md`, templates, and validators.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -62,6 +204,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure JSON schemas match actual Pydantic models.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Update `schemas/changeplan.schema.json` to match `PatchSpec` shape
@@ -78,6 +222,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 5) Backfill Extractor Hardening
 
 **Goal:** Make backfill extraction deterministic, privacy‑safe, and schema‑enforced.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -96,6 +242,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure correct profile selection for Inbox sources.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Decide on heuristic vs LLM classification; update docs to match.
@@ -112,6 +260,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 7) Planner Context Quality
 
 **Goal:** Avoid ambiguous entities and improve plan accuracy.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -130,6 +280,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Prevent overwriting archives and duplicate patches.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Update archive strategy to preserve relative paths or add unique suffixes.
@@ -147,6 +299,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Bring vault to SOT compliance for entity roots.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Run migration to create missing READMEs (People, Projects, Customers).
@@ -161,6 +315,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 10) Documentation Cleanup
 
 **Goal:** Remove stale/duplicate docs and align all references.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -179,6 +335,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Catch regressions in core pipeline.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Add unit test for `apply.py` path validation + rollback.
@@ -196,6 +354,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure safe execution and recovery steps are documented.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Document rollback steps for Apply/Backfill/Migration.
@@ -210,6 +370,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 13) Parallel Execution for process_inbox.py
 
 **Goal:** Speed up EXTRACT and PLAN phases with concurrent execution.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -230,6 +392,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Show extraction richness, not just task counts.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Update verbose output format to show: `✓ customer, 3 tasks, 5 facts, 2 decisions, 4 topics`.
@@ -246,6 +410,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 ## 15) CONTRACTS.md Alignment Fixes
 
 **Goal:** Resolve specification inconsistencies identified in CONTRACTS review.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -268,6 +434,8 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Support notes that span multiple entities (customer + project + people).
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Add `related_entities` array to ExtractionV1: `[{type, name, role, confidence}]`.
@@ -286,7 +454,7 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure README task queries and timestamps render correctly after import.
 
-**Status: NOT STARTED (re-scan 2026-01-04)**
+**Status: NOT STARTED**
 
 Re-scan results (current vault):
 
@@ -320,6 +488,8 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Prevent title text (e.g., `A/B`) from creating unintended nested directories.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Centralize a path‑safe slug function (replace `/`, `\\`, `:` with `-`, normalize whitespace).
@@ -336,6 +506,8 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 ## 19) `_NEW_` Entity Triage + Duplicate Merge
 
 **Goal:** Eliminate `_NEW_*` placeholders and dedupe mis‑typed entities.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -354,6 +526,8 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Avoid `Untitled.md` and missing date/title fields in created notes.
 
+**Status: NOT STARTED**
+
 **Tasks**
 
 - Enforce `title` in extraction (fallback to source filename/ID if missing).
@@ -370,6 +544,8 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 ## 21) Post‑Import QC Audit Script
 
 **Goal:** Automate validation of import outputs before human review.
+
+**Status: NOT STARTED**
 
 **Tasks**
 
@@ -406,7 +582,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ## ✅ COMPLETE: Merge _NEW_ Entity Folders into Existing Entities
 
-**Status:** Completed 2026-01-04 (commit b86ff10)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Merged 18 `_NEW_*` folders into correct destinations:
 
@@ -419,7 +595,7 @@ Merged 18 `_NEW_*` folders into correct destinations:
 
 ## ✅ COMPLETE: Delete Invalid VAST/Accounts Folder
 
-**Status:** Completed 2026-01-04 (commit b86ff10)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Deleted `VAST/Accounts/` folder with 3 incorrect stub READMEs.
 Correct path is `VAST/Customers and Partners/`.
@@ -430,7 +606,7 @@ Correct path is `VAST/Customers and Partners/`.
 
 ## ✅ COMPLETE: Fix Person Entities Misplaced in Customers Folder
 
-**Status:** Completed 2026-01-04 (commit b86ff10)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 - Moved Jack Kabat from Customers to People
 - People misclassified as customers handled by cleanup script
@@ -443,7 +619,7 @@ Correct path is `VAST/Customers and Partners/`.
 
 **Goal:** Tasks in entity READMEs should have full Obsidian Tasks format.
 
-**Status: PARTIAL (2026-01-04)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Updated `scripts/backfill/applier.py` `format_tasks_section()` to include:
 
@@ -481,7 +657,7 @@ Note: Existing READMEs have inline tasks without proper format. These would need
 
 **Goal:** Prevent duplicate lines in `## Recent Context` section.
 
-**Status: ✅ COMPLETE (2026-01-04)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Added wikilink-based deduplication to `append_under_heading` primitive in `scripts/utils/patch_primitives.py`.
 
@@ -515,7 +691,7 @@ Added wikilink-based deduplication to `append_under_heading` primitive in `scrip
 
 **Goal:** Replace auto-generated stub READMEs with proper templates.
 
-**Status: ✅ COMPLETE (2026-01-04)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Fixed 8 remaining stub READMEs:
 
@@ -548,7 +724,7 @@ Fixed 8 remaining stub READMEs:
 
 **Goal:** Planner should match existing entities before creating `_NEW_*` folders.
 
-**Status: PARTIAL (2026-01-04)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Completed:
 
@@ -585,7 +761,7 @@ Remaining:
 
 **Goal:** Catch invalid paths before apply phase.
 
-**Status: ✅ COMPLETE (2026-01-04)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Added `validate_path_correctness()` function to `scripts/utils/validation.py` with:
 
@@ -617,7 +793,7 @@ Added `validate_path_correctness()` function to `scripts/utils/validation.py` wi
 
 **Goal:** Ensure each processed meeting note contains a link to its source transcript in the archive.
 
-**Status: ✅ COMPLETE (already implemented)**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 Templates already include:
 
@@ -644,7 +820,7 @@ Templates already include:
 
 **Goal:** Add `topics` to extraction prompt so Topics sections are populated.
 
-**Status: FIXED** (2026-01-04)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Discovery:**
 
@@ -1174,7 +1350,7 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 **Goal:** Verify source_ref links are valid after archive moves.
 
-**Status: ✅ FIXED**
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Resolution:** Created `scripts/fix_source_refs.py`:
 
@@ -1875,7 +2051,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Fix `last_contact` dates to match most recent note.
 
-**Status: PIPELINE NOW UPDATES CORRECTLY** (2026-01-04)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 The pipeline now correctly updates `last_contact` during apply phase. Recent processing verified:
 
@@ -2120,7 +2296,7 @@ These may have placeholder content or inaccurate dates.
 
 **Goal:** Sync readme-person.md.j2 with actual README structure.
 
-**Status: FIXED** (2026-01-04)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Fix Applied:**
 
@@ -2559,6 +2735,8 @@ Most are intentionally unstructured, but should be documented.
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Only person folder without a README:
 
 - `VAST/People/Nidhi/` - has 1 note but no README.md
@@ -2570,6 +2748,8 @@ Only person folder without a README:
 ## 82) Wikilink Name Misspellings (65+ broken links)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Misspelled wikilinks pointing to non-existent paths:
 
@@ -2592,6 +2772,8 @@ Misspelled wikilinks pointing to non-existent paths:
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Short names used instead of full names:
 
 - `[[Vishnu]]` - 70 times (should be `[[Vishnu Charan TJ]]`)
@@ -2605,6 +2787,8 @@ Short names used instead of full names:
 ## 84) Orphan Wikilinks - Notable People Without Folders
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Real people referenced but no folder exists:
 
@@ -2623,6 +2807,8 @@ Real people referenced but no folder exists:
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 - `[[Note Title]]` appears in content - template placeholder not replaced
 
 **Fix**: Search and remove/replace these placeholder artifacts.
@@ -2632,6 +2818,8 @@ Real people referenced but no folder exists:
 ## 86) Project Wikilinks Without Folders
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Project references without corresponding folders:
 
@@ -2647,6 +2835,8 @@ Project references without corresponding folders:
 ## 87) LLM Hallucinated Note Wikilinks (39 Broken)
 
 **Found**: 2026-01-04
+
+**Status: ✅ COMPLETED** (2026-01-04)
 
 The LLM is creating wikilinks to notes that don't exist - appears to be inventing note titles:
 
@@ -2672,6 +2862,8 @@ The LLM is creating wikilinks to notes that don't exist - appears to be inventin
 
 **Found**: 2026-01-04
 
+**Status: ✅ COMPLETED** (2026-01-04)
+
 Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrectly classified as "customer" type:
 
 - `2025-09-16 - VAST Azure GTM hiring.md`
@@ -2693,6 +2885,8 @@ Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrec
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Out of 41 customer/partner folders, 33 have only README.md - no meeting notes filed:
 
 - Amazon, Anthropic, Avanade, Cisco, CoreWeave, Crusoe, Databricks, Dell...
@@ -2711,6 +2905,8 @@ Only 8 folders have actual notes:
 ## 90) ✅ FIXED: LLM Generates `1:1` in Filenames (Invalid Path)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: Already handled by `sanitize_path()` in apply.py
 
 From processing logs, LLM generates paths like:
@@ -2728,6 +2924,8 @@ macOS doesn't allow `:` in filenames.
 ## 91) ✅ FIXED: LLM Uses Wrong Entity Paths
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: 2026-01-04 - Added explicit path table to planner prompt
 
 From logs, multiple path structure errors:
@@ -2744,6 +2942,8 @@ From logs, multiple path structure errors:
 ## 92) ✅ FIXED: Schema Error: `person_to_project` Not in Required
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: 2026-01-04
 
 OpenAI API was rejecting extraction calls:
@@ -2763,6 +2963,8 @@ Extra required key 'person_to_project' supplied.
 ## 93) ✅ FIXED: Template Variable Missing: `extra_tags`
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: Already guarded in templates
 
 Log error: `'extra_tags' is undefined`
@@ -2776,6 +2978,8 @@ Log error: `'extra_tags' is undefined`
 ## 94) ✅ FIXED: Template Variable Missing: `note_type`
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: Templates hardcode type
 
 Log error: `'note_type' is undefined`
@@ -2789,6 +2993,8 @@ Log error: `'note_type' is undefined`
 ## 95) ✅ FIXED: 19 People Notes Have `type: customer` + `account:` (Misclassified)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 **Fixed**: 2026-01-04
 
 Notes filed in `VAST/People/` were misclassified with customer frontmatter.
@@ -2807,6 +3013,8 @@ Notes filed in `VAST/People/` were misclassified with customer frontmatter.
 ## 96) CRITICAL: Archive Filename Mismatch - Wrong Content Association
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 The archive file `Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md` contains:
 
@@ -2833,6 +3041,8 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 ## 97) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Deep investigation of archive reveals **3 additional files with wrong names**:
 
@@ -2868,6 +3078,8 @@ Deep investigation of archive reveals **3 additional files with wrong names**:
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 The `source_ref` field in extracted notes links to archive files, but:
 
 - Archive filenames can be wrong (item 96, 97)
@@ -2901,6 +3113,8 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Schema defines 7 types: `customer`, `people`, `projects`, `rob`, `journal`, `partners`, `travel`
 
 But scanning all notes in vault:
@@ -2932,6 +3146,8 @@ But scanning all notes in vault:
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 All ROB subfolders are empty (no notes, no READMEs):
 
 - `VAST/ROB/Phase Gate 1/` - empty
@@ -2953,6 +3169,8 @@ Only note is misplaced at ROB root level (item 71).
 ## 101) Participant Name Inconsistencies
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Participant names have multiple variations across notes:
 
@@ -2984,6 +3202,8 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Content hash analysis found exact duplicate files:
 
 | Hash          | File 1                                    | File 2                                          |
@@ -3007,6 +3227,8 @@ Content hash analysis found exact duplicate files:
 ## 103) Archive Files Have Colons in Filenames (macOS Quirk)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 macOS allows colons in filenames (internally stored as `/`). Archive has files with colons:
 
@@ -3071,6 +3293,8 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 **Found**: 2026-01-04
 
+**Status: NOT STARTED**
+
 Two entity READMEs have frontmatter that does not match standards/templates (missing required keys like `type`, `title`, `created`, `tags`):
 
 - `VAST/People/Jonsi Stephenson/README.md`
@@ -3093,6 +3317,8 @@ Two entity READMEs have frontmatter that does not match standards/templates (mis
 ## 106) Tag Hygiene (Invalid Characters + Deep Paths)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 Observed tags that violate normalization / conventions (uppercase, punctuation, or multi-level nesting), e.g.:
 
@@ -3119,6 +3345,8 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 ## 107) Meeting Notes with Empty `participants: []` (5 files)
 
 **Found**: 2026-01-04
+
+**Status: NOT STARTED**
 
 5 generated notes have `participants: []` and render an empty “Attendees” line; most appear to be checklist/article-style sources mislabeled as transcripts:
 
