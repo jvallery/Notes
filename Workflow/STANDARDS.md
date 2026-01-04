@@ -61,6 +61,13 @@ Personal/Projects/Greenhouse/
 └── 2025-12-20 - Materials List.md
 ```
 
+**README Exemptions**: The following folder types are exempt from README requirements:
+
+- `Personal/Homelab/*` — Technical documentation hierarchies (not entity folders)
+- `Personal/People/` — Empty; personal contacts not tracked in vault
+- `Personal/Journal/`, `Personal/Travel/` — Empty; not using entity pattern
+- `*/ROB/*/` — ROB forum subfolders may exist without READMEs until meetings are processed
+
 ### 1.4 Task Dashboards
 
 ```
