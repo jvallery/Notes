@@ -187,8 +187,9 @@ NOT STARTED → IN PROGRESS → COMPLETED
 ### Agent ID Convention
 
 Use a unique, traceable identifier:
+
 - `copilot-{session-hash}` - GitHub Copilot sessions
-- `claude-{session-id}` - Claude Code sessions  
+- `claude-{session-id}` - Claude Code sessions
 - `codex-{run-id}` - OpenAI Codex runs
 - `manual` - Human edits
 
@@ -219,12 +220,12 @@ git commit -m "[todo] Claim item 27: Inconsistent Task Owner Names"
 
 ### Conflict Resolution
 
-| Scenario | Resolution |
-|----------|------------|
-| Two agents claim same item | First successful commit wins; other agent picks different item |
-| Claim older than 4 hours | Any agent can reclaim (add note: "Reclaimed from stale @{old-agent}") |
-| Agent crashes mid-work | On restart, agent should complete or release its claims |
-| Merge conflict on TODO.md | Pull latest, re-check item status, re-claim if still available |
+| Scenario                   | Resolution                                                            |
+| -------------------------- | --------------------------------------------------------------------- |
+| Two agents claim same item | First successful commit wins; other agent picks different item        |
+| Claim older than 4 hours   | Any agent can reclaim (add note: "Reclaimed from stale @{old-agent}") |
+| Agent crashes mid-work     | On restart, agent should complete or release its claims               |
+| Merge conflict on TODO.md  | Pull latest, re-check item status, re-claim if still available        |
 
 ### Commit Message Conventions
 
@@ -248,6 +249,7 @@ git commit -m "[todo] Claim item 27: Inconsistent Task Owner Names"
 ### Stale Claim Detection
 
 An agent can reclaim a stale item if:
+
 1. Status shows `IN PROGRESS` with timestamp > 4 hours ago
 2. No commits from that agent in the last 4 hours
 3. The reclaiming agent adds a note: `**Note:** Reclaimed from stale @{old-agent} on {date}`

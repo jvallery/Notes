@@ -185,6 +185,7 @@
   },
   "active": "af216fe4a7d76c13",
   "lastOpenFiles": [
+    "Workflow/scripts/cleanup_todo.py",
     "VAST/Projects/Microsoft MAI/README.md",
     "VAST/Projects/Microsoft MAI/Project Status.md",
     "VAST/Projects/Microsoft MAI/Notes.md",
@@ -220,7 +221,6 @@
     "VAST/Customers and Partners/Microsoft/2025-12-11 - Microsoft Ignite follow-up intro.md",
     "VAST/Customers and Partners/OpenAI/2025-12-12 - OpenAI intel from John Mao.md",
     "VAST/Projects/Cisco POC DoD-IC/README.md",
-    "VAST/Projects/Marketplace L-series SKU/README.md",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",
