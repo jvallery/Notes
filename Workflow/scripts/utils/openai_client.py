@@ -4,7 +4,7 @@ OpenAI client wrapper with Structured Outputs support.
 
 Provides:
 - Environment-based client initialization
-- Pydantic schema-enforced parsing via client.beta.chat.completions.parse()
+- Pydantic schema-enforced parsing via client.responses.parse()
 - Privacy enforcement (store=False always)
 - Retry logic with exponential backoff
 - Latency and token tracking
@@ -61,7 +61,7 @@ def parse_structured(
     """
     Call OpenAI with Pydantic schema enforcement.
     
-    Uses client.beta.chat.completions.parse() API for structured outputs that are
+    Uses client.responses.parse() API for structured outputs that are
     guaranteed to match the Pydantic schema.
     
     Args:
@@ -91,11 +91,24 @@ def parse_structured(
     config = load_config()
     
     # Enforce privacy - never store prompts/responses
-    api_config = config.get("api", {})
-    if api_config.get("store", False):
+    privacy_config = config.get("models", {}).get("privacy", {})
+    legacy_api_config = config.get("api", {})
+
+    # Preferred config location: models.privacy.store (Workflow/config.yaml)
+    store_enabled = privacy_config.get("store", legacy_api_config.get("store", False))
+    api_surface = privacy_config.get("api", legacy_api_config.get("api"))
+
+    if store_enabled:
         raise OpenAIError(
-            "api.store must be False in config.yaml for privacy. "
+            "models.privacy.store must be false in config.yaml for privacy. "
             "OpenAI must not store any prompts or responses."
+        )
+
+    # We standardize on the Responses API for structured outputs.
+    if api_surface and api_surface != "responses":
+        raise OpenAIError(
+            f"models.privacy.api must be 'responses' (got {api_surface!r}). "
+            "This project standardizes on the Responses API."
         )
     
     start_time = time.time()
@@ -103,15 +116,13 @@ def parse_structured(
     
     for attempt in range(max_retries):
         try:
-            # Use beta.chat.completions.parse for structured outputs
+            # Use responses.parse for schema-enforced structured outputs
             # CRITICAL: store=False ensures prompts/responses are not stored by OpenAI
-            response = client.beta.chat.completions.parse(
+            response = client.responses.parse(
                 model=model,
-                messages=[
-                    {"role": "system", "content": system_prompt},
-                    {"role": "user", "content": user_content},
-                ],
-                response_format=response_model,
+                instructions=system_prompt,
+                input=user_content,
+                text_format=response_model,
                 temperature=temperature,
                 store=False,  # Privacy: never store prompts/responses
             )
@@ -119,12 +130,23 @@ def parse_structured(
             latency_ms = int((time.time() - start_time) * 1000)
             
             # Extract parsed response
-            parsed = response.choices[0].message.parsed
+            parsed = response.output_parsed
             
             if parsed is None:
-                # Check for refusal
-                if response.choices[0].message.refusal:
-                    raise OpenAIError(f"Model refused: {response.choices[0].message.refusal}")
+                # Check for refusal content
+                refusal = None
+                for output in getattr(response, "output", []) or []:
+                    if getattr(output, "type", None) != "message":
+                        continue
+                    for content in getattr(output, "content", []) or []:
+                        if getattr(content, "type", None) == "refusal":
+                            refusal = getattr(content, "refusal", None)
+                            break
+                    if refusal:
+                        break
+
+                if refusal:
+                    raise OpenAIError(f"Model refused: {refusal}")
                 raise OpenAIError("No parsed response received")
             
             metadata = {
@@ -135,8 +157,8 @@ def parse_structured(
             
             # Extract token usage if available
             if response.usage:
-                metadata["input_tokens"] = response.usage.prompt_tokens
-                metadata["output_tokens"] = response.usage.completion_tokens
+                metadata["input_tokens"] = response.usage.input_tokens
+                metadata["output_tokens"] = response.usage.output_tokens
                 metadata["total_tokens"] = response.usage.total_tokens
             
             return parsed, metadata

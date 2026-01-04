@@ -106,18 +106,16 @@ def test_direct_api_call():
     
     print("\nTesting direct API call with store=False...")
     try:
-        response = client.beta.chat.completions.parse(
+        response = client.responses.parse(
             model="gpt-5.2",
-            messages=[
-                {"role": "system", "content": "You are a test assistant."},
-                {"role": "user", "content": "Return message='Direct API works' and number=123."},
-            ],
-            response_format=TestResponse,
+            instructions="You are a test assistant.",
+            input="Return message='Direct API works' and number=123.",
+            text_format=TestResponse,
             temperature=0.0,
             store=False,  # Must be set
         )
         
-        parsed = response.choices[0].message.parsed
+        parsed = response.output_parsed
         tokens = response.usage.total_tokens if response.usage else "N/A"
         
         print(f"✓ Response: {parsed.message}, {parsed.number}")

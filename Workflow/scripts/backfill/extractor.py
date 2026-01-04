@@ -179,13 +179,11 @@ def extract_from_content(
     prompt = render_prompt(note_path, note_date, entity_name, content, manifests)
     
     # Use structured outputs with Pydantic model parsing
-    response = client.beta.chat.completions.parse(
+    response = client.responses.parse(
         model=model,
-        messages=[
-            {"role": "system", "content": "You extract structured metadata from notes for indexing. Extract only what is clearly present."},
-            {"role": "user", "content": prompt},
-        ],
-        response_format=BackfillExtractionLite,
+        instructions="You extract structured metadata from notes for indexing. Extract only what is clearly present.",
+        input=prompt,
+        text_format=BackfillExtractionLite,
         temperature=0.1,
         store=False,  # CRITICAL: Privacy - never store
     )
@@ -193,7 +191,7 @@ def extract_from_content(
     tokens_used = response.usage.total_tokens if response.usage else 0
     
     # Get parsed result (guaranteed to match schema)
-    parsed = response.choices[0].message.parsed
+    parsed = response.output_parsed
     
     if parsed is None:
         # Fallback on refusal or parse failure

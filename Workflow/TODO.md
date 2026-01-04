@@ -225,18 +225,25 @@ RUN PERIODICALLY:
 
 **Goal:** Prevent data loss and dirty repos during Apply/Migration/Backfill.
 
-**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 15:30)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Tasks**
 
-- Update `backup_file()` to preserve vault-relative structure for all callers.
-- Switch staging to `git add -A -- Inbox/ VAST/ Personal/` (or `add_content_dirs_all`).
-- Ensure migration/backfill apply flows use same staging strategy.
+- [x] Update `backup_file()` to preserve vault-relative structure for all callers.
+- [x] Switch staging to `git add -A -- Inbox/ VAST/ Personal/` (or `add_content_dirs_all`).
+- [x] Ensure migration/backfill apply flows use same staging strategy.
+
+**Completion Notes:**
+- Fixed `migration/executor.py` to pass `vault_root` to `backup_file()` (was missing)
+- Replaced `add_files()` with `stage_content_dirs()` in migration executor
+- `apply.py` already had correct implementations
+- `backfill/applier.py` has its own inline implementation that already preserves structure
+- Added test: two README.md files in different folders backup to distinct paths
 
 **Success Criteria**
 
-- Running Apply on multiple README.md files produces distinct backups.
-- Git commits capture renames/deletions with a clean working tree.
+- ✅ Running Apply on multiple README.md files produces distinct backups.
+- ✅ Git commits capture renames/deletions with a clean working tree.
 
 ---
 

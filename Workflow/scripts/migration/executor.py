@@ -28,7 +28,7 @@ from scripts.utils import (
     backup_file,
     require_clean,
     is_git_repo,
-    add_files,
+    stage_content_dirs,
     commit,
 )
 from scripts.utils.patch_primitives import upsert_frontmatter
@@ -81,8 +81,8 @@ class MigrationExecutor:
             # 4. Git commit
             commit_hash = ""
             if is_git_repo(self.vault_root):
-                all_files = self.created_files + self.modified_files
-                add_files(self.vault_root, all_files)
+                # Use stage_content_dirs to capture renames/deletes properly
+                stage_content_dirs(self.vault_root)
                 
                 summary = f"[migration] {plan.scope}: {len(plan.operations)} operations"
                 commit_hash = commit(self.vault_root, summary)
@@ -128,7 +128,7 @@ class MigrationExecutor:
     def _backup(self, file_path: Path) -> None:
         """Create backup of file before modification."""
         if file_path not in self.backed_up:
-            backup_path = backup_file(file_path, self.backup_dir)
+            backup_path = backup_file(file_path, self.backup_dir, self.vault_root)
             self.backed_up[file_path] = backup_path
     
     def _apply_operation(self, op: MigrationOperation) -> None:

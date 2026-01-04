@@ -37,21 +37,31 @@ def audit_readme(path: Path, entity_type: str, client: OpenAI) -> dict:
         content=content
     )
     
-    response = client.chat.completions.create(
+    response = client.responses.create(
         model="gpt-5.2",
-        messages=[
-            {"role": "system", "content": "You are a meticulous knowledge management auditor. Review the README and provide specific, actionable feedback."},
-            {"role": "user", "content": prompt}
-        ],
+        instructions="You are a meticulous knowledge management auditor. Review the README and provide specific, actionable feedback.",
+        input=prompt,
         temperature=0.2,
         store=False,  # Privacy: never store prompts/responses
     )
+
+    # Prefer convenience property when available; otherwise extract output_text blocks.
+    audit_text = getattr(response, "output_text", None)
+    if not audit_text:
+        parts: list[str] = []
+        for item in getattr(response, "output", []) or []:
+            if getattr(item, "type", None) != "message":
+                continue
+            for block in getattr(item, "content", []) or []:
+                if getattr(block, "type", None) == "output_text":
+                    parts.append(getattr(block, "text", ""))
+        audit_text = "\n".join(p for p in parts if p).strip()
     
     return {
         'entity_name': entity_name,
         'entity_type': entity_type,
         'path': str(path),
-        'audit': response.choices[0].message.content
+        'audit': audit_text
     }
 
 

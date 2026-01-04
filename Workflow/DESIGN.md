@@ -37,7 +37,7 @@ The architecture strictly separates **Reasoning (AI)** from **Execution (Python)
 │  3. Extract structured data via Pydantic-parsed responses                   │
 │  4. Write → Inbox/_extraction/{source}.extraction.json                      │
 │                                                                              │
-│  API: client.beta.chat.completions.parse(..., store=False)                  │
+│  API: client.responses.parse(..., store=False)                              │
 └────────────────────────────────────┬────────────────────────────────────────┘
                                      │
                                      ▼
@@ -104,7 +104,7 @@ The previous design allowed AI agents to modify files directly. This creates ris
 
 | Decision                        | Rationale                                                                                     |
 | ------------------------------- | --------------------------------------------------------------------------------------------- |
-| **Structured Outputs**          | Use `client.beta.chat.completions.parse()` with Pydantic models to guarantee schema adherence |
+| **Structured Outputs**          | Use `client.responses.parse()` with Pydantic models to guarantee schema adherence |
 | **Heuristic Classification**    | Pattern matching on filename/content selects extraction profile; no LLM classification step   |
 | **No `archive` in LLM ops**     | Archive is deterministic post-step; LLM only plans semantic operations                        |
 | **Structured patch primitives** | No regex patching; use `upsert_frontmatter`, `append_under_heading`, etc.                     |
@@ -390,18 +390,16 @@ def extract_content(source_file: Path, client: OpenAI, profile: dict) -> Extract
     system_prompt = build_prompt(profile)
 
     # Schema-enforced extraction via Pydantic
-    response = client.beta.chat.completions.parse(
-        model="gpt-4o",
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": content}
-        ],
-        response_format=ExtractionV1,  # Pydantic model
-        store=False  # CRITICAL: Privacy
-    )
+    response = client.responses.parse(
+	    model="gpt-4o",
+	    instructions=system_prompt,
+	    input=content,
+	    text_format=ExtractionV1,  # Pydantic model
+	    store=False  # CRITICAL: Privacy
+	)
 
-    extraction = response.choices[0].message.parsed
-    extraction.source_file = str(source_file)
+	extraction = response.output_parsed
+	extraction.source_file = str(source_file)
 
     return extraction
 ```
@@ -437,20 +435,18 @@ def generate_changeplan(extraction: ExtractionV1, client: OpenAI) -> ChangePlan:
         "aliases": load_aliases()
     }
 
-    response = client.beta.chat.completions.parse(
+    response = client.responses.parse(
         model="gpt-4o",
-        messages=[
-            {"role": "system", "content": PLANNER_PROMPT},
-            {"role": "user", "content": json.dumps({
-                "extraction": extraction.model_dump(),
-                "vault_context": vault_context
-            })}
-        ],
-        response_format=ChangePlan,  # Pydantic model
+        instructions=PLANNER_PROMPT,
+        input=json.dumps({
+            "extraction": extraction.model_dump(mode="json"),
+            "vault_context": vault_context
+        }),
+        text_format=ChangePlan,  # Pydantic model
         store=False
     )
 
-    return response.choices[0].message.parsed
+    return response.output_parsed
 ```
 
 ### 4.5 Apply Phase (Transactional)
@@ -784,6 +780,10 @@ Logged metrics:
 ```yaml
 # config.yaml
 models:
+  privacy:
+    store: false # REQUIRED for privacy
+    api: "responses"
+
   classification:
     model: "gpt-4o-mini"
     temperature: 0.1
@@ -796,9 +796,7 @@ models:
     model: "gpt-4o"
     temperature: 0.1
 
-api:
-  store: false # REQUIRED for privacy
-  timeout: 60
+processing:
   max_retries: 3
 ```
 
@@ -807,10 +805,11 @@ api:
 ```python
 # All API calls MUST use Structured Outputs + store=False
 
-response = client.beta.chat.completions.parse(
+response = client.responses.parse(
     model="gpt-4o",
-    messages=[...],
-    response_format=PydanticModel,  # Schema-enforced
+    instructions="...",
+    input="...",
+    text_format=PydanticModel,  # Schema-enforced
     store=False  # Privacy
 )
 ```
@@ -828,7 +827,7 @@ response = client.beta.chat.completions.parse(
 
 ### Phase 2: Extract + Plan
 
-- [ ] Implement `extract.py` with `client.beta.chat.completions.parse()`
+- [ ] Implement `extract.py` with `client.responses.parse()`
 - [ ] Implement `plan.py` with schema-enforced output
 - [ ] Test with 5 existing transcripts
 

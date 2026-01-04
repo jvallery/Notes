@@ -63,12 +63,7 @@ class TestApplyPathValidation:
         assert len(errors) > 0
 
     def test_path_must_be_in_content_dirs(self, temp_vault: Path):
-        """Paths outside content directories should ideally be rejected.
-        
-        NOTE: Current validation only checks for path traversal and absolute paths,
-        not content directory membership. This test documents the current behavior.
-        A future enhancement could add content dir validation.
-        """
+        """Paths outside content directories are rejected."""
         from scripts.utils.validation import validate_changeplan
         from models.changeplan import CreateContext
         
@@ -89,11 +84,7 @@ class TestApplyPathValidation:
         )
         
         errors = validate_changeplan(plan)
-        # Current behavior: no error for paths outside content dirs
-        # (validation only checks traversal/absolute, not content membership)
-        # This is acceptable since LLM planner should not generate such paths
-        # and the template mismatch would likely cause apply failure anyway
-        assert len(errors) == 0  # Documents current behavior
+        assert len(errors) > 0
 
     def test_valid_paths_accepted(self, temp_vault: Path):
         """Valid paths in content directories should be accepted."""
