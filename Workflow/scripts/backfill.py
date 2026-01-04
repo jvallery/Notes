@@ -33,9 +33,16 @@ if str(WORKFLOW_DIR) not in sys.path:
 
 # These imports must come after path manipulation
 from backfill.scanner import scan_for_backfill, save_manifest, load_manifest  # noqa: E402
-from backfill.extractor import extract_batch, save_extractions  # noqa: E402
+from backfill.extractor import extract_batch, extract_batch_parallel, save_extractions  # noqa: E402
 from backfill.aggregator import aggregate_extractions, save_plan, load_extractions  # noqa: E402
 from backfill.applier import TransactionalBackfillApply, load_plan  # noqa: E402
+from backfill.entities import (  # noqa: E402
+    process_discovered_entities,
+    sync_manifests,
+    get_known_entities,
+    batch_rename_notes,
+    enrich_entities_batch,
+)
 from utils.config import vault_root  # noqa: E402
 
 
@@ -170,17 +177,28 @@ def cmd_run(args: argparse.Namespace) -> int:
         print("\nNo notes found to process.")
         return 0
     
-    # Phase 2: Extract
+    # Phase 2: Extract (parallel by default)
     print("\n" + "=" * 60)
     print("PHASE 2: EXTRACT")
     print("=" * 60)
     
-    batch = extract_batch(
-        manifest,
-        vault=vault,
-        limit=args.limit,
-        verbose=args.verbose,
-    )
+    # Use parallel extraction for speed
+    workers = getattr(args, 'workers', 5)
+    if workers > 1:
+        batch = extract_batch_parallel(
+            manifest,
+            vault=vault,
+            limit=args.limit,
+            verbose=args.verbose,
+            max_workers=workers,
+        )
+    else:
+        batch = extract_batch(
+            manifest,
+            vault=vault,
+            limit=args.limit,
+            verbose=args.verbose,
+        )
     extractions_path = extraction_dir / f"backfill-extractions-{timestamp}.json"
     save_extractions(batch, extractions_path)
     
@@ -191,6 +209,22 @@ def cmd_run(args: argparse.Namespace) -> int:
     if batch.successful == 0:
         print("\nNo successful extractions.")
         return 1
+    
+    # Phase 2.5: Auto-create discovered entities
+    if getattr(args, 'auto_create', True):
+        print("\n" + "=" * 60)
+        print("PHASE 2.5: AUTO-CREATE ENTITIES")
+        print("=" * 60)
+        
+        created = process_discovered_entities(vault, batch.extractions, auto_create=True)
+        total_created = sum(len(v) for v in created.values())
+        
+        if total_created > 0:
+            print(f"  Created {len(created['people'])} people folders")
+            print(f"  Created {len(created['customers'])} customer folders")
+            print(f"  Created {len(created['projects'])} project folders")
+        else:
+            print("  No new entities to create")
     
     # Phase 3: Aggregate
     print("\n" + "=" * 60)
@@ -236,6 +270,104 @@ def cmd_run(args: argparse.Namespace) -> int:
             print(f"   Committed as: {result.git_commit}")
     
     return 0 if result.success else 1
+
+
+def cmd_sync_manifests(args: argparse.Namespace) -> int:
+    """Sync manifests with folder structure."""
+    vault = vault_root()
+    
+    print("Syncing manifests with folder structure...")
+    
+    results = sync_manifests(vault, create_missing_folders=args.create_folders)
+    
+    print("\nSync Results:")
+    
+    for entity_type in ["people", "customers", "projects"]:
+        added = results["added_to_manifest"][entity_type]
+        if added:
+            print(f"\n  Added to {entity_type} manifest:")
+            for name in added:
+                print(f"    + {name}")
+        
+        if args.create_folders:
+            created = results["created_folders"][entity_type]
+            if created:
+                print(f"\n  Created {entity_type} folders:")
+                for name in created:
+                    print(f"    + {name}")
+        
+        orphaned = results["orphaned_manifest_entries"][entity_type]
+        if orphaned:
+            print(f"\n  ⚠️  Orphaned {entity_type} entries (in manifest, no folder):")
+            for name in orphaned:
+                print(f"    ? {name}")
+    
+    total_added = sum(len(v) for v in results["added_to_manifest"].values())
+    total_orphaned = sum(len(v) for v in results["orphaned_manifest_entries"].values())
+    
+    print(f"\nTotal: {total_added} added to manifests, {total_orphaned} orphaned entries")
+    
+    return 0
+
+
+def cmd_rename(args: argparse.Namespace) -> int:
+    """Rename notes based on extraction data."""
+    vault = vault_root()
+    
+    # Load extractions
+    extractions_path = Path(args.extractions)
+    batch = load_extractions(extractions_path)
+    
+    print(f"Renaming notes based on {len(batch.extractions)} extractions...")
+    
+    results = batch_rename_notes(vault, batch.extractions, dry_run=args.dry_run)
+    
+    renamed_count = 0
+    for old_path, new_path, was_renamed in results:
+        if was_renamed:
+            renamed_count += 1
+            if args.verbose:
+                print(f"  {old_path.name}")
+                print(f"    → {new_path.name}")
+    
+    if args.dry_run:
+        print(f"\n⚠️  DRY RUN - Would rename {renamed_count} notes")
+    else:
+        print(f"\n✅ Renamed {renamed_count} notes")
+    
+    return 0
+
+
+def cmd_enrich(args: argparse.Namespace) -> int:
+    """Enrich entities with web search."""
+    vault = vault_root()
+    
+    from openai import OpenAI
+    client = OpenAI()
+    
+    known = get_known_entities(vault)
+    
+    entity_type = args.type
+    if entity_type not in known:
+        print(f"Unknown entity type: {entity_type}")
+        return 1
+    
+    entities = known[entity_type]
+    if args.limit:
+        entities = entities[:args.limit]
+    
+    print(f"Enriching {len(entities)} {entity_type} with web search...")
+    
+    results = enrich_entities_batch(vault, entity_type, entities, client)
+    
+    print(f"\nEnriched {len(results)} entities:")
+    for name, data in results.items():
+        print(f"\n  {name}:")
+        for key, value in data.items():
+            if key != "confidence" and value:
+                print(f"    {key}: {value}")
+    
+    return 0
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -332,6 +464,18 @@ def main() -> int:
         help="Limit number of notes to extract",
     )
     run_parser.add_argument(
+        "--workers", "-w",
+        type=int,
+        default=5,
+        help="Number of parallel extraction workers (default: 5)",
+    )
+    run_parser.add_argument(
+        "--no-auto-create",
+        action="store_true",
+        dest="no_auto_create",
+        help="Disable auto-creation of new entity folders",
+    )
+    run_parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Preview changes without applying",
@@ -346,9 +490,57 @@ def main() -> int:
         action="store_true",
         help="Show progress details",
     )
-    run_parser.set_defaults(func=cmd_run)
+    run_parser.set_defaults(func=cmd_run, auto_create=True)
+    
+    # Sync manifests command
+    sync_parser = subparsers.add_parser("sync-manifests", help="Sync manifests with folder structure")
+    sync_parser.add_argument(
+        "--create-folders",
+        action="store_true",
+        help="Create folders for manifest entries without folders",
+    )
+    sync_parser.set_defaults(func=cmd_sync_manifests)
+    
+    # Rename command
+    rename_parser = subparsers.add_parser("rename", help="Rename notes based on extraction data")
+    rename_parser.add_argument(
+        "--extractions", "-e",
+        required=True,
+        help="Path to extractions JSON",
+    )
+    rename_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Preview renames without applying",
+    )
+    rename_parser.add_argument(
+        "--verbose", "-v",
+        action="store_true",
+        help="Show rename details",
+    )
+    rename_parser.set_defaults(func=cmd_rename)
+    
+    # Enrich command
+    enrich_parser = subparsers.add_parser("enrich", help="Enrich entities with web search")
+    enrich_parser.add_argument(
+        "--type", "-t",
+        required=True,
+        choices=["people", "customers"],
+        help="Entity type to enrich",
+    )
+    enrich_parser.add_argument(
+        "--limit", "-l",
+        type=int,
+        help="Limit number of entities to enrich",
+    )
+    enrich_parser.set_defaults(func=cmd_enrich)
     
     args = parser.parse_args()
+    
+    # Handle no_auto_create flag
+    if hasattr(args, 'no_auto_create') and args.no_auto_create:
+        args.auto_create = False
+    
     return args.func(args)
 
 

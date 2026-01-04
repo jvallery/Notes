@@ -10,6 +10,19 @@ You are extracting structured data from an existing note to build a comprehensiv
 
 Extract ALL relevant information to populate rich entity profiles.
 
+## Important Distinctions
+
+**Customers/Accounts**: ONLY include actual companies/organizations we sell to or partner with (e.g., "Google", "Microsoft", "OpenAI"). Do NOT include:
+- Product names (Azure, AWS, GCP are cloud platforms, not customers)
+- Internal product names (Fabric, Foundry, Bing are Microsoft products)
+- Technology names (Kubernetes, Docker, etc.)
+- The parent company is the customer, not its products
+
+**People**: Only include actual people with names. Skip:
+- Vague references ("someone", "the team")
+- Single first names UNLESS you can infer their full name
+- Place names, company names used as shorthand
+
 ## Output Format
 
 Return valid JSON only. No markdown fences, no explanations.
@@ -135,6 +148,13 @@ Return valid JSON only. No markdown fences, no explanations.
 - Personal details, preferences, working styles
 - Important context that should persist
 
+## Known Entities (Use for Matching)
+
+CRITICAL: Use these manifests to match entity names consistently. Use the EXACT spelling from these lists.
+If you find a new entity not in these lists, include `"needs_review": true` in your output.
+
+{{ manifests }}
+
 ## Note Context
 
 **Path**: {{ note_path }}
@@ -146,3 +166,4 @@ Return valid JSON only. No markdown fences, no explanations.
 <note_content>
 {{ content }}
 </note_content>
+

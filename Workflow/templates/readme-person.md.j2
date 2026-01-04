@@ -4,8 +4,14 @@ type: people
 title: "{{ entity_name }}"
 created: "{{ created_date | default('') }}"
 last_contact: "{{ last_contact | default('') }}"
+{%- if auto_created %}
+auto_created: true
+{%- endif %}
 tags:
   - type/people
+{%- if auto_created %}
+  - needs-review
+{%- endif %}
 {%- if company %}
   - company/{{ company | lower | replace(' ', '-') }}
 {%- endif %}

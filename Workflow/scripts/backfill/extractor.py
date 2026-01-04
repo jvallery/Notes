@@ -3,13 +3,17 @@ Backfill Extractor: AI extraction for existing notes.
 
 Uses the model specified in config.yaml (models.backfill) to extract
 summaries and mentions from existing notes for populating README context.
+
+Supports parallel extraction for faster processing.
 """
 
 import hashlib
 import json
 import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
+from typing import Callable
 
 from openai import OpenAI
 
@@ -70,8 +74,55 @@ Return valid JSON only. No markdown fences, no explanations.
 """
 
 
-def render_prompt(note_path: str, note_date: str | None, entity_name: str, content: str) -> str:
-    """Render the extraction prompt with note context."""
+def load_manifests(vault: Path) -> dict[str, str]:
+    """Load entity manifests for injection into extraction prompt."""
+    manifests = {}
+    
+    # People manifest
+    people_manifest = vault / "VAST" / "People" / "_MANIFEST.md"
+    if people_manifest.exists():
+        manifests["people"] = people_manifest.read_text()
+    
+    # Customers manifest
+    customers_manifest = vault / "VAST" / "Customers and Partners" / "_MANIFEST.md"
+    if customers_manifest.exists():
+        manifests["customers"] = customers_manifest.read_text()
+    
+    # Projects manifest
+    projects_manifest = vault / "VAST" / "Projects" / "_MANIFEST.md"
+    if projects_manifest.exists():
+        manifests["projects"] = projects_manifest.read_text()
+    
+    return manifests
+
+
+def format_manifests_for_prompt(manifests: dict[str, str]) -> str:
+    """Format manifests as a single block for the prompt."""
+    if not manifests:
+        return ""
+    
+    sections = []
+    
+    if "people" in manifests:
+        sections.append("### Known People\n" + manifests["people"])
+    
+    if "customers" in manifests:
+        sections.append("### Known Customers/Partners\n" + manifests["customers"])
+    
+    if "projects" in manifests:
+        sections.append("### Known Projects\n" + manifests["projects"])
+    
+    return "\n\n---\n\n".join(sections)
+
+
+def render_prompt(
+    note_path: str,
+    note_date: str | None,
+    entity_name: str,
+    content: str,
+    manifests: dict[str, str] | None = None,
+) -> str:
+    """Render the extraction prompt with note context and entity manifests."""
     template_str = get_prompt_template()
     
     # Simple string replacement (not full Jinja for speed)
@@ -79,6 +130,13 @@ def render_prompt(note_path: str, note_date: str | None, entity_name: str, conte
     prompt = prompt.replace("{{ note_date | default('Unknown') }}", note_date or "Unknown")
     prompt = prompt.replace("{{ entity_name | default('Unknown') }}", entity_name)
     prompt = prompt.replace("{{ content }}", content)
+    
+    # Inject manifests if provided
+    if manifests:
+        manifest_text = format_manifests_for_prompt(manifests)
+        prompt = prompt.replace("{{ manifests }}", manifest_text)
+    else:
+        prompt = prompt.replace("{{ manifests }}", "")
     
     return prompt
 
@@ -103,20 +161,27 @@ def extract_from_content(
     entity_name: str,
     content: str,
     model: str = "gpt-5.2",
+    manifests: dict[str, str] | None = None,
 ) -> tuple[dict, int]:
     """
     Call OpenAI to extract metadata from note content.
     
+    Args:
+        client: OpenAI client
+        note_path: Path to the note being extracted
+        note_date: Date of the note if known
+        entity_name: Name of the parent entity
+        content: Note content
+        model: Model to use
+        manifests: Entity manifests for context
+    
     Returns:
         Tuple of (extraction_dict, tokens_used)
     """
-    prompt = render_prompt(note_path, note_date, entity_name, content)
+    prompt = render_prompt(note_path, note_date, entity_name, content, manifests)
     
-    # Truncate very long content
-    max_content_chars = 8000
-    if len(content) > max_content_chars:
-        content = content[:max_content_chars] + "\n\n[Content truncated...]"
-        prompt = render_prompt(note_path, note_date, entity_name, content)
+    # No content truncation - let the model handle full notes
+    # Token costs are acceptable for high-value extraction
     
     response = client.chat.completions.create(
         model=model,
@@ -125,10 +190,8 @@ def extract_from_content(
             {"role": "user", "content": prompt},
         ],
         temperature=0.1,
-        # NOTE: For reasoning models (gpt-5.2), this needs to be high enough to
-        # accommodate both reasoning tokens AND output tokens.
-        # With 2000 tokens, all budget went to reasoning leaving 0 for output.
-        max_completion_tokens=10000,  # Reasoning + rich JSON output
+        # No token limit during testing - let reasoning models use what they need
+        # Removed max_completion_tokens to allow unlimited output
         # CRITICAL: Privacy - don't store
         store=False,
     )
@@ -166,6 +229,23 @@ def extract_from_content(
 # Note Processing
 # ─────────────────────────────────────────────────────────────────────────────
 
+# Cache for manifests (loaded once per run)
+_manifest_cache: dict[str, str] | None = None
+
+
+def get_manifests(vault: Path) -> dict[str, str]:
+    """Get cached manifests or load them."""
+    global _manifest_cache
+    if _manifest_cache is None:
+        _manifest_cache = load_manifests(vault)
+    return _manifest_cache
+
+
+def clear_manifest_cache() -> None:
+    """Clear the manifest cache (for testing or after updates)."""
+    global _manifest_cache
+    _manifest_cache = None
+
 
 def extract_note(
     client: OpenAI,
@@ -173,6 +253,7 @@ def extract_note(
     entity_path: str,
     vault: Path,
     model: str = "gpt-5.2",
+    manifests: dict[str, str] | None = None,
 ) -> BackfillExtraction | None:
     """
     Extract metadata from a single note.
@@ -183,10 +264,15 @@ def extract_note(
         entity_path: Parent entity folder path
         vault: Path to vault root
         model: Model to use
+        manifests: Entity manifests (loaded automatically if not provided)
     
     Returns:
         BackfillExtraction or None on failure
     """
+    # Load manifests if not provided
+    if manifests is None:
+        manifests = get_manifests(vault)
+    
     note_path = vault / note.path
     
     try:
@@ -208,6 +294,7 @@ def extract_note(
             entity_name=Path(entity_path).name,
             content=content,
             model=model,
+            manifests=manifests,
         )
     except Exception as e:
         print(f"  Error extracting {note.path}: {e}")
@@ -386,6 +473,153 @@ def extract_batch(
         successful=successful,
         failed=failed,
         skipped=skipped,
+        total_tokens=total_tokens,
+    )
+
+
+def extract_batch_parallel(
+    manifest: BackfillManifest,
+    vault: Path | None = None,
+    model: str = "gpt-5.2",
+    limit: int | None = None,
+    skip_existing: bool = False,
+    output_dir: Path | None = None,
+    verbose: bool = False,
+    max_workers: int = 5,
+    progress_callback: Callable[[int, int, str], None] | None = None,
+) -> ExtractionBatch:
+    """
+    Extract metadata from notes in parallel using ThreadPoolExecutor.
+    
+    Args:
+        manifest: BackfillManifest with notes to process
+        vault: Path to vault root (uses config if not provided)
+        model: Model to use for extraction
+        limit: Maximum notes to process
+        skip_existing: Skip notes already extracted
+        output_dir: Directory to save individual extractions
+        verbose: Print detailed progress
+        max_workers: Number of parallel extraction threads (default: 5)
+        progress_callback: Optional callback(current, total, note_name)
+    
+    Returns:
+        ExtractionBatch with all extractions
+    """
+    if vault is None:
+        vault = vault_root()
+    
+    client = get_client()
+    manifests = get_manifests(vault)
+    
+    # Collect all notes
+    all_notes: list[tuple[str, NoteMetadata]] = []
+    for entity in manifest.entities:
+        for note in entity.notes:
+            all_notes.append((entity.path, note))
+    
+    if limit:
+        all_notes = all_notes[:limit]
+    
+    # Filter existing if needed
+    if skip_existing and output_dir:
+        filtered = []
+        for entity_path, note in all_notes:
+            note_hash = hashlib.md5(note.path.encode()).hexdigest()[:8]
+            extraction_file = output_dir / f"{note_hash}.json"
+            if not extraction_file.exists():
+                filtered.append((entity_path, note))
+        skipped_count = len(all_notes) - len(filtered)
+        all_notes = filtered
+    else:
+        skipped_count = 0
+    
+    print(f"Processing {len(all_notes)} notes with {max_workers} parallel workers...")
+    
+    # Thread-safe counters
+    results: list[BackfillExtraction | None] = [None] * len(all_notes)
+    
+    def extract_one(idx: int, entity_path: str, note: NoteMetadata) -> tuple[int, BackfillExtraction | None]:
+        """Extract a single note (runs in thread)."""
+        try:
+            extraction = extract_note(
+                client=client,
+                note=note,
+                entity_path=entity_path,
+                vault=vault,
+                model=model,
+                manifests=manifests,
+            )
+            return idx, extraction
+        except Exception as e:
+            if verbose:
+                print(f"  Error extracting {note.filename}: {e}")
+            return idx, None
+    
+    successful = 0
+    failed = 0
+    total_tokens = 0
+    
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        # Submit all tasks
+        futures = {
+            executor.submit(extract_one, i, ep, n): (i, ep, n)
+            for i, (ep, n) in enumerate(all_notes)
+        }
+        
+        # Process as completed
+        completed = 0
+        for future in as_completed(futures):
+            i, entity_path, note = futures[future]
+            completed += 1
+            
+            try:
+                idx, extraction = future.result()
+                results[idx] = extraction
+                
+                if extraction:
+                    successful += 1
+                    total_tokens += extraction.tokens_used
+                    
+                    # Write individual extraction if output dir specified
+                    if output_dir:
+                        output_dir.mkdir(parents=True, exist_ok=True)
+                        note_hash = hashlib.md5(note.path.encode()).hexdigest()[:8]
+                        extraction_file = output_dir / f"{note_hash}.json"
+                        with open(extraction_file, "w") as f:
+                            json.dump(extraction.model_dump(mode="json"), f, indent=2, default=str)
+                else:
+                    failed += 1
+                
+                if verbose:
+                    status = "✓" if extraction else "✗"
+                    print(f"  [{completed}/{len(all_notes)}] {status} {note.filename}")
+                
+                if progress_callback:
+                    progress_callback(completed, len(all_notes), note.filename)
+                    
+            except Exception as e:
+                failed += 1
+                if verbose:
+                    print(f"  [{completed}/{len(all_notes)}] ✗ {note.filename}: {e}")
+    
+    # Filter None results
+    extractions = [r for r in results if r is not None]
+    
+    print("\nParallel extraction complete:")
+    print(f"  Successful: {successful}")
+    print(f"  Failed: {failed}")
+    print(f"  Skipped: {skipped_count}")
+    print(f"  Total tokens: {total_tokens}")
+    
+    return ExtractionBatch(
+        version="1.0",
+        extracted_at=datetime.now(),
+        scope=manifest.scope,
+        extractions=extractions,
+        total_notes=len(all_notes) + skipped_count,
+        successful=successful,
+        failed=failed,
+        skipped=skipped_count,
         total_tokens=total_tokens,
     )
 

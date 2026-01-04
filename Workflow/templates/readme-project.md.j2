@@ -5,8 +5,14 @@ title: "{{ entity_name }}"
 created: "{{ created_date | default('') }}"
 last_updated: "{{ last_contact | default('') }}"
 status: "{{ status | default('active') }}"
+{%- if auto_created %}
+auto_created: true
+{%- endif %}
 tags:
   - type/projects
+{%- if auto_created %}
+  - needs-review
+{%- endif %}
 {%- if status %}
   - status/{{ status | lower | replace(' ', '-') }}
 {%- endif %}
