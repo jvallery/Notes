@@ -197,14 +197,13 @@ participants: ["Name 1", "Name 2"]
 
 ```yaml
 ---
-type: "person-root"
-name: "Full Name"
-role: "Job Title"
-company: "Company Name"
-email: "email@example.com"
+type: "people"
+title: "Full Name"
+created: "YYYY-MM-DD"
 last_contact: "YYYY-MM-DD"
 tags:
-  - "person/{name-slug}"
+  - "type/people"
+  - "company/{company-slug}"  # optional
 ---
 ```
 
@@ -212,14 +211,14 @@ tags:
 
 ```yaml
 ---
-type: "project-root"
-project: "Project Name"
-status: "active|on-hold|completed|cancelled"
-owner: "[[Person Name]]"
-started: "YYYY-MM-DD"
+type: "projects"
+title: "Project Name"
+created: "YYYY-MM-DD"
 last_updated: "YYYY-MM-DD"
+status: "active|on-hold|completed|cancelled"
 tags:
-  - "project/{project-slug}"
+  - "type/projects"
+  - "status/{status}"  # optional
 ---
 ```
 
@@ -227,13 +226,14 @@ tags:
 
 ```yaml
 ---
-type: "account-root"
-account: "Company Name"
-stage: "prospect|active|churned"
-primary_contact: "[[Person Name]]"
+type: "customer"
+title: "Company Name"
+created: "YYYY-MM-DD"
 last_contact: "YYYY-MM-DD"
+status: "active|prospect|churned"
 tags:
-  - "account/{account-slug}"
+  - "type/customer"
+  - "industry/{industry-slug}"  # optional
 ---
 ```
 

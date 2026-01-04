@@ -12,12 +12,14 @@ from .config import (
 from .entities import (
     list_entities,
     list_entity_folders,
+    list_entity_paths,
     list_all_entity_names,
     match_entity,
     match_entity_any_type,
     suggest_entity_folder,
     get_entity_metadata,
     resolve_mentions,
+    load_aliases,
 )
 from .git_ops import (
     is_git_repo,
@@ -105,12 +107,14 @@ __all__ = [
     # Entities
     "list_entities",
     "list_entity_folders",
+    "list_entity_paths",
     "list_all_entity_names",
     "match_entity",
     "match_entity_any_type",
     "suggest_entity_folder",
     "get_entity_metadata",
     "resolve_mentions",
+    "load_aliases",
     # Git
     "is_git_repo",
     "is_dirty",

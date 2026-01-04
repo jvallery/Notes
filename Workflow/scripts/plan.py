@@ -26,7 +26,9 @@ from scripts.utils import (
     vault_root,
     workflow_root,
     list_all_entity_names,
+    list_entity_paths,
     get_entity_metadata,
+    load_aliases,
     safe_read_text,
     atomic_write,
     get_client,
@@ -66,7 +68,8 @@ def gather_vault_context(extraction: ExtractionV1) -> dict:
     CRITICAL: Only includes:
     1. Full metadata for entities mentioned in extraction
     2. Lightweight name-only list for fuzzy matching
-    3. Entity name and note type from extraction
+    3. Entity name-to-path mapping for correct file paths
+    4. Entity name and note type from extraction
 
     This prevents context window explosion.
     """
@@ -85,6 +88,7 @@ def gather_vault_context(extraction: ExtractionV1) -> dict:
     return {
         "mentioned_entities": get_entity_metadata(mentioned),
         "all_entity_names": list_all_entity_names(),
+        "entity_paths": list_entity_paths(),  # Name → full path mapping
         "note_type": extraction.note_type,
         "entity_name": extraction.entity_name,
     }
@@ -110,6 +114,9 @@ def build_planner_prompt(vault_context: dict, extraction: ExtractionV1) -> str:
     # Calculate date context for base template
     today = date.today()
     
+    # Load aliases for entity resolution
+    aliases = load_aliases()
+    
     # Build template context with all required variables
     return template.render(
         # Base template variables
@@ -119,7 +126,8 @@ def build_planner_prompt(vault_context: dict, extraction: ExtractionV1) -> str:
         known_entities=vault_context["all_entity_names"],
         # Planner-specific variables
         entity_folders=vault_context["all_entity_names"],
-        aliases={},  # TODO: Load from entities/aliases.yaml
+        entity_paths=vault_context.get("entity_paths", {}),
+        aliases=aliases,
         extraction=extraction.model_dump(mode="json"),
     )
 

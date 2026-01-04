@@ -44,20 +44,20 @@ ENTITY_PATTERNS = {
 
 # Required frontmatter keys by entity type (for README.md)
 README_REQUIRED_KEYS = {
-    "people": ["type", "person"],
-    "customer": ["type", "account"],
-    "projects": ["type", "project"],
+    "people": ["type", "title"],
+    "customer": ["type", "title"],
+    "projects": ["type", "title"],
     "rob": ["type"],
-    "partners": ["type", "partner"],
+    "partners": ["type", "title"],
 }
 
 # Expected type values by entity category
 EXPECTED_TYPES = {
-    "people": ["people", "person", "1-1"],
-    "customer": ["customer", "account"],
-    "projects": ["projects", "project"],
+    "people": ["people"],
+    "customer": ["customer"],
+    "projects": ["projects"],
     "rob": ["rob"],
-    "partners": ["partners", "partner"],
+    "partners": ["partners"],
 }
 
 # Date pattern for inferring dates from filenames

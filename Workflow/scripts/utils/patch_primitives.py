@@ -45,12 +45,13 @@ def upsert_frontmatter(content: str, patches: list) -> str:
 
 def append_under_heading(content: str, heading: str, text: str) -> str:
     """
-    Append text under a specific heading.
+    Append text under a specific heading (idempotent).
 
     CRITICAL: Requires EXACT heading level match.
     - "## Context" matches only "## Context", not "### Context"
     - Creates heading if not found
     - Ensures proper newline spacing
+    - IDEMPOTENT: If text already exists under heading, returns unchanged
     """
     lines = content.split("\n")
     heading_prefix = heading.split()[0]  # e.g., "##" from "## Context"
@@ -91,6 +92,14 @@ def append_under_heading(content: str, heading: str, text: str) -> str:
             if current_level <= heading_level:
                 end_line = i
                 break
+
+    # Extract section content for idempotency check
+    section_content = "\n".join(lines[target_line + 1:end_line])
+    
+    # IDEMPOTENT: Check if text already exists in section
+    text_stripped = text.strip()
+    if text_stripped in section_content:
+        return content  # Already present, don't duplicate
 
     # Insert content before end_line
     # Ensure there's content separation
