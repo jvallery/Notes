@@ -93,7 +93,7 @@ not done
 |--------|------|---------|
 | [[Jai Menon]] |  |  |
 | [[Jeff Denworth]] |  |  |
-| [[Jason Valeri]] | Finance |  |
+| [[Jason Vallery]] | Finance |  |
 | [[Olivia Kim]] |  | Google |
 | [[Henry Perez]] |  | Google |
 | [[Jan Niemus]] | Runs DoD/IC organization | Google |

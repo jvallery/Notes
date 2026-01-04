@@ -57,7 +57,7 @@ Jason Vallery shared he has multiple external management offers and plans to dec
 
 ## Related
 
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Juergen Willis]]
 - [[Pete Emig]]
 - [[Jason Vallery]]

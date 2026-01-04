@@ -52,13 +52,13 @@
 | Olivia Bouree |  |  | active | Meeting participant |
 | Jason Vallery | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data | active | Internal collaborator; coordinating Google RFP content and intros |
 | Seth Haynes |  |  | active | Unclear |
-| Jason Valeri | Finance |  | active | Internal finance partner |
+| Jason Vallery | Finance |  | active | Internal finance partner |
 | Mordechai Blaunstein |  |  | active | Meeting participant |
 | Great Gralic |  |  | active | Unclear |
 | Jason Ainsworth | Meeting organizer |  | active | Internal collaborator |
 | Ms. Ross |  |  | active | Internal collaborator |
 | Director Hampson | Director (exact function not stated) | VAST Data | active | Internal collaborator |
-| Manish Sah |  |  | active | Partner/customer stakeholder (Microsoft) |
+| Maneesh Sah |  |  | active | Partner/customer stakeholder (Microsoft) |
 | Ray Coetzee | Multi-tenancy SME (technical) |  | active | Internal SME contact |
 | Michael Myrah | Partner PM (Azure Storage Hardware) | Microsoft | active | Partner stakeholder at Microsoft (target collaborator) |
 | Amy Shapiro | CFO | VAST Data | active | Executive leadership; finance org leader |
@@ -75,7 +75,7 @@
 | Chris Carpenter | Business development / model builder ecosystem focus (new hire) | VAST Data | active | Internal collaborator (session lead for outreach planning) |
 | Frank Ray | Likely Azure Networking commercial lead (uncertain) | Microsoft | active | Potential partner contact at Microsoft |
 | Mike Requa |  |  | active |  |
-| Ronnie Borker | Runs Azure hardware | Microsoft | active | Customer stakeholder (Microsoft Azure Hardware) |
+| Ronnie Booker | Runs Azure hardware | Microsoft | active | Customer stakeholder (Microsoft Azure Hardware) |
 | Qi Ke | CVP | Microsoft | active | Internal stakeholder (compute lead) |
 | Brian Moore |  |  | active |  |
 | Jeff Edwards |  |  | active | Internal collaborator |
@@ -135,7 +135,7 @@
 | Rory Kellerworthy |  |  | active | External connector |
 | Pierre Eves |  |  | active |  |
 | Jason Taylor |  | Microsoft | active | Partner stakeholder at Microsoft |
-| Michael Myra |  | Microsoft | active | Microsoft contact (potential backchannel) |
+| Michael Myrah |  | Microsoft | active | Microsoft contact (potential backchannel) |
 | John Tinter |  |  | active | Connector for internal intros (context unclear) |
 | Brendan Burns |  |  | active |  |
 | Rick Scurfield |  |  | active |  |
@@ -156,9 +156,9 @@
 
 - Jan C. Stefansson → Jonsi Stephenson
 
-- Jason Valeri → Jason Vallery
+- Jason Vallery → Jason Vallery
 
-- Ronnie Borker → Ronnie Booker
+- Ronnie Booker → Ronnie Booker
 
 - Qiu Ke → Qi Ke
 
@@ -170,7 +170,7 @@
 
 - Michael Myra → Michael Myrah
 
-- Manish Sah → Maneesh Sah
+- Maneesh Sah → Maneesh Sah
 
 - Leeraz Ben Or → Liraz Ben Or
 

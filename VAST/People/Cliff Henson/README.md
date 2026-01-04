@@ -18,7 +18,7 @@ tags:
 **Relationship**: Microsoft infrastructure leader (context)
 
 **Background**:
-- One of three CVPs (with Ronnie Borker and Paul Clark) responsible for building/delivering Azure infrastructure capacity.
+- One of three CVPs (with Ronnie Booker and Paul Clark) responsible for building/delivering Azure infrastructure capacity.
 
 ## Open Tasks
 

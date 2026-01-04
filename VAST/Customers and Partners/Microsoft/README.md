@@ -20,7 +20,7 @@ tags:
 ## Key Contacts
 
 - Renan
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Cliff Henson]]
 - [[Joe Green]]
 - [[Michael Myrah]]
@@ -37,7 +37,7 @@ tags:
 - Harish
 - [[Aung]]
 - [[Jason Taylor]]
-- [[Michael Myra]]
+- [[Michael Myrah]]
 - [[Jack Kabat]]
 - [[Jay Parikh]]
 - Nagendra
@@ -69,7 +69,7 @@ tags:
 - [[Frank Ray]]
 - Vipin
 - [[Jay Jagant]]
-- [[Ronnie Borker]]
+- [[Ronnie Booker]]
 - [[Kanchan Mehrotra]]
 - [[John Lee]]
 - [[Kushal Datta]]
@@ -187,7 +187,7 @@ not done
 
 | Person | Role | Company |
 |--------|------|---------|
-| [[Manish Sah]] |  |  |
+| [[Maneesh Sah]] |  |  |
 | [[Michael Myrah]] | Partner PM (Azure Storage Hardware) | Microsoft |
 | Yumin |  |  |
 | Pradeep |  | Microsoft |
@@ -200,7 +200,7 @@ not done
 | [[Tomer Hagay]] |  |  |
 | [[Satya Nadella]] | CEO | Microsoft |
 | [[Frank Ray]] | Likely Azure Networking commercial lead (uncertain) | Microsoft |
-| [[Ronnie Borker]] | Runs Azure hardware | Microsoft |
+| [[Ronnie Booker]] | Runs Azure hardware | Microsoft |
 | [[Qi Ke]] | CVP | Microsoft |
 | [[Pete Emig]] |  |  |
 | Ong |  | Microsoft |
@@ -253,7 +253,7 @@ not done
 | Harish | BizDev leader (Joe Vane's boss) | Microsoft |
 | [[Aung]] |  | Microsoft |
 | [[Jason Taylor]] |  | Microsoft |
-| [[Michael Myra]] |  | Microsoft |
+| [[Michael Myrah]] |  | Microsoft |
 | Lukasz |  |  |
 | [[John Tinter]] |  |  |
 | [[Yonce]] |  |  |

@@ -61,7 +61,7 @@ Discussion focused on accelerating VAST adoption inside Microsoft via Apollo and
 - [[Kanchan Mehrotra]]
 - [[Michael Myrah]]
 - [[Lior Genzel]]
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Jay Parikh]]
 - [[Jason Taylor]]
 - [[Jeff Denworth]]

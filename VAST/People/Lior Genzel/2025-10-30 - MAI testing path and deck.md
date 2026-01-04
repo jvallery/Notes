@@ -22,19 +22,19 @@ tags:
 
 ## Summary
 
-Jason and Lior aligned on the MAI meeting approach: a short design review followed by clarifying testing scope/KPIs/timeline and hardware logistics, given MAI’s desire to start testing immediately and limited VM support until December. They agreed to avoid sharing non-public Azure BLOB performance data externally and to strengthen the deck with observability (portal/logging) and CSI driver callouts. They also discussed Microsoft internal politics and a potential engagement path to Azure hardware leadership (Ronnie Borker) via an executive sponsor, plus broader cloud prioritization (Azure primary, OCI secondary; AWS deprioritized near term).
+Jason and Lior aligned on the MAI meeting approach: a short design review followed by clarifying testing scope/KPIs/timeline and hardware logistics, given MAI’s desire to start testing immediately and limited VM support until December. They agreed to avoid sharing non-public Azure BLOB performance data externally and to strengthen the deck with observability (portal/logging) and CSI driver callouts. They also discussed Microsoft internal politics and a potential engagement path to Azure hardware leadership (Ronnie Booker) via an executive sponsor, plus broader cloud prioritization (Azure primary, OCI secondary; AWS deprioritized near term).
 ## Action Items
 - [ ] Add observability (portal/logging) slide(s) and a CSI driver callout to the MAI deck. @Lior 📅 2025-10-31 ⏫ #task
 - [ ] Adjust the side-by-side comparison in the MAI deck to exclude non-public Azure BLOB performance data for external sharing. @Lior 📅 2025-10-31 ⏫ #task
 - [ ] Confirm with MAI whether they can host pre-certified hardware for testing and arrange shipment if yes. @Lior 📅 2025-10-31 ⏫ #task
-- [ ] Send Ronnie Borker’s LinkedIn/contact information to Lior. @Myself #task
+- [ ] Send Ronnie Booker’s LinkedIn/contact information to Lior. @Myself #task
 - [ ] Follow up with Igal (Azure compute) thanking him for the updated VM roadmap; CC Yonsi and Renata; clarify that VAST is not trying to block him (manage internal politics). @Lior 📅 2025-10-31 #task
 - [ ] Schedule MAI meetings at KubeCon/Ignite/SC with relevant Microsoft contacts (e.g., Alon/Yonsi/Renen) as applicable. @Lior #task
 - [ ] Set a call with Billy (GCP) to review Google programs and GKE-integrated deployment patterns (if calendar allows). @Lior 📅 2025-10-31 #task
 - [ ] Align with Jeff on cloud priorities/ownership (Azure/GCP/OCI), team structure, goals, and BD expectations. @Myself ⏫ #task
 - [ ] Decide whether to bring Karl onto Jason’s team and define his scope (lab/POC support). @Myself #task
 - [ ] Confirm plan/need to attend AWS re:Invent. @Myself 🔽 #task
-- [ ] Determine sponsorship path to engage Azure hardware CVP Ronnie Borker (e.g., via Nidhi or Anand) vs using an Israeli backchannel. @Myself #task
+- [ ] Determine sponsorship path to engage Azure hardware CVP Ronnie Booker (e.g., via Nidhi or Anand) vs using an Israeli backchannel. @Myself #task
 - [ ] Capture MAI testing requirements, KPIs, and timeline after the next MAI call; define the hardware shipment plan. @Lior 📅 2025-11-01 ⏫ #task
 - [ ] Plan Azure/GCP marketplace timelines and minimal viable offerings to satisfy key stakeholders (e.g., Foundry, Kanchan). @Myself #task
 
@@ -50,7 +50,7 @@ Jason and Lior aligned on the MAI meeting approach: a short design review follow
 - Azure LSV4 is viewed as poor; future VM specs may be strong but are ~1 year out and uncertain versus competitors.
 - Avoid exposing non-public Azure BLOB HDD/Flash performance data to third parties (e.g., N-scale).
 - Microsoft internal incentives/politics across compute, storage, and networking are sensitive and can create friction.
-- Potential Azure hardware engagement path: Ronnie Borker (Azure hardware CVP) ideally via sponsorship from another CVP (e.g., Nidhi; possibly Anand).
+- Potential Azure hardware engagement path: Ronnie Booker (Azure hardware CVP) ideally via sponsorship from another CVP (e.g., Nidhi; possibly Anand).
 - OpenAI is described as the top strategic win; Microsoft right of first refusal reportedly lifted, enabling a multi-cloud data plane approach.
 - Jason’s travel is heavy until mid-December; he plans to meet Jeff in San Francisco next week for guidance on priorities.
 
@@ -68,7 +68,7 @@ Jason and Lior aligned on the MAI meeting approach: a short design review follow
 - [[Cliff Henson]]
 - [[Paul Clark]]
 - [[Jan Niemus]]
-- [[Yonsi Stephenson]]
+- [[Jonsi Stephenson]]
 - [[Jeff Denworth]]
 - [[Brendan Burns]]
 - [[John Mao]]

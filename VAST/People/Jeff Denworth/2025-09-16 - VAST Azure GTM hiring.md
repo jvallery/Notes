@@ -57,7 +57,7 @@ Jeff Denworth and Jason Vallery discussed VAST’s accelerated cloud go-to-marke
 
 - [[Jeff Denworth]]
 - [[Jason Vallery]]
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Erez Zilber]]
 - [[Frank Ray]]
 - [[Eric Wolfie]]

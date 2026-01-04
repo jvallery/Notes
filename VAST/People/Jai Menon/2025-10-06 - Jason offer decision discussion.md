@@ -52,7 +52,7 @@ Jason discussed two external offers: a complex, high-variance compensation offer
 ## Related
 
 - [[Jason Vallery]]
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Jeff Denworth]]
 - [[Ronen Cohen]]
 - [[Jan Niemus]]

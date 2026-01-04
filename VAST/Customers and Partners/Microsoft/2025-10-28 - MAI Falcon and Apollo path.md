@@ -34,7 +34,7 @@ Jason and Alon aligned ahead of Jason’s Friday meeting with Kushal (MAI) on de
 - [ ] Follow up with Vipin after receiving Jason’s notes to align on path and probe AKS/Project Apollo conversations (including whether Vipin spoke with Anson and Keek) @Alon ⏫ #task
 - [ ] Stay close with Lior and Tiffany to advance the Project Apollo storage integration option and positioning of VAST as standard storage for Apollo deployments @Jason ⏫ #task
 - [ ] Map Azure stakeholders (AKS/Apollo, Storage, Compute, Hardware) and their priorities to navigate internal incentives and resistance @Jason ⏫ #task
-- [ ] Engage Azure Hardware (Ronnie Borker’s team) on qualifying a VAST-friendly storage-optimized SKU (including liquid-cooled options) @Jason 🔽 #task
+- [ ] Engage Azure Hardware (Ronnie Booker’s team) on qualifying a VAST-friendly storage-optimized SKU (including liquid-cooled options) @Jason 🔽 #task
 - [ ] Explore liquid-cooled storage SKU options with ODMs to leverage data center cooling fungibility and late-binding storage vs GPU rack decisions @Jason 🔽 #task
 - [ ] Evaluate Blob compatibility and a multi-protocol (Blob + S3) head; test interest with Azure contacts while keeping near-term focus on performance wins @Jason 🔽 #task
 - [ ] Confirm whether the Microsoft–Nscale contract maps to MAI and assess implications for a potential VAST deployment @Jason 🔽 #task

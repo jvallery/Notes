@@ -4,7 +4,7 @@ title: Dual-path Azure and bare-metal plan
 date: '2025-10-29'
 account: Microsoft
 participants:
-- Jonsi Stemmelsson
+- Jonsi Stephenson
 - Leo
 - Nico
 - Mike
@@ -34,7 +34,7 @@ tags:
 
 **Date**: 2025-10-29
 **Account**: [[Microsoft]]
-**Attendees**: Jonsi Stemmelsson, Leo, Nico, Mike, Jason Vallery, James, Trevor, Tiff, John, Anand, Eiki, Jan, Assaf, Sarah, Claire, Ed Kim, Roni
+**Attendees**: Jonsi Stephenson, Leo, Nico, Mike, Jason Vallery, James, Trevor, Tiff, John, Anand, Eiki, Jan, Assaf, Sarah, Claire, Ed Kim, Roni
 
 ## Summary
 
@@ -48,7 +48,7 @@ Team aligned on a parallel approach for UK Met: deliver an 8-node Azure LSV4 VAS
 - [ ] Discuss with Anand who will purchase/own the bare-metal POC system; target an answer around Supercomputing. @Mike 📅 2025-11-20 ⏫ #task
 - [ ] Define a non-marketplace procurement path for VAST software for internal Microsoft subscriptions. @Microsoft Procurement ⏫ #task
 - [ ] Coordinate with Ed Kim on OEM sourcing and transacting route; align OEM shortlist. @Jason Vallery #task
-- [ ] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stemmelsson #task
+- [ ] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stephenson #task
 - [ ] Set up a separate engineering track for OEM/bare-metal automation (hardware/switch APIs). @James #task
 - [ ] Ping Sarah to confirm mid-November commitment on EGAL platform update. @Tiff 📅 2025-11-15 ⏫ #task
 
@@ -94,5 +94,5 @@ Team aligned on a parallel approach for UK Met: deliver an 8-node Azure LSV4 VAS
 - [[Frank Ray]]
 - [[Jonsi Stephenson]]
 - [[Jeremy Winter]]
-- [[Jonsi Stemmelsson]]
+- [[Jonsi Stephenson]]
 - [[Jason Vallery]]

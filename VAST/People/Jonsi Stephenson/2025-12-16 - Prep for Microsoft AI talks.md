@@ -60,7 +60,7 @@ Jonsi and Jason aligned on positioning a “better together” story with Micros
 - [[Jonsi Stephenson]]
 - [[Jason Vallery]]
 - [[Jeff Denworth]]
-- [[Manish Sah]]
+- [[Maneesh Sah]]
 - [[Jai Menon]]
 - [[Ronen Cohen]]
 - [[Bo Wang]]

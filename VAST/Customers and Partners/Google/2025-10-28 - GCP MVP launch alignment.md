@@ -12,7 +12,7 @@ participants:
 - Lior Genzel
 - Timo Pervane
 - Tomer Hagay
-- Jason Valeri
+- Jason Vallery
 - Yancey
 source: transcript
 source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Team aligned on MVP launch on GCP
@@ -27,14 +27,14 @@ tags:
 
 **Date**: 2025-10-28
 **Account**: [[Google]]
-**Attendees**: Eirikur Hrafnsson, Helen Protopapas, Jason Ainsworth, Jonsi Stephenson, Lihi Rotchild, Lior Genzel, Timo Pervane, Tomer Hagay, Jason Valeri, Yancey
+**Attendees**: Eirikur Hrafnsson, Helen Protopapas, Jason Ainsworth, Jonsi Stephenson, Lihi Rotchild, Lior Genzel, Timo Pervane, Tomer Hagay, Jason Vallery, Yancey
 
 ## Summary
 
 Team aligned on launching an MVP on Google Cloud Marketplace using private offers with fixed capacity pricing ($0.07/GB) and no BYOL. Tackle.io will generate private offers integrated with Salesforce, while Polaris will be the source of truth for entitlements, call-home registration, and usage/metering. Key open items include finalizing overage handling (including GCP marketplace limitations), EULA language, and finance processes for billing/reconciliation ahead of first transactions targeted for Nov–Dec.
 ## Action Items
 - [ ] Review and draft marketplace EULA language to enable overage billing at list PAYGO via Tackle workaround @Myself 📅 2025-11-08 🔺 #task
-- [ ] Invite finance (Jason Valeri) to Tackle kickoff and ongoing implementation meetings @Eirikur Hrafnsson 📅 2025-10-29 🔺 #task
+- [ ] Invite finance (Jason Vallery) to Tackle kickoff and ongoing implementation meetings @Eirikur Hrafnsson 📅 2025-10-29 🔺 #task
 - [ ] Confirm with Tackle.io the feasibility and configuration for overage handling and pricing on GCP @Eirikur Hrafnsson 📅 2025-11-08 🔺 #task
 - [ ] Implement automation to create Uplink organization endpoints from Salesforce metadata for call-home registration @Polaris team 📅 2025-11-08 🔺 #task
 - [ ] Design and implement internal alerting for CS/sales when customers approach or exceed entitlement @Polaris team 📅 2025-11-08 🔺 #task
@@ -45,7 +45,7 @@ Team aligned on launching an MVP on Google Cloud Marketplace using private offer
 - [ ] Define VAST units of measurement for compute and capacity for future pricing model @Tomer Hagay 📅 2025-11-08 ⏫ #task
 - [ ] Plan for cloud customer success coverage to drive expansion and manage entitlement/usage @Lihi Rotchild 📅 2025-11-08 ⏫ #task
 - [ ] Prepare pipeline visibility for expected first GCP transactions and timelines @Lior Genzel 📅 2025-11-08 ⏫ #task
-- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Jason Valeri 📅 2025-11-08 🔺 #task
+- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Jason Vallery 📅 2025-11-08 🔺 #task
 - [ ] Set session to define billing, invoicing, payout cadence, and reconciliation across Polaris, Tackle, and GCP @Finance 📅 2025-11-08 🔺 #task
 - [ ] Decide whether to permit automatic expansion beyond entitlement or require account approval @Product 📅 2025-11-08 ⏫ #task
 - [ ] Outline rev rec approach for future hybrid conversion model (on-prem ↔ cloud) @Finance 📅 2025-11-08 ⏫ #task
