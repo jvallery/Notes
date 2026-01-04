@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Google
-last_contact: unknown
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -12,38 +12,68 @@ tags:
 
 ## Recent Context
 
-- unknown: [[Untitled]] - Forwardable write-up/email draft instructing an internal Performance team to populate Google’s “VAST...
-- unknown: [[2025-10 - Google Tasks]] - Task to confirm Google Cloud Platform (GCP) general availability timing after a bottleneck fix and a...
-- unknown: [[2025-10 - Lior Genzel]] - Note covers coordination on Google TPU strategy outside GCP, pricing/private offer topics, and sales... (via Lior Genzel)
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]]
-- 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal team sync to align on Walmart’s big data initiative, focusing on clarifying disaster recove... (via Walmart)
-- 2025-11-13: [[2025-11-13 - GDC RFP meeting]] - Notes from a Google GDC RFP meeting covering storage TCO (HDD vs QLC), security/compliance (SED, air...
-- 2025-11-05: [[2025-11-05 - Walmart Analytics]] - Note captures Walmart’s hybrid analytics storage/replication requirements for moving a hot working s... (via Walmart)
-- 2025-11-03: [[2025-11-03]] - Brief note capturing topics to clarify around a Microsoft hardware SKU, a proof of concept with MAI,... (via Lior Genzel)
-- 2025-10-31: [[2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora]]
-- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson focused on aligning cloud enablement messa... (via Deandre Jackson)
-- 2025-10-29: [[2025-10-29 - Intro 1-1 to understand Customer Success operations for CoreWeave and XAI and im]] - Intro 1:1 with Rick Haselton to understand how Customer Success operates for the CoreWeave and XAI a... (via Rick Haselton)
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]]
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]]
-- 2025-10-20: [[2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto]] - Weekly 1:1 with Yogev Vankin focused on VAST multi-cloud architecture across AWS/GCP/Azure, centerin... (via Yogev Vankin)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture optimized for... (via Silk)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
 
 ## Key Facts
 
-- Federal connection needed for a mutual customer, involving SE and operations considerations.
-- Separation of duties and potential two-sign/two-person rule is a key security/compliance concern.
-- Multi-tenancy requirements include QoS/quotas, tags, and policy-based management.
-- Security topics include network security, air-gapped security details, certifications, and remote patching.
-- Operational concerns include how to manage, troubleshoot, and patch systems.
-- Hardware recommendation shapes discussed with Dell as a partner.
-- Google will compare vendors primarily on IOPS per GiB and price per GiB; throughput is secondary.
-- IOPS results must be reported only where mean latency is under 2 ms (apples-to-apples constraint).
-- Benchmarks must have encryption enabled: IPsec for file+block, TLS for S3; encryption at rest must also be enabled with an additional tenant-granularity (or finer) layer.
-- Dedupe and compression must be disabled for performance tests and random data used to avoid inflated results.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
+- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
+- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
+- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
+- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
+- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
 
 ## Topics
 
-HDD vs QLC TCO, SED (self-encrypting drives), Hardware partners, Availability zones (AZs), SyncEngine, GCS API compatibility/questions, Federal connection for mutual customer, Separation of duties / two-sign rule, Multi-tenancy, QoS and quotas, Tags and policy-based management, Network security, Tenant/tag model for workloads, Air-gapped security, certifications, Remote patching
+Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications), Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle)
+
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | Prospect |
+| **Industry** | Technology (cloud) |
+
+## Key Contacts
+
+_No key contacts identified._
+
+## Opportunities
+
+- Google RFP (TPU angle)
+
+## Blockers
+
+- ❌ Ensure scope is not block-I/O latency sensitive (NetApp strength)
+- ❌ Jason transitioning from Microsoft to Google tools (operational friction)
+
+## Collaborators
+
+| Person | Role | Company |
+|--------|------|---------|
+| [[Jason]] |  | VAST |
+| [[Jeff Denworth]] |  |  |
+| [[Jason Vallery]] |  |  |
+
+## Key Decisions
+
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
+- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+
+## Related People
+
+- [[Jason]]
+- [[Jeff Denworth]]
+- [[Jason Vallery]]
 
 ## Related
 

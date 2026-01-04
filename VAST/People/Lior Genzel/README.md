@@ -1,7 +1,7 @@
 ---
 type: people
 title: Lior Genzel
-last_contact: unknown
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,12 +12,8 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Lior Genzel]] - Note covers coordination on Google TPU strategy outside GCP, pricing/private offer topics, and sales...
-- 2025-11-03: [[2025-11-03]] - Brief note capturing topics to clarify around a Microsoft hardware SKU, a proof of concept with MAI,...
-- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]]
-- 2025-10-22: [[2025-10-22 - Rosanne outlined Dhammak’s rapid data center and GPU cloud buildout and interest]] - Weekly 1:1 where Rosanne described Dhammak/Dimac’s rapid data center and GPU cloud buildout and desi... (via Rosanne Kincaid–Smith)
-- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) discussing Microso... (via Rosanne Kincaid–Smith)
-- 2025-09-16: [[2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home]]
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
 
 ## Profile
 
@@ -36,20 +32,29 @@ tags:
 
 ## Key Facts
 
-- Microsoft (MSFT) hardware SKU is a point of discussion.
-- There is a proof of concept (POC) involving MAI.
-- Voice of Customer (VoC) is being considered more broadly.
-- Google is mentioned as potentially relevant.
-- Google TPU strategy outside GCP has a two-week timeline for disclosure.
-- Sales pipeline accounts mentioned: Zoom, UK Met, NBCU.
-- Zoom OCI comparison basis involves evaluating dense E5 VMs versus an NVMe + Object storage mix.
-- Rosanne is based in Dubai and was traveling from the Bay Area at the time of the meeting.
-- Dhammak/Dimac diversified into data centers about 4 years ago and has acquired nearly 5 GW of land/power.
-- Dhammak expects ~500 MW to come to market by early next year and plans to scale in gigawatt increments across Asia, the US, and Europe.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
+- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
+- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
+- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
+- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
+- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
 
 ## Topics
 
-Microsoft hardware SKU, POC with MAI, Meaning/implications clarification, Voice of Customer (VoC), Google, TPUs with Google, Google TPU strategy outside GCP (disclosure timeline and prep meetings), Pricing model / private offer, Ignite, Sales pipeline (Zoom, UK Met, NBCU), Cloud provider product fit mapping (Oracle, Microsoft, AWS, Google), Microsoft Managed Lustre performance, implementation, and pricing/TCO, GCP performance data and field calculator ownership, Polaris/marketplace content requirements, OCI parity / POC evaluation
+Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications), Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle)
+
+## Key Decisions
+
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
+- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
 
 ## Related
 

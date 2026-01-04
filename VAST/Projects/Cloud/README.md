@@ -1,7 +1,7 @@
 ---
 type: projects
 title: Cloud
-last_contact: unknown
+last_contact: '2025-12-19'
 created: '2026-01-03'
 tags:
 - type/projects
@@ -12,37 +12,55 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Yogev Vankin]] - A completed task to summarize Oracle Cloud POC learnings and the current AWS/GCP/Azure cluster statu... (via Yogev Vankin)
-- unknown: [[2025-10 - SaaS]] - Drafted the cloud SaaS operating model requirements for VAST Cloud, covering DevOps/LifeSite rotatio...
-- unknown: [[Available Capacity Calculations]] - Internal note arguing against using a single fixed overhead percentage (e.g., 35%) for cloud deploym...
-- unknown: [[2025-10 - Cloud Marketplace MVP]] - Checklist of completed Product, Marketing, and Performance Team deliverables for a Cloud Marketplace...
-- unknown: [[Pricing]] - Internal note to the Pricing v-team outlining principles and a recommended direction for VAST Cloud ... (via Pricing)
-- 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal team sync to align on Walmart’s big data initiative, focusing on clarifying disaster recove... (via Walmart)
-- 2025-11-03: [[2025-11-03 - Team reviewed how cloud clusters must map to Salesforce assets (AccountSitePSN]] - Group meeting reviewing how VAST cloud clusters must map to Salesforce assets (Account/Site/Cluster ...
-- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson focused on aligning cloud enablement messa... (via Deandre Jackson)
-- 2025-10-30: [[2025-10-30 - The group aligned on the cloud support operating model (Customer Success, Suppor]]
-- 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]]
-- 2025-10-22: [[2025-10-22 - Rosanne outlined Dhammak’s rapid data center and GPU cloud buildout and interest]] - Weekly 1:1 where Rosanne described Dhammak/Dimac’s rapid data center and GPU cloud buildout and desi... (via Rosanne Kincaid–Smith)
-- 2025-10-20: [[2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto]] - Weekly 1:1 with Yogev Vankin focused on VAST multi-cloud architecture across AWS/GCP/Azure, centerin... (via Yogev Vankin)
-- 2025-10-06: [[2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s competing job offers (VAST vs Crus... (via Jai Menon)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture optimized for... (via Silk)
+- 2025-12-19: [[2025-12-19]] - Jason Vallery and Jeff Denworth discuss strategy around supporting the Azure Blob API versus Microso... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
 
 ## Key Facts
 
-- Silk is software-defined cloud storage focused on database and single source of truth workloads.
-- Typical scale cited: up to ~1 PB per data pod; tens of GB/s throughput with sub-ms latency.
-- Performance layer cited: ~2–3M TPS with 64k transactions; can serve millions of transactions/sec.
-- Architecture: deployed near database VMs; uses read cache; compresses and can dedupe; durable layer on Azure PV2 with added erasure coding or on VMs with ephemeral media.
-- Silk often competes with Azure NetApp Files and may outperform ANF Ultra at lower cost for certain DB workloads.
-- Boost VMs can deliver ~40 GB/s from a single host in Silk tests.
-- AI workloads are increasing and making access to production relational databases (SQL/Oracle/Postgres) more unpredictable.
-- Two AI/DB patterns discussed: maximize production DB performance vs create near-real-time copies (tens of seconds) for AI access.
-- Silk is seeking RDMA on the front end of Azure L-series to reduce CPU overhead; they are working with Gal Piglin’s team.
-- Ong may introduce Silk to Jay Menon.
+- Pete Eming reports to Vamshi and currently owns the Azure Storage relationship with OpenAI and Microsoft AI (previously owned by Jason).
+- OpenAI is reportedly replatforming away from Azure Blob API for some scenarios and building their own solution using rclone and other tools.
+- Discussion claim: Microsoft’s deal with OpenAI gives Microsoft exclusive ownership/rights to every line of code written at OpenAI until AGI is declared by OpenAI’s board; Microsoft can reuse that IP for Azure services.
+- Per discussion, OpenAI’s likely competition is internal (in-house storage/capacity management) rather than external vendors like Weka.
+- OpenAI infrastructure mentioned: L-series VMs, potential bare metal L-series, bare metal UltraDisk, and Blob Storage HDD clusters.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
 
 ## Topics
 
-Silk cloud storage architecture for database workloads, AI-driven access patterns to systems of record, Performance characteristics: throughput, latency, TPS, Real-time vs near-real-time copies for AI access, Competitive positioning vs Azure NetApp Files (ANF) and Azure native storage, RDMA front-end support on Azure L-series and CPU overhead reduction, Executive introduction planning (Jay Menon via Ong), Walmart big data initiative alignment, Disaster recovery (DR) requirements clarification, Architecture/whiteboarding session gating criteria, Hybrid cloud roadmap strategy, Native Google Cloud Storage (GCS) integration requirements, Proposal options: minimum config vs phase-one (D-box/capacity differences), Customer timeline and decision process, Scaling limitations of VM-based cloud deployments
+Blob API vs Tuscany trade-offs, MVP vs broader market surface area ('crawl, walk, run'), OpenAI moving away from Blob API, OpenAI internal storage stack and Rockset/RocksDB, Microsoft rights to OpenAI IP and AGI clause risk, Competitive landscape (internal vs external vendors), Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit)
+
+## Overview
+
+_Brief description of this project..._
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | _Unknown_ |
+| **Owner** | _Unknown_ |
+
+## Blockers
+
+_No known blockers._
+
+## Next Steps
+
+_No next steps defined._
+
+## Key Decisions
+
+- ✅ Initial framing decision: avoid focusing only on OpenAI and Microsoft AI as the only customers; aim for a broader 'in for a pound' approach (directional preference stated by Jeff).
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
+- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
 
 ## Related
 

@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Walmart
-last_contact: '2025-11-14'
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -12,26 +12,62 @@ tags:
 
 ## Recent Context
 
-- 2025-11-14: [[2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a]] - Internal team sync to align on Walmart’s big data initiative, focusing on clarifying disaster recove...
-- 2025-11-06: [[2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake]]
-- 2025-11-05: [[2025-11-05 - Walmart Analytics]] - Note captures Walmart’s hybrid analytics storage/replication requirements for moving a hot working s...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
 
 ## Key Facts
 
-- Architecture/whiteboarding session is gated on receiving definitive requirements from Walmart.
-- Key DR ambiguity: Walmart may need full VAST namespace access in cloud vs only a copy of data.
-- VM-based approaches in public cloud are not viable at the anticipated scale.
-- Hybrid roadmap is being driven, including deeper/more native Google Cloud Storage (GCS) integration.
-- Jason plans to meet engineering in Tel Aviv the week after next to shape the roadmap, with Walmart as a marquee design partner.
-- Walmart has ~1–1.5 months to choose between a minimum configuration and a larger phase-one proposal (main difference: D-boxes/capacity).
-- Opportunity scale discussed up to ~500 PB and framed as potentially up to a $300M deal.
-- A 30-minute expectations/vision call with Mingming is planned for 2025-11-14 after 2 pm PT.
-- Primary ingestion and processing is in BigQuery on GCP.
-- Hot working set must be replicated into two Walmart-owned/managed facilities for analytics processing.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
+- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
+- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
+- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
 
 ## Topics
 
-Walmart big data initiative alignment, Disaster recovery (DR) requirements clarification, Architecture/whiteboarding session gating criteria, Hybrid cloud roadmap strategy, Native Google Cloud Storage (GCS) integration requirements, Proposal options: minimum config vs phase-one (D-box/capacity differences), Customer timeline and decision process, Scaling limitations of VM-based cloud deployments, Customer expectations/vision call planning, Hybrid cloud analytics architecture (GCP + on-prem active/active), Replication of hot working set from BigQuery/GCP to on-prem, Consistency models (strong consistency vs latency/write-rate constraints), WAN latency impact between on-prem sites, RPO/RTO and tolerance for small data loss, Trino/Presto and Spark analytics processing on replicated data
+Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications)
+
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | Active |
+| **Industry** | _Unknown_ |
+
+## Key Contacts
+
+_No key contacts identified._
+
+## Opportunities
+
+- Document Walmart requirements/FRDs in Confluence
+
+## Blockers
+
+_No known blockers._
+
+## Collaborators
+
+| Person | Role | Company |
+|--------|------|---------|
+| [[Tomer]] |  |  |
+| [[A.L.]] |  |  |
+| [[Jason Vallery]] |  |  |
+
+## Key Decisions
+
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+
+## Related People
+
+- [[Tomer]]
+- [[A.L.]]
+- [[Jason Vallery]]
 
 ## Related
 

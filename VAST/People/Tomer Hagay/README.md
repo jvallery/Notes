@@ -1,7 +1,7 @@
 ---
 type: people
 title: Tomer Hagay
-last_contact: unknown
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,13 +12,8 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Tomer Hagay]] - Completed follow-ups to support Tomer Hagey by sharing FRD templates/examples for Jason’s review and...
-- unknown: [[Global Namespace]] - Reviewed and aligned on the write-lease design and read redirection behaviors for the 5.5 Global Nam... (via 5.5 Features)
-- 2025-11-07: [[2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc]] - 1:1 between Jason Vallery and Tomer Hagay about introducing clearer product management discipline at...
-- 2025-11-03: [[2025-11-03 - Team reviewed how cloud clusters must map to Salesforce assets (AccountSitePSN]] - Group meeting reviewing how VAST cloud clusters must map to Salesforce assets (Account/Site/Cluster ... (via Cloud)
-- 2025-10-29: [[2025-10-29 - Jason and Tomer aligned on shifting cloud work toward a PM-led model and the nee]]
-- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]]
-- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]]
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t... (via Jeff Denworth)
 
 ## Profile
 
@@ -32,20 +27,29 @@ tags:
 
 ## Key Facts
 
-- VAST currently lacks OKR/KR rigor and end-to-end traceability from tasks to strategy.
-- Engineering effort for cloud success depends heavily on core product changes; PM process must cover the whole stack.
-- Jeff is cautious about structural change and prefers Jason to learn the org before proposing changes.
-- Renan resists traditional PM authority/ownership.
-- Shahar prefers ambiguity and resists strict structure and gating.
-- Cloud and core teams have misaligned processes and limited workflow overlap.
-- Poor ticket/epic structure reduces delivery visibility and makes it hard to answer customer/status questions (example: MD migrate release movement).
-- Any PM framework must be top-down endorsed by Jeff and Sahar to succeed.
-- Tomer Hagey needed FRD templates/examples shared for Jason’s review.
-- Tomer Hagey needed access to PM SFDC RFE/Feature dashboards and Jira links.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
+- Google RFP may be TPU-oriented; ensure scope is not block-I/O latency sensitive where NetApp excels.
+- Jeff will be in Orlando Tue–Thu next week for sales strategy; SE engagement is high value.
+- Risk: ambiguity between author scope and Lior’s could cause ownership gaps and misaligned priorities.
+- Jason’s mandate is to own multi-cloud strategy end-to-end and translate deal flow into requirements, Confluence docs, and focused cloud plays (Azure/AWS/GCP/Oracle plus Foundry/Bedrock/Vertex).
+- Near-term proof points include building the 'dagger' Azure slide, establishing a win/loss cadence, and embedding with SEs during/after Tech Summit.
 
 ## Topics
 
-Product management discipline and operating model at VAST, OKRs/KRs and measurable planning, Traceability from dev tasks to features/epics to strategy objectives, Rhythm of business (monthly business reviews, dashboards, loss reviews), Cloud vs core workflow alignment and handoffs, Leadership buy-in, skepticism, and change management risks, Delivery visibility, status reporting, and customer response readiness, Tel Aviv onsite as a checkpoint before proposing org-wide changes, FRD templates/examples, Product requirements documentation review, PM SFDC RFE/Feature dashboards, Jira access/links, Write-lease design, Read redirection behaviors, Global Namespace
+Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit), PM capacity and operating cadence, Win/loss analysis cadence, Onboarding/tooling friction (calendars/notifications), Org chart and key players across sales/engineering/product, Product management structure and process, Multi-cloud strategy and cloud plays (Azure/AWS/GCP/Oracle)
+
+## Key Decisions
+
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
+- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
 
 ## Related
 

@@ -1,7 +1,7 @@
 ---
 type: people
 title: Jeff Denworth
-last_contact: unknown
+last_contact: '2025-12-19'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,54 +12,78 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed Microsoft-related action items for VAST’s Azure offerings, including networki... (via Microsoft)
-- unknown: [[2025-11-4 - Planning sessions]]
-- unknown: [[2025-10 - Jeff Denworth]]
-- unknown: [[_Open Topics]] - Open topics note for Jeff Denworth containing a task query that lists incomplete tasks mentioning @j...
-- 2025-12-19: [[2025-12-19]] - Conversation between Jason Vallery and Jeff Denworth about how to approach Microsoft/OpenAI storage ...
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]]
-- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]]
-- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]]
-- 2025-11-07: [[2025-11-07 - Jason and Tomer aligned on the need to introduce clearer product management disc]] - 1:1 between Jason Vallery and Tomer Hagay about introducing clearer product management discipline at... (via Tomer Hagay)
-- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson focused on aligning cloud enablement messa... (via Deandre Jackson)
-- 2025-10-29: [[2025-10-29 - Intro 1-1 to understand Customer Success operations for CoreWeave and XAI and im]] - Intro 1:1 with Rick Haselton to understand how Customer Success operates for the CoreWeave and XAI a... (via Rick Haselton)
-- 2025-10-29: [[2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud]] - Weekly 1:1 where Jason Vallery shared a cloud-first vision for VAST (VAST-as-a-Service, multi-cloud)... (via Rick Haselton)
-- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]]
-- 2025-10-06: [[2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s competing job offers (VAST vs Crus... (via Jai Menon)
-- 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s pending job decision between a ris... (via Jai Menon)
+- 2025-12-19: [[2025-12-19]] - Jason Vallery and Jeff Denworth discuss strategy around supporting the Azure Blob API versus Microso...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to map the org landscape, clarify key stakeholders and coverage gaps, and ali...
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason and Jeff focused on mapping the org landscape, clarifying Jason’s mandate t...
 
 ## Profile
 
 **Role**: VAST
-**Relationship**: Collaborator/assignee on Microsoft-related tasks
+**Location**: Salt Lake (hotel room mentioned)
+**Relationship**: Internal collaborator / stakeholder (note entity)
 
 **Background**:
-- Involved in drafting Microsoft networking engagement plan to minimize egress for VAST’s Azure offerings and validating Azure GA milestones aligned to Lifter program phases.
-- Referenced via @jeff tag in a task query; no additional context provided in this note.
-- Discusses strategy for addressing Microsoft/OpenAI needs; prefers broader market approach (“in for a pound”) vs focusing only on first two customers; skeptical that Rockset/OpenAI can quickly build a hyperscale object store; notes their own solution took a decade and is still unreliable at times.
+- Discusses product/strategy trade-offs and pushes for broader market approach beyond initial customers.
+- Provides org landscape, sets priorities, and emphasizes a first-class homogenized cross-cloud platform strategy and hands-on field exposure.
+- Leads organizational alignment discussions; emphasizes understanding current state before changes; pushes for first-class platform across clouds and aligning work to company philosophy/values.
 
 ## Open Tasks
 
-- [ ] Catch up with Jeff on Microsoft topics, review/discuss Jason’s draft document, and align on direction.
-- [ ] Weigh trade-offs and make a decision on Blob API vs Microsoft’s Tuscany vs customer demand (breadth of surface area; MVP vs full solution).
-- [ ] Prepare and deliver the SCO and the presentation Jeff wants Jason to do.
+- [ ] Weigh trade-offs between Blob API, Tuscany, and customer demand; make a decision on direction and surface area breadth.
+- [ ] Prepare and deliver the SCO presentation Jeff wants Jason to do. @Jason Vallery
+- [ ] Have a conversation with Aaron about being over-rotated on building pipelines @Jeff Denworth
+- [ ] Text ITSIC regarding block storage and getting to critical mass of business @Jeff Denworth
 
 ## Key Facts
 
-- Networking engagement plan should focus on minimizing egress for VAST’s Azure offerings (e.g., ExpressRoute Direct Local).
-- Azure GA milestones need alignment with Lifter program phases (Feb GA vs Sep 1P milestone).
-- ROI comparisons require validation of what Microsoft data is permissible to use before sharing externally (e.g., with Nidhi).
-- Microsoft BizDev enablement messaging includes density/power and a single-namespace story.
-- A one-pager was created to translate VAST EB power savings into additional GPUs per site for stakeholders including MAI (Mustafa), Kushal, and Vipin.
-- There is consideration to extend the Marketplace L-series offer via higher-density storage SKUs or an OEM hardware path.
-- Dre Jackson is Technical Enablement Director; team recently added 2 heads and is hiring 2 more.
-- Dre runs a weekly SE call alternating technical sales upskilling and leadership/field updates, with 10-minute competitive/pitch segments.
-- Jason Vallery is ex-Microsoft Azure object storage PM; supported OpenAI; now owns PM for VAST cloud and frontier model builders.
-- There is no transactable VAST cloud marketplace yet; current motion is private offers with Google with a roadmap to enable AWS and Azure.
+- Pete Eming reports to Vamshi and currently owns the Azure Storage relationship with OpenAI and Microsoft AI (previously owned by Jason).
+- OpenAI is reportedly replatforming away from Azure Blob API for some scenarios and building their own solution using rclone and other tools.
+- Discussion claim: Microsoft’s deal with OpenAI gives Microsoft exclusive ownership/rights to every line of code written at OpenAI until AGI is declared by OpenAI’s board; Microsoft can reuse that IP for Azure services.
+- Per discussion, OpenAI’s likely competition is internal (in-house storage/capacity management) rather than external vendors like Weka.
+- OpenAI infrastructure mentioned: L-series VMs, potential bare metal L-series, bare metal UltraDisk, and Blob Storage HDD clusters.
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and channel (non-cloud).
+- Sagi leads pipelines/serverless and needs alignment on cloud GTM and packaging.
+- Morty owns Neo cloud feature requirements and must maintain that coverage while supporting the author’s area.
+- Rob’s customer success org is primarily support and systems engineering today.
+- Confluence is the source of record for FRDs/customer requirements for engineering consumption.
 
 ## Topics
 
-Microsoft networking engagement plan, Egress minimization, ExpressRoute Direct Local, Azure GA milestones, Lifter program phases, ROI comparisons and data usage constraints, Competitive/comparison positioning (LSv4, v5, OEM/ODM, Azure Storage), Microsoft BizDev enablement, Single-namespace positioning, Power savings to GPU capacity translation, Marketplace L-series offer expansion, Higher-density storage SKUs, OEM hardware path, SE enablement cadence and weekly call structure, S3/Object enablement course content and feedback loop
+Blob API vs Tuscany trade-offs, MVP vs broader market surface area ('crawl, walk, run'), OpenAI moving away from Blob API, OpenAI internal storage stack and Rockset/RocksDB, Microsoft rights to OpenAI IP and AGI clause risk, Competitive landscape (internal vs external vendors), Org landscape and role mapping, Cross-cloud platform strategy (including Neo clouds), Cloud GTM and packaging (Foundry/Bedrock/Vertex), Alliances and control-plane partnerships, In-flight deal cataloging by product requirements, Google RFP preparation (TPU), Microsoft competitive positioning vs Azure Storage, Customer requirements/FRDs documentation in Confluence, SE engagement and field exposure (Orlando Tech Summit)
+
+## Key Decisions
+
+- ✅ Initial framing decision: avoid focusing only on OpenAI and Microsoft AI as the only customers; aim for a broader 'in for a pound' approach (directional preference stated by Jeff).
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Focus on building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ China should be approached as a sales outpost rather than a location for significant capital investment or operational infrastructure.
+- ✅ Carl will move to ProServe under Rob due to limitations in customer-facing roles.
+
+## Related Customers
+
+- [[VAST]]
+- [[Google]]
+- [[Microsoft]]
+
+## Related Projects
+
+- [[Tuscany]]
+- [[Win/loss cadence]]
+- [[SCO]]
+- [[SE engagement at Tech Summit (Orlando)]]
+- [[Blob API]]
+- [[Cost model calculator review]]
+- [[Block storage]]
+- [[Confluence documentation process]]
+- [[Pipelines product]]
+- [[Cloud GTM plays (Foundry/Bedrock/Vertex)]]
+- [[Microsoft competitive positioning (Azure Storage gaps)]]
+- [[Google RFP (TPU angle)]]
+- [[Cross-cloud platform strategy]]
+- [[ProServe transition (Carl to Rob)]]
+- [[Multi-cloud strategy]]
 
 ## Related
 
