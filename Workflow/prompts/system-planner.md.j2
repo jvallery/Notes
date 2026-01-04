@@ -34,8 +34,16 @@ Any path outside these prefixes will cause the plan to fail. Never generate path
 
 **WRONG**: `VAST/Accounts/`, `VAST/Contacts/`, `VAST/Meetings/` — these do NOT exist!
 
-## Entity Paths (Name → Folder)
+## Entity Paths (Name → Folder(s))
 {{ entity_paths | tojson(indent=2) }}
+
+**Disambiguation rule:** If a name maps to multiple folders (e.g., both `VAST/...` and `Personal/...`), pick the correct domain:
+- Prefer `VAST/...` for work note types (`customer`, `partners`, `rob`, and most `people`/`projects`).
+- Prefer `Personal/...` for personal note types (`journal`, `travel`) or explicitly personal content.
+- If still ambiguous, choose one path and add a warning listing all candidate folders.
+
+## Mentioned Entities (High-Confidence Matches)
+{{ mentioned_entities | tojson(indent=2) }}
 
 ## Entity Aliases
 {{ aliases | tojson(indent=2) }}

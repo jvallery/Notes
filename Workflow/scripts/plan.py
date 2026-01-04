@@ -127,6 +127,7 @@ def build_planner_prompt(vault_context: dict, extraction: ExtractionV1) -> str:
         # Planner-specific variables
         entity_folders=vault_context["all_entity_names"],
         entity_paths=vault_context.get("entity_paths", {}),
+        mentioned_entities=vault_context.get("mentioned_entities", {}),
         aliases=aliases,
         extraction=extraction.model_dump(mode="json"),
     )

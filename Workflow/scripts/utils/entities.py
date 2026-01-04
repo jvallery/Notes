@@ -128,20 +128,20 @@ def list_entities(entity_type: str) -> list[str]:
     ]
 
 
-def list_entity_paths() -> dict[str, str]:
+def list_entity_paths() -> dict[str, list[str]]:
     """
     List all entity names with their full vault-relative paths.
     
-    Returns dict mapping entity name -> vault-relative path.
+    Returns dict mapping entity name -> list of vault-relative paths.
     Used by planner to generate correct file paths.
     
     Example:
-        {"Jeff Denworth": "VAST/People/Jeff Denworth",
-         "Google": "VAST/Customers and Partners/Google",
-         "Greenhouse": "Personal/Projects/Greenhouse"}
+        {"Jeff Denworth": ["VAST/People/Jeff Denworth"],
+         "Google": ["VAST/Customers and Partners/Google"],
+         "Greenhouse": ["Personal/Projects/Greenhouse"]}
     """
     root = vault_root()
-    result = {}
+    result: dict[str, list[str]] = {}
     
     entity_types = [
         ("people", "VAST", "People"),
@@ -157,10 +157,10 @@ def list_entity_paths() -> dict[str, str]:
         if not base_path.exists():
             continue
         
-        for d in base_path.iterdir():
+        for d in sorted(base_path.iterdir(), key=lambda p: p.name.lower()):
             if d.is_dir() and not d.name.startswith((".", "_")):
                 rel_path = f"{domain}/{folder}/{d.name}"
-                result[d.name] = rel_path
+                result.setdefault(d.name, []).append(rel_path)
     
     return result
 

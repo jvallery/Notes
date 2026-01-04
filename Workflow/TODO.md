@@ -371,7 +371,11 @@ RUN PERIODICALLY:
 
 **Goal:** Avoid ambiguous entities and improve plan accuracy.
 
-**Status: IN PROGRESS** (@codex-20260104-4, started: 2026-01-04 14:47)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+- `entity_paths` now preserves multiple folders per name (VAST + Personal) instead of overwriting.
+- Planner prompt includes `mentioned_entities` plus explicit disambiguation guidance.
 
 **Tasks**
 
