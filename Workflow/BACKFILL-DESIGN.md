@@ -2,7 +2,8 @@
 
 > **Version**: 1.0.0  
 > **Created**: 2026-01-03  
-> **Status**: Design Review  
+> **Last Updated**: 2026-01-04  
+> **Status**: Implemented  
 > **Related**: [REFACTOR.md](REFACTOR.md) | [DESIGN.md](DESIGN.md)
 
 ## 1. Problem Statement
@@ -64,12 +65,12 @@ This should update:
 2. `VAST/People/Jeff Denworth/README.md` → Recent Context
 3. `VAST/People/Karl Vietmeier/README.md` → Recent Context
 
-### Current Design Gap
+### Current Behavior (Implemented)
 
-The current planner creates ONE primary note based on `note_type`:
+Multi-entity attribution is supported end-to-end:
 
-- If `note_type: customer` → creates in Google folder
-- Only updates ONE README
+- Normal pipeline: planner prompt (`prompts/system-planner.md.j2`) generates PATCH ops for relevant mentioned entities.
+- Backfill: aggregation (`scripts/backfill/aggregator.py`) uses extracted `mentions` to update multiple READMEs per note.
 
 ### Proposed Solution
 
@@ -101,7 +102,7 @@ Extraction already captures `mentions`:
       "patches": [
         { "primitive": "upsert_frontmatter", "frontmatter": [{"key": "last_contact", "value": "2025-11-14"}] },
         { "primitive": "append_under_heading", "heading": "## Recent Context",
-          "content": "- 2025-11-14: 2025-11-14 - GDC Alignment|GDC Alignment (via Google)" }
+          "content": "- 2025-11-14: [[2025-11-14 - GDC Alignment]] (via Google)\n" }
       ]
     },
     { "op": "patch", "path": "VAST/People/Karl Vietmeier/README.md", ... }
@@ -340,49 +341,29 @@ VAST/Projects/OVA/docs/archive/VAST_Lessons_Learned.md
 
 ---
 
-## 7. Prompt for Backfill Extraction
+## 7. Prompt + Structured Output
 
-````jinja
-{# prompts/backfill-extractor.md.j2 #}
+- **Prompt**: `prompts/backfill-extractor.md.j2`
+- **Structured output model**: `scripts/backfill/__init__.py` → `BackfillExtractionLite`
 
-You are extracting structured metadata from an existing note for indexing.
-
-## Task
-
-Given the note content, extract:
-1. A 1-2 sentence summary
-2. All people, projects, and accounts mentioned
-3. Up to 3 key facts worth remembering
-
-## Output Schema
-
-Return valid JSON only:
+Example output shape:
 
 ```json
 {
-  "summary": "Brief summary of what this note is about",
+  "summary": "1-2 sentence summary",
+  "suggested_title": "Optional improved title",
+  "note_type": "meeting|1-1|project|call|email|...",
   "mentions": {
-    "people": ["Name1", "Name2"],
+    "people": ["Name1"],
     "projects": ["Project1"],
     "accounts": ["Company1"]
   },
-  "key_facts": [
-    "Important fact 1",
-    "Important fact 2"
-  ]
+  "key_facts": ["Fact 1", "Fact 2"],
+  "topics_discussed": ["Topic 1", "Topic 2"],
+  "tasks": [{"text": "Action item", "owner": "Myself", "due": "YYYY-MM-DD"}],
+  "decisions": ["Decision 1"]
 }
-````
-
-## Context
-
-**Note path**: {{ note_path }}
-**Note date**: {{ note_date }}
-
-## Content
-
-{{ content }}
-
-````
+```
 
 ---
 
@@ -417,7 +398,7 @@ cat VAST/People/Jeff\ Denworth/README.md
 
 # 3. Run on full scope
 python scripts/backfill.py run --scope "VAST" --dry-run
-````
+```
 
 ---
 
@@ -427,17 +408,23 @@ python scripts/backfill.py run --scope "VAST" --dry-run
 # Full backfill pipeline
 python scripts/backfill.py run --scope "VAST" --dry-run
 
-# Individual phases
-python scripts/backfill.py scan --scope "VAST" -o manifest.json
-python scripts/backfill.py extract --manifest manifest.json -o extractions/
-python scripts/backfill.py aggregate --extractions extractions/ -o plan.json
-python scripts/backfill.py apply --plan plan.json
+# Individual phases (defaults write to Inbox/_extraction/backfill-*.json)
+python scripts/backfill.py scan --scope "VAST"
+python scripts/backfill.py extract --manifest ../Inbox/_extraction/backfill-manifest.json --limit 100 --verbose
+python scripts/backfill.py aggregate --extractions ../Inbox/_extraction/backfill-extractions.json
+python scripts/backfill.py apply --plan ../Inbox/_extraction/backfill-plan.json --dry-run
 
-# Options
---dry-run         # Show what would be done
---verbose         # Detailed output
---limit N         # Process only N notes (for testing)
---skip-existing   # Skip notes already in Recent Context
+# Utilities
+python scripts/backfill.py sync-manifests
+python scripts/backfill.py rename --extractions ../Inbox/_extraction/backfill-extractions.json --dry-run
+python scripts/backfill.py merge --propose
+
+# Options (see --help per command)
+--dry-run         # Preview changes without writing
+--verbose         # Detailed output (varies by command)
+--limit N         # Limit number of notes/entities processed
+--workers N       # Parallel extraction workers (run/enrich)
+--no-auto-create  # Disable auto-creation of new entity folders (run)
 ```
 
 ---

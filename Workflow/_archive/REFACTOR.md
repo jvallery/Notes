@@ -1,5 +1,7 @@
 # Refactor Plan: migrate.py Implementation Design
 
+> **ARCHIVED:** Historical planning document. May not match current code/config. See `Workflow/README.md` and `Workflow/DESIGN.md` for canonical docs.
+
 > **Version**: 1.0.0 (Final)  
 > **Created**: 2026-01-03  
 > **Status**: Ready for Implementation  

@@ -453,7 +453,12 @@ RUN PERIODICALLY:
 
 **Goal:** Remove stale/duplicate docs and align all references.
 
-**Status: IN PROGRESS** (@codex-20260104-5, started: 2026-01-04 15:00)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Completion Notes:**
+- Removed stale `Inbox/_bins` references across agent docs; canonical paths are `Workflow/prompts/` + `Workflow/templates/`.
+- Updated `Workflow/README.md`, `Workflow/REQUIREMENTS.md`, `Workflow/DESIGN.md`, and `Workflow/BACKFILL-DESIGN.md` to match current scripts/CLI flags and config structure.
+- Added `Workflow/_archive/README.md` and marked archived docs as non-canonical.
 
 **Tasks**
 

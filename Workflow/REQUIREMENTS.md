@@ -1,8 +1,8 @@
 # Requirements: Local-First Obsidian Automation System
 
-> **Version**: 1.0.0 (Final)  
-> **Last Updated**: 2026-01-03  
-> **Status**: Locked  
+> **Version**: 1.0.1  
+> **Last Updated**: 2026-01-04  
+> **Status**: Active  
 > **Related**: [DESIGN.md](DESIGN.md) | [STANDARDS.md](STANDARDS.md)
 
 ## 1. Problem Statement
@@ -48,7 +48,7 @@ Managing professional and personal knowledge across multiple input channels (mee
 | EXT-01 | **Schema-enforced extraction** using `client.responses.parse()` with Pydantic models | P0       | OpenAI Structured Outputs     |
 | EXT-02 | Extract tasks, decisions, facts, and participants from transcripts                               | P0       | ExtractionV1 model            |
 | EXT-03 | Extract action items and key info from emails                                                    | P0       | ExtractionV1 model            |
-| EXT-04 | Classify note type using profile-based rubrics (not personas)                                    | P0       | Profiles in `profiles/*.yaml` |
+| EXT-04 | Classify note type via heuristics (no API call) + select extraction profile                      | P0       | `scripts/classify.py` + `scripts/utils/profiles.py` |
 | EXT-05 | Identify existing entities (people, projects, accounts) to link against                          | P1       | Local fuzzy match + aliases   |
 | EXT-06 | **All API calls must use `store=False`**                                                         | P0       | Privacy requirement           |
 | EXT-07 | Output extraction to `Inbox/_extraction/{source}.extraction.json`                                | P0       | Python script                 |
@@ -164,7 +164,7 @@ Models are selected **policy-based** rather than hardcoded.
 ```python
 # All OpenAI API calls MUST use Structured Outputs:
 response = client.responses.parse(
-    model="gpt-4o",
+    model="gpt-5.2",  # Selected by policy in config.yaml (models.*)
     instructions="...",
     input="...",
     text_format=PydanticModel,  # Schema-enforced
@@ -177,7 +177,8 @@ response = client.responses.parse(
 | Configuration    | Location                           | Notes                        |
 | ---------------- | ---------------------------------- | ---------------------------- |
 | Model selection  | `config.yaml` → `models:`          | Policy-based with fallbacks  |
-| Profile mapping  | `config.yaml` → `profile_mapping:` | Folder → profile             |
+| Profiles         | `profiles/*.yaml`                  | Extraction rubrics           |
+| Profile selection| `scripts/utils/profiles.py`        | Path/type → profile name     |
 | Path definitions | `config.yaml` → `paths:`           | All folder paths centralized |
 | Prompts          | `Workflow/prompts/*.md.j2`         | Jinja2 templates             |
 | Entity aliases   | `Workflow/entities/aliases.yaml`   | Name → folder resolution     |

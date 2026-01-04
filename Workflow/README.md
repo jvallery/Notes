@@ -55,7 +55,7 @@ The system follows a **ChangePlan Pattern** that strictly separates AI reasoning
 │  Input:   Raw transcript or email (.md)                                  │
 │  AI:      Uses prompts/system-extractor.md.j2 + profile (work_sales etc) │
 │  Output:  Inbox/_extraction/{filename}.extraction.json                   │
-│  Model:   gpt-4o with Structured Outputs (ExtractionV1 schema)           │
+│  Model:   From config (default gpt-5.2, fallback gpt-4o)                 │
 └────────────────────────────────────┬─────────────────────────────────────┘
                                      │
                                      ▼
@@ -65,7 +65,7 @@ The system follows a **ChangePlan Pattern** that strictly separates AI reasoning
 │  Input:   .extraction.json file                                          │
 │  AI:      Uses prompts/system-planner.md.j2 with vault context           │
 │  Output:  Inbox/_extraction/{filename}.changeplan.json                   │
-│  Model:   gpt-4o with Structured Outputs (ChangePlan schema)             │
+│  Model:   From config (default gpt-5.2, fallback gpt-4o)                 │
 │  Ops:     create, patch, link (NO archive - that's deterministic)        │
 └────────────────────────────────────┬─────────────────────────────────────┘
                                      │
@@ -378,17 +378,26 @@ class Operation(BaseModel):
 ### `config.yaml`
 
 ```yaml
-# OpenAI models by phase
+# OpenAI models by phase (policy-based; see config.yaml for full list)
 models:
+  privacy:
+    store: false
+    api: responses
+
   extract_transcript:
-    model: gpt-4o
+    model: gpt-5.2
+    fallback: gpt-4o
     temperature: 0.0
+
   extract_email:
-    model: gpt-4o
+    model: gpt-5.2
+    fallback: gpt-4o
     temperature: 0.0
+
   planning:
-    model: gpt-4o
-    temperature: 0.1
+    model: gpt-5.2
+    fallback: gpt-4o
+    temperature: 0.0
 
 # Paths
 paths:
@@ -397,12 +406,14 @@ paths:
     email: Inbox/Email
     extraction: Inbox/_extraction
     archive: Inbox/_archive
-    failed: Inbox/_failed
 
-# Privacy
-api:
-  store: false # CRITICAL: Never store content in OpenAI
+  resources:
+    prompts: Workflow/prompts
+    templates: Workflow/templates
+    profiles: Workflow/profiles
 ```
+
+**Note:** Failed files are moved to `Inbox/_failed/YYYY-MM-DD/` by the scripts on error.
 
 ### Environment (`.env`)
 
@@ -468,9 +479,13 @@ Workflow/
 │   ├── work_leadership.yaml
 │   └── personal.yaml
 │
-└── _archive/               # Archived documentation
+└── _archive/               # Archived docs (not canonical; see _archive/README.md)
+    ├── README.md
+    ├── IMPLEMENTATION.md
     ├── REFACTOR.md
-    └── REVIEW-BUNDLE.md
+    ├── REVIEW-BUNDLE.md
+    ├── config_old.py
+    └── personas/
 ```
 
 ---
@@ -495,33 +510,34 @@ python scripts/process_inbox.py --verbose
 
 ```bash
 # List unprocessed transcripts
-ls -la Inbox/Transcripts/*.md
+ls -la ../Inbox/Transcripts/*.md
 
 # List unprocessed emails
-ls -la Inbox/Email/*.md
+ls -la ../Inbox/Email/*.md
 
 # Check extraction status
-ls -la Inbox/_extraction/
+ls -la ../Inbox/_extraction/
 ```
 
 #### Manual Single-File Processing
 
 ```bash
 # Extract one file
-python scripts/extract.py --file "Inbox/Transcripts/2026-01-03 Meeting.md"
+python scripts/extract.py --file "../Inbox/Transcripts/2026-01-03 Meeting.md"
 
 # Generate plan for extraction
-python scripts/plan.py --file "Inbox/_extraction/2026-01-03 Meeting.extraction.json"
+python scripts/plan.py --extraction "../Inbox/_extraction/2026-01-03 Meeting.extraction.json"
 
 # Apply the plan
-python scripts/apply.py --all
+python scripts/apply.py --changeplan "../Inbox/_extraction/2026-01-03 Meeting.changeplan.json"
 ```
 
 #### Create Missing READMEs
 
 ```bash
-# Use the backfill system to create READMEs for folders without them
-python scripts/backfill.py sync-manifests
+# Use the deterministic migration pipeline to bring the vault into STANDARDS.md compliance
+python scripts/migrate.py status
+python scripts/migrate.py run --scope VAST --dry-run
 ```
 
 #### Update Stale last_contact Dates

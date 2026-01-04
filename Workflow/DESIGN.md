@@ -1,8 +1,8 @@
 # Design: Local-First Obsidian Automation System
 
-> **Version**: 1.0.0 (Final)  
-> **Last Updated**: 2026-01-03  
-> **Status**: Locked  
+> **Version**: 1.0.1  
+> **Last Updated**: 2026-01-04  
+> **Status**: Active  
 > **Related**: [REQUIREMENTS.md](REQUIREMENTS.md) | [STANDARDS.md](STANDARDS.md)
 
 ## 1. System Architecture
@@ -389,17 +389,17 @@ def extract_content(source_file: Path, client: OpenAI, profile: dict) -> Extract
     content = source_file.read_text()
     system_prompt = build_prompt(profile)
 
-    # Schema-enforced extraction via Pydantic
+    # Schema-enforced extraction via Pydantic (Responses API)
     response = client.responses.parse(
-	    model="gpt-4o",
-	    instructions=system_prompt,
-	    input=content,
-	    text_format=ExtractionV1,  # Pydantic model
-	    store=False  # CRITICAL: Privacy
-	)
+        model="gpt-5.2",  # Selected by policy in config.yaml (models.*)
+        instructions=system_prompt,
+        input=content,
+        text_format=ExtractionV1,  # Pydantic model
+        store=False,  # CRITICAL: Privacy
+    )
 
-	extraction = response.output_parsed
-	extraction.source_file = str(source_file)
+    extraction = response.output_parsed
+    extraction.source_file = str(source_file)
 
     return extraction
 ```
@@ -426,22 +426,21 @@ def generate_changeplan(extraction: ExtractionV1, client: OpenAI) -> ChangePlan:
     # Only include metadata for entities mentioned in extraction,
     # plus a lightweight list of all entity names for fuzzy matching
     mentioned = set(extraction.participants)
-    for entity_list in extraction.mentions.values():
-        mentioned.update(entity_list)
+    mentioned.update(extraction.mentions.people)
+    mentioned.update(extraction.mentions.projects)
+    mentioned.update(extraction.mentions.accounts)
 
     vault_context = {
         "mentioned_entities": get_entity_metadata(mentioned),  # Full details
         "all_entity_names": list_all_entity_names(),           # Strings only
-        "aliases": load_aliases()
+        "entity_paths": list_entity_paths(),                   # name -> [paths...]
+        "aliases": load_aliases(),
     }
 
     response = client.responses.parse(
-        model="gpt-4o",
-        instructions=PLANNER_PROMPT,
-        input=json.dumps({
-            "extraction": extraction.model_dump(mode="json"),
-            "vault_context": vault_context
-        }),
+        model="gpt-5.2",  # Selected by policy in config.yaml (models.*)
+        instructions=build_planner_prompt(vault_context, extraction),
+        input="Generate the ChangePlan for this extraction.",
         text_format=ChangePlan,  # Pydantic model
         store=False
     )
@@ -782,19 +781,28 @@ Logged metrics:
 models:
   privacy:
     store: false # REQUIRED for privacy
-    api: "responses"
+    api: responses
 
-  classification:
-    model: "gpt-4o-mini"
-    temperature: 0.1
+  # Classification is heuristic today (no API call); config is reserved for future use.
+  classify:
+    model: gpt-4o-mini
+    fallback: gpt-5.2
+    temperature: 0.0
 
-  extraction:
-    model: "gpt-4o"
-    temperature: 0.2
+  extract_transcript:
+    model: gpt-5.2
+    fallback: gpt-4o
+    temperature: 0.0
 
   planning:
-    model: "gpt-4o"
-    temperature: 0.1
+    model: gpt-5.2
+    fallback: gpt-4o
+    temperature: 0.0
+
+  backfill:
+    model: gpt-4o-mini
+    fallback: gpt-5.2
+    temperature: 0.0
 
 processing:
   max_retries: 3
@@ -806,7 +814,7 @@ processing:
 # All API calls MUST use Structured Outputs + store=False
 
 response = client.responses.parse(
-    model="gpt-4o",
+    model="gpt-5.2",  # Selected by policy in config.yaml (models.*)
     instructions="...",
     input="...",
     text_format=PydanticModel,  # Schema-enforced
@@ -816,33 +824,17 @@ response = client.responses.parse(
 
 ---
 
-## 9. Implementation Checklist
+## 9. Implementation Status
 
-### Phase 1: Foundation
+Core pipeline components are implemented:
 
-- [ ] Create Pydantic models (`models/extraction.py`, `models/changeplan.py`)
-- [ ] Create profile YAML files (`profiles/*.yaml`)
-- [ ] Set up Python venv with dependencies
-- [ ] Create Jinja2 templates
+- ✅ Pydantic schemas (`models/`)
+- ✅ Prompts + templates + profiles (`prompts/`, `templates/`, `profiles/`)
+- ✅ Extract / Plan / Apply / Orchestrator (`scripts/extract.py`, `scripts/plan.py`, `scripts/apply.py`, `scripts/process_inbox.py`)
+- ✅ Transactional apply with rollback + git staging/commit
+- ✅ Deterministic migration + backfill CLIs (`scripts/migrate.py`, `scripts/backfill.py`)
 
-### Phase 2: Extract + Plan
-
-- [ ] Implement `extract.py` with `client.responses.parse()`
-- [ ] Implement `plan.py` with schema-enforced output
-- [ ] Test with 5 existing transcripts
-
-### Phase 3: Apply
-
-- [ ] Implement `patch_primitives.py`
-- [ ] Implement transactional `apply.py`
-- [ ] Implement `process_inbox.py` orchestrator
-- [ ] Test rollback behavior
-
-### Phase 4: Polish
-
-- [ ] Error handling and logging
-- [ ] Git integration
-- [ ] Apple Mail shortcut for .eml export
+Ongoing work and sequencing lives in [Workflow/TODO.md](TODO.md).
 
 ---
 

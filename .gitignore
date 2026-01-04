@@ -22,6 +22,9 @@ Inbox/_extraction/*.json
 # Uncomment if you don't want to sync Obsidian settings
 # .obsidian/
 
+# === Secrets / Local Notes ===
+KEYS.md
+
 # === Temporary Files ===
 *.tmp
 *.bak

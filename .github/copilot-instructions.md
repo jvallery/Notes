@@ -20,10 +20,15 @@ You have **full autonomy** to:
 ## Vault Architecture
 
 ```
+Workflow/           # Automation system (scripts, prompts, templates, schemas, profiles)
 Inbox/              # Processing queue for new content
-  _bins/            # Automation resources (templates, prompts, scripts)
   Email/            # Imported email threads (YYYY-MM-DD_HHMMSS_*.md)
   Transcripts/      # Raw meeting transcripts awaiting processing
+  Voice/            # Voice memos / dictation
+  Attachments/      # PDFs, screenshots, misc docs
+  _extraction/      # Intermediate artifacts (extraction/changeplan JSON) [gitignored]
+  _archive/         # Archived source files by date
+  _failed/          # Failures + error logs by date
 Personal/           # Personal life: tasks, projects, journal, homelab
 VAST/               # Work context (VAST Data - enterprise storage company)
   Customers and Partners/   # Account folders (Google/, Microsoft/, OpenAI/, etc.)
@@ -35,7 +40,7 @@ VAST/               # Work context (VAST Data - enterprise storage company)
 
 ## Note Types & Templates
 
-Notes are typed via YAML frontmatter `type:` field. Seven canonical types exist, each with a template in [Inbox/\_bins/\_templates/](Inbox/_bins/_templates/):
+Notes are typed via YAML frontmatter `type:` field. Seven canonical types exist, each with a template in `Workflow/templates/`:
 
 | Type       | Use Case                     | Destination                                        |
 | ---------- | ---------------------------- | -------------------------------------------------- |
@@ -49,18 +54,26 @@ Notes are typed via YAML frontmatter `type:` field. Seven canonical types exist,
 
 ## Meeting Extraction Pipeline
 
-Transcripts in `Inbox/Transcripts/` are processed by AI using:
+Inbox items are processed by the **ChangePlan pipeline**:
 
-1. **System prompt**: [Inbox/\_bins/\_prompts/system-meeting-extractor.md](Inbox/_bins/_prompts/system-meeting-extractor.md) - JSON schema, date normalization rules, output constraints
-2. **Unified prompt**: [Inbox/\_bins/\_prompts/meeting-extract-unified.md](Inbox/_bins/_prompts/meeting-extract-unified.md) - Injects run context and subtemplate
-3. **Subtemplates**: `Inbox/_bins/_prompts/subtemplates/{type}.md` - Type-specific extraction guidance
+1. **Extract** (`Workflow/scripts/extract.py`)
+   - Prompt: `Workflow/prompts/system-extractor.md.j2` (+ `base.md.j2`)
+   - Profile rubrics: `Workflow/profiles/*.yaml`
+   - Output: `Inbox/_extraction/*.extraction.json` (ExtractionV1)
+2. **Plan** (`Workflow/scripts/plan.py`)
+   - Prompt: `Workflow/prompts/system-planner.md.j2` (+ `base.md.j2`)
+   - Output: `Inbox/_extraction/*.changeplan.json` (ChangePlan)
+3. **Apply** (`Workflow/scripts/apply.py`)
+   - No AI calls; deterministic apply + rollback
+   - Archives sources to `Inbox/_archive/YYYY-MM-DD/`
+   - Stages and commits content directory changes
 
 **Critical extraction rules**:
 
 - Output is **raw JSON** (no markdown fences)
 - Dates must be **ISO-8601** (`YYYY-MM-DD`)
 - Task owners: use `"Myself"` for first-person references
-- Deduplicate across `tasks`, `follow_ups`, `decisions`
+- Deduplicate across `tasks`, `decisions`, `facts`
 
 ## Task Format (Obsidian Tasks Plugin)
 
@@ -82,16 +95,15 @@ All notes should include:
 
 ```yaml
 ---
-type: "customer|people|projects|rob|journal|partners|travel"
+type: customer|people|projects|rob|journal|partners|travel
 title: "Note Title"
 date: "YYYY-MM-DD"
-{ entity_key }: "Entity Name" # account/project/person/rob_forum/journal
-folder: "Destination/Path"
+{ entity_key }: "Entity Name" # account|project|person|rob_forum|journal
 participants: ["Name1", "Name2"]
+source: "transcript|email|manual"
+source_ref: "Inbox/_archive/YYYY-MM-DD/source.md"
 tags:
   - "type/{type}"
-  - "{entity_type}/{entity_name}"
-source: "transcript|email|manual"
 ---
 ```
 
@@ -125,7 +137,7 @@ See [Workflow/DESIGN.md](../Workflow/DESIGN.md) for the full AI-powered automati
 
 When processing extraction JSON from `Inbox/_extraction/`:
 
-1. **Create dated note** in destination folder using template from `Inbox/_bins/_templates/`
+1. **Create dated note** in destination folder using template from `Workflow/templates/`
 2. **Update root README.md** for the entity (Person/Project/Account):
    - Set `last_contact` date in frontmatter
    - Append new context to relevant sections
@@ -144,6 +156,9 @@ Each entity folder contains:
 
 Automation scripts live in `Workflow/scripts/` with venv at `Workflow/.venv/`:
 
-- `extract_transcript.py` — OpenAI extraction from transcripts
-- `extract_email.py` — OpenAI extraction from emails
-- `archive_processed.py` — Move processed files to archive
+- `process_inbox.py` — Orchestrates Extract → Plan → Apply
+- `extract.py` — Extract structured JSON (ExtractionV1)
+- `plan.py` — Generate ChangePlans (schema-enforced)
+- `apply.py` — Deterministic apply + rollback + archive + git commit
+- `backfill.py` — Historical README context backfill
+- `migrate.py` — Deterministic migration to STANDARDS.md compliance

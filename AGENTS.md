@@ -149,9 +149,13 @@ The agent loads context from these files to understand the vault:
    - Component architecture
    - AI model allocation
 
-3. **`Inbox/_bins/_prompts/`** - Extraction prompts
-   - JSON schema
-   - Type-specific guidance
+3. **`Workflow/prompts/`** + **`Workflow/templates/`** - Prompts + templates
+   - Jinja2 prompt layers (extract/plan/backfill)
+   - Note templates for created notes and README roots
+
+4. **`Workflow/schemas/`** - JSON schemas
+   - `extraction.schema.json` (ExtractionV1)
+   - `changeplan.schema.json` (ChangePlan)
 
 ---
 
@@ -198,7 +202,8 @@ Use a unique, traceable identifier:
 ```bash
 # 1. Ensure clean state and latest TODO
 cd ~/Documents/Notes
-git pull --rebase
+# If this repo has no remote tracking configured, this will error; that's OK.
+git pull --rebase || true
 
 # 2. Find available work
 grep -n "Status: NOT STARTED" Workflow/TODO.md | head -5

@@ -1,5 +1,7 @@
 # Implementation Plan: Local-First Obsidian Automation
 
+> **ARCHIVED:** Historical planning document. May not match current code/config. See `Workflow/README.md` and `Workflow/DESIGN.md` for canonical docs.
+
 > **Version**: 2.0.0  
 > **Created**: 2026-01-03  
 > **Last Updated**: 2026-01-03  

@@ -2,9 +2,11 @@
 
 > **Version**: 2.0.0  
 > **Created**: 2026-01-03  
-> **Last Updated**: 2026-01-03  
-> **Status**: Ready for Execution  
+> **Last Updated**: 2026-01-04  
+> **Status**: Reference (historical execution log)  
 > **Related**: [DESIGN.md](DESIGN.md) | [REQUIREMENTS.md](REQUIREMENTS.md) | [STANDARDS.md](STANDARDS.md) | [REFACTOR.md](REFACTOR.md)
+
+> **Note:** The core pipeline is implemented. This document is preserved as a historical execution log and may not reflect the latest code/config. For current operation, use `Workflow/README.md`, `Workflow/DESIGN.md`, and `Workflow/TODO.md`.
 
 This document breaks the automation system into sequenced, Claude-sized implementation steps. Each step is designed to be completable in a single agent session with clear deliverables, test criteria, and gate conditions.
 

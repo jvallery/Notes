@@ -1,5 +1,7 @@
 # PROMPTS & TEMPLATES REVIEW BUNDLE
 
+> **ARCHIVED:** Historical review bundle. May not match current code/config. See `Workflow/README.md` and `Workflow/DESIGN.md` for canonical docs.
+
 > **Generated**: 2026-01-03 (Updated with multi-entity support)
 > **Purpose**: External review of all AI prompts and Jinja2 templates before running migration/backfill
 > **Files Included**: 4 prompts + 8 templates + 4 profiles + 2 schemas
