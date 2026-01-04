@@ -1,68 +1,16 @@
 """Path utilities for vault operations."""
 
+from __future__ import annotations
+
 from pathlib import Path
-from datetime import date, datetime
+from datetime import date
 
 
 def get_archive_path(vault_root: Path, original_file: Path, archive_date: date | None = None) -> Path:
-    """
-    Get archive destination for a source file.
-    
-    Preserves source subfolder structure to prevent collisions:
-    - Inbox/Transcripts/foo.md -> _archive/YYYY-MM-DD/Transcripts/foo.md
-    - Inbox/Email/foo.md -> _archive/YYYY-MM-DD/Email/foo.md
-    
-    If a file with the same name already exists, appends a timestamp suffix.
-    
-    Args:
-        vault_root: Path to vault root
-        original_file: The source file being archived
-        archive_date: Date for archive folder (default: today)
-    
-    Returns:
-        Path to archive destination (unique, won't overwrite)
-    """
+    """Get archive destination for a source file."""
     if archive_date is None:
         archive_date = date.today()
-    
-    # Determine source subfolder (Transcripts, Email, Voice, Attachments, etc.)
-    # Try to get relative path from Inbox
-    try:
-        inbox_path = vault_root / "Inbox"
-        if original_file.is_absolute():
-            rel_to_inbox = original_file.relative_to(inbox_path)
-        else:
-            # Try resolving relative paths
-            resolved = (vault_root / original_file).resolve()
-            rel_to_inbox = resolved.relative_to(inbox_path.resolve())
-        
-        # Get the subfolder (first part of relative path, if any)
-        parts = rel_to_inbox.parts
-        if len(parts) > 1:
-            # Has subfolder: Transcripts/foo.md -> preserve Transcripts/
-            source_subfolder = parts[0]
-        else:
-            # Directly in Inbox (no subfolder)
-            source_subfolder = None
-    except (ValueError, TypeError):
-        # File not in Inbox or other error - no subfolder
-        source_subfolder = None
-    
-    # Build archive path with subfolder
-    archive_dir = vault_root / "Inbox" / "_archive" / archive_date.isoformat()
-    if source_subfolder:
-        archive_dir = archive_dir / source_subfolder
-    
-    base_path = archive_dir / original_file.name
-    
-    # Check for collision and add timestamp suffix if needed
-    if base_path.exists():
-        timestamp = datetime.now().strftime("%H%M%S")
-        stem = original_file.stem
-        suffix = original_file.suffix
-        return archive_dir / f"{stem}_{timestamp}{suffix}"
-    
-    return base_path
+    return vault_root / "Inbox" / "_archive" / archive_date.isoformat() / original_file.name
 
 
 def get_extraction_path(vault_root: Path, source_file: Path) -> Path:

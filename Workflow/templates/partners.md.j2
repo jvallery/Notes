@@ -1,53 +1,56 @@
 ---
-type: partners
+type: "partners"
 title: "{{ title }}"
 date: "{{ date }}"
-partner: "{{ partner }}"
+partner: "{{ partner | default(account, true) | default(entity_name, true) | default('Unknown') }}"
 participants: {{ participants | tojson }}
 source: "{{ source | default('transcript') }}"
 source_ref: "{{ source_ref | default('') }}"
 tags:
   - "type/partners"
-  - "partner/{{ partner | slugify }}"
+  - "partner/{{ (partner | default(account, true) | default(entity_name, true) | default('unknown')) | slugify }}"
   - "generated"
 {% if extra_tags is defined and extra_tags %}
 {% for tag in extra_tags %}
   - "{{ tag }}"
-{% endfor -%}
+{% endfor %}
 {% endif %}
 ---
 
 # {{ title }}
 
 **Date**: {{ date }}
-**Partner**: [[{{ partner }}]]
+**Partner**: [[{{ partner | default(account, true) | default(entity_name, true) | default('Unknown') }}]]
 **Attendees**: {{ participants | join(", ") }}
 
 ## Summary
 
-{{ summary }}
-{%- if tasks %}
+{{ summary | default('No summary available.') }}
 
+{% if tasks is defined and tasks %}
 ## Action Items
-{% for task in tasks %}
-- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task
-{% endfor -%}
-{% endif %}
-{%- if decisions %}
 
+{% for task in tasks %}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task #auto
+{% endfor %}
+{% endif %}
+
+{% if decisions is defined and decisions %}
 ## Decisions
+
 {% for decision in decisions %}
 - {{ decision }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
-{%- if facts %}
 
+{% if facts is defined and facts %}
 ## Key Information
+
 {% for fact in facts %}
 - {{ fact }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
 
 ---
 
-*Source: [[{{ source_ref }}|{{ source_ref | basename | strip_extension }}]]*
+*Source: [[{{ source_ref | basename | strip_extension }}]]*

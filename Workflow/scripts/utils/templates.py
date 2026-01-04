@@ -42,15 +42,6 @@ def strip_extension(path: str) -> str:
     return Path(path).stem
 
 
-def _tojson_filter(value, indent=None):
-    """
-    Custom tojson filter that handles indent parameter properly.
-    
-    Jinja2 templates can call this as {{ value | tojson }} or {{ value | tojson(indent=2) }}
-    """
-    return json.dumps(value, ensure_ascii=False, indent=indent)
-
-
 # ─────────────────────────────────────────────────────────────────────────────
 # Template Environment
 # ─────────────────────────────────────────────────────────────────────────────
@@ -82,7 +73,7 @@ def get_template_env() -> Environment:
     env.filters["slugify"] = slugify
     env.filters["basename"] = basename
     env.filters["strip_extension"] = strip_extension
-    env.filters["tojson"] = _tojson_filter
+    env.filters["tojson"] = lambda v, **kw: json.dumps(v, ensure_ascii=False, **kw)
     
     return env
 
@@ -106,7 +97,7 @@ def get_prompts_env() -> Environment:
     env.filters["slugify"] = slugify
     env.filters["basename"] = basename
     env.filters["strip_extension"] = strip_extension
-    env.filters["tojson"] = _tojson_filter
+    env.filters["tojson"] = lambda v, **kw: json.dumps(v, ensure_ascii=False, indent=2, **kw)
     
     return env
 
@@ -124,7 +115,6 @@ ALLOWED_TEMPLATES = {
     "rob.md.j2",
     "journal.md.j2",
     "partners.md.j2",
-    "travel.md.j2",
     "readme-migration.md.j2",
 }
 

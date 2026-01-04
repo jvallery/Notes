@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "baf56d36c1cecf68",
+        "id": "bb3befc8fd750d68",
         "type": "tabs",
         "children": [
           {
-            "id": "af216fe4a7d76c13",
+            "id": "b7700b243757b785",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/_MANIFEST.md",
+                "file": "TASKS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_MANIFEST"
+              "title": "TASKS"
             }
           }
         ]
@@ -41,7 +41,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 400.5
+    "width": 200
   },
   "right": {
     "id": "7096985b6aa08152",
@@ -154,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "VAST/People/_MANIFEST.md",
+                "file": "VAST/_Tasks/Inbox.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _MANIFEST"
+              "title": "Outline of Inbox"
             }
           }
         ],
@@ -183,53 +183,53 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "af216fe4a7d76c13",
+  "active": "b7700b243757b785",
   "lastOpenFiles": [
-    "Workflow/scripts/cleanup_todo.py",
-    "VAST/Projects/Microsoft MAI/README.md",
-    "VAST/Projects/Microsoft MAI/Project Status.md",
-    "VAST/Projects/Microsoft MAI/Notes.md",
-    "VAST/Projects/Microsoft MAI",
-    "Personal/Homelab/VMs/Backup Encryption Key.md",
-    "VAST/Projects/OVA/Proxmox/VAST 5.4 Cluster Activation PANIC Support Case.md",
-    "VAST/Customers and Partners/Google/GDC RFP Performance Template Instructions.md",
-    "VAST/Projects/TPU Track - Google Chips for Model Builders/README.md",
-    "VAST/Projects/TPU Track - Google Chips for Model Builders",
-    "VAST/Projects/Azure GA Milestones Alignment - Lifter Program/README.md",
-    "VAST/Projects/Azure GA Milestones Alignment - Lifter Program",
-    "VAST/Projects/Z4M RDMA Networking - GCP/README.md",
-    "VAST/Projects/Z4M RDMA Networking - GCP",
-    "VAST/Projects/Microsoft BizDev Education and Intros to Ronnie/README.md",
-    "VAST/Projects/Microsoft BizDev Education and Intros to Ronnie",
-    "VAST/Projects/OpenAI VAST POC - CoreWeave Cluster/README.md",
-    "VAST/Projects/OpenAI VAST POC - CoreWeave Cluster",
-    "VAST/Projects/Fort Meade Gemini-as-a-Service On-Prem Validation/README.md",
-    "VAST/Projects/Fort Meade Gemini-as-a-Service On-Prem Validation",
-    "VAST/Projects/Cloud-in-a-box Tier-2 Clouds/README.md",
-    "VAST/Projects/Cloud-in-a-box Tier-2 Clouds",
+    "Inbox/_archive/2026-01-04/tasks-legacy/Personal/_Tasks/Personal Tasks 2.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/Personal/_Tasks/Inbox 2.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/Personal/_Tasks/Personal Tasks.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/Personal/_Tasks/Inbox.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/VAST/_Tasks/Work Tasks.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/VAST/_Tasks/Inbox.md",
+    "Inbox/_archive/2026-01-04/tasks-legacy/VAST/_Tasks",
+    "Inbox/_archive/2026-01-04/tasks-legacy/VAST",
+    "Inbox/_extraction/2025-12-11_220036_4365_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-up.changeplan.applied",
+    "VAST/Customers and Partners/Microsoft/2025-12-11 - Microsoft Ignite Follow-up Meeting.md",
+    "Inbox/_extraction/2025-12-11_220036_4365_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-up.changeplan.json",
+    "Inbox/_extraction/2025-12-11_220036_4365_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-up.extraction.json",
+    "Workflow/_archive/personas/engineer.md",
+    "Workflow/_archive/personas",
+    "Workflow/_archive/config_old.py",
+    "Workflow/_archive/REVIEW-BUNDLE.md",
+    "Workflow/_archive/README.md",
+    "VAST/_Tasks/Work Tasks.md",
+    "VAST/_Tasks/Inbox.md",
+    "VAST/_Tasks",
+    "VAST/ROB/README.md",
     "VAST/ROB/Internal/2025-12-16 - VAST and Microsoft Strategic Discussion.md",
     "VAST/ROB/Internal",
-    "Workflow/scripts/migrate_old_readmes.py",
-    "VAST/People/Jonsi Stephenson/2025-10-31 - Aligning on VAST cloud strategy.md",
-    "VAST/People/Tomer Hagay/2025-10-24 - Engineering maturity and cloud strategy.md",
-    "VAST/People/Tomer Hagay/2025-10-24 - AI-first dev and cloud maturity.md",
-    "VAST/People/Jeff Denworth/2025-09-16 - VAST Azure GTM hiring.md",
-    "Inbox/_archive/2025-12-15/2025-12-15_183201_0409_Re-Google-Distributed-Cloud---RFP-Follow-up3-Encryption-key-.md",
-    "Inbox/_archive/2025-12-15/2025-12-12_160426_5605_Re-OpenAI.md",
-    "Inbox/_archive/2025-12-15/2025-12-11_220036_4365_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-up.md",
-    "VAST/Customers and Partners/Google/2025-12-15 - GDC RFP encryption questions.md",
-    "VAST/Customers and Partners/Microsoft/2025-12-11 - Microsoft Ignite follow-up intro.md",
-    "VAST/Customers and Partners/OpenAI/2025-12-12 - OpenAI intel from John Mao.md",
-    "VAST/Projects/Cisco POC DoD-IC/README.md",
-    "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
-    "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
+    "VAST/Projects/_MANIFEST.md",
+    "VAST/Projects/Z4M RDMA Networking - GCP/README.md",
+    "VAST/Projects/Z4M RDMA Networking - GCP",
+    "VAST/Projects/Win/README.md",
+    "VAST/Projects/Win-Loss + Product MBR/README.md",
+    "VAST/Projects/VIP/README.md",
+    "VAST/Projects/VAST-as-a-Service/README.md",
+    "VAST/Projects/VAST on Azure Integration/README.md",
+    "VAST/Projects/VAST database updates/README.md",
+    "VAST/Projects/Terraform Static VIP Reservation/README.md",
+    "VAST/Projects/TPU Track - Google Chips for Model Builders/README.md",
+    "VAST/Projects/Salesforce integration for marketplace transaction flow and data sync/README.md",
+    "VAST/Projects/Project Stargate/README.md",
+    "Personal/Projects/Frigate/snapshots/pool_2.jpg",
+    "Personal/Projects/Frigate/snapshots/patio_2.jpg",
+    "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",
+    "Personal/Projects/Frigate/snapshots/garage_1.jpg",
+    "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_1.jpg",
     "Personal/Projects/Frigate/snapshots/southyard_3.jpg",
     "Personal/Projects/Frigate/snapshots/southyard_2.jpg",
-    "Personal/Projects/Frigate/snapshots/southyard_1.jpg",
-    "Personal/Projects/Frigate/snapshots/skycam_west.jpg",
-    "Personal/Projects/Frigate/snapshots/skycam_east.jpg",
-    "Personal/Projects/Frigate/snapshots/pool_2.jpg"
+    "Personal/Projects/Frigate/snapshots/southyard_1.jpg"
   ]
 }

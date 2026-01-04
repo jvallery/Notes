@@ -1,281 +1,304 @@
 #!/usr/bin/env python3
 """
-Plan Phase: ExtractionV1 → ChangePlan JSON
+Plan Phase: Extraction JSON → ChangePlan JSON
 
 Reads extraction files and generates explicit file operation plans.
-Uses OpenAI Structured Outputs for schema-enforced planning.
+Uses OpenAI API to determine what changes to make to the vault.
 
 NO FILE MODIFICATIONS HAPPEN HERE - only planning.
-LLM generates create/patch/link operations only.
-Archive is handled deterministically in apply phase.
 """
 
 import json
 import sys
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import click
+import jsonschema
+from jinja2 import Environment, FileSystemLoader
+from openai import OpenAI
+from rich.console import Console
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from models.extraction import ExtractionV1
-from models.changeplan import ChangePlan
-from scripts.utils import (
+sys.path.insert(0, str(Path(__file__).parent))
+from utils import (
     load_config,
+    get_model_config,
     vault_root,
     workflow_root,
-    list_all_entity_names,
-    list_entity_paths,
-    get_entity_metadata,
+    list_entity_folders,
     load_aliases,
-    safe_read_text,
-    atomic_write,
-    get_client,
-    parse_structured,
-    check_api_key,
-    OpenAIError,
-    validate_changeplan,
+    resolve_mentions,
 )
 
 
-def find_unplanned() -> list[Path]:
-    """Find extractions without corresponding .changeplan.json."""
+console = Console()
+
+
+def get_openai_client() -> OpenAI:
+    """Get configured OpenAI client."""
+    import os
+    from dotenv import load_dotenv
+
+    load_dotenv(workflow_root() / ".env")
+
+    api_key = os.environ.get("OPENAI_API_KEY")
+    if not api_key:
+        raise ValueError("OPENAI_API_KEY not set in environment")
+
+    return OpenAI(api_key=api_key)
+
+
+def get_jinja_env() -> Environment:
+    """Get Jinja2 environment for prompts."""
+    return Environment(
+        loader=FileSystemLoader(workflow_root() / "prompts"),
+        trim_blocks=True,
+        lstrip_blocks=True,
+    )
+
+
+def load_changeplan_schema() -> dict:
+    """Load the ChangePlan JSON schema for validation."""
+    schema_path = workflow_root() / "schemas" / "changeplan.schema.json"
+
+    with open(schema_path, "r") as f:
+        return json.load(f)
+
+
+def find_pending_extractions() -> list[Path]:
+    """Find extraction files that don't have corresponding changeplans."""
+
     extraction_dir = vault_root() / "Inbox" / "_extraction"
 
     if not extraction_dir.exists():
         return []
 
-    unplanned = []
-    for f in extraction_dir.glob("*.extraction.json"):
-        changeplan_path = f.parent / f.name.replace(".extraction.json", ".changeplan.json")
-        if not changeplan_path.exists():
-            unplanned.append(f)
+    pending = []
 
-    return sorted(unplanned)
+    for extraction_file in extraction_dir.glob("*.extraction.json"):
+        changeplan_file = extraction_file.with_name(
+            extraction_file.name.replace(".extraction.json", ".changeplan.json")
+        )
 
+        if not changeplan_file.exists():
+            pending.append(extraction_file)
 
-def load_extraction(path: Path) -> ExtractionV1:
-    """Load extraction JSON from file."""
-    content = safe_read_text(path)
-    return ExtractionV1.model_validate_json(content)
+    return sorted(pending, key=lambda p: p.name)
 
 
-def gather_vault_context(extraction: ExtractionV1) -> dict:
-    """
-    Build FILTERED context for the planner.
-
-    CRITICAL: Only includes:
-    1. Full metadata for entities mentioned in extraction
-    2. Lightweight name-only list for fuzzy matching
-    3. Entity name-to-path mapping for correct file paths
-    4. Entity name and note type from extraction
-
-    This prevents context window explosion.
-    """
-    # Collect mentioned entity names
-    mentioned = set(extraction.participants)
-    
-    # Add entities from mentions
-    if extraction.mentions:
-        for entity_list in [extraction.mentions.people, extraction.mentions.projects, extraction.mentions.accounts]:
-            if entity_list:
-                mentioned.update(entity_list)
-    
-    if extraction.entity_name:
-        mentioned.add(extraction.entity_name)
+def build_vault_context() -> dict:
+    """Build context about existing vault structure for the planner."""
 
     return {
-        "mentioned_entities": get_entity_metadata(mentioned),
-        "all_entity_names": list_all_entity_names(),
-        "entity_paths": list_entity_paths(),  # Name → full path mapping
-        "note_type": extraction.note_type,
-        "entity_name": extraction.entity_name,
+        "entities": list_entity_folders(),
+        "aliases": load_aliases(),
+        "templates_available": [
+            "people.md.j2",
+            "customer.md.j2",
+            "projects.md.j2",
+            "rob.md.j2",
+            "journal.md.j2",
+        ],
     }
 
 
-def build_planner_prompt(vault_context: dict, extraction: ExtractionV1) -> str:
-    """Build the planner system prompt using Jinja2 template."""
-    from datetime import date, timedelta
-    from jinja2 import Environment, FileSystemLoader
+def generate_changeplan(
+    extraction: dict, client: OpenAI, jinja_env: Environment
+) -> dict:
+    """Generate a ChangePlan from an extraction."""
 
-    prompts_dir = workflow_root() / "prompts"
-    env = Environment(
-        loader=FileSystemLoader(str(prompts_dir)),
-        trim_blocks=True,
-        lstrip_blocks=True,
+    model_config = get_model_config("planning")
+
+    # Build vault context
+    vault_context = build_vault_context()
+
+    # Build system prompt
+    template = jinja_env.get_template("system-planner.md.j2")
+    tomorrow = (datetime.now() + __import__('datetime').timedelta(days=1)).strftime("%Y-%m-%d")
+    next_week = (datetime.now() + __import__('datetime').timedelta(days=7)).strftime("%Y-%m-%d")
+    system_prompt = template.render(
+        current_date=datetime.now().strftime("%Y-%m-%d"),
+        tomorrow=tomorrow,
+        next_week=next_week,
+        entity_folders=vault_context.get("entities", {}),
+        aliases=vault_context.get("aliases", {}),
+        known_entities=vault_context.get("entities", {}),
+        extraction=extraction,
     )
 
-    # Ensure tojson filter exists
-    env.filters["tojson"] = lambda v, **kw: json.dumps(v, ensure_ascii=False, **kw)
+    # Resolve entity mentions
+    classification = extraction.get("classification", {})
+    extracted = extraction.get("extraction", {})
+    mentions = classification.get("entities", {})
 
-    template = env.get_template("system-planner.md.j2")
-    
-    # Calculate date context for base template
-    today = date.today()
-    
-    # Load aliases for entity resolution
-    aliases = load_aliases()
-    
-    # Build template context with all required variables
-    return template.render(
-        # Base template variables
-        current_date=today.isoformat(),
-        tomorrow=(today + timedelta(days=1)).isoformat(),
-        next_week=(today + timedelta(days=7)).isoformat(),
-        known_entities=vault_context["all_entity_names"],
-        # Planner-specific variables
-        entity_folders=vault_context["all_entity_names"],
-        entity_paths=vault_context.get("entity_paths", {}),
-        mentioned_entities=vault_context.get("mentioned_entities", {}),
-        aliases=aliases,
-        extraction=extraction.model_dump(mode="json"),
+    resolved_entities = resolve_mentions(mentions) if mentions else {}
+
+    user_prompt = json.dumps(
+        {
+            "source_file": extraction.get("source_file"),
+            "classification": classification,
+            "extraction": extracted,
+            "resolved_entities": resolved_entities,
+        },
+        indent=2,
     )
 
+    try:
+        response = client.chat.completions.create(
+            model=model_config["model"],
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            response_format={"type": "json_object"},
+            temperature=model_config["temperature"],
+        )
 
-# validate_changeplan is imported from scripts.utils.validation
+        changeplan = json.loads(response.choices[0].message.content)
+
+        # Add metadata
+        changeplan["version"] = "1.0"
+        changeplan["source"] = {
+            "file": extraction.get("source_file"),
+            "extraction": extraction.get("source_file", "")
+            .replace("Inbox/", "Inbox/_extraction/")
+            .replace(".md", ".extraction.json"),
+            "processed_at": datetime.now().isoformat(),
+        }
+
+        return changeplan
+
+    except Exception as e:
+        console.print(f"[red]Planning failed: {e}[/red]")
+        return {
+            "version": "1.0",
+            "source": {"file": extraction.get("source_file")},
+            "operations": [],
+            "validation": {
+                "schema_valid": False,
+                "conflicts": [],
+                "warnings": [f"Planning failed: {str(e)}"],
+            },
+        }
 
 
-def generate_plan(extraction_path: Path, client, config) -> tuple[ChangePlan, dict]:
-    """Generate ChangePlan from extraction using OpenAI Structured Outputs."""
-    extraction = load_extraction(extraction_path)
-    vault_context = gather_vault_context(extraction)
+def validate_changeplan(changeplan: dict) -> tuple[bool, list[str]]:
+    """Validate a changeplan against the JSON schema."""
 
-    system_prompt = build_planner_prompt(vault_context, extraction)
+    schema = load_changeplan_schema()
+    errors = []
 
-    # Get planning model config
-    models_config = config.get("models", {})
-    model_config = models_config.get("planning", {})
-    model = model_config.get("model", "gpt-5.2")
-    temperature = model_config.get("temperature", 0.1)
+    try:
+        jsonschema.validate(changeplan, schema)
+        return True, []
+    except jsonschema.ValidationError as e:
+        errors.append(f"Schema validation error: {e.message}")
+        return False, errors
+    except Exception as e:
+        errors.append(f"Validation error: {str(e)}")
+        return False, errors
 
-    plan, metadata = parse_structured(
-        client=client,
-        model=model,
-        system_prompt=system_prompt,
-        user_content="Generate the ChangePlan for this extraction.",
-        response_model=ChangePlan,
-        temperature=temperature,
+
+def save_changeplan(extraction_file: Path, changeplan: dict) -> Path:
+    """Save changeplan to JSON file."""
+
+    # Validate before saving
+    is_valid, errors = validate_changeplan(changeplan)
+
+    changeplan["validation"] = changeplan.get("validation", {})
+    changeplan["validation"]["schema_valid"] = is_valid
+
+    if errors:
+        changeplan["validation"]["warnings"] = (
+            changeplan["validation"].get("warnings", []) + errors
+        )
+
+    output_path = extraction_file.with_name(
+        extraction_file.name.replace(".extraction.json", ".changeplan.json")
     )
 
-    # Set source references
-    plan.extraction_file = str(extraction_path.name)
-    plan.source_file = extraction.source_file
-    plan.created_at = datetime.now()
+    with open(output_path, "w") as f:
+        json.dump(changeplan, f, indent=2, ensure_ascii=False)
 
-    # Validate
-    issues = validate_changeplan(plan)
-    if issues:
-        plan.warnings.extend(issues)
-
-    return plan, metadata
-
-
-def save_plan(plan: ChangePlan, output_path: Path) -> None:
-    """Save ChangePlan JSON to disk."""
-    json_str = plan.model_dump_json(indent=2)
-    atomic_write(output_path, json_str)
+    return output_path
 
 
 @click.command()
 @click.option(
-    "--extraction",
-    "extraction_path",
+    "--file",
+    "-f",
+    "single_file",
     type=click.Path(exists=True),
-    help="Plan from single extraction file",
+    help="Process a single extraction file",
 )
-@click.option("--all", "plan_all", is_flag=True, help="Plan all pending extractions")
-@click.option("--dry-run", is_flag=True, help="Show what would be planned without saving")
-@click.option("-v", "--verbose", is_flag=True, help="Show detailed output")
-def main(extraction_path: str | None, plan_all: bool, dry_run: bool, verbose: bool):
+@click.option(
+    "--dry-run", is_flag=True, help="Show what would be planned without saving"
+)
+@click.option("--verbose", "-v", is_flag=True, help="Show detailed output")
+def main(single_file: Optional[str], dry_run: bool, verbose: bool):
     """Generate ChangePlans from extraction files."""
-    
-    click.echo(click.style("Plan Phase", fg="blue", bold=True))
-    click.echo("=" * 40)
+
+    console.print("[bold blue]Plan Phase[/bold blue]")
+    console.print("=" * 40)
 
     # Find files to process
-    if extraction_path:
-        files = [Path(extraction_path)]
-    elif plan_all:
-        files = find_unplanned()
+    if single_file:
+        files = [Path(single_file)]
     else:
-        click.echo("Specify --extraction or --all")
-        return
+        files = find_pending_extractions()
 
     if not files:
-        click.echo(click.style("No pending extractions found.", fg="yellow"))
+        console.print("[yellow]No pending extractions found.[/yellow]")
         return
 
-    click.echo(f"Found {click.style(str(len(files)), bold=True)} extraction(s) to plan")
+    console.print(f"Found [bold]{len(files)}[/bold] extractions to plan")
 
-    if dry_run:
-        for f in files:
-            click.echo(f"  Would plan: {f.name}")
-        return
-
-    # Check API key only when actually processing
-    if not check_api_key():
-        click.echo(click.style("Error: OPENAI_API_KEY not set", fg="red"))
-        click.echo("Set it with: export OPENAI_API_KEY=sk-...")
-        return
-
-    if dry_run:
-        for f in files:
-            click.echo(f"  Would plan: {f.name}")
-        return
-
-    # Load config and initialize client
-    config = load_config()
-    client = get_client()
+    # Initialize clients
+    client = get_openai_client()
+    jinja_env = get_jinja_env()
 
     # Process files
-    success_count = 0
-    failed_count = 0
+    results = {"success": [], "failed": []}
 
-    for f in files:
+    for file in files:
         try:
             if verbose:
-                click.echo(f"\nPlanning: {f.name}")
+                console.print(f"\n[dim]Planning: {file.name}[/dim]")
 
-            plan, metadata = generate_plan(f, client, config)
+            # Load extraction
+            with open(file, "r") as f:
+                extraction = json.load(f)
 
-            output_path = f.parent / f.name.replace(".extraction.json", ".changeplan.json")
-            save_plan(plan, output_path)
-
-            success_count += 1
-
-            # Show summary
-            ops_summary = ", ".join(op.op.value for op in plan.operations) if plan.operations else "none"
-            latency = metadata.get("latency_ms", "?")
-            tokens = metadata.get("total_tokens", "?")
+            # Generate plan
+            changeplan = generate_changeplan(extraction, client, jinja_env)
 
             if verbose:
-                click.echo(f"  → {output_path.name}")
-                click.echo(f"    Operations: {ops_summary}")
-                click.echo(f"    Latency: {latency}ms, Tokens: {tokens}")
+                op_count = len(changeplan.get("operations", []))
+                console.print(f"  Generated {op_count} operations")
 
-                if plan.warnings:
-                    for warning in plan.warnings:
-                        click.echo(click.style(f"    ⚠ {warning}", fg="yellow"))
-            else:
-                status = click.style("✓", fg="green") if not plan.warnings else click.style("⚠", fg="yellow")
-                click.echo(f"{status} {f.stem} → {len(plan.operations)} ops ({latency}ms)")
+            if dry_run:
+                console.print(json.dumps(changeplan, indent=2))
+                continue
 
-        except OpenAIError as e:
-            failed_count += 1
-            click.echo(click.style(f"✗ {f.name}: {e}", fg="red"))
+            # Save plan
+            output_path = save_changeplan(file, changeplan)
+            results["success"].append(str(output_path))
+
+            if verbose:
+                valid = changeplan.get("validation", {}).get("schema_valid", False)
+                status = "[green]✓[/green]" if valid else "[yellow]⚠[/yellow]"
+                console.print(f"  {status} → {output_path.name}")
+
         except Exception as e:
-            failed_count += 1
-            click.echo(click.style(f"✗ {f.name}: {e}", fg="red"))
-            if verbose:
-                import traceback
-                traceback.print_exc()
+            results["failed"].append({"file": str(file), "error": str(e)})
+            console.print(f"[red]Failed: {file.name} - {e}[/red]")
 
     # Summary
-    click.echo("\n" + "=" * 40)
-    click.echo(f"{click.style('Success:', fg='green')} {success_count}")
-    if failed_count:
-        click.echo(f"{click.style('Failed:', fg='red')} {failed_count}")
+    if not dry_run:
+        console.print("\n" + "=" * 40)
+        console.print(f"[green]Success: {len(results['success'])}[/green]")
+        console.print(f"[red]Failed: {len(results['failed'])}[/red]")
 
 
 if __name__ == "__main__":

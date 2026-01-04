@@ -5,6 +5,8 @@ Configuration loader for Notes Vault automation.
 Loads settings from config.yaml and .env files.
 """
 
+from __future__ import annotations
+
 import os
 from pathlib import Path
 from typing import Any
@@ -101,21 +103,16 @@ def get_model_config(task: str) -> dict[str, Any]:
 
     task_config = models.get(task, {})
 
-    # Apply defaults - prefer gpt-5.2, no max_tokens constraint
-    result = {
+    # Apply defaults
+    return {
         "provider": task_config.get(
             "provider", models.get("default_provider", "openai")
         ),
-        "model": task_config.get("model", "gpt-5.2"),
+        "model": task_config.get("model", "gpt-4o"),
         "fallback": task_config.get("fallback"),
-        "temperature": task_config.get("temperature", 0.0),
+        "temperature": task_config.get("temperature", 0.2),
+        "max_tokens": task_config.get("max_tokens", 4096),
     }
-    
-    # Only include max_tokens if explicitly set in config
-    if "max_tokens" in task_config:
-        result["max_tokens"] = task_config["max_tokens"]
-    
-    return result
 
 
 def get_persona(note_type: str, sub_type: str = None) -> str | None:

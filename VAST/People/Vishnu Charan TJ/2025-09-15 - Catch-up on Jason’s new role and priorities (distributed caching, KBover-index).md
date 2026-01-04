@@ -1,0 +1,183 @@
+---
+type: "1-1"
+created: { { DATE } }
+status: "done"
+counterpart: "[[Vishnu]]"
+role: ""
+team: ""
+company: ""
+series: "1-1/Vishnu"
+cadence: "Weekly"
+meeting_mode: "Video"
+location_or_link: ""
+calendar_url: ""
+start_time: ""
+duration_min: "30"
+privacy: "internal"
+ai_extracted: true
+transcript_path: "00 Inbox/Transcripts/20250915 1104 Teams Meeting (Parallels) Transcription.txt"
+tags: [meeting, "1-1"]
+---
+
+# 1:1 — Vishnu — 2025-09-15
+
+> [!info] Purpose
+> Build trust, surface and remove blockers, align on priorities, coach & grow.
+
+## Summary
+
+Catch-up on Jason’s new role and priorities (distributed caching, KB/over-index). Deep dive into industry fragmentation around ‘distributed caching’ definitions, Ray misconceptions, and storage backends. Vishnu outlined NVIDIA Dynamo KVCache offload plans and OSS client work for Azure Blobs. Blobfuse distributed caching preview status: distributed checkpointing with write replicas, resync on node recovery, async flush to Blobs; no cache-on-read, no read replicas, no fan-in yet. Performance looks good on NIC saturation; large-scale and MLPerf-style benchmarks pending. Jason will join the Blockfuse meeting tomorrow; Vishnu will share preview demo steps/bits.
+
+## Key facts learned
+
+- Jason’s focus areas: distributed caching and KB/over-index problems; aligning with Jay’s priorities.
+- Industry confusion on ‘distributed caching’ (e.g., Ray distribution ≠ cache with replicas/redundancy).
+- Storage teams referenced AC store and EI store; ambiguity whether they are true distributed caches vs shared storage.
+- Vishnu engaging NVIDIA Dynamo for KVCache offload with a potential Azure Blob backend integration.
+- Dynamo positions a KV block manager handling GPU↔CPU↔local SSD↔cloud tiers; uses GDS and RDMA; has S3 today.
+- Alternative/related efforts mentioned: Vast as KV store, CoreWeave work, LM Cache, VLLM’s AI Bricks.
+- OSS client work for Azure Blobs: FS Spec PRs, LangChain integrations, MCB servers to improve default adoption.
+- Blobfuse distributed caching preview targets distributed checkpointing with write replicas and async flush to Blobs.
+- Preview gaps: no cache-on-read, no read replicas, no fan-in; recovery assumes most recent checkpoints.
+- Preview testing: node-to-node comms good; scaled to ~100 nodes in CycleCloud; plan to test higher scales (e.g., 1000).
+- Performance: writes can max NICs (north-south and east-west); need MLPerf-like benchmarks and larger datasets.
+- Prospective testers: Figure AI lined up; MIT open to a short POC; demo environment being prepared.
+- Manish asked Jay to drive the architectural direction for distributed caching; meetings ongoing.
+- Vishnu was promoted in September.
+
+## Outcomes
+
+- Jason will attend the Blockfuse execution/status meeting on 2025-09-16.
+- Vishnu will share Blobfuse distributed caching preview demo steps and bits with Jason once ready.
+- Alignment to proceed with the preview focused on distributed checkpointing while gathering feedback on missing read/fan-in features.
+
+## Decisions
+
+- Preview scope remains write-path with replicas, async flush to Blobs, and resync on node recovery; cache-on-read and fan-in not included initially.
+- Use early customer testing (Figure AI, potential MIT POC) to validate preview and guide next features.
+
+## Action items (for Vishnu)
+
+- [x] Share Blobfuse distributed caching preview demo steps and bits after the internal demo setup is ready @Vishnu ⏫ 📅 2025-09-16 ✅ 2025-10-26
+- [x] Attend Blockfuse execution/status meeting @Jason Vallery ⏫ 📅 2025-09-16 ✅ 2025-10-26
+- [x] Sync with Tomer and Vikas to learn outcomes of last week’s distributed caching meeting @Vishnu ⏫ 📅 2025-09-16 ✅ 2025-10-26
+- [x] Request and compile detailed performance numbers; plan MLPerf-style benchmarks and larger-scale tests (up to ~1000 nodes) @Vishnu 🔼 ✅ 2025-10-26
+- [x] Play with the Blobfuse preview once bits/instructions are received and provide feedback @Jason Vallery 🔼 ✅ 2025-10-26
+- [x] Review NVIDIA Dynamo materials and assess fit alongside alternative frameworks (LM Cache, AI Bricks, etc.) @Jason Vallery 🔼 ✅ 2025-10-26
+
+## Follow-ups
+
+- [x] Clarify and document a shared definition and requirements for ‘distributed caching’ across teams (replicas, redundancy, tiering, fan-in) @Jay ⏫ ✅ 2025-10-26
+- [x] Evaluate feasibility/timeline for adding cache-on-read, read replicas, and fan-in support to Blobfuse @Blobfuse team ⏫ ✅ 2025-10-26
+- [x] Determine approach for GPUDirect/RDMA (and potential successor transports) integration in the caching path @Jay 🔼 ✅ 2025-10-26
+- [x] Advance NVIDIA Dynamo Azure Blob backend integration plan and community contribution path @Vishnu 🔼 ✅ 2025-10-26
+- [x] Confirm whether AC store/EI store qualify as distributed caches vs shared storage in target scenarios @Container storage team 🔼 ✅ 2025-10-26
+
+## Risks
+
+- Feature gaps (no cache-on-read/read replicas/fan-in) may limit applicability for some workloads.
+- Vendor lock-in concerns if relying on NVIDIA-native stacks; inferencing frameworks may diversify beyond NVIDIA.
+- Ambiguity across teams about what constitutes ‘distributed caching’ could lead to misaligned solutions.
+- Performance at larger scales and under mixed read/write patterns is unproven.
+- Customer expectations for GPUDirect/RDMA paths may exceed current Blobfuse preview capabilities.
+- Transport protocols may evolve beyond RDMA, impacting design choices made now.
+
+## Open questions
+
+- What are the right platform primitives below the inferencing stack to support KV offload across diverse frameworks?
+- Which transport protocols (RDMA or alternatives) should be targeted for future-proof performance?
+- Does Ray offer any capabilities that materially help with true distributed caching requirements, or should it be considered out of scope?
+- Are AC store and EI store fit-for-purpose as distributed caches or simply shared storage backends?
+- When can cache-on-read, read replicas, and fan-in be supported in the Blobfuse distributed caching roadmap?
+- How does NVIDIA Dynamo compare to alternatives (Vast KV, CoreWeave approaches, LM Cache, VLLM AI Bricks) for multi-modal, multi-node KV management?
+- What performance will the preview demonstrate at higher scales and under realistic MLPerf-like workloads?
+
+> Next meeting (if any): 2025-09-16
+
+---
+
+<!-- ai:transcript:start -->
+
+## Transcript (auto)
+
+```text
+[00:00:05.15] Remote : Silence Hi Jason.silence Good. Sorry, just a second. Both my camera and my... Speakers don't seem to be working. I know that you're speaking, but I'm not able to hear you. What is that? I don't know why this happens, keeps happening. Yes. Teams always, yeah. But Teams always picks the one audio that doesn't work on my laptop. So my monitor also has an output, and my laptop has the output. The laptop is the only one that actually has a speaker, monitor only has that headphone jack. But it inevitably, not even consistently, it somehow picks the monitors. speakers at different stages, and it kind of confuses me.
+
+[00:01:11.37] Jabra Speak 710 :  Jason Vallery- Okay.
+
+[00:01:12.45] Remote : - How are you?
+
+[00:01:15.65] Jabra Speak 710 :  Jason Vallery- Good, how are you?
+
+[00:01:16.56] Remote : - Doing good, doing good. It's been a while. You took a sabbatical, right? How does it feel?
+
+[00:01:23.19] Jabra Speak 710 :  Jason Vallery- It was good. My wife, the first week I was off, had an accident, nothing serious, but she fell and injured her knee and needed to have
+
+[00:01:36.30] Remote : Knee replacements.
+man
+[00:01:37.30] Jabra Speak 710 :  Jason ValleryOh. So she had her knee replaced like two weeks in, and it meant that we really had to change what our plans were. We were going to, you know, maybe do a little travel and some other things. So we were home all summer because she was recovering, but I got to spend some time with the kids and, um... My son, I'm sure you know, he's a college student in computer science, he and I got to do a lot of heads-down learning. We did a lot of agentic coding, playing with codecs and playing with Copilot, and we worked on a project together, and so it was fun. I got to just completely remove work from my head. from my mind for three months and I appreciate it. So yeah, and now I'm back in a different job.
+
+[00:02:20.04] Remote : That's nice. Yeah, yeah, I noticed that change. I was like, I was asking folks if they knew that this was happening, and I didn't, I had no clue that, you know, you were moving to this kind of role. I mean, I obviously. I thought you'd be you'd be able to excel there as well because you did that part pretty well anyway Uh, so I thought yeah sure. Why not? Uh is what is how I looked at it and I think it's also an exciting space for you to be even closer Uh to the future of the ai infrastructure. So I thought yeah, maybe jason wants to do a lot more technical stuff now Yeah, I mean having worked with open and
+
+[00:03:00.05] Jabra Speak 710 :  Jason ValleryAnd everyone else. It's a multivariate reasons and problem space of why it all went down and what happened and I'll spare you the gory details but I'll just say that it probably makes the most sense for me to find a different path and this is a path that I have a lot of passion around. and I like Jay and I like working with Jay. So, um, you know, I'm back and starting to dig in on what this new role looks like. Um, I really don't have a ton of clarity yet, you know, I'm just starting to kind of, uh, get up to speed on like what happened while I was out, um, you know, what Jay's priorities are and, you know, how I can. those. Initial set of conversations with Jay on what he wants me looking at are certainly distributed caching and you know the over the index problem the KB problem. So I'm mostly focused right now on distributed caching and just getting an understanding of what's out there beyond BlogViews, beyond what opening I did, and just kind of making sure I have a comprehensive picture of everything going on. I'm also very interested in learning what's happened in BlogViews since I left, and you know, what you guys accomplished over the summer. So I know there's a meeting tomorrow. I'll certainly we joined that and I'd love to hear from you on sort of what you see the current state uh looking
+
+[00:04:36.00] Remote : Like. Yeah absolutely I was very happy to see you there because I thought we are trying to solve this distributed caching so there are multiple efforts happening across the board and there are multiple understandings of how a distributed caching should look like or should even function like for example confusions as to whether ray offers distributed caching or do we need to integrate with ray and then assume that it should just work and then i was digging into more details as to how does ray even do distribution right it actually does not do distributed caching in the way that we imagine it to have replicas and copies and redundancy and all of that it only has distribution to have multiple runs of the same data on the same model so that if you get multiple results you can compare those results right that's the kind of distribution that Ray talks about and because there's so many ways and things can be distributed there is always the thought as oh they offer distributed caching or distributed storage. Why do we just not integrate with Ray and just assume that things work right? So there are these that the things that we need to go into the details that have to be brought up and said okay in distributed caching it's not that every distributed solution or storage solution works in the same way. Any distributed system has its own ways to connect with different parts of It does not mean that they all have a distributed caching mechanism, right? That's the part that I think everybody's struggling. Say, for example, I was talking to the container storage team and they were talking about AC store and they spoke about EI store and then AC store and then there was a question as to whether AC store is a distributed caching solution or just a shared system that they can have fast, low latency access. Because you can say that it is distributed across nodes because every node can connect to that as the one storage. Or you can just say in the traditional way, it's the shared storage. It's just a shared pool of nodes that can be accessed from different nodes for that cluster. So there are multiple ways. in which distribution can be defined, and that's, I think, where everybody's struggling. Everybody has their own defijnition of what a distribution looks like, and then, of course, the features and functionalities and everything comes into play. That's where I think the consolidation approach works, and that's where I think Manish also last time took a stand that we understand some use cases, how we are going to execute this because there are so many questions as to why the solution won't work, what level is this, what layer is this working on, what are the features that this can enable and all that. The reason for some of those conversations also came up because when we introduced the distributed caching, whatever we're going to preview with block views, there was immediate thought of, okay, this is great, but now you're still using the future. When are you going to connect GP directs? When are you going to go RDMA? Because what is the point of having a distributed solution between two nodes that already have RDMA connections if you're not going to use them? And then the question came to whether BlockFuse distribution is the right thing to do, and then it blew up, saying, OK, we don't even understand how the overall distribution should look like if BlockFuse needs to make a change. do we need something more that can support the gpu direct connections can block views actually talk talk there all these different things came up and then it became an architectural conversation as to okay this is somebody needs to technically tell us what is possible and what is not possible and that's why it was given to jay and said jay please solve this is how manish you know came to that conclusion in the in the in the meeting that had the distributed caching review. So that's how it went about and Since then I'm I've been trying to so I am assuming they've already met I don't know if you were part of the conversation, but I think they met last week I spoke to Ganesan and he mentioned that there was a meeting But I made to go find out what exactly were discussed. I'm gonna go talk to Tomer and Vikas tomorrow when when hopefully they let us know what's happening there and I'm going to find out more and try to be part of that conversation because I also want to understand what's happening and share my insights on what I'm learning as well. Meanwhile, we've been doing something very similar from a KVK, so BlobViews, right? Everybody, we focus so much on distributed check pointing and model loading and all of that, but the KVCache scenario has come up pretty nicely in the last few weeks and months, right? Where one of the teams, Jay connected us to a core AI team who was looking for a KVCache offload, and they were looking for a solution. that unfortunately needs to function locally, which means they need a way to move data from GPU to CPU to local SSDs, so that if the KVCache gets full on the GPU, they tear it down to CPU, and if it gets full there, tear it down to local SSDs. Now, the conversation there has passed a little bit. we are waiting for this preview to come out so that we can figure out how to talk to it because they are not interested in moving to the last tier of storage yet. They don't see a need to do that yet which means we have to when we pitch a solution with Blobviews that connects to storage and maintains the metadata there you have to figure out how it fits right from a KVCache offload perspective. trying to figure that out and I'm going to talk to them anyway after we have this preview ready and all that, but while that was happening, we also had conversations with NVIDIA Dynamo who have their own KVCache, right? And this is the most recent talk, just a second, I'm just copying the link there. So we reviewed this with John last week. and we are hoping uh we are collaborating with nvidia uh to have a blob back in built-in uh so that there's out in apis on their nixle libraries that do all the data transfer they can go connect to blob storage right today they already have s3 connections they built it by themselves because they know s3 apis uh but obviously for blobs they're not it's not straightforward for them they don't have that expertise so we are hopefully going to either really we find something within our side or use this opportunity to get into the community parts where we use NVIDIA as the vehicle to you know also channel blobs usage from from there and because NVIDIA is going to go all out on Dynamo pretty much they've just launched in March, they're going to go all out everywhere. So we want to make sure we have a quick integration so that whenever they go pitch Dynamo everywhere, they can talk about how Azure is already integrated and all of that. So that's why we are looking-- so you can find more details on the Dynamo integrations in this talk. But that's one of the other things that's Distribute site. So the KV block manager in this solution. They already could take care of all the Distribution what that means is if you have a KV cache that is split across it can also manage transfers between the nodes using I Think they use GDS for one of the ends, which is just GPU to CPU itself and then they also use node-to-node I think they do use RDMA I yes they use S3 or RDMA to connect between nodes right so that they can hope they can have that entire communication across GPUs, CPUs, local SSDs and cloud that's how they are positioning and they're gonna manage all the tiering stuff that's pretty much what they're doing. So it seems like a really nice framework where you know the the north end APIs, the north ones they can connect to all the inference engines and KV caches that would like to use the framework and it can be multi-modal so multiple inference engines can talk to it. The south end is where you know the storage can be surfaced. whether it is CPU memory, CPU memory, local SSDs, or any storage back end you can think of, just connect to it, and then it will figure out how to balance the KV cache based on the nodes, based on locality, and the configuration that you can set in there. So that's an interesting one. So we are excited about connecting to that. So that's on the-- distributed caching side of things that we've been moving along and we're also investing more on the oss stuff now for blobs that's the one that i'm uh that i'm focusing on uh where there there are multiple client tools that we already have that we are going to invest more on so we've reached out out to FS SPAC owners, and then we are doing PRs in FS spec, and then we are also doing blank chain integrations. We're looking at MCB servers. So a bunch of things pretty much on the client side so that we can figure out what is the best way to make sure blobs can automatically be picked up. With all the developments going on, we'll never be able to push with our marketing. we have to be naturally be available as part of these OSS frameworks for us to stay within you know within the race right because more as more and more developers come in and we need to make sure that Azure can support their needs let's say they even come right now pretty much if you see every single person in the open source community as well as like anyone who's not a Microsoft. shop they'll always start with AWS and then GCP and Azure is only when they have credits right or they already know Azure and they are on Azure shop already but we want to make sure it's natural for them to say okay if I do have an option to connect to Azure and I am able to use Azure and I've heard good things about Azure I would like to try and when they do that we better have all the options ready is how I'm I'm thinking of for the Blob's inductations right now, right? So yeah, those are the summary of things that's been going on on my side, and yeah, it's been pretty exciting for a while. Oh, I got my promo this time.
+
+[00:14:56.04] Jabra Speak 710 :  Jason Vallery- Oh, good, congratulations.
+
+[00:14:58.87] Remote : - Thank you. happened in September.
+
+[00:15:02.89] Jabra Speak 710 :  Jason ValleryVery cool. That's a-- oh, yeah, it's in the gal. Very, very cool. Well-deserved. Good job.
+
+[00:15:08.22] Remote : Thank you. Thank you, Jason. Thank you.
+
+[00:15:12.18] Jabra Speak 710 :  Jason ValleryOK, so let me just-- I mean, clearly, a lot happened over the summer, and I think the industry moved a lot, too. The thing I'm struggling with is the right set of primitives for us to focus on. example of Dynamo, I'm aware of what they're doing. I don't know if you've seen what Vast has been up to, like with Vast as a TV store, Core weaves off doing their own thing, or these same sort of distributed caching scenarios, and the challenge I see is where does the industry land in terms... of some form of standardization into what sits in the inferencing stack, what sits under the inferencing stack, and what are the right infrastructure primitives to support those across the different vendors and approaches. sentiment around avoiding NVIDIA native solutions because the interesting stacks are transitioning to alternative chip designs and I think that there's a lot of apprehension in the industry around you know further entrenching themselves in NVIDIA's moat so you know Dynamo is interesting, and I'll definitely take a look at the paper, but how do you sit below that with the right set of platform primitives, software stack, hardware stack, so that it could work with whatever Dynamo does, could work with LM Cache, could work with whatever ends up being the thing that folks actually go and use because they are in terms of the inferencing frameworks that they use. So that's what I'm trying to figure out. I don't know--
+
+[00:16:59.14] Remote : - Makes sense, makes sense. - Yeah. - That's pretty interesting, actually. I have not gone to that layer, which is obviously, because I've not thought through the hardware layer parts and how they change. So that's interesting. From my view, right? frameworks, especially the Dynamo one, they seem to be figuring out a way to say, I will connect with any storage and any hardware, which is the part that I really like. Because the APIs that they use, they are saying, I'm going to use all the storages as dump pipes because I'm going to build all the business logic on my block manager. The KV block manager is what they call it, and including the move from GPU to CPU is orchestrated by that KV block manager, which means if today an inference engine is doing it by itself, it can still ask Dynamo to do it and maintain that KV cache in a way that it does not even need to know where the data is. So they are positioning it in such a way that you can use GDS, you can use Mooncakes APIs, you can use S3, you can use HDFS, anything that you want. You just expose it in this API format and I will use you whenever I need to offload. Of course, they will figure out which storage performs which way, and based on the performance of each storage they'll figure out what should the layer look like Right, they'll figure out if let's say you have an nvme based memory and then you have a cloud storage They'll know which ranking it is and then say okay The nvme comes first and then you use the cloud storage if that one spills over and all of that So I feel like that's nice in terms of you know, how they are exposing both sides but then how the manager itself works based on you know how hardwares can change that that part I wouldn't I haven't looked at right but I felt like what they're doing with this is a nice way especially for the future where there's gonna be multi-modal stuff and right now everybody is trying to build the multi-modal engines because all the infants engines right now focus mostly on making sure one instance one model runs amazingly well and then slowly it can scale to multiple nodes for that one model but then you put in more models more gpus and then balance them around that's where i think dynamo wants to play a role and in the long run they and they want to go ahead with it, and everybody's doing it, by the way. it for I think AI Bricks is from VLLM. So the VLLM folks, they are coming up with AI Bricks which is going to do something very similar. It's just that NVIDIA has the moat of being NVIDIA and that's why they're able to position this a lot better than all the other solutions and that's why I'm hoping kind of integration so there are two objectives that I want to meet here one is of course have connections with Nvidia and whenever it grows it's fine right the other is I want to use this opportunity to go and learn from Nvidia what's happening on the inference side so that we can hear the distilled insights from multiple conversations that they are having with all their customers and our competitors as well, to understand what is the standardized thought process that they have when it comes to the solution, right? Because we will get some ideas from our customers, we'll get some ideas from our secondary research itself and our own trials, but to hear it from NVIDIA and their thought process on designing the solution, we actually got a lot of insights just by having a of conversations with them while this integration was happening. We asked them, "How is KVCache being used? When are you offloading? So when do the customers even look to offload? What are the scenarios in which they do that?" All of those solutions, all of those questions, we're able to ask them as part of this engagement, right? That I feel like is a lot more valuable as well as part of, you know, this integration, and I want to use that for us as well. take it back and design our own solutions in the future if we need to. So that's where I'm looking at but I'd love to know what you find out in the you know hardware space especially on the block storage. So Minayo for example is doing great and it uses pretty much X3 everywhere. It uses your RDMA as well. It exposes three APIs for all its clusters. So, I don't know, their AI store seems to be doing something very similar to what our AI store is going to do, but pretty much everywhere, and then they have already built all the solutions that require RDMA support. The other thing, I just saw one note from one of the docs. I don't remember which doc was, I think it was Jay, where he mentioned that we might be thinking beyond RDMA for the future. That's the part probably I don't understand yet in terms of how the hardware is going to evolve, and we may not be even looking at RDMA, but something else. I don't know what that is. That's the part probably you'd know better.
+
+[00:22:07.94] Jabra Speak 710 :  Jason Vallery- That's exactly what he was referring to there. But I mean, the transport protocol is somewhat independent to how you think about offloading at the DBU level. So you could think about a whole bunch of different transport protocols that could potentially exist and may be more efficient than RDMA. So I don't know what he had specifically.
+
+[00:22:26.25] Remote : - I see.
+
+[00:22:30.44] Jabra Speak 710 :  Jason ValleryI mean, all of this is super valuable to think about in the context of inferencing in KVOPL, which I think is a critical vector for us. But it doesn't negate the need for the more traditional distributed cache that we've talked about for like checkpoint, you know, something just simple enough for checkpoint and model distribution. I thought that we were on a solid path with the Blobfuse architecture that we had. Is that work still going forward?
+
+[00:22:59.18] Remote : Yes, absolutely. So, we already have a preview. I mean, we are going to have a preview. We are load testing it to make sure we're ready for the preview. We have lined up a couple of customers. Figure AI, we've lined up. They're willing to test. We already had a chat with them, we just they're just waiting for our preview binaries will also be reaching out to me. So the MIT does not use us yet. They don't even use block use today. I think they continue to use a lot more of Python SDKs and interestingly they use booster blob and blob file. Still, so they're looking for something by tonic. - Yeah, they said they can give it a shot if let's say our preview's ready for a short POC, and then we also want to talk to more folks on the-- - What are the capabilities, I'll generate for a second,
+
+[00:23:53.82] Jabra Speak 710 :  Jason ValleryWhat are the capabilities that we have for the preview?
+
+[00:23:56.40] Remote : - Oh, so for that we have the checkpointing part. where you can have distributed check pointing with multiple replicas so that you know if you lose one node you can still continue to hold on to the other replicas that part is there and then once let's say that part is there and you lose a node and the node comes back the re-sync will happen to make sure you know the balancing of that lost node can be managed that that can happen and then of course one Once you have, you continue to write on cache, you will have the capability to retrieve from the cache, which means you can restore from the cache. What we don't have for the preview is, if let's say you access new data from outside, which is directly from the storage accounts, there is, there's going to be a more streaming and not a caching approach, which means it won't be distributed like how we have today, right? So that replica part is not taken care of yet. That needs to happen. But we said, look.
+
+[00:24:58.79] Jabra Speak 710 :  Jason VallerySo let me clarify.
+
+[00:24:59.68] Remote : If you're going to restore some checkpoint... Just let me clarify.
+
+[00:25:01.68] Jabra Speak 710 :  Jason VallerySo you can, if you write, we'll do a strongly consistent write across... in replicas. Yep. Yes. The cache will evict based on some sort of, you know, caches full policy
+
+[00:25:26.43] Remote : And we don't have cache on read. Oh, we will continue. So for eviction, right? There's no eviction. There's like a method that says, um, Yes, there will also be eviction. But there are two modes where you can write only to cache, which means local. Or you can also write to cache and ask it to move to store, to back end, to Blobs. That will happen, and that happens in an asynchronous manner. So you split that process so that you write to cache separately. If you say you don't want a particular checkpoint to be returned back to the Blobs, you can-- still use a .cache kind of expression and only write it to the local SSDs, right? That's still possible, which means when you recover, you can still recover from that local cache and by giving that cache ID, you can just by giving that -cache expression, you can just retrieve it from the local cache and you don't have to go all the way to blobs just in case if you. if you need only that. So there are both options that will be enabled through the preview. That is the primary pitch for the preview where you can have strongly consistent checkpoints across nodes, and you can recover faster from them. That's like the one-line pitch that we're going to go with. what kind of features come at come to us in terms of asks uh and see how useful this is and we've tested node-to-node communications they were great uh but we've scaled i think in cycle cloud we've been able to scale up to like 100 nodes uh but we need to do more uh we we need to go find out if we can go up to a thousand or something uh but we'll see how that goes and then hopefully Hopefully by the end of this month, we'll have a preview that we can just roll out and see how that works for our customers.
+
+[00:27:06.62] Jabra Speak 710 :  Jason ValleryAnd how's performance?
+
+[00:27:09.65] Remote : Performance is good in terms of the writes, it is able to max out the nicks, and it is able to do max outs on the nicks both on the, you know, north, south and the east, on the east, west, both sides. But I don't know what will happen if, you know, you take the number of nodes, you write a lot more data. That's the part that I don't know yet. I will ask for more numbers. We need to run ML perf kind of benchmarks on it. That's the part that's still pending. That's what we need to go finalize.
+
+[00:27:40.13] Jabra Speak 710 :  Jason Vallery- To configure replica count and does it load balance replicas?
+
+[00:27:46.00] Remote : Yeah, yeah, oh my replica snow Did you ask for read read replicas Read up read replicas are not there today. They're only right replicas Read replicas actually don't even get cash today. Unfortunately, that's one of the biggest Issues that I have with the offering but we said okay fine we'll assume that the customer is going to recover only from the most recent checkpoints to start with and hence I am okay to go with the preview because otherwise it's going to be a somewhat effort and then some more wait time and we might never be able to validate the solution.
+
+[00:28:30.61] Jabra Speak 710 :  Jason ValleryScenario, the fan-in scenario, where a bunch of nodes are doing the same thing, so we don't, that's not a supported scenario for you?
+
+[00:28:38.62] Remote : Yes, that's unfortunately not a supported scenario.
+
+[00:28:42.75] Jabra Speak 710 :  Jason ValleryCan you send me anything about the preview, I'd like to play with it, like where I get
+
+[00:28:45.62] Remote : The bits and how I can do it? Oh yeah, so I'm getting a demo tomorrow, actually tonight, I think, and so they're still creating that setup for us to do a demo and then we're gonna write the steps to actually go execute on the demo. So once I have that, I'll share it immediately with you so that you can go play around with it yourself.
+
+[00:29:06.73] Jabra Speak 710 :  Jason ValleryOkay. Yep, sounds good. Well, cool. It was good catching up. I appreciate the brain-dumb because it's helpful to bring me up to speed. and my conversation so I'm glad to know that things kept moving and I look forward to seeing the meeting tomorrow, and so what is the plan for the agenda on the BlockTees meeting tomorrow?
+
+[00:29:24.80] Remote : So it's usually the execution tracking and any updates in terms of, you know, customer conversations. So tomorrow I'm going to find out, you know, what kind of execution status we are in, where are we with the preview, and then if there are any burning questions. questions we'll start from there like last time we discussed distributed caching presentations for Monetian stuff and what are the next steps so those are the kind of topics that will come up.
+
+[00:29:49.97] Jabra Speak 710 :  Jason VallerySounds good. Well cool. Thank you sir. Talk soon.
+
+[00:29:53.78] Remote : Awesome. Thanks a lot Jason. Nice catching up with you. See you soon. Bye. (upbeat music)
+```
+
+<!-- ai:transcript:end -->

@@ -42,7 +42,7 @@ paths:
     projects: "VAST/Projects"
     accounts: "VAST/Customers and Partners"
     rob: "VAST/ROB"
-    tasks: "VAST/_Tasks"
+    tasks: "TASKS.md"                 # Tasks dashboard (root)
     journal: "VAST/Journal"
   
   # Personal destinations
@@ -50,7 +50,7 @@ paths:
     root: "Personal"
     people: "Personal/People"
     projects: "Personal/Projects"
-    tasks: "Personal/_Tasks"
+    tasks: "TASKS.md"                 # Tasks dashboard (root)
     journal: "Personal/Journal"
 
 # === AI MODELS ===
@@ -238,13 +238,14 @@ entity_matching:
 
 # === TASK MANAGEMENT ===
 # Obsidian Tasks plugin format
-# IMPORTANT: Tasks live in source notes only. Dashboard files contain Dataview queries.
+# IMPORTANT: Tasks live in their source notes; `TASKS.md` is a query-only dashboard.
 tasks:
   # Storage policy
   storage:
     location: "source-notes-only"        # Tasks stay where they're created
-    dashboards: "dataview-queries"       # _Tasks/*.md are query-only
-    no_duplication: true                 # Never copy tasks to aggregate files
+    dashboard: "TASKS.md"                # Vault-relative path to the Tasks-plugin dashboard
+    dashboards: "tasks-plugin-queries"   # Dashboard file contains Tasks queries only
+    no_duplication: true                 # Never copy tasks into aggregate lists
   
   # Obsidian Tasks plugin format
   format:
@@ -283,6 +284,7 @@ git:
   # Clean check configuration
   # Only check these paths for uncommitted changes (prevents false positives)
   check_paths:
+    - "TASKS.md"
     - "Inbox/"
     - "VAST/"
     - "Personal/"

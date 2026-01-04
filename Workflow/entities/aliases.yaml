@@ -9,147 +9,26 @@
 
 # === PEOPLE ===
 people:
-  # VAST Leadership
-  "Jonsi Stephenson":
-    - "Jonsi"
-    - "JS"
-  
+  # Example entries - add your actual aliases here
   "Jeff Denworth":
     - "Jeff"
     - "JD"
   
-  "Ronen Cohen":
-    - "Ronen"
+  "Jonsi Stephenson":
+    - "Jonsi"
+    - "JS"
   
-  "Amy Shapiro":
-    - "Amy"
-  
-  # VAST Cloud Team
   "Lior Genzel":
     - "Lior"
   
-  "Tomer Hagay":
-    - "Tomer"
-  
-  "Erez Zilber":
-    - "Erez"
-  
-  "Alon Horev":
-    - "Alon"
-  
-  "Eyal Traitel":
-    - "Eyal"
-  
-  "Kushal Datta":
-    - "Kushal"
-  
-  # VAST Sales/Field
-  "Randy Hayes":
-    - "Randy"
-  
-  "Greg Castellucci":
-    - "Greg C"
-    - "Greg Castellucci"
-  
-  "Jennifer Azzolina":
-    - "Jennifer"
-    - "Jen"
-  
-  "Rob Benoit":
-    - "Rob B"
-  
-  "Rob Banga":
-    - "Rob"
-  
-  "Chris Carpenter":
-    - "Chris C"
-  
-  "Eirikur Hrafnsson":
-    - "Eirikur"
-  
-  # VAST Product/Eng
-  "Jai Menon":
-    - "Jai"
-  
   "Kanchan Mehrotra":
     - "Kanchan"
-  
-  "Jason Vallery":
-    - "Jason V"
-    - "Jason Valerie"
-    - "Jason Valeri"
-  
-  "Jeremiah Hinrichs":
-    - "Jeremiah"
-  
-  "Ronnie Lazar":
-    - "Ronnie L"
-  
-  # Microsoft contacts
-  "Satya Nadella":
-    - "Satya"
-  
-  "Amy Hood":
-    - "Amy H"
-  
-  "Ronnie Booker":
-    - "Ronnie B"
-    - "Ronnie Borker"
-  
-  "Michael Myrah":
-    - "Michael M"
-  
-  "Jay Parikh":
-    - "Jay P"
-  
-  "Paul Clark":
-    - "Paul C"
-  
-  "Cliff Henson":
-    - "Cliff"
-  
-  "Qi Ke":
-    - "Qi"
-  
-  # Google contacts
-  "Billy Kettler":
-    - "Billy"
-  
-  "Jan Niemus":
-    - "Jan"
-  
-  "John Downey":
-    - "John D"
-  
-  "Muninder Singh Sambi":
-    - "Muninder"
-    - "Sambi"
-  
-  # OpenAI contacts
-  "Sam Altman":
-    - "Sam A"
-  
-  "Greg Brockman":
-    - "Greg B"
-  
-  "Glenn Lockwood":
-    - "Glenn"
-    - "Glenn Lockman"
-  
-  # Other industry
-  "David Holz":
-    - "David H"
-  
-  "Sam Hopewell":
-    - "Sam H"
-    - "Sam"
 
 # === ACCOUNTS ===
 accounts:
   "Google":
     - "GCP"
     - "Google Cloud"
-    - "Google Cloud Platform"
     - "GDC"
     - "Google Distributed Cloud"
   
@@ -157,88 +36,30 @@ accounts:
     - "MSFT"
     - "Azure"
     - "MS"
-    - "MAI"
-    - "Microsoft AI"
   
   "OpenAI":
     - "OAI"
-  
-  "NVIDIA":
-    - "NV"
-    - "NVidia"
-  
-  "CoreWeave":
-    - "CW"
-  
-  "Anthropic":
-    - "Claude"
-  
-  "Silk":
-    - "Silk Technologies"
-  
-  "Walmart":
-    - "WMT"
-  
-  "Tesla":
-    - "TSLA"
-  
-  "xAI":
-    - "X AI"
-    - "Elon AI"
 
 # === PROJECTS ===
 projects:
-  "OVA":
-    - "VAST OVA"
-    - "Loopback"
-    - "Virtual Appliance"
-  
-  "Cloud":
-    - "VAST Cloud"
-    - "VAST on Cloud"
-    - "VoC"
-  
   "AI Pipelines Collateral":
     - "AI Pipelines"
     - "AI Collateral"
   
-  "BlockFuse":
-    - "Block Fuse"
-    - "BlobFuse"
+  "OVA":
+    - "VAST OVA"
+    - "Loopback"
   
-  "Model Builder Turbine":
-    - "Turbine"
-    - "Model Builder"
-  
-  "Alluxio":
-    - "Alluxio integration"
-  
-  "Pricing":
-    - "Cloud Pricing"
-    - "Pricing Model"
+  "VAST on Azure Integration":
+    - "Azure Integration"
+    - "VoA"
 
 # === ROB FORUMS ===
 rob:
   "VAST on Cloud Office Hours":
     - "Cloud Office Hours"
     - "Office Hours"
-    - "VOC Office Hours"
   
   "Phase Gate 1":
     - "PG1"
     - "Phase Gate"
-  
-  "SE Community Call":
-    - "SE Call"
-    - "SE Community"
-  
-  "Leadership Sync":
-    - "Leadership"
-    - "Exec Sync"
-
-# === SELF REFERENCE ===
-self:
-  - "Myself"
-  - "Jason"
-  - "me"
-  - "I"

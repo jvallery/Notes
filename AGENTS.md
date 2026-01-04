@@ -82,6 +82,23 @@ git log --oneline -5
 - ⚠️ External network calls subject to API rate limits
 - ❌ No access outside `~/Documents/Notes/` folder
 
+## Task Management Standard (Obsidian Tasks Plugin)
+
+**Source of truth**: Tasks live in their **source notes** (meeting notes, project notes, etc.) using Obsidian Tasks checkbox format:
+
+```markdown
+- [ ] Action item text @Owner 📅 YYYY-MM-DD 🔺 #task
+```
+
+**Dashboard**: `TASKS.md` at the vault root is **query-only** and aggregates open tasks across the vault. Checking a task off in `TASKS.md` updates the original source note and removes it from the dashboard lists.
+
+**Rules**
+
+- Always tag actionable tasks with `#task` so they appear in dashboards.
+- Prefer creating tasks under `VAST/` (work) or `Personal/` (personal) so the dashboard can group them cleanly.
+- Do not create or use `{Domain}/_Tasks/` folders; legacy task lists were archived under `Inbox/_archive/`.
+- Legacy manual list is preserved in `TASKS_BACKLOG.md` (referenced from `TASKS.md`).
+
 ## Triggering Agent Actions
 
 ### Interactive (VS Code Chat)

@@ -1,5 +1,5 @@
 ---
-type: people
+type: "people"
 title: "{{ title }}"
 date: "{{ date }}"
 person: "{{ person }}"
@@ -10,10 +10,10 @@ tags:
   - "type/people"
   - "person/{{ person | slugify }}"
   - "generated"
-{% if extra_tags is defined and extra_tags -%}
+{% if extra_tags %}
 {% for tag in extra_tags %}
   - "{{ tag }}"
-{% endfor -%}
+{% endfor %}
 {% endif %}
 ---
 
@@ -25,35 +25,31 @@ tags:
 ## Summary
 
 {{ summary }}
-{%- if tasks %}
 
+{% if tasks %}
 ## Action Items
-{% for task in tasks %}
-- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task
-{% endfor -%}
-{% endif %}
-{%- if decisions %}
 
+{% for task in tasks %}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task #auto
+{% endfor %}
+{% endif %}
+
+{% if decisions %}
 ## Decisions
+
 {% for decision in decisions %}
 - {{ decision }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
-{%- if facts %}
 
+{% if facts %}
 ## Key Information
+
 {% for fact in facts %}
 - {{ fact }}
-{% endfor -%}
-{% endif %}
-{%- if topics %}
-
-## Topics
-{% for topic in topics %}
-- {{ topic }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
 
 ---
 
-*Source: [[{{ source_ref }}|{{ source_ref | basename | strip_extension }}]]*
+*Source: [[{{ source_ref | basename | strip_extension }}]]*

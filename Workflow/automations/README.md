@@ -76,9 +76,10 @@ Central reference for all keyboard shortcuts. **Must be configured on each Mac.*
 ```
 Workflow/automations/
 ├── README.md                    # This file (overview, hotkey registry)
-├── shortcuts/                   # Apple Shortcuts documentation
+├── SETUP-CHECKLIST.md           # New Mac setup guide
+├── shortcuts/                   # Apple Shortcuts & app configuration
 │   ├── mail-to-inbox.md         # Email capture shortcut
-│   └── (future shortcuts)
+│   └── macwhisper-setup.md      # MacWhisper configuration
 └── scripts/                     # Raw script files (for reference/rebuild)
     └── (AppleScript, shell scripts)
 ```
@@ -89,15 +90,19 @@ Workflow/automations/
 
 ### Active Automations
 
-| Name          | Type                   | Trigger | Description                           | Docs                                           |
-| ------------- | ---------------------- | ------- | ------------------------------------- | ---------------------------------------------- |
-| Mail to Inbox | Shortcut + AppleScript | `⌃⌥⌘M`  | Export email thread to `Inbox/Email/` | [mail-to-inbox.md](shortcuts/mail-to-inbox.md) |
+| Name            | Type                   | Trigger | Description                           | Docs                                             |
+| --------------- | ---------------------- | ------- | ------------------------------------- | ------------------------------------------------ |
+| Mail to Inbox   | Shortcut + AppleScript | `⌃⌥⌘M`  | Export email thread to `Inbox/Email/` | [mail-to-inbox.md](shortcuts/mail-to-inbox.md)   |
+| MacWhisper      | App Configuration      | Auto    | Transcribe meetings to `Inbox/Transcripts/` | [macwhisper-setup.md](shortcuts/macwhisper-setup.md) |
+
+### Setup Guide
+
+**First time on a new Mac?** See [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) for the complete setup guide.
 
 ### Planned Automations
 
 | Name                   | Type              | Trigger             | Description                       | Status       |
 | ---------------------- | ----------------- | ------------------- | --------------------------------- | ------------ |
-| MacWhisper auto-export | Folder Action     | On new file         | Move transcripts to archive       | Design phase |
 | Process Inbox          | Python + Shortcut | `⌃⌥⌘P` or scheduled | Run extraction on all Inbox items | Design phase |
 | Daily digest           | Python + launchd  | 6 PM daily          | Summarize day's updates           | Design phase |
 

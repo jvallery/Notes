@@ -496,6 +496,11 @@ Workflow/
 
 Agents have **full autonomy** within this vault. See [AGENTS.md](../AGENTS.md) for details.
 
+### Task Management
+
+- Write tasks into the **source note** as checkbox tasks (`- [ ] ...`) tagged `#task`.
+- Use `../TASKS.md` as the **query-only dashboard** (Obsidian Tasks plugin). Completing tasks in the dashboard updates the source note.
+
 ### Common Agent Tasks
 
 #### Process New Inbox Items

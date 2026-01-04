@@ -1,5 +1,7 @@
 """YAML frontmatter parsing and manipulation."""
 
+from __future__ import annotations
+
 import yaml
 from typing import Any
 

@@ -6,6 +6,8 @@ Handles commits, status checks, and recovery operations.
 Designed for transactional workflow with smart dirty detection.
 """
 
+from __future__ import annotations
+
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -15,8 +17,8 @@ from dataclasses import dataclass
 from .config import vault_root, load_config
 
 
-# Paths to CHECK for cleanliness (content directories only)
-CHECKED_PATHS = ["Inbox/", "VAST/", "Personal/"]
+# Paths to CHECK for cleanliness (task list + content directories)
+CHECKED_PATHS = ["TASKS.md", "Inbox/", "VAST/", "Personal/"]
 
 # Paths to IGNORE (frequently change from Obsidian/sync)
 IGNORED_PATTERNS = [
@@ -149,23 +151,6 @@ def add_files(repo_path: Path, files: list[Path]) -> None:
     code, _, stderr = _run_git(repo_path, "add", *str_files)
     if code != 0:
         raise RuntimeError(f"git add failed: {stderr}")
-
-
-def stage_content_dirs(repo_path: Path = None) -> None:
-    """
-    Stage all changes in content directories using git add -A.
-    
-    T4 FIX: This captures deletes, renames, and moves that add_files() misses.
-    Uses -A flag to stage all changes (adds, modifications, deletions).
-    """
-    if repo_path is None:
-        repo_path = vault_root()
-    
-    # Stage all changes in content directories
-    # Using -- to separate paths from options
-    code, _, stderr = _run_git(repo_path, "add", "-A", "--", *CHECKED_PATHS)
-    if code != 0:
-        raise RuntimeError(f"git add -A failed: {stderr}")
 
 
 def commit(repo_path: Path = None, message: str = None, files: list[str] = None) -> str:

@@ -6,6 +6,8 @@ from different types of content. They are NOT personas - they define
 what to focus on, what to ignore, and how to handle edge cases.
 """
 
+from __future__ import annotations
+
 from pathlib import Path
 from typing import Any
 

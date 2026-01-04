@@ -32,33 +32,13 @@ When extracting information, prioritize:
 
 ## Content Classification
 
-The note type has been pre-classified by the system. Echo the provided classification in your output.
-If the content clearly contradicts the classification, add a warning but still use the system-provided type.
-
-Note type definitions (for reference):
+Based on the content, determine the most appropriate note type:
 - **people**: 1-on-1 meetings, personal relationship notes
 - **customer**: Multi-party account meetings with external customers
 - **partners**: Partner organization meetings
 - **projects**: Project work, sprint planning, technical discussions
 - **rob**: Rhythm of Business forums (recurring team syncs)
 - **journal**: Personal reflections, daily notes
-- **travel**: Trip planning, logistics, itineraries
-
-**CRITICAL CLASSIFICATION RULES**:
-- VAST employees are NEVER customers. Meetings with Jeff Denworth, Lior Genzel, Jonsi Stephenson, or other VAST colleagues use type=people (1:1s) or type=rob (team syncs), NEVER type=customer.
-- If discussing a customer account with a colleague, the meeting is still type=people (the colleague is the primary entity, the customer is just a topic).
-- type=customer is ONLY for meetings where external customer representatives are present.
-
-**System-Provided Classification**: {{ note_type }}
-
-## Confidence Scoring
-
-Rate your extraction confidence:
-- **0.9+**: High confidence - can act automatically
-- **0.7-0.9**: Medium confidence - needs human review
-- **<0.7**: Low confidence - should fail/skip
-
-Add entries to `warnings` array for anything flagged for review.
 
 ## Required Output Schema
 
@@ -66,7 +46,7 @@ You MUST return valid JSON matching this exact structure:
 
 ```json
 {
-  "note_type": "people|customer|partners|projects|rob|journal|travel",
+  "note_type": "people|customer|partners|projects|rob|journal",
   "entity_name": "string - Primary entity (person name, account name, project name, etc.)",
   "title": "string - Brief descriptive title (3-7 words)",
   "date": "YYYY-MM-DD - Date of the meeting/content",
@@ -83,7 +63,6 @@ You MUST return valid JSON matching this exact structure:
   ],
   "decisions": ["array of decisions made"],
   "facts": ["array of key facts or context to remember"],
-  "topics": ["array of main topics/themes discussed"],
   "mentions": {
     "people": ["names of people mentioned"],
     "projects": ["projects referenced"],
@@ -99,6 +78,6 @@ You MUST return valid JSON matching this exact structure:
 **Source**: {{ source_file }}
 **Content Type**: {{ content_type | default('meeting transcript') }}
 
-<untrusted_content>
+---
+
 {{ content }}
-</untrusted_content>

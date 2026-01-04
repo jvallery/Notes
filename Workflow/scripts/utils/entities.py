@@ -6,6 +6,8 @@ Handles fuzzy matching of names to vault folders and alias resolution.
 Uses rapidfuzz for high-quality fuzzy matching.
 """
 
+from __future__ import annotations
+
 from functools import lru_cache
 from pathlib import Path
 from typing import Optional
@@ -39,21 +41,6 @@ def _load_aliases_raw() -> dict:
         return yaml.safe_load(f) or {}
 
 
-def load_aliases() -> dict:
-    """
-    Load raw aliases structure for planner context.
-    
-    Returns the full aliases.yaml structure organized by category:
-    {
-        "people": {"Canonical Name": ["alias1", "alias2"]},
-        "accounts": {...},
-        "projects": {...},
-        "rob": {...}
-    }
-    """
-    return _load_aliases_raw()
-
-
 def _load_aliases() -> dict[str, str]:
     """
     Load flattened alias -> canonical mapping.
@@ -85,6 +72,12 @@ def _load_aliases() -> dict[str, str]:
                 flat[key.lower()] = value
     
     return flat
+
+
+# Public wrapper for loading aliases
+def load_aliases() -> dict[str, str]:
+    """Load flattened alias -> canonical mapping (public API)."""
+    return _load_aliases()
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -126,43 +119,6 @@ def list_entities(entity_type: str) -> list[str]:
         d.name for d in base_path.iterdir() 
         if d.is_dir() and not d.name.startswith((".", "_"))
     ]
-
-
-def list_entity_paths() -> dict[str, list[str]]:
-    """
-    List all entity names with their full vault-relative paths.
-    
-    Returns dict mapping entity name -> list of vault-relative paths.
-    Used by planner to generate correct file paths.
-    
-    Example:
-        {"Jeff Denworth": ["VAST/People/Jeff Denworth"],
-         "Google": ["VAST/Customers and Partners/Google"],
-         "Greenhouse": ["Personal/Projects/Greenhouse"]}
-    """
-    root = vault_root()
-    result: dict[str, list[str]] = {}
-    
-    entity_types = [
-        ("people", "VAST", "People"),
-        ("accounts", "VAST", "Customers and Partners"),
-        ("projects", "VAST", "Projects"),
-        ("rob", "VAST", "ROB"),
-        ("personal_person", "Personal", "People"),
-        ("personal_project", "Personal", "Projects"),
-    ]
-    
-    for _, domain, folder in entity_types:
-        base_path = root / domain / folder
-        if not base_path.exists():
-            continue
-        
-        for d in sorted(base_path.iterdir(), key=lambda p: p.name.lower()):
-            if d.is_dir() and not d.name.startswith((".", "_")):
-                rel_path = f"{domain}/{folder}/{d.name}"
-                result.setdefault(d.name, []).append(rel_path)
-    
-    return result
 
 
 def list_all_entity_names() -> dict[str, list[str]]:

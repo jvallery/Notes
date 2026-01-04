@@ -1,0 +1,7 @@
+- [x] Draft a Microsoft networking engagement plan focused on minimizing egress (e.g., ExpressRoute Direct Local) for VAST’s Azure offerings @Jeff Denworth ⏫ ✅ 2025-11-08
+- [x] Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep 1P milestone) @Jeff Denworth 🔼 ✅ 2025-11-08
+- [x] Validate what Microsoft data can be used in ROI comparisons before sharing with Nidhi. @Jason Vallery ⏫ ✅ 2025-11-08
+- [x] Comparison slide for conversations LSv4, v5, OEM/ODM, Azure Stoarge ✅ 2025-11-08
+- [x] Educate Microsoft BizDev (density/power, single-namespace story) and secure intros to Ronnie via John Tinter. @Jason Vallery ⏫ ✅ 2025-11-08
+- [x] Create a one-pager converting VAST EB power savings into additional GPUs per site; share with MAI (Mustafa), Kushal, and Vipin. @Jason Vallery ⏫ ✅ 2025-11-08
+- [x] Assess complementing the Marketplace L-series offer with higher-density storage SKUs or an OEM hardware path. @Jason Vallery 🔼 ✅ 2025-11-08

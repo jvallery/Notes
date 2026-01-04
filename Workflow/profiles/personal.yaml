@@ -19,23 +19,8 @@ focus:
 # What to de-emphasize or skip
 ignore:
   - Work-related content (route to work profiles)
-  - Detailed financial figures (account numbers, balances)
-
-# Sensitive information handling
-sensitive_topics:
-  redact:
-    - Social security numbers
-    - Credit card numbers
-    - Bank account numbers
-    - Passwords and PINs
-  summarize_only:
-    - Medical diagnoses (use general terms)
-    - Therapy/counseling details
-    - Legal matters (note existence, not details)
-  flag_for_review:
-    - Financial decisions over $1000
-    - Major life decisions
-    - Relationship conflicts
+  - Sensitive personal information (minimize extraction)
+  - Detailed financial figures
 
 # Rules for task extraction
 task_rules:

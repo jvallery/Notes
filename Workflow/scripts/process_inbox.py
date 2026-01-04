@@ -1,454 +1,320 @@
 #!/usr/bin/env python3
 """
-Process Inbox: Full pipeline orchestrator.
+Process Inbox: Orchestrator for Extract → Plan → Apply pipeline.
 
-Runs: Extract → Plan → Apply in staged batch mode.
-
-Usage:
-    # Process everything
-    python scripts/process_inbox.py
-    
-    # Process specific subfolder
-    python scripts/process_inbox.py --scope transcripts
-    
-    # Dry run
-    python scripts/process_inbox.py --dry-run
-    
-    # Skip extraction/planning (apply existing changeplans only)
-    python scripts/process_inbox.py --apply-only
-    
-    # Allow dirty git tree
-    python scripts/process_inbox.py --allow-dirty
-
-CRITICAL: The Apply phase is atomic across ALL files.
+Runs all three phases in sequence with proper error handling.
+Supports various run modes: full, extract-only, plan-only, apply-only.
 """
 
-from __future__ import annotations
-
-import shutil
+import logging
 import sys
-from dataclasses import dataclass, field
 from datetime import datetime
 from pathlib import Path
+from typing import Optional
 
 import click
+from rich.console import Console
+from rich.logging import RichHandler
 
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from scripts.utils import (
-    vault_root,
-    load_config,
-    require_clean,
-    get_client,
-    check_api_key,
-    OpenAIError,
-    get_extraction_path,
-    setup_logging,
-    log_event,
-    close_logging,
-)
-from scripts.extract import find_unprocessed, extract_file, save_extraction
-from scripts.plan import generate_plan, save_plan, load_extraction
-from scripts.apply import (
-    TransactionalApply,
-    find_pending_changeplans,
-    load_changeplan,
-)
+sys.path.insert(0, str(Path(__file__).parent))
+from utils import vault_root, workflow_root, is_dirty, stash_changes, pop_stash
 
 
-@dataclass
-class ProcessResult:
-    """Results of inbox processing."""
-
-    extracted: int = 0
-    planned: int = 0
-    applied: int = 0
-    failed: int = 0
-    errors: list[str] = field(default_factory=list)
-    commit_hash: str = ""
+console = Console()
 
 
-def move_to_failed(source: Path, error: str) -> Path:
-    """
-    Move failed file to _failed/ directory with error log.
-    
-    Args:
-        source: Path to the failed source file
-        error: Error message to record
-        
-    Returns:
-        Path to the moved file in _failed/
-    """
-    vr = vault_root()
-    failed_dir = vr / "Inbox" / "_failed" / datetime.now().strftime("%Y-%m-%d")
-    failed_dir.mkdir(parents=True, exist_ok=True)
+def setup_logging(verbose: bool = False) -> logging.Logger:
+    """Configure logging with file and console handlers."""
 
-    # Move source file
-    dest = failed_dir / source.name
-    
-    # Handle duplicate names
-    counter = 1
-    while dest.exists():
-        stem = source.stem
-        suffix = source.suffix
-        dest = failed_dir / f"{stem}_{counter}{suffix}"
-        counter += 1
-    
-    shutil.move(str(source), str(dest))
+    logs_dir = workflow_root() / "logs"
+    logs_dir.mkdir(exist_ok=True)
 
-    # Write error log
-    error_path = failed_dir / f"{dest.stem}.error.txt"
-    error_path.write_text(
-        f"Error: {error}\n\n"
-        f"Original file: {source}\n"
-        f"Timestamp: {datetime.now().isoformat()}\n"
+    timestamp = datetime.now().strftime("%Y-%m-%d_%H%M%S")
+    log_file = logs_dir / f"{timestamp}_run.log"
+
+    # Create logger
+    logger = logging.getLogger("process_inbox")
+    logger.setLevel(logging.DEBUG if verbose else logging.INFO)
+
+    # File handler (always verbose)
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(
+        logging.Formatter(
+            "%(asctime)s %(levelname)-5s %(message)s", datefmt="%Y-%m-%d %H:%M:%S"
+        )
     )
 
-    return dest
+    # Console handler
+    console_handler = RichHandler(console=console, show_time=False, show_path=False)
+    console_handler.setLevel(logging.DEBUG if verbose else logging.INFO)
+
+    logger.addHandler(file_handler)
+    logger.addHandler(console_handler)
+
+    logger.info(f"Log file: {log_file}")
+
+    return logger
 
 
-def extract_all(
-    files: list[Path],
-    client,
-    config: dict,
-    verbose: bool = False,
-) -> tuple[list[Path], list[Path]]:
-    """
-    Extract all files.
-    
-    Returns:
-        Tuple of (successful extraction paths, failed source paths)
-    """
-    vr = vault_root()
-    successes = []
-    failures = []
+def run_extract(logger: logging.Logger, dry_run: bool = False) -> bool:
+    """Run the extract phase."""
 
-    for f in files:
-        try:
-            log_event("extract", "start", {"file": f.name})
-            
-            if verbose:
-                click.echo(f"  Extracting: {f.name}")
-            
-            extraction, metadata = extract_file(f, client)
+    logger.info("Starting Extract phase")
 
-            output_path = get_extraction_path(vr, f)
-            save_extraction(extraction, output_path)
+    try:
+        from extract import find_unprocessed_files, classify_content, extract_content
+        from extract import save_extraction, get_openai_client, get_jinja_env
 
-            log_event("extract", "success", {
-                "file": f.name,
-                "output": output_path.name,
-                "note_type": extraction.note_type,
-                "tasks": len(extraction.tasks),
-                **{k: v for k, v in metadata.items() if k in ["latency_ms", "total_tokens"]}
-            })
-            
-            successes.append(output_path)
-            
-            if verbose:
-                click.echo(f"    ✓ {extraction.note_type}, {len(extraction.tasks)} tasks")
+        files = find_unprocessed_files()
 
-        except Exception as e:
-            log_event("extract", "failed", {"file": f.name, "error": str(e)})
-            click.echo(click.style(f"  ✗ {f.name}: {e}", fg="red"))
-            
+        if not files:
+            logger.info("No files to extract")
+            return True
+
+        logger.info(f"Found {len(files)} files to extract")
+
+        if dry_run:
+            for f in files:
+                logger.info(f"  Would extract: {f.name}")
+            return True
+
+        client = get_openai_client()
+        jinja_env = get_jinja_env()
+
+        success = 0
+        failed = 0
+
+        for file in files:
             try:
-                move_to_failed(f, str(e))
-            except Exception as move_err:
-                log_event("extract", "move_failed", {"file": f.name, "error": str(move_err)})
-            
-            failures.append(f)
+                logger.debug(f"Extracting: {file.name}")
 
-    return successes, failures
+                content = file.read_text()
+                classification = classify_content(content, file.name, client)
+                extraction = extract_content(
+                    content, file.name, classification, client, jinja_env
+                )
+                save_extraction(file, classification, extraction)
+
+                success += 1
+                logger.info(f"  ✓ {file.name} → {classification.get('note_type')}")
+
+            except Exception as e:
+                failed += 1
+                logger.error(f"  ✗ {file.name}: {e}")
+
+        logger.info(f"Extract complete: {success} success, {failed} failed")
+        return failed == 0
+
+    except Exception as e:
+        logger.exception(f"Extract phase failed: {e}")
+        return False
 
 
-def plan_all(
-    extractions: list[Path],
-    client,
-    config: dict,
-    verbose: bool = False,
-) -> tuple[list[Path], list[Path]]:
-    """
-    Plan all extractions.
-    
-    Returns:
-        Tuple of (successful changeplan paths, failed extraction paths)
-    """
-    vr = vault_root()
-    successes = []
-    failures = []
+def run_plan(logger: logging.Logger, dry_run: bool = False) -> bool:
+    """Run the plan phase."""
 
-    for f in extractions:
-        try:
-            log_event("plan", "start", {"file": f.name})
-            
-            if verbose:
-                click.echo(f"  Planning: {f.name}")
-            
-            plan, metadata = generate_plan(f, client, config)
+    logger.info("Starting Plan phase")
 
-            output_path = f.parent / f.name.replace(".extraction.json", ".changeplan.json")
-            save_plan(plan, output_path)
+    try:
+        from plan import find_pending_extractions, generate_changeplan, save_changeplan
+        from plan import get_openai_client, get_jinja_env
 
-            log_event("plan", "success", {
-                "file": f.name,
-                "output": output_path.name,
-                "operations": len(plan.operations),
-                **{k: v for k, v in metadata.items() if k in ["latency_ms", "total_tokens"]}
-            })
-            
-            successes.append(output_path)
-            
-            if verbose:
-                ops_summary = ", ".join(op.op.value for op in plan.operations)
-                click.echo(f"    ✓ {len(plan.operations)} ops: {ops_summary}")
+        files = find_pending_extractions()
 
-        except Exception as e:
-            log_event("plan", "failed", {"file": f.name, "error": str(e)})
-            click.echo(click.style(f"  ✗ {f.name}: {e}", fg="red"))
-            
-            # Try to move the original source to failed
+        if not files:
+            logger.info("No extractions to plan")
+            return True
+
+        logger.info(f"Found {len(files)} extractions to plan")
+
+        if dry_run:
+            for f in files:
+                logger.info(f"  Would plan: {f.name}")
+            return True
+
+        client = get_openai_client()
+        jinja_env = get_jinja_env()
+
+        import json
+
+        success = 0
+        failed = 0
+
+        for file in files:
             try:
-                extraction = load_extraction(f)
-                source_path = vr / extraction.source_file
-                if source_path.exists():
-                    move_to_failed(source_path, f"Planning failed: {e}")
-            except Exception:
-                pass
-            
-            failures.append(f)
+                logger.debug(f"Planning: {file.name}")
 
-    return successes, failures
+                with open(file, "r") as f:
+                    extraction = json.load(f)
+
+                changeplan = generate_changeplan(extraction, client, jinja_env)
+                save_changeplan(file, changeplan)
+
+                ops = len(changeplan.get("operations", []))
+                success += 1
+                logger.info(f"  ✓ {file.name} → {ops} operations")
+
+            except Exception as e:
+                failed += 1
+                logger.error(f"  ✗ {file.name}: {e}")
+
+        logger.info(f"Plan complete: {success} success, {failed} failed")
+        return failed == 0
+
+    except Exception as e:
+        logger.exception(f"Plan phase failed: {e}")
+        return False
+
+
+def run_apply(
+    logger: logging.Logger, dry_run: bool = False, no_commit: bool = False
+) -> bool:
+    """Run the apply phase."""
+
+    logger.info("Starting Apply phase")
+
+    try:
+        from apply import find_pending_changeplans, apply_changeplan, mark_applied
+        from apply import get_jinja_env
+        from utils import commit_batch
+
+        import json
+
+        root = vault_root()
+        jinja_env = get_jinja_env()
+
+        files = find_pending_changeplans()
+
+        if not files:
+            logger.info("No changeplans to apply")
+            return True
+
+        logger.info(f"Found {len(files)} changeplans to apply")
+
+        if dry_run:
+            for f in files:
+                logger.info(f"  Would apply: {f.name}")
+            return True
+
+        all_modified = []
+        success = 0
+        failed = 0
+
+        for file in files:
+            try:
+                logger.debug(f"Applying: {file.name}")
+
+                with open(file, "r") as f:
+                    changeplan = json.load(f)
+
+                # Check validation
+                if not changeplan.get("validation", {}).get("schema_valid", True):
+                    logger.warning(f"  ⚠ Skipping invalid: {file.name}")
+                    continue
+
+                modified = apply_changeplan(changeplan, root, jinja_env)
+                all_modified.extend(modified)
+
+                mark_applied(file)
+                success += 1
+                logger.info(f"  ✓ {file.name} → {len(modified)} files")
+
+            except Exception as e:
+                failed += 1
+                logger.error(f"  ✗ {file.name}: {e}")
+
+        # Git commit
+        if not no_commit and all_modified:
+            commit_hash = commit_batch([str(p) for p in all_modified], prefix="[auto]")
+            if commit_hash:
+                logger.info(f"Committed: {commit_hash}")
+
+        logger.info(
+            f"Apply complete: {success} success, {failed} failed, {len(all_modified)} files modified"
+        )
+        return failed == 0
+
+    except Exception as e:
+        logger.exception(f"Apply phase failed: {e}")
+        return False
 
 
 @click.command()
+@click.option("--extract-only", is_flag=True, help="Run only the extract phase")
+@click.option("--plan-only", is_flag=True, help="Run only the plan phase")
+@click.option("--apply-only", is_flag=True, help="Run only the apply phase")
 @click.option(
-    "--scope",
-    type=click.Choice(["transcripts", "email", "all"]),
-    default="all",
-    help="Which inbox folders to process",
+    "--dry-run", is_flag=True, help="Show what would be done without doing it"
 )
+@click.option("--no-commit", is_flag=True, help="Skip git commit after applying")
 @click.option(
-    "--dry-run",
-    is_flag=True,
-    help="Show what would be processed without doing it",
+    "--stash", is_flag=True, help="Stash uncommitted changes before processing"
 )
-@click.option(
-    "--apply-only",
-    is_flag=True,
-    help="Skip extract/plan, apply existing changeplans only",
-)
-@click.option(
-    "--allow-dirty",
-    is_flag=True,
-    help="Allow processing with uncommitted git changes",
-)
-@click.option(
-    "--allow-overwrite",
-    is_flag=True,
-    help="Allow overwriting existing destination files",
-)
-@click.option(
-    "-v", "--verbose",
-    is_flag=True,
-    help="Show detailed output",
-)
+@click.option("--verbose", "-v", is_flag=True, help="Show detailed output")
 def main(
-    scope: str,
-    dry_run: bool,
+    extract_only: bool,
+    plan_only: bool,
     apply_only: bool,
-    allow_dirty: bool,
-    allow_overwrite: bool,
+    dry_run: bool,
+    no_commit: bool,
+    stash: bool,
     verbose: bool,
 ):
-    """Process all pending items in the inbox."""
-    
-    vr = vault_root()
-    config = load_config()
-    run_id = datetime.now().strftime("%Y%m%d_%H%M%S")
-    
-    # Setup logging
-    log_path = setup_logging(run_id)
-    
-    click.echo(click.style("Process Inbox", fg="blue", bold=True))
-    click.echo("=" * 50)
-    log_event("process", "start", {"scope": scope, "run_id": run_id})
+    """Process Inbox: Extract → Plan → Apply pipeline."""
 
-    result = ProcessResult()
-    changeplans: list[Path] = []
+    console.print("[bold magenta]Process Inbox Pipeline[/bold magenta]")
+    console.print("=" * 50)
+
+    logger = setup_logging(verbose)
+
+    start_time = datetime.now()
+    logger.info(f"Starting processing run at {start_time.isoformat()}")
+
+    # Handle stashing
+    stashed = False
+    if stash and is_dirty():
+        logger.info("Stashing uncommitted changes")
+        stashed = stash_changes()
 
     try:
-        # Check git cleanliness early (unless dry run)
-        if not dry_run and not apply_only:
-            try:
-                require_clean(vr, allow_dirty=allow_dirty)
-            except RuntimeError as e:
-                if not allow_dirty:
-                    click.echo(click.style(f"\n✗ {e}", fg="red"))
-                    click.echo("  Use --allow-dirty to override")
-                    raise SystemExit(1)
+        # Determine which phases to run
+        run_all = not (extract_only or plan_only or apply_only)
 
-        if apply_only:
-            # Just apply existing changeplans
-            changeplans = find_pending_changeplans()
-            click.echo(f"Found {len(changeplans)} existing changeplan(s) to apply")
-            
-            if not changeplans:
-                click.echo(click.style("Nothing to apply.", fg="yellow"))
-                return
-                
-        else:
-            # Find unprocessed files
-            scopes = ["transcripts", "email"] if scope == "all" else [scope]
-            
-            all_files: list[Path] = []
-            for s in scopes:
-                found = find_unprocessed(s)
-                all_files.extend(found)
-                if verbose:
-                    click.echo(f"  {s}: {len(found)} file(s)")
+        results = {"extract": None, "plan": None, "apply": None}
 
-            click.echo(f"Found {len(all_files)} unprocessed file(s)")
+        # Extract phase
+        if run_all or extract_only:
+            results["extract"] = run_extract(logger, dry_run)
 
-            if dry_run:
-                click.echo(click.style("\nDry run - would process:", fg="yellow"))
-                for f in all_files:
-                    click.echo(f"  • {f.name}")
-                return
+        # Plan phase
+        if run_all or plan_only:
+            results["plan"] = run_plan(logger, dry_run)
 
-            if not all_files:
-                click.echo(click.style("Nothing to process.", fg="yellow"))
-                return
+        # Apply phase
+        if run_all or apply_only:
+            results["apply"] = run_apply(logger, dry_run, no_commit)
 
-            # Check API key
-            if not check_api_key():
-                click.echo(click.style(
-                    "\n✗ OPENAI_API_KEY not set.\n"
-                    "  Set it with: export OPENAI_API_KEY=sk-...",
-                    fg="red"
-                ))
-                raise SystemExit(1)
+        # Summary
+        end_time = datetime.now()
+        duration = (end_time - start_time).total_seconds()
 
-            # Get OpenAI client
-            try:
-                client = get_client()
-            except OpenAIError as e:
-                click.echo(click.style(f"\n✗ OpenAI error: {e}", fg="red"))
-                raise SystemExit(1)
+        console.print("\n" + "=" * 50)
+        console.print(f"[bold]Run complete in {duration:.1f}s[/bold]")
 
-            # STAGE 1: Extract all
-            click.echo(click.style("\n=== EXTRACT ===", fg="cyan", bold=True))
-            extractions, extract_failures = extract_all(all_files, client, config, verbose)
-            result.extracted = len(extractions)
-            result.failed += len(extract_failures)
-            click.echo(f"Extracted: {len(extractions)}, Failed: {len(extract_failures)}")
+        for phase, success in results.items():
+            if success is None:
+                continue
+            status = "[green]✓[/green]" if success else "[red]✗[/red]"
+            console.print(f"  {status} {phase.capitalize()}")
 
-            if not extractions:
-                click.echo(click.style("No successful extractions, stopping.", fg="yellow"))
-                log_event("process", "early_exit", {"reason": "no_extractions"})
-                return
+        logger.info(f"Run complete in {duration:.1f}s")
 
-            # STAGE 2: Plan all
-            click.echo(click.style("\n=== PLAN ===", fg="cyan", bold=True))
-            changeplans, plan_failures = plan_all(extractions, client, config, verbose)
-            result.planned = len(changeplans)
-            result.failed += len(plan_failures)
-            click.echo(f"Planned: {len(changeplans)}, Failed: {len(plan_failures)}")
-
-            if not changeplans:
-                click.echo(click.style("No successful plans, stopping.", fg="yellow"))
-                log_event("process", "early_exit", {"reason": "no_plans"})
-                return
-
-        # STAGE 3: Apply batch (atomic)
-        click.echo(click.style("\n=== APPLY ===", fg="cyan", bold=True))
-        log_event("apply", "start", {"changeplans": len(changeplans)})
-
-        # Load all plans
-        plans = [load_changeplan(p) for p in changeplans]
-        source_files = [
-            vr / p.source_file
-            for p in plans
-            if (vr / p.source_file).exists()
-        ]
-
-        if verbose:
-            for plan in plans:
-                click.echo(f"\n  {plan.source_file}:")
-                for op in plan.operations:
-                    click.echo(f"    {op.op.value}: {op.path}")
-
-        executor = TransactionalApply(vr, run_id)
-        commit_hash = executor.execute_batch(
-            plans,
-            source_files,
-            allow_dirty=allow_dirty,
-            allow_overwrite=allow_overwrite,
-        )
-
-        result.applied = len(plans)
-        result.commit_hash = commit_hash
-
-        log_event("apply", "success", {
-            "changeplans": len(plans),
-            "created": len(executor.created_files),
-            "modified": len(executor.modified_files),
-            "archived": len(executor.moved_sources),
-            "commit": commit_hash[:8] if commit_hash else "",
-        })
-
-        click.echo(f"Applied: {len(plans)} changeplan(s)")
-        click.echo(f"  Created: {len(executor.created_files)} files")
-        click.echo(f"  Modified: {len(executor.modified_files)} files")
-        click.echo(f"  Archived: {len(executor.moved_sources)} sources")
-        if commit_hash:
-            click.echo(f"  Commit: {commit_hash[:8]}")
-
-        # Cleanup changeplan and extraction files
-        for p in changeplans:
-            try:
-                p.unlink()
-                # Also remove corresponding extraction file
-                extraction_file = p.with_name(
-                    p.name.replace(".changeplan.json", ".extraction.json")
-                )
-                if extraction_file.exists():
-                    extraction_file.unlink()
-            except Exception:
-                pass
-
-        log_event("process", "complete", {
-            "extracted": result.extracted,
-            "planned": result.planned,
-            "applied": result.applied,
-            "failed": result.failed,
-            "commit": commit_hash[:8] if commit_hash else "",
-        })
-
-        # Final summary
-        click.echo(click.style("\n" + "=" * 50, fg="green"))
-        click.echo(click.style("✓ Processing complete", fg="green", bold=True))
-        
-        if result.failed > 0:
-            click.echo(click.style(
-                f"  ⚠ {result.failed} file(s) failed → Inbox/_failed/",
-                fg="yellow"
-            ))
-        
-        click.echo(f"  Log: {log_path}")
-
-    except Exception as e:
-        log_event("process", "error", {"error": str(e)})
-        click.echo(click.style(f"\n✗ Error: {e}", fg="red"))
-        
-        if verbose:
-            import traceback
-            traceback.print_exc()
-        
-        raise SystemExit(1)
-    
     finally:
-        close_logging()
+        # Restore stashed changes
+        if stashed:
+            logger.info("Restoring stashed changes")
+            pop_stash()
 
 
 if __name__ == "__main__":

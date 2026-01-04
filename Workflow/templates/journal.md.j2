@@ -1,5 +1,5 @@
 ---
-type: journal
+type: "journal"
 title: "{{ title }}"
 date: "{{ date }}"
 source: "{{ source | default('manual') }}"
@@ -7,10 +7,10 @@ source_ref: "{{ source_ref | default('') }}"
 tags:
   - "type/journal"
   - "generated"
-{% if extra_tags is defined and extra_tags %}
+{% if extra_tags %}
 {% for tag in extra_tags %}
   - "{{ tag }}"
-{% endfor -%}
+{% endfor %}
 {% endif %}
 ---
 
@@ -21,30 +21,33 @@ tags:
 ## Summary
 
 {{ summary }}
-{%- if tasks %}
 
+{% if tasks %}
 ## Action Items
-{% for task in tasks %}
-- [ ] {{ task.text }}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task
-{% endfor -%}
-{% endif %}
-{%- if decisions %}
 
+{% for task in tasks %}
+- [ ] {{ task.text }}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task #auto
+{% endfor %}
+{% endif %}
+
+{% if decisions %}
 ## Decisions
+
 {% for decision in decisions %}
 - {{ decision }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
-{%- if facts %}
 
+{% if facts %}
 ## Key Information
+
 {% for fact in facts %}
 - {{ fact }}
-{% endfor -%}
+{% endfor %}
 {% endif %}
-{%- if source_ref %}
+{% if source_ref %}
 
 ---
 
-*Source: [[{{ source_ref }}|{{ source_ref | basename | strip_extension }}]]*
+*Source: [[{{ source_ref | basename | strip_extension }}]]*
 {% endif %}

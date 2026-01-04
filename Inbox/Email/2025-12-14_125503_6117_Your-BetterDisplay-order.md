@@ -1,0 +1,46 @@
+# Your BetterDisplay order
+
+- Exported: 2025-12-16 12:11:13
+- Messages: 1
+---
+
+## 2025-12-14 12:55:03 — kodeON (via Paddle.com) <help@paddle.com>
+**Subject:** Your BetterDisplay order
+
+> 
+> ￼
+> BetterDisplay
+> kodeON
+> 
+> Download 
+> 
+> License key
+> 
+> F01DF371-69F5C31C-AEA33E9C-D615FB85-8B873E99
+> 
+> 
+> Download Instructions
+> 
+> Activating your app is easy, just follow the simple steps below... 
+> If you haven't already, download the app by clicking the "Download" button.
+> When the app starts, choose the app icon from the menu bar.
+> Choose "Preferences" (gear icon) and go to the "Pro" tab.
+> Click the "Already Have a License?" button, enter your license information and click on "Activate License"
+> Any problems? Just reply to this email.
+> 
+> 
+> 
+> 
+> If you need help with your kodeON purchase, please contact us on paddle.net or reply to this email.
+> 
+> Thanks,
+> kodeON
+> ￼
+> Paddle.com Market Ltd, Judd House, 18-29 Mora Street, London EC1V 8BT 
+> © 2025 Paddle. All rights reserved.
+> 
+> 77149281
+> ￼ 
+
+---
+

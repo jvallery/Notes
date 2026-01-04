@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: '2025-12-16'
+last_contact: '2025-12-11'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -158,6 +158,12 @@ not done
 - 2025-10-01: [[2025-10-01 - Azure Extended Zones coordination]] (via Kishore Inampudi)
 
 - 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
+
+- 2025-12-11: Microsoft Ignite follow-up—coordinated technical collaboration; intro call proposed between Jason Vallery and Sushant Rewaskar; architecture docs requested for offline review.
+
+- 2025-12-11: Microsoft Ignite follow-up—coordinated technical collaboration; intro call proposed between Jason Vallery and Sushant Rewaskar; architecture docs requested for offline review.
+
+- 2025-12-11: Microsoft Ignite follow-up—coordinated technical collaboration; intro call proposed between Jason Vallery and Sushant Rewaskar; architecture docs requested for offline review.
 ## Key Facts
 
 ## Topics
