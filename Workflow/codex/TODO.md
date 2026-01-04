@@ -175,22 +175,25 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 ---
 
-## 11) Test Coverage Gaps (SKIPPED)
+## 11) Test Coverage Gaps ✅ COMPLETED
 
 **Goal:** Catch regressions in core pipeline.
 
 **Tasks**
 
-- Add unit test for `apply.py` path validation + rollback.
-- Add plan/apply round‑trip test using fixture extraction JSON.
-- Add schema vs Pydantic consistency tests.
-
-**Status:** Deferred to future iteration. Core functionality stabilized first.
+- Created `test_apply.py` with 15 new tests covering:
+  - Path validation (absolute, traversal, relative checks)
+  - Extraction → ChangePlan round-trip consistency
+  - JSON Schema vs Pydantic model alignment
+  - Rollback behavior (backup paths, created file tracking)
+- Fixed `test_rollback.py::test_append_under_heading_is_idempotent` (was wrong after T8 fix)
+- Fixed `sample-extraction.json` fixture (task field names: `text`/`due` not `description`/`due_date`)
+- Total: **90 tests passing**
 
 **Success Criteria**
 
-- Tests fail when paths are unsafe or schema drift exists.
-- CI passes with new tests.
+- Tests fail when paths are unsafe or schema drift exists. ✅
+- CI passes with new tests. ✅
 
 ---
 
@@ -212,5 +215,6 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 # Notes
 
-- All tasks complete except T11 (tests, deferred).
+- **All 12 tasks complete!** 🎉
 - See `RUNBOOK.md` for operational procedures.
+- Test suite: 90 tests in 6 test files.

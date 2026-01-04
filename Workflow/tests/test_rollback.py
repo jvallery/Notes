@@ -96,18 +96,17 @@ class TestIdempotency:
         # Results should be identical
         assert result1 == result2
 
-    def test_append_under_heading_not_idempotent(self, sample_readme: str):
-        """append_under_heading is NOT idempotent by design."""
+    def test_append_under_heading_is_idempotent(self, sample_readme: str):
+        """append_under_heading IS idempotent (fixed in T8)."""
         from scripts.utils.patch_primitives import append_under_heading
         
-        # This is expected behavior - appending adds new content
+        # Apply same content twice - should not duplicate
         result1 = append_under_heading(sample_readme, "## Recent Context", "- Line 1")
         result2 = append_under_heading(result1, "## Recent Context", "- Line 1")
         
-        # Content should be duplicated (not idempotent)
-        # This is by design - the planning phase should not re-add
-        assert result1 != result2
-        assert result2.count("- Line 1") == 2
+        # Content should NOT be duplicated (idempotent after T8 fix)
+        assert result1 == result2
+        assert result2.count("- Line 1") == 1
 
 
 class TestGitCleanCheck:
