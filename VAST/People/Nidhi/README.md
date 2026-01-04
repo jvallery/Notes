@@ -1,11 +1,11 @@
 ---
 type: people
 title: Nidhi
-last_contact: '2025-10-01'
-created: '2026-01-04'
+last_contact: "2025-10-01"
+created: "2026-01-04"
 tags:
-- type/people
-- needs-review
+  - type/people
+  - needs-review
 ---
 
 # Nidhi
