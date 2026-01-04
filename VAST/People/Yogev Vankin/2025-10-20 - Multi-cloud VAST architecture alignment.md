@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Multi-cloud VAST architecture alignment"
 date: "2025-10-20"
-account: "Yogev Vankin"
+person: "Yogev Vankin"
 participants: ["Jason Vallery", "Yogev Vankin"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-10-20/2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto.md"

@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Hyperscaler strategy: Google and Microsoft"
 date: "2025-11-07"
-account: "Jonsi Stephenson"
+person: "Jonsi Stephenson"
 participants: ["Myself", "Jonsi Stephenson"]
 source: "transcript"
 source_ref: "Inbox/Transcripts/2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i.md"

@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "VAST/CoreWeave storage strategy deep dive"
 date: "2025-09-18"
-account: "Jack Kabat"
+person: "Jack Kabat"
 participants: ["Jack Kabat", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-18/2025-09-18 - Jason outlined his new architect remit to assess VAST and CoreWeave strategies,.md"

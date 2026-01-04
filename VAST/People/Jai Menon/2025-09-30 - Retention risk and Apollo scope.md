@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Retention risk and Apollo scope"
 date: "2025-09-30"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-30/2025-09-30 - Jason shared that after meeting with Ong and seeing rewards, he began exploring.md"

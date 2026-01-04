@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Jason offer decision discussion"
 date: "2025-10-06"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-10-06/2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex.md"

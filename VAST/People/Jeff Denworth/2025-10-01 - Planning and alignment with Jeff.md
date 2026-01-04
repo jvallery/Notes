@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Planning and alignment with Jeff"
 date: "2025-10-01"
-account: "Jeff Denworth"
+person: "Jeff Denworth"
 participants: ["Jeff Denworth"]
 source: "transcript"
 source_ref: "Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - Jeff Denworth.md"

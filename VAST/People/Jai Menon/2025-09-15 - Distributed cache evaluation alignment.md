@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Distributed cache evaluation alignment"
 date: "2025-09-15"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jason Vallery", "Jai Menon"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t.md"

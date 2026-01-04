@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "OpenAI cache evaluation for MAI"
 date: "2025-09-03"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca.md"

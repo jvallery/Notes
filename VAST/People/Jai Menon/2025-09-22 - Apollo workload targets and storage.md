@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Apollo workload targets and storage"
 date: "2025-09-22"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jason Vallery", "Jai Menon"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-22/2025-09-22 - Jason and Jai discussed Apollo’s target workloads and deployment model (scale pe.md"

@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Align on OpenAI cache evaluation"
 date: "2025-09-03"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Reconnected post-sabbatical and aligned on Jason’s initial focus evaluate OpenA.md"

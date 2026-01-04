@@ -2484,7 +2484,7 @@ Most are intentionally unstructured, but should be documented.
 | 96     | Archive filename mismatch        | HIGH     | TBD        | 🔴 CRITICAL        |
 | 97     | MacWhisper captures app title    | HIGH     | 30 min     | 🔴 CRITICAL        |
 | 98     | Source attribution broken        | HIGH     | 60 min     | 🔴 CRITICAL        |
-| 95     | 19 people notes misclassified    | HIGH     | 30 min     | 🔴 HIGH            |
+| ~~95~~     | ~~19 people notes misclassified~~ | ~~HIGH~~ | ~~30 min~~ | ✅ FIXED            |
 | 62     | 17 stale last_contact            | HIGH     | 30 min     | 🔴 HIGH            |
 | 75     | Deterministic extraction         | HIGH     | 2 hrs      | 🔴 HIGH            |
 | 76     | Persist run artifacts            | HIGH     | 60 min     | 🔴 HIGH            |
@@ -2811,30 +2811,22 @@ Log error: `'note_type' is undefined`
 
 ---
 
-## 95) 19 People Notes Have `type: customer` + `account:` (Misclassified)
+## 95) ✅ FIXED: 19 People Notes Have `type: customer` + `account:` (Misclassified)
 
 **Found**: 2026-01-04
+**Fixed**: 2026-01-04
 
-Notes filed in `VAST/People/` are misclassified with customer frontmatter:
+Notes filed in `VAST/People/` were misclassified with customer frontmatter.
 
-```yaml
-type: "customer"
-account: "Jeff Denworth" # Should be person:
-```
+**Fix Applied:**
 
-**Affected files**:
-
-- `VAST/People/Jeff Denworth/2025-10-27 - Jeff 1-1 cloud priorities.md`
-- All 10+ Jai Menon meeting notes
-- `VAST/People/Jack Kabat/2025-09-18 - VAST CoreWeave storage strategy deep dive.md`
-- And 6+ more
-
-**Root Cause**: LLM classifies internal 1:1s with colleagues as "customer" meetings.
-
-**Fix**:
-
-1. Add to extraction prompt: "Colleagues (VAST employees) are NEVER customers. Use type=people"
-2. Fix existing 19 notes: change `type:` and `account:` → `person:`
+1. Added CRITICAL CLASSIFICATION RULES to `system-extractor.md.j2`:
+   - "VAST employees are NEVER customers"
+   - "Meetings with colleagues use type=people, NEVER type=customer"
+   
+2. Fixed all 19 affected files:
+   - Changed `type: "customer"` → `type: "people"`
+   - Changed `account:` → `person:`
 
 ---
 

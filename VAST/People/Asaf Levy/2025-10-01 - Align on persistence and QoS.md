@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Align on persistence and QoS"
 date: "2025-10-01"
-account: "Asaf Levy"
+person: "Asaf Levy"
 participants: ["Asaf Levy", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/Transcripts/2026-01-04 - 2025-10 - Asaf Levy.md"

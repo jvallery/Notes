@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Intro 1:1 on pricing"
 date: "2025-10-28"
-account: "Timo Pervane"
+person: "Timo Pervane"
 participants: ["Timo Pervane", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Introductory 1-1 covering backgrounds, finance org context, and cloud solutions.md"

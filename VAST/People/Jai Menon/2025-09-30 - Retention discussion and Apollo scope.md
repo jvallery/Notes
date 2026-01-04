@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Retention discussion and Apollo scope"
 date: "2025-09-30"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery", "Manish", "Ong"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-30/2025-09-30 - Jason shared he has multiple external management opportunities and plans to deci.md"

@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Jeff 1:1 cloud priorities"
 date: "2025-10-27"
-account: "Jeff Denworth"
+person: "Jeff Denworth"
 participants: ["Jeff Denworth", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-10-27/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md"

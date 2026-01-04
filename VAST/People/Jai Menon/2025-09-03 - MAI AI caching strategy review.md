@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "MAI AI caching strategy review"
 date: "2025-09-03"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Jai outlined a high-priority need to define an AI caching strategy for MAI at ma.md"

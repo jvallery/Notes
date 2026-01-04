@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Retention risk and Apollo scope"
 date: "2025-09-29"
-account: "Maneesh Sah"
+person: "Maneesh Sah"
 participants: ["Maneesh Sah", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-29/2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support.md"

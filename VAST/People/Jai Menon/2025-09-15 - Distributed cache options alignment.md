@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Distributed cache options alignment"
 date: "2025-09-15"
-account: "Jai Menon"
+person: "Jai Menon"
 participants: ["Jai Menon", "Jason Vallery"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned.md"

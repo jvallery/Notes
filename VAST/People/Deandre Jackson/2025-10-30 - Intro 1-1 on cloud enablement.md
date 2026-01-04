@@ -1,8 +1,8 @@
 ---
-type: "customer"
+type: "people"
 title: "Intro 1:1 on cloud enablement"
 date: "2025-10-30"
-account: "Deandre Jackson"
+person: "Deandre Jackson"
 participants: ["Jason Vallery", "Deandre Jackson"]
 source: "transcript"
 source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob.md"
