@@ -1,7 +1,7 @@
 ---
 type: people
 title: Jai Menon
-last_contact: '2025-10-06'
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,48 +12,84 @@ tags:
 
 ## Recent Context
 
-- 2025-10-06: [[2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s competing job offers (VAST vs Crus...
-- 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s pending job decision between a ris...
-- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 where Jason and Jai discussed Jason’s competing offers from VAST and Crusoe versus stayin...
-- 2025-10-06: [[2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr]] - 1:1 between Jai Menon and Jason Vallery about Jason’s external offers (VAST vs Crusoe) and why stayi...
-- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s retention risk after reviewing rew...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
+- 2025-11-06: [[2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A]] - Weekly 1:1 between Jason Vallery and Kanchan Mehrotra covering Microsoft Project Apollo and MAI Dall... (via Kanchan Mehrotra)
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
+- 2025-10-06: [[2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s pending job decision between VAST ...
+- 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on Jason’s decision to leave Microsoft due to...
+- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru...
+- 2025-10-06: [[2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s decision to leave Microsoft, compa...
+- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s retention risk after disappointing...
 - 2025-09-30: [[2025-09-30 - Jason shared he has multiple external management opportunities and plans to deci]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s potential departure from Microsoft...
-- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Ong and seeing rewards, he began exploring]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s exploration of external opportunit...
-- 2025-09-22: [[2025-09-22 - Jason and Jai discussed Apollo’s target workloads and deployment model (scale pe]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on Apollo’s target workloads, per-site GPU cl...
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and]] - Weekly 1:1 where Silk briefed Jason on its software-defined cloud storage architecture optimized for... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re]] - Silk briefed Jason (with Chris and Tom) on Silk’s software-defined cloud storage optimized for high-... (via Silk)
-- 2025-09-15: [[2025-09-15 - Silk briefed Jason on their software-defined cloud storage for databases, emphas]] - Silk briefed Jason (and team) on Silk’s software-defined cloud storage optimized for database worklo... (via Silk)
-- 2025-09-15: [[2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned]]
-- 2025-09-15: [[2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t]]
-- 2025-09-15: [[2025-09-15 - Jason and Jai discussed options and strategy for distributed caching (BlobFuse v]]
-- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]]
+- 2025-09-30: [[2025-09-30 - Jason shared that after meeting with Ong and seeing rewards, he began exploring]] - Weekly 1:1 between Jai Menon and Jason Vallery focused on Jason’s intent to pursue external manageme...
+- 2025-09-22: [[2025-09-22 - Jason and Jai discussed Apollo’s target workloads and deployment model (scale pe]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on defining Apollo’s target workloads and dep...
+- 2025-09-16: [[2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas]] - Weekly 1:1 between Jeff Denworth and Jason Vallery covering VAST’s accelerated cloud GTM push, poten... (via Jeff Denworth)
+- 2025-09-16: [[2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] - 1:1 intro call between Lior Genzel and Jason Vallery exploring Jason joining VAST, with discussion o... (via Lior Genzel)
 
 ## Profile
 
-**Role**: Manager / 1:1 counterpart (exact title not stated) at Microsoft (Storage (implied via "storage leadership team" context))
-**Relationship**: Jason Vallery's 1:1 manager/leader and internal sponsor
+**Role**: Founder/CEO at Microsoft (Apollo team (storage side))
+**Relationship**: Microsoft stakeholder (context)
 
 **Background**:
-- Meets weekly with Jason to build trust, remove blockers, align priorities, and coach; involved in discussions about Jason’s scope/comp options at Microsoft.
-- Meets weekly with Jason; discussed internal constraints around compensation and unclear Apollo scope; offered to be available for clarification/references.
-- Advising on Jason’s career decision; discussed feasibility of Microsoft counteroffer and Apollo scope; prefers not to push for a small counteroffer that could be perceived as insulting.
+- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
+- Mentioned as storage unit leader/representation in Apollo stakeholder set.
+- Referenced as senior leader who could override Azure Storage resistance if aligned with MAI/Apollo priorities.
 
 ## Key Facts
 
-- Silk is software-defined cloud storage focused on database and single source of truth workloads.
-- Typical scale cited: up to ~1 PB per data pod; tens of GB/s throughput with sub-ms latency.
-- Performance layer cited: ~2–3M TPS with 64k transactions; can serve millions of transactions/sec.
-- Architecture: deployed near database VMs; uses read cache; compresses and can dedupe; durable layer on Azure PV2 with added erasure coding or on VMs with ephemeral media.
-- Silk often competes with Azure NetApp Files and may outperform ANF Ultra at lower cost for certain DB workloads.
-- Boost VMs can deliver ~40 GB/s from a single host in Silk tests.
-- AI workloads are increasing and making access to production relational databases (SQL/Oracle/Postgres) more unpredictable.
-- Two AI/DB patterns discussed: maximize production DB performance vs create near-real-time copies (tens of seconds) for AI access.
-- Silk is seeking RDMA on the front end of Azure L-series to reduce CPU overhead; they are working with Gal Piglin’s team.
-- Ong may introduce Silk to Jay Menon.
+- Silk is software-defined cloud storage optimized for database and single source-of-truth workloads.
+- Typical scale cited: up to ~1 PB per data pod with tens of GB/s throughput and sub-ms latency.
+- Silk cited ~2–3M TPS with 64k transactions and noted single-VM DB performance is often the limiting factor.
+- Architecture: performance layer near DB VMs (PPG) with read cache; durable layer on Azure PV2 with added erasure coding or on VMs with ephemeral media; compression and optional dedupe.
+- Silk often competes with Azure NetApp Files and claims it can outperform ANF Ultra at lower cost for certain DB workloads.
+- Silk wants RDMA on the front end of Azure L-series to reduce CPU overhead; they are working with Gal Piglin’s team.
+- AI workloads (RAG/agentic) are increasing unpredictable access to production relational databases (SQL/Oracle/Postgres).
+- Two access patterns discussed: maximize production DB performance vs create near-real-time copies (tens of seconds) for AI access.
+- Silk is software-defined cloud storage optimized for structured relational DB workloads across Azure/GCP/AWS.
+- A single Silk data pod supports ~1–500 databases up to ~1 PB with n+x resilience and read cache (cNodes).
 
 ## Topics
 
-Silk cloud storage architecture for database workloads, AI-driven access patterns to systems of record, Performance characteristics: throughput, latency, TPS, Real-time vs near-real-time copies for AI access, Competitive positioning vs Azure NetApp Files (ANF) and Azure native storage, RDMA front-end support on Azure L-series and CPU overhead reduction, Executive introduction planning (Jay Menon via Ong), Silk architecture for high-performance relational databases, AI-driven increases in load on systems of record, Performance limits and throughput/latency characteristics, Production acceleration vs near-real-time instant DB copies, RDMA support request on Azure L-series and CPU overhead reduction, Competitive landscape (Azure NetApp Files, Vaast, Weka), Customer opportunity identification when Azure native storage cannot meet performance, Silk software-defined cloud storage for databases
+Silk cloud storage architecture for databases, Performance characteristics (throughput, latency, TPS), AI-driven access to systems of record (real-time vs near-real-time), Positioning vs Azure native storage (Azure NetApp Files), RDMA requirement on Azure L-series and CPU overhead, Executive introduction planning (Jay Menon via Ong), Silk architecture (performance layer, cache, durability options), AI-driven load on production relational databases (systems of record), Performance limits (TPS, throughput, latency) and IO sizing, Approaches: accelerate production DB vs near-real-time clones, RDMA support on Azure L-series / Duo Boost and CPU overhead reduction, Competitive context (Azure NetApp Files) and cost/performance positioning, Silk software-defined cloud storage for databases, Azure performance characteristics (Boost VMs, PV2, PPG), AI-driven load spikes on transactional systems of record
+
+## Key Decisions
+
+- ✅ Proceed with connecting to Jai Menon through Ong.
+- ✅ Proceed with setting up a CEO-level introduction to Jai Menon.
+- ✅ Evaluate use case fit per customer: accelerate production DB vs near-real-time cloned copies.
+- ✅ Do not pursue Microsoft compensation changes for Jason.
+- ✅ Jason to proceed with final diligence on VAST and decide between VAST and Crusoe.
+- ✅ Do not pursue an internal compensation/scope package at this time.
+- ✅ Jason will not stay at Microsoft.
+- ✅ Jason will choose between VAST and Crusoe by 2025-10-08 (leaning VAST pending de-risking).
+- ✅ Do not pursue a Microsoft counteroffer given compensation constraints and unclear scope.
+- ✅ Proceed toward a decision between VAST and Crusoe with intent to resign by Wednesday.
+
+## Related Customers
+
+- [[Microsoft]]
+- [[OpenAI]]
+- [[Silk]]
+- [[Google]]
+
+## Related Projects
+
+- [[MAI unified cache]]
+- [[Bifrost]]
+- [[Apollo]]
+- [[OpenAI cache evaluation]]
+- [[BlockFuse/C-Store]]
+- [[Model Builder Turbine]]
+- [[DeltaZero]]
+- [[Cloud]]
+- [[AI caching strategy for MAI scale]]
+- [[BlobFuse]]
+- [[AI caching strategy for MAI]]
+- [[Alluxio/DAX]]
+- [[OVA]]
 
 ## Related
 

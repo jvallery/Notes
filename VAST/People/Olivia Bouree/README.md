@@ -74,22 +74,22 @@ SORT due ASC
 - Route-based failover has latency/convergence considerations; ILB introduces pricing/feature tradeoffs.
 - Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
-- Ben (Google PM) is the new PM counterpart for this effort, replacing a prior counterpart (name not captured as a full name).
+- Ben is the new Google PM counterpart for this effort.
 
 ## Topics Discussed
 
-GCP IP allocation/reservation semantics and failover race window, Static IP reservation via Terraform and MIG static IP pools, VIP/failover approaches: alias IP vs route-based vs ILB, RDMA networking constraints on Z4M shapes, Dual-interface (RDMA + TCP) topology and bandwidth allocation, Cross-project RDMA connectivity via Private Service Connect interfaces (PSCI) vs VPC peering, Testing scale planning and longer-term volume projections for capacity planning, GPU direct storage RDMA vs inter-node RDMA
+GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 
 ## Profile
 
 **Relationship**: Meeting participant
 
 **Background**:
-- Meeting participant (name appears as Olivia Bouree/Bouree).
+- Meeting participant.
 
 ## Key Decisions
 

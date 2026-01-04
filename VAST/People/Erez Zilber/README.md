@@ -1,7 +1,7 @@
 ---
 type: people
 title: Erez Zilber
-last_contact: '2025-10-28'
+last_contact: '2025-11-07'
 created: '2026-01-03'
 tags:
 - type/people
@@ -12,33 +12,59 @@ tags:
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Weekly 1:1 between Jason Vallery and Erez Zilber aligning on delivering Azure Blob API support in VA...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro... (via Jonsi Stephenson)
+- 2025-10-28: [[2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az]] - Jason Vallery and Erez Zilber aligned on implementing Azure Blob API support in VAST, primarily to e...
 
 ## Profile
 
-**Role**: Protocols Architect at VAST (Protocols)
-**Location**: Tel Aviv (planned in-person sessions)
-**Relationship**: Weekly 1:1 counterpart; protocol/architecture partner for delivering Azure Blob API support.
+**Role**: Protocols architect at VAST Data (Protocols)
+**Location**: Tel Aviv
+**Relationship**: Internal stakeholder (pricing)
 
 **Background**:
-- Joined VAST 8+ years ago; leads protocol activities and field-driven protocol requirements; translating field requirements into implementable engineering work; currently ramping on Azure Blob API and mapping OpenAI requirements to VAST.
+- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
+- Referenced as part of current cloud pricing approach discussions.
+- Protocols architect at VAST for 8+ years; leads field-driven protocol requirements and translates them into engineering deliverables; currently ramping on Azure Blob API semantics and requirements mapping for OpenAI.
 
 ## Key Facts
 
-- Erez Zilber is VAST Protocols Architect (8+ years) leading field-driven protocol requirements.
-- Jason Vallery joined VAST ~1 week before 2025-10-28; previously 13 years at Microsoft object storage with deep Blob API expertise.
-- VAST aims to offer Azure Blob API for Azure Marketplace and customers beyond OpenAI.
-- OpenAI requires network autarky/offline operation for 72–96 hours for GPU-adjacent storage.
-- OpenAI disables account key auth and uses Entra ID managed identities with JWT bearer tokens.
-- JWT validation must work offline via cached public keys and must handle key rotation.
-- Each GPU cluster has its own service principal to scope data access.
-- Key Blob features of interest: Append Blob and PutBlobFromURL (service-to-service copy).
-- VAST prefers mapping Blob RBAC/ABAC to existing identity and bucket policies across protocols.
-- Planned POC will simulate network isolation to verify uninterrupted operation.
+- Erez Zilber is VAST protocols architect (8+ years) leading field-driven protocol requirements.
+- Jason Vallery joined VAST about a week prior; previously spent ~13 years at Microsoft in object storage product leadership.
+- OpenAI requires GPU-adjacent storage that can operate through 72–96 hours of network isolation (network autarky).
+- OpenAI disables account key authentication and uses Entra ID managed identities with JWT bearer tokens.
+- Offline JWT validation requires cached public keys and handling key rotation without IdP connectivity.
+- Each OpenAI GPU cluster uses its own service principal to scope access.
+- Key Blob features of interest: Append Blob and PutBlobFromURL.
+- VAST intends to map Blob RBAC/ABAC semantics to existing VAST identity and bucket policies across protocols.
+- In-person working sessions planned in Tel Aviv during the week of Nov 23 (Nov 23–26).
+- John runs alliances/partnerships and is the go-to for AMD/NVIDIA and conventional channel partnerships (non-cloud).
 
 ## Topics
 
-Azure Blob API support in VAST, Azure Marketplace enablement, OpenAI storage requirements (GPU-adjacent, offline/network autarky 72–96 hours), Entra ID managed identities, JWT bearer token validation offline (key caching and rotation), Authorization model: mapping Blob RBAC/ABAC to VAST bucket policies, Blob feature requirements (Append Blob, PutBlobFromURL), POC planning with simulated network isolation, Potential MS Graph integration for Entra ID users/groups, In-person design/knowledge-sharing sessions in Tel Aviv (week of Nov 23), Legacy account key support scope decision, Non-Azure GPU facilities considerations (e.g., CoreWeave)
+Azure Blob API support in VAST, Azure Marketplace enablement via Blob API compatibility, Entra ID managed identities and Instance Metadata Service, JWT bearer token validation, offline operation, and key caching/rotation, RBAC/ABAC authorization mapping to VAST bucket policies, OpenAI GPU-adjacent storage and network autarky requirements, Blob feature requirements (Append Blob, PutBlobFromURL), Potential native Entra ID user/group integration via Microsoft Graph, POC planning with simulated network isolation, Org map and key leaders/roles, Cross-cloud platform strategy and homogenization across providers, Cloud GTM plays and integrations (Foundry/Bedrock/Vertex), Cataloging in-flight deals by product requirements, Control-plane partnerships and 'cloud-in-a-box' for Tier-2 clouds, Customer requirements/FRDs documentation in Confluence
+
+## Key Decisions
+
+- ✅ Use Entra ID managed identities with JWT-based auth for OpenAI scenarios (no account keys).
+- ✅ Proceed with RBAC/ABAC-to-bucket-policy mapping for Blob authorization in VAST.
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Prioritize building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ Pursue deeper integration with Google Distributed Cloud and aim to be part of the GDC SKU.
+- ✅ Treat Microsoft Azure as a distinct sell-to motion (first-party/Storage HW) separate from marketplace sell-through.
+- ✅ Use real-workload benchmarks (not synthetic) as the standard for TPU/storage evaluations with Google.
+
+## Related Customers
+
+- [[Microsoft]]
+- [[OpenAI]]
+
+## Related Projects
+
+- [[Pricing]]
+- [[Cloud]]
 
 ## Related
 

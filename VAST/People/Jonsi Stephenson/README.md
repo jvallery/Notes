@@ -2,7 +2,7 @@
 name: Jonsi Stephenson
 role: CEO
 company: VAST Data
-last_contact: '2025-10-28'
+last_contact: unknown
 ---
 
 # Jonsi Stephenson
@@ -11,17 +11,32 @@ CEO of VAST Data.
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Group meeting aligning on an MVP launch on Google Cloud Marketplace using private offers with fixed ... (via Google)
+- unknown: [[2025-10 - Jeff Denworth]] - Notes capturing planning topics with Jeff Denworth around travel, team reporting structure, cloud ac... (via Jeff Denworth)
+- unknown: [[2025-10 - Jonsi Stephenson]] - A completed action item to align with Jonsi Stephenson on travel plans in order to enable an in-pers...
+- unknown: [[_Open Topics]] - Open topics note for Jonsi Stephenson that currently only contains a task query filtering for incomp...
+- 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] - Jonsi Stephenson and Jason Vallery aligned messaging and strategy for upcoming Microsoft AI discussi...
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i]] - 1:1 strategy sync with Jonsi Stephenson aligning VAST’s hyperscaler approach across Google and Micro...
+- 2025-10-31: [[2025-10-31 - Introductory 1-1 aligning on VAST’s cloud strategy. Jason outlined a vision for]] - Introductory 1:1 between Jason Vallery and Karl Vietmeier aligning on VAST’s cloud strategy, includi... (via Karl Vietmeier)
+- 2025-10-31: [[2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE]] - Weekly 1:1 between Jason Vallery and Rob Benoit to align on VAST’s cloud strategy, marketplace packa... (via Rob Banga)
+- 2025-10-30: [[2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob]] - Intro 1:1 between Jason Vallery and Deandre (Dre) Jackson aligning on cloud enablement messaging and... (via Deandre Jackson)
+- 2025-10-30: [[2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De]] - Weekly 1:1 with Lior Genzel focused on preparing for an upcoming MAI call, defining the near-term te... (via Lior Genzel)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
 
 ## Profile
 
 **Role**: CEO at VAST Data
+**Location**: Iceland (traveling; in Orlando during call)
 **Relationship**: Internal executive stakeholder
 
 **Background**:
-- Joined briefly; emphasized alias IP simplicity for end-user experience; had to drop for a customer call.
-- Discussed MVP scope, marketplace-only transactions, overage policy direction, and longer-term unit-based pricing and hybrid/multi-cloud considerations.
+- Listed as a candidate for weekly/monthly 1:1 cadence.
+- CEO of VAST Data.
+- Discussed positioning VAST with Microsoft AI; noted a temporary restraining order was lifted and remaining legal focus is on solicitation.
 
 ## Key Facts
 
@@ -34,11 +49,11 @@ CEO of VAST Data.
 - Route-based failover has latency/convergence considerations; ILB introduces pricing/feature tradeoffs.
 - Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
-- Ben (Google PM) is the new PM counterpart for this effort, replacing a prior counterpart (name not captured as a full name).
+- Ben is the new Google PM counterpart for this effort.
 
 ## Topics
 
-GCP IP allocation/reservation semantics and failover race window, Static IP reservation via Terraform and MIG static IP pools, VIP/failover approaches: alias IP vs route-based vs ILB, RDMA networking constraints on Z4M shapes, Dual-interface (RDMA + TCP) topology and bandwidth allocation, Cross-project RDMA connectivity via Private Service Connect interfaces (PSCI) vs VPC peering, Testing scale planning and longer-term volume projections for capacity planning, GPU direct storage RDMA vs inter-node RDMA, GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity pricing and $0.07/GB list price, Tackle.io integration with Salesforce for private offers, Polaris entitlements, call-home, metering, and token enforcement, Overage policy (10% allowance) and PAYGO list pricing workaround, Marketplace EULA language for overage billing, Internal alerting/dashboards for CS/sales on entitlement usage
+GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec
 
 ## Key Decisions
 
@@ -49,15 +64,31 @@ GCP IP allocation/reservation semantics and failover race window, Static IP rese
 - ✅ Use Tackle.io to generate and manage private offers integrated with Salesforce.
 - ✅ MVP pricing based on fixed capacity at $0.07/GB.
 - ✅ Polaris will manage entitlement, call-home registration, and usage reporting.
+- ✅ Anchor enablement on workload scenarios rather than generic object features.
+- ✅ Avoid engaging in price-only competitions (e.g., MinIO) unless the workload merits VAST’s performance/value.
+- ✅ Do not pursue Microsoft compensation changes for Jason.
+
+## Open Tasks
+
+- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
+- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson
 
 ## Related Customers
 
+- [[Microsoft]]
+- [[OpenAI]]
 - [[Google]]
 
 ## Related Projects
 
 - [[Pricing]]
+- [[OpenAI VAST POC (CoreWeave cluster)]]
 - [[Cloud]]
+- [[VAST on Azure Integration]]
+- [[Polaris]]
+- [[Project Stargate]]
+- [[VIP/Failover Design (GCP RDMA)]]
+- [[GCP MVP]]
 
 ## Related
 

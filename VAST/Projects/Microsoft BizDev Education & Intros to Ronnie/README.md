@@ -1,14 +1,15 @@
 ---
 type: projects
-title: "Microsoft BizDev Education & Intros to Ronnie"
-created: "2026-01-03"
-last_updated: ""
-status: "complete"
+title: Microsoft BizDev Education & Intros to Ronnie
+created: '2026-01-03'
+last_updated: ''
+status: complete
 auto_created: true
 tags:
-  - type/projects
-  - needs-review
-  - status/complete
+- type/projects
+- needs-review
+- status/complete
+last_contact: unknown
 ---
 
 # Microsoft BizDev Education & Intros to Ronnie
@@ -22,28 +23,26 @@ Educate Microsoft BizDev (density/power, single-namespace story) and secure intr
 | Field | Value |
 |-------|-------|
 | **Status** | complete |
-| **Priority** | _High / Medium / Low_ |
-| **Target Date** | _Unknown_ |
 | **Owner** | Jason Vallery |
 
 ## Current Blockers
 
-_No known blockers. List anything blocking progress..._
-
+_No known blockers._
 
 ## Next Steps
 
-_What are the immediate next actions needed?_
-
+_No next steps defined._
 
 ## Collaborators
 
-_Who is working on this project?_
-
 | Person | Role | Company |
 |--------|------|---------|
-| _Name_ | _Role_ | _Company_ |
-
+| [[Harish]] | BizDev leader (Joe Vane's boss) | Microsoft |
+| [[John Tinter]] | Executive sponsor (needed for access to Ronnie org) | Microsoft |
+| [[Joe Vane]] | BizDev | Microsoft |
+| [[Ronnie Booker]] | Owns chassis/layout/storage placement decisions for Apollo deployments | Microsoft |
+| [[Kurt Niebuhr]] | Global pre-sales lead for AI Infra | Microsoft |
+| [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
 
 ## Open Tasks
 
@@ -57,28 +56,48 @@ SORT due ASC
 
 ## Key Decisions
 
-_Important decisions made on this project..._
-
+- ✅ Carl to move to ProServe under Rob.
+- ✅ FRDs and detailed customer requirements will be authored/maintained in Confluence.
+- ✅ Jason will own multi-cloud strategy end-to-end and catalog in-flight opportunities from a product requirements lens.
+- ✅ Establish a monthly touchpoint between Jason and Brandon.
+- ✅ Pursue a BizDev-led path (Joe Vane/Harish) to secure executive sponsorship (John Tinter) and engage Ronnie Booker’s org, rather than focusing on Nidhi/Manish.
+- ✅ Treat the Azure Marketplace VM-based VAST offer as a checkbox while pushing a hardware/OEM storage-dense path for real density wins.
 
 ## Key Facts
 
-_Important context and information about this project..._
-
+- All listed Microsoft/Azure tasks were completed on 2025-11-08.
+- Focus areas included minimizing Azure egress (ExpressRoute Direct Local), aligning Azure GA milestones with Lifter phases, and producing BizDev/ROI/marketplace collateral.
+- John owns alliances/partnerships for conventional channels (incl. AMD/NVIDIA) and control-plane partner ecosystem for Tier-2 cloud-in-a-box.
+- Morty owns Neo cloud feature requirements; moving to Jason’s team but must keep Neo focus.
+- Customer Success under Rob is effectively reactive support, not proactive CS.
+- SE org is critical to Jason’s success; Hari called out as a top SE.
+- China posture agreed: software-only sales outpost; avoid CAPEX/headcount build-out.
+- Need a crisp, quantified Azure Storage gaps narrative ('dagger' slide) and a repeatable measurement rubric across clouds.
+- Win/loss analysis should be routine and tied to Sales Ops; cloud is a platform, product gaps apply across deployment environments.
+- Confluence is the engineering-respected source of truth for FRDs/requirements; coordinate taxonomy with Alon (A.L.) and Tomer.
 
 ## Topics / Themes
 
-_Key themes and areas of focus..._
+Microsoft Azure networking and egress minimization, Azure GA milestones and Lifter program alignment, ROI data usage validation for comparisons, LSv4/LSv5 vs OEM/ODM vs Azure Storage positioning, Microsoft BizDev enablement and introductions, Power savings translated to GPU capacity, Marketplace L-series offer expansion (SKUs/OEM path), Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft
 
+## Related People
+
+- [[Harish]]
+- [[John Tinter]]
+- [[Joe Vane]]
+- [[Ronnie Booker]]
+- [[Kurt Niebuhr]]
+- [[Jason Vallery]]
 
 ## Related Customers
 
-_Which customers/accounts is this project related to?_
-
+- [[Microsoft]]
 
 ## Recent Context
 
-_Recent activity will be populated here..._
-
+- unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
 
 ## Artifacts
 

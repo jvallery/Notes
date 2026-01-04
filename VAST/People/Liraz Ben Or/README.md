@@ -12,36 +12,61 @@ tags:
 
 ## Recent Context
 
-- unknown: [[2025-10 - Liraz Ben Or]] - Checklist note about syncing with Liraz Ben Or and establishing release gate meeting cadence. Both l...
-- unknown: [[2025-10 - Noa Cohen]] - Note tracks a completed action to introduce Jason Vallery and coordinate a sync with program manager... (via Noa Cohen)
-- 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]]
-- 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]]
-- 2025-09-18: [[2025-09-18 - Jason outlined his new architect remit to assess VAST and CoreWeave strategies,]] - Weekly 1:1 between Jack Kabat and Jason Vallery focused on Jason’s new architect remit to deep dive ... (via Jack Kabat)
+- unknown: [[2025-11-4 - Planning sessions]] - Planning notes for a set of sessions with Jeff Denworth to align on VAST’s cloud-first product strat... (via Jeff Denworth)
+- unknown: [[2025-10 - Liraz Ben Or]] - Checklist note tracking completion of initial sync activities with Liraz Ben Or, including introduct...
+- unknown: [[2025-10 - Noa Cohen]] - A completed action item to introduce Jason Vallery and sync with several program managers, including... (via Noa Cohen)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal aligned on how VAST plans and executes majorminor releases, hotf]] - Jason Vallery and Eyal Traitel aligned on VAST’s release planning/execution (major/minor releases, h... (via Eyal Traitel)
+- 2025-10-29: [[2025-10-29 - Jason and Eyal discussed VAST’s release intake, planning, and execution model, i]] - 1:1 between Jason Vallery and Eyal Traitel covering VAST’s release intake, planning, and execution m... (via Eyal Traitel)
+- 2025-10-29: [[2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga]] - Weekly 1:1 where Liraz Ben Or explained VAST’s non-traditional major release management process (4 p...
+- 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] - Weekly 1:1 intro where Liraz Ben Or walked Jason Vallery through VAST’s non-traditional release mana...
+- 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
 
 ## Profile
 
-**Role**: Program manager
-**Relationship**: Program manager I synced with
+**Role**: Program manager at VAST Data (R&D)
+**Relationship**: Internal collaborator (program/quality)
 
 **Background**:
-- Program manager involved in coordinating with the note author; connected to release gate meetings and cadence.
+- Program/quality perspective: Golden Run and Code Freeze misaligned; much is tribal knowledge and not written down; target QA success ~96–97%.
+- Involved in coordinating with program managers and release gate meetings/cadence.
+- Referenced as a program manager to sync with.
 
 ## Key Facts
 
-- Jason returned from a 3-month sabbatical and moved into a new architect role created by Manish.
-- Jason’s initial remit: assess VAST and CoreWeave capabilities, NVIDIA DGX alignment, and gaps in Azure’s storage stack; Project Apollo likely relevant.
-- CoreWeave positions VAST as preferred storage but also built its own object storage to avoid full vertical coupling.
-- NVIDIA is pushing DGX architecture and hardware-level optimizations integrating with VAST; NVIDIA relies on partners for storage.
-- OpenAI pattern: local NVMe on GPU hosts with lazy movement to/from blob for cheap/deep storage; Fairwater cited as an example.
-- OpenAI has proprietary global/regional synchronization IP layered above Azure data movement; Azure lacks this as a native storage primitive.
-- VAST offers a global namespace (DataSpaces) with cross-region locking and strong consistency; optimized for high-performance flash rather than HDD-based cheap-and-deep.
-- Azure’s 70+ regions and convergence of training and inference require layered storage design and distributed consistency.
-- Microsoft risks being commoditized by NVIDIA’s roadmap due to storage maturity gaps and historically slow execution.
-- Project Apollo introduces uncertainty (innovation path vs duplicative effort).
+- Eyal Traitel joined VAST in Dec 2024; Noa Cohen is a long-tenured VAST employee focusing on major releases while Eyal focuses on minor releases.
+- Feature intake channels include leadership/architects, and SE requests filed in Salesforce tied to opportunities and triaged by Tomer Hagay’s team with bi-weekly reviews.
+- Release managers run day-to-day execution for major and minor releases; Shelly Martin (Ops) and Liraz Ben Or (R&D) drive phase-gate documentation/process.
+- vForce (Roy Sterman) and Dafna’s team manage service packs and hotfixes, including back/forward-porting and ensuring fixes go upstream to minors/majors.
+- Minor releases are treated like full releases with regression and performance testing; weekly content/testing reviews.
+- Planning is highly dynamic due to frequent urgent customer/field requests (example: Tesla), causing scope churn and parallel streams.
+- 5.6 phase gates are underway with target GA in July next year.
+- Historical cadence is roughly 2–3 major releases per year.
+- Major multi-tenancy blocker: authentication providers limited to 8 and configured at host cluster rather than tenant-scoped; scaling and tenantizing is a large effort.
+- Control plane (Polaris/Iceland) is more cloud-native; cluster layer is not yet operating in an agile/SaaS mode.
 
 ## Topics
 
-VAST vs CoreWeave storage strategies, NVIDIA DGX architecture direction and partner ecosystem, Azure storage stack gaps for AI training/inference workloads, Global namespace and strong consistency across regions (VAST DataSpaces-like capability), OpenAI storage architecture (local NVMe + blob) and proprietary sync layer, Layered storage approach balancing performance and cost at Azure scale, Project Apollo alignment/overlap risk, Execution speed and commoditization risk from NVIDIA roadmap, UK Met Office Gen 2 (brief mention, no detail), Program manager sync, Release gate meetings, Release cadence, Introductions, Sync with program managers
+Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target, Release intake and prioritization (leadership, architects, SE/Salesforce), Major vs minor releases and phase-gate process, Service packs and hotfix process (vForce, upstreaming fixes), Regression/performance testing practices for minors, SaaS agility vs storage reliability constraints
+
+## Key Decisions
+
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
+- ✅ Set a monthly touchpoint with Brandon to align on cloud platform priorities.
+- ✅ Customer requirement docs and FRDs will be authored and maintained in Confluence.
+- ✅ Prioritize building a first-class cross-cloud platform and GTM versus ad hoc deal chasing.
+- ✅ Carl will move to ProServe under Rob due to customer-facing risk.
+- ✅ Morty will transition to the author’s team while maintaining Neo cloud feature ownership/commitments.
+- ✅ The author owns defining cross-cloud product strategy and prioritization.
+- ✅ Customer requirements and FRDs will be authored and maintained in Confluence (coordinated with A.L. and Tomer).
+- ✅ Do not run an OpenAI alignment session until OpenAI engages.
+- ✅ Primary focus is Microsoft while simultaneously investing in a Google TPU strategy.
+
+## Related Projects
+
+- [[Cloud]]
+- [[5.5 Features]]
 
 ## Related
 

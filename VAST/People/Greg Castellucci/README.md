@@ -64,21 +64,34 @@ SORT due ASC
 
 ## Key Facts
 
-- Google Distributed Cloud (GDC) has connected and air-gapped variants; NetApp is the current storage partner in GDC deployments.
-- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and the pursuit is competitive/vendor due diligence.
-- Google’s emphasis areas: air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags integration.
-- Fort Meade on-prem "Gemini as a service" initiative is described as a Q4 commit and a strong candidate for rapid joint validation.
-- GDC hardware commonly runs on Dell; deployments may also involve HPE and Cisco.
-- VAST recently launched Google Marketplace offers; broader partnership is early-stage.
-- There may be ambiguity whether "Leo" is the same person as Lior Genzel; needs clarification.
+- Google Distributed Cloud has connected and air-gapped variants; NetApp is the incumbent storage partner.
+- Google issued a US-based RFP to replace NetApp for GDC storage; VAST was invited to respond and is undergoing vendor due diligence.
+- Google’s emphasis areas include air-gapped support, compliance/attestations (e.g., DISA STIG), ops model (updates, staffing, troubleshooting), multi-tenancy, quotas, encryption, and tags.
+- Fort Meade "Gemini as a service" on-prem initiative is described as a Q4 commit and a near-term joint validation path.
+- GDC deployments commonly run on Dell; HPE and Cisco are also in scope for hardware options.
+- VAST recently launched Google Marketplace offers; broader partnership is still early.
+- Resource risk: Greg may be heavily focused on Leidos next year, potentially impacting continuity.
+- Andy’s team operates across four pillars: field escalation/POC support, lab management/benchmarks, SE enablement/training plus PM augmentation, and marketing support.
+- Documentation is currently feature/button-oriented and not scenario-driven; scenario guides are ad hoc and late.
+- PM process gaps include training ownership, PRDs vs FRDs (engineering writes FRDs), release visibility, and access to builds/docs.
 
 ## Topics Discussed
 
-Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapped/dark-site operational readiness and support model, Compliance/attestations and ATO evidence (including DISA STIG), Multi-tenancy, quotas, encryption, tags integration, Hardware platform options (Dell/HPE/Cisco) and SKU recommendations, Commodity VM shapes and RDMA tradeoffs, Fort Meade on-prem Gemini validation/POC and rack-and-stack logistics, Alignment between Google corporate GDC and Google Federal/IC teams, Go-to-market linkage between VAST Federal and Google Federal sellers, Potential future partnership track around Google TPUs/model builders
+Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Roles and responsibilities between PM and Field CTO org, Documentation and field training ownership gaps, Release process: phase gates, implementation reviews, FRDs/Confluence, Hands-on enablement: OVA, SE Lab, GitLab access, VAST on Cloud viability and cloud economics
 
 ## Recent Context
 
-- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams coordinated a response to Google Distributed Cloud’s RFP to replace N... (via Google)
+- 2025-11-14: [[2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud]] - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud’s RFP to replace Ne... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k]] - 1:1 with Jeff Denworth to review the org landscape, clarify key stakeholders, and align on the autho... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
+- 2025-10-30: [[2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four]] - Weekly 1:1 alignment between Jason Vallery and Andy Perlsteiner covering Andy’s team charter, major ... (via Andy Perlsteiner)
+- 2025-10-28: [[2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un]] - Weekly 1:1 between Jason Vallery (VAST) and Kanchan Mehrotra (Microsoft) aligning on a dual-track pl... (via Kanchan Mehrotra)
+- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on accelerating AI-first software developme... (via Tomer Hagay)
+- 2025-10-24: [[2025-10-24 - Jason and Tomer discussed accelerating VAST’s engineering maturity and cloud str]] - Weekly 1:1 between Jason Vallery and Tomer Hagay focused on improving VAST engineering maturity and ... (via Tomer Hagay)
+- 2025-10-22: [[2025-10-22 - Jason (VAST) reconnected with Sam (OpenAI) to discuss VAST as GPU-adjacent warm]] - 1:1 between Jason Vallery (VAST) and Sam Hopewell (OpenAI) to re-establish alignment on VAST as GPU-... (via Sam Hopewell)
+- 2025-09-16: [[2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home]] - 1:1 intro call between Lior Genzel and Jason Vallery exploring Jason joining VAST, with discussion o... (via Lior Genzel)
+- 2025-09-16: [[2025-09-16 - Team reviewed status of distributed cache for checkpointing implementation comp]] - Weekly 1:1 focused on the distributed cache for checkpointing: implementation is complete, with scal... (via Vishnu Charan TJ)
 
 ## Profile
 
@@ -86,24 +99,36 @@ Google Distributed Cloud storage replacement RFP (NetApp displacement), Air-gapp
 **Relationship**: Internal collaborator; federal point person for Google
 
 **Background**:
-- Designated point person to run engagement with Google Federal and coordinate with corporate GDC team; also coordinating Google/Cisco Fort Meade rack-and-stack progress. Mentioned future focus on Leidos next year.
+- Federal point person for Google; coordinating Google Federal and corporate GDC engagement; also coordinating with Google/Cisco on Fort Meade rack-and-stack progress. Noted upcoming heavy focus on Leidos next year.
+- Not directly discussed in transcript; included in known entities but not referenced in this note's narrative.
+- Listed in known entities; not discussed in note content beyond manifest context.
 
 ## Key Decisions
 
 - ✅ Greg Castellucci will run point with Google Federal and coordinate with the corporate GDC team over the next few weeks.
-- ✅ Jason Vallery will connect Greg with Google stakeholders and drive RFP content assembly.
-- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi on AI, VM shapes, RDMA, and storage/hardware tradeoffs.
-- ✅ "Leo" will own the end-to-end RFP response and submissions.
-- ✅ Use the Fort Meade on-prem "Gemini as a service" effort as the primary near-term validation path/reference.
-- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in proposals.
+- ✅ Jason Vallery will coordinate RFP content assembly and connect Greg with Google stakeholders.
+- ✅ Alon Horev will conduct a 1:1 with Muninder Singh Sambi focused on AI, VM shapes/RDMA, and hardware tradeoffs.
+- ✅ Leo will own the end-to-end formal RFP response and submission.
+- ✅ Use the Fort Meade on-prem Gemini initiative as the primary near-term validation path/reference.
+- ✅ Include Dell and HPE SKU recommendations and consider Cisco/commodity VM options in the architecture proposal.
+- ✅ Use Phil Wagstrom as primary multi-tenancy SME contact.
+- ✅ Proceed with OVA and SE Lab access for Jason’s learning.
+- ✅ Schedule a follow-up focused on OpenAI architecture and needs.
+- ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.
 
 ## Related Customers
 
+- [[Leidos]]
+- [[Microsoft]]
+- [[Cisco]]
 - [[Google]]
 
 ## Related Projects
 
+- [[Google Distributed Cloud RFP]]
 - [[Cloud]]
+- [[Fort Meade "Gemini as a service" on-prem validation]]
+- [[Cisco POC (DoD/IC)]]
 
 ## Related
 

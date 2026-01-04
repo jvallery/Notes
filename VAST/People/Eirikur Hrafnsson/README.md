@@ -2,7 +2,7 @@
 type: people
 title: Eirikur Hrafnsson
 created: '2026-01-03'
-last_contact: '2025-10-28'
+last_contact: '2025-11-07'
 auto_created: true
 tags:
 - type/people
@@ -74,25 +74,29 @@ SORT due ASC
 - Route-based failover has latency/convergence considerations; ILB introduces pricing/feature tradeoffs.
 - Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
-- Ben (Google PM) is the new PM counterpart for this effort, replacing a prior counterpart (name not captured as a full name).
+- Ben is the new Google PM counterpart for this effort.
 
 ## Topics Discussed
 
-GCP IP allocation/reservation semantics and failover race window, Static IP reservation via Terraform and MIG static IP pools, VIP/failover approaches: alias IP vs route-based vs ILB, RDMA networking constraints on Z4M shapes, Dual-interface (RDMA + TCP) topology and bandwidth allocation, Cross-project RDMA connectivity via Private Service Connect interfaces (PSCI) vs VPC peering, Testing scale planning and longer-term volume projections for capacity planning, GPU direct storage RDMA vs inter-node RDMA, GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity pricing and $0.07/GB list price, Tackle.io integration with Salesforce for private offers, Polaris entitlements, call-home, metering, and token enforcement, Overage policy (10% allowance) and PAYGO list pricing workaround, Marketplace EULA language for overage billing, Internal alerting/dashboards for CS/sales on entitlement usage
+GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP networking/IP failover options for upcoming... (via Google)
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Group meeting aligning on an MVP launch on Google Cloud Marketplace using private offers with fixed ... (via Google)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
+- 2025-10-28: [[2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke]] - Cloud BU leadership aligned on a dual-track cloud strategy: ship a near-term GCP marketplace MVP wit... (via Cloud)
+- 2025-10-27: [[2025-10-27 - The team debated how to align cloud pricing with the new on‑prem model. Two opti]] - Group meeting transcript debating how to align VAST cloud pricing with the new on-prem core+capacity... (via Pricing)
 
 ## Profile
 
-**Role**: Meeting participant; coordinating Tackle kickoff/integration discussions
+**Role**: Meeting participant; coordinating Tackle implementation and GCP MVP launch readiness at VAST Data
 **Relationship**: Meeting participant
 
 **Background**:
 - Meeting participant.
-- Involved in Tackle.io kickoff/implementation meetings and coordinating access/reporting for GCP marketplace; driving tactical readiness for GCP launch.
+- Involved in Tackle meetings and operational readiness for GCP Marketplace launch; coordinating finance access to GCP reporting and scheduling walkthroughs.
+- Owns GCP MVP deployment flow decisions; implements routable IP approach and follows up with Google on maintenance overlap guarantees.
 
 ## Key Decisions
 
@@ -103,6 +107,9 @@ GCP IP allocation/reservation semantics and failover race window, Static IP rese
 - ✅ Use Tackle.io to generate and manage private offers integrated with Salesforce.
 - ✅ MVP pricing based on fixed capacity at $0.07/GB.
 - ✅ Polaris will manage entitlement, call-home registration, and usage reporting.
+- ✅ Pursue dual-track go-to-market: marketplace offer for enterprise bursts plus sell-to hyperscaler-scale deals.
+- ✅ Use routable IPs for GCP MVP; defer alias IPs/SaaS Runtime until post-launch.
+- ✅ Adapt Enscale solution/deck for Microsoft/MAI with Kubernetes-led control plane and Polaris emphasis.
 
 ## Related Customers
 
@@ -110,7 +117,10 @@ GCP IP allocation/reservation semantics and failover race window, Static IP rese
 
 ## Related Projects
 
+- [[Pricing]]
+- [[Polaris]]
 - [[Cloud]]
+- [[GCP MVP]]
 
 ## Related
 

@@ -2,7 +2,7 @@
 type: people
 title: Jason Valeri
 created: '2026-01-03'
-last_contact: '2025-10-28'
+last_contact: '2025-11-07'
 auto_created: true
 tags:
 - type/people
@@ -65,23 +65,25 @@ SORT due ASC
 
 ## Key Facts
 
-- MVP pricing is $0.07/GB capacity with fixed term/fixed price via Google Cloud Marketplace private offers.
-- All MVP transactions go through marketplaces; BYOL is explicitly excluded for MVP.
-- Tackle.io is used as middleware to generate private offers and sync them with Salesforce opportunities.
-- Polaris is the source of truth for entitlements, usage, and metering; entitlements enforced via tokens (no license keys).
-- Considering ~10% overage allowance; goal is to charge overage at PAYGO list price, but GCP Marketplace may not support this natively.
-- EULA language must explicitly cover overage billing terms in marketplace offers.
-- Customer alerting exists for exceeding limits; internal CS/sales alerting was identified as missing and needed.
-- First GCP transactions targeted for Nov–Dec, with intent to replicate approach to other hyperscalers afterward.
-- Finance will not have a separate cloud P&L; cloud metrics will be reported within overall P&L, and SaaS/consumption metrics need definition before SaaS launch.
+- MVP launch on GCP uses private offers with fixed capacity pricing ($0.07/GB) via GCP Marketplace.
+- Tackle.io is the middleware to generate private offers and sync them with Salesforce opportunities.
+- Polaris is the source of truth for entitlements and metering; clusters call home to Polaris and enforce entitlements via tokens (no license keys).
+- No BYOL for MVP; all transactions go through marketplaces to support hyperscaler partner status and MDF/marketing benefits.
+- Considering ~10% overage allowance; goal is to charge overage at list PAYGO, but GCP Marketplace may not support this natively.
+- Internal CS/sales alerting for entitlement usage/overage is not yet in place; customer alert exists.
+- First GCP transactions targeted for Nov–Dec 2025; plan to replicate approach to AWS/Azure afterward.
+- Finance will not have a separate cloud P&L; cloud metrics will be reported within overall P&L; SaaS/consumption metrics and forecasting model must be defined before full SaaS launch.
+- Customer Success is currently reactive support rather than proactive CS.
+- PM team is small relative to product scope; professionalizing PM is a major initiative for the coming year.
 
 ## Topics Discussed
 
-GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity pricing and $0.07/GB list price, Tackle.io integration with Salesforce for private offers, Polaris entitlements, call-home, metering, and token enforcement, Overage policy (10% allowance) and PAYGO list pricing workaround, Marketplace EULA language for overage billing, Internal alerting/dashboards for CS/sales on entitlement usage, Finance processes: billing, payout cadence, reconciliation, rev rec, Hybrid on-prem/cloud conversion and revenue recognition complexity, Multi-cloud pooling feasibility and hyperscaler messaging concerns, Unit-based pricing model for compute/capacity
+GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec, Future pricing model: VAST units of measurement for compute/capacity, Hybrid on-prem/cloud conversion and revenue recognition complexity, Multi-cloud pooling feasibility and hyperscaler positioning concerns, Need for cloud customer success coverage and internal usage alerting, Org landscape and key players, Cloud strategy beyond S3, Embedding with SEs and customer workflow discovery, Google RFP and TPU angle; fit assessment, Microsoft positioning vs Azure Storage gaps
 
 ## Recent Context
 
-- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Group meeting aligning on an MVP launch on Google Cloud Marketplace using private offers with fixed ... (via Google)
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
 
 ## Profile
 
@@ -89,7 +91,8 @@ GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity prici
 **Relationship**: Internal finance partner
 
 **Background**:
-- Finance lead to embed in Tackle implementation; validate overage approach; define billing/reconciliation/rev rec processes and reporting metrics for cloud.
+- Mentioned indirectly as 'T-Mose' / finance strategy discussions; finance wants to run strategy people out of finance.
+- Finance lead embedded into Tackle implementation; validating overage-at-PAYGO approach and helping define billing/reconciliation/rev rec processes for marketplace transactions.
 
 ## Key Decisions
 
@@ -97,6 +100,10 @@ GCP Marketplace MVP launch scope (private offers, no BYOL), Fixed capacity prici
 - ✅ Use Tackle.io to generate and manage private offers integrated with Salesforce.
 - ✅ MVP pricing based on fixed capacity at $0.07/GB.
 - ✅ Polaris will manage entitlement, call-home registration, and usage reporting.
+- ✅ Carl will move to ProServe under Rob due to customer-facing risk.
+- ✅ Morty will transition to the author’s team while maintaining Neo cloud feature ownership/commitments.
+- ✅ The author owns defining cross-cloud product strategy and prioritization.
+- ✅ Customer requirements and FRDs will be authored and maintained in Confluence (coordinated with A.L. and Tomer).
 
 ## Related Customers
 

@@ -1,0 +1,122 @@
+---
+type: people
+title: Amy Hood
+created: '2026-01-03'
+last_contact: '2025-11-07'
+auto_created: true
+tags:
+- type/people
+- needs-review
+- company/microsoft
+---
+
+# Amy Hood
+
+## Contact Information
+
+| Field | Value |
+|-------|-------|
+| **Role** | CFO |
+| **Company** | Microsoft |
+| **Department** | _Unknown_ |
+| **Email** | _Unknown_ |
+| **Phone** | _Unknown_ |
+| **LinkedIn** | _Unknown_ |
+| **Location** | _Unknown_ |
+
+## Relationship
+
+_How do you work with this person? What is your dynamic?_
+
+## Background
+
+_Career history, expertise, interests, personal details shared..._
+
+
+## Projects
+
+_What projects are you collaborating on with this person?_
+
+```dataview
+LIST
+FROM "VAST/Projects" OR "Personal/Projects"
+WHERE contains(file.outlinks, this.file.link)
+```
+
+
+## Open Tasks
+
+```dataview
+TASK
+FROM ""
+WHERE !completed AND contains(text, "Amy Hood")
+SORT due ASC
+```
+
+
+## Tasks They Own
+
+_Action items this person is responsible for:_
+
+```dataview
+TASK
+WHERE contains(text, "@AmyHood") AND !completed
+SORT due ASC
+```
+
+## Key Facts
+
+- John owns alliances/partnerships for conventional channels (incl. AMD/NVIDIA) and control-plane partner ecosystem for Tier-2 cloud-in-a-box.
+- Morty owns Neo cloud feature requirements; moving to Jason’s team but must keep Neo focus.
+- Customer Success under Rob is effectively reactive support, not proactive CS.
+- SE org is critical to Jason’s success; Hari called out as a top SE.
+- China posture agreed: software-only sales outpost; avoid CAPEX/headcount build-out.
+- Need a crisp, quantified Azure Storage gaps narrative ('dagger' slide) and a repeatable measurement rubric across clouds.
+- Win/loss analysis should be routine and tied to Sales Ops; cloud is a platform, product gaps apply across deployment environments.
+- Confluence is the engineering-respected source of truth for FRDs/requirements; coordinate taxonomy with Alon (A.L.) and Tomer.
+- Kurt is global pre-sales lead for AI Infra under Zia; his team scores constrained GPU allocations and must approve any allocation of constrained SKUs.
+- Kurt’s proposal: GA Azure Extended Zones as network-only plus AKS NodeJoin (ACAS FlexNode) to connect neo/sovereign cloud training sites to Azure for global inference.
+
+## Topics Discussed
+
+Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding, China go-to-market posture (software-only), Azure Storage limitations and messaging for Microsoft, Google RFP triage and no-bid criteria for block/latency-heavy asks, Confluence as FRD system of record and documentation taxonomy, Win/loss cadence and product MBR rhythm, Azure GTM path for VAST storage (BizDev-led engagement), VAST density/power advantages vs Azure Blob and Marketplace L-series limitations, OEM/ODM hardware path into Azure data centers and Apollo decision-making, Azure Extended Zones (network-only) and AKS NodeJoin (ACAS FlexNode) GA proposal
+
+## Recent Context
+
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-11-07: [[2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin]] - Working session for the Model Builder Turbine project to map warm introduction paths into priority m... (via Model Builder Turbine)
+- 2025-10-27: [[2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe]] - Weekly 1:1 where Jason Vallery and Kurt Niebuhr aligned on a Microsoft Azure go-to-market path for V... (via Kurt Niebuhr)
+- 2025-10-22: [[2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference]] - Weekly 1:1 between Jason Vallery (VAST) and Rosanne Kincaid–Smith (Dhammak Group) covering Microsoft... (via Rosanne Kincaid–Smith)
+
+## Profile
+
+**Role**: CFO at Microsoft (Finance)
+**Relationship**: Executive at customer account (Microsoft)
+
+**Background**:
+- Referenced as driving finance/balance-sheet risk management behind Microsoft lease pullbacks; viewed as influential in strategy around leases vs shifting GPU capex risk to neo-cloud partners.
+
+## Key Decisions
+
+- ✅ Carl to move to ProServe under Rob.
+- ✅ FRDs and detailed customer requirements will be authored/maintained in Confluence.
+- ✅ Jason will own multi-cloud strategy end-to-end and catalog in-flight opportunities from a product requirements lens.
+- ✅ Establish a monthly touchpoint between Jason and Brandon.
+- ✅ Pursue a BizDev-led path (Joe Vane/Harish) to secure executive sponsorship (John Tinter) and engage Ronnie Booker’s org, rather than focusing on Nidhi/Manish.
+- ✅ Treat the Azure Marketplace VM-based VAST offer as a checkbox while pushing a hardware/OEM storage-dense path for real density wins.
+- ✅ Reframe outreach to focus on concrete pipeline components (Kafka for RL, real-time vector DB) rather than platform narratives.
+- ✅ Use an NVIDIA-customer event (via AI Circle) as the primary NVIDIA intro mechanism; direct 1:1 intros from NVIDIA reps are unlikely.
+- ✅ Broaden persona targeting to include data/pipeline owners, not just CTO-level contacts.
+- ✅ Defer direct Google/Microsoft-introduced paths where conflicts exist to reduce hyperscaler conflict risk.
+
+## Related Customers
+
+- [[Microsoft]]
+
+## Related
+
+
+
+
+---
+*Last updated: *
