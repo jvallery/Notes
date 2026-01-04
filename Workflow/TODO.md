@@ -286,23 +286,26 @@ This list is ordered by risk and dependency. Each task includes success criteria
 
 **Goal:** Ensure README task queries and timestamps render correctly after import.
 
-**Status: ✅ COMPLETE (2026-01-04)**
+**Status: REGRESSION (re-scan 2026-01-04)**
 
-- Updated all README templates to use `FROM this.file.folder` instead of `folder_path` variable
-- Fixed 179 existing READMEs with empty `FROM ""` queries
-- Fixed 103 READMEs with empty `*Last updated: *` footers (populated from last_contact/created)
-- Templates updated: `readme-person.md.j2`, `readme-project.md.j2`, `readme-customer.md.j2`
+Re-scan results (current vault):
+
+- `rg -l "FROM \"\"" VAST Personal -g 'README.md'` → **179** READMEs
+- `rg -l "Last updated: \\*" VAST Personal -g 'README.md'` → **103** READMEs
+
+This means the README template changes and/or backfill did not apply cleanly to the current import results.
 
 **Tasks**
 
-- [x] Populate `folder_path` (or switch to `FROM this.file.folder`) in README templates.
-- [x] Ensure `last_updated` is always set (frontmatter + footer line).
-- [x] Backfill existing auto‑created READMEs to remove blank task scopes/timestamps.
+- [ ] Update README templates to use `FROM this.file.folder` (no empty folder scopes).
+- [ ] Ensure `last_updated` is always set (frontmatter + footer line).
+- [ ] Backfill existing auto‑created READMEs to remove blank task scopes/timestamps.
+- [ ] Add an audit gate to fail runs when README queries/timestamps are blank (see item 21).
 
 **Success Criteria**
 
-- ✅ `rg -l "FROM \"\"" VAST Personal -g 'README.md'` returns 0.
-- ✅ `rg -l "Last updated: \\*$" VAST Personal -g 'README.md'` returns 0.
+- `rg -l "FROM \"\"" VAST Personal -g 'README.md'` returns 0.
+- `rg -l "Last updated: \\*" VAST Personal -g 'README.md'` returns 0.
 
 ---
 
@@ -366,8 +369,12 @@ This list is ordered by risk and dependency. Each task includes success criteria
 - Add `Workflow/scripts/audit_import.py` (or similar) to scan for:
   - blank `FROM ""` in README dataview blocks
   - missing `last_updated`
+  - missing `README.md` in entity folders
   - `_NEW_*` directories
   - `Untitled*.md` files
+  - broken `source_ref` targets (including 0-byte archive files)
+  - note type ↔ destination mismatches (e.g., `VAST/People/*` notes with `type: customer`)
+  - empty `participants: []` when `source` is a transcript/meeting
   - unsafe title→path characters or nested folder splits
 - Add a Runbook step to execute audit after each full import.
 
@@ -431,6 +438,7 @@ Correct path is `VAST/Customers and Partners/`.
 **Status: PARTIAL (2026-01-04)**
 
 Updated `scripts/backfill/applier.py` `format_tasks_section()` to include:
+
 - Priority markers (🔺 highest, ⏫ high, 🔼 medium, 🔽 low, ⏬ lowest)
 - `#task` tag on all task lines
 - Owner and due date were already present
@@ -502,6 +510,7 @@ Added wikilink-based deduplication to `append_under_heading` primitive in `scrip
 **Status: ✅ COMPLETE (2026-01-04)**
 
 Fixed 8 remaining stub READMEs:
+
 - Merged Manish Sah (typo) into Maneesh Sah
 - Moved Shachar Feinblit from ROB to People folder
 - Updated Aaron Chaisson, JB, Lihi Rotchild, Dhammak, EY, Cloud Marketplace MVP with proper templates
@@ -534,11 +543,13 @@ Fixed 8 remaining stub READMEs:
 **Status: PARTIAL (2026-01-04)**
 
 Completed:
+
 - Updated planner prompt to show `entity_paths` (name → folder mapping) instead of just names
 - Planner now sees full paths like `{"Jeff Denworth": "VAST/People/Jeff Denworth"}`
 - Aliases are already passed to planner context
 
 Remaining:
+
 - Fuzzy matching for name variations not implemented
 - Note_type validation could be stricter
 
@@ -569,6 +580,7 @@ Remaining:
 **Status: ✅ COMPLETE (2026-01-04)**
 
 Added `validate_path_correctness()` function to `scripts/utils/validation.py` with:
+
 - Valid path prefix validation (VAST/People/, VAST/Customers and Partners/, etc.)
 - Invalid pattern detection (VAST/Accounts/, VAST/Customers/)
 - Integration with existing `validate_changeplan()` function
@@ -600,6 +612,7 @@ Added `validate_path_correctness()` function to `scripts/utils/validation.py` wi
 **Status: ✅ COMPLETE (already implemented)**
 
 Templates already include:
+
 - `source_ref` in frontmatter
 - Footer: `*Source: [[{{ source_ref }}|{{ source_ref | basename | strip_extension }}]]*`
 - Verified: All 240 notes have Source footer
@@ -614,3 +627,2140 @@ Templates already include:
 
 - ✅ Every meeting note includes a link to its source transcript
 - ✅ Users can navigate from extracted note → raw transcript for full context
+
+---
+
+# Vault Analysis Findings (2026-01-04)
+
+## 26) Topics Field Not Extracted (Schema Gap)
+
+**Goal:** Add `topics` to extraction prompt so Topics sections are populated.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+- `Workflow/schemas/extraction.schema.json` has `topics` field defined
+- `Workflow/models/extraction.py` has `topics: list[str]` in Pydantic model
+- `Workflow/prompts/system-extractor.md.j2` does NOT request topics in output schema
+- Result: All Topics sections in READMEs are empty
+
+**Impact:** High - every extraction is missing topic tagging
+
+**Effort:** 5 minutes
+
+**Tasks**
+
+- [ ] Add `topics: list[str]` to extraction prompt output schema
+- [ ] Add guidance: "Extract 3-5 high-level topic tags (lowercase, hyphenated)"
+- [ ] Verify Pydantic model accepts topics from extraction
+
+**Success Criteria**
+
+- Extraction JSON includes `topics: ["cloud-strategy", "pricing", "roadmap"]`
+- Topics appear in README sections
+
+---
+
+## 27) Inconsistent Task Owner Names (Normalization Needed)
+
+**Goal:** Normalize @Owner names during extraction to enable reliable task aggregation.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Owner variants in vault (by frequency):
+
+- `@Myself` (309) ← correct first-person
+- `@Jason Vallery` (102) ← should be @Myself?
+- `@localhost` (80) ← likely extraction error
+- `@Jason` (61) ← ambiguous
+- `@TBD` (44) ← valid placeholder
+- `@Tomer` (33) vs `@Tomer Hagay` (likely)
+- `@Jai` (21) vs `@Jai Menon` (17) ← same person, different formats
+- `@Jeff` vs `@Jeff Denworth` ← inconsistent
+
+**Impact:** Medium - task queries by owner are fragmented
+
+**Effort:** 15 minutes
+
+**Tasks**
+
+- [ ] Create owner aliases in `entities/aliases.yaml` for common names
+- [ ] Normalize during extraction: `Jai` → `Jai Menon`, `Jeff` → `Jeff Denworth`
+- [ ] Handle first-person: convert speaker self-references to `@Myself`
+- [ ] Flag `@localhost` as extraction error, investigate root cause
+
+**Success Criteria**
+
+- `@Jai` and `@Jai Menon` map to same canonical owner
+- Task queries by owner return complete results
+
+---
+
+## 28) Duplicate Notes from Same Meeting (Deduplication)
+
+**Goal:** Detect and prevent processing duplicate transcripts of the same meeting.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Same meeting transcribed multiple times creates multiple notes:
+
+- `VAST/People/Jeff Denworth/2025-11-07 - Org landscape and cloud strategy.md`
+- `VAST/People/Jeff Denworth/2025-11-07 - Org map and cloud strategy.md`
+- `VAST/People/Jeff Denworth/2025-11-07 - Org map and cloud focus.md`
+
+All three are from the same 1:1 meeting, just different MacWhisper exports.
+
+**Impact:** Medium - wastes API tokens, clutters vault, confuses context
+
+**Effort:** 20 minutes
+
+**Tasks**
+
+- [ ] Add pre-processing dedup check: hash first 500 chars of transcript
+- [ ] Compare participant list + date + similar title
+- [ ] Skip duplicate sources with warning
+- [ ] Consider consolidating existing duplicates
+
+**Success Criteria**
+
+- Same audio processed twice creates only one note
+- Existing duplicates flagged for manual review
+
+---
+
+## 29) 4 Untitled Files Need Proper Names
+
+**Goal:** Rename all Untitled.md files with appropriate titles.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+- `VAST/Customers and Partners/Google/Untitled.md` - Contains Google RFP email (valuable)
+- `VAST/Projects/OVA/Proxmox/Untitled.md` - Empty file
+- `VAST/Projects/OVA/Proxmox/Untitled 1.md` - Support case documentation
+- `Personal/Homelab/VMs/Untitled.md` - Contains encryption key
+
+**Impact:** Low - but creates noise and violates naming standards
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Rename Google Untitled → `2025-XX-XX - GDC RFP Technical Questions.md`
+- [ ] Delete empty Proxmox Untitled.md
+- [ ] Rename Proxmox Untitled 1 → appropriate title
+- [ ] Rename Personal VM Untitled → `VM Encryption Keys.md` or similar
+
+**Success Criteria**
+
+- `find . -name "Untitled*.md"` returns 0
+
+---
+
+## 30) 33 Customers with No Meeting Notes
+
+**Goal:** Identify customers with READMEs but no associated notes.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+33 customer folders have README.md but no meeting notes:
+
+- CoreWeave (mentioned 53x in other notes, but no own notes)
+- IBM, Dell, AWS, Anthropic (likely mentioned in other contexts)
+- Many one-off mentions that got auto-created folders
+
+**Impact:** Low-Medium - creates false impression of customer coverage
+
+**Effort:** Analysis only (no immediate fix)
+
+**Tasks**
+
+- [ ] Audit which customers have mentions but no notes
+- [ ] For heavily-mentioned customers (CoreWeave), check if notes filed elsewhere
+- [ ] Consider cleaning up placeholder folders with no real content
+- [ ] Add warning to planner: "Creating new customer folder with no prior notes"
+
+**Success Criteria**
+
+- Report of customers with mentions but no notes
+- Decision on whether to keep/remove placeholder folders
+
+---
+
+## 31) Company-to-Person Cross-Links Missing
+
+**Goal:** Link People entities to their Company in README and vice versa.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+From Role fields, we can map:
+
+- **Microsoft** (21 people): Amy Hood, Jack Kabat, Jai Menon, Kanchan Mehrotra, Kushal Datta, Satya Nadella...
+- **Google** (6 people): Billy Kettler, Henry Perez, Jan Niemus, John Downey, Muninder Singh Sambi, Olivia Kim
+- **VAST internal**: Jeff Denworth, Jonsi Stephenson, etc.
+
+These relationships exist in frontmatter but aren't cross-linked.
+
+**Impact:** Medium - knowledge graph incomplete
+
+**Effort:** 30 minutes (script)
+
+**Tasks**
+
+- [ ] Extract company from person's Role field
+- [ ] Add `company:` field to person README frontmatter
+- [ ] Add backlinks to company README: "## Key Contacts\n- [[Person Name]]"
+- [ ] Update extraction to capture company affiliation
+
+**Success Criteria**
+
+- `VAST/Customers and Partners/Microsoft/README.md` has Key Contacts section
+- Person READMEs have `company: Microsoft` frontmatter
+
+---
+
+## 32) Frontmatter Type Inconsistency (Quoted vs Unquoted)
+
+**Goal:** Normalize frontmatter type field format.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Mixed formats in vault:
+
+- `type: people` (unquoted)
+- `type: "people"` (quoted)
+- Some with invalid types
+
+**Impact:** Low - YAML parses both, but inconsistent
+
+**Effort:** 5 minutes (regex replace)
+
+**Tasks**
+
+- [ ] Standardize on unquoted: `type: people`
+- [ ] Run replacement across all files
+- [ ] Update templates to use unquoted format
+
+**Success Criteria**
+
+- All frontmatter uses `type: typename` (no quotes)
+
+---
+
+## 33) Tasks Without Proper ISO Dates
+
+**Goal:** Ensure all tasks have ISO-8601 due dates where applicable.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Current scan shows **806/1234** tasks have `📅 YYYY-MM-DD`, and **0** tasks use a non-ISO `📅` date format.
+
+The real gap is **missing due dates** (and implied dates like “next week” that could be inferred from the meeting date).
+
+**Impact:** Medium - task scheduling/queries don't work properly
+
+**Effort:** Ongoing (fix during extraction)
+
+**Tasks**
+
+- [ ] Preserve ISO format for all `📅` dates (already compliant).
+- [ ] Add inference rules: “next week” / “tomorrow” / “by Friday” + `meeting_date` → computed `📅` date.
+- [ ] Leave `📅` off tasks with no clear due date (avoid guessed dates).
+
+**Success Criteria**
+
+- All `📅` due dates use `YYYY-MM-DD`.
+- Tasks without clear dates have no `📅` marker.
+
+---
+
+## 34) Nested Folder Paths from Title Slashes (Major Issue)
+
+**Goal:** Fix project folders that were incorrectly nested due to `/` in titles.
+
+**Status: NOT STARTED**
+
+**Discovery (found 15+ cases):**
+
+Titles with `/` created unintended nested directories:
+
+- `VAST/Projects/Microsoft Comparison Slide (LSv4/LSv5/OEM-ODM/Azure Storage)` ← 4 levels deep!
+- `VAST/Projects/Marketplace L-series Offer Complement (SKUs/OEM path)/`
+- `VAST/Projects/Cisco POC (DoD/IC)/`
+- `VAST/Projects/Alluxio/DAX evaluation/` (legitimate? or from title)
+- `VAST/Projects/BlockFuse/C-Store/`, `BlockFuse/BlobFuse/`
+
+Each nested folder has its own README.md, fragmenting the project.
+
+**Impact:** HIGH - breaks folder navigation, fragments related content
+
+**Effort:** 30 minutes (consolidation + wikilink updates)
+
+**Tasks**
+
+- [ ] Audit all nested project folders
+- [ ] Consolidate into single flat folders with sanitized names
+- [ ] Update wikilinks to point to new locations
+- [ ] Fix path sanitization in plan.py (item 18)
+
+**Success Criteria**
+
+- Projects are max 1 level deep: `VAST/Projects/{ProjectName}/`
+- No folders with `/` `)` `(` in names
+
+---
+
+## 35) Duplicate Email Imports
+
+**Goal:** Prevent duplicate email imports in Inbox.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Same emails imported multiple times with different random IDs:
+
+- `2025-12-14_125503_6117_Your-BetterDisplay-order.md`
+- `2025-12-14_125503_6741_Your-BetterDisplay-order.md`
+- `2025-12-15_173836_2490_Dont-miss-conversations...`
+- `2025-12-15_173836_7937_Dont-miss-conversations...`
+
+Only difference is export timestamp - content is identical.
+
+**Impact:** Low - wastes processing, creates duplicates
+
+**Effort:** 10 minutes (dedup script)
+
+**Tasks**
+
+- [ ] Hash email content before import
+- [ ] Skip if hash matches existing file
+- [ ] Clean up existing duplicates
+
+**Success Criteria**
+
+- Same email imported only once
+- No duplicate content in Inbox/Email/
+
+---
+
+## 36) 103 People + 53 Projects with README Only (No Notes)
+
+**Goal:** Identify and handle entity folders that were auto-created but never populated.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+- **103 people** have README.md but zero meeting notes
+- **53 projects** have README.md but zero related notes
+- Many are mentioned in other notes but never had direct meetings
+
+Examples:
+
+- `VAST/People/Greg Brockman/` (OpenAI CEO - mentioned, no 1:1)
+- `VAST/People/Satya Nadella/` (MS CEO - mentioned, no 1:1)
+- `VAST/People/Amy Hood/` (MS CFO - mentioned, no 1:1)
+
+**Impact:** Low - creates false impression of relationship depth
+
+**Effort:** Analysis only
+
+**Tasks**
+
+- [ ] Generate report of empty entity folders
+- [ ] Distinguish "mentioned only" vs "direct interaction expected"
+- [ ] Consider adding `status: mentioned-only` to README frontmatter
+- [ ] Optionally consolidate into company-level contact lists
+
+**Success Criteria**
+
+- Clear distinction between active relationships and mention-only
+- Decision on folder cleanup policy
+
+---
+
+## 37) Orphan Note: Nidhi Missing README
+
+**Goal:** Create README for person folder with notes but no README.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`VAST/People/Nidhi/` has 1 note but no README.md:
+
+- `2025-10-01 - SC25 small-group meeting planning.md`
+
+**Impact:** Low - single case
+
+**Effort:** 2 minutes
+
+**Tasks**
+
+- [ ] Determine full name (Nidhi who?)
+- [ ] Create README.md from person template
+- [ ] Check for other orphan notes
+
+**Success Criteria**
+
+- All People folders have README.md
+
+---
+
+## 38) 14 READMEs with Hardcoded Dataview Paths
+
+**Goal:** Replace hardcoded paths with `this.file.folder` in Dataview queries.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+14 READMEs have hardcoded paths like:
+
+```
+FROM "VAST/People/Yogev Vankin"
+```
+
+Instead of portable:
+
+```
+FROM this.file.folder
+```
+
+If files are moved, hardcoded queries break.
+
+**Impact:** Low - only breaks if folders renamed
+
+**Effort:** 5 minutes (regex replace)
+
+**Tasks**
+
+- [ ] Find all hardcoded FROM paths
+- [ ] Replace with `this.file.folder`
+- [ ] Verify Dataview renders correctly
+
+**Success Criteria**
+
+- All READMEs use `FROM this.file.folder`
+
+---
+
+## 39) 37 Tasks in People READMEs Missing Format
+
+**Goal:** Update plain tasks in READMEs to have proper Obsidian Tasks format.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+37 tasks in People READMEs have format:
+
+```
+- [ ] Define Blob API MVP as AZCopy compatibility...
+```
+
+Should be:
+
+```
+- [ ] Define Blob API MVP @Owner 📅 2025-01-15 🔼 #task
+```
+
+Without dates/tags, these won't appear in task queries.
+
+**Impact:** Medium - tasks not aggregated properly
+
+**Effort:** 20 minutes (script to add tags, dates if inferable)
+
+**Tasks**
+
+- [ ] Extract tasks from READMEs
+- [ ] Add `#task` tag to all
+- [ ] Infer owner from context if possible
+- [ ] Flag tasks needing manual date assignment
+
+**Success Criteria**
+
+- All README tasks have minimum: `#task` tag
+- Tasks appear in `_Tasks/Work Tasks.md` queries
+
+---
+
+## 40) Folder Names with Special Characters
+
+**Goal:** Sanitize folder names with quotes, parentheses, ampersands.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Problematic folder names:
+
+- `Fort Meade "Gemini as a service" on-prem validation/` ← quotes
+- `Microsoft BizDev Education & Intros to Ronnie/` ← ampersand
+- `Cloud-in-a-box (Tier-2 clouds)/` ← parentheses
+- `VIP/Failover Design (GCP RDMA)/` ← nested + parens
+
+Shell commands, some tools, and sync may have issues with these characters.
+
+**Impact:** Medium - breaks automation, shell scripts
+
+**Effort:** 30 minutes (rename + update links)
+
+**Tasks**
+
+- [ ] Replace `"` with empty or hyphen
+- [ ] Replace `&` with `and`
+- [ ] Replace `(`, `)` with hyphen or remove
+- [ ] Update all wikilinks to new names
+
+**Success Criteria**
+
+- `find VAST -name '*"*' -o -name '*&*'` returns 0
+- All folder names are shell-safe
+
+---
+
+## 41) 68 Files Without Type Field in Frontmatter
+
+**Goal:** Ensure all notes have proper `type:` frontmatter.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+68 files missing `type:` field:
+
+- Most are OVA project docs (technical documentation)
+- Some are Untitled files
+- A few are archive/legacy files
+
+**Impact:** Low - type field mainly for queries/templates
+
+**Effort:** 15 minutes (add type based on location)
+
+**Tasks**
+
+- [ ] List all files without type
+- [ ] Add `type: documentation` for OVA/docs/
+- [ ] Add `type: archive` for legacy files
+- [ ] Add appropriate type for remaining
+
+**Success Criteria**
+
+- All .md files have `type:` in frontmatter
+
+---
+
+## 42) Source Links Point to Archive (Correct but May Confuse)
+
+**Goal:** Verify source_ref links are valid after archive moves.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+**123** meeting notes have `source_ref`, but **100** point to missing files.
+
+Observed failure modes:
+
+- `source_ref` points to `Inbox/_archive/YYYY-MM-DD/...` folders that don’t exist (archive is currently under `Inbox/_archive/2026-01-04/` for most processed sources).
+- `source_ref` points to `Inbox/Transcripts/...` files that were later moved/archived.
+- At least one archive file exists but is **0 bytes**, so the “source” link is technically resolvable but useless.
+
+**Impact:** HIGH - breaks traceability (note → source), undermines idempotency, and prevents cheap re-planning without reprocessing.
+
+**Effort:** 30–60 minutes (repair + guardrails), plus pipeline fix to prevent recurrence
+
+**Tasks**
+
+- [ ] Audit: verify all `source_ref` targets exist and are non-empty.
+- [ ] Write a repair pass to re-link missing `source_ref` targets by matching archived sources (date + basename/slug + content hash if available).
+- [ ] Fix apply/archiving so `source_ref` is set from the actual archive destination (not inferred from meeting date).
+- [ ] Standardize `source_ref` format (always vault-relative path; never `Inbox/Transcripts/...` after apply).
+- [ ] Decide policy: link to raw transcript vs cleaned/structured transcript, and document in RUNBOOK.
+
+**Success Criteria**
+
+- All `source_ref` links resolve to existing, non-empty files.
+- `Workflow/scripts/audit_import.py` reports **0** broken `source_ref` targets.
+
+---
+
+# Vault Statistics Summary (2026-01-04)
+
+| Metric                  | Count              |
+| ----------------------- | ------------------ |
+| Total .md files         | 442                |
+| People entities         | 138                |
+| Customer entities       | 42                 |
+| Project entities        | 60                 |
+| ROB forums              | 5                  |
+| Pending transcripts     | 3                  |
+| Pending emails          | 7                  |
+| Archived files          | 149                |
+| Tasks with full format  | ~800               |
+| Tasks missing format    | ~113               |
+| Decisions captured      | 332                |
+| Topics captured         | 0 (not extracted!) |
+| People with no notes    | 103                |
+| Projects with no notes  | 53                 |
+| Files without type      | 68                 |
+| Nested folder issues    | 15+                |
+| Duplicate emails        | 4                  |
+| Duplicate meeting notes | 20                 |
+| Empty Related Projects  | 92                 |
+
+---
+
+## 43) 20 Duplicate Meeting Notes (Same Meeting, Multiple Files)
+
+**Goal:** Deduplicate notes from same meeting that were processed multiple times.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Same transcripts in inbox multiple times → multiple notes created:
+
+| Person        | Date       | Duplicate Count           |
+| ------------- | ---------- | ------------------------- |
+| Jai Menon     | 2025-09-03 | 4 notes from same meeting |
+| Jai Menon     | 2025-09-15 | 3 notes                   |
+| Jai Menon     | 2025-09-22 | 2 notes                   |
+| Jeff Denworth | 2025-11-07 | 3 notes                   |
+| Lior Genzel   | 2025-10-28 | 2 notes                   |
+| Rick Haselton | 2025-10-28 | 2 notes                   |
+| Others        | Various    | 4+ notes                  |
+
+**Impact:** HIGH - duplicate content, confusing README context, wasted tokens
+
+**Effort:** 30 minutes (manual merge + add pre-processing dedup)
+
+**Tasks**
+
+- [ ] Merge duplicates into single canonical note per meeting
+- [ ] Update README Recent Context to point to merged note
+- [ ] Add pre-processing dedup in extract.py (hash first 500 chars)
+- [ ] Add duplicate detection before planning phase
+
+**Success Criteria**
+
+- Max 1 note per person per date (unless multiple meetings)
+- Pre-processing prevents future duplicates
+
+---
+
+## 44) 92 Empty Related Projects Sections
+
+**Goal:** Populate Related Projects sections in People READMEs.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+All 92 People READMEs have empty `## Related Projects` sections:
+
+```markdown
+## Related Projects
+
+## Related
+```
+
+The projects are mentioned in notes but not cross-linked to the person.
+
+**Impact:** Medium - knowledge graph incomplete
+
+**Effort:** 20 minutes (update planner to populate)
+
+**Tasks**
+
+- [ ] Update planner to extract project mentions for each person
+- [ ] Add PATCH operation to populate Related Projects
+- [ ] Backfill existing READMEs with inferred project links
+
+**Success Criteria**
+
+- Related Projects populated from extraction.mentions.projects
+- People involved in projects have wikilinks to those projects
+
+---
+
+## 45) September 2025 Has Most Duplicate Transcripts
+
+**Goal:** Investigate and prevent duplicate transcripts at source.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Archive analysis shows clustering of duplicates:
+
+- 2025-09-03: 5 duplicate transcripts
+- 2025-09-15: 7 duplicate transcripts
+- 2025-10-28: 13 duplicate transcripts
+- 2025-10-29: 13 duplicate transcripts
+- 2025-10-30: 9 duplicate transcripts
+
+Likely cause: MacWhisper auto-export creating multiple files, or manual re-exports.
+
+**Impact:** Medium - wastes processing, creates confusion
+
+**Effort:** Analysis + workflow change
+
+**Tasks**
+
+- [ ] Review MacWhisper export settings for duplicate prevention
+- [ ] Add timestamp-based dedup (same time = same meeting)
+- [ ] Consider using audio file hash for identity
+
+**Success Criteria**
+
+- Same audio produces only one transcript
+- Pre-processing identifies duplicates before API calls
+
+---
+
+## 46) Projects Folder Has Deep Nesting (Subprojects)
+
+**Goal:** Clarify whether subfolders in Projects are intentional or accidents.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Several project folders have sub-projects:
+
+- `BlockFuse/` → `BlobFuse/`, `C-Store/`
+- `Alluxio/` → `DAX/`, `DAX evaluation/`
+- `VIP/` → `Failover Design (GCP RDMA)/`
+- `OVA/` → `Proxmox/`, `docs/`
+
+Some are intentional (OVA docs), some may be title-slash errors.
+
+**Impact:** Low - if intentional; Medium if accidental
+
+**Effort:** Analysis
+
+**Tasks**
+
+- [ ] Audit each nested project folder
+- [ ] Consolidate accidental nesting
+- [ ] Document allowed nesting patterns (e.g., docs/ ok)
+
+**Success Criteria**
+
+- Clear policy on project folder nesting
+- Accidental nesting resolved
+
+---
+
+## 47) OVA Project Has 68 Undocumented Files
+
+**Goal:** Add frontmatter to OVA technical docs.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+68 files in `VAST/Projects/OVA/` lack `type:` frontmatter:
+
+- `docs/*.md` - Technical documentation
+- `docs/archive/*.md` - Old docs
+- `Proxmox/*.md` - VM-specific notes
+
+These are technical docs, not meeting notes.
+
+**Impact:** Low - docs work fine without type
+
+**Effort:** 10 minutes (add type: documentation)
+
+**Tasks**
+
+- [ ] Add `type: documentation` to OVA docs
+- [ ] Optionally add `project: OVA` tag
+- [ ] Consider exempting technical docs from type requirement
+
+**Success Criteria**
+
+- OVA docs have consistent frontmatter
+- Or: Explicit exemption documented
+
+---
+
+## 48) 57+ Broken First-Name-Only Wikilinks
+
+**Goal:** Resolve wikilinks that reference people by first name only.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Many wikilinks use first names without matching folders:
+
+- `[[Renan]]`, `[[Kui]]`, `[[Krishnan]]`, `[[Qi]]`, `[[Andrew]]`
+- `[[Suresh]]`, `[[Pradeep]]`, `[[Nidhi]]`, `[[Harish]]`, `[[Aung]]`
+- `[[Nagendra]]`, `[[Lukasz]]`, `[[Girish]]`, `[[Long]]`, `[[Juergen]]`
+
+These appear in Key Contacts sections of customer READMEs.
+57 unique first-name-only broken links found.
+
+**Impact:** Medium - broken links in knowledge graph
+
+**Effort:** 30 minutes (identify full names, update or create)
+
+**Tasks**
+
+- [ ] Identify full names for each first-name reference
+- [ ] Create person folders where appropriate
+- [ ] Update wikilinks to use full names
+- [ ] Add aliases for first names in aliases.yaml
+
+**Success Criteria**
+
+- All wikilinks resolve to existing folders
+- First names aliased to full names
+
+---
+
+## 49) 15 Typo/Misspelled Person Names in Wikilinks
+
+**Goal:** Fix typos in person name wikilinks.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Typo variants found (correct → wrong):
+
+- `Jason Vallery` → `Jason Valeri`
+- `Jonsi Stephenson` → `Jonsi Stemmelsson`, `Yonsi Stephenson`
+- `Maneesh Sah` → `Manish Sah`
+- `Michael Myrah` → `Michael Myra`
+- `Ronnie Booker` → `Ronnie Borker`
+
+These create broken links and fragment the knowledge graph.
+
+**Impact:** Medium - broken links
+
+**Effort:** 15 minutes (find and replace)
+
+**Tasks**
+
+- [ ] Create typo mapping list
+- [ ] Global search/replace in vault
+- [ ] Add typos to aliases.yaml for future prevention
+
+**Success Criteria**
+
+- All person names spelled correctly
+- Aliases prevent future typos
+
+---
+
+## 50) 2 READMEs with `last_contact: unknown`
+
+**Goal:** Populate unknown last_contact dates.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Two READMEs have `last_contact: unknown`:
+
+- `VAST/People/Jack Kabat/README.md`
+- `VAST/People/Rory Carmichael/README.md`
+
+**Impact:** Low
+
+**Effort:** 5 minutes
+
+**Tasks**
+
+- [ ] Check if these people have notes
+- [ ] Set last_contact from most recent note
+- [ ] If no notes, set to created date
+
+**Success Criteria**
+
+- All READMEs have valid last_contact dates
+
+---
+
+## 51) Jason Vallery README Has 56 Context Entries
+
+**Goal:** Trim excessive Recent Context entries.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`VAST/People/Jason Vallery/README.md` has 56 entries in Recent Context.
+This is because Jason appears in most meetings (it's the user's notes).
+
+Other high-count READMEs:
+
+- Lior Genzel: 28 entries
+- Jeff Denworth: 23 entries
+- Jai Menon: 14 entries
+
+**Impact:** Low - UI clutter but functional
+
+**Effort:** 10 minutes (trim to last N)
+
+**Tasks**
+
+- [ ] Decide on max Recent Context entries (e.g., 20)
+- [ ] Implement trimming in planner/apply
+- [ ] Trim existing excessive entries
+
+**Success Criteria**
+
+- Recent Context sections have reasonable length
+- Oldest entries archived or removed
+
+---
+
+## 52) Email Inbox Has Duplicate Exports
+
+**Goal:** Clean up duplicate email exports.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Same emails exported twice with different random IDs:
+
+- `2025-12-14_125503_6117_Your-BetterDisplay-order.md`
+- `2025-12-14_125503_6741_Your-BetterDisplay-order.md` (same content)
+- `2025-12-15_173836_2490_Dont-miss-conversations...`
+- `2025-12-15_173836_7937_Dont-miss-conversations...` (same content)
+
+4 duplicate pairs in current inbox.
+
+**Impact:** Low - processing will create duplicate notes
+
+**Effort:** 5 minutes (delete duplicates)
+
+**Tasks**
+
+- [ ] Identify and delete duplicate email files
+- [ ] Fix email export script to dedupe
+- [ ] Consider content hash for email identity
+
+**Success Criteria**
+
+- No duplicate emails in inbox
+
+---
+
+## 53) Pending Emails Include Low-Value Spam
+
+**Goal:** Triage pending emails before processing.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+7 emails pending processing:
+
+- **High value**: Microsoft Ignite follow-up, OpenAI, Google RFP
+- **Low value**: BetterDisplay order (personal purchase), LinkedIn notification
+
+Processing all will waste API tokens on spam/personal.
+
+**Impact:** Low - token waste
+
+**Effort:** 5 minutes (manual triage)
+
+**Tasks**
+
+- [ ] Move personal/spam emails to archive or delete
+- [ ] Process only work-relevant emails
+- [ ] Consider email classification before processing
+
+**Success Criteria**
+
+- Only work-relevant emails processed
+
+---
+
+## 54) 15 Empty Folders in Vault
+
+**Goal:** Clean up or populate empty folders.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+15 empty folders found:
+
+- `VAST/Journal/` - Never used
+- `VAST/ROB/Phase Gate 1/`, `VAST/ROB/SRE/`, `VAST/ROB/VAST on Cloud Office Hours/` - No meetings yet
+- `VAST/Projects/Cloud/Tackle/` - Abandoned project?
+- `VAST/Customers and Partners/Microsoft/Azure Managed Lustere/` - TYPO (should be Lustre)
+- `VAST/Customers and Partners/Microsoft/UK Met/`, `Apollo/` - Subfolders in wrong location
+- `Personal/Journal/`, `Personal/Transcripts/`, `Personal/People/` - Never used
+- `Personal/Homelab/Synology/` - Never used
+- `VAST/Travel/SC25/`, `Personal/Travel/` - Empty travel folders
+
+**Impact:** Low - clutter
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Delete empty folders with no purpose
+- [ ] Add README.md to intentionally-empty folders
+- [ ] Fix typo: Lustere → Lustre
+
+**Success Criteria**
+
+- No purposeless empty folders
+
+---
+
+## 55) 3 Self-Referential Wikilinks
+
+**Goal:** Remove wikilinks that link to themselves.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+3 README files contain wikilinks to the person they describe:
+
+- `VAST/People/Liraz Ben Or/README.md`
+- `VAST/People/Muninder Singh Sambi/README.md`
+- `VAST/People/Vishnu Charan TJ/README.md`
+
+This is likely from extraction including the entity name in mentions.
+
+**Impact:** Low - unnecessary links
+
+**Effort:** 5 minutes
+
+**Tasks**
+
+- [ ] Remove self-referential wikilinks
+- [ ] Update planner to filter out entity_name from mentions
+
+**Success Criteria**
+
+- No README links to itself
+
+---
+
+## 56) Tasks with Multiple @Owners
+
+**Goal:** Clarify task ownership conventions for multi-owner tasks.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Some tasks have multiple owners:
+
+```
+- [ ] **re:Invent**: confirm plan @Myself @Jonsi @Lior #task
+- [ ] **Draft pricing proposal** @Myself @Timo @Jonsi @Tomer @Jeff #task
+```
+
+This is valid (shared ownership) but may complicate task queries.
+
+**Impact:** Low - valid pattern but needs documentation
+
+**Effort:** Analysis only
+
+**Tasks**
+
+- [ ] Document multi-owner convention
+- [ ] Consider primary owner pattern: `@Primary with @Secondary @Tertiary`
+
+**Success Criteria**
+
+- Multi-owner convention documented
+
+---
+
+## 57) Tasks Missing Priority Markers
+
+**Goal:** Add priority markers to tasks that have dates but no priority.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+5+ tasks have `📅 date` but no priority marker:
+
+```
+- [ ] Develop PAYGO offer @Product 📅 2025-11-08 #task  ← no priority
+```
+
+Should be:
+
+```
+- [ ] Develop PAYGO offer @Product 📅 2025-11-08 🔼 #task  ← with priority
+```
+
+**Impact:** Low - tasks still queryable
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Count tasks missing priority
+- [ ] Add default priority (🔼 medium) where missing
+- [ ] Update extraction to always include priority
+
+**Success Criteria**
+
+- All tasks with dates have priority markers
+
+---
+
+## 58) Microsoft Subfolders in Wrong Location
+
+**Goal:** Move subprojects from customer folder to proper location.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Microsoft customer folder has project subfolders:
+
+- `VAST/Customers and Partners/Microsoft/Apollo/` - Should be project
+- `VAST/Customers and Partners/Microsoft/UK Met/` - Should be project
+- `VAST/Customers and Partners/Microsoft/Azure Managed Lustere/` - Should be project
+
+These should be in `VAST/Projects/` with cross-links to Microsoft.
+
+**Impact:** Medium - confusing structure
+
+**Effort:** 15 minutes
+
+**Tasks**
+
+- [ ] Move Apollo → `VAST/Projects/Apollo/`
+- [ ] Move UK Met → `VAST/Projects/UK Met/`
+- [ ] Move Azure Managed Lustre → `VAST/Projects/Azure Managed Lustre/`
+- [ ] Add [[Microsoft]] wikilink to each
+- [ ] Update backlinks
+
+**Success Criteria**
+
+- Customer folders contain only meeting notes
+- Projects in Projects/ folder
+
+---
+
+## 59) 4 \_Open Topics Files Need Review
+
+**Goal:** Review and standardize \_Open Topics files.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+4 people have `_Open Topics.md` files:
+
+- `VAST/People/Jeff Denworth/_Open Topics.md`
+- `VAST/People/Jonsi Stephenson/_Open Topics.md`
+- `VAST/People/Shachar Feinblit/_Open Topics.md`
+- `VAST/People/Alon Horev/_Open Topics.md`
+
+These contain task queries but no standardized structure.
+
+**Impact:** Low - useful but inconsistent
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Standardize format
+- [ ] Consider moving to README or deprecating
+
+**Success Criteria**
+
+- Consistent format or removal
+
+---
+
+## 60) Only 32/135 People Have Key Facts Populated
+
+**Goal:** Improve Key Facts extraction or document as optional.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Only 24% of people READMEs have Key Facts populated.
+Facts require explicit extraction from conversations.
+
+**Impact:** Low - facts are nice-to-have
+
+**Effort:** Ongoing (improve prompt)
+
+**Tasks**
+
+- [ ] Review extraction prompt for facts
+- [ ] Consider making facts section optional
+- [ ] Add examples of good facts to prompt
+
+**Success Criteria**
+
+- Higher fact capture rate or documented expectation
+
+---
+
+## 61) 7 Uncommitted README Changes
+
+**Goal:** Review and commit or revert uncommitted changes.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+7 README files have uncommitted changes:
+
+- `VAST/Customers and Partners/Dhammak/README.md`
+- `VAST/Customers and Partners/EY/README.md`
+- `VAST/People/Aaron Chaisson/README.md`
+- `VAST/People/JB/README.md`
+- `VAST/People/Lihi Rotchild/README.md`
+- `VAST/People/Maneesh Sah/README.md`
+- `VAST/Projects/Cloud Marketplace MVP/README.md`
+
+**Impact:** Low - should commit
+
+**Effort:** 5 minutes
+
+**Tasks**
+
+- [ ] Review changes with `git diff`
+- [ ] Commit if appropriate
+- [ ] Update apply.py if these are artifacts
+
+**Success Criteria**
+
+- Clean git status
+
+---
+
+## 62) 17 People Have Stale last_contact Dates
+
+**Goal:** Fix `last_contact` dates to match most recent note.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+17 people have `last_contact` date older than their most recent note:
+
+| Person           | Latest Note | last_contact |
+| ---------------- | ----------- | ------------ |
+| Jason Vallery    | 2025-12-15  | 2025-10-01   |
+| Jeff Denworth    | 2025-11-07  | 2025-10-01   |
+| Jonsi Stephenson | 2025-11-07  | 2025-10-01   |
+| Tomer Hagay      | 2025-11-07  | 2025-10-01   |
+| John Mao         | 2025-11-03  | 2025-10-31   |
+| Josh Wentzell    | 2025-10-31  | 2025-10-01   |
+| Rob Benoit       | 2025-10-31  | 2025-10-01   |
+| Kushal Datta     | 2025-10-31  | 2025-10-01   |
+| Andy Perlsteiner | 2025-10-30  | 2025-10-01   |
+| Lior Genzel      | 2025-10-30  | 2025-10-01   |
+| Eyal Traitel     | 2025-10-29  | 2025-10-01   |
+| Liraz Ben Or     | 2025-10-29  | 2025-10-01   |
+| Rick Haselton    | 2025-10-29  | 2025-10-01   |
+| Kanchan Mehrotra | 2025-10-28  | 2025-10-01   |
+| Shachar Feinblit | 2025-10-28  | 2025-10-01   |
+| Timo Pervane     | 2025-10-28  | 2025-10-01   |
+| Yogev Vankin     | 2025-10-20  | 2025-10-01   |
+
+**Root Cause:** Pipeline not updating `last_contact` when new notes added.
+
+**Impact:** HIGH - `last_contact` is key CRM field for relationship tracking
+
+**Effort:** 30 minutes (fix + backfill)
+
+**Tasks**
+
+- [ ] Verify apply.py upserts last_contact on README patch
+- [ ] Create script to scan and fix stale dates
+- [ ] Add validation to prevent future drift
+
+**Success Criteria**
+
+- All `last_contact` dates match most recent note date
+
+---
+
+## 63) 792 Open Tasks Have Overdue Dates (Oct/Nov 2025)
+
+**Goal:** Triage and update overdue tasks or close if stale.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+792 tasks have due dates from Oct/Nov 2025 and are still open:
+
+- 172 assigned to "Myself"
+- 74 to "Jason Vallery"
+- 47 to "Jason" (duplicate of Myself?)
+- 38 to "TBD" (unassigned)
+- Many others with various owners
+
+**Impact:** HIGH - dashboard noise, stale data
+
+**Effort:** 2+ hours (bulk triage)
+
+**Tasks**
+
+- [ ] Export all overdue tasks to review file
+- [ ] Mark completed or update due dates
+- [ ] Consider archiving old project task files
+
+**Success Criteria**
+
+- No tasks with due dates > 60 days past
+
+---
+
+## 64) 44 Tasks Have @TBD Owner (Unassigned)
+
+**Goal:** Assign owners to unassigned tasks or close.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+44 tasks use `@TBD` as owner placeholder:
+
+```
+- [ ] Define GA acceptance criteria... @TBD 📅 2025-11-08
+- [ ] Assemble pricing and go-to-market package... @TBD 📅 2025-11-08
+```
+
+**Impact:** Medium - tasks won't appear in owner-filtered views
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Review each @TBD task and assign real owner
+- [ ] Add validation to extraction to require owner
+
+**Success Criteria**
+
+- No @TBD tasks remain
+
+---
+
+## 65) 207 Open Tasks Missing Due Dates
+
+**Goal:** Add due dates or mark as backlog.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+207 open tasks have `#task` tag but no `📅` due date.
+
+**Impact:** Medium - tasks not appearing in date-filtered views
+
+**Effort:** 1 hour (review + update)
+
+**Tasks**
+
+- [ ] Review tasks and add reasonable due dates
+- [ ] Or create #backlog tag for undated items
+
+**Success Criteria**
+
+- All active tasks have due dates
+
+---
+
+## 66) Malformed Task Owner Syntax
+
+**Goal:** Fix tasks where extra content follows @Owner.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Many tasks have malformed syntax where additional content follows @Owner:
+
+```
+@Aaron ⏫ #task #PMM #enablement
+@Adar #task #Uplink #Salesforce 🔼 ✅ 2025-11-08
+@Architecture team #task #AI #performance 🔽 ✅ 2025-11-08
+```
+
+Correct format: `@Owner` should be followed by priority emoji then `📅` date then `#task` then other tags.
+
+**Impact:** Medium - tasks may not parse correctly
+
+**Effort:** 1 hour
+
+**Tasks**
+
+- [ ] Create regex to find malformed tasks
+- [ ] Fix syntax in affected notes
+
+**Success Criteria**
+
+- All tasks follow canonical format
+
+---
+
+## 67) 25 Batch Backfill Notes Dated 2025-10-01
+
+**Goal:** Review batch-created notes for accuracy.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+25 notes were created on 2025-10-01, suggesting batch backfill:
+
+- Cloud Marketplace MVP checklist
+- Pricing vTeam action list
+- Multiple 1-1 notes (Andy, Jeff, Jonsi, etc.)
+- Customer engagement tasks
+
+These may have placeholder content or inaccurate dates.
+
+**Impact:** Low - historical notes, not ongoing issue
+
+**Effort:** 1 hour (review)
+
+**Tasks**
+
+- [ ] Review notes for accuracy
+- [ ] Correct dates if actual meeting date known
+- [ ] Add "backfill" tag if keeping synthetic date
+
+**Success Criteria**
+
+- All notes have accurate dates or backfill marker
+
+---
+
+## 68) 7 Wikilinks Use 1:1 Instead of 1-1
+
+**Goal:** Fix wikilinks that use colons instead of dashes.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+7 unique wikilinks use `1:1` but files are named with `1-1`:
+
+```
+[[2025-10-27 - Jeff 1:1 cloud priorities]] → file is "Jeff 1-1 cloud priorities.md"
+[[2025-10-28 - Intro 1:1 on pricing]]
+[[2025-10-28 - Weekly 1:1 and Tel Aviv plan]]
+[[2025-10-29 - Intro 1:1 on CS ops]]
+[[2025-10-29 - Intro 1:1 on release process]]
+[[2025-10-30 - Intro 1:1 on cloud enablement]]
+[[2025-10-31 - Intro 1:1 on VAST on Cloud]]
+```
+
+**Root Cause:** LLM generated links with colons, but file sanitization converts `:` to `-`
+
+**Impact:** Medium - broken links in READMEs
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Find-replace `1:1` with `1-1` in all READMEs
+- [ ] Add colon sanitization rule to LLM prompt or post-processing
+
+**Success Criteria**
+
+- All wikilinks resolve to actual files
+
+---
+
+## 69) 10 READMEs Use Old Template (Contact Information)
+
+**Goal:** Migrate old template format to current standard.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+10 People READMEs use old template with `## Contact Information` instead of `## Profile`:
+
+- Jack Kabat
+- Kanchan Mehrotra
+- Kishore Inampudi
+- Kurt Niebuhr
+- Rick Haselton
+- Rob Banga
+- Rob Benoit
+- Rosanne Kincaid–Smith
+- Vishnu Charan TJ
+- Yogev Vankin
+
+**Root Cause:** Template changed but existing files not migrated.
+
+**Impact:** Medium - inconsistent structure
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Update readme-person.md.j2 to match current READMEs (Profile format)
+- [ ] Create migration script for old-format READMEs
+- [ ] Run migration on 10 affected files
+
+**Success Criteria**
+
+- All People READMEs use same template structure
+
+---
+
+## 70) Template File Doesn't Match Actual READMEs
+
+**Goal:** Sync readme-person.md.j2 with actual README structure.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`Workflow/templates/readme-person.md.j2` uses:
+
+- `## Contact Information`
+- `## Relationship`
+- `## Projects` (with Dataview)
+
+But 125 actual READMEs use:
+
+- `## Profile`
+- `## Open Tasks`
+- `## Recent Context`
+- `## Key Facts`
+- `## Key Decisions`
+
+**Impact:** HIGH - new entity creation will use wrong template
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Update readme-person.md.j2 to match actual README structure
+- [ ] Or document why two formats exist
+
+**Success Criteria**
+
+- Template matches 125 existing READMEs
+
+---
+
+## 71) ROB Note Filed at Root Instead of Subfolder
+
+**Goal:** Move misplaced ROB note to proper subfolder.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussion.md` has:
+
+- `rob_forum: "VAST"`
+
+But there's no `VAST/ROB/VAST/` folder. The note was filed at ROB root instead of in a forum subfolder.
+
+**Root Cause:** Pipeline created note without matching forum folder.
+
+**Impact:** Medium - breaks ROB organization
+
+**Effort:** 10 minutes
+
+**Tasks**
+
+- [ ] Create `VAST/ROB/VAST/` folder
+- [ ] Move note to proper location
+- [ ] Check pipeline for ROB folder creation logic
+
+**Success Criteria**
+
+- All ROB notes in forum subfolders
+
+---
+
+## 72) 112/135 People Need Review (83%)
+
+**Goal:** Triage #needs-review tagged READMEs.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+112 out of 135 People READMEs have `#needs-review` tag:
+
+- All were auto-created
+- Many have incomplete role/company info
+- Many have generic "Microsoft" or "_Unknown_" for Role
+
+Only 23 have been manually reviewed.
+
+**Impact:** Medium - data quality issue
+
+**Effort:** 3+ hours (manual review)
+
+**Tasks**
+
+- [ ] Prioritize high-contact people for review
+- [ ] Create review checklist
+- [ ] Remove tag after verification
+
+**Success Criteria**
+
+- <50% of People have #needs-review
+
+---
+
+## 73) Inconsistent Role Extraction (13 Unknown, 11 Company-Only)
+
+**Goal:** Improve role extraction quality.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Role field quality issues:
+
+- 13 have `_Unknown_` for Role
+- 11 have just company name (e.g., "Microsoft") instead of role
+
+Examples:
+
+- `**Role**: Microsoft` (should be "EVP at Microsoft")
+- `**Role**: _Unknown_` (should infer from context)
+
+**Root Cause:** LLM not consistently extracting role vs company.
+
+**Impact:** Medium - CRM data quality
+
+**Effort:** 30 minutes (update prompt)
+
+**Tasks**
+
+- [ ] Update extraction prompt to explicitly separate role and company
+- [ ] Add examples to prompt
+- [ ] Re-run on affected READMEs
+
+**Success Criteria**
+
+- All Role fields have actual job titles
+
+---
+
+## 75) Deterministic Extraction for Structured `Sources/Transcripts/*` Notes
+
+**Goal:** Avoid expensive LLM extraction when sources are already structured.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+- `Sources/Transcripts/**/*.md`: **124** files, all with an `entities:` frontmatter block and structured sections (`## Summary`, `## Key facts learned`, `## Outcomes`, `## Decisions`).
+- These sources are not raw “speaker transcript” text; they are already a high-signal intermediate artifact.
+- Current pipeline re-extracts them with an LLM, which can degrade fidelity (e.g., completed `[x]` tasks become open `[ ]` tasks).
+
+**Impact:** HIGH - reduces cost and improves accuracy; enables fast iteration without reprocessing raw transcripts.
+
+**Effort:** 1–2 hours (parser + integration + a few tests)
+
+**Tasks**
+
+- [ ] Implement a parser that converts structured transcript-notes → `ExtractionV1` (summary, facts, decisions, tasks, mentions/entities).
+- [ ] Add a content-type detector: if a source matches the structured format, bypass LLM and use parser output.
+- [ ] Add fixtures/tests for at least: a People 1:1, a Customer meeting, and a Project note.
+
+**Success Criteria**
+
+- Structured sources ingest with **0** OpenAI calls while producing valid `ExtractionV1`.
+- Task completion state in sources (`[x]`) is preserved in extracted tasks.
+
+---
+
+## 76) Persist Extraction/Plan Artifacts for Re-Planning Without Re-Extracting
+
+**Goal:** Make iteration cheap: rerun PLAN/APPLY using existing artifacts instead of reprocessing transcripts.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`Inbox/_extraction/` is empty after the import run, so extraction outputs/plans are not available for replay/debugging.
+
+**Impact:** HIGH - forces expensive re-runs and makes debugging difficult.
+
+**Effort:** 30–60 minutes
+
+**Tasks**
+
+- [ ] Persist `extraction.json`, `plan.json`, and an apply log per source under `Workflow/runs/YYYY-MM-DD/<source_id>/`.
+- [ ] Generate a stable `source_id` (hash of source content + original path) and store it in meeting note frontmatter.
+- [ ] Add CLI modes: `--replan-only` (use existing extraction), `--apply-only` (use existing plan).
+
+**Success Criteria**
+
+- Planner can rerun against a prior run’s extraction artifacts with no LLM calls.
+- A failed apply has enough artifacts to reproduce/debug without touching sources.
+
+---
+
+## 77) Source Kind Classification (Transcript vs Checklist vs Article) + Template Branching
+
+**Goal:** Handle different inbound context types correctly and avoid forcing everything into a “meeting transcript” shape.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Some imported notes are “tasks/checklists” or “announcements/articles” (participants often empty), but are labeled `source: transcript`.
+
+**Impact:** MED - wrong schemas create missing participants, incorrect note types, and weak planner context.
+
+**Effort:** 30–60 minutes
+
+**Tasks**
+
+- [ ] Add `source_kind` enum to extraction + plan models (`transcript|email|note|checklist|article`).
+- [ ] Add classifier (heuristic-first) to route to the right extractor/prompt and meeting-note template.
+- [ ] Make `participants` optional for non-transcript kinds; require `source_url` for `article`.
+
+**Success Criteria**
+
+- No “article/checklist” notes are labeled as transcript.
+- Meeting notes have non-empty participants unless explicitly exempted by `source_kind`.
+
+---
+
+## 78) URL Hygiene: Remove `utm_source=chatgpt.com` and Prevent New Tracking Params
+
+**Goal:** Keep links clean and avoid leaking tool provenance into saved notes.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+Some notes include URLs with `utm_source=chatgpt.com`.
+
+**Impact:** Low - cosmetic, but confusing and avoidable.
+
+**Effort:** 10–15 minutes
+
+**Tasks**
+
+- [ ] Add a sanitizer to strip common tracking params (`utm_*`, `gclid`, etc.) during any web enrichment step.
+- [ ] Run a one-time cleanup pass over existing notes.
+
+**Success Criteria**
+
+- `rg -n \"utm_source=chatgpt\\.com\" VAST Personal` returns 0.
+
+---
+
+## 79) Unprocessed Personal Transcript in Projects Folder
+
+**Goal:** Process or archive raw transcript in wrong location.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+`Personal/Projects/NextWave/2025-12-15 1240 - AI Discussion at Longmont Museum.md`:
+- 810 lines of raw MacWhisper transcript
+- No frontmatter
+- Sitting in Projects folder instead of Inbox/Transcripts
+
+**Impact:** Low - personal content, but shows gap in capture workflow
+
+**Effort:** 15 minutes
+
+**Tasks**
+
+- [ ] Decide: process or archive as-is
+- [ ] If processing: move to Inbox/Transcripts, run extraction
+- [ ] Consider: should Personal transcripts go through pipeline?
+
+**Success Criteria**
+
+- No raw transcripts outside Inbox folder
+
+---
+
+## 80) 45 Files Without Frontmatter
+
+**Goal:** Audit and standardize markdown files without frontmatter.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+
+45 markdown files lack frontmatter (excluding OVA docs):
+- 3 `_MANIFEST.md` files (auto-generated)
+- 4 `_Open Topics.md` files
+- 2 `_Tasks/*.md` files (Dataview queries)
+- Various homelab/config docs
+- 1 unprocessed transcript
+
+Most are intentionally unstructured, but should be documented.
+
+**Impact:** Low - most are utility files
+
+**Effort:** 30 minutes (document or add minimal frontmatter)
+
+**Tasks**
+
+- [ ] Categorize files without frontmatter
+- [ ] Add minimal frontmatter to utility files
+- [ ] Document exceptions in STANDARDS.md
+
+**Success Criteria**
+
+- All files have frontmatter or documented exemption
+
+---
+
+# Priority Matrix (Quick Wins)
+
+| #   | Issue                        | Impact | Effort | Priority    |
+| --- | ---------------------------- | ------ | ------ | ----------- |
+| 26  | Topics not extracted         | HIGH   | 5 min  | 🔴 CRITICAL |
+| 42  | Broken source_ref targets    | HIGH   | 60 min | 🔴 CRITICAL |
+| 70  | Template mismatch            | HIGH   | 30 min | 🔴 CRITICAL |
+| 90  | LLM uses 1:1 in filenames    | HIGH   | 10 min | 🔴 CRITICAL |
+| 91  | LLM uses wrong entity paths  | HIGH   | 30 min | 🔴 CRITICAL |
+| 92  | person_to_project schema err | HIGH   | 15 min | 🔴 CRITICAL |
+| 93  | extra_tags undefined         | MED    | 5 min  | 🔴 CRITICAL |
+| 94  | note_type undefined          | MED    | 5 min  | 🔴 CRITICAL |
+| 62  | 17 stale last_contact        | HIGH   | 30 min | 🔴 HIGH     |
+| 75  | Deterministic extraction     | HIGH   | 2 hrs  | 🔴 HIGH     |
+| 76  | Persist run artifacts        | HIGH   | 60 min | 🔴 HIGH     |
+| 28  | Duplicate notes              | HIGH   | 30 min | 🔴 HIGH     |
+| 43  | 20 duplicate meeting notes   | HIGH   | 30 min | 🔴 HIGH     |
+| 34  | Nested folder paths          | HIGH   | 30 min | 🔴 HIGH     |
+| 63  | 792 overdue tasks            | HIGH   | 2 hrs  | 🔴 HIGH     |
+| 87  | 39 hallucinated note links   | HIGH   | 30 min | 🔴 HIGH     |
+| 88  | VAST internal as customer    | MED    | 15 min | 🟡 MEDIUM   |
+| 68  | 1:1 vs 1-1 wikilinks         | MED    | 10 min | 🟡 MEDIUM   |
+| 69  | 10 old-template READMEs      | MED    | 30 min | 🟡 MEDIUM   |
+| 48  | Broken first-name wikilinks  | MED    | 30 min | 🟡 MEDIUM   |
+| 49  | Typo person names            | MED    | 15 min | 🟡 MEDIUM   |
+| 27  | Inconsistent @Owner          | MED    | 15 min | 🟡 MEDIUM   |
+| 64  | 44 @TBD tasks                | MED    | 30 min | 🟡 MEDIUM   |
+| 65  | 207 tasks no due date        | MED    | 1 hr   | 🟡 MEDIUM   |
+| 66  | Malformed task syntax        | MED    | 1 hr   | 🟡 MEDIUM   |
+| 40  | Special chars in folders     | MED    | 30 min | 🟡 MEDIUM   |
+| 44  | Empty Related Projects       | MED    | 20 min | 🟡 MEDIUM   |
+| 58  | MS subfolders wrong location | MED    | 15 min | 🟡 MEDIUM   |
+| 71  | ROB note at root             | MED    | 10 min | 🟡 MEDIUM   |
+| 73  | Role extraction quality      | MED    | 30 min | 🟡 MEDIUM   |
+| 81  | Nidhi missing README         | LOW    | 5 min  | 🟡 MEDIUM   |
+| 82  | 65+ misspelled wikilinks     | MED    | 30 min | 🟡 MEDIUM   |
+| 83  | Short name wikilinks         | MED    | 20 min | 🟡 MEDIUM   |
+| 84  | Orphan people wikilinks      | LOW    | 30 min | 🟢 LOW      |
+| 85  | [[Note Title]] placeholder   | LOW    | 5 min  | 🟢 LOW      |
+| 86  | Project wikilinks no folder  | LOW    | 30 min | 🟢 LOW      |
+| 89  | 33 customer README-only      | LOW    | N/A    | 🟢 LOW      |
+| 29  | 4 Untitled files             | LOW    | 10 min | 🟢 LOW      |
+| 52  | Duplicate emails             | LOW    | 5 min  | 🟢 LOW      |
+| 53  | Spam emails                  | LOW    | 5 min  | 🟢 LOW      |
+| 54  | 15 empty folders             | LOW    | 10 min | 🟢 LOW      |
+| 55  | Self-referential links       | LOW    | 5 min  | 🟢 LOW      |
+| 61  | Uncommitted changes          | LOW    | 5 min  | 🟢 LOW      |
+| 67  | 25 backfill notes            | LOW    | 1 hr   | 🟢 LOW      |
+| 72  | 112 #needs-review            | LOW    | 3 hrs  | 🟢 LOW      |
+| 79  | Unprocessed personal transcript | LOW | 15 min | 🟢 LOW      |
+| 80  | 45 files without frontmatter | LOW    | 30 min | 🟢 LOW      |
+
+---
+
+# Summary Statistics (2026-01-04 Audit)
+
+| Category      | Metric                  | Count                    |
+| ------------- | ----------------------- | ------------------------ |
+| **Scale**     | Total .md files         | 442                      |
+|               | People entities         | 138 (112 need review)    |
+|               | Customer entities       | 42                       |
+|               | Project entities        | 60                       |
+|               | ROB forums              | 3 (1 misplaced note)     |
+| **Pending**   | Transcripts to process  | 3                        |
+|               | Emails to process       | 7 (4 duplicates, 2 spam) |
+| **Quality**   | Tasks with full format  | ~800                     |
+|               | Tasks missing format    | ~113                     |
+|               | Overdue tasks (Oct/Nov) | 792                      |
+|               | Tasks with @TBD owner   | 44                       |
+|               | Tasks missing due date  | 207                      |
+|               | Broken source_ref links | 100                      |
+|               | Decisions captured      | 332                      |
+|               | Topics captured         | 0 (not extracted!)       |
+|               | Key Facts populated     | 32/135 (24%)             |
+|               | Stale last_contact      | 17 people                |
+|               | Broken 1:1 wikilinks    | 7                        |
+|               | Old-template READMEs    | 10                       |
+|               | Unknown/bad roles       | 24 people                |
+| **Coverage**  | People with notes       | 35/138 (25%)             |
+|               | People README-only      | 103 (75%)                |
+|               | Projects with notes     | 7/60 (12%)               |
+| **Issues**    | Nested folder paths     | 15+                      |
+|               | Duplicate meeting notes | 20                       |
+|               | Broken wikilinks        | 57+                      |
+|               | Typo person names       | 15                       |
+|               | Empty folders           | 15                       |
+|               | Self-referential links  | 3                        |
+|               | Template mismatch       | 1 (critical)             |
+| **New Items** | Added to TODO.md        | 69 (items 26-94)         |
+|               | Critical pipeline bugs  | 5 (items 90-94)          |
+|               | Hallucinated note links | 39 (27% broken)          |
+|               | LLM path errors         | 14+ (from logs)          |
+
+---
+
+## 81) Nidhi Folder Missing README
+
+**Found**: 2025-01-04
+
+Only person folder without a README:
+- `VAST/People/Nidhi/` - has 1 note but no README.md
+
+**Fix**: Create README from template or determine if folder should be merged elsewhere.
+
+---
+
+## 82) Wikilink Name Misspellings (65+ broken links)
+
+**Found**: 2025-01-04
+
+Misspelled wikilinks pointing to non-existent paths:
+
+| Wrong | Correct | Count |
+|-------|---------|-------|
+| `[[Tomer Hagey]]` | `[[Tomer Hagay]]` | 65 |
+| `[[Manish Sah]]` | `[[Maneesh Sah]]` | ? |
+| `[[Jonsi Stemmelsson]]` | `[[Jonsi Stephenson]]` | ? |
+| `[[Yonsi Stephenson]]` | `[[Jonsi Stephenson]]` | ? |
+| `[[Jason Valeri]]` | `[[Jason Vallery]]` | ? |
+
+**Fix**: 
+1. Add misspellings to `aliases.yaml`
+2. Find-replace in source files
+
+---
+
+## 83) Short Name Wikilinks (Alias Resolution Needed)
+
+**Found**: 2025-01-04
+
+Short names used instead of full names:
+- `[[Vishnu]]` - 70 times (should be `[[Vishnu Charan TJ]]`)
+- `[[Rosanne]]` - 23 times (should be `[[Rosanne Kincaid–Smith]]`)
+- `[[Jason]]` - 24 times (ambiguous - me or someone else?)
+
+**Fix**: Add to aliases.yaml and consider find-replace for clarity.
+
+---
+
+## 84) Orphan Wikilinks - Notable People Without Folders
+
+**Found**: 2025-01-04
+
+Real people referenced but no folder exists:
+- `[[Scott Guthrie]]` - Microsoft EVP
+- `[[Mustafa Suleyman]]` - Microsoft AI CEO
+- `[[Brendan Burns]]` - 16 references
+- `[[Allison Boerum]]`, `[[Dotan Arnin]]`, `[[Helen Protopapas]]`
+- `[[Maxim Dunaivicher]]`, `[[Michael Myra]]`, `[[Pete Eming]]`
+- `[[Qiu Ke]]`, `[[Ronnie Borker]]`, `[[Yaniv Sharon]]`
+
+**Decision needed**: Create folders for external notable people, or add to aliases pointing to their org?
+
+---
+
+## 85) Template Artifact in Wikilinks
+
+**Found**: 2025-01-04
+
+- `[[Note Title]]` appears in content - template placeholder not replaced
+
+**Fix**: Search and remove/replace these placeholder artifacts.
+
+---
+
+## 86) Project Wikilinks Without Folders
+
+**Found**: 2025-01-04
+
+Project references without corresponding folders:
+- `[[Project Apollo]]`
+- `[[Project Stargate]]`
+- `[[Platform Learning]]`
+- `[[Cloud control plane]]` - 28 references
+
+**Fix**: Create project folders or clarify naming.
+
+---
+
+## 87) LLM Hallucinated Note Wikilinks (39 Broken)
+
+**Found**: 2025-01-04
+
+The LLM is creating wikilinks to notes that don't exist - appears to be inventing note titles:
+
+```
+[[2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto]] (truncated!)
+```
+
+**Stats**:
+- 144 unique date-title wikilinks found
+- 39 point to non-existent notes (27% broken rate)
+
+**Root Cause**: LLM generating `[[2025-XX-XX - Summary]]` links instead of looking up actual note titles.
+
+**Fix**: 
+1. Post-process to strip these fake links
+2. Or: modify prompt to NOT generate note-title wikilinks (only entity links)
+
+---
+
+## 88) Internal VAST Meetings Misclassified as Customer
+
+**Found**: 2025-01-04
+
+Folder `VAST/Customers and Partners/VAST/` contains 4 internal meetings incorrectly classified as "customer" type:
+- `2025-09-16 - VAST Azure GTM hiring.md`
+- `2025-10-24 - AI-first dev and cloud maturity.md`
+- `2025-10-24 - Engineering maturity and cloud strategy.md`
+- `2025-10-31 - Aligning on VAST cloud strategy.md`
+
+**Root Cause**: LLM extracting "VAST" as customer when it's an internal strategy meeting.
+
+**Fix**:
+1. Reclassify as ROB or Projects notes
+2. Add rule to prompt: "VAST is the employer, never a customer"
+3. Move notes to appropriate folders
+
+---
+
+## 89) 33 Customer Folders with Only README (No Notes)
+
+**Found**: 2025-01-04
+
+Out of 41 customer/partner folders, 33 have only README.md - no meeting notes filed:
+- Amazon, Anthropic, Avanade, Cisco, CoreWeave, Crusoe, Databricks, Dell...
+- Goldman Sachs, HPE, Intel, Lambda, Leidos, McDonald's, Micron, NBCU...
+
+Only 8 folders have actual notes:
+- Microsoft (28), Google (11), OpenAI (4), Silk (3), Walmart (3), EY (1), Dhammak (1)
+
+**Impact**: Low (stubs for future use)
+
+**Action**: Consider marking as "placeholder" in README or pruning unused folders.
+
+---
+
+## 90) CRITICAL: LLM Generates `1:1` in Filenames (Invalid Path)
+
+**Found**: 2025-01-04
+
+From processing logs, LLM generates paths like:
+```
+VAST/People/Rick Haselton/2025-10-29 - Intro 1:1 on CS ops.md
+VAST/People/Liraz Ben Or/2025-10-29 - Intro 1:1 on release process.md
+VAST/People/Josh Wentzell/2025-10-31 - Intro 1:1 on VAST on Cloud.md
+```
+
+macOS doesn't allow `:` in filenames - these fail at apply phase!
+
+**Root Cause**: LLM not sanitizing output; prompt doesn't specify filename constraints.
+
+**Fix**: 
+1. Add to prompt: "Use `-` not `:` in filenames"
+2. Post-process paths to replace `:` with `-` in apply phase
+
+---
+
+## 91) CRITICAL: LLM Uses Wrong Entity Paths
+
+**Found**: 2025-01-04
+
+From logs, multiple path structure errors:
+- `VAST/Accounts/` instead of `VAST/Customers and Partners/`
+- `VAST/Customers and Partners/_NEW_Jeff Denworth/` (should be `VAST/People/`)
+- `VAST/Customers and Partners/_NEW_Deandre Jackson/` (should be `VAST/People/`)
+- `VAST/ROB/Shachar Feinblit/` (people don't go in ROB)
+
+**Root Cause**: LLM doesn't have reliable path structure context, or confuses entity types.
+
+**Fix**: Add explicit folder schema to planner prompt:
+```
+People → VAST/People/{Name}/
+Customers → VAST/Customers and Partners/{Company}/
+ROB → VAST/ROB/{Forum Name}/  (not person names)
+```
+
+---
+
+## 92) Schema Error: `person_to_project` Not in Required
+
+**Found**: 2025-01-04
+
+OpenAI API rejects extraction calls:
+```
+Invalid schema for response_format 'ExtractionV1': 
+'required' is required to be supplied and to be an array including every key in properties. 
+Extra required key 'person_to_project' supplied.
+```
+
+**Root Cause**: Pydantic model has `person_to_project` in schema but not marked correctly.
+
+**Fix**: Audit `ExtractionV1` Pydantic model - ensure all fields in schema are in `required` or marked `Optional`.
+
+---
+
+## 93) Template Variable Missing: `extra_tags`
+
+**Found**: 2025-01-04
+
+Log error: `'extra_tags' is undefined`
+
+**Root Cause**: Template uses `{{ extra_tags }}` but extraction doesn't provide it.
+
+**Fix**: Either:
+1. Add `extra_tags` to extraction schema
+2. Remove from template or make conditional `{% if extra_tags %}`
+
+---
+
+## 94) Template Variable Missing: `note_type`
+
+**Found**: 2025-01-04
+
+Log error: `'note_type' is undefined`
+
+**Root Cause**: Template uses `{{ note_type }}` but extraction/context doesn't provide it.
+
+**Fix**: Ensure `note_type` is passed to template context in plan/apply phase.
