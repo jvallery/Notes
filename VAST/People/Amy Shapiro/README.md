@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | CFO |
+| **Role** | Chief Financial Officer |
 | **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | New York, New York, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Extensive experience in financial leadership roles across private and public technology companies, including serving as CFO at Shopify.
 
 
 ## Projects

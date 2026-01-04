@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Vice President of Sales - West |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | San Francisco Bay Area |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Jay Sutton is a seasoned sales professional with a progressive career in the technology and education sectors. He has previously held roles such as Account Manager at Hitachi Data Systems and Admission Recruiter at Menlo College.
 
 
 ## Projects

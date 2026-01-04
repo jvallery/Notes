@@ -16,8 +16,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | Google |
+| **Role** | Vice President of Product |
+| **Company** | Google Workspace |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Previously worked at eBay and Facebook.
 
 
 ## Projects

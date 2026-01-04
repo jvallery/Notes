@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Runs CSCP (Azure capacity supply chain / logistics partner org) |
+| **Role** | Corporate Vice President, Cloud Supply Chain |
 | **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/cliff-henson-8b906025](https://www.linkedin.com/in/cliff-henson-8b906025) |
+| **Location** | Austin, Texas Metropolitan Area, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Cliff Henson has over 24 years of experience in supply chain management. Prior to joining Microsoft in February 2020, he held various leadership roles at Hewlett Packard Enterprise, including Senior Vice President of Global Supply Chain. He holds a BSME from Texas Tech University and an MBA from the University of St. Thomas (TX).
 
 
 ## Projects

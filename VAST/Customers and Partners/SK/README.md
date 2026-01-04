@@ -21,7 +21,7 @@ _Brief description of this customer, their business, and relationship..._
 | Field | Value |
 |-------|-------|
 | **Status** | _Unknown_ |
-| **Industry** | _Unknown_ |
+| **Industry** | Conglomerate |
 
 ## Key Contacts
 

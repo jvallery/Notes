@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | Engineer |
 | **Company** | CoreWeave |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Colorado, USA |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Previously at Microsoft AI, Inflection AI, Cohere, and Color.
 
 
 ## Projects

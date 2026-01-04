@@ -16,8 +16,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | CVP of Azure Storage (retired) |
-| **Company** | Microsoft |
+| **Role** | Vice President-Energy & Resources |
+| **Company** | Microsoft Corp. |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Darryl K. Willis is an Independent Director at Dril-Quip, Inc. and Nine Energy Service, Inc. He is also a Director at INROADS, Inc. and holds the position of Vice President-Energy & Resources at Microsoft Corp. Previously, he served as President & Chief Executive Officer-Angola at BP Plc (Texas), Senior Vice President-Reservoir Development at BP America, Inc., Vice President-Technology Operations at TNK-BP Ltd., and General Manager at BP Angola. He was also a Vice President-Oil, Gas & Energy at Google Cloud. Mr. Willis completed his undergraduate degree at Northwestern State University and his graduate degrees at the University of New Orleans and Stanford Graduate School of Business.
 
 
 ## Projects

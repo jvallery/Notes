@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Runs CO&I/CNLI (Azure datacenter org; per transcript) |
+| **Role** | Vice President of AI Delivery |
 | **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Redmond, Washington, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Paul Clark has over 31 years of experience in the technology sector. He joined Microsoft in April 2023 as Vice President of AI Delivery. Prior to this, he held various leadership roles at Intel Corporation, including General Manager of Cloud Sustainability, Provisioning and Decommissioning, and Senior Director of Global Infrastructure.
 
 
 ## Projects

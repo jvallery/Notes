@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | Microsoft |
+| **Role** | Owner |
+| **Company** | Los Angeles Clippers |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Hunts Point, Washington |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
 
 
 ## Projects

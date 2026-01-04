@@ -39,7 +39,7 @@ Silk cloud storage architecture for databases, Performance characteristics (thro
 | Field | Value |
 |-------|-------|
 | **Status** | Active |
-| **Industry** | Cloud storage / software-defined storage (database-focused) |
+| **Industry** | Software-defined cloud storage |
 
 ## Key Contacts
 

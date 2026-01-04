@@ -16,8 +16,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | VAST Data |
+| **Role** | Global Vice President and Vantage Lead |
+| **Company** | KellyOCG |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Former Senior Director of Global Alliances at Cloudera; extensive experience in global alliances and data management.
 
 
 ## Projects

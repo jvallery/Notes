@@ -603,6 +603,9 @@ def enrich_entity_with_web_search(
         query = f"Find information about {entity_name}"
         if context:
             query += f" who works at or is associated with {context}"
+        else:
+            # Default context for VAST-related people
+            query += " who works at or is associated with VAST Data (enterprise storage company)"
         query += ". Look for: current job title, company, LinkedIn profile, location, professional background."
         
         response_format = """Return JSON with these fields:
@@ -661,33 +664,141 @@ def enrich_entities_batch(
     entity_type: str,
     entity_names: list[str],
     client: OpenAI | None = None,
+    workers: int = 3,
 ) -> dict[str, dict]:
     """
-    Enrich multiple entities with web search.
+    Enrich multiple entities with web search (parallelized).
     
     Returns:
         Dict mapping entity name to enriched metadata
     """
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    
     if client is None:
         client = OpenAI()
     
-    results = {}
-    for name in entity_names:
-        # Get existing context from manifest
-        manifest_path = get_manifest_path(vault, entity_type)
-        context = ""
-        if manifest_path.exists():
-            rows = parse_manifest_table(manifest_path.read_text())
-            for row in rows:
-                if row.get("Name") == name:
-                    context = row.get("Company", "") or row.get("Industry", "")
-                    break
-        
+    # Pre-load manifest context
+    manifest_path = get_manifest_path(vault, entity_type)
+    context_map = {}
+    if manifest_path.exists():
+        rows = parse_manifest_table(manifest_path.read_text())
+        for row in rows:
+            name = row.get("Name", "")
+            context_map[name] = row.get("Company", "") or row.get("Industry", "")
+    
+    def enrich_one(name: str) -> tuple[str, dict]:
+        context = context_map.get(name, "")
         enriched = enrich_entity_with_web_search(entity_type, name, context, client)
-        if enriched:
-            results[name] = enriched
+        return name, enriched
+    
+    results = {}
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = {executor.submit(enrich_one, name): name for name in entity_names}
+        
+        for i, future in enumerate(as_completed(futures), 1):
+            name = futures[future]
+            try:
+                _, enriched = future.result()
+                if enriched:
+                    results[name] = enriched
+                    conf = enriched.get("confidence", 0)
+                    role = enriched.get("role", "")[:30]
+                    company = enriched.get("company", "")[:20]
+                    print(f"  [{i}/{len(entity_names)}] {name}: {role} @ {company} (conf: {conf})")
+                else:
+                    print(f"  [{i}/{len(entity_names)}] {name}: No data found")
+            except Exception as e:
+                print(f"  [{i}/{len(entity_names)}] {name}: Error - {e}")
     
     return results
+
+
+def apply_enrichment_to_readme(
+    vault: Path,
+    entity_type: str,
+    entity_name: str,
+    enrichment: dict,
+) -> bool:
+    """
+    Apply enrichment data to an entity's README.
+    
+    Updates the Contact Information table and Background section.
+    
+    Returns:
+        True if README was updated
+    """
+    config = ENTITY_CONFIGS.get(entity_type)
+    if not config:
+        return False
+    
+    readme_path = vault / config["folder"] / entity_name / "README.md"
+    if not readme_path.exists():
+        return False
+    
+    content = readme_path.read_text()
+    updated = False
+    
+    if entity_type == "people":
+        # Update Contact Information table
+        if "| **Role** |" in content and enrichment.get("role"):
+            content = re.sub(
+                r'\| \*\*Role\*\* \|[^|]*\|',
+                f'| **Role** | {enrichment["role"]} |',
+                content
+            )
+            updated = True
+        
+        if "| **Company** |" in content and enrichment.get("company"):
+            content = re.sub(
+                r'\| \*\*Company\*\* \|[^|]*\|',
+                f'| **Company** | {enrichment["company"]} |',
+                content
+            )
+            updated = True
+        
+        if "| **LinkedIn** |" in content and enrichment.get("linkedin"):
+            content = re.sub(
+                r'\| \*\*LinkedIn\*\* \|[^|]*\|',
+                f'| **LinkedIn** | [{enrichment["linkedin"]}]({enrichment["linkedin"]}) |',
+                content
+            )
+            updated = True
+        
+        if "| **Location** |" in content and enrichment.get("location"):
+            content = re.sub(
+                r'\| \*\*Location\*\* \|[^|]*\|',
+                f'| **Location** | {enrichment["location"]} |',
+                content
+            )
+            updated = True
+        
+        # Update Background section if empty
+        if enrichment.get("background"):
+            bg = enrichment["background"]
+            # Find Background section
+            if "## Background\n\n_" in content:
+                # Replace placeholder
+                content = re.sub(
+                    r'## Background\n\n_[^_]*_',
+                    f'## Background\n\n{bg}',
+                    content
+                )
+                updated = True
+    
+    elif entity_type == "customers":
+        # Update company info
+        if enrichment.get("industry") and "| **Industry** |" in content:
+            content = re.sub(
+                r'\| \*\*Industry\*\* \|[^|]*\|',
+                f'| **Industry** | {enrichment["industry"]} |',
+                content
+            )
+            updated = True
+    
+    if updated:
+        readme_path.write_text(content)
+    
+    return updated
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -983,3 +1094,242 @@ def batch_rename_notes(
         results.append((note_path, new_path, renamed))
     
     return results
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Entity Merging (Deduplication)
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def find_duplicate_entities(
+    vault: Path,
+    entity_type: str,
+    threshold: float = 0.8,
+) -> list[tuple[str, str, float]]:
+    """
+    Find potential duplicate entities based on name similarity.
+    
+    Uses Levenshtein-like similarity to find names that might be 
+    transcription errors (e.g., "Glenn Lockman" vs "Glenn Lockwood").
+    
+    Returns:
+        List of (name1, name2, similarity) tuples sorted by similarity
+    """
+    known = get_known_entities(vault)
+    names = known.get(entity_type, [])
+    
+    def similarity(a: str, b: str) -> float:
+        """Simple similarity based on common characters."""
+        a, b = a.lower(), b.lower()
+        if a == b:
+            return 1.0
+        
+        # Check if one is a prefix of the other
+        if a.startswith(b) or b.startswith(a):
+            return len(min(a, b, key=len)) / len(max(a, b, key=len))
+        
+        # Count matching characters
+        matches = sum(1 for c in a if c in b)
+        return matches / max(len(a), len(b))
+    
+    duplicates = []
+    for i, name1 in enumerate(names):
+        for name2 in names[i+1:]:
+            # Skip if first name is different
+            first1 = name1.split()[0].lower() if name1.split() else ""
+            first2 = name2.split()[0].lower() if name2.split() else ""
+            if first1 != first2:
+                continue
+            
+            sim = similarity(name1, name2)
+            if sim >= threshold:
+                duplicates.append((name1, name2, sim))
+    
+    return sorted(duplicates, key=lambda x: -x[2])
+
+
+def merge_entities(
+    vault: Path,
+    entity_type: str,
+    canonical: str,
+    duplicates: list[str],
+    dry_run: bool = True,
+) -> dict:
+    """
+    Merge duplicate entities into a canonical entity.
+    
+    Actions:
+    1. Merge README content from duplicates into canonical
+    2. Add duplicates as aliases in manifest
+    3. Delete duplicate folders (or rename to _MERGED_)
+    4. Update wikilinks across vault (optional, expensive)
+    
+    Args:
+        vault: Path to vault root
+        entity_type: people, customers, projects
+        canonical: The canonical name to keep
+        duplicates: List of duplicate names to merge into canonical
+        dry_run: If True, only show what would happen
+    
+    Returns:
+        Dict with merge results
+    """
+    config = ENTITY_CONFIGS.get(entity_type)
+    if not config:
+        return {"error": f"Unknown entity type: {entity_type}"}
+    
+    base_folder = vault / config["folder"]
+    canonical_folder = base_folder / canonical
+    canonical_readme = canonical_folder / "README.md"
+    
+    results = {
+        "canonical": canonical,
+        "merged": [],
+        "aliases_added": [],
+        "content_merged": [],
+        "folders_deleted": [],
+        "dry_run": dry_run,
+    }
+    
+    if not canonical_folder.exists():
+        return {"error": f"Canonical folder not found: {canonical_folder}"}
+    
+    # Read canonical README
+    canonical_content = canonical_readme.read_text() if canonical_readme.exists() else ""
+    
+    for dup_name in duplicates:
+        dup_folder = base_folder / dup_name
+        dup_readme = dup_folder / "README.md"
+        
+        if not dup_folder.exists():
+            continue
+        
+        # Extract unique content from duplicate README
+        if dup_readme.exists():
+            dup_content = dup_readme.read_text()
+            
+            # Extract sections to merge (Recent Context, Key Facts, etc.)
+            sections_to_merge = ["## Recent Context", "## Key Facts", "## Topics"]
+            
+            for section in sections_to_merge:
+                if section in dup_content:
+                    # Find section content
+                    start = dup_content.find(section)
+                    end = dup_content.find("\n## ", start + 1)
+                    if end == -1:
+                        end = len(dup_content)
+                    
+                    section_content = dup_content[start:end].strip()
+                    
+                    # Append to canonical if not already present
+                    if section_content and section_content not in canonical_content:
+                        results["content_merged"].append(f"{section} from {dup_name}")
+                        
+                        if section in canonical_content:
+                            # Append after existing section
+                            can_start = canonical_content.find(section)
+                            can_end = canonical_content.find("\n## ", can_start + 1)
+                            if can_end == -1:
+                                can_end = len(canonical_content)
+                            
+                            # Extract just the content (skip header)
+                            dup_lines = section_content.split("\n")[1:]
+                            extra = "\n".join(dup_lines)
+                            
+                            canonical_content = (
+                                canonical_content[:can_end] + 
+                                "\n" + extra +
+                                canonical_content[can_end:]
+                            )
+        
+        # Add as alias
+        results["aliases_added"].append(dup_name)
+        
+        # Mark folder for deletion
+        results["folders_deleted"].append(str(dup_folder))
+        results["merged"].append(dup_name)
+    
+    if not dry_run:
+        # Write merged canonical README
+        canonical_readme.write_text(canonical_content)
+        
+        # Add aliases to manifest
+        for alias in results["aliases_added"]:
+            add_alias_to_manifest(vault, entity_type, alias, canonical)
+        
+        # Delete/rename duplicate folders
+        for dup_name in duplicates:
+            dup_folder = base_folder / dup_name
+            if dup_folder.exists():
+                import shutil
+                shutil.rmtree(dup_folder)
+    
+    return results
+
+
+def add_alias_to_manifest(
+    vault: Path,
+    entity_type: str,
+    alias: str,
+    canonical: str,
+) -> bool:
+    """Add an alias mapping to the manifest."""
+    manifest_path = get_manifest_path(vault, entity_type)
+    if not manifest_path.exists():
+        return False
+    
+    content = manifest_path.read_text()
+    
+    # Find or create Aliases section
+    if "## Aliases" not in content:
+        content += "\n\n## Aliases\n\n"
+    
+    # Add alias line
+    alias_line = f"- {alias} → {canonical}\n"
+    if alias_line not in content:
+        # Insert after Aliases header
+        insert_pos = content.find("## Aliases") + len("## Aliases\n")
+        content = content[:insert_pos] + "\n" + alias_line + content[insert_pos:]
+        manifest_path.write_text(content)
+    
+    return True
+
+
+def propose_merges(vault: Path) -> dict[str, list[dict]]:
+    """
+    Propose entity merges based on name similarity analysis.
+    
+    Returns:
+        Dict mapping entity type to list of proposed merges
+    """
+    proposals = {}
+    
+    for entity_type in ["people", "customers", "projects"]:
+        dupes = find_duplicate_entities(vault, entity_type, threshold=0.7)
+        
+        if dupes:
+            # Group by first name
+            groups = {}
+            for name1, name2, sim in dupes:
+                first = name1.split()[0] if name1.split() else name1
+                if first not in groups:
+                    groups[first] = {"names": set(), "pairs": []}
+                groups[first]["names"].add(name1)
+                groups[first]["names"].add(name2)
+                groups[first]["pairs"].append((name1, name2, sim))
+            
+            proposals[entity_type] = []
+            for first, data in groups.items():
+                # Choose canonical as the longest/most complete name
+                names = sorted(data["names"], key=len, reverse=True)
+                canonical = names[0]
+                duplicates = names[1:]
+                
+                proposals[entity_type].append({
+                    "canonical": canonical,
+                    "duplicates": duplicates,
+                    "confidence": sum(p[2] for p in data["pairs"]) / len(data["pairs"]),
+                })
+    
+    return proposals
+

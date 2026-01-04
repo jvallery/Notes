@@ -15,8 +15,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | DM for system engineering (supports SE org; Brad and Paul's boss) |
-| **Company** |  |
+| **Role** | Americas West Area Director, Systems Engineering |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+John Heidgerken has been serving as the Americas West Area Director of Systems Engineering at VAST Data since November 2023. Prior to this, he was a Senior Systems Engineer at Dell EMC from August 2018 to November 2023. His earlier experience includes roles at Rackspace from August 2006 to July 2015, culminating as a SAN Engineer III, as well as positions at Credit Karma and USAA in infrastructure engineering and member support, respectively. He holds a Bachelor's degree in Music Education from The University of Texas at San Antonio, earned between 2000 and 2004.
 
 
 ## Projects

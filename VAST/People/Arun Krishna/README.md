@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Senior Presales System Engineer |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | San Jose, California |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Hari Krishna has 16 years of experience in the field. Prior to joining VAST Data in November 2023, he worked as a Presales Systems Engineer at Dell Technologies from April 2013 to November 2023. He also held positions as a Solutions Architect at EMC, Storage Solutions Architect at MGM Grand Hotel & Casino Las Vegas, Storage Administrator at A.C. Moore, and Senior Storage Engineer at Key Business Solutions, Inc.
 
 
 ## Projects

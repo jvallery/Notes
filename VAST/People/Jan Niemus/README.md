@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Runs DoD/IC organization |
+| **Role** | Managing Director |
 | **Company** | Google |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Herndon, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Jan Niemiec has been serving as Managing Director at Google since May 2023. Prior to this role, he held various leadership positions at Cisco from October 2004 to June 2023, including Vice President of Sales overseeing a team focused on national security and defense, as well as Regional Sales Director responsible for federal accounts. His early career includes roles such as Director of Sales Business Development and Regional Manager at Cisco, along with experience in the United States Air Force as a Major, where he managed programs for the Space portfolio. Additionally, he worked at Sun Microsystems as an Account Manager focused on the Defense Intelligence Agency and contributed as a Senior Member of Technical Staff at The Aerospace Corporation. Jan holds a Master of Science in Aerospace Engineering from the University of Maryland and a Bachelor of Engineering in Mechanical Engineering from Stevens Institute of Technology.
 
 
 ## Projects

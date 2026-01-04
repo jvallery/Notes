@@ -15,8 +15,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Multi-tenancy SME (technical) |
-| **Company** |  |
+| **Role** | Solution Architect Lead |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Ray Coetzee is a Solution Architect Lead at VAST Data, with expertise in parallel filesystem engineering. He has contributed to technical validations and presentations, including a collaboration with Vertica and a technical social event at UCL in May 2022.
 
 
 ## Projects

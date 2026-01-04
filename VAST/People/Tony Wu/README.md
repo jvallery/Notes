@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | Vice President of Engineering |
 | **Company** | Perplexity |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/tonygwu](https://www.linkedin.com/in/tonygwu) |
+| **Location** | San Francisco Bay Area |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Tony Wu is an experienced engineering leader with a strong background in artificial intelligence and machine learning. He has held positions at OpenAI, Facebook, Uber, Twitter, BloomReach, Circle of Moms, Microsoft, and Google. Tony earned both a Master of Science and Bachelor of Science in Computer Science from Stanford University, specializing in Artificial Intelligence.
 
 
 ## Projects

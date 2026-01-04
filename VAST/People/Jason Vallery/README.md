@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Product management (cloud); partnerships with hyperscale cloud providers |
-| **Company** | VAST Data |
+| **Role** | Principal PM Manager - Azure Storage |
+| **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/jvallery](https://www.linkedin.com/in/jvallery) |
+| **Location** | Longmont, Colorado, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Prior to joining VAST Data, Jason Vallery had a 13-year career at Microsoft, where he contributed to building the Azure cloud from the ground up. He has extensive experience in AI-focused storage and data infrastructure for large-scale data processing.
 
 
 ## Projects
@@ -80,10 +80,23 @@ SORT due ASC
 - Z4M targets storage-serving use cases; CPU/RAM may be overprovisioned but pricing optimization is planned.
 - Google is developing a Google Supercomputer (GSC) interface to provision AI/HPC infrastructure with co-placement optimization; VAST could be integrated as a selectable storage option with potential auto-deploy.
 
+
+- MVP launch on GCP uses private offers with fixed capacity pricing ($0.07/GB) via GCP Marketplace.
+- Tackle.io is the middleware to generate private offers and sync them with Salesforce opportunities.
+- Polaris is the source of truth for entitlements and metering; clusters call home to Polaris and enforce entitlements via tokens (no license keys).
+- No BYOL for MVP; all transactions go through marketplaces to support hyperscaler partner status and MDF/marketing benefits.
+- Considering ~10% overage allowance; goal is to charge overage at list PAYGO, but GCP Marketplace may not support this natively.
+- Internal CS/sales alerting for entitlement usage/overage is not yet in place; customer alert exists.
+- First GCP transactions targeted for Nov–Dec 2025; plan to replicate approach to AWS/Azure afterward.
+- Finance will not have a separate cloud P&L; cloud metrics will be reported within overall P&L; SaaS/consumption metrics and forecasting model must be defined before full SaaS launch.
+- Customer Success is currently reactive support rather than proactive CS.
+- PM team is small relative to product scope; professionalizing PM is a major initiative for the coming year.
 ## Topics Discussed
 
 Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness and operational support model, Compliance evidence, certifications, and ATO considerations, Hardware platform options (Dell/HPE/Cisco) vs commodity VM shapes, RDMA and VM shape tradeoffs, Fort Meade on-prem Gemini validation path, Coordination between Google corporate GDC and Google Federal teams, Joint federal account alignment and co-selling, Google Marketplace offers and broader partnership tracks, TPU/model-builder partnership track, Z4M storage-serving VM roadmap (density, pricing optimization), Local SSD vs HyperDisk vs object storage tiers (latency/economics), Google Supercomputer (GSC) provisioning, co-placement, and partner integration, RDMA and GPUDirect Storage (A5X GPUs) and TPU RDMA timeline, Anywhere Cache (cost vs performance)
 
+
+GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec, Future pricing model: VAST units of measurement for compute/capacity, Hybrid on-prem/cloud conversion and revenue recognition complexity, Multi-cloud pooling feasibility and hyperscaler positioning concerns, Need for cloud customer success coverage and internal usage alerting, Org landscape and key players, Cloud strategy beyond S3, Embedding with SEs and customer workflow discovery, Google RFP and TPU angle; fit assessment, Microsoft positioning vs Azure Storage gaps
 ## Recent Context
 
 - unknown: [[2025-10 - Microsoft Tasks]] - Checklist of completed action items for Microsoft/Azure engagement, including networking/egress plan... (via Microsoft)
@@ -102,6 +115,9 @@ Google Distributed Cloud RFP response strategy, Air-gapped/dark-site readiness a
 - unknown: [[2025-10 - Rob Benoit]] - A completed task to coordinate with Rob Benoit regarding expectations for Tech Summit content, assig... (via Rob Benoit)
 - unknown: [[2025-10 - Shachar Feinblit]] - Checklist and Slack snippets related to coordinating with Shachar Feinblit, including setting up rec... (via Shachar Feinblit)
 
+
+- 2025-11-07: [[2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla]] - 1:1 discussion with Jeff Denworth reviewing VAST org landscape, immediate priorities, and a pragmati... (via Jeff Denworth)
+- 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
 ## Profile
 
 **Role**: Product management (cloud); partnerships with hyperscale cloud providers at VAST Data (Cloud / Partnerships)

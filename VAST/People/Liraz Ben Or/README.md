@@ -23,6 +23,9 @@ tags:
 - 2025-10-29: [[2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage]] - Weekly 1:1 intro where Liraz Ben Or walked Jason Vallery through VAST’s non-traditional release mana...
 - 2025-10-27: [[2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and]] - Weekly 1:1 between Jason Vallery and Jeff Denworth aligning near-term cloud priorities: build a synt... (via Jeff Denworth)
 
+
+- 2025-11-07: [[2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan]] - Weekly 1:1 between Jason Vallery and Jeff Denworth reviewing VAST’s org landscape and key players, a... (via Jeff Denworth)
+- 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 ## Profile
 
 **Role**: Program manager at VAST Data (R&D)
@@ -46,10 +49,23 @@ tags:
 - Major multi-tenancy blocker: authentication providers limited to 8 and configured at host cluster rather than tenant-scoped; scaling and tenantizing is a large effort.
 - Control plane (Polaris/Iceland) is more cloud-native; cluster layer is not yet operating in an agile/SaaS mode.
 
+
+- GCP IP reassignment requires remove then reassign, creating a short race window during failover.
+- MIGs can use a pool of reserved static IPs for primary addresses; alias IP behavior differs.
+- Alias IPs are expected to be unsupported with RDMA; RDMA uses a separate subnet/interface.
+- Z4M will launch with inter-node RDMA; GPU-direct storage RDMA is a separate effort.
+- Two interfaces (RDMA and TCP) are expected per Z4M instance; may be same VPC on different subnets.
+- Cross-project RDMA will require Private Service Connect interfaces; VPC peering will not be supported.
+- Route-based failover has latency/convergence considerations; ILB introduces pricing/feature tradeoffs.
+- Per-VM bandwidth is capped; adding NICs does not increase aggregate bandwidth.
+- Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
+- Ben is the new Google PM counterpart for this effort.
 ## Topics
 
 Release planning and execution (major/minor releases), Hotfixes and service packs (backport/forward-port, upgrade alignment), Feature intake and triage process (Salesforce tied to opportunities), Phase-gate process and documentation, QA/regression/performance testing for minor releases, SaaS and multi-tenant readiness, Multi-tenancy gaps (auth providers limit, tenant-scoped auth), Control plane vs cluster responsibilities (Polaris/Iceland vs cluster), Impact of urgent customer requests on scope and resourcing, 5.6 timeline and GA target, Release intake and prioritization (leadership, architects, SE/Salesforce), Major vs minor releases and phase-gate process, Service packs and hotfix process (vForce, upstreaming fixes), Regression/performance testing practices for minors, SaaS agility vs storage reliability constraints
 
+
+GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, Org chart and key leaders across marketing, alliances, SE, sales, finance, Multi-cloud strategy mandate (Azure/AWS/GCP/Oracle) and complement vs compete framing, Cloud packaging and serverless/pipelines gaps, Neo cloud requirements ownership and team transition, Customer Success vs support operating model, SE engagement strategy and Tech Summit embedding
 ## Key Decisions
 
 - ✅ Carl will move to ProServe under Rob rather than supporting customer-facing PM work.

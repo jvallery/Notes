@@ -54,7 +54,7 @@ Microsoft near-term AI capacity strategy (self-build, leases, neocloud), Azure F
 | Field | Value |
 |-------|-------|
 | **Status** | Active |
-| **Industry** | _Unknown_ |
+| **Industry** | Artificial Intelligence |
 
 ## Key Contacts
 

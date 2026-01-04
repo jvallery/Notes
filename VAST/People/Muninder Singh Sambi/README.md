@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Leader for Google Distributed Cloud (GDC); oversees GDC supply chain (new in role) |
-| **Company** | Google |
+| **Role** | Vice President and General Manager of Networking and Security |
+| **Company** | Google Cloud |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/muninders](https://www.linkedin.com/in/muninders) |
+| **Location** | Fremont, California, USA |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Muninder Sambi is an accomplished executive with extensive experience in networking and security products. He has held senior leadership roles at Palo Alto Networks and Cisco. At Palo Alto Networks, he was Senior Vice President of Product Management from August 2020 to June 2022. During his tenure at Cisco from February 2012 to August 2020, he held multiple titles including Vice President of Product Management, overseeing significant product lines and managing a substantial portfolio. Early in his career, he worked as a Network Engineer at Microland Limited. Muninder holds an MBA in Marketing and Entrepreneurship from Santa Clara University and a B.Tech. in Electronics and Communication Engineering from Guru Nanak Dev University.
 
 
 ## Projects

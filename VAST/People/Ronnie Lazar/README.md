@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Software Engineering Manager |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Tel Aviv District, Israel |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Over 35 years of experience in software engineering and management, including roles such as VP R&D at gloww, Manager at Red Hat, and Development Group Lead at Stratoscale.
 
 
 ## Projects

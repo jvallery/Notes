@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Founder |
+| **Role** | Founder and CEO |
 | **Company** | Midjourney |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [Not publicly available](Not publicly available) |
+| **Location** | San Francisco, California, USA |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+David Holz co-founded Leap Motion in 2010, a company specializing in gesture-recognition technology for virtual reality. He served as CTO until 2021, when he founded Midjourney, an AI-driven image generation platform. Prior to his entrepreneurial ventures, Holz pursued a PhD in applied mathematics at the University of North Carolina at Chapel Hill and worked at NASA and the Max Planck Institute.
 
 
 ## Projects

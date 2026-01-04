@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | Software Engineer |
 | **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | San Francisco Bay Area, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Previously worked as a Software Development Engineer II at Amazon Web Services (AWS) and as an Enterprise Engineer at Meta.
 
 
 ## Projects

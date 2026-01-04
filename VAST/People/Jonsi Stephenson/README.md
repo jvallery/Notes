@@ -27,6 +27,9 @@ CEO of VAST Data.
 - 2025-10-28: [[2025-10-28 - The teams discussed IP management and failover approaches on GCP (alias IPs, rou]] - Group meeting with Google and VAST teams to evaluate GCP IP/VIP management and failover options unde... (via Google)
 - 2025-10-28: [[2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing]] - Internal group meeting to finalize the MVP launch plan for VAST on Google Cloud Marketplace using pr... (via Google)
 
+
+- 2025-10-06: [[2025-10-06 - Jason has a complex VAST offer with risky, sales-linked compensation and a more]] - Weekly 1:1 between Jason Vallery and Jai Menon focused on Jason’s decision to leave Microsoft due to... (via Jai Menon)
+- 2025-10-06: [[2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c]] - Weekly 1:1 between Jason Vallery and Jai Menon discussing Jason’s competing offers from VAST and Cru... (via Jai Menon)
 ## Profile
 
 **Role**: CEO at VAST Data
@@ -51,10 +54,23 @@ CEO of VAST Data.
 - Initial test scale target is roughly 10–30 instances; CI and scale testing will require more.
 - Ben is the new Google PM counterpart for this effort.
 
+
+- Crusoe deadline is 2025-10-08.
+- Prospective VAST role: PM title reporting to Jeff Denworth and VAST CEO (referred to as Renan); owns PM for a cloud control plane via Red Stapler (founded by Jan C. Stefansson); dotted-line support to Microsoft sell-to/sell-with and OpenAI Project Stargate.
+- VAST compensation includes commission as a percentage of sales to OpenAI/Azure; equity component described as modest; outcome could range from zero to many millions.
+- Leaving Microsoft would forfeit roughly $800K already vested, reducing the net gap versus a $2M offer to about $1.1–$1.2M.
+- Apollo scope/boundaries at Microsoft are unclear with many stakeholders and tight timelines as data centers go live.
+- Path to partner at Microsoft remains undefined.
+- Jason has a VAST offer with complex, highly variable compensation tied to OpenAI/Azure sales plus equity.
+- Crusoe offer deadline is Wednesday; VAST has not set a decision deadline.
+- Microsoft cannot approach Crusoe-level compensation; any change would be modest and potentially insulting.
+- Apollo scope and responsibilities are unclear, making it hard to define a successful role or path to partner.
 ## Topics
 
 GCP IP allocation and reservation semantics, VIP failover approaches (alias IP vs route-based vs ILB), RDMA constraints on Z4M shapes, Dual-interface model (RDMA + TCP) and subnet/VPC design, Cross-project connectivity via Private Service Connect interfaces (PSCI), MIG static IP pools and mitigating IP reassignment race windows, Network convergence/latency and client reconnect behavior, Capacity planning via testing and customer volume projections, NIC topology and bandwidth allocation, GCP Marketplace MVP launch scope (private offers, fixed capacity, no BYOL), Tackle.io integration with Salesforce for private offers, Polaris entitlements, metering, call-home, and Uplink registration automation, Overage policy and GCP marketplace limitations; PAYGO overage workaround, EULA language requirements for overage billing, Finance processes: billing, payout cadence, reconciliation, reporting controls, rev rec
 
+
+Offer comparison (VAST vs Crusoe vs staying at Microsoft), Compensation structure and risk (commission vs equity), Apollo scope ambiguity and execution risk, Career trajectory and path to partner at Microsoft, Resignation timing and decision deadline pressure, Job offers comparison (VAST vs Crusoe vs Microsoft), Compensation structure risk (commission/equity variability), Apollo program scope ambiguity and execution risk, Resignation timeline
 ## Key Decisions
 
 - ✅ Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).

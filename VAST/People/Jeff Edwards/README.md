@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Co-founder & CMO |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/jeffdenworth](https://www.linkedin.com/in/jeffdenworth) |
+| **Location** | New York, New York, United States |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Jeff Denworth has over two decades of experience with advanced computation and massively scalable big data and cloud storage technologies. Prior to co-founding VAST Data, he held management roles at DDN, CTERA Networks, and Cluster File Systems.
 
 
 ## Projects

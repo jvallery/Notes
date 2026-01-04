@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | President |
 | **Company** | OpenAI |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/thegdb](https://www.linkedin.com/in/thegdb) |
+| **Location** | San Francisco, California |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Co-founder and President of OpenAI; former CTO at Stripe; led projects like OpenAI Gym and OpenAI Five.
 
 
 ## Projects

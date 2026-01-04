@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | Microsoft |
+| **Role** | Member of Technical Staff |
+| **Company** | Microsoft AI |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/vipin-sachdeva](https://www.linkedin.com/in/vipin-sachdeva) |
+| **Location** | Greater Boston, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Vipin has over 23 years of experience in high-performance computing and AI. He joined Microsoft AI in March 2024. Prior to that, he served as a Member of Technical Staff at Inflection AI from September 2022 to March 2024, and as Head of HPC at Roivant Sciences from May 2021 to September 2022. His earlier roles include positions at IBM and academic research.
 
 
 ## Projects

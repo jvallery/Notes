@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | VAST Data |
+| **Role** | CTO and Head of R&D |
+| **Company** | Data Harbor |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Israel |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Ronen Cohen has over 20 years of experience in machine learning and data structures development. He previously served as the head of GSTAT Innovation Lab, leading numerous projects in the big data analytics industry. He holds a Bachelor's degree from Bar-Ilan University.
 
 
 ## Projects

@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | Executive Vice President, CoreAI – Platform and Tools |
 | **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/jayparikh](https://www.linkedin.com/in/jayparikh) |
+| **Location** | United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Jay Parikh joined Microsoft in October 2024 as Executive Vice President of CoreAI – Platform and Tools, reporting directly to CEO Satya Nadella. Prior to this, he served as CEO of Lacework, a cloud security company, and was the Global Head of Engineering at Facebook (now Meta) from 2009 to 2021. His earlier roles include Senior Vice President of Engineering & Operations at Ning, Inc., and Vice President of Engineering at Akamai Technologies. He holds a Bachelor of Science in Mechanical Engineering from Virginia Tech.
 
 
 ## Projects

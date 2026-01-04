@@ -77,16 +77,28 @@ SORT due ASC
 - Apollo requested two POCs: urgent VAST-on-VAST hardware (rack shipped) and VAST bare metal on Azure storage hardware.
 - Azure storage hardware spec variants include Fungible DPU and NVIDIA BlueField-3; Fungible production rollout in Azure storage is not broadly delivered.
 
+
+- MAI scale targets in ~2 years: ~400k GPUs for training (~100k nodes) and ~40k GPUs for inference.
+- Primary environment for MAI is AKS/Kubernetes with Spark.
+- Caching options under consideration include C-Store proposals (Krishnan’s team), Alluxio/DAX (supports inference/KB caching), OpenAI cache code (pending IP confirmation), and BlockFuse/BlobFuse approaches.
+- OpenAI cache access appears permitted for Microsoft services but requires confirmation via Pete and SILA legal.
+- Bifrost includes a direct read path from compute to capacity nodes, bypassing FE/table for reads; Lukasz is implementing this component.
+- Compute for MAI moved under Brendan’s org (AKS); CVP Qiu Ke involved; Yumin coordinating.
+- Possible MAI requirement: multi-region pooling for a distributed cache (unconfirmed).
 ## Topics Discussed
 
 AI caching strategy for MAI (training and inference), OpenAI cache IP/code access and feasibility, Alluxio/DAX as unified cache option, C-Store proposal evaluation, Blockfuse/BlobFuse maturity and performance, MAI requirements: scale, AKS + Spark, possible multi-region pooling, Blob performance roadmap: Bifrost direct-read path and DeltaZero follow-on, Performance snapshot discussion and escalation path, Establishing ongoing 1:1 cadence, MAI and Project Apollo alignment and timelines, VAST bare metal on Azure storage hardware vs VM-based deployment, Fungible DPU readiness risk vs BlueField-3 alternative, Dallas capacity planning (Dec/Apr) and classic Azure feasibility, Networking/SDN (Overlake) constraints for bare metal in classic Azure, NVIDIA DGX Cloud reference architecture and storage throughput requirements
 
+
+MAI caching strategy and unified cache goal, OpenAI cache code access and IP/licensing, Scaling requirements to ~100k nodes and AKS/Spark fit, Comparison of caching options (C-Store, Alluxio/DAX, BlobFuse/BlockFuse), Bifrost architecture and direct read path, MAI org changes (compute under AKS leadership), Performance snapshot feedback and follow-up conversations
 ## Recent Context
 
 - 2025-11-06: [[2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI]] - 1:1 strategy sync focused on accelerating VAST adoption inside Microsoft via MAI and Project Apollo,... (via Kanchan Mehrotra)
 - 2025-10-31: [[2025-10-31 - Jason (now at VAST) and Kushal discussed deploying VAST for Apollo’s training wo]] - 1:1 between Jason Vallery (VAST Data) and Kushal Datta (Microsoft Apollo) to evaluate deploying VAST... (via Kushal Datta)
 - 2025-09-03: [[2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA]] - Weekly 1:1 where Jai Menon aligned with Jason Vallery on a high-priority evaluation of AI caching st... (via Jai Menon)
 
+
+- 2025-09-03: [[2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’]] - Weekly 1:1 between Jai Menon and Jason Vallery aligning Jason’s initial scope after returning: evalu... (via Jai Menon)
 ## Profile
 
 **Role**: CVP at Microsoft (AKS org (Brendan's org))

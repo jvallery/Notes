@@ -15,8 +15,8 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Meeting organizer |
-| **Company** |  |
+| **Role** | Chief Accounting Officer |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |

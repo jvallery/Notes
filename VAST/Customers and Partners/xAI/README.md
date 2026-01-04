@@ -22,7 +22,7 @@ _Brief description of this customer, their business, and relationship..._
 | Field | Value |
 |-------|-------|
 | **Status** | Prospect |
-| **Industry** | _Unknown_ |
+| **Industry** | Artificial Intelligence |
 
 ## Key Contacts
 

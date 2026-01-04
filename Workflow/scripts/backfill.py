@@ -42,6 +42,9 @@ from backfill.entities import (  # noqa: E402
     get_known_entities,
     batch_rename_notes,
     enrich_entities_batch,
+    apply_enrichment_to_readme,
+    propose_merges,
+    merge_entities,
 )
 from utils.config import vault_root  # noqa: E402
 
@@ -358,9 +361,15 @@ def cmd_enrich(args: argparse.Namespace) -> int:
     
     print(f"Enriching {len(entities)} {entity_type} with web search...")
     
-    results = enrich_entities_batch(vault, entity_type, entities, client)
+    results = enrich_entities_batch(vault, entity_type, entities, client, workers=args.workers)
     
-    print(f"\nEnriched {len(results)} entities:")
+    # Apply enrichment to READMEs
+    updated_count = 0
+    for name, data in results.items():
+        if apply_enrichment_to_readme(vault, entity_type, name, data):
+            updated_count += 1
+    
+    print(f"\nEnriched {len(results)} entities, updated {updated_count} READMEs:")
     for name, data in results.items():
         print(f"\n  {name}:")
         for key, value in data.items():
@@ -368,6 +377,69 @@ def cmd_enrich(args: argparse.Namespace) -> int:
                 print(f"    {key}: {value}")
     
     return 0
+    
+    return 0
+
+
+def cmd_merge(args: argparse.Namespace) -> int:
+    """Propose or execute entity merges for deduplication."""
+    vault = vault_root()
+    
+    if args.propose:
+        # Propose merges based on similarity analysis
+        print("Analyzing entity names for potential duplicates...\n")
+        proposals = propose_merges(vault)
+        
+        for entity_type, merges in proposals.items():
+            if not merges:
+                continue
+            
+            print(f"\n{'='*60}")
+            print(f"  {entity_type.upper()}")
+            print(f"{'='*60}")
+            
+            for i, merge in enumerate(merges, 1):
+                print(f"\n  {i}. Keep: {merge['canonical']}")
+                print(f"     Merge: {', '.join(merge['duplicates'])}")
+                print(f"     Confidence: {merge['confidence']:.0%}")
+        
+        # Print summary
+        total = sum(len(m) for m in proposals.values())
+        print(f"\n\nFound {total} potential merge groups")
+        print("Run with --execute to apply merges")
+        return 0
+    
+    elif args.execute:
+        # Execute merges based on proposals
+        proposals = propose_merges(vault)
+        
+        for entity_type, merges in proposals.items():
+            for merge in merges:
+                print(f"\nMerging {entity_type}: {merge['duplicates']} → {merge['canonical']}")
+                result = merge_entities(
+                    vault=vault,
+                    entity_type=entity_type,
+                    canonical=merge["canonical"],
+                    duplicates=merge["duplicates"],
+                    dry_run=args.dry_run,
+                )
+                
+                if "error" in result:
+                    print(f"  ❌ {result['error']}")
+                else:
+                    print(f"  ✅ Merged {len(result['merged'])} entities")
+                    print(f"     Aliases added: {result['aliases_added']}")
+                    if not args.dry_run:
+                        print(f"     Folders deleted: {len(result['folders_deleted'])}")
+        
+        if args.dry_run:
+            print("\n⚠️  DRY RUN - No changes made. Run without --dry-run to apply.")
+        
+        return 0
+    
+    else:
+        print("Use --propose to analyze duplicates or --execute to merge")
+        return 1
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -533,7 +605,32 @@ def main() -> int:
         type=int,
         help="Limit number of entities to enrich",
     )
+    enrich_parser.add_argument(
+        "--workers", "-w",
+        type=int,
+        default=3,
+        help="Number of parallel workers (default: 3)",
+    )
     enrich_parser.set_defaults(func=cmd_enrich)
+    
+    # Merge command
+    merge_parser = subparsers.add_parser("merge", help="Deduplicate entities by merging similar names")
+    merge_parser.add_argument(
+        "--propose",
+        action="store_true",
+        help="Propose merges based on name similarity",
+    )
+    merge_parser.add_argument(
+        "--execute",
+        action="store_true",
+        help="Execute proposed merges",
+    )
+    merge_parser.add_argument(
+        "--dry-run",
+        action="store_true",
+        help="Show what would be merged without making changes",
+    )
+    merge_parser.set_defaults(func=cmd_merge)
     
     args = parser.parse_args()
     

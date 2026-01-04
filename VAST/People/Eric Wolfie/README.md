@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | VP Sales Strategy, Enablement & Chief Of Staff |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Boston, United States |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Erik Wolf has extensive experience in sales strategy and enablement. He has been serving as VP Sales Strategy, Enablement & Chief of Staff at VAST Data since December 2018. Prior to this role, he held various positions at Dell EMC from July 2007 to December 2018, including Sales Director, Enterprise Account Manager, and Financial Analyst. Erik earned a Bachelor of Business Administration in Investment Finance and Corporate Finance from the Isenberg School of Management at UMass Amherst and attended the University of Wollongong in 2006.
 
 
 ## Projects

@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
+| **Role** | Director of Federal Sales |
 | **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Herndon, Virginia, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Greg Castellucci has over 30 years of experience in the technology sector, specializing in federal sales and systems engineering. Prior to his current role at VAST Data, he held positions such as Federal Chief Technology Officer and Director of Systems Engineering at Extreme Networks, and Systems Engineering Manager at Brocade Communications. He has also worked at General Dynamics Information Technology and Booz Allen Hamilton.
 
 
 ## Projects

@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | Alliances team lead |
-| **Company** |  |
+| **Role** | Vice President, Strategic Alliances |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Austin, Texas, United States |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+John Mao has over 15 years of experience in the IT and cloud sectors. Prior to joining VAST Data, he served as Vice President of Business Development at Stratoscale from March 2014 to January 2020. His earlier roles include Director of Business Development at Calxeda, Inc., Principal Product Manager at CA Technologies, and Product Line Manager at NetQoS. He began his career as a Software Engineer and holds a BS in Computer Science from The University of Texas at Austin.
 
 
 ## Projects

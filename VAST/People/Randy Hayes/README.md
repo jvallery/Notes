@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** | VAST Data |
+| **Role** | Vice President, Public Sector |
+| **Company** | VAST Data Federal |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/rfhayes](https://www.linkedin.com/in/rfhayes) |
+| **Location** | Arlington, Virginia, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Randy Hayes has been with VAST Data since its early stages, contributing to its growth from zero revenue to billion-dollar deals. He played a pivotal role in launching VAST Data Federal, a subsidiary focused on supporting government and defense organizations with data storage solutions. Prior to his current role, he served as Director of Sales at VAST Data.
 
 
 ## Projects

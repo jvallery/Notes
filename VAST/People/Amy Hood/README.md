@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | CFO |
+| **Role** | Executive Vice President and Chief Financial Officer |
 | **Company** | Microsoft |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Seattle, Washington, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Amy Hood has been with Microsoft since 2002 and became the company's first female CFO in 2013. She leads Microsoft's worldwide finance organization and has played a pivotal role in strategic acquisitions, including LinkedIn, GitHub, and Activision Blizzard. Prior to Microsoft, she worked at Goldman Sachs in investment banking and capital markets. Hood holds a bachelor's degree in economics from Duke University and an MBA from Harvard University. She is also a member of the board of directors at 3M.
 
 
 ## Projects

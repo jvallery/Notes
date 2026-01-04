@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Vice President of Cloud Engineering |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/eirikurhrafnsson](https://www.linkedin.com/in/eirikurhrafnsson) |
+| **Location** | Seattle, Washington, United States |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+Eirikur Hrafnsson co-founded Greenqloud in 2010, serving as CEO and later COO until 2017. He then joined NetApp as Technical Director, advancing to Chief Architect of Data Fabric, and eventually Vice President of Cloud Engineering. In 2025, he co-founded Red Stapler, which was acquired by VAST Data, where he now serves as Vice President of Cloud Engineering.
 
 
 ## Projects

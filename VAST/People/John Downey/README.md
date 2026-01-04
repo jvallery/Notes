@@ -22,7 +22,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+John Downey is based out of the New York City Metropolitan Area and works at Google as a Business Development Manager focusing on Venture Capital Partnerships.
 
 
 ## Projects

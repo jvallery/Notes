@@ -15,13 +15,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** |  |
-| **Company** |  |
+| **Role** | Global Head of Business Development |
+| **Company** | VAST Data |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
-| **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **LinkedIn** | [https://www.linkedin.com/in/john-mao-123456789/](https://www.linkedin.com/in/john-mao-123456789/) |
+| **Location** | Austin, Texas, United States |
 
 ## Relationship
 
@@ -29,7 +29,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+John Mao has been serving as the Global Head of Business Development at VAST Data since January 2020. Prior to this, he was the VP of Business Development at Stratoscale from March 2014 to January 2020, where he generated over 80% of company revenue and developed strategic partnerships. His earlier roles include Director of Business Development at Calxeda, Inc., Principal Product Manager at CA Technologies, and Product Line Manager at NetQoS. He began his career as a Software Engineer and holds a BS in Computer Sciences from The University of Texas at Austin.
 
 
 ## Projects

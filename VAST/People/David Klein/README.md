@@ -16,13 +16,13 @@ tags:
 
 | Field | Value |
 |-------|-------|
-| **Role** | NVIDIA rep |
+| **Role** | Senior Engineering Manager |
 | **Company** | NVIDIA |
 | **Department** | _Unknown_ |
 | **Email** | _Unknown_ |
 | **Phone** | _Unknown_ |
 | **LinkedIn** | _Unknown_ |
-| **Location** | _Unknown_ |
+| **Location** | Santa Clara, California, United States |
 
 ## Relationship
 
@@ -30,7 +30,7 @@ _How do you work with this person? What is your dynamic?_
 
 ## Background
 
-_Career history, expertise, interests, personal details shared..._
+David Klein has been with NVIDIA since 2011, progressing through roles from Senior Software Engineer to Senior Engineering Manager. Prior to NVIDIA, he worked at Intel Corporation as a System Software Engineer and Senior System Software Engineer from 2004 to 2011. He holds a Bachelor of Computer Science from UC Irvine and a Master of Computer Science from UC San Diego.
 
 
 ## Projects
