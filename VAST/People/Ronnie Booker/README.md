@@ -2,7 +2,7 @@
 type: people
 title: Ronnie Booker
 created: '2026-01-03'
-last_contact: '2025-10-27'
+last_contact: '2025-10-30'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-30: [[2025-10-30 - MAI testing path and deck]] (via Lior Genzel)
 ## Key Facts
 
 ## Background

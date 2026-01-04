@@ -1,7 +1,7 @@
 ---
 type: people
 title: Erez Zilber
-last_contact: '2025-11-07'
+last_contact: '2025-10-28'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,9 @@ not done
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - Align on Azure Blob API]] (via OpenAI)
+
+- 2025-10-28: [[2025-10-28 - Align on MAI and UK Met]] (via Kanchan Mehrotra)
 ## Key Facts
 
 ## Topics

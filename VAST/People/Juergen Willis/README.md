@@ -2,7 +2,7 @@
 type: people
 title: Juergen Willis
 created: '2026-01-03'
-last_contact: '2025-10-31'
+last_contact: '2025-09-30'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-30: [[2025-09-30 - Retention discussion and Apollo scope]] (via Jai Menon)
 ## Key Facts
 
 ## Background

@@ -2,7 +2,7 @@
 type: people
 title: John Downey
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-10-31'
 auto_created: true
 tags:
 - type/people
@@ -33,6 +33,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - GCP RDMA IP failover options]] (via Google)
+
+- 2025-10-31: [[2025-10-31 - GCP path for VAST Z4M]] (via Google)
 ## Key Facts
 
 ## Background

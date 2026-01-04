@@ -2,7 +2,7 @@
 type: people
 title: Qi Ke
 created: '2026-01-03'
-last_contact: '2025-11-06'
+last_contact: '2025-09-03'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
 ## Key Facts
 
 ## Background

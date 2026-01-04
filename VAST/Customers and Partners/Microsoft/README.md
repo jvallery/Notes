@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: '2025-12-15'
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -91,6 +91,69 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: Microsoft Azure engagement task list covering egress minimization, GA milestone alignment, ROI data usage compliance, and collateral/offer packaging.
+
+- 2026-01-03: Prep for MAI talks; aligned “Blob as data lake + VAST GPU-adjacent storage” positioning; reviewed Bifrost political dynamics and likely bake-off. ([[2026-01-03 - Prep for Microsoft AI talks]])
+
+- 2025-12-19: Microsoft strategy: Blob API MVP = AZCopy compatibility; prioritize tiering/offload-to-Blob story; discussed OpenAI internal storage competition and SCO prep.
+
+- 2025-12-18: Drafted outline for VAST Data integration with Azure (Blob API MVP for AzCopy compatibility; tiering/offload and private endpoint/control-plane considerations).
+
+- 2025-11-20: MAI Nebius storage alignment (file-based storage preference; VAST sizing + potential Sirius bypass; requirements-first workshop + site survey planning)
+
+- 2025-11-12: Microsoft AI capacity “big pause” ended; near-term capacity scramble; Azure Foundry token/API monetization; Microsoft–OpenAI terms and VAST positioning opportunities.
+
+- 2025-11-06: Discussed VAST momentum and Azure Apollo POCs (VAST-on-VAST rack shipment; VAST bare metal on Azure Storage hardware; Fungible vs BlueField 3), plus sequencing outreach (Kushal → Nidhi/Renan → Michael Myrah) and licensing approach.
+
+- 2025-11-06: Discussed accelerating VAST adoption via Apollo/MAI, including storage-hardware path and DGX storage requirements.
+
+- 2025-10-31: Two-track evaluation aligned for Apollo (software-only on Azure lab hardware + loaner-hardware POC in Stargate/Azure Dedicated); key blocker is unclear KPI targets; launch target Sep–Nov 2026. [[2025-10-31 - Two-track VAST evaluation plan]]
+
+- 2025-10-31: Compared Azure Managed Lustre architecture/scaling/pricing vs VAST Azure approach; aligned on RDMA/VMSS Flex next steps and Marketplace/POC targets. [[2025-10-31 - Azure Managed Lustre vs VAST]]
+
+- 2025-10-30: Aligned on distinct CS/Support/SRE model for cloud deployments; Azure prioritized; Polaris as metering source of truth; marketplace readiness dependencies (Tackle–Salesforce–Polaris, Tableau telemetry, compliance/SOC2/FedRAMP) with readiness target 2026-02-01. ([[2025-10-30 - Cloud support roles and readiness]])
+
+- 2025-10-30: Aligned on MAI exabyte-scale storage options (NVIDIA NCP pod baseline + Maverick 5400 capacity-optimized alternative); avoid pricing; prep rack layouts/metrics for next-day MAI call. [[2025-10-30 - MAI exabyte storage options]]
+
+- 2025-10-29: Parallel LSV4 and bare-metal tracks; aligned on parallel Azure LSV4 UK Met test cluster and bare-metal DC dev system; key blockers: VM availability, RDMA scope/timelines, and internal procurement constraints.
+
+- 2025-10-29: Dual-path plan for UK Met Gen2: Azure LSV4 8-node VAST test by early Dec plus parallel bare-metal/dev system via Anand’s org; key blockers are LS192 regional availability, RDMA timelines, and non-marketplace procurement.
+
+- 2025-10-28: UK Met Gen2 pilot planning — evaluating Azure high-speed VM SKU vs ODM/bare metal; awaiting written SKU confirmation/timeline (target 2025-11-15).
+
+- 2025-10-28: Aligned with Kanchan on prioritizing MAI + UK Met Office as flagship wins; dual-track marketplace + customer-driven escalation to influence Azure shapes; LSV4 economics/networking not viable at scale; coordinate Supercomputing/Ignite story. ([[2025-10-28 - Align on MAI and UKMO]])
+
+- 2025-10-28: MAI Falcon capacity + Project Apollo entry path; focus on performance-first wedge and defer Blob compatibility to exploratory. ([[2025-10-28 - MAI Falcon and Apollo path]])
+
+- 2025-10-27: [[2025-10-27 - UK Met dual-track Azure plan]]
+
+- 2025-10-27: Aligned GTM path for VAST into Azure around power/megawatt constraints; BizDev-led route to Ronnie Booker; treat Marketplace offer as checkbox while pushing OEM/hardware density path. [[2025-10-27 - VAST into Azure GTM]]
+
+- 2025-10-22: [[2025-10-22 - Microsoft GPU capacity strategy]]
+
+- 2025-10-06: Jason discussed weighing external offers (VAST vs Crusoe) and Microsoft retention constraints.
+
+- 2025-10-06: Discussed Jason’s evaluation of VAST vs Crusoe offers and Microsoft’s inability to assemble a compelling retention package; Apollo scope remains unclear. ([[2025-10-06 - Jason weighing VAST vs Crusoe]])
+
+- 2025-10-06: Discussed VAST vs Crusoe offer tradeoffs, Microsoft counteroffer constraints, and Apollo scope ambiguity. [[2025-10-06 - Jai update on VAST Cruso]]
+
+- 2025-09-30: [[2025-09-30 - Retention discussion and Apollo scope]] (via Jai Menon)
+
+- 2025-09-16: Jason Vallery recruiting/role exploration; discussed Azure GTM focus and egress/networking mitigation via ExpressRoute Direct Local. ([[2025-09-16 - Jason VAST role exploration]])
+
+- 2025-09-03: MAI caching strategy evaluation aligned; prioritize unified cache (training first, inference later) and evaluate OpenAI cache IP vs Alluxio/DAX, C-Store, and Blockfuse/BlobFuse. ([[2025-09-03 - MAI caching strategy evaluation]])
+
+- 2025-09-15: [[2025-09-15 - Silk architecture and Azure asks]] (via Silk)
+
+- 2025-09-15: [[2025-09-15 - Silk briefing on DB storage]] (via Silk)
+
+- 2025-09-15: [[2025-09-15 - Silk briefing on Azure DB storage]] (via Silk)
+
+- 2025-10-30: Aligned on presenting two MAI storage designs (NVIDIA NCP reference pod + Maverick 5400 density option) with side-by-side tables/diagrams and Azure Blob comparison; emphasized checkpoint write throughput, CSI/COSI, and offline resiliency. [[2025-10-30 - Two VAST designs for MAI]]
+
+- 2025-11-03: Discussed Microsoft hardware SKU and a potential MAI POC; VoC implications raised; Google mentioned.
+
+- 2025-10-01: [[2025-10-01 - Azure Extended Zones coordination]] (via Kishore Inampudi)
 ## Key Facts
 
 ## Topics

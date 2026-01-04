@@ -1,7 +1,7 @@
 ---
 type: people
 title: Asaf Levy
-last_contact: "2025-11-07"
+last_contact: '2025-11-03'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,11 @@ not done
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - Dual-track GCP MVP launch]] (via Google)
+
+- 2025-10-20: [[2025-10-20 - Multi-cloud VAST architecture alignment]] (via Yogev Vankin)
+
+- 2025-11-03: [[2025-11-03 - 5.5 plan timeline review]] (via Roy)
 ## Key Facts
 
 ## Topics

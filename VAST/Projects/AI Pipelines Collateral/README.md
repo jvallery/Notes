@@ -6,6 +6,7 @@ created: '2026-01-03'
 tags:
 - type/projects
 - generated
+last_updated: '2025-11-13'
 ---
 
 # AI Pipelines Collateral
@@ -30,6 +31,11 @@ not done
 
 ## Recent Context
 
+- 2025-11-13: [[2025-11-13 - GDC RFP security and ops]] (via Google)
+
+- 2025-11-06: [[2025-11-06 - Review AI pipeline summit slides]] (via Aaron Chaisson)
+
+- 2025-11-07: [[2025-11-07 - Warm intro paths planning]] (via Chris Carpenter)
 ## Key Facts
 
 ## Topics

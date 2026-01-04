@@ -1,7 +1,7 @@
 ---
 type: people
 title: Eyal Traitel
-last_contact: "2025-10-29"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -28,6 +28,11 @@ tags:
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Eyal Traitel transcript metadata]]
+
+- 2025-10-29: Discussed release planning model, testing rigor for minor releases, and cluster-side multi-tenancy/SaaS gaps. [[2025-10-29 - Release planning and SaaS gaps]]
+
+- 2025-10-29: Discussed major/minor release planning, hotfix/service-pack process, and key SaaS/multi-tenancy gaps (auth provider scaling, tenant scoping) plus coordination needs with control-plane teams. [[2025-10-29 - Release planning and SaaS gaps]]
 ## Key Facts
 
 ## Topics

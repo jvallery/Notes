@@ -1,11 +1,12 @@
 ---
 type: projects
 title: VAST on Azure Integration
-last_contact: "2026-01-03"
+last_contact: '2026-01-03'
 created: '2026-01-03'
 tags:
 - type/projects
 - generated
+last_updated: '2025-12-18'
 ---
 
 # VAST on Azure Integration
@@ -30,6 +31,7 @@ not done
 
 ## Recent Context
 
+- 2025-12-18: [[2025-12-18 - VAST Azure integration outline]] (via Microsoft)
 ## Key Facts
 
 ## Topics

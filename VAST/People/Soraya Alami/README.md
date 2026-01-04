@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-07: [[2025-11-07 - EY design partner SI strategy]] (via EY)
 ## Key Facts
 
 ## Background

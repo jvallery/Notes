@@ -1,7 +1,7 @@
 ---
 type: people
 title: Timo Pervane
-last_contact: "2025-10-30"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,13 @@ not done
 
 ## Recent Context
 
+- 2025-10-27: [[2025-10-27 - Cloud pricing alignment debate]] (via Tomer)
+
+- 2025-10-30: [[2025-10-30 - Align roles, gaps, collaboration]] (via Andy Perlsteiner)
+
+- 2025-10-30: [[2025-10-30 - Cloud support operating model alignment]] (via Rob Banga)
+
+- 2025-10-01: [[Pricing vTeam action list]] (via Pricing)
 ## Key Facts
 
 ## Topics

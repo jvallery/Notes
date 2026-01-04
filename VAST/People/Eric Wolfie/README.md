@@ -2,7 +2,7 @@
 type: people
 title: Eric Wolfie
 created: '2026-01-03'
-last_contact: '2025-12-19'
+last_contact: '2025-10-27'
 auto_created: true
 tags:
 - type/people
@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-27: [[2025-10-27 - Cloud pricing alignment debate]] (via Tomer)
 ## Key Facts
 
 ## Background

@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-30: [[2025-09-30 - Retention discussion and Apollo scope]] (via Jai Menon)
 ## Key Facts
 
 ## Background

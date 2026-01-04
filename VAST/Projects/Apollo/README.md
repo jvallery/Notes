@@ -2,7 +2,7 @@
 type: projects
 title: Apollo
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-11-06'
 status: blocked
 auto_created: true
 tags:
@@ -36,5 +36,8 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-30: [[2025-09-30 - Retention discussion and Apollo scope]] (via Jai Menon)
+
+- 2025-11-06: [[2025-11-06 - VAST adoption in Microsoft programs]] (via Microsoft)
 ## Key Facts
 

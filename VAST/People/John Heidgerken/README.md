@@ -2,7 +2,7 @@
 type: people
 title: John Heidgerken
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-11-06'
 auto_created: true
 tags:
 - type/people
@@ -30,6 +30,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)
 ## Key Facts
 
 ## Background

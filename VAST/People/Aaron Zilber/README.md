@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-30: [[2025-10-30 - Align roles, gaps, collaboration]] (via Andy Perlsteiner)
 ## Key Facts
 
 ## Background

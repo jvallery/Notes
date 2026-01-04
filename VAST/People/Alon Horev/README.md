@@ -1,7 +1,7 @@
 ---
 type: people
 title: Alon Horev
-last_contact: "2026-01-03"
+last_contact: '2025-11-14'
 created: '2026-01-03'
 tags:
 - type/people
@@ -27,6 +27,9 @@ tags:
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - MAI Falcon and Apollo path]] (via Microsoft)
+
+- 2025-11-14: [[2025-11-14 - GDC RFP federal coordination]] (via Google)
 ## Key Facts
 
 ## Topics

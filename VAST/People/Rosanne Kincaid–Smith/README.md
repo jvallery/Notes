@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Rosanne Kincaid–Smith"
-created: "2026-01-03"
-last_contact: unknown
+title: Rosanne Kincaid–Smith
+created: '2026-01-03'
+last_contact: '2025-10-22'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Rosanne Kincaid–Smith
@@ -64,3 +64,6 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-22: [[2025-10-22 - Microsoft GPU capacity strategy]] (via Microsoft)
+
+- 2025-10-22: [[2025-10-22 - Dhammak Microsoft partnership positioning]] (via Dhammak)

@@ -2,7 +2,7 @@
 type: people
 title: Sam Altman
 created: '2026-01-03'
-last_contact: '2025-10-28'
+last_contact: '2025-09-15'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
 ## Key Facts
 
 ## Background

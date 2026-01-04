@@ -2,14 +2,14 @@
 type: projects
 title: Microsoft BizDev Education & Intros to Ronnie
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-10-01'
 status: complete
 auto_created: true
 tags:
 - type/projects
 - needs-review
 - status/complete
-last_contact: "2025-11-07"
+last_contact: '2025-11-07'
 ---
 
 # Microsoft BizDev Education & Intros to Ronnie
@@ -36,5 +36,6 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Microsoft Azure engagement tasks]] (via Microsoft)
 ## Key Facts
 

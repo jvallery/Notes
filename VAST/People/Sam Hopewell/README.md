@@ -1,11 +1,11 @@
 ---
 type: people
 title: Sam Hopewell
-last_contact: "2025-10-22"
-created: "2026-01-03"
+last_contact: '2025-10-22'
+created: '2026-01-03'
 tags:
-  - type/people
-  - entity/Sam Hopewell
+- type/people
+- entity/Sam Hopewell
 ---
 
 # Sam Hopewell
@@ -33,3 +33,6 @@ not done
 
 ## Recent Context
 
+- 2025-10-22: [[2025-10-22 - VAST warm storage POC sync]] (via OpenAI)
+
+- 2025-10-22: [[2025-10-22 - OpenAI storage strategy and VAST]] (via OpenAI)

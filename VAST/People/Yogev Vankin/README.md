@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Yogev Vankin"
-created: "2026-01-03"
-last_contact: unknown
+title: Yogev Vankin
+created: '2026-01-03'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Yogev Vankin
@@ -64,3 +64,6 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Oracle Cloud POC learnings]]
+
+- 2025-11-03: [[2025-11-03 - 5.5 plan timeline review]] (via Roy)

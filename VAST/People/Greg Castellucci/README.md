@@ -32,6 +32,7 @@ tags:
 
 ## Recent Context
 
+- 2025-11-14: [[2025-11-14 - GDC RFP federal coordination]] (via Google)
 ## Key Facts
 
 ## Background

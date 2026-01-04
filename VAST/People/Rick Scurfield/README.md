@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-07: [[2025-11-07 - Warm intro paths planning]] (via Chris Carpenter)
 ## Key Facts
 
 ## Background

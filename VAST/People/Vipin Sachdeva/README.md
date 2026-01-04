@@ -2,7 +2,7 @@
 type: people
 title: Vipin Sachdeva
 created: '2026-01-03'
-last_contact: '2025-10-31'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,11 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - SC25 small-group meeting planning]] (via Nidhi)
+
+- 2025-10-28: [[2025-10-28 - Align on MAI and UKMO]] (via Microsoft)
+
+- 2025-10-28: [[2025-10-28 - Align on MAI and UK Met]] (via Kanchan Mehrotra)
 ## Key Facts
 
 ## Background

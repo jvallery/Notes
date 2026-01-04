@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-30: [[2025-10-30 - Weekly SE community call]] (via JB)
 ## Key Facts
 
 ## Background

@@ -2,7 +2,7 @@
 type: people
 title: Ronnie Lazar
 created: '2026-01-03'
-last_contact: "2025-11-07"
+last_contact: '2025-10-01'
 auto_created: true
 tags:
 - type/people
@@ -33,6 +33,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Shachar org roles and actions]] (via Shachar Feinblit)
 ## Key Facts
 
 ## Background

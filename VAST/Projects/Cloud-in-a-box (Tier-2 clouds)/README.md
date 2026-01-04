@@ -2,7 +2,7 @@
 type: projects
 title: Cloud-in-a-box (Tier-2 clouds)
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-12-19'
 status: proposed
 auto_created: true
 tags:
@@ -36,5 +36,12 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
+
+- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+
+- 2025-11-01: [[2025-11-01 - Planning sessions operating model]] (via Jeff Denworth)
+
+- 2025-12-19: [[2025-12-19 - Microsoft strategy and SCO prep]] (via Microsoft)
 ## Key Facts
 

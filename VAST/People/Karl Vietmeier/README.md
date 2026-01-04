@@ -1,7 +1,7 @@
 ---
 type: people
 title: Karl Vietmeier
-last_contact: "2025-11-07"
+last_contact: '2025-10-31'
 created: '2026-01-03'
 tags:
 - type/people
@@ -28,6 +28,7 @@ tags:
 
 ## Recent Context
 
+- 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
 ## Key Facts
 
 ## Topics

@@ -32,6 +32,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-06: [[2025-11-06 - VAST adoption in Microsoft programs]] (via Microsoft)
+
+- 2025-11-06: [[2025-11-06 - VAST momentum and Azure Apollo]] (via Microsoft)
 ## Key Facts
 
 ## Background

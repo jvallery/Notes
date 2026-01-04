@@ -1,11 +1,11 @@
 ---
 type: projects
-title: "Alluxio"
-created: "2026-01-03"
-last_updated: ""
+title: Alluxio
+created: '2026-01-03'
+last_updated: '2025-09-15'
 status: active
 tags:
-  - type/projects
+- type/projects
 ---
 
 # Alluxio
@@ -20,6 +20,15 @@ _Project description and goals..._
 
 ## Recent Context
 
+- 2025-09-03: [[2025-09-03 - MAI caching strategy evaluation]] (via Microsoft)
+
+- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
+
+- 2025-09-15: [[2025-09-15 - Distributed cache options alignment]] (via Jai Menon)
+
+- 2025-09-15: [[Distributed cache evaluation alignment]] (via Jai Menon)
+
+- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
 ## Tasks
 
 ```dataview

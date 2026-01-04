@@ -2,7 +2,7 @@
 type: people
 title: Ronen Cohen
 created: '2026-01-03'
-last_contact: unknown
+last_contact: '2025-10-01'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,11 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-27: [[2025-10-27 - UK Met dual-track Azure plan]] (via Microsoft)
+
+- 2025-10-31: [[2025-10-31 - VAST cloud strategy and enablement]] (via Rob Benoit)
+
+- 2025-10-01: [[2025-10-01 - Shachar org roles and actions]] (via Shachar Feinblit)
 ## Key Facts
 
 ## Background

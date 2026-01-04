@@ -2,7 +2,7 @@
 type: projects
 title: Fairwater
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-09-22'
 status: active
 auto_created: true
 tags:
@@ -37,3 +37,7 @@ SORT due ASC
 
 ## Key Facts
 
+
+## Recent Context
+
+- 2025-09-22: [[2025-09-22 - Apollo workload targets and storage]] (via Jai Menon)

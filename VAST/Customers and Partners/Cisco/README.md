@@ -2,7 +2,7 @@
 type: customer
 title: Cisco
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-10-31'
 status: active
 auto_created: true
 tags:
@@ -35,6 +35,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
 ## Key Facts
 
 ## Opportunities

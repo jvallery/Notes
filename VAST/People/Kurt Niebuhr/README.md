@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Kurt Niebuhr"
-created: "2026-01-03"
-last_contact: unknown
+title: Kurt Niebuhr
+created: '2026-01-03'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Kurt Niebuhr
@@ -64,3 +64,6 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: Neo-cloud partnership pipeline updates; Supercomputing touchpoints/intros planning.
+
+- 2025-10-27: [[2025-10-27 - VAST into Azure GTM]] (via Microsoft)

@@ -1,7 +1,7 @@
 ---
 type: people
 title: Noa Cohen
-last_contact: "2025-11-07"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,7 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: Intro/sync action item captured; follow-up due 2025-11-08 ([[2025-10-01 - Intro and PM sync task]])
 ## Key Facts
 
 ## Topics

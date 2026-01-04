@@ -2,7 +2,7 @@
 type: people
 title: Eirikur Hrafnsson
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-10-28'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - Dual-track GCP MVP launch]] (via Google)
+
+- 2025-10-28: [[2025-10-28 - GCP MVP launch alignment]] (via Google)
 ## Key Facts
 
 ## Background

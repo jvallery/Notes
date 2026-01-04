@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Silk
-last_contact: '2025-09-29'
+last_contact: '2025-09-15'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -30,6 +30,11 @@ not done
 
 ## Recent Context
 
+- 2025-09-15: [[2025-09-15 - Silk briefing on Azure DB storage]]
+
+- 2025-09-15: Discussed Silk software-defined storage for high-performance relational DBs and request for RDMA on Azure L-series; next step is intro to [[Jai Menon]].
+
+- 2025-09-15: Discussed Silk architecture, positioning vs Azure NetApp Files, and request for RDMA support on Azure L-series; next steps include intro to Jai Menon and sharing customer use cases.
 ## Key Facts
 
 ## Topics

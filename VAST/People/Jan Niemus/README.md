@@ -2,7 +2,7 @@
 type: people
 title: Jan Niemus
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-10-29'
 auto_created: true
 tags:
 - type/people
@@ -33,6 +33,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-06: [[2025-10-06 - Jason weighing VAST vs Crusoe]] (via Microsoft)
+
+- 2025-10-29: [[2025-10-29 - Dual-path Azure and bare-metal plan]] (via Microsoft)
 ## Key Facts
 
 ## Background

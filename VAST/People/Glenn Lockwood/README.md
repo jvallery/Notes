@@ -2,7 +2,7 @@
 type: people
 title: Glenn Lockwood
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-11-06'
 auto_created: true
 tags:
 - type/people
@@ -33,6 +33,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-06: [[2025-11-06 - Review AI pipeline summit slides]] (via Aaron Chaisson)
 ## Key Facts
 
 ## Background

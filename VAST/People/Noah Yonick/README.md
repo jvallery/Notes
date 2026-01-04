@@ -2,7 +2,7 @@
 type: people
 title: Noah Yonick
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-10-29'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-29: [[2025-10-29 - Intro 1:1 on release process]] (via Liraz Ben Or)
 ## Key Facts
 
 ## Background

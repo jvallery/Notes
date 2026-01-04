@@ -2,7 +2,7 @@
 type: people
 title: Mordechai Blaunstein
 created: '2026-01-03'
-last_contact: "2025-11-07"
+last_contact: '2025-10-01'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,19 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
+
+- 2025-10-27: [[2025-10-27 - Jeff 1:1 cloud priorities]] (via Jeff Denworth)
+
+- 2025-10-28: [[2025-10-28 - Weekly 1:1 and Tel Aviv plan]] (via Shachar Feinblit)
+
+- 2025-10-28: [[2025-10-28 - GCP RDMA IP failover options]] (via Google)
+
+- 2025-11-07: [[2025-11-07 - Org landscape and cloud strategy]] (via Jeff Denworth)
+
+- 2025-12-19: [[2025-12-19 - Microsoft strategy and SCO prep]] (via Microsoft)
+
+- 2025-10-01: [[2025-10-01 - Shachar org roles and actions]] (via Shachar Feinblit)
 ## Key Facts
 
 ## Background

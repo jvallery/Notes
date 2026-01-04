@@ -1,7 +1,7 @@
 ---
 type: customer
 title: OpenAI
-last_contact: "2026-01-03"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -36,6 +36,13 @@ tags:
 
 ## Recent Context
 
+- 2025-10-01: OpenAI storage requirements tasks (S3 vs Blob API parity; global KV store requirements; SF in-person meeting planning)
+
+- 2025-10-28: Aligned on Azure Blob API support requirements (Entra ID managed identities, offline JWT validation 72–96h, RBAC/ABAC mapping, Append Blob, PutBlobFromURL) and planned POC + Tel Aviv working sessions. [[2025-10-28 - Align on Azure Blob API]]
+
+- 2025-10-22: Discussed OpenAI storage tiering (Blob=cold, VAST=warm near GPUs) and POC status/requirements; POC currently on hold. ([[2025-10-22 - OpenAI storage strategy and VAST]])
+
+- 2025-10-22: [[2025-10-22 - VAST warm storage POC sync]]
 ## Key Facts
 
 ## Topics

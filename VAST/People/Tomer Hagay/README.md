@@ -1,7 +1,7 @@
 ---
 type: people
 title: Tomer Hagay
-last_contact: "2025-11-07"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,17 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: Discussed FRD templates/examples and access to PM SFDC RFE/Feature dashboards and Jira links. [[2025-10-01 - FRD templates and access]]
+
+- 2025-11-07: Discussed need for org-wide PM discipline (OKRs/KRs, epic-to-task traceability, RoB cadence) and plan to socialize a skunkworks proposal with leadership after Tel Aviv.
+
+- 2025-10-29: PM-led cloud model alignment; agreed on PM-led cloud approach and FRD qualifiers checklist; follow-up planned for pricing + Salesforce walkthrough ([[2025-10-29 - PM-led cloud model alignment]])
+
+- 2025-10-24: [[2025-10-24 - AI-first dev and cloud maturity]] (via VAST)
+
+- 2025-10-28: [[2025-10-28 - GCP MVP launch alignment]] (via Google)
+
+- 2025-10-01: [[Pricing vTeam action list]] (via Pricing)
 ## Key Facts
 
 ## Topics

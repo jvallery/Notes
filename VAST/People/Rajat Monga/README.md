@@ -31,6 +31,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-15: [[2025-09-15 - Distributed cache options alignment]] (via Jai Menon)
+
+- 2025-09-15: [[2025-09-15 - Distributed cache strategy alignment]] (via Jai Menon)
 ## Key Facts
 
 ## Background

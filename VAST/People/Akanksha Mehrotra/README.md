@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-16: [[2025-09-16 - Distributed cache preview planning]] (via Vishnu Charan TJ)
 ## Key Facts
 
 ## Background

@@ -2,7 +2,7 @@
 type: people
 title: Kevin Park
 created: '2026-01-03'
-last_contact: unknown
+last_contact: '2025-10-22'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-22: [[2025-10-22 - OpenAI storage strategy and VAST]] (via OpenAI)
 ## Key Facts
 
 ## Background

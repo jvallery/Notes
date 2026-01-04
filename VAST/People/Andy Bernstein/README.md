@@ -2,7 +2,7 @@
 type: people
 title: Andy Bernstein
 created: '2026-01-03'
-last_contact: '2025-10-27'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
 - type/people
@@ -29,6 +29,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - 1-1 setup with Andy]] (via Andy Perlsteiner)
 ## Key Facts
 
 ## Background

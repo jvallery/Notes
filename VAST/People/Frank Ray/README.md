@@ -31,6 +31,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-16: [[2025-09-16 - Jason VAST role exploration]] (via Microsoft)
+
+- 2025-09-16: [[2025-09-16 - VAST Azure GTM hiring]] (via VAST)
 ## Key Facts
 
 ## Background

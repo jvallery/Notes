@@ -1,7 +1,7 @@
 ---
 type: people
 title: Shachar Feinblit
-last_contact: "2026-01-03"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -30,6 +30,7 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Shachar org roles and actions]] (via Shachar Feinblit)
 ## Key Facts
 
 ## Topics

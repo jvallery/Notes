@@ -2,7 +2,7 @@
 type: customer
 title: HPE
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-10-29'
 status: active
 auto_created: true
 tags:
@@ -35,6 +35,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-29: [[2025-10-29 - Dual-path Azure and bare-metal plan]] (via Microsoft)
 ## Key Facts
 
 ## Opportunities

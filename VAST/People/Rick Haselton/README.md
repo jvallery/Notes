@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Rick Haselton"
-created: "2026-01-03"
-last_contact: unknown
+title: Rick Haselton
+created: '2026-01-03'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Rick Haselton
@@ -64,3 +64,8 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: Customer Success workflow alignment; action item to meet with Customer Success to understand end-to-end account support workflows. ([[2025-10-01 - Customer Success workflow alignment]])
+
+- 2025-10-29: Cloud-first VAST-as-a-Service/CS operating model discussion; CoreWeave/XAI support patterns, SLAs, and multi-cluster namespace limitations.
+
+- 2025-10-29: Discussed CS/SRE operating model for CoreWeave/xAI, incident drivers, RMA workflow, and SLA/SLO expectations.

@@ -1,11 +1,12 @@
 ---
 type: projects
 title: OVA
-last_contact: "2025-11-06"
+last_contact: '2025-11-06'
 created: '2026-01-03'
 tags:
 - type/projects
 - generated
+last_updated: '2025-10-01'
 ---
 
 # OVA
@@ -30,6 +31,11 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - Request OVA for lab testing]] (via Josh Wentzell)
+
+- 2025-10-24: [[2025-10-24 - Engineering maturity and cloud strategy]] (via VAST)
+
+- 2025-10-30: [[2025-10-30 - Align roles, gaps, collaboration]] (via Andy Perlsteiner)
 ## Key Facts
 
 ## Topics

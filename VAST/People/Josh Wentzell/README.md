@@ -1,7 +1,7 @@
 ---
 type: people
 title: Josh Wentzell
-last_contact: "2025-11-14"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -29,6 +29,9 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: Request to provide VAST OVA + onboarding materials for local lab testing. ([[2025-10-01 - Request OVA for lab testing]])
+
+- 2025-10-31: Intro 1:1 on VAST on Cloud — surfaced VOC deployment friction, multi-tenancy API/GUI gaps, and IaC automation needs (Terraform/Ansible).
 ## Key Facts
 
 ## Topics

@@ -2,7 +2,7 @@
 type: projects
 title: DeltaZero
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-09-03'
 status: active
 auto_created: true
 tags:
@@ -36,5 +36,8 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-09-03: [[2025-09-03 - MAI caching strategy evaluation]] (via Microsoft)
+
+- 2025-09-03: [[2025-09-03 - Evaluate OpenAI cache for MAI]] (via Jai Menon)
 ## Key Facts
 

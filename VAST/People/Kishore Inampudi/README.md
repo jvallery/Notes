@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Kishore Inampudi"
-created: "2026-01-03"
-last_contact: unknown
+title: Kishore Inampudi
+created: '2026-01-03'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Kishore Inampudi
@@ -64,3 +64,8 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: Azure Extended Zones coordination; align on storage needs after A2N approval. ([[2025-10-01 - Azure Extended Zones coordination]])
+
+- 2025-10-30: [[2025-10-30 - MAI exabyte storage options]] (via Microsoft)
+
+- 2025-10-28: [[2025-10-28 - Align on MAI and UK Met]] (via Kanchan Mehrotra)

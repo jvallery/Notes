@@ -2,7 +2,7 @@
 type: people
 title: Mike Kiernan
 created: '2026-01-03'
-last_contact: '2025-11-06'
+last_contact: '2025-10-28'
 auto_created: true
 tags:
 - type/people
@@ -33,6 +33,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-28: [[2025-10-28 - Align on MAI and UKMO]] (via Microsoft)
 ## Key Facts
 
 ## Background

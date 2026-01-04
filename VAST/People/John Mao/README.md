@@ -2,7 +2,7 @@
 type: people
 title: John Mao
 created: '2026-01-03'
-last_contact: '2025-12-19'
+last_contact: '2025-10-31'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-31: [[2025-10-31 - Two-track VAST evaluation plan]] (via Microsoft)
 ## Key Facts
 
 ## Background

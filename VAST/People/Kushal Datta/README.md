@@ -1,7 +1,7 @@
 ---
 type: people
 title: Kushal Datta
-last_contact: "2026-01-03"
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -26,6 +26,9 @@ tags:
 
 ## Recent Context
 
+- 2025-10-01: [[2025-10-01 - SC25 small-group meeting planning]] (via Nidhi)
+
+- 2025-10-31: Discussed deploying VAST for Apollo training workloads on Azure; aligned on Gen9 XIO apples-to-apples test and requirements doc. [[2025-10-31 - VAST on Azure for Apollo]]
 ## Key Facts
 
 ## Topics

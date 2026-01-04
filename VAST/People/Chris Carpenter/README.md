@@ -31,6 +31,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-11-07: Warm-intro mapping session; aligned on pipeline-component messaging and NVIDIA event-based intro strategy. ([[2025-11-07 - Warm intro paths planning]])
 ## Key Facts
 
 ## Background

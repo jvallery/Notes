@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Google
-last_contact: '2025-12-15'
+last_contact: '2025-10-01'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -37,6 +37,29 @@ not done
 
 ## Recent Context
 
+- 2025-10-01: Confirmed need to validate GCP GA timing post-bottleneck fix and align on first 2–3 lighthouse customers. [[2025-10-01 - Confirm GCP GA timing]]
+
+- 2025-11-14: Coordinated response to Google Distributed Cloud RFP (air-gapped readiness, compliance evidence, ops model) and aligned on Fort Meade on-prem validation path. ([[2025-11-14 - GDC RFP federal coordination]])
+
+- 2025-11-13: [[2025-11-13 - GDC RFP security and ops]]
+
+- 2025-10-31: Discussed Z4M roadmap, local SSD vs HyperDisk/object tiering, GSC co-placement/provisioning integration, and RDMA/GPUDirect enablement; identified ILB/egress economics as key blockers and planned Supercomputing in-person follow-ups. ([[2025-10-31 - GCP path for VAST Z4M]])
+
+- 2025-10-29: [[2025-10-29 - VAST x Tackle GCP onboarding]]
+
+- 2025-10-29: VAST Tackle onboarding kickoff for existing GCP Marketplace listing; discussed IAM/service account access, reporting export, private offers + metered overages, and Polaris/Salesforce metadata + SSO/event flow.
+
+- 2025-10-28: Discussed GCP VIP/IP management, RDMA constraints on Z4M, and cross-project connectivity via PSCI; agreed on pros/cons doc and networking follow-up. ([[2025-10-28 - GCP RDMA IP failover options]])
+
+- 2025-10-28: Aligned on GCP Marketplace MVP launch using private offers (Tackle.io + Salesforce) with Polaris as entitlement/metering source of truth; key open items: overage handling/EULA and finance billing/recon readiness. ([[2025-10-28 - GCP MVP launch alignment]])
+
+- 2025-10-28: Dual-track GTM aligned for GCP MVP marketplace launch + hyperscaler-scale (Microsoft/MAI) track; routable IP networking confirmed; collateral/QA/support readiness flagged. [[2025-10-28 - Dual-track GCP MVP launch]]
+
+- 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
+
+- 2025-11-05: [[2025-11-05 - Walmart hybrid analytics requirements]] (via Walmart)
+
+- 2025-10-01: TPU strategy outside GCP; align Google contacts; pricing/private offer; pipeline review (Zoom, UK Met, NBCU). [[2025-10-01 - TPU strategy and pipeline]]
 ## Key Facts
 
 ## Topics

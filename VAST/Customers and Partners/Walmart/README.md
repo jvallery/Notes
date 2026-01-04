@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Walmart
-last_contact: '2025-12-19'
+last_contact: '2025-11-14'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -30,6 +30,11 @@ not done
 
 ## Recent Context
 
+- 2025-11-14: Walmart big data DR sync — requirements gating for DR (namespace vs data copy); planned Mingming expectations/vision call; hybrid roadmap + deeper native GCS integration positioning; sizing options and ~1–1.5 month decision timeline.
+
+- 2025-11-06: Internal prep for hybrid lakehouse pilot (GCS->on-prem replication, GCS API compatibility, multi-Tbps replication feasibility). See [[2025-11-06 - Walmart lakehouse pilot prep]]
+
+- 2025-11-05: Discussed hybrid analytics requirements: BigQuery on GCP ingestion/processing, hot working set replication to two Walmart-managed facilities (active/active), strong consistency challenges across ~30+ ms sites, and need for GCS-like API on-prem; POC ready with decision target end of CY26 and roadmap gaps to close by ~Oct 2026.
 ## Key Facts
 
 ## Topics

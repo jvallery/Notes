@@ -2,7 +2,7 @@
 type: projects
 title: OpenAI VAST POC (CoreWeave cluster)
 created: '2026-01-03'
-last_updated: ''
+last_updated: '2025-10-28'
 status: on-hold
 auto_created: true
 tags:
@@ -36,5 +36,10 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-22: [[2025-10-22 - VAST warm storage POC sync]] (via OpenAI)
+
+- 2025-10-22: [[2025-10-22 - OpenAI storage strategy and VAST]] (via OpenAI)
+
+- 2025-10-28: [[2025-10-28 - Align on Azure Blob API]] (via OpenAI)
 ## Key Facts
 

@@ -1,12 +1,12 @@
 ---
 type: people
-title: "Rob Benoit"
-created: "2026-01-03"
-last_contact: unknown
+title: Rob Benoit
+created: '2026-01-03'
+last_contact: '2025-10-01'
 auto_created: true
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Rob Benoit
@@ -64,3 +64,6 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-10-01: Tech Summit content coordination
+
+- 2025-10-31: Discussed VAST-in-cloud strategy (object storage + bare metal), DataSpaces/global namespace differentiation, and SE enablement gaps; agreed to follow up at Tech Summit. ([[2025-10-31 - VAST cloud strategy and enablement]])
