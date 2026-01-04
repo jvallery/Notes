@@ -335,18 +335,30 @@ RUN PERIODICALLY:
 
 **Goal:** Ensure correct profile selection for Inbox sources.
 
-**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 16:15)
+**Status: ✅ COMPLETED** (2026-01-04)
+
+**Decision:** Heuristic-only classification (no LLM).
+
+**Rationale:**
+- Current `scripts/classify.py` uses regex pattern matching, no API calls
+- Faster (no latency), cheaper (no tokens), deterministic (same input = same output)
+- DESIGN.md already specified "no LLM classification step" - code matches design
+- Patterns cover common cases: ROB, customer, people, projects
+
+**Documentation Updated:**
+- `README.md`: Changed "Classify (AI)" to "Classify (Heuristics)", added pattern list
+- `REQUIREMENTS.md`: Updated model table to show "Heuristics" not "gpt-4o-mini"
+- `config.yaml`: Added note that classify config is reserved for future use
 
 **Tasks**
 
-- Decide on heuristic vs LLM classification; update docs to match.
-- If LLM classification: add structured classifier schema and integrate into `extract.py`.
-- If heuristic-only: document explicitly in README/Design.
+- [x] Decide on heuristic vs LLM classification; update docs to match.
+- [x] If heuristic-only: document explicitly in README/Design.
 
 **Success Criteria**
 
-- Extract runs select correct profile for transcripts vs customer vs projects in test cases.
-- Documentation reflects actual behavior.
+- ✅ Extract runs select correct profile for transcripts vs customer vs projects in test cases.
+- ✅ Documentation reflects actual behavior.
 
 ---
 
