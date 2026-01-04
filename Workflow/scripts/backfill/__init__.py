@@ -88,6 +88,33 @@ class PersonDetails(BaseModel):
     location: str | None = None
     background: str | None = None
     relationship: str | None = None
+    projects: list[str] = Field(default_factory=list)  # Projects this person works on
+
+
+class ProjectDetails(BaseModel):
+    """Details about a project extracted from notes."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    status: str | None = None  # active, blocked, on-hold, complete, proposed
+    description: str | None = None
+    owner: str | None = None
+    blockers: list[str] = Field(default_factory=list)
+    next_steps: list[str] = Field(default_factory=list)
+    collaborators: list[str] = Field(default_factory=list)
+    related_customers: list[str] = Field(default_factory=list)
+
+
+class CustomerDetails(BaseModel):
+    """Details about a customer/account extracted from notes."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    industry: str | None = None
+    relationship: str | None = None  # Prospect, Active, Partner, At Risk
+    key_contacts: list[str] = Field(default_factory=list)
+    opportunities: list[str] = Field(default_factory=list)
+    blockers: list[str] = Field(default_factory=list)
 
 
 class ExtractedTask(BaseModel):
@@ -99,7 +126,20 @@ class ExtractedTask(BaseModel):
     owner: str | None = None
     due: str | None = None
     related_person: str | None = None
+    related_project: str | None = None
+    related_customer: str | None = None
+    priority: str | None = None  # high, medium, low
     status: str = "open"
+
+
+class CrossLinks(BaseModel):
+    """Cross-references between entities."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    person_to_project: dict[str, list[str]] = Field(default_factory=dict)
+    person_to_customer: dict[str, list[str]] = Field(default_factory=dict)
+    project_to_customer: dict[str, list[str]] = Field(default_factory=dict)
 
 
 class BackfillExtraction(BaseModel):
@@ -114,15 +154,24 @@ class BackfillExtraction(BaseModel):
     # Extracted metadata
     date: str  # YYYY-MM-DD
     title: str
+    suggested_title: str | None = None  # AI-suggested title for renaming
+    note_type: str | None = None  # meeting, 1-1, project, email, etc.
     summary: str  # 1-2 sentences
     mentions: Mentions = Field(default_factory=Mentions)
     key_facts: list[str] = Field(default_factory=list)
     
-    # Rich person data
+    # Rich entity data
     person_details: dict[str, PersonDetails] = Field(default_factory=dict)
+    project_details: dict[str, ProjectDetails] = Field(default_factory=dict)
+    customer_details: dict[str, CustomerDetails] = Field(default_factory=dict)
+    
+    # Tasks and decisions
     tasks: list[ExtractedTask] = Field(default_factory=list)
     decisions: list[str] = Field(default_factory=list)
     topics_discussed: list[str] = Field(default_factory=list)
+    
+    # Cross-links for wikilink generation
+    cross_links: CrossLinks = Field(default_factory=CrossLinks)
     
     # Legacy field (kept for compatibility)
     has_tasks: bool = False
@@ -180,26 +229,79 @@ class AggregatedPersonDetails(BaseModel):
     location: str | None = None
     background: list[str] = Field(default_factory=list)  # Multiple snippets
     relationship: str | None = None
+    projects: list[str] = Field(default_factory=list)  # Projects this person works on
+    related_customers: list[str] = Field(default_factory=list)  # Customers they're associated with
+    related_people: list[str] = Field(default_factory=list)  # Other people they work with
+
+
+class AggregatedProjectDetails(BaseModel):
+    """Merged project details from all extractions."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    status: str | None = None
+    description: str | None = None
+    owner: str | None = None
+    blockers: list[str] = Field(default_factory=list)
+    next_steps: list[str] = Field(default_factory=list)
+    collaborators: list[str] = Field(default_factory=list)
+    related_customers: list[str] = Field(default_factory=list)
+    decisions: list[str] = Field(default_factory=list)
+
+
+class AggregatedCustomerDetails(BaseModel):
+    """Merged customer details from all extractions."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    industry: str | None = None
+    status: str | None = None  # relationship status
+    key_contacts: list[str] = Field(default_factory=list)
+    opportunities: list[str] = Field(default_factory=list)
+    blockers: list[str] = Field(default_factory=list)
+    active_projects: list[str] = Field(default_factory=list)
+    related_people: list[str] = Field(default_factory=list)
+
+
+class Collaborator(BaseModel):
+    """A person who collaborates on a project or account."""
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    name: str
+    role: str | None = None
+    company: str | None = None
 
 
 class ReadmeUpdate(BaseModel):
     """Planned update for a single README.md."""
     
-    model_config = ConfigDict(extra="forbid")
+    model_config = ConfigDict(extra="ignore")  # Changed to allow extra fields
     
     entity_path: str  # e.g., "VAST/People/Jeff Denworth"
     readme_path: str  # e.g., "VAST/People/Jeff Denworth/README.md"
     entity_type: str = "people"  # people, accounts, projects
     last_contact: str | None = None  # Most recent date
     
-    # Rich profile data (for people)
-    profile: AggregatedPersonDetails | None = None
+    # Rich profile data (type-specific)
+    profile: AggregatedPersonDetails | None = None  # For people
+    project_profile: AggregatedProjectDetails | None = None  # For projects
+    customer_profile: AggregatedCustomerDetails | None = None  # For customers
+    
+    # Collaborators (for projects and customers)
+    collaborators: list[Collaborator] = Field(default_factory=list)
+    
+    # Cross-linked entities
+    linked_projects: list[str] = Field(default_factory=list)
+    linked_customers: list[str] = Field(default_factory=list)
+    linked_people: list[str] = Field(default_factory=list)
     
     # Context and tasks
     context_entries: list[ContextEntry] = Field(default_factory=list)
     open_tasks: list[ExtractedTask] = Field(default_factory=list)
     key_facts: list[str] = Field(default_factory=list)
     topics: list[str] = Field(default_factory=list)
+    decisions: list[str] = Field(default_factory=list)
     
     interaction_count: int = 0
 

@@ -21,7 +21,10 @@ from . import (
     ReadmeUpdate,
     BackfillPlan,
     AggregatedPersonDetails,
+    AggregatedProjectDetails,
+    AggregatedCustomerDetails,
     ExtractedTask,
+    Collaborator,
 )
 
 from utils.config import vault_root
@@ -156,6 +159,219 @@ def collect_topics(
                 topics.append(topic)
     
     return topics[:15]  # Limit to top 15
+
+
+def merge_project_details(
+    extractions: list[BackfillExtraction],
+    project_name: str,
+) -> AggregatedProjectDetails:
+    """Merge project details from multiple extractions."""
+    details = AggregatedProjectDetails()
+    blockers: list[str] = []
+    next_steps: list[str] = []
+    collaborators: set[str] = set()
+    customers: set[str] = set()
+    decisions: list[str] = []
+    
+    # Sort by date (most recent first)
+    sorted_exts = sorted(extractions, key=lambda e: e.date, reverse=True)
+    
+    for ext in sorted_exts:
+        # Check for project details
+        project_data = ext.project_details.get(project_name)
+        if not project_data:
+            # Try normalized matching
+            for name, pd in ext.project_details.items():
+                if normalize_entity_name(name) == normalize_entity_name(project_name):
+                    project_data = pd
+                    break
+        
+        if project_data:
+            if project_data.status and not details.status:
+                details.status = project_data.status
+            if project_data.description and not details.description:
+                details.description = project_data.description
+            if project_data.owner and not details.owner:
+                details.owner = project_data.owner
+            
+            for b in project_data.blockers:
+                if b not in blockers:
+                    blockers.append(b)
+            for s in project_data.next_steps:
+                if s not in next_steps:
+                    next_steps.append(s)
+            for c in project_data.collaborators:
+                collaborators.add(c)
+            for cust in project_data.related_customers:
+                customers.add(cust)
+        
+        # Also check cross-links for collaborators
+        for person, projects in ext.cross_links.person_to_project.items():
+            if project_name in projects or normalize_entity_name(project_name) in [normalize_entity_name(p) for p in projects]:
+                collaborators.add(person)
+        
+        # And decisions
+        for d in ext.decisions:
+            if d not in decisions:
+                decisions.append(d)
+    
+    details.blockers = blockers[:5]
+    details.next_steps = next_steps[:10]
+    details.collaborators = list(collaborators)
+    details.related_customers = list(customers)
+    details.decisions = decisions[:10]
+    
+    return details
+
+
+def merge_customer_details(
+    extractions: list[BackfillExtraction],
+    customer_name: str,
+) -> AggregatedCustomerDetails:
+    """Merge customer details from multiple extractions."""
+    details = AggregatedCustomerDetails()
+    contacts: set[str] = set()
+    opportunities: list[str] = []
+    blockers: list[str] = []
+    projects: set[str] = set()
+    people: set[str] = set()
+    
+    # Sort by date (most recent first)
+    sorted_exts = sorted(extractions, key=lambda e: e.date, reverse=True)
+    
+    for ext in sorted_exts:
+        # Check for customer details
+        customer_data = ext.customer_details.get(customer_name)
+        if not customer_data:
+            for name, cd in ext.customer_details.items():
+                if normalize_entity_name(name) == normalize_entity_name(customer_name):
+                    customer_data = cd
+                    break
+        
+        if customer_data:
+            if customer_data.industry and not details.industry:
+                details.industry = customer_data.industry
+            if customer_data.relationship and not details.status:
+                details.status = customer_data.relationship
+            
+            for c in customer_data.key_contacts:
+                contacts.add(c)
+            for o in customer_data.opportunities:
+                if o not in opportunities:
+                    opportunities.append(o)
+            for b in customer_data.blockers:
+                if b not in blockers:
+                    blockers.append(b)
+        
+        # Check cross-links
+        for person, customers in ext.cross_links.person_to_customer.items():
+            if customer_name in customers or normalize_entity_name(customer_name) in [normalize_entity_name(c) for c in customers]:
+                people.add(person)
+        
+        for project, customers in ext.cross_links.project_to_customer.items():
+            if customer_name in customers or normalize_entity_name(customer_name) in [normalize_entity_name(c) for c in customers]:
+                projects.add(project)
+    
+    details.key_contacts = list(contacts)
+    details.opportunities = opportunities[:10]
+    details.blockers = blockers[:5]
+    details.active_projects = list(projects)
+    details.related_people = list(people)
+    
+    return details
+
+
+def collect_linked_projects(
+    extractions: list[BackfillExtraction],
+    entity_name: str,
+) -> list[str]:
+    """Collect all projects linked to this entity."""
+    projects: set[str] = set()
+    normalized = normalize_entity_name(entity_name)
+    
+    for ext in extractions:
+        # Check person details for project links
+        for name, details in ext.person_details.items():
+            if normalize_entity_name(name) == normalized:
+                projects.update(details.projects)
+        
+        # Check cross-links
+        for person, projs in ext.cross_links.person_to_project.items():
+            if normalize_entity_name(person) == normalized:
+                projects.update(projs)
+    
+    return list(projects)
+
+
+def collect_linked_customers(
+    extractions: list[BackfillExtraction],
+    entity_name: str,
+) -> list[str]:
+    """Collect all customers linked to this entity."""
+    customers: set[str] = set()
+    normalized = normalize_entity_name(entity_name)
+    
+    for ext in extractions:
+        # Check cross-links
+        for person, custs in ext.cross_links.person_to_customer.items():
+            if normalize_entity_name(person) == normalized:
+                customers.update(custs)
+        
+        for project, custs in ext.cross_links.project_to_customer.items():
+            if normalize_entity_name(project) == normalized:
+                customers.update(custs)
+    
+    return list(customers)
+
+
+def collect_linked_people(
+    extractions: list[BackfillExtraction],
+    entity_name: str,
+) -> list[str]:
+    """Collect all people linked to this entity (project or customer)."""
+    people: set[str] = set()
+    normalized = normalize_entity_name(entity_name)
+    
+    for ext in extractions:
+        # Check cross-links
+        for person, projs in ext.cross_links.person_to_project.items():
+            for proj in projs:
+                if normalize_entity_name(proj) == normalized:
+                    people.add(person)
+                    break
+        
+        for person, custs in ext.cross_links.person_to_customer.items():
+            for cust in custs:
+                if normalize_entity_name(cust) == normalized:
+                    people.add(person)
+                    break
+    
+    return list(people)
+
+
+def build_collaborators(
+    extractions: list[BackfillExtraction],
+    people_names: list[str],
+) -> list[Collaborator]:
+    """Build Collaborator objects with role/company info."""
+    collaborators: list[Collaborator] = []
+    
+    for person_name in people_names:
+        collab = Collaborator(name=person_name)
+        
+        # Try to find role/company from any extraction
+        for ext in extractions:
+            details = ext.person_details.get(person_name)
+            if details:
+                if details.role:
+                    collab.role = details.role
+                if details.company:
+                    collab.company = details.company
+                break
+        
+        collaborators.append(collab)
+    
+    return collaborators
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -383,8 +599,19 @@ def aggregate_extractions(
         
         # Build profile for people
         profile = None
+        project_profile = None
+        customer_profile = None
+        
         if entity_type == "people":
             profile = merge_person_details(all_extractions, entity_name)
+            # Add linked projects and customers to profile
+            profile.projects = collect_linked_projects(all_extractions, entity_name)
+            profile.related_customers = collect_linked_customers(all_extractions, entity_name)
+            profile.related_people = collect_linked_people(all_extractions, entity_name)
+        elif entity_type == "projects":
+            project_profile = merge_project_details(all_extractions, entity_name)
+        elif entity_type == "accounts":
+            customer_profile = merge_customer_details(all_extractions, entity_name)
         
         # Collect tasks related to this entity
         open_tasks = collect_tasks_for_entity(all_extractions, entity_name)
@@ -392,6 +619,24 @@ def aggregate_extractions(
         # Collect key facts and topics
         key_facts = collect_key_facts(all_extractions)
         topics = collect_topics(all_extractions)
+        
+        # Collect cross-linked entities
+        linked_projects = collect_linked_projects(all_extractions, entity_name)
+        linked_customers = collect_linked_customers(all_extractions, entity_name)
+        linked_people = collect_linked_people(all_extractions, entity_name)
+        
+        # Build collaborators for projects/customers
+        collaborators = []
+        if entity_type in ("projects", "accounts"):
+            collaborators = build_collaborators(all_extractions, linked_people)
+        
+        # Collect decisions
+        decisions = []
+        for ext in all_extractions:
+            for d in ext.decisions:
+                if d not in decisions:
+                    decisions.append(d)
+        decisions = decisions[:10]
         
         # Build update
         readme_path = f"{entity_path}/README.md"
@@ -401,10 +646,17 @@ def aggregate_extractions(
             entity_type=entity_type,
             last_contact=last_contact,
             profile=profile,
+            project_profile=project_profile,
+            customer_profile=customer_profile,
+            collaborators=collaborators,
+            linked_projects=linked_projects,
+            linked_customers=linked_customers,
+            linked_people=linked_people,
             context_entries=entries,
             open_tasks=open_tasks,
             key_facts=key_facts,
             topics=topics,
+            decisions=decisions,
             interaction_count=len(seen_notes),
         )
         

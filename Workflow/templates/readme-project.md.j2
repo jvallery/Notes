@@ -1,0 +1,142 @@
+{#- README Template for Project Entities -#}
+---
+type: projects
+title: "{{ entity_name }}"
+created: "{{ created_date | default('') }}"
+last_updated: "{{ last_contact | default('') }}"
+status: "{{ status | default('active') }}"
+tags:
+  - type/projects
+{%- if status %}
+  - status/{{ status | lower | replace(' ', '-') }}
+{%- endif %}
+---
+
+# {{ entity_name }}
+
+## Overview
+
+{{ description | default('_Brief description of this project, its goals, and scope..._') }}
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | {{ status | default('_Active / On Hold / Blocked / Complete_') }} |
+| **Priority** | {{ priority | default('_High / Medium / Low_') }} |
+| **Target Date** | {{ target_date | default('_Unknown_') }} |
+| **Owner** | {{ owner | default('_Unknown_') }} |
+
+## Current Blockers
+
+{% if blockers -%}
+{% for blocker in blockers -%}
+- ❌ {{ blocker }}
+{% endfor -%}
+{% else -%}
+_No known blockers. List anything blocking progress..._
+{% endif %}
+
+## Next Steps
+
+{% if next_steps -%}
+{% for step in next_steps -%}
+- [ ] {{ step.text }}{% if step.owner %} @{{ step.owner }}{% endif %}{% if step.due %} 📅 {{ step.due }}{% endif %}
+
+{% endfor -%}
+{% else -%}
+_What are the immediate next actions needed?_
+{% endif %}
+
+## Collaborators
+
+{% if collaborators -%}
+| Person | Role | Company |
+|--------|------|---------|
+{% for person in collaborators -%}
+| [[{{ person.name }}]] | {{ person.role | default('') }} | {{ person.company | default('') }} |
+{% endfor -%}
+{% else -%}
+_Who is working on this project?_
+
+| Person | Role | Company |
+|--------|------|---------|
+| _Name_ | _Role_ | _Company_ |
+{% endif %}
+
+## Open Tasks
+
+{% if open_tasks -%}
+{% for task in open_tasks -%}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}
+
+{% endfor -%}
+{% else -%}
+```dataview
+TASK
+FROM "{{ folder_path | default('') }}"
+WHERE !completed
+SORT due ASC
+```
+{% endif %}
+
+## Key Decisions
+
+{% if decisions -%}
+{% for decision in decisions -%}
+- ✅ {{ decision }}
+{% endfor -%}
+{% else -%}
+_Important decisions made on this project..._
+{% endif %}
+
+## Key Facts
+
+{% if key_facts -%}
+{% for fact in key_facts -%}
+- {{ fact }}
+{% endfor -%}
+{% else -%}
+_Important context and information about this project..._
+{% endif %}
+
+## Topics / Themes
+
+{% if topics -%}
+{{ topics | join(', ') }}
+{% else -%}
+_Key themes and areas of focus..._
+{% endif %}
+
+## Related Customers
+
+{% if related_customers -%}
+{% for customer in related_customers -%}
+- [[{{ customer }}]]
+{% endfor -%}
+{% else -%}
+_Which customers/accounts is this project related to?_
+{% endif %}
+
+## Recent Context
+
+{% if context_entries -%}
+{% for entry in context_entries -%}
+- {{ entry.date }}: [[{{ entry.note_path | basename | replace('.md', '') }}]]{% if entry.summary %} - {{ entry.summary }}{% endif %}{% if entry.via_entity %} (via {{ entry.via_entity }}){% endif %}
+
+{% endfor -%}
+{% else -%}
+_Recent activity will be populated here..._
+{% endif %}
+
+## Artifacts
+
+```dataview
+TABLE file.mtime as "Modified"
+FROM "{{ folder_path | default('') }}"
+WHERE type != "readme" AND type != "projects"
+SORT file.mtime DESC
+```
+
+---
+*Last updated: {{ updated_date | default('') }}*

@@ -1,0 +1,132 @@
+{#- README Template for Person Entities -#}
+---
+type: people
+title: "{{ entity_name }}"
+created: "{{ created_date | default('') }}"
+last_contact: "{{ last_contact | default('') }}"
+tags:
+  - type/people
+{%- if company %}
+  - company/{{ company | lower | replace(' ', '-') }}
+{%- endif %}
+{%- if department %}
+  - dept/{{ department | lower | replace(' ', '-') }}
+{%- endif %}
+---
+
+# {{ entity_name }}
+
+## Contact Information
+
+| Field | Value |
+|-------|-------|
+| **Role** | {{ role | default('_Unknown_') }} |
+| **Company** | {{ company | default('_Unknown_') }} |
+| **Department** | {{ department | default('_Unknown_') }} |
+| **Email** | {{ email | default('_Unknown_') }} |
+| **Phone** | {{ phone | default('_Unknown_') }} |
+| **LinkedIn** | {{ linkedin | default('_Unknown_') }} |
+| **Location** | {{ location | default('_Unknown_') }} |
+
+## Relationship
+
+{{ relationship | default('_How do you work with this person? What is your dynamic?_') }}
+
+## Background
+
+{% if background -%}
+{% for bg in background -%}
+- {{ bg }}
+{% endfor -%}
+{% else -%}
+_Career history, expertise, interests, personal details shared..._
+{% endif %}
+
+## Projects
+
+{% if projects -%}
+{% for project in projects -%}
+- [[{{ project }}]]
+{% endfor -%}
+{% else -%}
+_What projects are you collaborating on with this person?_
+
+```dataview
+LIST
+FROM "VAST/Projects" OR "Personal/Projects"
+WHERE contains(file.outlinks, this.file.link)
+```
+{% endif %}
+
+## Open Tasks
+
+{% if open_tasks -%}
+{% for task in open_tasks -%}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}
+
+{% endfor -%}
+{% else -%}
+```dataview
+TASK
+FROM "{{ folder_path | default('') }}"
+WHERE !completed AND contains(text, "{{ entity_name }}")
+SORT due ASC
+```
+{% endif %}
+
+## Tasks They Own
+
+_Action items this person is responsible for:_
+
+```dataview
+TASK
+WHERE contains(text, "@{{ entity_name | replace(' ', '') }}") AND !completed
+SORT due ASC
+```
+
+## Key Facts
+
+{% if key_facts -%}
+{% for fact in key_facts -%}
+- {{ fact }}
+{% endfor -%}
+{% else -%}
+_Important things to remember about this person..._
+{% endif %}
+
+## Topics Discussed
+
+{% if topics -%}
+{{ topics | join(', ') }}
+{% else -%}
+_Common themes in conversations with this person..._
+{% endif %}
+
+## Recent Context
+
+{% if context_entries -%}
+{% for entry in context_entries -%}
+- {{ entry.date }}: [[{{ entry.note_path | basename | replace('.md', '') }}]]{% if entry.summary %} - {{ entry.summary }}{% endif %}{% if entry.via_entity %} (via {{ entry.via_entity }}){% endif %}
+
+{% endfor -%}
+{% else -%}
+_Recent interactions will be populated here..._
+{% endif %}
+
+## Related
+
+{% if related_customers -%}
+### Customers
+{% for customer in related_customers -%}
+- [[{{ customer }}]]
+{% endfor -%}
+{% endif %}
+{% if related_people -%}
+### Other People
+{% for person in related_people -%}
+- [[{{ person }}]]
+{% endfor -%}
+{% endif %}
+
+---
+*Last updated: {{ updated_date | default('') }}*

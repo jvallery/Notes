@@ -1,0 +1,163 @@
+{#- README Template for Customer/Account Entities -#}
+---
+type: customer
+title: "{{ entity_name }}"
+created: "{{ created_date | default('') }}"
+last_contact: "{{ last_contact | default('') }}"
+status: "{{ status | default('active') }}"
+tags:
+  - type/customer
+{%- if industry %}
+  - industry/{{ industry | lower | replace(' ', '-') }}
+{%- endif %}
+{%- if status %}
+  - status/{{ status | lower | replace(' ', '-') }}
+{%- endif %}
+---
+
+# {{ entity_name }}
+
+## Account Overview
+
+{{ description | default('_Brief description of this customer, their business, and relationship..._') }}
+
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | {{ status | default('_Prospect / Active / At Risk / Churned_') }} |
+| **Industry** | {{ industry | default('_Unknown_') }} |
+| **Account Owner** | {{ account_owner | default('_Unknown_') }} |
+| **Deal Stage** | {{ deal_stage | default('_Unknown_') }} |
+| **Contract Value** | {{ contract_value | default('_Unknown_') }} |
+
+## Key Contacts
+
+{% if contacts -%}
+| Name | Role | Email |
+|------|------|-------|
+{% for contact in contacts -%}
+| [[{{ contact.name }}]] | {{ contact.role | default('') }} | {{ contact.email | default('') }} |
+{% endfor -%}
+{% else -%}
+_Who are the key stakeholders at this account?_
+
+| Name | Role | Email |
+|------|------|-------|
+| _Name_ | _Role_ | _Email_ |
+{% endif %}
+
+## Active Projects
+
+{% if projects -%}
+{% for project in projects -%}
+- [[{{ project.name }}]] - {{ project.status | default('Active') }}
+{% endfor -%}
+{% else -%}
+_What projects/initiatives are active with this customer?_
+
+```dataview
+LIST
+FROM "VAST/Projects" OR "Personal/Projects"
+WHERE contains(file.outlinks, this.file.link)
+```
+{% endif %}
+
+## Current Blockers
+
+{% if blockers -%}
+{% for blocker in blockers -%}
+- ❌ {{ blocker }}
+{% endfor -%}
+{% else -%}
+_Any issues blocking progress with this account?_
+{% endif %}
+
+## Next Steps
+
+{% if next_steps -%}
+{% for step in next_steps -%}
+- [ ] {{ step.text }}{% if step.owner %} @{{ step.owner }}{% endif %}{% if step.due %} 📅 {{ step.due }}{% endif %}
+
+{% endfor -%}
+{% else -%}
+_What are the immediate next actions for this account?_
+{% endif %}
+
+## Open Tasks
+
+{% if open_tasks -%}
+{% for task in open_tasks -%}
+- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}
+
+{% endfor -%}
+{% else -%}
+```dataview
+TASK
+FROM "{{ folder_path | default('') }}"
+WHERE !completed
+SORT due ASC
+```
+{% endif %}
+
+## Opportunities
+
+{% if opportunities -%}
+{% for opp in opportunities -%}
+- {{ opp.name }}: {{ opp.value | default('') }} - {{ opp.stage | default('') }}
+{% endfor -%}
+{% else -%}
+_Current and potential opportunities with this account..._
+{% endif %}
+
+## Key Decisions
+
+{% if decisions -%}
+{% for decision in decisions -%}
+- ✅ {{ decision }}
+{% endfor -%}
+{% else -%}
+_Important decisions made with this customer..._
+{% endif %}
+
+## Key Facts
+
+{% if key_facts -%}
+{% for fact in key_facts -%}
+- {{ fact }}
+{% endfor -%}
+{% else -%}
+_Important context about this account..._
+{% endif %}
+
+## Topics / Themes
+
+{% if topics -%}
+{{ topics | join(', ') }}
+{% else -%}
+_Key discussion themes with this customer..._
+{% endif %}
+
+## Recent Context
+
+{% if context_entries -%}
+{% for entry in context_entries -%}
+- {{ entry.date }}: [[{{ entry.note_path | basename | replace('.md', '') }}]]{% if entry.summary %} - {{ entry.summary }}{% endif %}{% if entry.via_entity %} (via {{ entry.via_entity }}){% endif %}
+
+{% endfor -%}
+{% else -%}
+_Recent interactions will be populated here..._
+{% endif %}
+
+## Related People
+
+{% if related_people -%}
+{% for person in related_people -%}
+- [[{{ person }}]]
+{% endfor -%}
+{% else -%}
+_Internal team members working on this account..._
+{% endif %}
+
+---
+*Last updated: {{ updated_date | default('') }}*

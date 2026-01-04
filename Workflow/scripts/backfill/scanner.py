@@ -160,6 +160,11 @@ def find_entity_folders(vault: Path, scope: str) -> list[Path]:
     
     entity_folders = []
     
+    # Check if scope itself is an entity folder
+    rel_scope = str(scope_path.relative_to(vault))
+    if detect_entity_type(rel_scope):
+        return [scope_path]
+    
     # Walk the scope looking for entity folders
     for folder in scope_path.rglob("*"):
         if not folder.is_dir():

@@ -1,9 +1,14 @@
 {# System Prompt: Backfill Extraction #}
-{# Rich extraction for existing notes - profile data, tasks, and context #}
+{# Rich extraction for existing notes - profile data, tasks, projects, and cross-links #}
 
 ## Task
 
-You are extracting structured data from an existing note to build rich entity profiles. Extract ALL relevant information about people, their roles, contact details, tasks, and relationship context.
+You are extracting structured data from an existing note to build a comprehensive knowledge graph of:
+- **People**: Who they are, their roles, how I work with them
+- **Projects**: What we're working on, status, blockers, collaborators
+- **Customers/Accounts**: Business context, contacts, opportunities
+
+Extract ALL relevant information to populate rich entity profiles.
 
 ## Output Format
 
@@ -14,11 +19,15 @@ Return valid JSON only. No markdown fences, no explanations.
 ```json
 {
   "summary": "1-2 sentence summary of what this note is about",
+  "suggested_title": "Short descriptive title for this note (max 50 chars)",
+  "note_type": "meeting | 1-1 | project | email | transcript | journal | other",
+  
   "mentions": {
     "people": ["Full Name 1", "Full Name 2"],
     "projects": ["Project Name"],
     "accounts": ["Company/Account Name"]
   },
+  
   "person_details": {
     "Person Name": {
       "role": "Job title or role if mentioned",
@@ -29,49 +38,102 @@ Return valid JSON only. No markdown fences, no explanations.
       "linkedin": "LinkedIn URL if found",
       "location": "City/region if mentioned",
       "background": "Brief background, expertise, or context about this person",
-      "relationship": "How you interact with them (e.g., 'My manager', 'Customer contact', 'Engineering lead I work with')"
+      "relationship": "How the author interacts with them (e.g., 'My manager', 'Customer contact')",
+      "projects": ["Project names this person works on"]
     }
   },
+  
+  "project_details": {
+    "Project Name": {
+      "status": "active | blocked | on-hold | complete | proposed",
+      "description": "Brief description of the project",
+      "owner": "Who owns/leads this project",
+      "blockers": ["Current blockers or risks"],
+      "next_steps": ["Immediate next actions"],
+      "collaborators": ["People working on this"],
+      "related_customers": ["Customer/account names involved"]
+    }
+  },
+  
+  "customer_details": {
+    "Customer Name": {
+      "industry": "Industry or sector",
+      "relationship": "Prospect | Active | Partner | At Risk",
+      "key_contacts": ["Names of people at this customer"],
+      "opportunities": ["Active opportunities or deals"],
+      "blockers": ["Issues or concerns"]
+    }
+  },
+  
   "tasks": [
     {
       "text": "Action item or next step",
       "owner": "Person responsible (use 'Myself' for first-person)",
       "due": "YYYY-MM-DD or null",
-      "related_person": "Person this task is related to",
-      "status": "open or completed"
+      "related_person": "Person this task is about or assigned to",
+      "related_project": "Project this task belongs to",
+      "related_customer": "Customer this task is for",
+      "priority": "high | medium | low",
+      "status": "open | completed"
     }
   ],
+  
   "decisions": ["Key decision made"],
+  
   "key_facts": [
-    "Important fact worth remembering about a person or topic"
+    "Important fact worth remembering"
   ],
-  "topics_discussed": ["Topic 1", "Topic 2"]
+  
+  "topics_discussed": ["Topic 1", "Topic 2"],
+  
+  "cross_links": {
+    "person_to_project": {"Person Name": ["Project 1", "Project 2"]},
+    "person_to_customer": {"Person Name": ["Customer 1"]},
+    "project_to_customer": {"Project Name": ["Customer 1"]}
+  }
 }
 ```
 
 ## Guidelines
 
-### Summary
-- Be concise: 1-2 sentences max
-- Focus on the outcome or topic, not the process
+### Summary & Title
+- Summary: 1-2 sentences max, focus on outcome
+- suggested_title: Short, descriptive (e.g., "GDC RFP Review", "Weekly 1:1 with Jeff")
 
 ### Person Details
-- Extract details for EVERY person mentioned in the note
-- Include partial information - any detail is valuable
-- Role examples: "VP of Engineering", "Account Executive", "PM for Cloud team"
-- Relationship examples: "Direct report", "Customer sponsor", "Weekly 1:1 partner"
-- Background: Technical expertise, career history, interests if mentioned
+- Extract for EVERY person mentioned
+- Include partial info - any detail is valuable
+- **projects**: List project names this person is working on
+- Role examples: "VP of Engineering", "Account Executive"
+- Relationship: From author's perspective ("My manager", "Customer sponsor")
+
+### Project Details
+- Extract for any project/initiative discussed
+- **status**: Current state (active, blocked, on-hold, complete, proposed)
+- **blockers**: What's preventing progress
+- **next_steps**: Immediate actions needed
+- **collaborators**: Everyone working on it
+- **related_customers**: Which customers benefit or are involved
+
+### Customer Details
+- Extract for any company/account mentioned as a customer
+- **key_contacts**: People at that customer
+- **opportunities**: Deals, projects, or potential work
 
 ### Tasks
-- Extract ALL action items, next steps, follow-ups
-- Owner = who needs to do it ("Myself" for the note author)
-- related_person = who the task is about or for
-- Mark as "completed" only if explicitly stated as done
+- Extract ALL action items, follow-ups, next steps
+- Owner = who does it ("Myself" for first-person references)
+- Link to related project and customer when applicable
+- Infer priority from language ("urgent", "critical" = high)
+
+### Cross-Links
+- Map relationships: who works on what project, for which customer
+- These enable wikilink generation between entities
 
 ### Key Facts
-- Things worth remembering about people (preferences, working style, goals)
-- Important context for the relationship
-- Personal details shared (kids, hobbies, career goals)
+- Things worth remembering about people, projects, or customers
+- Personal details, preferences, working styles
+- Important context that should persist
 
 ## Note Context
 
@@ -81,4 +143,6 @@ Return valid JSON only. No markdown fences, no explanations.
 
 ## Note Content
 
+<note_content>
 {{ content }}
+</note_content>

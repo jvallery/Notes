@@ -21,7 +21,10 @@ from . import (
     ReadmeUpdate,
     ApplyResult,
     AggregatedPersonDetails,
+    AggregatedProjectDetails,
+    AggregatedCustomerDetails,
     ExtractedTask,
+    Collaborator,
 )
 from .aggregator import format_recent_context_section
 from utils.config import vault_root
@@ -251,6 +254,95 @@ def format_topics_section(topics: list[str]) -> str:
     return ", ".join(topics[:15])
 
 
+def format_project_status_section(profile: AggregatedProjectDetails) -> str:
+    """Format project status as markdown table."""
+    lines: list[str] = []
+    lines.append("| Field | Value |")
+    lines.append("|-------|-------|")
+    lines.append(f"| **Status** | {profile.status or '_Unknown_'} |")
+    lines.append(f"| **Owner** | {profile.owner or '_Unknown_'} |")
+    
+    return "\n".join(lines)
+
+
+def format_project_overview_section(profile: AggregatedProjectDetails) -> str:
+    """Format project overview (description)."""
+    return profile.description or "_Brief description of this project..._"
+
+
+def format_blockers_section(blockers: list[str]) -> str:
+    """Format blockers as bullet list."""
+    if not blockers:
+        return "_No known blockers._"
+    lines = [f"- ❌ {b}" for b in blockers[:5]]
+    return "\n".join(lines)
+
+
+def format_next_steps_section(next_steps: list[str]) -> str:
+    """Format next steps as task list."""
+    if not next_steps:
+        return "_No next steps defined._"
+    lines = [f"- [ ] {s}" for s in next_steps[:10]]
+    return "\n".join(lines)
+
+
+def format_collaborators_section(collaborators: list[Collaborator]) -> str:
+    """Format collaborators as markdown table."""
+    if not collaborators:
+        return "_Who is working on this?_\n\n| Person | Role | Company |\n|--------|------|---------|"
+    
+    lines: list[str] = []
+    lines.append("| Person | Role | Company |")
+    lines.append("|--------|------|---------|")
+    for c in collaborators:
+        lines.append(f"| [[{c.name}]] | {c.role or ''} | {c.company or ''} |")
+    
+    return "\n".join(lines)
+
+
+def format_decisions_section(decisions: list[str]) -> str:
+    """Format decisions as bullet list."""
+    if not decisions:
+        return ""
+    lines = [f"- ✅ {d}" for d in decisions[:10]]
+    return "\n".join(lines)
+
+
+def format_linked_entities_section(entities: list[str], entity_type: str) -> str:
+    """Format linked entities as wikilinks."""
+    if not entities:
+        return f"_No linked {entity_type}._"
+    lines = [f"- [[{e}]]" for e in entities]
+    return "\n".join(lines)
+
+
+def format_customer_status_section(profile: AggregatedCustomerDetails) -> str:
+    """Format customer status as markdown table."""
+    lines: list[str] = []
+    lines.append("| Field | Value |")
+    lines.append("|-------|-------|")
+    lines.append(f"| **Status** | {profile.status or '_Unknown_'} |")
+    lines.append(f"| **Industry** | {profile.industry or '_Unknown_'} |")
+    
+    return "\n".join(lines)
+
+
+def format_contacts_section(contacts: list[str]) -> str:
+    """Format key contacts as wikilinks."""
+    if not contacts:
+        return "_No key contacts identified._"
+    lines = [f"- [[{c}]]" for c in contacts]
+    return "\n".join(lines)
+
+
+def format_opportunities_section(opportunities: list[str]) -> str:
+    """Format opportunities as bullet list."""
+    if not opportunities:
+        return "_No active opportunities._"
+    lines = [f"- {o}" for o in opportunities[:10]]
+    return "\n".join(lines)
+
+
 def apply_readme_update(vault: Path, update: ReadmeUpdate) -> None:
     """Apply a single README update with rich profile data."""
     readme_path = vault / update.readme_path
@@ -264,7 +356,11 @@ def apply_readme_update(vault: Path, update: ReadmeUpdate) -> None:
     if update.last_contact:
         content = upsert_frontmatter_field(content, "last_contact", update.last_contact)
     
-    # For people entities, add rich profile sections
+    # ─────────────────────────────────────────────────────────────────────────
+    # Entity-type-specific sections
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    # For PEOPLE entities - personal profile data
     if update.entity_type == "people" and update.profile:
         # Profile section (role, location, relationship, background)
         profile_content = format_profile_section(update.profile)
@@ -276,11 +372,93 @@ def apply_readme_update(vault: Path, update: ReadmeUpdate) -> None:
         if contact_content:
             content = append_or_replace_section(content, "## Contact", contact_content)
     
+    # For PROJECT entities - project status and collaborators
+    if update.entity_type == "projects" and update.project_profile:
+        # Overview section
+        overview_content = format_project_overview_section(update.project_profile)
+        if overview_content:
+            content = append_or_replace_section(content, "## Overview", overview_content)
+        
+        # Status section (table with status, priority, target, owner)
+        status_content = format_project_status_section(update.project_profile)
+        if status_content:
+            content = append_or_replace_section(content, "## Status", status_content)
+        
+        # Blockers section
+        blockers_content = format_blockers_section(update.project_profile.blockers)
+        if blockers_content:
+            content = append_or_replace_section(content, "## Blockers", blockers_content)
+        
+        # Next Steps section
+        next_steps_content = format_next_steps_section(update.project_profile.next_steps)
+        if next_steps_content:
+            content = append_or_replace_section(content, "## Next Steps", next_steps_content)
+    
+    # For CUSTOMER/ACCOUNT entities - relationship and contacts
+    if update.entity_type == "accounts" and update.customer_profile:
+        # Account Status section
+        status_content = format_customer_status_section(update.customer_profile)
+        if status_content:
+            content = append_or_replace_section(content, "## Account Status", status_content)
+        
+        # Key Contacts section
+        contacts_content = format_contacts_section(update.customer_profile.key_contacts)
+        if contacts_content:
+            content = append_or_replace_section(content, "## Key Contacts", contacts_content)
+        
+        # Opportunities section
+        opportunities_content = format_opportunities_section(update.customer_profile.opportunities)
+        if opportunities_content:
+            content = append_or_replace_section(content, "## Opportunities", opportunities_content)
+        
+        # Blockers section
+        blockers_content = format_blockers_section(update.customer_profile.blockers)
+        if blockers_content:
+            content = append_or_replace_section(content, "## Blockers", blockers_content)
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # Cross-linked sections (all entity types)
+    # ─────────────────────────────────────────────────────────────────────────
+    
+    # Collaborators section (for projects)
+    if update.collaborators:
+        collaborators_content = format_collaborators_section(update.collaborators)
+        if collaborators_content:
+            content = append_or_replace_section(content, "## Collaborators", collaborators_content)
+    
+    # Linked Projects section
+    if update.linked_projects:
+        projects_content = format_linked_entities_section(update.linked_projects, "project")
+        if projects_content:
+            content = append_or_replace_section(content, "## Related Projects", projects_content)
+    
+    # Linked Customers section
+    if update.linked_customers:
+        customers_content = format_linked_entities_section(update.linked_customers, "customer")
+        if customers_content:
+            content = append_or_replace_section(content, "## Related Customers", customers_content)
+    
+    # Linked People section (for projects/customers)
+    if update.linked_people:
+        people_content = format_linked_entities_section(update.linked_people, "person")
+        if people_content:
+            content = append_or_replace_section(content, "## Related People", people_content)
+    
+    # ─────────────────────────────────────────────────────────────────────────
+    # Common sections (all entity types)
+    # ─────────────────────────────────────────────────────────────────────────
+    
     # Open tasks section
     if update.open_tasks:
         tasks_content = format_tasks_section(update.open_tasks)
         if tasks_content:
             content = append_or_replace_section(content, "## Open Tasks", tasks_content)
+    
+    # Key Decisions section
+    if update.decisions:
+        decisions_content = format_decisions_section(update.decisions)
+        if decisions_content:
+            content = append_or_replace_section(content, "## Key Decisions", decisions_content)
     
     # Key facts section
     if update.key_facts:

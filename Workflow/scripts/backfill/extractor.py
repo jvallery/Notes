@@ -20,7 +20,10 @@ from . import (
     Mentions,
     NoteMetadata,
     PersonDetails,
+    ProjectDetails,
+    CustomerDetails,
     ExtractedTask,
+    CrossLinks,
 )
 
 # Import from existing utils
@@ -122,13 +125,17 @@ def extract_from_content(
             {"role": "user", "content": prompt},
         ],
         temperature=0.1,
-        max_completion_tokens=2000,  # Increased for rich extraction
+        # NOTE: For reasoning models (gpt-5.2), this needs to be high enough to
+        # accommodate both reasoning tokens AND output tokens.
+        # With 2000 tokens, all budget went to reasoning leaving 0 for output.
+        max_completion_tokens=10000,  # Reasoning + rich JSON output
         # CRITICAL: Privacy - don't store
         store=False,
     )
     
     # Parse response
-    response_text = response.choices[0].message.content.strip()
+    response_text = response.choices[0].message.content or ""
+    response_text = response_text.strip()
     
     # Handle markdown code fences
     if response_text.startswith("```"):
@@ -221,6 +228,28 @@ def extract_note(
         if isinstance(details, dict):
             person_details[name] = PersonDetails(**details)
     
+    # Parse project details
+    project_details_raw = result.get("project_details", {})
+    project_details = {}
+    for name, details in project_details_raw.items():
+        if isinstance(details, dict):
+            project_details[name] = ProjectDetails(**details)
+    
+    # Parse customer details
+    customer_details_raw = result.get("customer_details", {})
+    customer_details = {}
+    for name, details in customer_details_raw.items():
+        if isinstance(details, dict):
+            customer_details[name] = CustomerDetails(**details)
+    
+    # Parse cross-links
+    cross_links_raw = result.get("cross_links", {})
+    cross_links = CrossLinks(
+        person_to_project=cross_links_raw.get("person_to_project", {}),
+        person_to_customer=cross_links_raw.get("person_to_customer", {}),
+        project_to_customer=cross_links_raw.get("project_to_customer", {}),
+    )
+    
     # Parse tasks
     tasks_raw = result.get("tasks", [])
     tasks = []
@@ -236,13 +265,18 @@ def extract_note(
         entity_path=entity_path,
         date=note.date or "unknown",
         title=note.title or note.filename,
+        suggested_title=result.get("suggested_title"),
+        note_type=result.get("note_type"),
         summary=result.get("summary", ""),
         mentions=mentions,
         key_facts=result.get("key_facts", []),
         person_details=person_details,
+        project_details=project_details,
+        customer_details=customer_details,
         tasks=tasks,
         decisions=result.get("decisions", []),
         topics_discussed=result.get("topics_discussed", []),
+        cross_links=cross_links,
         has_tasks=has_tasks,
         extracted_at=datetime.now(),
         model_used=model,
