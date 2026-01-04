@@ -236,6 +236,7 @@ RUN PERIODICALLY:
 - [x] Ensure migration/backfill apply flows use same staging strategy.
 
 **Completion Notes:**
+
 - Fixed `migration/executor.py` to pass `vault_root` to `backup_file()` (was missing)
 - Replaced `add_files()` with `stage_content_dirs()` in migration executor
 - `apply.py` already had correct implementations
@@ -255,7 +256,7 @@ RUN PERIODICALLY:
 
 **Goal:** Resolve conflicts between `STANDARDS.md`, templates, and validators.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-claude-20260104, started: 2026-01-04 15:45)
 
 **Tasks**
 
