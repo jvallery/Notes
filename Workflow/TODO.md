@@ -392,18 +392,24 @@ RUN PERIODICALLY:
 
 **Goal:** Prevent overwriting archives and duplicate patches.
 
-**Status: IN PROGRESS** (@copilot-claude-20260104b, started: 2026-01-04 16:30)
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Completion Notes:**
+
+- Archive strategy: `get_archive_path()` now preserves source subfolder (Transcripts/, Email/, Voice/) in archive path
+- Idempotency: `append_under_heading()` already had dedup logic (checks if text exists in section, checks for duplicate wikilinks)
+- Rollback: `apply.py._rollback()` already restores archived sources via `moved_sources` tracking
 
 **Tasks**
 
-- Update archive strategy to preserve relative paths or add unique suffixes.
-- Make `append_under_heading` idempotent (dedupe or marker).
-- Ensure apply rollback restores archived sources (if moved).
+- [x] Update archive strategy to preserve relative paths or add unique suffixes.
+- [x] Make `append_under_heading` idempotent (dedupe or marker).
+- [x] Ensure apply rollback restores archived sources (if moved).
 
 **Success Criteria**
 
-- Two sources with same filename can be archived without overwrite.
-- Re-running Apply does not duplicate appended content.
+- ✅ Two sources with same filename can be archived without overwrite.
+- ✅ Re-running Apply does not duplicate appended content.
 
 ---
 
