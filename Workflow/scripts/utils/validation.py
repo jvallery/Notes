@@ -31,7 +31,7 @@ INVALID_PATH_PATTERNS = [
     (r"VAST/Accounts/", "Use 'VAST/Customers and Partners/' not 'VAST/Accounts/'"),
     (r"VAST/Customers/", "Use 'VAST/Customers and Partners/' not 'VAST/Customers/'"),
     (r"Personal/Accounts/", "Use 'Personal/People/' or proper folder structure"),
-    (r"/README\.md$", "README.md paths should not have leading slash"),
+    (r"^/", "Paths should not be absolute (start with /)"),
 ]
 
 
