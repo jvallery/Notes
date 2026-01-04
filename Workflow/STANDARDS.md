@@ -203,7 +203,7 @@ created: "YYYY-MM-DD"
 last_contact: "YYYY-MM-DD"
 tags:
   - "type/people"
-  - "company/{company-slug}"  # optional
+  - "company/{company-slug}" # optional
 ---
 ```
 
@@ -218,7 +218,7 @@ last_updated: "YYYY-MM-DD"
 status: "active|on-hold|completed|cancelled"
 tags:
   - "type/projects"
-  - "status/{status}"  # optional
+  - "status/{status}" # optional
 ---
 ```
 
@@ -233,7 +233,7 @@ last_contact: "YYYY-MM-DD"
 status: "active|prospect|churned"
 tags:
   - "type/customer"
-  - "industry/{industry-slug}"  # optional
+  - "industry/{industry-slug}" # optional
 ---
 ```
 

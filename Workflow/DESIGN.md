@@ -33,11 +33,11 @@ The architecture strictly separates **Reasoning (AI)** from **Execution (Python)
 │                 (Python + OpenAI Structured Outputs)                         │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │  1. Scan Inbox/* for unprocessed files                                      │
-│  2. Classify note type using profile-based rubrics                          │
+│  2. Classify note type via heuristics (filename + content patterns)         │
 │  3. Extract structured data via Pydantic-parsed responses                   │
 │  4. Write → Inbox/_extraction/{source}.extraction.json                      │
 │                                                                              │
-│  API: client.responses.parse(..., store=False)  # Schema-enforced           │
+│  API: client.beta.chat.completions.parse(..., store=False)                  │
 └────────────────────────────────────┬────────────────────────────────────────┘
                                      │
                                      ▼
@@ -102,13 +102,14 @@ The previous design allowed AI agents to modify files directly. This creates ris
 
 ### 2.2 Key Design Decisions
 
-| Decision                        | Rationale                                                                                            |
-| ------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| **Structured Outputs**          | Use `client.responses.parse()` with Pydantic models to guarantee schema adherence at generation time |
-| **No `archive` in LLM ops**     | Archive is deterministic post-step; LLM only plans semantic operations                               |
-| **Structured patch primitives** | No regex patching; use `upsert_frontmatter`, `append_under_heading`, etc.                            |
-| **Transactional apply**         | Backup → Execute → Rollback on failure; batch succeeds or fails atomically                           |
-| **Clean git required**          | Fail fast if working directory is dirty (override with `--allow-dirty`)                              |
+| Decision                        | Rationale                                                                                     |
+| ------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Structured Outputs**          | Use `client.beta.chat.completions.parse()` with Pydantic models to guarantee schema adherence |
+| **Heuristic Classification**    | Pattern matching on filename/content selects extraction profile; no LLM classification step   |
+| **No `archive` in LLM ops**     | Archive is deterministic post-step; LLM only plans semantic operations                        |
+| **Structured patch primitives** | No regex patching; use `upsert_frontmatter`, `append_under_heading`, etc.                     |
+| **Transactional apply**         | Backup → Execute → Rollback on failure; batch succeeds or fails atomically                    |
+| **Clean git required**          | Fail fast if working directory is dirty (override with `--allow-dirty`)                       |
 
 ### 2.3 Operations (LLM-Planned)
 
