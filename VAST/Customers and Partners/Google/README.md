@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Google
-last_contact: unknown
+last_contact: "2025-12-19"
 created: '2026-01-03'
 tags:
 - type/customer

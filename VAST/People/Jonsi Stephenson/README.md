@@ -2,7 +2,7 @@
 name: Jonsi Stephenson
 role: CEO
 company: VAST Data
-last_contact: unknown
+last_contact: "2026-01-03"
 ---
 
 # Jonsi Stephenson

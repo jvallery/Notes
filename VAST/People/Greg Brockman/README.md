@@ -2,7 +2,7 @@
 type: people
 title: Greg Brockman
 created: '2026-01-03'
-last_contact: unknown
+last_contact: "2025-10-27"
 auto_created: true
 tags:
 - type/people

@@ -2,7 +2,7 @@
 type: customer
 title: NetApp
 created: '2026-01-03'
-last_contact: unknown
+last_contact: "2025-11-14"
 status: active
 auto_created: true
 tags:

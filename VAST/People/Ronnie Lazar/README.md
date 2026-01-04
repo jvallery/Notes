@@ -2,7 +2,7 @@
 type: people
 title: Ronnie Lazar
 created: '2026-01-03'
-last_contact: unknown
+last_contact: "2025-11-07"
 auto_created: true
 tags:
 - type/people

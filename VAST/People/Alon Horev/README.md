@@ -1,7 +1,7 @@
 ---
 type: people
 title: Alon Horev
-last_contact: unknown
+last_contact: "2026-01-03"
 created: '2026-01-03'
 tags:
 - type/people

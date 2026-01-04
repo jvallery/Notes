@@ -1,7 +1,7 @@
 ---
 type: people
 title: Liraz Ben Or
-last_contact: unknown
+last_contact: "2025-11-07"
 created: '2026-01-03'
 tags:
 - type/people

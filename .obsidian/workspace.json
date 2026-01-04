@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Alon Horev/_Open Topics.md",
+                "file": "VAST/Projects/Building an AI cloud with VAST/README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "_Open Topics"
+              "title": "README"
             }
           }
         ]
@@ -154,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "VAST/People/Alon Horev/_Open Topics.md",
+                "file": "VAST/Projects/Building an AI cloud with VAST/README.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of _Open Topics"
+              "title": "Outline of README"
             }
           }
         ],
@@ -183,44 +183,44 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "af216fe4a7d76c13",
+  "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
+    "Workflow/README.md",
+    "Workflow/_archive/REVIEW-BUNDLE.md",
+    "Workflow/_archive/REFACTOR.md",
+    "Workflow/_archive",
+    "Inbox/Transcripts/2025-12-16 09 08 - Jonsi Jason 1-1.md",
+    "Inbox/Transcripts/2025-12-15 14 59 - Jason Lior Weekly Call.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/travel.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/people.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/rob.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/projects.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/partners.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/journal.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates/customer.md",
+    "Inbox/_archive/legacy_bins/_templates/travel.md",
+    "Inbox/_archive/legacy_bins/_templates/rob.md",
+    "Inbox/_archive/legacy_bins/_templates/projects.md",
+    "Inbox/_archive/legacy_bins/_templates/people.md",
+    "Inbox/_archive/legacy_bins/_templates/partners.md",
+    "Inbox/_archive/legacy_bins/_templates/journal.md",
+    "Inbox/_archive/legacy_bins/_templates/customer.md",
+    "Inbox/_archive/legacy_bins/_prompts/system-meeting-extractor.md",
+    "Inbox/_archive/legacy_bins/_prompts/subtemplates",
+    "Inbox/_archive/legacy_bins/_prompts/meeting-extract-unified.md",
+    "Inbox/_archive/legacy_bins/_templates",
+    "Inbox/_archive/legacy_bins/_prompts",
+    "Inbox/_archive/legacy_bins",
+    "VAST/People/Kurt Niebuhr/README.md",
+    "VAST/People/Rosanne Kincaid–Smith/README.md",
+    "VAST/People/Rob Benoit/README.md",
+    "VAST/People/Vishnu Charan TJ/README.md",
+    "VAST/People/Yogev Vankin/README.md",
     "Workflow/scripts/cleanup/readme_auditor.py",
-    "Sources/Transcripts/2025/2025-12-18 - Azure integration recording.md",
-    "Sources/Transcripts/2025/2025-11-04 - Jeff Denworth - Planning sessions.md",
-    "Sources/Transcripts/2025/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md",
-    "Sources/Transcripts/2025/2025-11-03 - Lior Genzel - MAI POC and hardware SKU.md",
     "Workflow/scripts/cleanup/source_normalizer.py",
-    "Workflow/prompts/audit-readme.md",
     "Workflow/scripts/cleanup/__init__.py",
     "Workflow/scripts/cleanup/readme_normalizer.py",
     "Workflow/scripts/cleanup",
-    "VAST/People/Akanksha Mehrotra/README.md",
-    "VAST/People/Aaron Zilber/README.md",
-    "VAST/People/Aaron Batillo/README.md",
-    "VAST/People/Satya Nadella/README.md",
-    "VAST/People/Sam Hopewell/README.md",
-    "Sources/Transcripts/2025/2025-10-22 - Sam Hopewell meeting notes.md",
-    "VAST/People/Tiffany Stonehill/README.md",
-    "VAST/People/Timo Pervane/README.md",
-    "VAST/People/Tomer Hagay/README.md",
-    "VAST/Projects/BlobFuse/README.md",
-    "VAST/People/_MANIFEST.md",
-    "Sources/Transcripts/2025/2025-10-29 - Tackle and VAST kicked off onboarding to sell VAST’s SaaS via Google Cloud Marke.md",
-    "Sources/Transcripts/2025/2025-10-29 - Kickoff of VAST’s onboarding to Tackle to connect an existing GCP Marketplace li.md",
-    "Sources/Transcripts/2025/2025-10 - Pricing Tasks.md",
-    "Sources/Transcripts/2025/2025-10-27 - The team debated how to align cloud pricing with the new on‑prem model. Two opti.md",
-    "Sources/Transcripts/2025/2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris.md",
-    "Sources/Transcripts/2025/2025-12-18 1303 - New Recording.md",
-    "Sources/Transcripts/2025/2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin.md",
-    "Sources/Transcripts/2025/2025-10 - Cloud Marketplace MVP.md",
-    "Sources/Transcripts/2025/2025-11-03 - Team reviewed how cloud clusters must map to Salesforce assets (AccountSitePSN.md",
-    "Workflow/scripts/migrate/__init__.py",
-    "Workflow/scripts/migrate/consolidate_sources.py",
-    "Sources/Transcripts/2026",
-    "Sources/Transcripts/2025",
-    "Sources/Transcripts/2024",
-    "Sources/Email/2026",
     "Personal/Projects/Frigate/snapshots/backyard_2.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_powerwall.jpg",
     "Personal/Projects/Frigate/snapshots/storageyard_2.jpg",

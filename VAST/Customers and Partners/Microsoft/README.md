@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Microsoft
-last_contact: unknown
+last_contact: "2026-01-03"
 created: '2026-01-03'
 tags:
 - type/customer

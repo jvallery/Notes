@@ -1,7 +1,7 @@
 ---
 type: people
 title: Eyal Traitel
-last_contact: unknown
+last_contact: "2025-10-29"
 created: '2026-01-03'
 tags:
 - type/people
