@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Align roles, gaps, collaboration"
-date: "2025-10-30"
-person: "Andy Perlsteiner"
-participants: ["Andy Perlsteiner", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - Alignment call on roles, gaps, and collaboration. Andy outlined his team’s four.md"
+type: people
+title: Align roles, gaps, collaboration
+date: '2025-10-30'
+person: Andy Perlsteiner
+participants:
+- Andy Perlsteiner
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Alignment call on roles, gaps,
+  and collaboration. Andy outlined his team’s four.md
 tags:
-  - "type/people"
-  - "person/andy-perlsteiner"
-  - "generated"
+- type/people
+- person/andy-perlsteiner
+- generated
 ---
 
 # Align roles, gaps, collaboration

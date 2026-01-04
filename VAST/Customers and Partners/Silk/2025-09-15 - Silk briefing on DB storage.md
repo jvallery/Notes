@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "Silk briefing on DB storage"
-date: "2025-09-15"
-account: "Silk"
-participants: ["Jason", "Chris", "Tom"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re.md"
+type: customer
+title: Silk briefing on DB storage
+date: '2025-09-15'
+account: Silk
+participants:
+- Jason
+- Chris
+- Tom
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Silk briefed Jason on its software-defined
+  cloud storage for high-performance re.md
 tags:
-  - "type/customer"
-  - "account/silk"
-  - "generated"
+- type/customer
+- account/silk
+- generated
 ---
 
 # Silk briefing on DB storage

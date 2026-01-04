@@ -1,15 +1,16 @@
 ---
-type: "customer"
-title: "Microsoft strategy and SCO prep"
-date: "2025-12-19"
-account: "Microsoft"
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-19/original.md"
+type: customer
+title: Microsoft strategy and SCO prep
+date: '2025-12-19'
+account: Microsoft
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Microsoft strategy and SCO prep

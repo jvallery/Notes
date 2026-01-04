@@ -1,15 +1,25 @@
 ---
-type: "customer"
-title: "Google GDC RFP review"
-date: "2025-12-15"
-account: "Google"
-participants: ["Jason Vallery", "Lior Genzel", "David Pollack", "Jeff", "Kamal", "Malikarjan Sehzal", "Seiza Gersman", "Gopal", "Tim", "David"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-15/2025-12-15 16 10 - Google GDC RFP.md"
+type: customer
+title: Google GDC RFP review
+date: '2025-12-15'
+account: Google
+participants:
+- Jason Vallery
+- Lior Genzel
+- David Pollack
+- Jeff
+- Kamal
+- Malikarjan Sehzal
+- Seiza Gersman
+- Gopal
+- Tim
+- David
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-12-15 16 10 - Google GDC RFP.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # Google GDC RFP review

@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "LPM board AI discussion"
-date: "2025-10-27"
-person: "Longmont Public Media"
-participants: ["TBD"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-27/2025-10-27 - LPM board discussion on AI.md"
+type: people
+title: LPM board AI discussion
+date: '2025-10-27'
+person: Longmont Public Media
+participants:
+- TBD
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-27 - LPM board discussion on AI.md
 tags:
-  - "type/people"
-  - "person/longmont-public-media"
-  - "generated"
+- type/people
+- person/longmont-public-media
+- generated
 ---
 
 # LPM board AI discussion

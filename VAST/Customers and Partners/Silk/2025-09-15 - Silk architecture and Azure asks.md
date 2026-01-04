@@ -1,15 +1,20 @@
 ---
-type: "customer"
-title: "Silk architecture and Azure asks"
-date: "2025-09-15"
-account: "Silk"
-participants: ["Jason", "Tom", "Chris", "Ong"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and.md"
+type: customer
+title: Silk architecture and Azure asks
+date: '2025-09-15'
+account: Silk
+participants:
+- Jason
+- Tom
+- Chris
+- Ong
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Silk briefed Jason on its cloud
+  storage architecture optimized for databases and.md
 tags:
-  - "type/customer"
-  - "account/silk"
-  - "generated"
+- type/customer
+- account/silk
+- generated
 ---
 
 # Silk architecture and Azure asks

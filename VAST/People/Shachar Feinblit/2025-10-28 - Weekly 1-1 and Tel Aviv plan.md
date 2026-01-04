@@ -1,15 +1,18 @@
 ---
-type: "rob"
-title: "Weekly 1:1 and Tel Aviv plan"
-date: "2025-10-28"
-rob_forum: "Shachar Feinblit"
-participants: ["Jason Vallery", "Shachar Feinblit"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-28 - Jason and Shachar aligned on setting a weekly 30-minute 11 and planning Jason’s.md"
+type: rob
+title: Weekly 1:1 and Tel Aviv plan
+date: '2025-10-28'
+rob_forum: Shachar Feinblit
+participants:
+- Jason Vallery
+- Shachar Feinblit
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Jason and Shachar aligned on setting
+  a weekly 30-minute 11 and planning Jason’s.md
 tags:
-  - "type/rob"
-  - "rob/shachar-feinblit"
-  - "generated"
+- type/rob
+- rob/shachar-feinblit
+- generated
 ---
 
 # Weekly 1:1 and Tel Aviv plan

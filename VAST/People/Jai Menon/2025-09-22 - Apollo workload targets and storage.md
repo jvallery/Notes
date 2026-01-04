@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Apollo workload targets and storage"
-date: "2025-09-22"
-person: "Jai Menon"
-participants: ["Jason Vallery", "Jai Menon"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-22/2025-09-22 - Jason and Jai discussed Apollo’s target workloads and deployment model (scale pe.md"
+type: people
+title: Apollo workload targets and storage
+date: '2025-09-22'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-22 - Jason and Jai discussed Apollo’s
+  target workloads and deployment model (scale pe.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Apollo workload targets and storage

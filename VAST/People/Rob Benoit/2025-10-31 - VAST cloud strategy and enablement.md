@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "VAST cloud strategy and enablement"
-date: "2025-10-31"
-person: "Rob Benoit"
-participants: ["Jason Vallery", "Rob Benoit"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-31/2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE.md"
+type: people
+title: VAST cloud strategy and enablement
+date: '2025-10-31'
+person: Rob Benoit
+participants:
+- Jason Vallery
+- Rob Benoit
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-31 - Intro discussion covering VAST-in-cloud
+  strategy, field enablement gaps, and SE.md
 tags:
-  - "type/people"
-  - "person/rob-benoit"
-  - "generated"
+- type/people
+- person/rob-benoit
+- generated
 ---
 
 # VAST cloud strategy and enablement

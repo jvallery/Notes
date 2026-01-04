@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Align on OpenAI cache evaluation"
-date: "2025-09-03"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Reconnected post-sabbatical and aligned on Jason’s initial focus evaluate OpenA.md"
+type: people
+title: Align on OpenAI cache evaluation
+date: '2025-09-03'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-03 - Reconnected post-sabbatical and
+  aligned on Jason’s initial focus evaluate OpenA.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Align on OpenAI cache evaluation

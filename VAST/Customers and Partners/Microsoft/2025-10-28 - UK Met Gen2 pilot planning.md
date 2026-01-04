@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "UK Met Gen2 pilot planning"
-date: "2025-10-28"
-account: "Microsoft"
-participants: ["Jason Vallery", "Niko Dukic", "Lior Genzel"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Working session on UK Met Gen2 storagecompute plan. VaST to run a pilot to vali.md"
+type: customer
+title: UK Met Gen2 pilot planning
+date: '2025-10-28'
+account: Microsoft
+participants:
+- Jason Vallery
+- Niko Dukic
+- Lior Genzel
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Working session on UK Met Gen2
+  storagecompute plan. VaST to run a pilot to vali.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # UK Met Gen2 pilot planning

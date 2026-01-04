@@ -1,15 +1,34 @@
 ---
-type: "customer"
-title: "GCP RDMA IP failover options"
-date: "2025-10-28"
-account: "Google"
-participants: ["Asaf Levy", "Ben (bengit@google.com)", "Billy Kettler", "bobnapaa@google.com", "Eirikur Hrafnsson", "fanyanf@google.com", "hildebrand@google.com", "iraoren@google.com", "John Downey", "Jonsi Stephenson", "Karl Vietmeier", "Lior Genzel", "Mordechai Blaunstein", "Olivia Bouree", "Ronnie Lazar", "shengqiu@google.com", "Tomer Hagay", "wpien@google.com", "yardenh@google.com", "yevgenik@google.com"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/original.md"
+type: customer
+title: GCP RDMA IP failover options
+date: '2025-10-28'
+account: Google
+participants:
+- Asaf Levy
+- Ben (bengit@google.com)
+- Billy Kettler
+- bobnapaa@google.com
+- Eirikur Hrafnsson
+- fanyanf@google.com
+- hildebrand@google.com
+- iraoren@google.com
+- John Downey
+- Jonsi Stephenson
+- Karl Vietmeier
+- Lior Genzel
+- Mordechai Blaunstein
+- Olivia Bouree
+- Ronnie Lazar
+- shengqiu@google.com
+- Tomer Hagay
+- wpien@google.com
+- yardenh@google.com
+- yevgenik@google.com
+source: transcript
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # GCP RDMA IP failover options

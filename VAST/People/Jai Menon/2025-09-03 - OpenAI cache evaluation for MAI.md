@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "OpenAI cache evaluation for MAI"
-date: "2025-09-03"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Jai outlined a near-term technical focus evaluate OpenAI’s caching code as a ca.md"
+type: people
+title: OpenAI cache evaluation for MAI
+date: '2025-09-03'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-03 - Jai outlined a near-term technical
+  focus evaluate OpenAI’s caching code as a ca.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # OpenAI cache evaluation for MAI

@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "Sync with Liraz Ben Or"
-date: "2025-10-01"
-person: "Liraz Ben Or"
-participants: ["Liraz Ben Or"]
-source: "transcript"
-source_ref: "Inbox/_archive/2026-01-04 - 2025-10 - Liraz Ben Or.md"
+type: people
+title: Sync with Liraz Ben Or
+date: '2025-10-01'
+person: Liraz Ben Or
+participants:
+- Liraz Ben Or
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - Liraz Ben Or.md
 tags:
-  - "type/people"
-  - "person/liraz-ben-or"
-  - "generated"
+- type/people
+- person/liraz-ben-or
+- generated
 ---
 
 # Sync with Liraz Ben Or

@@ -1,15 +1,15 @@
 ---
-type: "customer"
-title: "Microsoft AI capacity and VAST"
-date: "2025-11-12"
-account: "Microsoft"
+type: customer
+title: Microsoft AI capacity and VAST
+date: '2025-11-12'
+account: Microsoft
 participants: []
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-12/2025-11-12 - Announcements.md"
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-12 - Announcements.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Microsoft AI capacity and VAST

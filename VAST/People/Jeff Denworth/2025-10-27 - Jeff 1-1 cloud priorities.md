@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Jeff 1:1 cloud priorities"
-date: "2025-10-27"
-person: "Jeff Denworth"
-participants: ["Jeff Denworth", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-27/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md"
+type: people
+title: Jeff 1:1 cloud priorities
+date: '2025-10-27'
+person: Jeff Denworth
+participants:
+- Jeff Denworth
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-27 - Jason and Jeff aligned on near-term
+  focus synthesize a cloud pipeline view and.md
 tags:
-  - "type/customer"
-  - "account/jeff-denworth"
-  - "generated"
+- type/customer
+- account/jeff-denworth
+- generated
 ---
 
 # Jeff 1:1 cloud priorities

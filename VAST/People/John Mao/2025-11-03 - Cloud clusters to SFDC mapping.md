@@ -1,15 +1,20 @@
 ---
-type: "people"
-title: "Cloud clusters to SFDC mapping"
-date: "2025-11-03"
-person: "John"
-participants: ["Jason Vallery", "Tomer", "Adar", "John"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-03/2025-11-03 - Team reviewed how cloud clusters must map to Salesforce assets (AccountSitePSN.md"
+type: people
+title: Cloud clusters to SFDC mapping
+date: '2025-11-03'
+person: John
+participants:
+- Jason Vallery
+- Tomer
+- Adar
+- John
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-03 - Team reviewed how cloud clusters
+  must map to Salesforce assets (AccountSitePSN.md
 tags:
-  - "type/people"
-  - "person/john"
-  - "generated"
+- type/people
+- person/john
+- generated
 ---
 
 # Cloud clusters to SFDC mapping

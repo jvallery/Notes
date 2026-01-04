@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "VAST momentum and Azure Apollo"
-date: "2025-11-06"
-account: "Microsoft"
-participants: ["Kanchan Mehrotra", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-06/2025-11-06 - Jason shared VAST’s momentum (CoreWeave $1.2B deal) and updates on Microsoft’s A.md"
+type: customer
+title: VAST momentum and Azure Apollo
+date: '2025-11-06'
+account: Microsoft
+participants:
+- Kanchan Mehrotra
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-06 - Jason shared VAST’s momentum (CoreWeave
+  $1.2B deal) and updates on Microsoft’s A.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # VAST momentum and Azure Apollo

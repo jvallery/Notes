@@ -1,15 +1,17 @@
 ---
-type: "people"
-title: "Request OVA for lab testing"
-date: "2025-10-01"
-person: "Josh Wentzell"
-participants: ["Josh Wentzell", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2026-01-04 - 2025-10 - Josh Wentzell.md"
+type: people
+title: Request OVA for lab testing
+date: '2025-10-01'
+person: Josh Wentzell
+participants:
+- Josh Wentzell
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - Josh Wentzell.md
 tags:
-  - "type/people"
-  - "person/josh-wentzell"
-  - "generated"
+- type/people
+- person/josh-wentzell
+- generated
 ---
 
 # Request OVA for lab testing

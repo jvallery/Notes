@@ -1,15 +1,24 @@
 ---
-type: "people"
-title: "Distributed cache preview planning"
-date: "2025-09-16"
-person: "Vishnu Charan TJ"
-participants: ["Vishnu Charan TJ", "Amit", "Jason Vallery", "Sourav", "Shankar", "Pete", "Tomer", "Akanksha"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-16/2025-09-16 - Team reviewed status of distributed cache for checkpointing implementation comp.md"
+type: people
+title: Distributed cache preview planning
+date: '2025-09-16'
+person: Vishnu Charan TJ
+participants:
+- Vishnu Charan TJ
+- Amit
+- Jason Vallery
+- Sourav
+- Shankar
+- Pete
+- Tomer
+- Akanksha
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-16 - Team reviewed status of distributed
+  cache for checkpointing implementation comp.md
 tags:
-  - "type/people"
-  - "person/vishnu-charan-tj"
-  - "generated"
+- type/people
+- person/vishnu-charan-tj
+- generated
 ---
 
 # Distributed cache preview planning

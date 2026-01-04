@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Intro 1:1 on cloud enablement"
-date: "2025-10-30"
-person: "Deandre Jackson"
-participants: ["Jason Vallery", "Deandre Jackson"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - Intro 1-1 between Jason and Dre. Dre outlined SE enablement cadence and an S3Ob.md"
+type: people
+title: Intro 1:1 on cloud enablement
+date: '2025-10-30'
+person: Deandre Jackson
+participants:
+- Jason Vallery
+- Deandre Jackson
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Intro 1-1 between Jason and Dre.
+  Dre outlined SE enablement cadence and an S3Ob.md
 tags:
-  - "type/customer"
-  - "account/deandre-jackson"
-  - "generated"
+- type/customer
+- account/deandre-jackson
+- generated
 ---
 
 # Intro 1:1 on cloud enablement

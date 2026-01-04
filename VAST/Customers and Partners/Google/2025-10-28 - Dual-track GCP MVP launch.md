@@ -1,15 +1,23 @@
 ---
-type: "customer"
-title: "Dual-track GCP MVP launch"
-date: "2025-10-28"
-account: "Google"
-participants: ["Jason Vallery", "Asaf Levy", "Eirikur Hrafnsson", "Jonsi Stefansson", "Kirstin Bordner", "Lior Genzel", "Ronnie Lazar"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Cloud BU leadership aligned on a dual-track strategy (1) ship GCP MVP via marke.md"
+type: customer
+title: Dual-track GCP MVP launch
+date: '2025-10-28'
+account: Google
+participants:
+- Jason Vallery
+- Asaf Levy
+- Eirikur Hrafnsson
+- Jonsi Stefansson
+- Kirstin Bordner
+- Lior Genzel
+- Ronnie Lazar
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Cloud BU leadership aligned on
+  a dual-track strategy (1) ship GCP MVP via marke.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # Dual-track GCP MVP launch

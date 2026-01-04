@@ -1,15 +1,33 @@
 ---
-type: "customer"
-title: "Dual-path Azure and bare-metal plan"
-date: "2025-10-29"
-account: "Microsoft"
-participants: ["Jonsi Stemmelsson", "Leo", "Nico", "Mike", "Jason Vallery", "James", "Trevor", "Tiff", "John", "Anand", "Eiki", "Jan", "Assaf", "Sarah", "Claire", "Ed Kim", "Roni"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Team aligned on a dual-path approach 1) deliver an Azure-based VAST test on LSV.md"
+type: customer
+title: Dual-path Azure and bare-metal plan
+date: '2025-10-29'
+account: Microsoft
+participants:
+- Jonsi Stemmelsson
+- Leo
+- Nico
+- Mike
+- Jason Vallery
+- James
+- Trevor
+- Tiff
+- John
+- Anand
+- Eiki
+- Jan
+- Assaf
+- Sarah
+- Claire
+- Ed Kim
+- Roni
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Team aligned on a dual-path approach
+  1) deliver an Azure-based VAST test on LSV.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Dual-path Azure and bare-metal plan

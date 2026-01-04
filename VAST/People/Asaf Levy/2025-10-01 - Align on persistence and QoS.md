@@ -1,15 +1,17 @@
 ---
-type: "people"
-title: "Align on persistence and QoS"
-date: "2025-10-01"
-person: "Asaf Levy"
-participants: ["Asaf Levy", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2026-01-04 - 2025-10 - Asaf Levy.md"
+type: people
+title: Align on persistence and QoS
+date: '2025-10-01'
+person: Asaf Levy
+participants:
+- Asaf Levy
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - Asaf Levy.md
 tags:
-  - "type/customer"
-  - "account/asaf-levy"
-  - "generated"
+- type/customer
+- account/asaf-levy
+- generated
 ---
 
 # Align on persistence and QoS

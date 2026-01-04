@@ -1,15 +1,27 @@
 ---
-type: "people"
-title: "Weekly SE community call"
-date: "2025-10-30"
-person: "JB"
-participants: ["JB", "Rob", "Dre", "Stacy", "Jeff Moeller", "Andrew Stack", "Andy", "Tim", "Paul", "Parker", "Travis"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-30 - Weekly SE community call covering end-of-quarter push, Tech Summit logistics, an.md"
+type: people
+title: Weekly SE community call
+date: '2025-10-30'
+person: JB
+participants:
+- JB
+- Rob
+- Dre
+- Stacy
+- Jeff Moeller
+- Andrew Stack
+- Andy
+- Tim
+- Paul
+- Parker
+- Travis
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Weekly SE community call covering
+  end-of-quarter push, Tech Summit logistics, an.md
 tags:
-  - "type/people"
-  - "person/jb"
-  - "generated"
+- type/people
+- person/jb
+- generated
 ---
 
 # Weekly SE community call

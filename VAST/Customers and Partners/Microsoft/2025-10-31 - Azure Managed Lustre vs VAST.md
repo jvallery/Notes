@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "Azure Managed Lustre vs VAST"
-date: "2025-10-31"
-account: "Microsoft"
-participants: ["Jason Vallery", "Lior Genzel", "Wolfgang"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-31/2025-10-31 - Discussion comparing Azure Managed Lustre architecture, scaling, and pricing wit.md"
+type: customer
+title: Azure Managed Lustre vs VAST
+date: '2025-10-31'
+account: Microsoft
+participants:
+- Jason Vallery
+- Lior Genzel
+- Wolfgang
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-31 - Discussion comparing Azure Managed
+  Lustre architecture, scaling, and pricing wit.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Azure Managed Lustre vs VAST

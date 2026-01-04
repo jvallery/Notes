@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "VAST/CoreWeave storage strategy deep dive"
-date: "2025-09-18"
-person: "Jack Kabat"
-participants: ["Jack Kabat", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-18/2025-09-18 - Jason outlined his new architect remit to assess VAST and CoreWeave strategies,.md"
+type: people
+title: VAST/CoreWeave storage strategy deep dive
+date: '2025-09-18'
+person: Jack Kabat
+participants:
+- Jack Kabat
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-18 - Jason outlined his new architect
+  remit to assess VAST and CoreWeave strategies,.md
 tags:
-  - "type/customer"
-  - "account/jack-kabat"
-  - "generated"
+- type/customer
+- account/jack-kabat
+- generated
 ---
 
 # VAST/CoreWeave storage strategy deep dive

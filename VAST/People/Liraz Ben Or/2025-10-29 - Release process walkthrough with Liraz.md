@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Release process walkthrough with Liraz"
-date: "2025-10-29"
-person: "Liraz Ben Or"
-participants: ["Liraz Ben Or", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Liraz walked Jason through VAST’s non-traditional release management 4 phase ga.md"
+type: people
+title: Release process walkthrough with Liraz
+date: '2025-10-29'
+person: Liraz Ben Or
+participants:
+- Liraz Ben Or
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Liraz walked Jason through VAST’s
+  non-traditional release management 4 phase ga.md
 tags:
-  - "type/people"
-  - "person/liraz-ben-or"
-  - "generated"
+- type/people
+- person/liraz-ben-or
+- generated
 ---
 
 # Release process walkthrough with Liraz

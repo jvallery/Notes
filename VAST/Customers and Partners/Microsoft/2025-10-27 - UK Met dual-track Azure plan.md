@@ -1,15 +1,21 @@
 ---
-type: "customer"
-title: "UK Met dual-track Azure plan"
-date: "2025-10-27"
-account: "Microsoft"
-participants: ["Jason Vallery", "Lior Genzel", "Jonsi Stephenson", "Rony", "Ronen Cohen"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-27 - Team aligned on making UK Met Office successful with dual paths Plan A on Azure.md"
+type: customer
+title: UK Met dual-track Azure plan
+date: '2025-10-27'
+account: Microsoft
+participants:
+- Jason Vallery
+- Lior Genzel
+- Jonsi Stephenson
+- Rony
+- Ronen Cohen
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-27 - Team aligned on making UK Met Office
+  successful with dual paths Plan A on Azure.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # UK Met dual-track Azure plan

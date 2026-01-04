@@ -1,15 +1,17 @@
 ---
-type: "customer"
-title: "Prep for Microsoft AI talks"
-date: "2026-01-03"
-account: "Microsoft"
-participants: ["Jonsi Stephenson", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2026-01-03/2026-01-03 - Prep for Microsoft AI talks.md"
+type: customer
+title: Prep for Microsoft AI talks
+date: '2026-01-03'
+account: Microsoft
+participants:
+- Jonsi Stephenson
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2026-01-03 - Prep for Microsoft AI talks.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Prep for Microsoft AI talks

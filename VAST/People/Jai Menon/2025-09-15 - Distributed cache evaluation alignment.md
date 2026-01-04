@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Distributed cache evaluation alignment"
-date: "2025-09-15"
-person: "Jai Menon"
-participants: ["Jason Vallery", "Jai Menon"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t.md"
+type: people
+title: Distributed cache evaluation alignment
+date: '2025-09-15'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Jason and Jai aligned on next steps
+  for a distributed cache strategy and short-t.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Distributed cache evaluation alignment

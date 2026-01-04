@@ -1,15 +1,17 @@
 ---
-type: "people"
-title: "Prep for Microsoft AI talks"
-date: "2025-12-16"
-person: "Jonsi Stephenson"
-participants: ["Jonsi Stefanson", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-16/2025-12-16 09 08 - Jonsi Jason 1-1.md"
+type: people
+title: Prep for Microsoft AI talks
+date: '2025-12-16'
+person: Jonsi Stephenson
+participants:
+- Jonsi Stefanson
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-12-16 09 08 - Jonsi Jason 1-1.md
 tags:
-  - "type/people"
-  - "person/jonsi-stephenson"
-  - "generated"
+- type/people
+- person/jonsi-stephenson
+- generated
 ---
 
 # Prep for Microsoft AI talks

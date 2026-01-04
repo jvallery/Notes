@@ -1,15 +1,22 @@
 ---
-type: "customer"
-title: "MAI Falcon and Apollo path"
-date: "2025-10-28"
-account: "Microsoft"
-participants: ["Jason Vallery", "Alon Horev", "Kushal", "Vipin", "Lior Genzel", "Tiffany Stonehill"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Discussed Microsoft AI (MAI) landscape, Falcon capacity rollout, and Azure dynam.md"
+type: customer
+title: MAI Falcon and Apollo path
+date: '2025-10-28'
+account: Microsoft
+participants:
+- Jason Vallery
+- Alon Horev
+- Kushal
+- Vipin
+- Lior Genzel
+- Tiffany Stonehill
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Discussed Microsoft AI (MAI) landscape,
+  Falcon capacity rollout, and Azure dynam.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # MAI Falcon and Apollo path

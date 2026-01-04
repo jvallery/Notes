@@ -1,15 +1,20 @@
 ---
-type: "customer"
-title: "EY design partner SI strategy"
-date: "2025-11-07"
-account: "EY"
-participants: ["Soraya Alami", "Jason Vallery", "Jesse Thaloor", "John Cedillo"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-07/2025-11-07 - The team aligned on a go-to-market strategy with global SIs focused on enterpris.md"
+type: customer
+title: EY design partner SI strategy
+date: '2025-11-07'
+account: EY
+participants:
+- Soraya Alami
+- Jason Vallery
+- Jesse Thaloor
+- John Cedillo
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-07 - The team aligned on a go-to-market
+  strategy with global SIs focused on enterpris.md
 tags:
-  - "type/customer"
-  - "account/ey"
-  - "generated"
+- type/customer
+- account/ey
+- generated
 ---
 
 # EY design partner SI strategy

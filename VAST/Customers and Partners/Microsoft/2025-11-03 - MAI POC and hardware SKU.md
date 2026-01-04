@@ -1,15 +1,17 @@
 ---
-type: "customer"
-title: "MAI POC and hardware SKU"
-date: "2025-11-03"
-account: "Microsoft"
-participants: ["Lior Genzel"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-03/2025-11-03 - Lior Genzel - MAI POC and hardware SKU.md"
+type: customer
+title: MAI POC and hardware SKU
+date: '2025-11-03'
+account: Microsoft
+participants:
+- Lior Genzel
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-03 - Lior Genzel - MAI POC and hardware
+  SKU.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # MAI POC and hardware SKU

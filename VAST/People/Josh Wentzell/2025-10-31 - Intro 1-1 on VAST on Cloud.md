@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Intro 1:1 on VAST on Cloud"
-date: "2025-10-31"
-person: "Josh Wentzell"
-participants: ["Jason Vallery", "Josh Wentzell"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-31/2025-10-31 - Introductory 1-1 focused on VAST on Cloud strategy and current platform gaps. Jo.md"
+type: people
+title: Intro 1:1 on VAST on Cloud
+date: '2025-10-31'
+person: Josh Wentzell
+participants:
+- Jason Vallery
+- Josh Wentzell
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-31 - Introductory 1-1 focused on VAST
+  on Cloud strategy and current platform gaps. Jo.md
 tags:
-  - "type/people"
-  - "person/josh-wentzell"
-  - "generated"
+- type/people
+- person/josh-wentzell
+- generated
 ---
 
 # Intro 1:1 on VAST on Cloud

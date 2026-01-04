@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "MAI Nebius storage alignment"
-date: "2025-11-20"
-account: "Microsoft"
-participants: ["Lior Genzel", "Bilal", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-20/2025-11-20 - Microsoft (Bilal) and VAST (Jason, Lior) aligned on storage options for MAI’s la.md"
+type: customer
+title: MAI Nebius storage alignment
+date: '2025-11-20'
+account: Microsoft
+participants:
+- Lior Genzel
+- Bilal
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-20 - Microsoft (Bilal) and VAST (Jason,
+  Lior) aligned on storage options for MAI’s la.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # MAI Nebius storage alignment

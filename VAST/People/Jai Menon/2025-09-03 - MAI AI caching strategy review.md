@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "MAI AI caching strategy review"
-date: "2025-09-03"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Jai outlined a high-priority need to define an AI caching strategy for MAI at ma.md"
+type: people
+title: MAI AI caching strategy review
+date: '2025-09-03'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-03 - Jai outlined a high-priority need
+  to define an AI caching strategy for MAI at ma.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # MAI AI caching strategy review

@@ -1,15 +1,25 @@
 ---
-type: "customer"
-title: "Parallel LSV4 and bare-metal tracks"
-date: "2025-10-29"
-account: "Microsoft"
-participants: ["Leo", "Mike", "James", "Nico", "Jason Vallery", "Jonsi Stephenson", "Eiki", "Trevor", "Tiff"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Teams aligned to run two tracks in parallel an Azure LSV4 test cluster for UK M.md"
+type: customer
+title: Parallel LSV4 and bare-metal tracks
+date: '2025-10-29'
+account: Microsoft
+participants:
+- Leo
+- Mike
+- James
+- Nico
+- Jason Vallery
+- Jonsi Stephenson
+- Eiki
+- Trevor
+- Tiff
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Teams aligned to run two tracks
+  in parallel an Azure LSV4 test cluster for UK M.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Parallel LSV4 and bare-metal tracks

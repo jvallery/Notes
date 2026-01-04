@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Distributed cache options alignment"
-date: "2025-09-15"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned.md"
+type: people
+title: Distributed cache options alignment
+date: '2025-09-15'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Discussed distributed cache strategy,
+  MAI needs, and BlobFuse readiness. Aligned.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Distributed cache options alignment

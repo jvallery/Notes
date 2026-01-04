@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "Release planning and SaaS gaps"
-date: "2025-10-29"
-person: "Eyal Traitel"
-participants: ["Jason Vallery", "Eyal Traitel"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/original.md"
+type: people
+title: Release planning and SaaS gaps
+date: '2025-10-29'
+person: Eyal Traitel
+participants:
+- Jason Vallery
+- Eyal Traitel
+source: transcript
 tags:
-  - "type/people"
-  - "person/eyal-traitel"
-  - "generated"
+- type/people
+- person/eyal-traitel
+- generated
 ---
 
 # Release planning and SaaS gaps

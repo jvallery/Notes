@@ -1,15 +1,25 @@
 ---
-type: "customer"
-title: "VAST Tackle GCP onboarding kickoff"
-date: "2025-10-29"
-account: "Google"
-participants: ["Dave Stryker", "Peter Kapsashi", "Jonsi Stefansson", "Jason Vallery", "A.K. Rapsone", "Ikki", "Huckney", "Pali", "Jotam"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Kickoff of VAST’s onboarding to Tackle to connect an existing GCP Marketplace li.md"
+type: customer
+title: VAST Tackle GCP onboarding kickoff
+date: '2025-10-29'
+account: Google
+participants:
+- Dave Stryker
+- Peter Kapsashi
+- Jonsi Stefansson
+- Jason Vallery
+- A.K. Rapsone
+- Ikki
+- Huckney
+- Pali
+- Jotam
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Kickoff of VAST’s onboarding to
+  Tackle to connect an existing GCP Marketplace li.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # VAST Tackle GCP onboarding kickoff

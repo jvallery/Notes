@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Microsoft GPU capacity strategy"
-date: "2025-10-22"
-account: "Microsoft"
-participants: ["Jason Vallery", "Rosanne Kincaid–Smith"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-22/2025-10-22 - Jason shared candid guidance on Microsoft’s approach to GPU capacity preference.md"
+type: customer
+title: Microsoft GPU capacity strategy
+date: '2025-10-22'
+account: Microsoft
+participants:
+- Jason Vallery
+- Rosanne Kincaid–Smith
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-22 - Jason shared candid guidance on
+  Microsoft’s approach to GPU capacity preference.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Microsoft GPU capacity strategy

@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "AI-first dev and cloud maturity"
-date: "2025-10-24"
-account: "VAST"
-participants: ["Jason Vallery", "Tomer Hagay"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-24/2025-10-24 - Jason and Tomer discussed accelerating AI-driven software development practices.md"
+type: customer
+title: AI-first dev and cloud maturity
+date: '2025-10-24'
+account: VAST
+participants:
+- Jason Vallery
+- Tomer Hagay
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-24 - Jason and Tomer discussed accelerating
+  AI-driven software development practices.md
 tags:
-  - "type/customer"
-  - "account/vast"
-  - "generated"
+- type/customer
+- account/vast
+- generated
 ---
 
 # AI-first dev and cloud maturity

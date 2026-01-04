@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Dhammak Microsoft partnership positioning"
-date: "2025-10-22"
-account: "Dhammak"
-participants: ["Rosanne Kincaid–Smith", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-22/2025-10-22 - Rosanne outlined Dhammak’s rapid data center and GPU cloud buildout and interest.md"
+type: customer
+title: Dhammak Microsoft partnership positioning
+date: '2025-10-22'
+account: Dhammak
+participants:
+- Rosanne Kincaid–Smith
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-22 - Rosanne outlined Dhammak’s rapid
+  data center and GPU cloud buildout and interest.md
 tags:
-  - "type/customer"
-  - "account/dhammak"
-  - "generated"
+- type/customer
+- account/dhammak
+- generated
 ---
 
 # Dhammak Microsoft partnership positioning

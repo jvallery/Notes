@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "Intro 1:1 on release process"
-date: "2025-10-29"
-person: "Liraz Ben Or"
-participants: ["Liraz Ben Or", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/original.md"
+type: people
+title: Intro 1:1 on release process
+date: '2025-10-29'
+person: Liraz Ben Or
+participants:
+- Liraz Ben Or
+- Jason Vallery
+source: transcript
 tags:
-  - "type/people"
-  - "person/liraz-ben-or"
-  - "generated"
+- type/people
+- person/liraz-ben-or
+- generated
 ---
 
 # Intro 1:1 on release process

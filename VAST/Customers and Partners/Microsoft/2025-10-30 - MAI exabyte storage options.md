@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "MAI exabyte storage options"
-date: "2025-10-30"
-account: "Microsoft"
-participants: ["Jason Vallery", "Paul", "Ray"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - Team aligned on presenting two exabyte-scale storage options for MAI (1) an NVI.md"
+type: customer
+title: MAI exabyte storage options
+date: '2025-10-30'
+account: Microsoft
+participants:
+- Jason Vallery
+- Paul
+- Ray
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Team aligned on presenting two
+  exabyte-scale storage options for MAI (1) an NVI.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # MAI exabyte storage options

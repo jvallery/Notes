@@ -1,15 +1,23 @@
 ---
-type: "customer"
-title: "Cloud support roles and readiness"
-date: "2025-10-30"
-account: "Microsoft"
-participants: ["Jason Vallery", "Lior Genzel", "Daniel", "Rob Banga", "Yancey", "Timo Pervane", "Joe"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - The group aligned on establishing distinct Customer Success, Support, and SRE ro.md"
+type: customer
+title: Cloud support roles and readiness
+date: '2025-10-30'
+account: Microsoft
+participants:
+- Jason Vallery
+- Lior Genzel
+- Daniel
+- Rob Banga
+- Yancey
+- Timo Pervane
+- Joe
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - The group aligned on establishing
+  distinct Customer Success, Support, and SRE ro.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Cloud support roles and readiness

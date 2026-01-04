@@ -1,15 +1,25 @@
 ---
-type: "people"
-title: "Warm intro paths planning"
-date: "2025-11-07"
-person: "Chris Carpenter"
-participants: ["Jason Vallery", "Chris Carpenter", "Jeff Edwards", "Erik", "Rick Scurfield", "Jay Sutton", "John", "Alon", "Renen"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-07/2025-11-07 - Working session to brute-force warm paths into priority model builders using Lin.md"
+type: people
+title: Warm intro paths planning
+date: '2025-11-07'
+person: Chris Carpenter
+participants:
+- Jason Vallery
+- Chris Carpenter
+- Jeff Edwards
+- Erik
+- Rick Scurfield
+- Jay Sutton
+- John
+- Alon
+- Renen
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-07 - Working session to brute-force
+  warm paths into priority model builders using Lin.md
 tags:
-  - "type/people"
-  - "person/chris-carpenter"
-  - "generated"
+- type/people
+- person/chris-carpenter
+- generated
 ---
 
 # Warm intro paths planning

@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "VAST on Azure for Apollo"
-date: "2025-10-31"
-person: "Kushal Datta"
-participants: ["Kushal Datta", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-31/original.md"
+type: people
+title: VAST on Azure for Apollo
+date: '2025-10-31'
+person: Kushal Datta
+participants:
+- Kushal Datta
+- Jason Vallery
+source: transcript
 tags:
-  - "type/people"
-  - "person/kushal-datta"
-  - "generated"
+- type/people
+- person/kushal-datta
+- generated
 ---
 
 # VAST on Azure for Apollo

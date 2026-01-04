@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "VAST warm storage POC sync"
-date: "2025-10-22"
-account: "OpenAI"
-participants: ["Sam Hopewell", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-22/2025-10-22 - Jason (VAST) reconnected with Sam (OpenAI) to discuss VAST as GPU-adjacent warm.md"
+type: customer
+title: VAST warm storage POC sync
+date: '2025-10-22'
+account: OpenAI
+participants:
+- Sam Hopewell
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-22 - Jason (VAST) reconnected with Sam
+  (OpenAI) to discuss VAST as GPU-adjacent warm.md
 tags:
-  - "type/customer"
-  - "account/openai"
-  - "generated"
+- type/customer
+- account/openai
+- generated
 ---
 
 # VAST warm storage POC sync

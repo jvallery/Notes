@@ -1,15 +1,16 @@
 ---
-type: "customer"
-title: "Walmart hybrid analytics requirements"
-date: "2025-11-05"
-account: "Walmart"
-participants: ["Walmart"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-11-05 - Walmart Analytics.md"
+type: customer
+title: Walmart hybrid analytics requirements
+date: '2025-11-05'
+account: Walmart
+participants:
+- Walmart
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-05 - Walmart Analytics.md
 tags:
-  - "type/customer"
-  - "account/walmart"
-  - "generated"
+- type/customer
+- account/walmart
+- generated
 ---
 
 # Walmart hybrid analytics requirements

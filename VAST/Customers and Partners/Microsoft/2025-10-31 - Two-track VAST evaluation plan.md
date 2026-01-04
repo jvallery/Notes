@@ -1,15 +1,29 @@
 ---
-type: "customer"
-title: "Two-track VAST evaluation plan"
-date: "2025-10-31"
-account: "Microsoft"
-participants: ["Qingying Zhang", "Yanzhao", "Jason Wilder", "Wendy", "Anson", "Paula", "Jovane", "Lior Genzel", "Jason Vallery", "Ray", "Paul Haddo", "Andy Prentice", "Alon"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-31 - Teams aligned on a two-track evaluation for Apollo’s AI cloud storage (A) valid.md"
+type: customer
+title: Two-track VAST evaluation plan
+date: '2025-10-31'
+account: Microsoft
+participants:
+- Qingying Zhang
+- Yanzhao
+- Jason Wilder
+- Wendy
+- Anson
+- Paula
+- Jovane
+- Lior Genzel
+- Jason Vallery
+- Ray
+- Paul Haddo
+- Andy Prentice
+- Alon
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-31 - Teams aligned on a two-track evaluation
+  for Apollo’s AI cloud storage (A) valid.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Two-track VAST evaluation plan

@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "VAST adoption in Microsoft programs"
-date: "2025-11-06"
-account: "Microsoft"
-participants: ["Myself", "Kanchan Mehrotra"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-06/2025-11-06 - Discussion centered on accelerating VAST adoption within Microsoft programs (MAI.md"
+type: customer
+title: VAST adoption in Microsoft programs
+date: '2025-11-06'
+account: Microsoft
+participants:
+- Myself
+- Kanchan Mehrotra
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-06 - Discussion centered on accelerating
+  VAST adoption within Microsoft programs (MAI.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # VAST adoption in Microsoft programs

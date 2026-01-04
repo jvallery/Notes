@@ -1,15 +1,20 @@
 ---
-type: "people"
-title: "Review AI pipeline summit slides"
-date: "2025-11-06"
-person: "Aaron Chaisson"
-participants: ["Aaron Chaisson", "Allison Boerum", "Jason Vallery", "Glenn Lockwood"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-06/2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p.md"
+type: people
+title: Review AI pipeline summit slides
+date: '2025-11-06'
+person: Aaron Chaisson
+participants:
+- Aaron Chaisson
+- Allison Boerum
+- Jason Vallery
+- Glenn Lockwood
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-06 - Aaron walked through updated slides
+  for next week’s SE conference covering two p.md
 tags:
-  - "type/people"
-  - "person/aaron-chaisson"
-  - "generated"
+- type/people
+- person/aaron-chaisson
+- generated
 ---
 
 # Review AI pipeline summit slides

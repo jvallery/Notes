@@ -1,15 +1,20 @@
 ---
-type: "people"
-title: "Retention discussion and Apollo scope"
-date: "2025-09-30"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery", "Manish", "Ong"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-30/2025-09-30 - Jason shared he has multiple external management opportunities and plans to deci.md"
+type: people
+title: Retention discussion and Apollo scope
+date: '2025-09-30'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+- Manish
+- Ong
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-30 - Jason shared he has multiple external
+  management opportunities and plans to deci.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Retention discussion and Apollo scope

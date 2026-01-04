@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Jai update on VAST/Crusoe"
-date: "2025-10-06"
-account: "Microsoft"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-06/2025-10-06 - Jason briefed Jai on offers from VAST and Crusoe, noting VAST’s complex, risky c.md"
+type: customer
+title: Jai update on VAST/Crusoe
+date: '2025-10-06'
+account: Microsoft
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-06 - Jason briefed Jai on offers from
+  VAST and Crusoe, noting VAST’s complex, risky c.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Jai update on VAST/Crusoe

@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Align on MAI and UKMO"
-date: "2025-10-28"
-account: "Microsoft"
-participants: ["Jason Vallery", "Kanchan Mehrotra"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-28 - Jason and Kanchan aligned to pursue MAI and UK Met Office as flagship wins to un.md"
+type: customer
+title: Align on MAI and UKMO
+date: '2025-10-28'
+account: Microsoft
+participants:
+- Jason Vallery
+- Kanchan Mehrotra
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Jason and Kanchan aligned to pursue
+  MAI and UK Met Office as flagship wins to un.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Align on MAI and UKMO

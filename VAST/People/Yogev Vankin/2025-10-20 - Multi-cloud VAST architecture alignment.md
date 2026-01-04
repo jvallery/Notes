@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Multi-cloud VAST architecture alignment"
-date: "2025-10-20"
-person: "Yogev Vankin"
-participants: ["Jason Vallery", "Yogev Vankin"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-20/2025-10-20 - Discussed cloud architectures for VAST on AWSGCPAzure, the need for object-sto.md"
+type: people
+title: Multi-cloud VAST architecture alignment
+date: '2025-10-20'
+person: Yogev Vankin
+participants:
+- Jason Vallery
+- Yogev Vankin
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-20 - Discussed cloud architectures for
+  VAST on AWSGCPAzure, the need for object-sto.md
 tags:
-  - "type/customer"
-  - "account/yogev-vankin"
-  - "generated"
+- type/customer
+- account/yogev-vankin
+- generated
 ---
 
 # Multi-cloud VAST architecture alignment

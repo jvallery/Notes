@@ -1,15 +1,19 @@
 ---
-type: "customer"
-title: "Two VAST designs for MAI"
-date: "2025-10-30"
-account: "Microsoft"
-participants: ["Jason Valleri", "Paul", "Ray"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-30 - Team aligned on presenting two VAST designs for MAI (1) an NVIDIA NCP reference.md"
+type: customer
+title: Two VAST designs for MAI
+date: '2025-10-30'
+account: Microsoft
+participants:
+- Jason Valleri
+- Paul
+- Ray
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Team aligned on presenting two
+  VAST designs for MAI (1) an NVIDIA NCP reference.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Two VAST designs for MAI

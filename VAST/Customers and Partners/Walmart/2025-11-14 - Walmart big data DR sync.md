@@ -1,15 +1,20 @@
 ---
-type: "customer"
-title: "Walmart big data DR sync"
-date: "2025-11-14"
-account: "Walmart"
-participants: ["Jason Vallery", "Mikey", "Brad", "Paul"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-14/2025-11-14 - Internal sync to align on Walmart’s big data initiative, clarify requirements, a.md"
+type: customer
+title: Walmart big data DR sync
+date: '2025-11-14'
+account: Walmart
+participants:
+- Jason Vallery
+- Mikey
+- Brad
+- Paul
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-14 - Internal sync to align on Walmart’s
+  big data initiative, clarify requirements, a.md
 tags:
-  - "type/customer"
-  - "account/walmart"
-  - "generated"
+- type/customer
+- account/walmart
+- generated
 ---
 
 # Walmart big data DR sync

@@ -1,15 +1,25 @@
 ---
-type: "customer"
-title: "VAST x Tackle GCP onboarding"
-date: "2025-10-29"
-account: "Google"
-participants: ["Dave Stryker", "Peter Kapsashi", "Ikki", "Jonsi Stefansson", "Jason Vallery", "A.K. Rapsone", "Huckney", "Pali", "Jotam"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Tackle and VAST kicked off onboarding to sell VAST’s SaaS via Google Cloud Marke.md"
+type: customer
+title: VAST x Tackle GCP onboarding
+date: '2025-10-29'
+account: Google
+participants:
+- Dave Stryker
+- Peter Kapsashi
+- Ikki
+- Jonsi Stefansson
+- Jason Vallery
+- A.K. Rapsone
+- Huckney
+- Pali
+- Jotam
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Tackle and VAST kicked off onboarding
+  to sell VAST’s SaaS via Google Cloud Marke.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # VAST x Tackle GCP onboarding

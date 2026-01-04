@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Jason weighing VAST vs Crusoe"
-date: "2025-10-06"
-account: "Microsoft"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr.md"
+type: customer
+title: Jason weighing VAST vs Crusoe
+date: '2025-10-06'
+account: Microsoft
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-06 - Jason shared he has a complex,
+  risky offer from VAST and a more stable option fr.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Jason weighing VAST vs Crusoe

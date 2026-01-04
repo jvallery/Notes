@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Retention risk and Apollo scope"
-date: "2025-09-29"
-person: "Maneesh Sah"
-participants: ["Maneesh Sah", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-29/2025-09-29 - Jason shared disappointment with his rewards and anxiety about scope and support.md"
+type: people
+title: Retention risk and Apollo scope
+date: '2025-09-29'
+person: Maneesh Sah
+participants:
+- Maneesh Sah
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-29 - Jason shared disappointment with
+  his rewards and anxiety about scope and support.md
 tags:
-  - "type/customer"
-  - "account/maneesh-sah"
-  - "generated"
+- type/customer
+- account/maneesh-sah
+- generated
 ---
 
 # Retention risk and Apollo scope

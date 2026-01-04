@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "MAI caching strategy evaluation"
-date: "2025-09-03"
-account: "Microsoft"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-03/2025-09-03 - Jai outlined a high-priority evaluation for an AI caching strategy to support MA.md"
+type: customer
+title: MAI caching strategy evaluation
+date: '2025-09-03'
+account: Microsoft
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-03 - Jai outlined a high-priority evaluation
+  for an AI caching strategy to support MA.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # MAI caching strategy evaluation

@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "MAI testing path and deck"
-date: "2025-10-30"
-person: "Lior Genzel"
-participants: ["Lior Genzel", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-30 - Reviewed MAI meeting prep and testing path (prefer hardware; VMs supported in De.md"
+type: people
+title: MAI testing path and deck
+date: '2025-10-30'
+person: Lior Genzel
+participants:
+- Lior Genzel
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - Reviewed MAI meeting prep and testing
+  path (prefer hardware; VMs supported in De.md
 tags:
-  - "type/people"
-  - "person/lior-genzel"
-  - "generated"
+- type/people
+- person/lior-genzel
+- generated
 ---
 
 # MAI testing path and deck

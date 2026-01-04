@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Align on MAI and UK Met"
-date: "2025-10-28"
-person: "Kanchan Mehrotra"
-participants: ["Jason Vallery", "Kanchan Mehrotra"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Jason and Koncha aligned on using MAI and UK Met Office as marquee wins to push.md"
+type: people
+title: Align on MAI and UK Met
+date: '2025-10-28'
+person: Kanchan Mehrotra
+participants:
+- Jason Vallery
+- Kanchan Mehrotra
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Jason and Koncha aligned on using
+  MAI and UK Met Office as marquee wins to push.md
 tags:
-  - "type/people"
-  - "person/kanchan-mehrotra"
-  - "generated"
+- type/people
+- person/kanchan-mehrotra
+- generated
 ---
 
 # Align on MAI and UK Met

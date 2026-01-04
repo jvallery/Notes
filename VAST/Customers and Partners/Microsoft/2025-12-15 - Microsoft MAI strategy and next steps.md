@@ -1,15 +1,17 @@
 ---
-type: "customer"
-title: "Microsoft MAI strategy and next steps"
-date: "2025-12-15"
-account: "Microsoft"
-participants: ["Lior Genzel", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-15/2025-12-15 14 59 - Jason Lior Weekly Call.md"
+type: customer
+title: Microsoft MAI strategy and next steps
+date: '2025-12-15'
+account: Microsoft
+participants:
+- Lior Genzel
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-12-15 14 59 - Jason Lior Weekly Call.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Microsoft MAI strategy and next steps

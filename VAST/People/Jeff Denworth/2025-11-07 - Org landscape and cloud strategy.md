@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Org landscape and cloud strategy"
-date: "2025-11-07"
-person: "Jeff Denworth"
-participants: ["Jeff Denworth", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-07/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md"
+type: people
+title: Org landscape and cloud strategy
+date: '2025-11-07'
+person: Jeff Denworth
+participants:
+- Jeff Denworth
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-07 - Reviewed org landscape and key
+  players; aligned that Jason will deeply understan.md
 tags:
-  - "type/people"
-  - "person/jeff-denworth"
-  - "generated"
+- type/people
+- person/jeff-denworth
+- generated
 ---
 
 # Org landscape and cloud strategy

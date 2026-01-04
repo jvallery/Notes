@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Hyperscaler strategy: Google and Microsoft"
-date: "2025-11-07"
-person: "Jonsi Stephenson"
-participants: ["Myself", "Jonsi Stephenson"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-11-07 - We aligned on hyperscaler strategy across Google and Microsoft. On Google, GDC i.md"
+type: people
+title: 'Hyperscaler strategy: Google and Microsoft'
+date: '2025-11-07'
+person: Jonsi Stephenson
+participants:
+- Myself
+- Jonsi Stephenson
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-07 - We aligned on hyperscaler strategy
+  across Google and Microsoft. On Google, GDC i.md
 tags:
-  - "type/customer"
-  - "account/jonsi-stephenson"
-  - "generated"
+- type/customer
+- account/jonsi-stephenson
+- generated
 ---
 
 # Hyperscaler strategy: Google and Microsoft

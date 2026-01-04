@@ -1,15 +1,17 @@
 ---
-type: "customer"
-title: "OpenAI storage strategy and VAST"
-date: "2025-10-22"
-account: "OpenAI"
-participants: ["Sam Hopewell", "Myself"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-22/2025-10-22 - Sam Hopewell meeting notes.md"
+type: customer
+title: OpenAI storage strategy and VAST
+date: '2025-10-22'
+account: OpenAI
+participants:
+- Sam Hopewell
+- Myself
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-22 - Sam Hopewell meeting notes.md
 tags:
-  - "type/customer"
-  - "account/openai"
-  - "generated"
+- type/customer
+- account/openai
+- generated
 ---
 
 # OpenAI storage strategy and VAST

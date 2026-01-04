@@ -1,15 +1,26 @@
 ---
-type: "customer"
-title: "Walmart lakehouse pilot prep"
-date: "2025-11-06"
-account: "Walmart"
-participants: ["Mikey", "Brett", "Jason Vallery", "Matt", "Avi", "Lior", "Jer", "Paul", "John Heidgerken", "Siyash"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-06/2025-11-06 - Internal prep to shape an architecture whiteboarding session with Walmart’s Lake.md"
+type: customer
+title: Walmart lakehouse pilot prep
+date: '2025-11-06'
+account: Walmart
+participants:
+- Mikey
+- Brett
+- Jason Vallery
+- Matt
+- Avi
+- Lior
+- Jer
+- Paul
+- John Heidgerken
+- Siyash
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-06 - Internal prep to shape an architecture
+  whiteboarding session with Walmart’s Lake.md
 tags:
-  - "type/customer"
-  - "account/walmart"
-  - "generated"
+- type/customer
+- account/walmart
+- generated
 ---
 
 # Walmart lakehouse pilot prep

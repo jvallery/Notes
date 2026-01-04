@@ -1,15 +1,21 @@
 ---
-type: "people"
-title: "SC25 small-group meeting planning"
-date: "2025-10-01"
-person: "Nidhi"
-participants: ["Jason Vallery", "Nidhi", "Jack", "Kurt Neibuhr", "Kushal Datta", "Vipin Sachdeva"]
-source: "transcript"
-source_ref: "Inbox/_archive/2026-01-04 - 2025-10 - SC25 Meetings.md"
+type: people
+title: SC25 small-group meeting planning
+date: '2025-10-01'
+person: Nidhi
+participants:
+- Jason Vallery
+- Nidhi
+- Jack
+- Kurt Neibuhr
+- Kushal Datta
+- Vipin Sachdeva
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2026-01-04 - 2025-10 - SC25 Meetings.md
 tags:
-  - "type/people"
-  - "person/nidhi"
-  - "generated"
+- type/people
+- person/nidhi
+- generated
 ---
 
 # SC25 small-group meeting planning

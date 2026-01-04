@@ -1,15 +1,15 @@
 ---
-type: "customer"
-title: "GDC RFP security and ops"
-date: "2025-11-13"
-account: "Google"
+type: customer
+title: GDC RFP security and ops
+date: '2025-11-13'
+account: Google
 participants: []
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-13/2025-11-13 - GDC RFP meeting.md"
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-13 - GDC RFP meeting.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # GDC RFP security and ops

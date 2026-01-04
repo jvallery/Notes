@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Jason offer decision discussion"
-date: "2025-10-06"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-06/2025-10-06 - Jason updated Jai that he has a complex, high-variance offer from VAST and an ex.md"
+type: people
+title: Jason offer decision discussion
+date: '2025-10-06'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-06 - Jason updated Jai that he has a
+  complex, high-variance offer from VAST and an ex.md
 tags:
-  - "type/customer"
-  - "account/jai-menon"
-  - "generated"
+- type/customer
+- account/jai-menon
+- generated
 ---
 
 # Jason offer decision discussion

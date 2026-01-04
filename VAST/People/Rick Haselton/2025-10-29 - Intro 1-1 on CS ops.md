@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Intro 1:1 on CS ops"
-date: "2025-10-29"
-person: "Rick Haselton"
-participants: ["Rick Haselton", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/Transcripts/2025-10-29 - Intro 1-1 to understand Customer Success operations for CoreWeave and XAI and im.md"
+type: people
+title: Intro 1:1 on CS ops
+date: '2025-10-29'
+person: Rick Haselton
+participants:
+- Rick Haselton
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Intro 1-1 to understand Customer
+  Success operations for CoreWeave and XAI and im.md
 tags:
-  - "type/people"
-  - "person/rick-haselton"
-  - "generated"
+- type/people
+- person/rick-haselton
+- generated
 ---
 
 # Intro 1:1 on CS ops

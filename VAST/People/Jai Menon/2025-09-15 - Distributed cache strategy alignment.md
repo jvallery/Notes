@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Distributed cache strategy alignment"
-date: "2025-09-15"
-person: "Jai Menon"
-participants: ["Jai Menon", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Jason and Jai discussed options and strategy for distributed caching (BlobFuse v.md"
+type: people
+title: Distributed cache strategy alignment
+date: '2025-09-15'
+person: Jai Menon
+participants:
+- Jai Menon
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Jason and Jai discussed options
+  and strategy for distributed caching (BlobFuse v.md
 tags:
-  - "type/people"
-  - "person/jai-menon"
-  - "generated"
+- type/people
+- person/jai-menon
+- generated
 ---
 
 # Distributed cache strategy alignment

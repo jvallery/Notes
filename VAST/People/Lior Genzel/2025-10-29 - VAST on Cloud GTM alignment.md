@@ -1,15 +1,25 @@
 ---
-type: "people"
-title: "VAST on Cloud GTM alignment"
-date: "2025-10-29"
-person: "Lior Genzel"
-participants: ["Lior Genzel", "Tiffany Stonehill", "Olivia Bouree", "Paul", "Jason Vallery", "Arik Kishner", "Director Hampson", "Beth", "Madhu"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Team aligned on positioning and go-to-market for VAST on Cloud. Current MVP is a.md"
+type: people
+title: VAST on Cloud GTM alignment
+date: '2025-10-29'
+person: Lior Genzel
+participants:
+- Lior Genzel
+- Tiffany Stonehill
+- Olivia Bouree
+- Paul
+- Jason Vallery
+- Arik Kishner
+- Director Hampson
+- Beth
+- Madhu
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Team aligned on positioning and
+  go-to-market for VAST on Cloud. Current MVP is a.md
 tags:
-  - "type/people"
-  - "person/lior-genzel"
-  - "generated"
+- type/people
+- person/lior-genzel
+- generated
 ---
 
 # VAST on Cloud GTM alignment

@@ -1,15 +1,22 @@
 ---
-type: "customer"
-title: "GDC RFP federal coordination"
-date: "2025-11-14"
-account: "Google"
-participants: ["Jason Vallery", "Alon Horev", "Jennifer Azzolina", "Jeremiah Hinrichs", "Greg Castellucci", "Randy Hayes"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-14/2025-11-14 - VAST’s cloud and federal teams aligned on responding to Google Distributed Cloud.md"
+type: customer
+title: GDC RFP federal coordination
+date: '2025-11-14'
+account: Google
+participants:
+- Jason Vallery
+- Alon Horev
+- Jennifer Azzolina
+- Jeremiah Hinrichs
+- Greg Castellucci
+- Randy Hayes
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-14 - VAST’s cloud and federal teams
+  aligned on responding to Google Distributed Cloud.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # GDC RFP federal coordination

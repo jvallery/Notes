@@ -1,15 +1,26 @@
 ---
-type: "customer"
-title: "GCP MVP launch alignment"
-date: "2025-10-28"
-account: "Google"
-participants: ["Eirikur Hrafnsson", "Helen Protopapas", "Jason Ainsworth", "Jonsi Stephenson", "Lihi Rotchild", "Lior Genzel", "Timo Pervane", "Tomer Hagay", "Jason Valeri", "Yancey"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Team aligned on MVP launch on GCP via private offers with fixed capacity pricing.md"
+type: customer
+title: GCP MVP launch alignment
+date: '2025-10-28'
+account: Google
+participants:
+- Eirikur Hrafnsson
+- Helen Protopapas
+- Jason Ainsworth
+- Jonsi Stephenson
+- Lihi Rotchild
+- Lior Genzel
+- Timo Pervane
+- Tomer Hagay
+- Jason Valeri
+- Yancey
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Team aligned on MVP launch on GCP
+  via private offers with fixed capacity pricing.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # GCP MVP launch alignment

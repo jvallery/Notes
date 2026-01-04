@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Org map and cloud focus"
-date: "2025-11-07"
-person: "Jeff Denworth"
-participants: ["Myself", "Jeff Denworth"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-07/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md"
+type: people
+title: Org map and cloud focus
+date: '2025-11-07'
+person: Jeff Denworth
+participants:
+- Myself
+- Jeff Denworth
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-07 - We reviewed the org landscape and
+  aligned on my near-term focus. Jeff outlined k.md
 tags:
-  - "type/people"
-  - "person/jeff-denworth"
-  - "generated"
+- type/people
+- person/jeff-denworth
+- generated
 ---
 
 # Org map and cloud focus

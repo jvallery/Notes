@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "PM-led cloud model alignment"
-date: "2025-10-29"
-person: "Tomer Hagay"
-participants: ["Jason Vallery", "Tomer Hagay"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Jason and Tomer aligned on shifting cloud work toward a PM-led model and the nee.md"
+type: people
+title: PM-led cloud model alignment
+date: '2025-10-29'
+person: Tomer Hagay
+participants:
+- Jason Vallery
+- Tomer Hagay
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Jason and Tomer aligned on shifting
+  cloud work toward a PM-led model and the nee.md
 tags:
-  - "type/people"
-  - "person/tomer-hagay"
-  - "generated"
+- type/people
+- person/tomer-hagay
+- generated
 ---
 
 # PM-led cloud model alignment

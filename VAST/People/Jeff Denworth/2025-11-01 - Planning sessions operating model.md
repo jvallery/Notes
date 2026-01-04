@@ -1,15 +1,16 @@
 ---
-type: "people"
-title: "Planning sessions operating model"
-date: "2025-11-01"
-person: "Jeff Denworth"
-participants: ["Jeff Denworth"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-11-04 - Jeff Denworth - Planning sessions.md"
+type: people
+title: Planning sessions operating model
+date: '2025-11-01'
+person: Jeff Denworth
+participants:
+- Jeff Denworth
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-11-04 - Jeff Denworth - Planning sessions.md
 tags:
-  - "type/people"
-  - "person/jeff-denworth"
-  - "generated"
+- type/people
+- person/jeff-denworth
+- generated
 ---
 
 # Planning sessions operating model

@@ -1,15 +1,14 @@
 ---
-type: "customer"
-title: "VAST Azure integration outline"
-date: "2025-12-18"
-account: "Microsoft"
+type: customer
+title: VAST Azure integration outline
+date: '2025-12-18'
+account: Microsoft
 participants: []
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-18/Azure integration recording.md"
+source: transcript
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # VAST Azure integration outline

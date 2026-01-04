@@ -1,15 +1,25 @@
 ---
-type: "people"
-title: "VAST on Cloud alignment"
-date: "2025-10-29"
-person: "Lior Genzel"
-participants: ["Lior Genzel", "Tiffany Stonehill", "Olivia Bouree", "Jason Vallery", "Paul", "Arik Kishner", "Director Hampson", "Beth", "Madhu"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Team aligned on positioning and mechanics for VAST on Cloud. Emphasis on using g.md"
+type: people
+title: VAST on Cloud alignment
+date: '2025-10-29'
+person: Lior Genzel
+participants:
+- Lior Genzel
+- Tiffany Stonehill
+- Olivia Bouree
+- Jason Vallery
+- Paul
+- Arik Kishner
+- Director Hampson
+- Beth
+- Madhu
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Team aligned on positioning and
+  mechanics for VAST on Cloud. Emphasis on using g.md
 tags:
-  - "type/people"
-  - "person/lior-genzel"
-  - "generated"
+- type/people
+- person/lior-genzel
+- generated
 ---
 
 # VAST on Cloud alignment

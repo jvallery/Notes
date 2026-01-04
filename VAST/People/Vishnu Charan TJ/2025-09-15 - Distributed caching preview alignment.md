@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Distributed caching preview alignment"
-date: "2025-09-15"
-person: "Vishnu Charan TJ"
-participants: ["Jason Vallery", "Vishnu Charan TJ"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-15/2025-09-15 - Catch-up on Jason’s new role and priorities (distributed caching, KBover-index).md"
+type: people
+title: Distributed caching preview alignment
+date: '2025-09-15'
+person: Vishnu Charan TJ
+participants:
+- Jason Vallery
+- Vishnu Charan TJ
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-15 - Catch-up on Jason’s new role and
+  priorities (distributed caching, KBover-index).md
 tags:
-  - "type/people"
-  - "person/vishnu-charan-tj"
-  - "generated"
+- type/people
+- person/vishnu-charan-tj
+- generated
 ---
 
 # Distributed caching preview alignment

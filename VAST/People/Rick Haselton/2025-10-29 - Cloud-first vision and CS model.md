@@ -1,15 +1,18 @@
 ---
-type: "people"
-title: "Cloud-first vision and CS model"
-date: "2025-10-29"
-person: "Rick Haselton"
-participants: ["Jason Vallery", "Rick Haselton"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-29/2025-10-29 - Jason introduced his cloud-first vision for VAST (VAST-as-a-Service, multi-cloud.md"
+type: people
+title: Cloud-first vision and CS model
+date: '2025-10-29'
+person: Rick Haselton
+participants:
+- Jason Vallery
+- Rick Haselton
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-29 - Jason introduced his cloud-first
+  vision for VAST (VAST-as-a-Service, multi-cloud.md
 tags:
-  - "type/people"
-  - "person/rick-haselton"
-  - "generated"
+- type/people
+- person/rick-haselton
+- generated
 ---
 
 # Cloud-first vision and CS model

@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Align on Azure Blob API"
-date: "2025-10-28"
-account: "OpenAI"
-participants: ["Jason Vallery", "Erez Zilber"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-28/2025-10-28 - Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Az.md"
+type: customer
+title: Align on Azure Blob API
+date: '2025-10-28'
+account: OpenAI
+participants:
+- Jason Vallery
+- Erez Zilber
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-28 - Jason and Erez aligned on delivering
+  Azure Blob API support in VAST to enable Az.md
 tags:
-  - "type/customer"
-  - "account/openai"
-  - "generated"
+- type/customer
+- account/openai
+- generated
 ---
 
 # Align on Azure Blob API

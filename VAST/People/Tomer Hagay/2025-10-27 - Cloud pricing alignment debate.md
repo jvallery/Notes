@@ -1,15 +1,24 @@
 ---
-type: "people"
-title: "Cloud pricing alignment debate"
-date: "2025-10-27"
-person: "Tomer"
-participants: ["Tomer", "Jason Vallery", "Yancey", "Wolfie", "Lior Genzel", "Eiki", "Eric", "Timo"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-27/2025-10-27 - The team debated how to align cloud pricing with the new on‑prem model. Two opti.md"
+type: people
+title: Cloud pricing alignment debate
+date: '2025-10-27'
+person: Tomer
+participants:
+- Tomer
+- Jason Vallery
+- Yancey
+- Wolfie
+- Lior Genzel
+- Eiki
+- Eric
+- Timo
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-27 - The team debated how to align cloud
+  pricing with the new on‑prem model. Two opti.md
 tags:
-  - "type/people"
-  - "person/tomer"
-  - "generated"
+- type/people
+- person/tomer
+- generated
 ---
 
 # Cloud pricing alignment debate

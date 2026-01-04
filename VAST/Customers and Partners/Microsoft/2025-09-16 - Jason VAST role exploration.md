@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "Jason VAST role exploration"
-date: "2025-09-16"
-account: "Microsoft"
-participants: ["Lior Genzel", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-16/2025-09-16 - Intro call exploring roles for Jason at VAST. Lior outlined three potential home.md"
+type: customer
+title: Jason VAST role exploration
+date: '2025-09-16'
+account: Microsoft
+participants:
+- Lior Genzel
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-16 - Intro call exploring roles for
+  Jason at VAST. Lior outlined three potential home.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # Jason VAST role exploration

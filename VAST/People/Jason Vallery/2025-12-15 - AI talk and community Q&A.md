@@ -1,15 +1,21 @@
 ---
-type: "people"
-title: "AI talk and community Q&A"
-date: "2025-12-15"
-person: "Jason Vallery"
-participants: ["Justin Veach", "Jason Vallery", "Emily Vallery", "Tim Waters", "Elizabeth"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-12-15/2025-12-15 1240 - AI Discussion at Longmont Museum.md"
+type: people
+title: AI talk and community Q&A
+date: '2025-12-15'
+person: Jason Vallery
+participants:
+- Justin Veach
+- Jason Vallery
+- Emily Vallery
+- Tim Waters
+- Elizabeth
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-12-15 1240 - AI Discussion at Longmont
+  Museum.md
 tags:
-  - "type/people"
-  - "person/jason-vallery"
-  - "generated"
+- type/people
+- person/jason-vallery
+- generated
 ---
 
 # AI talk and community Q&A

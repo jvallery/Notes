@@ -1,15 +1,23 @@
 ---
-type: "people"
-title: "Cloud support operating model alignment"
-date: "2025-10-30"
-person: "Rob Banga"
-participants: ["Jason Vallery", "Lior Genzel", "Yancey", "Rob Banga", "Daniel", "Timo Pervane", "Christina"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-30/2025-10-30 - The group aligned on the cloud support operating model (Customer Success, Suppor.md"
+type: people
+title: Cloud support operating model alignment
+date: '2025-10-30'
+person: Rob Banga
+participants:
+- Jason Vallery
+- Lior Genzel
+- Yancey
+- Rob Banga
+- Daniel
+- Timo Pervane
+- Christina
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-30 - The group aligned on the cloud
+  support operating model (Customer Success, Suppor.md
 tags:
-  - "type/people"
-  - "person/rob-banga"
-  - "generated"
+- type/people
+- person/rob-banga
+- generated
 ---
 
 # Cloud support operating model alignment

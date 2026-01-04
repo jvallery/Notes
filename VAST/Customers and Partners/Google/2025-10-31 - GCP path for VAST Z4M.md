@@ -1,15 +1,20 @@
 ---
-type: "customer"
-title: "GCP path for VAST Z4M"
-date: "2025-10-31"
-account: "Google"
-participants: ["Jason Vallery", "Billy", "John Downey", "Lior"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-31/2025-10-31 - GCP outlined the path to run VAST on storage-serving VMs (Z4M) with higher stora.md"
+type: customer
+title: GCP path for VAST Z4M
+date: '2025-10-31'
+account: Google
+participants:
+- Jason Vallery
+- Billy
+- John Downey
+- Lior
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-31 - GCP outlined the path to run VAST
+  on storage-serving VMs (Z4M) with higher stora.md
 tags:
-  - "type/customer"
-  - "account/google"
-  - "generated"
+- type/customer
+- account/google
+- generated
 ---
 
 # GCP path for VAST Z4M

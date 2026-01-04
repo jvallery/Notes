@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "VAST Azure GTM hiring"
-date: "2025-09-16"
-account: "VAST"
-participants: ["Jeff Denworth", "Jason Vallery"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-09-16/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md"
+type: customer
+title: VAST Azure GTM hiring
+date: '2025-09-16'
+account: VAST
+participants:
+- Jeff Denworth
+- Jason Vallery
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-09-16 - Jeff outlined VAST’s accelerated
+  cloud push and multiple potential roles for Jas.md
 tags:
-  - "type/customer"
-  - "account/vast"
-  - "generated"
+- type/customer
+- account/vast
+- generated
 ---
 
 # VAST Azure GTM hiring

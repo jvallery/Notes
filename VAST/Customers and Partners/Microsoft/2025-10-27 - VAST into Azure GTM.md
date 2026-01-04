@@ -1,15 +1,18 @@
 ---
-type: "customer"
-title: "VAST into Azure GTM"
-date: "2025-10-27"
-account: "Microsoft"
-participants: ["Jason Vallery", "Kurt Niebuhr"]
-source: "transcript"
-source_ref: "Inbox/_archive/2025-10-27/2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe.md"
+type: customer
+title: VAST into Azure GTM
+date: '2025-10-27'
+account: Microsoft
+participants:
+- Jason Vallery
+- Kurt Niebuhr
+source: transcript
+source_ref: Inbox/_archive/2026-01-04/2025-10-27 - Jason and Kurt aligned on a go-to-market
+  path to bring VAST’s high-density, lowe.md
 tags:
-  - "type/customer"
-  - "account/microsoft"
-  - "generated"
+- type/customer
+- account/microsoft
+- generated
 ---
 
 # VAST into Azure GTM
