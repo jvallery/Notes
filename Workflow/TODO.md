@@ -3533,3 +3533,81 @@ From 2026-01-04 session: People manifest works well. Customers could benefit fro
 
 - Customer manifest exists with key columns (name, industry, status, key contacts)
 - Drafts for customer emails include relevant customer context
+
+---
+
+---
+
+
+---
+
+
+---
+
+## 90) ✅ FIXED: Person Folder Lookup Matched Wrong Folders
+
+**Goal:** Fix `_find_person_folder()` returning wrong folders on partial first-name matches.
+
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Discovery:**
+2026-01-05 session: Jeff Denworth's README.md had empty Key Facts, Topics, Key Decisions sections. Investigation found:
+- Extractions DID contain topics/decisions  
+- Changeplans DID generate correct patches
+- BUT patches targeted `VAST/People/Jeff Yonker/README.md` instead of `Jeff Denworth`!
+
+Root cause: `_find_person_folder()` in `ingest_emails.py` returned on ANY first-name match:
+- "Jeff Denworth" → matched "Jeff Yonker" (first "Jeff" folder found)
+- "Jason Vallery" → matched "Jason Ainsworth" (first "Jason" folder found)
+
+**Impact:** CRITICAL - all people with common first names had patches applied to wrong READMEs
+
+**Fix Applied:**
+Rewrote `_find_person_folder()` to:
+1. Prioritize exact folder name matches (return immediately)
+2. Only use partial matching if BOTH first AND last name are in folder name
+3. Check both VAST/People and Personal/People directories
+
+**Commit:** `[main 13fc216]`
+
+---
+
+---
+
+
+---
+
+
+---
+
+## 91) Re-Ingest Sources to Populate Empty README Sections
+
+**Goal:** Re-run pipeline to apply patches that were sent to wrong folders.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+2026-01-05 session: After fixing person folder lookup (item 90), existing READMEs still have empty sections because patches went to wrong people.
+
+Affected sections in many People READMEs:
+- `## Key Facts` (empty)
+- `## Topics` (empty)  
+- `## Key Decisions` (empty)
+- `## Related Customers` (empty)
+- `## Related Projects` (empty)
+
+**Impact:** HIGH - knowledge not captured in correct locations
+
+**Effort:** 30 minutes (re-run + verify)
+
+**Tasks**
+
+- [ ] Re-run email pipeline: `python scripts/process_emails.py --source -v`
+- [ ] Spot-check 5 high-contact people (Jeff Denworth, Jai Menon, Lior Genzel, etc.)
+- [ ] Verify Key Facts, Topics, Decisions are now populated
+- [ ] Consider: Do we need to re-run transcript pipeline too?
+
+**Success Criteria**
+
+- Jeff Denworth README has non-empty Key Facts, Topics, Key Decisions
+- No patches targeting wrong person folders in changeplan files
