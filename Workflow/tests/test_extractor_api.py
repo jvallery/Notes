@@ -139,3 +139,137 @@ def test_model_selection_by_content_type(monkeypatch, tmp_path):
 
     assert captured["model"] == "model-for-extract_email"
 
+
+def test_extractor_uses_envelope_participants_when_model_returns_empty(monkeypatch, tmp_path):
+    monkeypatch.setattr(extract_mod, "_cached_persona_context", None, raising=False)
+    monkeypatch.setattr(extract_mod, "_cached_glossary_context", None, raising=False)
+
+    def responder(**kwargs):
+        payload = {
+            "note_type": "customer",
+            "primary_entity": {"entity_type": "company", "name": "Acme", "confidence": 0.9},
+            "title": "Test Title",
+            "summary": "Summary",
+            "participants": [],
+            "contacts": [],
+            "facts": [],
+            "decisions": [],
+            "topics": [],
+            "tasks": [],
+            "questions": [],
+            "commitments": [],
+            "mentioned_entities": [],
+            "email_requires_response": False,
+            "email_urgency": "medium",
+            "email_type": "other",
+            "suggested_outputs": {"needs_reply": False},
+            "confidence": 0.9,
+        }
+        return FakeOpenAIResponse(payload)
+
+    fake_client = FakeClient(responder)
+    monkeypatch.setattr("pipeline.extract.get_model_config", lambda _: {"model": "gpt-4o"}, raising=False)
+    monkeypatch.setattr("scripts.utils.ai_client.get_openai_client", lambda caller=None: fake_client, raising=False)
+
+    extractor = UnifiedExtractor(tmp_path, verbose=False)
+    env = ContentEnvelope(
+        source_path=tmp_path / "Inbox" / "Email" / "test.md",
+        content_type=ContentType.EMAIL,
+        raw_content="body",
+        date="2026-01-05",
+        title="Title",
+        participants=["Alice Example"],
+    )
+
+    result = extractor.extract(env)
+    assert result.participants == ["Alice Example"]
+
+
+def test_extractor_uses_primary_entity_when_participants_missing(monkeypatch, tmp_path):
+    monkeypatch.setattr(extract_mod, "_cached_persona_context", None, raising=False)
+    monkeypatch.setattr(extract_mod, "_cached_glossary_context", None, raising=False)
+
+    def responder(**kwargs):
+        payload = {
+            "note_type": "people",
+            "primary_entity": {"entity_type": "person", "name": "Alice Example", "confidence": 0.9},
+            "title": "Test Title",
+            "summary": "Summary",
+            "participants": [],
+            "contacts": [],
+            "facts": [],
+            "decisions": [],
+            "topics": [],
+            "tasks": [],
+            "questions": [],
+            "commitments": [],
+            "mentioned_entities": [],
+            "email_requires_response": False,
+            "email_urgency": "medium",
+            "email_type": "other",
+            "suggested_outputs": {"needs_reply": False},
+            "confidence": 0.9,
+        }
+        return FakeOpenAIResponse(payload)
+
+    fake_client = FakeClient(responder)
+    monkeypatch.setattr("pipeline.extract.get_model_config", lambda _: {"model": "gpt-4o"}, raising=False)
+    monkeypatch.setattr("scripts.utils.ai_client.get_openai_client", lambda caller=None: fake_client, raising=False)
+
+    extractor = UnifiedExtractor(tmp_path, verbose=False)
+    env = ContentEnvelope(
+        source_path=tmp_path / "Inbox" / "Transcripts" / "test.md",
+        content_type=ContentType.TRANSCRIPT,
+        raw_content="body",
+        date="2026-01-05",
+        title="1-1 with Alice Example",
+        participants=[],
+    )
+
+    result = extractor.extract(env)
+    assert result.participants == ["Alice Example"]
+
+
+def test_extractor_falls_back_to_jason_when_no_participants(monkeypatch, tmp_path):
+    monkeypatch.setattr(extract_mod, "_cached_persona_context", None, raising=False)
+    monkeypatch.setattr(extract_mod, "_cached_glossary_context", None, raising=False)
+
+    def responder(**kwargs):
+        payload = {
+            "note_type": "projects",
+            "primary_entity": None,
+            "title": "Test Title",
+            "summary": "Summary",
+            "participants": [],
+            "contacts": [],
+            "facts": [],
+            "decisions": [],
+            "topics": [],
+            "tasks": [],
+            "questions": [],
+            "commitments": [],
+            "mentioned_entities": [],
+            "email_requires_response": False,
+            "email_urgency": "medium",
+            "email_type": "other",
+            "suggested_outputs": {"needs_reply": False},
+            "confidence": 0.9,
+        }
+        return FakeOpenAIResponse(payload)
+
+    fake_client = FakeClient(responder)
+    monkeypatch.setattr("pipeline.extract.get_model_config", lambda _: {"model": "gpt-4o"}, raising=False)
+    monkeypatch.setattr("scripts.utils.ai_client.get_openai_client", lambda caller=None: fake_client, raising=False)
+
+    extractor = UnifiedExtractor(tmp_path, verbose=False)
+    env = ContentEnvelope(
+        source_path=tmp_path / "Inbox" / "Transcripts" / "test.md",
+        content_type=ContentType.TRANSCRIPT,
+        raw_content="body",
+        date="2026-01-05",
+        title="Project planning notes",
+        participants=[],
+    )
+
+    result = extractor.extract(env)
+    assert result.participants == ["Jason Vallery"]

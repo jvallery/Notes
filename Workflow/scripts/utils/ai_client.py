@@ -383,6 +383,8 @@ class InstrumentedClient:
         self._caller = caller
         self._logger = AILogger()
         self.chat = InstrumentedChat(client.chat, self._logger, caller)
+        # Expose responses API (for web search and other tools)
+        self.responses = InstrumentedResponses(client.responses, self._logger, caller) if hasattr(client, 'responses') else None
         # Expose other client attributes
         self.models = client.models
         self.files = client.files if hasattr(client, 'files') else None
@@ -391,6 +393,8 @@ class InstrumentedClient:
         """Set the caller context for subsequent requests."""
         self._caller = caller
         self.chat._caller = caller
+        if self.responses:
+            self.responses._caller = caller
     
     def set_context(self, context: Dict):
         """Set additional context for subsequent requests."""
@@ -427,6 +431,79 @@ class InstrumentedCompletions:
             context=self._context,
             **kwargs
         )
+
+
+class InstrumentedResponses:
+    """Instrumented wrapper for OpenAI Responses API (supports web_search and other tools)."""
+    
+    def __init__(self, responses, logger: AILogger, caller: Optional[str] = None):
+        self._responses = responses
+        self._logger = logger
+        self._caller = caller
+    
+    def create(self, **kwargs):
+        """
+        Logged wrapper for responses.create.
+        
+        Supports tools like web_search_preview for real-time web access.
+        """
+        import time
+        start_time = time.time()
+        
+        # Create request record
+        request_id = hashlib.md5(f"{time.time()}{kwargs}".encode()).hexdigest()[:12]
+        request = AIRequest(
+            id=request_id,
+            timestamp=datetime.now().isoformat(),
+            model=kwargs.get("model", "unknown"),
+            operation="responses.create",
+            caller=self._caller,
+            input=str(kwargs.get("input", ""))[:500],
+            instructions=kwargs.get("instructions"),
+            tools=[{"type": t.get("type", "unknown")} if isinstance(t, dict) else str(t) for t in kwargs.get("tools", [])] if kwargs.get("tools") else None
+        )
+        
+        try:
+            result = self._responses.create(**kwargs)
+            latency_ms = int((time.time() - start_time) * 1000)
+            
+            # Extract token usage if available
+            usage_dict = None
+            if hasattr(result, 'usage') and result.usage:
+                usage_dict = {
+                    "prompt_tokens": getattr(result.usage, 'input_tokens', 0),
+                    "completion_tokens": getattr(result.usage, 'output_tokens', 0),
+                    "total_tokens": getattr(result.usage, 'input_tokens', 0) + getattr(result.usage, 'output_tokens', 0)
+                }
+            
+            response = AIResponse(
+                request_id=request_id,
+                timestamp=datetime.now().isoformat(),
+                success=True,
+                model=kwargs.get("model", "unknown"),
+                usage=usage_dict,
+                latency_ms=latency_ms,
+                content="[responses.create result]"
+            )
+            
+            self._logger._log_request(request)
+            self._logger._log_response(response)
+            
+            return result
+            
+        except Exception as e:
+            latency_ms = int((time.time() - start_time) * 1000)
+            response = AIResponse(
+                request_id=request_id,
+                timestamp=datetime.now().isoformat(),
+                success=False,
+                model=kwargs.get("model", "unknown"),
+                error=str(e),
+                latency_ms=latency_ms
+            )
+            self._logger._log_request(request)
+            self._logger._log_response(response)
+            raise
 
 
 # Global client instance

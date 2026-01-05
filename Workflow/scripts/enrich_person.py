@@ -398,17 +398,29 @@ Important:
 Return ONLY valid JSON."""
 
         try:
-            response = client.chat.completions.create(
+            # Use the Responses API with web_search tool for actual web search
+            response = client.responses.create(
                 model="gpt-4o",
-                messages=[
-                    {"role": "system", "content": "You are a professional researcher. Use web search to find accurate information about people. Return only verified data."},
-                    {"role": "user", "content": prompt}
-                ],
-                temperature=0.0,
+                tools=[{"type": "web_search_preview"}],
+                input=prompt,
+                instructions="You are a professional researcher. Use the web_search tool to find accurate information about people. Return only verified data with source URLs.",
                 store=False
             )
             
-            text = response.choices[0].message.content.strip()
+            # Extract text from response output
+            text = ""
+            for item in response.output:
+                if hasattr(item, 'content'):
+                    for content_part in item.content:
+                        if hasattr(content_part, 'text'):
+                            text = content_part.text
+                            break
+            
+            if not text:
+                result.errors.append("No text response from web search")
+                return result
+            
+            text = text.strip()
             if text.startswith("```"):
                 text = re.sub(r'^```\w*\n?', '', text)
                 text = re.sub(r'\n?```$', '', text)

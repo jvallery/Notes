@@ -441,17 +441,37 @@ Participants: {', '.join(envelope.participants) if envelope.participants else 'U
                 reply_context=so.get("reply_context"),
             )
         
-        # Build legacy mentions for compatibility
-        mentions = {
-            "people": data.get("participants", []),
-            "projects": [e["name"] for e in data.get("mentioned_entities", []) if e.get("entity_type") == "project"],
-            "accounts": [e["name"] for e in data.get("mentioned_entities", []) if e.get("entity_type") == "company"],
-        }
-        
         allowed_note_types = {"customer", "people", "projects", "rob", "journal", "partners", "travel"}
         note_type = data.get("note_type", "people")
         if note_type not in allowed_note_types:
             note_type = "people"
+
+        # Participants: prefer model output when non-empty, otherwise fall back to envelope metadata.
+        participants_raw = data.get("participants")
+        participants: list[str] = []
+        if isinstance(participants_raw, list):
+            participants = [str(p).strip() for p in participants_raw if str(p).strip()]
+        elif isinstance(participants_raw, str):
+            # Defensive: sometimes models return a delimited string.
+            participants = [p.strip() for p in re.split(r"[;,]", participants_raw) if p.strip()]
+
+        if not participants:
+            participants = [p.strip() for p in (envelope.participants or []) if str(p).strip()]
+
+        # If still empty, try the primary entity for people-notes.
+        if not participants and primary_entity and primary_entity.entity_type == "person" and primary_entity.name:
+            participants = [primary_entity.name]
+
+        # Final fallback: ensure at least one participant for transcript/meeting-style notes.
+        if not participants:
+            participants = ["Jason Vallery"]
+
+        # Build legacy mentions for compatibility (use normalized participants).
+        mentions = {
+            "people": participants,
+            "projects": [e["name"] for e in data.get("mentioned_entities", []) if e.get("entity_type") == "project"],
+            "accounts": [e["name"] for e in data.get("mentioned_entities", []) if e.get("entity_type") == "company"],
+        }
         
         return UnifiedExtraction(
             source_file=str(envelope.source_path),
@@ -462,7 +482,7 @@ Participants: {', '.join(envelope.participants) if envelope.participants else 'U
             date=envelope.date,
             title=data.get("title", envelope.title),
             summary=data.get("summary", ""),
-            participants=data.get("participants", envelope.participants),
+            participants=participants,
             contacts=contacts,
             facts=facts,
             decisions=data.get("decisions", []),

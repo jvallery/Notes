@@ -215,7 +215,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Ensure extracted notes always include at least one participant and avoid blank `**Attendees**:` headers.
 
-**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 16:50)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 `audit_import.py` flagged multiple notes with `participants: []` and empty `**Attendees**:` during manual vault cleanup.
