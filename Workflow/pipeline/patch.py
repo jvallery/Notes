@@ -255,16 +255,34 @@ class PatchGenerator:
         """Generate meeting note path and context."""
         
         # Determine destination folder
+        folder = None
+        entity_name = None
+        entity_type = None
+        
         if extraction.primary_entity:
             folder = self._get_entity_folder(extraction.primary_entity, extraction)
-        else:
-            # Default to first participant
+            entity_name = extraction.primary_entity.name
+            entity_type = extraction.primary_entity.entity_type
+        
+        if not folder:
+            # Default to first participant (skip self)
             if extraction.participants:
-                first_participant = extraction.participants[0]
-                email = self._get_email_for_participant(first_participant, extraction)
-                folder = self.entity_index.find_person(first_participant, email=email)
-            else:
-                folder = None
+                for participant in extraction.participants:
+                    if participant.lower() not in ["myself", "jason", "jason vallery"]:
+                        email = self._get_email_for_participant(participant, extraction)
+                        folder = self.entity_index.find_person(participant, email=email)
+                        if folder:
+                            entity_name = participant
+                            entity_type = "person"
+                            break
+                        # Entity doesn't exist - create it
+                        entity_name = participant
+                        entity_type = "person"
+                        break
+        
+        if not folder and entity_name:
+            # Create entity folder on-demand
+            folder = self._create_entity_folder(entity_name, entity_type, extraction)
         
         if not folder:
             return None, None
@@ -431,6 +449,130 @@ class PatchGenerator:
         elif entity.entity_type == "project":
             return self.entity_index.find_project(entity.name)
         return None
+
+    def _create_entity_folder(self, name: str, entity_type: str, extraction: UnifiedExtraction) -> Optional[Path]:
+        """Create a new entity folder on-demand.
+        
+        This enables the pipeline to work with an empty vault - entity folders
+        are created as content is ingested.
+        """
+        from scripts.utils.templates import sanitize_path_name
+        
+        safe_name = sanitize_path_name(name)
+        
+        if entity_type == "person":
+            folder = self.vault_root / "VAST" / "People" / safe_name
+        elif entity_type == "company":
+            folder = self.vault_root / "VAST" / "Customers and Partners" / safe_name
+        elif entity_type == "project":
+            folder = self.vault_root / "VAST" / "Projects" / safe_name
+        else:
+            # Default to People for unknown types
+            folder = self.vault_root / "VAST" / "People" / safe_name
+        
+        # Create folder and README
+        folder.mkdir(parents=True, exist_ok=True)
+        
+        readme_path = folder / "README.md"
+        if not readme_path.exists():
+            # Create minimal README with frontmatter
+            email = self._get_email_for_participant(name, extraction) if entity_type == "person" else None
+            readme_content = self._generate_readme_content(name, entity_type, email, extraction)
+            readme_path.write_text(readme_content)
+        
+        return folder
+
+    def _generate_readme_content(self, name: str, entity_type: str, email: Optional[str], extraction: UnifiedExtraction) -> str:
+        """Generate initial README.md content for a new entity."""
+        from datetime import date
+        
+        today = date.today().isoformat()
+        
+        if entity_type == "person":
+            # Try to get company from contacts
+            company = None
+            title = None
+            for contact in extraction.contacts:
+                if contact.name and contact.name.lower() in name.lower():
+                    company = contact.company
+                    title = contact.title
+                    break
+            
+            return f"""---
+type: person
+name: "{name}"
+email: "{email or ''}"
+company: "{company or ''}"
+title: "{title or ''}"
+last_contact: "{extraction.date}"
+created: "{today}"
+tags:
+  - type/person
+  - needs-review
+---
+
+# {name}
+
+## Key Facts
+
+## Recent Context
+
+## Tasks
+
+```tasks
+path includes {name}
+not done
+```
+"""
+        elif entity_type == "company":
+            return f"""---
+type: account
+name: "{name}"
+last_contact: "{extraction.date}"
+created: "{today}"
+tags:
+  - type/account
+  - needs-review
+---
+
+# {name}
+
+## Key Facts
+
+## Recent Context
+
+## Tasks
+
+```tasks
+path includes {name}
+not done
+```
+"""
+        else:
+            return f"""---
+type: project
+name: "{name}"
+status: active
+last_contact: "{extraction.date}"
+created: "{today}"
+tags:
+  - type/project
+  - needs-review
+---
+
+# {name}
+
+## Key Facts
+
+## Recent Context
+
+## Tasks
+
+```tasks
+path includes {name}
+not done
+```
+"""
 
     def _warn_duplicate(self, name: str, entity_type: str, plan: ChangePlan):
         """Warn when a similar entity already exists (merge guidance)."""
