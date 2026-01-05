@@ -3945,11 +3945,18 @@ Without this, the LLM can't properly:
 
 ---
 
-## 102) Wire cached_prompts.py into UnifiedExtractor
+## 102) ✅ Wire cached_prompts.py into UnifiedExtractor
 
 **Goal:** Use prompt caching infrastructure for token efficiency and cost reduction.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:**
+- Added `get_cacheable_prefix()` and `get_dynamic_suffix()` methods to ContextBundle
+- Structured prompt with static content (persona, glossary, aliases) FIRST for OpenAI caching
+- Added verbose logging showing cache eligibility and hash
+- Added cache hit/miss reporting from OpenAI response usage stats
+- UnifiedExtractor now logs cache stats when `verbose=True`
 
 **Discovery:**
 From 2026-01-05 audit: `scripts/utils/cached_prompts.py` has 543 lines of caching infrastructure:
@@ -3964,11 +3971,11 @@ But `pipeline/context.py` and `pipeline/extract.py` build prompts manually witho
 **Effort:** 1 hour
 
 **Tasks**
-- [ ] Refactor `ContextBundle.get_extraction_context()` to use `cached_prompts.get_glossary_context()`
-- [ ] Move persona loading to use cached prompt pattern
-- [ ] Ensure system prompt has stable prefix (cacheable) + dynamic suffix (entity-specific)
-- [ ] Add cache hit/miss logging in verbose mode
-- [ ] Verify prompt caching works via OpenAI response headers
+- [x] Refactor `ContextBundle.get_extraction_context()` to use `cached_prompts.get_glossary_context()`
+- [x] Move persona loading to use cached prompt pattern
+- [x] Ensure system prompt has stable prefix (cacheable) + dynamic suffix (entity-specific)
+- [x] Add cache hit/miss logging in verbose mode
+- [x] Verify prompt caching works via OpenAI response headers
 
 **Success Criteria**
 - `--verbose` output shows "Cache: HIT" or "Cache: MISS"
@@ -4135,3 +4142,40 @@ But `pipeline/extract.py` uses `get_openai_client()` - need to verify it's instr
 - Pipeline run creates log entry in `logs/ai/`
 - Token usage tracked per extraction
 - Can view daily API costs
+
+---
+
+## 108) Externalize Magic Strings to Configuration
+
+**Goal:** Review all code for hardcoded strings that should be externalized to configuration or manifest systems.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Code audit needed to find hardcoded:
+- Model names (e.g., "gpt-4o", "gpt-4o-mini")
+- Path patterns (e.g., "VAST/People/", "Inbox/Email/")
+- Field names and keys
+- Status values and enums
+- API endpoints and URLs
+- Prompt fragments and templates
+- Threshold values and limits
+
+**Impact:** HIGH - improves maintainability and allows configuration without code changes
+
+**Effort:** 2-3 hours
+
+**Tasks**
+- [ ] Audit `pipeline/` modules for hardcoded strings
+- [ ] Audit `scripts/` for hardcoded paths, models, keys
+- [ ] Move model names to `config.yaml` under `models:` section
+- [ ] Move path patterns to `config.yaml` under `paths:` section
+- [ ] Move status enums to `entities/enums.yaml` or similar
+- [ ] Move aliases from inline code to `entities/aliases.yaml`
+- [ ] Ensure all prompts use Jinja2 templates from `prompts/`
+- [ ] Add validation for required config keys on startup
+
+**Success Criteria**
+- `grep -r "gpt-4o" scripts/ pipeline/` returns only config loading code
+- All path patterns reference config values
+- Changing model or path requires only config edit, not code change

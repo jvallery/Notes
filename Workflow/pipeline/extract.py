@@ -30,10 +30,12 @@ class UnifiedExtractor:
     - Content-type specific guidance
     - Entity-attached facts for smart patching
     - Suggested outputs (replies, calendar, tasks)
+    - Prompt caching for token efficiency
     """
     
-    def __init__(self, vault_root: Path):
+    def __init__(self, vault_root: Path, verbose: bool = False):
         self.vault_root = vault_root
+        self.verbose = verbose
         self._client = None
         self._context: Optional[ContextBundle] = None
     
@@ -59,15 +61,20 @@ class UnifiedExtractor:
         if context is None:
             context = ContextBundle.load(self.vault_root, envelope)
         
-        # Build prompt
+        # Build prompt - pass verbose flag for cache logging
         system_prompt = self._build_system_prompt(envelope, context)
         user_prompt = self._build_user_prompt(envelope)
+        
+        if self.verbose:
+            # Show cache info
+            _, prefix_hash = context.get_cacheable_prefix()
+            print(f"  System prompt: {len(system_prompt)} chars, cacheable prefix hash: {prefix_hash}")
         
         # Get model config
         from scripts.utils import get_model_config
         model_config = get_model_config("extraction")
         
-        # Call LLM
+        # Call LLM with prompt caching enabled
         try:
             response = self.client.chat.completions.create(
                 model=model_config.get("model", "gpt-4o"),
@@ -76,7 +83,21 @@ class UnifiedExtractor:
                     {"role": "user", "content": user_prompt},
                 ],
                 temperature=0.0,
+                # Note: OpenAI prompt caching is automatic for requests with
+                # identical prefixes >= 1024 tokens. We structure our prompts
+                # with static content (persona/glossary) FIRST for cache hits.
             )
+            
+            # Log cache stats if available (OpenAI returns cached_tokens in usage)
+            if self.verbose and hasattr(response, 'usage') and response.usage:
+                usage = response.usage
+                prompt_tokens = getattr(usage, 'prompt_tokens', 0)
+                cached_tokens = getattr(usage, 'cached_tokens', 0) or getattr(usage, 'prompt_tokens_details', {}).get('cached_tokens', 0)
+                if cached_tokens > 0:
+                    cache_pct = (cached_tokens / prompt_tokens * 100) if prompt_tokens > 0 else 0
+                    print(f"  ✓ Cache HIT: {cached_tokens}/{prompt_tokens} tokens cached ({cache_pct:.0f}%)")
+                else:
+                    print(f"  ○ Cache miss: {prompt_tokens} prompt tokens")
             
             result = response.choices[0].message.content.strip()
             
@@ -96,12 +117,18 @@ class UnifiedExtractor:
             raise RuntimeError(f"Extraction failed: {e}")
     
     def _build_system_prompt(self, envelope: ContentEnvelope, context: ContextBundle) -> str:
-        """Build system prompt with context and extraction instructions."""
+        """Build system prompt with context and extraction instructions.
         
-        # Get formatted context (cached glossary first for prompt caching)
-        context_section = context.get_extraction_context(compact=True)
+        PROMPT CACHING: OpenAI caches identical prompt prefixes >= 1024 tokens.
+        We structure the prompt so static content (persona, glossary) comes FIRST,
+        followed by content-type-specific instructions (dynamic).
+        """
         
-        # Content-type specific guidance
+        # Get formatted context - static portion first for caching
+        # Pass verbose flag to show cache eligibility info
+        context_section = context.get_extraction_context(compact=True, verbose=self.verbose)
+        
+        # Content-type specific guidance (dynamic, comes after cached prefix)
         type_guidance = self._get_type_guidance(envelope.content_type)
         
         instructions = f"""You are extracting structured knowledge from content for a personal knowledge management system.

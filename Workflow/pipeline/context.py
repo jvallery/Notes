@@ -7,11 +7,23 @@ The ContextBundle provides:
 - Glossary (acronyms, terms)
 - Aliases (name normalization)
 - Relevant entity READMEs (for entities mentioned in content)
+
+PROMPT CACHING:
+OpenAI caches prompt prefixes that are 1024+ tokens and identical across calls.
+The ContextBundle structures prompts with static content FIRST (cacheable):
+  1. Persona (identity, style, rules)
+  2. Entity glossary (people, companies, projects)
+  3. Aliases and acronyms
+
+Followed by dynamic content (per-call):
+  4. Relevant READMEs for mentioned entities
+  5. Source-specific instructions
 """
 
 import sys
+import hashlib
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Tuple
 from functools import lru_cache
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -64,38 +76,90 @@ class ContextBundle(BaseModel):
         
         return bundle
     
-    def get_extraction_context(self, compact: bool = True) -> str:
+    def get_cacheable_prefix(self) -> Tuple[str, str]:
+        """Get the cacheable (static) portion of the prompt.
+        
+        Returns a tuple of (prefix, hash) where:
+        - prefix: The static prompt content that should be cached
+        - hash: A content hash to verify cache hits
+        
+        OpenAI caches prompt prefixes >= 1024 tokens that are identical.
+        By separating static (persona + glossary) from dynamic (READMEs),
+        we get cache hits across different extraction calls.
+        """
+        sections = []
+        
+        # 1. Persona (static)
+        if self.persona:
+            sections.append(f"## PERSONA\n{self.persona}")
+        
+        # 2. Entity glossary (static - changes only when manifests change)
+        glossary = self._format_compact_glossary()
+        if glossary:
+            sections.append(f"## ENTITY GLOSSARY\n{glossary}")
+        
+        # 3. Aliases (static)
+        if self.aliases:
+            alias_section = "## NAME ALIASES\n"
+            alias_items = [f"- {k} → {v}" for k, v in list(self.aliases.items())]
+            alias_section += "\n".join(alias_items)
+            sections.append(alias_section)
+        
+        # 4. Glossary terms (static)
+        if self.glossary:
+            terms_section = "## TERMS & ACRONYMS\n"
+            terms_items = [f"- **{k}**: {v}" for k, v in list(self.glossary.items())]
+            terms_section += "\n".join(terms_items)
+            sections.append(terms_section)
+        
+        prefix = "\n\n".join(sections)
+        
+        # Generate hash for cache verification
+        prefix_hash = hashlib.md5(prefix.encode()).hexdigest()[:8]
+        
+        return prefix, prefix_hash
+    
+    def get_dynamic_suffix(self) -> str:
+        """Get the dynamic (per-call) portion of the prompt.
+        
+        This includes content-specific READMEs that vary per extraction.
+        """
+        if not self.relevant_readmes:
+            return ""
+        
+        lines = ["## RELEVANT ENTITY CONTEXT"]
+        for name, summary in self.relevant_readmes.items():
+            lines.append(f"\n### {name}\n{summary}")
+        
+        return "\n".join(lines)
+
+    def get_extraction_context(self, compact: bool = True, verbose: bool = False) -> str:
         """Format context for injection into extraction prompt.
         
         Args:
             compact: If True, use compact format for token efficiency
+            verbose: If True, log cache info
         
         Returns:
             Formatted context string
         """
-        sections = []
+        # Get cacheable prefix and dynamic suffix
+        prefix, prefix_hash = self.get_cacheable_prefix()
+        suffix = self.get_dynamic_suffix()
         
-        # Persona (always include if available)
-        if self.persona:
-            sections.append(f"## PERSONA\n{self.persona}")
+        if verbose:
+            prefix_tokens = len(prefix) // 4  # Rough estimate
+            suffix_tokens = len(suffix) // 4
+            print(f"  Context: prefix={prefix_tokens} tokens (hash:{prefix_hash}), suffix={suffix_tokens} tokens")
+            if prefix_tokens >= 1024:
+                print("  ✓ Prefix eligible for caching (>= 1024 tokens)")
+            else:
+                print("  ⚠ Prefix too short for caching (< 1024 tokens)")
         
-        # Entity glossary
-        if compact:
-            glossary = self._format_compact_glossary()
-        else:
-            glossary = self._format_full_glossary()
-        
-        if glossary:
-            sections.append(f"## ENTITY GLOSSARY\n{glossary}")
-        
-        # Relevant READMEs (for mentioned entities)
-        if self.relevant_readmes:
-            readme_section = "## RELEVANT ENTITIES\n"
-            for name, summary in self.relevant_readmes.items():
-                readme_section += f"\n### {name}\n{summary}\n"
-            sections.append(readme_section)
-        
-        return "\n\n".join(sections)
+        # Combine: cacheable prefix first, then dynamic suffix
+        if suffix:
+            return f"{prefix}\n\n{suffix}"
+        return prefix
     
     def _format_compact_glossary(self) -> str:
         """Format glossary in compact form for token efficiency.

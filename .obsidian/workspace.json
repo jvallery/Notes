@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/Projects/_MANIFEST.md",
+                "file": "Workflow/TODO.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "_MANIFEST"
+              "title": "TODO"
             }
           }
         ]
@@ -195,6 +195,7 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "VAST/Projects/_MANIFEST.md",
     "VAST/People/_MANIFEST.md",
     "VAST/People/Jeff Denworth/README.md",
     "Sources/Email/2026/2025-12-30_162801_0557_Re-Re-EXTERNAL-EXTERNAL-Re-OA-Alert-FOpp-4197---9680814---A-.md",
@@ -230,7 +231,6 @@
     "VAST/Projects/VAST Story- Business Acumen/2025-12-16 - Discussion on VASTs Strategic Position and Integration with Microsoft.md",
     "Sources/Transcripts/2025/2025-12-15 16 10 - Google GDC RFP.md",
     "VAST/Projects/Google Distributed Cloud RFP/2025-12-15 - Discussion on Google Distributed Cloud RFP.md",
-    "Sources/Transcripts/2026/Jonsi:Jason 1-1 .md",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",
