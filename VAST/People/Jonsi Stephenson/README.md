@@ -1,10 +1,10 @@
 ---
-name: Jonsi Stephenson
-role: CEO
 company: Google LLC
-last_contact: '2026-01-02'
 email: comments-noreply@docs.google.com
+last_contact: '2026-01-04'
+name: Jonsi Stephenson
 phone: '+3546987478'
+role: CEO
 title: GM of Cloud
 ---
 
@@ -72,6 +72,7 @@ title: GM of Cloud
 - 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data stora
 
 - 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data forma
+- 2026-01-04: Discussion on MAI and Azure Integration Challenges - Jason Vallery and Jonsi Stefanson discussed the challenges and opportunities related to the integrat
 ## Key Facts
 
 - Jonsi Stefansson shared a presentation for editing
@@ -100,11 +101,13 @@ title: GM of Cloud
 - data formats
 - flash memory market
 - supply chain
+- 2026-01-04: MAI situation, Azure integration, VAST Data performance, Market dynamics
 ## Key Decisions
 
 - (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
 
 - (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
+- 2026-01-04: Proceed with the project to integrate VAST with Azure Blob without waiting for a PO from Microsoft.
 ## Related Customers
 
 - [[Microsoft]]

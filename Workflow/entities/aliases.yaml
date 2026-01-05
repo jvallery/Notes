@@ -39,7 +39,8 @@ people:
   "Jonsi Stephenson":
     - "Jonsi"
     - "JS"
-    - "Jonsi Stefansson"        # Typo variant
+    - "Jonsi Stefansson"        # Typo variant (double s)
+    - "Jonsi Stefanson"         # Typo variant (single s)
     - "Jonsi Stemmelsson"       # Typo variant
     - "Yonsi Stephenson"        # Typo variant
   
