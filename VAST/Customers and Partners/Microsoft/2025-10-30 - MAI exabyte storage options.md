@@ -26,18 +26,18 @@ tags:
 
 Team aligned on presenting Microsoft MAI two exabyte-scale storage options: an NVIDIA NCP-aligned high-performance pod (~41,472 GPUs) as the baseline building block, and a high-density Maverick 5400 capacity-optimized exabyte alternative with performance trade-offs. The deck will emphasize AKS-led standalone control plane fit for neo-cloud/leased sites, local storage for checkpointing during WAN outages, Kubernetes integration (CSI/COSI), file+object support, and single-pane monitoring/logging; pricing will be avoided. Materials (rack layouts and side-by-side metrics) are to be produced for a MAI call the next day, with a separate Azure Blob comparison prepared for follow-on discussions.
 ## Action Items
-- [ ] Draft NCP-aligned design slides and rack diagrams for a 41,472-GPU pod (≈450 C / 180 D, ≈215 PB usable) and extrapolate to 1 EB. @Paul 📅 2025-10-30 ⏫ #task #proposed
-- [ ] Compile performance, capacity, and power metrics for the NCP pod and produce a side-by-side metrics table. @Ray 📅 2025-10-30 ⏫ #task #proposed
-- [ ] Design capacity-optimized Maverick 5400 exabyte option and rack layout; include C:D ratio variants (e.g., 420:210 and 105:210). @Paul 📅 2025-10-30 ⏫ #task #proposed
-- [ ] Model read/write performance and power for the Maverick option at chosen C:D ratios and validate backend media limits. @Ray 📅 2025-10-30 🔺 #task #proposed
-- [ ] Add bullets on Kubernetes (CSI/COSI), file+object support, single-pane monitoring/logging, and offline auth/DNS resiliency to the deck. @Paul 📅 2025-10-30 🔺 #task #proposed
-- [ ] Create a one-slide/Excel view adding Azure Blob comparison columns for the 1 EB reference. @Myself 📅 2025-10-31 🔺 #task #proposed
-- [ ] Join MAI call to present the architecture and answer technical questions. @Paul 📅 2025-10-31 🔺 #task #proposed
-- [ ] Join MAI call to present performance/power modeling and NCP alignment. @Ray 📅 2025-10-31 🔺 #task #proposed
-- [ ] Confirm MAI checkpointing method and sustained write throughput targets during 1:1. @Myself 📅 2025-10-31 ⏫ #task #proposed
-- [ ] Validate distribution of 160k GPUs across sites/pods and max non-blocking cluster size with MAI. @Myself 📅 2025-10-31 ⏫ #task #proposed
-- [ ] Clarify MAI data movement standard (azcopy vs PutBlobFromURL pipelines vs Sync Engine) and implications for design. @Myself 📅 2025-11-05 ⏫ #task #proposed
-- [ ] Confirm NVIDIA acceptance/certification posture for Maverick-based capacity-optimized design. @Ray 📅 2025-11-05 ⏫ #task #proposed
+- [ ?] Draft NCP-aligned design slides and rack diagrams for a 41,472-GPU pod (≈450 C / 180 D, ≈215 PB usable) and extrapolate to 1 EB. @Paul 📅 2025-10-30 ⏫ #task #proposed
+- [ ?] Compile performance, capacity, and power metrics for the NCP pod and produce a side-by-side metrics table. @Ray 📅 2025-10-30 ⏫ #task #proposed
+- [ ?] Design capacity-optimized Maverick 5400 exabyte option and rack layout; include C:D ratio variants (e.g., 420:210 and 105:210). @Paul 📅 2025-10-30 ⏫ #task #proposed
+- [ ?] Model read/write performance and power for the Maverick option at chosen C:D ratios and validate backend media limits. @Ray 📅 2025-10-30 🔺 #task #proposed
+- [ ?] Add bullets on Kubernetes (CSI/COSI), file+object support, single-pane monitoring/logging, and offline auth/DNS resiliency to the deck. @Paul 📅 2025-10-30 🔺 #task #proposed
+- [ ?] Create a one-slide/Excel view adding Azure Blob comparison columns for the 1 EB reference. @Myself 📅 2025-10-31 🔺 #task #proposed
+- [ ?] Join MAI call to present the architecture and answer technical questions. @Paul 📅 2025-10-31 🔺 #task #proposed
+- [ ?] Join MAI call to present performance/power modeling and NCP alignment. @Ray 📅 2025-10-31 🔺 #task #proposed
+- [ ?] Confirm MAI checkpointing method and sustained write throughput targets during 1:1. @Myself 📅 2025-10-31 ⏫ #task #proposed
+- [ ?] Validate distribution of 160k GPUs across sites/pods and max non-blocking cluster size with MAI. @Myself 📅 2025-10-31 ⏫ #task #proposed
+- [ ?] Clarify MAI data movement standard (azcopy vs PutBlobFromURL pipelines vs Sync Engine) and implications for design. @Myself 📅 2025-11-05 ⏫ #task #proposed
+- [ ?] Confirm NVIDIA acceptance/certification posture for Maverick-based capacity-optimized design. @Ray 📅 2025-11-05 ⏫ #task #proposed
 
 ## Decisions
 - Use NVIDIA NCP reference architecture as the lead option for MAI (~41,472 GPU pod, ~215 PB usable).

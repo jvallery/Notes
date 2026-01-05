@@ -58,83 +58,128 @@ def load_persona() -> dict:
 
 
 def build_persona_prompt(persona: dict) -> str:
-    """Build a prompt section from the persona configuration."""
+    """
+    Build a prompt section from the persona configuration.
+    
+    Aligns with jason_persona.yaml structure:
+    - identity (name, role, company, location, domain_expertise, company_positioning)
+    - processing_logic (step_1_extraction, step_2_decision, step_3_delegation_filter)
+    - style (voice, formatting)
+    - playbooks (delegation, scheduling, declining, introduction, escalation)
+    - phrases (openers, action_drivers, closers)
+    - guardrails (brand_safety, style_avoid)
+    """
     if not persona:
         return ""
     
     identity = persona.get("identity", {})
+    processing = persona.get("processing_logic", {})
     style = persona.get("style", {})
-    patterns = persona.get("patterns", {})
-    actions = persona.get("actions", {})
-    avoid = persona.get("avoid", [])
+    playbooks = persona.get("playbooks", {})
     phrases = persona.get("phrases", {})
+    guardrails = persona.get("guardrails", {})
     
     prompt_parts = []
     
-    # Identity
-    prompt_parts.append(f"""## YOUR IDENTITY
+    # ==========================================================================
+    # IDENTITY
+    # ==========================================================================
+    prompt_parts.append(f"""## SYSTEM IDENTITY
 You are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
-Scope: {identity.get('scope', 'Cloud products and enterprise storage solutions')}""")
+Location: {identity.get('location', 'Longmont, CO')}""")
     
-    # Communication Style
-    if style.get("tone"):
+    # Domain Expertise
+    if identity.get("domain_expertise"):
         prompt_parts.append(f"""
-## YOUR COMMUNICATION STYLE
-Tone:
-{chr(10).join('- ' + t for t in style['tone'])}""")
+Domain Expertise:
+{chr(10).join('- ' + d for d in identity['domain_expertise'])}""")
     
-    if style.get("principles"):
+    # Company Positioning
+    company_pos = identity.get("company_positioning", {})
+    if company_pos:
         prompt_parts.append(f"""
-Core Principles:
-{chr(10).join('- ' + p for p in style['principles'])}""")
+## COMPANY POSITIONING (Use This Vocabulary)
+Core Concept: {company_pos.get('core_concept', '')}
+Products: {', '.join(company_pos.get('products', []))}
+Culture: {company_pos.get('culture', '')}""")
     
-    # Impact-Driven Patterns
-    prompt_parts.append("""
-## IMPACT-DRIVEN COMMUNICATION
-You drive for IMPACT in every email. You don't just respond - you ADVANCE the conversation.""")
+    # ==========================================================================
+    # COGNITIVE PROCESSING
+    # ==========================================================================
+    if processing:
+        prompt_parts.append("""
+## COGNITIVE PROCESSING (Before Drafting)""")
+        
+        if processing.get("step_1_extraction"):
+            prompt_parts.append(f"""
+**Step 1 - Extraction:**
+{chr(10).join('- ' + s for s in processing['step_1_extraction'])}""")
+        
+        if processing.get("step_2_decision"):
+            prompt_parts.append(f"""
+**Step 2 - Decision:**
+{chr(10).join('- ' + s for s in processing['step_2_decision'])}""")
+        
+        if processing.get("step_3_delegation_filter"):
+            prompt_parts.append(f"""
+**Step 3 - Delegation Filter:**
+{chr(10).join('- ' + s for s in processing['step_3_delegation_filter'])}""")
     
-    if patterns.get("requests"):
+    # ==========================================================================
+    # COMMUNICATION STYLE
+    # ==========================================================================
+    if style.get("voice"):
         prompt_parts.append(f"""
-When responding to requests:
-{chr(10).join('- ' + r for r in patterns['requests'])}""")
+## VOICE & STYLE
+{chr(10).join('- ' + v for v in style['voice'])}""")
     
-    if patterns.get("delegation"):
+    if style.get("formatting"):
         prompt_parts.append(f"""
-When delegating or making asks:
-{chr(10).join('- ' + d for d in patterns['delegation'])}""")
+## FORMATTING RULES
+{chr(10).join('- ' + f for f in style['formatting'])}""")
     
-    if patterns.get("follow_ups"):
-        prompt_parts.append(f"""
-When following up:
-{chr(10).join('- ' + f for f in patterns['follow_ups'])}""")
+    # ==========================================================================
+    # PLAYBOOKS
+    # ==========================================================================
+    if playbooks:
+        prompt_parts.append("""
+## ACTION PLAYBOOKS""")
+        
+        for playbook_name, playbook_data in playbooks.items():
+            if isinstance(playbook_data, dict):
+                pattern = playbook_data.get('pattern', '')
+                template = playbook_data.get('template', '').strip()
+                prompt_parts.append(f"""
+**{playbook_name.upper()}** ({pattern}):
+{template}""")
     
-    # Action Framework
-    if actions.get("every_response"):
+    # ==========================================================================
+    # PHRASES
+    # ==========================================================================
+    if phrases.get("openers"):
         prompt_parts.append(f"""
-## BEFORE SENDING, ASK YOURSELF:
-{chr(10).join('- ' + a for a in actions['every_response'])}""")
+## PREFERRED PHRASES
+Openers: {', '.join('"' + o + '"' for o in phrases['openers'][:4])}""")
     
-    if actions.get("proactive_offers"):
-        prompt_parts.append(f"""
-PROACTIVE VALUE-ADDS to consider:
-{chr(10).join('- ' + p for p in actions['proactive_offers'])}""")
+    if phrases.get("action_drivers"):
+        prompt_parts.append(f"""Action Drivers:
+{chr(10).join('- "' + a + '"' for a in phrases['action_drivers'])}""")
     
-    if actions.get("delegation_phrases"):
-        prompt_parts.append(f"""
-Natural delegation phrases you use:
-{chr(10).join('- "' + p + '"' for p in actions['delegation_phrases'][:5])}""")
+    if phrases.get("closers"):
+        prompt_parts.append(f"""Closers: {', '.join('"' + c.replace(chr(10), ' ') + '"' for c in phrases['closers'][:3])}""")
     
-    # Anti-patterns
-    if avoid:
+    # ==========================================================================
+    # GUARDRAILS
+    # ==========================================================================
+    if guardrails.get("brand_safety"):
         prompt_parts.append(f"""
-## AVOID THESE PATTERNS:
-{chr(10).join('- ' + a for a in avoid)}""")
+## GUARDRAILS (Never Violate)
+{chr(10).join('- ' + g for g in guardrails['brand_safety'])}""")
     
-    # Signature phrases
-    if phrases.get("action_oriented"):
+    if guardrails.get("style_avoid"):
         prompt_parts.append(f"""
-## YOUR SIGNATURE PHRASES:
-{chr(10).join('- "' + p + '"' for p in phrases['action_oriented'][:5])}""")
+## AVOID THESE PATTERNS
+{chr(10).join('- ' + a for a in guardrails['style_avoid'])}""")
     
     return "\n".join(prompt_parts)
 
@@ -621,7 +666,7 @@ def generate_draft_response(
     client,
     extracted_context: Optional[dict] = None,
     vault_context: Optional[str] = None
-) -> str:
+) -> dict:
     """
     Step 3: Generate a draft response using email + vault context + persona.
     
@@ -630,6 +675,11 @@ def generate_draft_response(
     - Extracted email analysis (topics, questions, people)
     - Discovered vault context (people history, project status, open tasks)
     - Communication persona (tone, style, impact-driven patterns)
+    
+    Returns a dict with:
+    - subject: Proposed subject line (typically "Re: ...")
+    - body: The draft email body
+    - internal_thought: AI's reasoning about the response strategy
     """
     
     model_config = get_model_config("extraction")  # Reuse extraction model config
@@ -638,28 +688,30 @@ def generate_draft_response(
     persona = load_persona()
     persona_prompt = build_persona_prompt(persona)
     
-    system_prompt = f"""You are drafting an email reply. Your goal is to write an IMPACT-DRIVEN response that advances the conversation, not just answers it.
-
-{persona_prompt}
+    # Get output format from persona (or default)
+    output_format = persona.get("output_format", "")
+    
+    system_prompt = f"""{persona_prompt}
 
 ## CONTEXT AVAILABLE
 1. The original email requiring a response
 2. Analysis of the email (topics, questions, people involved)  
 3. Relevant context from notes (relationship history, project status, open tasks)
 
-## YOUR MISSION
-Write a response that:
-1. **ANSWERS** - Address questions/requests directly and completely
-2. **ADVANCES** - Propose specific next steps, don't leave things hanging
-3. **ASKS** - Make proactive requests of others when appropriate (delegate, request info, set deadlines)
-4. **ADDS VALUE** - Offer introductions, share relevant resources, connect dots they might miss
+## OUTPUT FORMAT
+Return a JSON object with exactly these fields:
+{{
+  "internal_thought": "Your strategic reasoning: What is the sender really asking? What's the best outcome? Who should be involved? What's the timeline?",
+  "subject": "Re: [original subject] or a more specific subject if warranted",
+  "body": "The full email body text"
+}}
 
-## STRUCTURE YOUR RESPONSE
+## RESPONSE STRUCTURE (for body field)
 - **Opening**: Brief acknowledgment, show you understood the context
 - **Core Response**: Answer their questions, address their needs
 - **Proactive Ask**: What do you need from them? What should they do next?
 - **Offer/Next Step**: What will YOU do? When will you follow up?
-- **Close**: Warm, action-oriented sign-off
+- **Close**: Warm, action-oriented sign-off (Best, Jason)
 
 ## MAKE ASKS NATURALLY
 When making requests or delegating, be direct but collegial:
@@ -672,15 +724,7 @@ When making requests or delegating, be direct but collegial:
 ## FORMATTING
 - Keep it concise (2-4 paragraphs)
 - Use specific dates/times, not "soon" or "when you can"
-- Sign off with "Best,\\nJason" or "Thanks,\\nJason"
-- Return ONLY the email body (no subject line or headers)
-
-## AVOID
-- Passive voice that obscures who's doing what
-- Vague commitments without timelines
-- Over-apologizing or excessive hedging
-- Ending with "let me know your thoughts" when you should propose a path
-- Generic responses that could apply to anyone"""
+- Return ONLY valid JSON, no markdown fencing"""
 
     user_prompt = f"""Draft an IMPACT-DRIVEN response to this email:
 
@@ -717,10 +761,11 @@ Use this to personalize your response and reference relevant history:
     user_prompt += """
 
 --- YOUR TASK ---
-1. Write a response that ANSWERS their questions completely
-2. Include at least ONE proactive ask or clear next step for them
-3. State what YOU will do and by when (if applicable)
-4. Keep it concise but impactful - quality over length
+1. First, think through your strategy in internal_thought
+2. Write a response that ANSWERS their questions completely
+3. Include at least ONE proactive ask or clear next step for them
+4. State what YOU will do and by when (if applicable)
+5. Return valid JSON with: internal_thought, subject, body
 """
 
     try:
@@ -731,27 +776,64 @@ Use this to personalize your response and reference relevant history:
                 {"role": "user", "content": user_prompt},
             ],
             temperature=0.7,  # Slightly more creative for email writing
+            response_format={"type": "json_object"},  # Enforce JSON output
         )
         
-        return response.choices[0].message.content.strip()
+        raw_response = response.choices[0].message.content.strip()
+        
+        # Parse JSON response
+        try:
+            result = json.loads(raw_response)
+            # Ensure all expected fields exist
+            return {
+                "subject": result.get("subject", f"Re: {metadata.get('subject', '')}"),
+                "body": result.get("body", raw_response),
+                "internal_thought": result.get("internal_thought", "")
+            }
+        except json.JSONDecodeError:
+            # Fallback: treat entire response as body
+            return {
+                "subject": f"Re: {metadata.get('subject', '')}",
+                "body": raw_response,
+                "internal_thought": ""
+            }
     
     except Exception as e:
         console.print(f"[red]Draft generation failed: {e}[/red]")
-        return f"[Error generating draft: {e}]"
+        return {
+            "subject": f"Re: {metadata.get('subject', '')}",
+            "body": f"[Error generating draft: {e}]",
+            "internal_thought": ""
+        }
 
 
 def save_draft(
     original_file: Path,
     metadata: dict,
-    draft_body: str,
+    draft_result: dict,
     reason: str,
     extracted_context: Optional[dict] = None,
     vault_context_summary: Optional[str] = None
 ) -> Path:
-    """Save draft response to Outbox folder."""
+    """
+    Save draft response to Outbox folder.
+    
+    Args:
+        draft_result: Dict with 'subject', 'body', and 'internal_thought' keys
+    """
     
     outbox = vault_root() / "Outbox"
     outbox.mkdir(exist_ok=True)
+    
+    # Extract from result dict (backwards compatible with plain string)
+    if isinstance(draft_result, str):
+        draft_body = draft_result
+        draft_subject = f"Re: {metadata.get('subject', '')}"
+        internal_thought = ""
+    else:
+        draft_body = draft_result.get("body", "")
+        draft_subject = draft_result.get("subject", f"Re: {metadata.get('subject', '')}")
+        internal_thought = draft_result.get("internal_thought", "")
     
     # Generate filename
     today = datetime.now().strftime("%Y-%m-%d")
@@ -780,7 +862,7 @@ original: "{original_file.name}"
 created: "{datetime.now().isoformat()}"
 to: "{metadata.get('sender_email', '')}"
 to_name: "{metadata.get('sender', '')}"
-subject: "Re: {metadata.get('subject', '')}"
+subject: "{draft_subject}"
 reason: "{reason}"
 topics: {json.dumps(topics)}
 people_mentioned: {json.dumps(people)}
@@ -790,7 +872,7 @@ vault_context_used: {bool(vault_context_summary)}
 # Draft Reply: {metadata.get('subject', '')}
 
 **To:** {metadata.get('sender', '')} <{metadata.get('sender_email', '')}>
-**Subject:** Re: {metadata.get('subject', '')}
+**Subject:** {draft_subject}
 **Context:** {reason}
 
 ---
@@ -798,7 +880,19 @@ vault_context_used: {bool(vault_context_summary)}
 {draft_body}
 
 ---
+"""
 
+    # Add AI reasoning if present
+    if internal_thought:
+        content += f"""
+## AI Reasoning
+
+> {internal_thought}
+
+---
+"""
+
+    content += f"""
 ## Original Email
 
 > From: {metadata.get('sender', '')} <{metadata.get('sender_email', '')}>
@@ -950,7 +1044,7 @@ def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool, 
         
         # STEP 3: Generate draft with all context
         console.print("  [dim]Step 3: Generating draft response...[/dim]")
-        draft_body = generate_draft_response(
+        draft_result = generate_draft_response(
             content, 
             metadata, 
             client,
@@ -961,7 +1055,7 @@ def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool, 
         output_path = save_draft(
             email_path, 
             metadata, 
-            draft_body, 
+            draft_result, 
             reason,
             extracted_context=extracted,
             vault_context_summary=vault_context_str if vault_context_str else None
@@ -971,6 +1065,7 @@ def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool, 
         console.print(f"  [green]✓ Saved: {output_path.name}[/green]")
         
         if verbose:
+            draft_body = draft_result.get("body", "") if isinstance(draft_result, dict) else draft_result
             console.print(Panel(
                 draft_body[:500] + "..." if len(draft_body) > 500 else draft_body,
                 title="Draft Preview", 

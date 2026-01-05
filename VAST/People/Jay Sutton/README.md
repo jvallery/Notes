@@ -28,7 +28,11 @@ WHERE !completed AND contains(text, "Jay Sutton")
 SORT due ASC
 ```
 
-- [ ] Arrange a meeting with Jay Parikh from Microsoft during CES. @Myself ⏫ #task #proposed
+- [ ?] Arrange a meeting with Jay Parikh from Microsoft during CES. @Myself ⏫ #task #proposed
+
+- [ ?] Arrange meeting with Jay Parikh in Vegas. @Microsoft team 🔼 #task #proposed #auto
+
+- [ ?] Arrange a meeting with Jay Parikh from Microsoft. @Myself ⏫ #task #proposed #auto
 ## Recent Context
 
 - 2025-11-07: [[2025-11-07 - Warm intro paths planning]] (via Chris Carpenter)
@@ -57,3 +61,5 @@ Jay Sutton is a seasoned sales professional with a progressive career in the tec
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[Siemens keynote]]

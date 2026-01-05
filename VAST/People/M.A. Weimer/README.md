@@ -30,3 +30,6 @@ tags:
 ## Related
 
 - [[Tues mens group]]
+
+- [[2084]]
+- [[AI chat]]

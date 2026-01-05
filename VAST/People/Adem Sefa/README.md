@@ -26,6 +26,8 @@ tags:
 - 2025-11-20: First contact via email re: Re: Introduction for FP&A Director role.
 
 - 2025-11-20: Email re: Re: Introduction for FP&A Director role. - Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role,
+
+- 2025-11-20: Email re: Re: Introduction for FP&A Director role. - Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role.
 ## Open Tasks
 
 ## Related

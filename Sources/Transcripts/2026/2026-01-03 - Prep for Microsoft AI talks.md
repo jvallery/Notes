@@ -29,8 +29,8 @@ Jonsi and Jason aligned on positioning a “better together” story with Micros
 
 ## Action Items
 
-- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish. @Myself ⏫ #task #proposed
-- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi #task #proposed
+- [ ?] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish. @Myself ⏫ #task #proposed
+- [ ?] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi #task #proposed
 
 ## Decisions
 

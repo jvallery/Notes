@@ -25,10 +25,10 @@ tags:
 
 Jason discussed two external options: a complex, high-variance offer from VAST and a more stable offer from Crusoe with a deadline by Wednesday. Microsoft could not provide competitive compensation or clear scope/path to partner given Apollo’s undefined boundaries, so staying at Microsoft was deemed not viable. Jason planned to quantify VAST offer risk with CEO Renan and decide by Wednesday, likely resigning if he accepts an external offer.
 ## Action Items
-- [ ] Quantify risks in the VAST offer and negotiate potential tweaks with VAST CEO Renan. @Myself 📅 2025-10-07 🔺 #task #proposed
-- [ ] Update Jai after meeting with Renan on VAST offer risk and any changes. @Myself 📅 2025-10-07 🔺 #task #proposed
-- [ ] Decide between VAST and Crusoe and prepare resignation if proceeding externally. @Myself 📅 2025-10-08 ⏫ #task #proposed
-- [ ] Notify Jai of final decision and resignation timing. @Myself 📅 2025-10-08 🔺 #task #proposed
+- [ ?] Quantify risks in the VAST offer and negotiate potential tweaks with VAST CEO Renan. @Myself 📅 2025-10-07 🔺 #task #proposed
+- [ ?] Update Jai after meeting with Renan on VAST offer risk and any changes. @Myself 📅 2025-10-07 🔺 #task #proposed
+- [ ?] Decide between VAST and Crusoe and prepare resignation if proceeding externally. @Myself 📅 2025-10-08 ⏫ #task #proposed
+- [ ?] Notify Jai of final decision and resignation timing. @Myself 📅 2025-10-08 🔺 #task #proposed
 
 ## Decisions
 - Do not pursue a Microsoft counteroffer/retention package.

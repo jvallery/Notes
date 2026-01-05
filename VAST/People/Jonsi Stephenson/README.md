@@ -26,11 +26,19 @@ title: GM of Cloud
 - [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
 - [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson Stephenson
 
-- [ ] Review and edit the shared presentation @Myself 🔼 #task #proposed
+- [ ?] Review and edit the shared presentation @Myself 🔼 #task #proposed
 
-- [ ] Reconsider using Native Azure Blob format instead of VAST object format for better compatibility. @Myself 🔼 #task #proposed
+- [ ?] Reconsider using Native Azure Blob format instead of VAST object format for better compatibility. @Myself 🔼 #task #proposed
 
-- [ ] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task #proposed
+- [ ?] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task #proposed
+
+- [ ?] Review and edit the shared presentation @Myself 🔼 #task #proposed #auto
+
+- [ ?] Reconsider using Native Azure Blob format instead of VAST object format. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Review and edit the shared presentation. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-16: Discussed Microsoft AI (MAI) positioning (Blob + VAST GPU-adjacent), Bifrost/Apollo politics, POC/bake-off timing, and flash supply-chain constraints. [[2025-12-16 - Prep for Microsoft AI talks]]
@@ -62,9 +70,13 @@ title: GM of Cloud
 - 2025-12-17: Email re: Presentation shared with you: "GCP Flow from custo - Jonsi Stefansson shared a Google Slides presentation titled 'GCP Flow from customer to sales to cust
 
 - 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data stora
+
+- 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data forma
 ## Key Facts
 
 - Jonsi Stefansson shared a presentation for editing
+
+- Jonsi Stefansson works at Vast Data.
 ## Topics
 
 ## Key Decisions
@@ -93,3 +105,10 @@ title: GM of Cloud
 
 - [[VAST]]
 - [[VAST and Azure Integration]]
+
+- [[VAST PoC]]
+
+- [[GCP Flow from customer to sales to customer]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

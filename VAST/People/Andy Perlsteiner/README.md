@@ -6,6 +6,7 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+company: VAST Data
 ---
 
 # Andy Perlsteiner

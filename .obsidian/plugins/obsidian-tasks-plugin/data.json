@@ -30,14 +30,14 @@
       {
         "symbol": " ",
         "name": "Todo",
-        "nextStatusSymbol": "x",
+        "nextStatusSymbol": "/",
         "availableAsCommand": true,
         "type": "TODO"
       },
       {
         "symbol": "x",
         "name": "Done",
-        "nextStatusSymbol": " ",
+        "nextStatusSymbol": "?",
         "availableAsCommand": true,
         "type": "DONE"
       }
@@ -51,11 +51,11 @@
         "type": "IN_PROGRESS"
       },
       {
-        "symbol": "-",
-        "name": "Cancelled",
+        "symbol": "?",
+        "name": "Proposed",
         "nextStatusSymbol": " ",
-        "availableAsCommand": true,
-        "type": "CANCELLED"
+        "availableAsCommand": false,
+        "type": "TODO"
       }
     ]
   },

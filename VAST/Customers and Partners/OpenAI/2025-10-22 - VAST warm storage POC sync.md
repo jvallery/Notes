@@ -25,14 +25,14 @@ tags:
 
 Jason Vallery (VAST) and Sam Hopewell (OpenAI) reconnected to position VAST as GPU-adjacent warm storage and potentially a global namespace/caching layer, while clarifying NDA boundaries and operational constraints on GPU nodes. OpenAI interest in a CoreWeave-based POC remains, but timing is deferred due to ongoing firefighting and bandwidth constraints; they also discussed a possible in-person meeting in San Francisco Nov 4–6.
 ## Action Items
-- [ ] Coordinate a possible in-person meeting in San Francisco Nov 4–6 with VAST founder and architect. @Myself 📅 2025-11-04 #task #proposed
-- [ ] Share a concise POC plan and required features for review (e.g., Blob-compatible API, caching/global namespace). @Myself #task #proposed
-- [ ] Confirm internal bandwidth and provide a target window to start the VAST POC on the CoreWeave cluster. @Sam Hopewell ⏫ #task #proposed
-- [ ] Loop in DAC/Applied to test the cluster once it is available. @Sam Hopewell #task #proposed
-- [ ] Clarify NDA boundaries on what prior workload/context knowledge Jason can leverage. @Sam Hopewell ⏫ #task #proposed
-- [ ] Evaluate viability and reliability of VAST global namespace and metadata scale for multi-exabyte use. @TBD #task #proposed
-- [ ] Assess whether a Blob-compatible API over VAST is required/preferred for GPU-node access. @Sam Hopewell #task #proposed
-- [ ] Prepare POC environment details and staging requirements for kickoff (CoreWeave cluster). @Myself #task #proposed
+- [ ?] Coordinate a possible in-person meeting in San Francisco Nov 4–6 with VAST founder and architect. @Myself 📅 2025-11-04 #task #proposed
+- [ ?] Share a concise POC plan and required features for review (e.g., Blob-compatible API, caching/global namespace). @Myself #task #proposed
+- [ ?] Confirm internal bandwidth and provide a target window to start the VAST POC on the CoreWeave cluster. @Sam Hopewell ⏫ #task #proposed
+- [ ?] Loop in DAC/Applied to test the cluster once it is available. @Sam Hopewell #task #proposed
+- [ ?] Clarify NDA boundaries on what prior workload/context knowledge Jason can leverage. @Sam Hopewell ⏫ #task #proposed
+- [ ?] Evaluate viability and reliability of VAST global namespace and metadata scale for multi-exabyte use. @TBD #task #proposed
+- [ ?] Assess whether a Blob-compatible API over VAST is required/preferred for GPU-node access. @Sam Hopewell #task #proposed
+- [ ?] Prepare POC environment details and staging requirements for kickoff (CoreWeave cluster). @Myself #task #proposed
 
 ## Key Information
 - Jason Vallery now leads VAST strategy/direction for hyperscalers and cloud platforms.

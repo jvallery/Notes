@@ -32,7 +32,9 @@ WHERE !completed AND contains(text, "Mordechai Blaunstein")
 SORT due ASC
 ```
 
-- [ ] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed
+- [ ?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed
+
+- [ ?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)
@@ -52,9 +54,15 @@ SORT due ASC
 - 2025-12-19: Email re: Document shared with you: "CoreWeave-Vast Automati - Mordechai Blaunstein shared a document titled 'CoreWeave-Vast Automation Project - V2 .docx' with yo
 
 - 2025-12-29: Email re: Accepted: Mordi/Jason - Sync @ Fri Jan 2, 2026 1pm - Mordechai Blaunstein has accepted a calendar invitation for a sync meeting with Jason Vallery schedu
+
+- 2025-12-29: Email re: Accepted: Mordi/Jason - Sync @ Fri Jan 2, 2026 1pm - Mordechai Blaunstein has accepted a calendar invitation for a sync meeting with Jason Vallery on Jan
 ## Key Facts
 
 - Mordechai Blaunstein is involved in the CoreWeave-Vast Automation Project.
+
+- Mordechai Blaunstein is attending a meeting with Jason Vallery.
+
+- Mordechai Blaunstein is associated with Vast Data.
 ## Background
 
 Over 28 years of experience in the technology sector, holding leadership roles in product management, technical business development, and marketing at companies such as NeuroBlade, SolidRun, Marvell Technology, Lightbits Labs, and Sandisk.

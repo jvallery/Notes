@@ -31,18 +31,30 @@ WHERE !completed AND contains(text, "David Holz")
 SORT due ASC
 ```
 
-- [ ] Provide clarification on FIPS compliance and pricing details. @Lior Genzel 🔼 #task #proposed
+- [ ?] Provide clarification on FIPS compliance and pricing details. @Lior Genzel 🔼 #task #proposed
 
-- [ ] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed
+- [ ?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed
 
-- [ ] Decide on a date and time for the board game session. @Brian Bearly 🔼 #task #proposed
+- [ ?] Decide on a date and time for the board game session. @Brian Bearly 🔼 #task #proposed
 
-- [ ] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed
+- [ ?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed
+
+- [ ?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed #auto
+
+- [ ?] Decide on a date and time for the board game session. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Confirm attendance for the meeting at Wapos on Tuesday at 6:30 PM. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-31: Email re: Re: The most interesting men in the world group - David Ellis is planning to retire the current book club and start a new group called 'The Most Inter
 
 - 2026-01-04: Email re: Re: Tues mens group - David Ellis is confirming attendance for a final discussion about the book '2084' and dinner at Wapo
+
+- 2026-01-04: Email re: Re: Tues mens group - David Ellis is organizing a final meeting for a book club discussion on '2084' and dinner at Wapos o
+
+- 2025-12-31: Email re: Re: The most interesting men in the world group - David Ellis proposes retiring the current book club and starting a new group called 'The Most Intere
 ## Key Facts
 
 - David Ellis is taking a hiatus from the book club early next year.
@@ -74,3 +86,6 @@ David Holz co-founded Leap Motion in 2010, a company specializing in gesture-rec
 - [[TMIMITW]]
 
 - [[Tues mens group]]
+
+- [[2084]]
+- [[AI chat]]

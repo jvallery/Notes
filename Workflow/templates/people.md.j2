@@ -30,7 +30,7 @@ tags:
 ## Action Items
 
 {% for task in tasks %}
-- [ ] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task #proposed #auto
+- [?] {{ task.text }}{% if task.owner %} @{{ task.owner }}{% endif %}{% if task.due %} 📅 {{ task.due }}{% endif %}{% if task.priority == "high" %} ⏫{% elif task.priority == "highest" %} 🔺{% elif task.priority == "low" %} 🔽{% elif task.priority == "lowest" %} ⏬{% endif %} #task #proposed #auto
 {% endfor %}
 {% endif %}
 

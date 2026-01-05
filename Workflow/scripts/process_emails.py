@@ -290,7 +290,7 @@ def phase_draft(gathered: Dict[Path, dict], client, dry_run: bool = False, verbo
             extraction = context_data.get("extraction", {})
             vault_context_str = context_data.get("context_str", "")
             
-            draft_body = generate_draft_response(
+            draft_result = generate_draft_response(
                 content, metadata, client,
                 extracted_context=extraction,
                 vault_context=vault_context_str if vault_context_str else None
@@ -298,7 +298,7 @@ def phase_draft(gathered: Dict[Path, dict], client, dry_run: bool = False, verbo
             
             # Save draft
             save_draft(
-                email_path, metadata, draft_body, reason,
+                email_path, metadata, draft_result, reason,
                 extracted_context=extraction,
                 vault_context_summary=vault_context_str if vault_context_str else None
             )

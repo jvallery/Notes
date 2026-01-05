@@ -8,6 +8,7 @@ tags:
 - type/people
 - needs-review
 - company/microsoft
+company: VAST Data
 ---
 
 # Steve Ballmer
@@ -52,3 +53,5 @@ Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

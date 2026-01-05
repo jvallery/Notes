@@ -38,8 +38,13 @@ SORT due ASC
 - 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing customer and partner participa
 
 - 2025-12-30: The email discusses a successful deal for Leidos Federal involving a cloud deployment in the US Fede
+
+- 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
+
+- 2025-12-30: The email discusses the successful submission and processing of a $96,808.14 deal for Leidos Federal
 ## Key Facts
 
+- Leidos is pursuing Dept of Defense and Civilian Hybrid Cloud Strategies and positioning VAST Data as a foundational component of their 'Mission OS'.
 ## Opportunities
 
 - Greg expected to focus heavily on Leidos next year (resource planning consideration)

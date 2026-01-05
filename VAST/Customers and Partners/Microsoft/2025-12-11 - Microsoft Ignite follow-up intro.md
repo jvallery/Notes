@@ -29,8 +29,8 @@ Lior introduced Jason to Sushant Rewaskar from Microsoft following Ignite conver
 
 ## Action Items
 
-- [ ] Schedule intro call with Sushant Rewaskar 📅 2025-12-18 🔺 #task #proposed
-- [ ] Share architecture documents discussed at Ignite/SF 📅 2025-12-16 🔼 #task #proposed
+- [ ?] Schedule intro call with Sushant Rewaskar 📅 2025-12-18 🔺 #task #proposed
+- [ ?] Share architecture documents discussed at Ignite/SF 📅 2025-12-16 🔼 #task #proposed
 
 ## Contacts
 

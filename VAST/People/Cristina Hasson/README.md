@@ -5,7 +5,7 @@ created: '2026-01-04'
 last_contact: '2025-12-18'
 email: ''
 phone: ''
-company: VAST Data
+company: Vast Data
 tags:
 - type/people
 - needs-review
@@ -22,6 +22,8 @@ tags:
 ## Key Facts
 
 - Cristina Hasson is leaving VAST Data on December 19th.
+
+- Cristina Hasson is leaving Vast Data on December 19th.
 ## Recent Context
 
 - 2025-12-18: First contact via email re: GTM Team Update: RevOps Leadership

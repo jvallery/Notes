@@ -30,9 +30,15 @@ tags:
 
 ## Open Tasks
 
-- [ ] Review Edwin Trogler's resume and consider for FP&A Director role. @Myself 🔼 #task #proposed
+- [ ?] Review Edwin Trogler's resume and consider for FP&A Director role. @Myself 🔼 #task #proposed
 
-- [ ] Schedule a call with Edwin Trogler next week. @Myself 🔼 #task #proposed
+- [ ?] Schedule a call with Edwin Trogler next week. @Myself 🔼 #task #proposed
+
+- [ ?] Review Edwin Trogler's resume and consider for FP&A Director role. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Schedule a call with Edwin Trogler next week. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Review Edwin Trogler's resume and consider for FP&A opportunities. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[Microsoft]]

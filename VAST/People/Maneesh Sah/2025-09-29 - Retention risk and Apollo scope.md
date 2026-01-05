@@ -25,13 +25,13 @@ tags:
 
 Jason Vallery expressed disappointment with his rewards, anxiety about scope/ownership and layoff risk, and shared that he has multiple external job offers. Maneesh Sah committed to investigate the rewards outcome with Aung, outlined a potential key architecture role for Jason in Apollo (GPU-adjacent storage/agentic systems), and discussed strategic positioning vs NeoClouds and the need to build a stronger NVIDIA storage advocacy channel.
 ## Action Items
-- [ ] Discuss and debug Jason Vallery's reward outcome with Aung and report back to Jason @Maneesh 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Define proposed Apollo role and ownership scope for Jason Vallery, including collaboration model with leadership @Maneesh 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Plan approach to build Microsoft storage advocacy and roadmap alignment with NVIDIA @Maneesh 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Consider mid-term compensation adjustments for Jason Vallery over the next 6–9 months @Maneesh 📅 2025-10-26 #task #proposed
-- [ ] Inform Maneesh of decision/status on external offers and interest in Apollo @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Share a short proposal on Apollo strategy for agentic memory/KVCache and GPU-adjacent caching, including NeoCloud partnership model @Myself 📅 2025-10-26 #task #proposed
-- [ ] Schedule deeper working session on Apollo architecture and Jason Vallery's ownership areas @Maneesh 📅 2025-10-26 #task #proposed
+- [ ?] Discuss and debug Jason Vallery's reward outcome with Aung and report back to Jason @Maneesh 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Define proposed Apollo role and ownership scope for Jason Vallery, including collaboration model with leadership @Maneesh 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Plan approach to build Microsoft storage advocacy and roadmap alignment with NVIDIA @Maneesh 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Consider mid-term compensation adjustments for Jason Vallery over the next 6–9 months @Maneesh 📅 2025-10-26 #task #proposed
+- [ ?] Inform Maneesh of decision/status on external offers and interest in Apollo @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Share a short proposal on Apollo strategy for agentic memory/KVCache and GPU-adjacent caching, including NeoCloud partnership model @Myself 📅 2025-10-26 #task #proposed
+- [ ?] Schedule deeper working session on Apollo architecture and Jason Vallery's ownership areas @Maneesh 📅 2025-10-26 #task #proposed
 
 ## Key Information
 - Jason Vallery received 100% rewards despite perceiving a high-impact year and is dissatisfied.

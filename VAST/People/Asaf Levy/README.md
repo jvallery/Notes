@@ -6,6 +6,7 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+company: VAST Data
 ---
 
 # Asaf Levy
@@ -59,3 +60,5 @@ not done
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[Siemens keynote]]

@@ -10,7 +10,7 @@ tags:
 - company/thinking-machines
 email: christian.linacre@oracle.com
 phone: +1.425.270.9331
-company: Oracle
+company: Oracle Cloud Infrastructure
 ---
 
 # Christian Gibson
@@ -58,3 +58,5 @@ _Career history, expertise, interests, personal details shared..._
 - [[DRCC/Alloy]]
 
 - [[VAST Data]]
+
+- [[Oracle]]

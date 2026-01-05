@@ -34,6 +34,8 @@ company: VAST Data
 - 2025-11-14: [[2025-11-14 - GDC RFP federal coordination]] (via Google)
 
 - 2025-12-15: Email re: Re: Google Distributed Cloud - RFP Follow-up3) Enc - The email discusses follow-up questions from a Google RFP regarding encryption key granularity and t
+
+- 2025-12-15: Email re: Re: Google Distributed Cloud - RFP Follow-up3) Enc - The email discusses follow-up questions from a Google RFP regarding encryption key granularity and s
 ## Key Facts
 
 ## Topics
@@ -65,3 +67,8 @@ company: VAST Data
 
 - [[VAST Data]]
 - [[VAST Forward]]
+
+- [[VAST PoC]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

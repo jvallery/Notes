@@ -33,22 +33,40 @@ WHERE !completed AND contains(text, "Jason Ainsworth")
 SORT due ASC
 ```
 
-- [ ] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task #proposed
+- [ ?] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task #proposed
 
-- [ ] Set up an intro call between Jason Vallery and Sushant Rewaskar. @Myself 🔼 #task #proposed
+- [ ?] Set up an intro call between Jason Vallery and Sushant Rewaskar. @Myself 🔼 #task #proposed
 
-- [ ] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task #proposed
+- [ ?] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task #proposed
 
-- [ ] Set a meeting with Jason Vallery on January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task #proposed
+- [ ?] Set a meeting with Jason Vallery on January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task #proposed
 
-- [ ] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task #proposed
+- [ ?] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task #proposed
 
-- [ ] Send an EoD/EoW summary incorporating Jason’s feedback. @Lior Genzel 🔼 #task #proposed
+- [ ?] Send an EoD/EoW summary incorporating Jason’s feedback. @Lior Genzel 🔼 #task #proposed
+
+- [ ?] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task #proposed #auto
+
+- [ ?] Suggest preferred times for a meeting with Jason Vallery. @Sushant Rewaskar 🔼 #task #proposed #auto
+
+- [ ?] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task #proposed #auto
+
+- [ ?] Set a meeting with Jason Vallery in early 2026. @Myself 📅 2026-01-07 🔼 #task #proposed #auto
+
+- [ ?] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task #proposed #auto
+
+- [ ?] Distill down the crawl walk run for the VAST and Azure Integration proposal. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Set a meeting with Jason Vallery for January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task #proposed #auto
+
+- [ ?] Provide a summary of the current status and Jason's feedback by EoD. @Lior Genzel 📅 2025-12-21 🔼 #task #proposed #auto
 ## Recent Context
 
 ## Key Facts
 
 - Jason Vallery was Peter Imming's manager at Microsoft.
+
+- Jason Vallery is VP of Cloud at VAST and was Peter's manager at Microsoft.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -120,3 +138,15 @@ _Career history, expertise, interests, personal details shared..._
 - [[VAST GTM]]
 
 - [[Tues mens group]]
+
+- [[VAST PoC]]
+
+- [[MSFT]]
+
+- [[Ignite]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]
+
+- [[2084]]
+- [[AI chat]]

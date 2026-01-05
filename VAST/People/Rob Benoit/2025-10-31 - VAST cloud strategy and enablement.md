@@ -24,11 +24,11 @@ tags:
 
 Jason Vallery and Rob Benoit aligned on a VAST-in-cloud strategy emphasizing object storage for capacity and bare metal for performance to improve cloud economics, with DataSpaces/global namespace as a key differentiator for hybrid/multi-cloud AI patterns. They discussed field enablement gaps (fragmented content ownership, duplicative Confluence docs), SE org constraints (install/rack-and-stack time, high networking skill bar), and the need for a feedback loop between field pain points and the cloud roadmap. They agreed to connect at Tech Summit for a deeper follow-up and to exchange roadmap context and consolidated field feedback.
 ## Action Items
-- [ ] Schedule coffee with Rob during Tech Summit @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Share initial VAST cloud roadmap context with SE leadership @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Provide consolidated field pain points on current product for cloud/hyperscaler use @Rob Benoit 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Confirm time and location for Tech Summit meeting @Myself 📅 2025-11-08 🔽 #task #proposed
-- [ ] Loop in Yancey and relevant owners on marketplace and bare-metal plans as needed @Myself 📅 2025-11-08 🔽 #task #proposed
+- [ ?] Schedule coffee with Rob during Tech Summit @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Share initial VAST cloud roadmap context with SE leadership @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Provide consolidated field pain points on current product for cloud/hyperscaler use @Rob Benoit 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Confirm time and location for Tech Summit meeting @Myself 📅 2025-11-08 🔽 #task #proposed
+- [ ?] Loop in Yancey and relevant owners on marketplace and bare-metal plans as needed @Myself 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - Meet at Tech Summit for a follow-up conversation.

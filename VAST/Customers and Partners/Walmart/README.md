@@ -37,6 +37,8 @@ not done
 - 2025-11-05: Discussed hybrid analytics requirements: BigQuery on GCP ingestion/processing, hot working set replication to two Walmart-managed facilities (active/active), strong consistency challenges across ~30+ ms sites, and need for GCS-like API on-prem; POC ready with decision target end of CY26 and roadmap gaps to close by ~Oct 2026.
 
 - 2025-12-23: Jeff Denworth discusses Walmart's internal requirements meeting and the need for a hybrid solution f
+
+- 2025-12-23: Jeff Denworth discusses Walmart's internal requirements meeting and their need for a hybrid solution
 ## Key Facts
 
 - Walmart needs a hybrid solution for their data team and is starting a big data POC for on-premises workloads.

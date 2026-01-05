@@ -33,6 +33,7 @@ tags:
 - 2025-10-31: Discussed deploying VAST for Apollo training workloads on Azure; aligned on Gen9 XIO apples-to-apples test and requirements doc. [[2025-10-31 - VAST on Azure for Apollo]]
 ## Key Facts
 
+- Kushal claims VAST is the preferred solution for MAI.
 ## Topics
 
 ## Key Decisions
@@ -44,3 +45,12 @@ tags:
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[VAST Data]]
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+- [[MAI & VAST]]
+- [[Anson's PoC]]

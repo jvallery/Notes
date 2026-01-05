@@ -598,7 +598,7 @@ def _generate_task_patches(task: TaskItem, extraction: EmailExtraction) -> List[
     patches = []
     
     # Format task in Obsidian Tasks format
-    task_line = f"- [ ] {task.text}"
+    task_line = f"- [?] {task.text}"
     if task.owner:
         task_line += f" @{task.owner}"
     if task.due:
@@ -860,7 +860,7 @@ def apply_patches(plan: EmailChangePlan, dry_run: bool = False) -> dict:
                 content = ensure_wikilinks(content, patch.wikilinks)
             
             elif patch.operation == "add_task":
-                task_line = f"- [ ] {patch.task.text}"
+                task_line = f"- [?] {patch.task.text}"
                 if patch.task.owner:
                     task_line += f" @{patch.task.owner}"
                 if patch.task.due:

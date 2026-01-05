@@ -38,3 +38,5 @@ tags:
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[Siemens keynote]]

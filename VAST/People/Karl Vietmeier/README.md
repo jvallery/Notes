@@ -30,9 +30,13 @@ phone: +1 9497953118
 - [ ] Parameterize Karl’s calculator with cloud/region, zones, FD count, per-zone/per-FD SKU counts, EC width, non-EC overheads, rebuild headroom, and rolling-update headroom; output “available capacity” and derived overhead % for pricing.
 - [ ] Work with Karl and dev leads to wire calculator inputs into deployment tooling so customer-facing “available capacity” matches deployed striping for the chosen region/SKU.
 
-- [ ] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task #proposed
+- [ ?] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task #proposed
 
-- [ ] Provide guidance on how aggressive VAST Data should be in asserting ownership over GDC and Azure Local opportunities. @Myself 🔼 #task #proposed
+- [ ?] Provide guidance on how aggressive VAST Data should be in asserting ownership over GDC and Azure Local opportunities. @Myself 🔼 #task #proposed
+
+- [ ?] Provide guidance on how aggressive to be in asserting ownership of GDC and Azure Local opportunities. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Confirm if Wednesday or Thursday is better for the meeting. @VAST team 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
@@ -40,6 +44,16 @@ phone: +1 9497953118
 - 2026-01-04: Email re: Re: Weekly VAST GTM Meeting - Karl Rautenstrauch is rescheduling the weekly VAST GTM meeting due to a family emergency and propose
 
 - 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier is seeking guidance on how aggressively VAST Data should assert ownership over GDC an
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
 ## Key Facts
 
 - Karl's youngest son suffered a badly broken leg.
@@ -61,3 +75,9 @@ phone: +1 9497953118
 - [[VAST GTM]]
 
 - [[GDC]]
+
+- [[GDC/Azure Local]]
+
+- [[hyperscalers]]
+
+- [[MSFT]]

@@ -44,9 +44,27 @@ SORT due ASC
 - 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
 
 - 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 ## Key Facts
 
 - Cisco manages many sites globally with data replication and requires regex pattern capabilities for file management.
+
+- Cisco manages many sites globally where data is replicated, involving hundreds of relationships.
+
+- Cisco needs regex pattern capabilities to allow or deny files/objects by name.
 ## Opportunities
 
 - Cisco gear-based POC with Google DoD/IC and Fort Meade validation path

@@ -5,7 +5,7 @@ created: '2026-01-04'
 last_contact: '2025-12-30'
 email: ''
 phone: ''
-company: ''
+company: VAST Data
 tags:
 - type/people
 - needs-review
@@ -35,3 +35,5 @@ tags:
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

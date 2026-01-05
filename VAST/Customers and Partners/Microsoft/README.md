@@ -190,11 +190,51 @@ not done
 - 2025-12-21: The email discusses plans for VAST Data's involvement at CES, including attending NVIDIA Live and co
 
 - 2025-11-20: Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role,
+
+- 2025-12-11: Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-16: The email discusses whether Trevor Cooper-Chadwick from Microsoft should be granted access to the VA
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-18: Peter Imming introduces Sebastien Berube to Jason Vallery to discuss potential opportunities, with p
+
+- 2025-12-19: Tiffany Stonehill from VAST Data is coordinating with the Microsoft team to follow up on a presentat
+
+- 2025-12-21: Jeff Denworth discusses the urgency of supply chain issues and the need for a plan to deploy VAST so
+
+- 2025-12-21: The email discusses coordination for CES events, including NVIDIA's 'NVIDIA Live' and press releases
+
+- 2025-12-27: Jeff Denworth is expressing concerns about the progress of a deal with Microsoft Azure MAI due to su
+
+- 2025-12-11: Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-11: Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-11: Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-11-20: Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role.
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation given
+
+- 2025-12-30: The email discusses the successful submission and processing of a $96,808.14 deal for Leidos Federal
+
+- 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.
 
 - Microsoft needs 2EB on the floor this year.
+
+- Microsoft is considering HDDs for the first April delivery for MAI scale-up.
 ## Topics
 
 ## Opportunities

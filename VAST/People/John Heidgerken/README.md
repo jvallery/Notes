@@ -31,11 +31,20 @@ WHERE !completed AND contains(text, "John Heidgerken")
 SORT due ASC
 ```
 
+- [ ?] Let John know if there is any information needed from his friend at OpenAI. @Myself 🔽 #task #proposed #auto
 ## Recent Context
 
 - 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)
 
 - 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
+
+- 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 ## Key Facts
 
 ## Background
@@ -61,3 +70,8 @@ John Heidgerken has been serving as the Americas West Area Director of Systems E
 - [[ChatGPT]]
 - [[DAQ]]
 - [[Data Platform]]
+
+- [[CosmosDB]]
+- [[Online Data Infrastructure]]
+
+- [[GPT-6 roadmap]]

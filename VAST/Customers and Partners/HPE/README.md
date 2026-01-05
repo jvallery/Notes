@@ -40,6 +40,10 @@ SORT due ASC
 - 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing customer and partner participa
 
 - 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
+
+- 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
+
+- 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 ## Key Facts
 
 ## Opportunities

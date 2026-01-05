@@ -30,8 +30,15 @@ tags:
 - 2025-12-21: Email re: Re: CES - The email discusses plans for VAST Data's involvement at CES, including attending NVIDIA Live and co
 
 - 2026-01-04: Email re: On Tackling Challenges and Sparking Innovation - Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
+
+- 2025-12-21: Email re: Re: CES - The email discusses coordination for CES events, including NVIDIA's 'NVIDIA Live' and press releases
+
+- 2026-01-04: Email re: On Tackling Challenges and Sparking Innovation - Renen Hallak discusses the challenges and successes of VAST Data's R&D team in recovering data for C
+
+- 2026-01-04: Email re: On Tackling Challenges and Sparking Innovation - Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 ## Open Tasks
 
+- [ ?] Register Renen for NVIDIA Live event on January 5. @Kirstin Bordner 🔼 #task #proposed #auto
 ## Related
 
 - [[Microsoft]]
@@ -56,3 +63,10 @@ tags:
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[VAST PoC]]
+
+- [[Siemens keynote]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

@@ -38,3 +38,8 @@ linkedin: https://www.linkedin.com/in/kar%C3%A9n-simonyan-3aba65231/
 - [[MAI & VAST]]
 - [[MAI/Vipin environment]]
 - [[Nscale]]
+
+- [[VAST PoC]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

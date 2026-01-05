@@ -2,12 +2,12 @@
 type: people
 title: Brian Moore
 created: '2026-01-03'
-last_contact: '2025-12-18'
+last_contact: '2025-12-01'
 auto_created: true
 tags:
 - type/people
 - needs-review
-email: pootzwacke@gmail.com
+email: brian.evans@vastdata.com
 company: VAST Data
 ---
 
@@ -38,9 +38,21 @@ SORT due ASC
 - 2025-12-18: Email re: Re: Early heads up - board game the week after Chr - Brian Bearly is organizing a board game session the week after Christmas and is coordinating with fr
 
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 ## Key Facts
 
 - Brian Bearly is hosting a board game session at his place.
+
+- Brian is planning a board game session at his place.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -64,3 +76,8 @@ _Career history, expertise, interests, personal details shared..._
 - [[TMIMITW]]
 
 - [[Tues mens group]]
+
+- [[RFE 0526]]
+
+- [[2084]]
+- [[AI chat]]

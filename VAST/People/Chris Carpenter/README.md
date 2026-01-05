@@ -53,3 +53,5 @@ _Career history, expertise, interests, personal details shared..._
 - [[Microsoft Azure]]
 - [[AKS AI Roadshow]]
 - [[Global Namespace on Azure]]
+
+- [[Azure]]

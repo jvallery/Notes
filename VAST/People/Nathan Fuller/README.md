@@ -34,3 +34,6 @@ tags:
 
 - [[Utility space]]
 - [[TMIMITW]]
+
+- [[2084]]
+- [[AI chat]]

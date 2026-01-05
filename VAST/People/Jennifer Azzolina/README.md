@@ -53,3 +53,5 @@ Former Senior Director of Global Alliances at Cloudera; extensive experience in 
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

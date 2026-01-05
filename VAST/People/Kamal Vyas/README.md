@@ -28,6 +28,9 @@ tags:
 
 ## Open Tasks
 
+- [ ?] Provide clarification on FIPS compliance and hardware pricing including SEDs. @Lior Genzel 🔼 #task #proposed #auto
+
+- [ ?] Provide clarification on FIPS compliance and pricing details. @Lior Genzel 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

@@ -27,9 +27,9 @@ tags:
 
 Jason Vallery (Vast Data) presented an overview of rapid AI progress (agents, robotics, compute/data exponentials) and discussed implications for Longmont across education, local business, city governance/privacy, digital divide, and community resilience. Q&A focused on defense/ethics, regulation and data ownership, energy/climate tradeoffs, and risks from malicious actors more than “robot sentience.” The event concluded with a call to join the Longmont Next Wave Initiative, take a survey, and attend a follow-up discussion at Longmont Public Media on 2026-01-15.
 ## Action Items
-- [ ] Host/attend the next Longmont Next Wave Initiative discussion at Longmont Public Media (5:30 p.m.). @TBD 📅 2026-01-15 #task #proposed
-- [ ] Share the Longmont Next Wave Initiative survey link/QR code with friends/neighbors to gather community sentiment. @TBD #task #proposed
-- [ ] Send participants a copy of the slide deck and follow-up resources to those who provided an email via the QR survey. @Myself #task #proposed
+- [ ?] Host/attend the next Longmont Next Wave Initiative discussion at Longmont Public Media (5:30 p.m.). @TBD 📅 2026-01-15 #task #proposed
+- [ ?] Share the Longmont Next Wave Initiative survey link/QR code with friends/neighbors to gather community sentiment. @TBD #task #proposed
+- [ ?] Send participants a copy of the slide deck and follow-up resources to those who provided an email via the QR survey. @Myself #task #proposed
 
 ## Key Information
 - Jason Vallery is VP of Product Management at Vast Data; previously spent ~13 years at Microsoft working on storage/data infrastructure for AI customers including OpenAI.

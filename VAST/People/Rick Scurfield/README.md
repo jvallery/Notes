@@ -2,7 +2,7 @@
 type: people
 title: Rick Scurfield
 created: '2026-01-03'
-last_contact: '2025-12-18'
+last_contact: '2025-12-03'
 auto_created: true
 tags:
 - type/people
@@ -38,6 +38,12 @@ SORT due ASC
 - 2025-12-17: Email re: Important Update: Quote Policy & Hardware Allocati - Rick Scurfield provides an update on the quote policy and hardware allocation, emphasizing the impor
 
 - 2025-12-18: Email re: GTM Team Update: RevOps Leadership - Cristina Hasson is leaving her position as Head of Revenue Operations at VAST Data, and Stacy Wynn w
+
+- 2025-12-18: Email re: GTM Team Update: RevOps Leadership - Cristina Hasson, Head of Revenue Operations at VAST Data, is leaving the company, and Stacy Wynn wil
+
+- 2025-12-03: Email re: VAST Forward - Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
+
+- 2025-12-18: Email re: GTM Team Update: RevOps Leadership - Cristina Hasson is leaving her position as Head of Revenue Operations at Vast Data, and Stacy Wynn w
 ## Key Facts
 
 ## Background
@@ -80,3 +86,8 @@ _Career history, expertise, interests, personal details shared..._
 
 - [[Avnet]]
 - [[Azure MAI]]
+
+- [[VAST PoC]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

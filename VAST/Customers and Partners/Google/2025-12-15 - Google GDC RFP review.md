@@ -32,11 +32,11 @@ tags:
 
 Google’s procurement/product/storage engineering team reviewed VAST’s RFP responses and pricing at a high level, focusing on several “No” technical requirements (data-to-media isolation, synchronous replication/zero RPO, multi-region active-active consistency, granular S3 encryption, and fault-injection APIs). VAST explained architectural constraints (sharded/striped data across cluster, strong-consistency hub-and-spoke global namespace, roadmap items like global write leases and traffic failover) and walked through pricing assumptions (2x1 building block, bundled support, capacity-based discounts, and upcoming licensing change to per-terabyte increments on 2026-02-01). Key open questions remain around FIPS-certified QLC options, self-encrypting drive (SED) support and pricing, and encryption key granularity beyond tenant level.
 ## Action Items
-- [ ] Provide details on FIPS-compliant drive options (including largest FIPS-certified QLC) for the proposed hardware shapes/sizes and how that impacts the proposed configurations. @TBD ⏫ #task #proposed
-- [ ] Follow up with clarification on encryption key granularity (tenant vs view/subtree vs bucket/object) across block, file, and object, and how it maps to bucket policies/KMS integration. @TBD ⏫ #task #proposed
-- [ ] Check internally and respond on whether VAST software supports self-encrypting drives (SEDs) and external key managers for SEDs, and whether ODM hardware options/pricing differ for SEDs. @TBD ⏫ #task #proposed
-- [ ] Send a detailed email explaining pricing structure/knobs (capacity-based discounts, dark site uplift, 4-hour vs NBD support delta, SKU math) and the formula behind the quoted numbers. @TBD #task #proposed
-- [ ] Digest the spreadsheet with the internal team and send follow-up questions in writing ahead of the next meeting; include a note summarizing discussed open items for tracking. @Myself #task #proposed
+- [ ?] Provide details on FIPS-compliant drive options (including largest FIPS-certified QLC) for the proposed hardware shapes/sizes and how that impacts the proposed configurations. @TBD ⏫ #task #proposed
+- [ ?] Follow up with clarification on encryption key granularity (tenant vs view/subtree vs bucket/object) across block, file, and object, and how it maps to bucket policies/KMS integration. @TBD ⏫ #task #proposed
+- [ ?] Check internally and respond on whether VAST software supports self-encrypting drives (SEDs) and external key managers for SEDs, and whether ODM hardware options/pricing differ for SEDs. @TBD ⏫ #task #proposed
+- [ ?] Send a detailed email explaining pricing structure/knobs (capacity-based discounts, dark site uplift, 4-hour vs NBD support delta, SKU math) and the formula behind the quoted numbers. @TBD #task #proposed
+- [ ?] Digest the spreadsheet with the internal team and send follow-up questions in writing ahead of the next meeting; include a note summarizing discussed open items for tracking. @Myself #task #proposed
 
 ## Key Information
 - RFP technical “No” items called out included B8, B16, C2, C3, C8, C18, and D7.

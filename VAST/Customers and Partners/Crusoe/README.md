@@ -38,6 +38,10 @@ SORT due ASC
 - 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 
 - 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
+
+- 2026-01-04: Renen Hallak discusses the challenges and successes of VAST Data's R&D team in recovering data for C
+
+- 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 ## Key Facts
 
 ## Opportunities

@@ -25,15 +25,15 @@ tags:
 
 Jeff Denworth and Jason Vallery discussed VAST’s accelerated cloud go-to-market push and potential roles for Jason, with an initial focus on Azure business development/strategic leadership paired with a technical counterpart. They reviewed VAST’s cloud timelines (GCP/AWS/Azure), Lifter signing with Microsoft, multi/neo-cloud strategy, and the need to mitigate egress costs via Microsoft networking options such as ExpressRoute Direct Local. They agreed to start VAST’s interview/HR process for Jason and to set up leadership introductions and a Microsoft networking engagement plan.
 ## Action Items
-- [ ] Initiate HR process and add Jason to VAST’s recruiting system; schedule interviews with relevant leaders @Jeff Denworth Denworth 📅 2025-10-26 🔺 #task #proposed
-- [ ] Share Azure GTM role descriptions (BD lead and technical lead) with Jason @Jeff Denworth Denworth 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Set up introductions for Jason with founders/CTO office (e.g., Alon) and Jay’s organization (Jay, Julia) @Jeff Denworth Denworth 📅 2025-10-27 🔺 #task #proposed
-- [ ] Draft a Microsoft networking engagement plan focused on minimizing egress (e.g., ExpressRoute Direct Local) for VAST’s Azure offerings @Jeff Denworth Denworth 📅 2025-10-27 🔺 #task #proposed
-- [ ] Identify and reach out to the appropriate Azure Networking commercial lead (start with Frank Ray; loop in Narayan as needed) and facilitate an intro to Jeff @Myself 📅 2025-10-26 🔺 #task #proposed
-- [ ] Define initial Azure GTM swim lanes (customer-tenant managed service, marketplace path, SaaS trajectory toward potential 1P) and required technical counterpart profile @Jeff Denworth Denworth 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Confirm ExpressRoute Direct Local pricing/commercial model viability for VAST-managed and customer-tenant deployments @Jeff Denworth Denworth 📅 2025-10-26 🔺 #task #proposed
-- [ ] Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep 1P milestone) @Jeff Denworth Denworth 📅 2025-10-27 ⏫ #task #proposed
-- [ ] Check internal rumor about regional technical leader role under Jay and management preferences @Jeff Denworth Denworth 📅 2025-10-26 🔽 #task #proposed
+- [ ?] Initiate HR process and add Jason to VAST’s recruiting system; schedule interviews with relevant leaders @Jeff Denworth Denworth 📅 2025-10-26 🔺 #task #proposed
+- [ ?] Share Azure GTM role descriptions (BD lead and technical lead) with Jason @Jeff Denworth Denworth 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Set up introductions for Jason with founders/CTO office (e.g., Alon) and Jay’s organization (Jay, Julia) @Jeff Denworth Denworth 📅 2025-10-27 🔺 #task #proposed
+- [ ?] Draft a Microsoft networking engagement plan focused on minimizing egress (e.g., ExpressRoute Direct Local) for VAST’s Azure offerings @Jeff Denworth Denworth 📅 2025-10-27 🔺 #task #proposed
+- [ ?] Identify and reach out to the appropriate Azure Networking commercial lead (start with Frank Ray; loop in Narayan as needed) and facilitate an intro to Jeff @Myself 📅 2025-10-26 🔺 #task #proposed
+- [ ?] Define initial Azure GTM swim lanes (customer-tenant managed service, marketplace path, SaaS trajectory toward potential 1P) and required technical counterpart profile @Jeff Denworth Denworth 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Confirm ExpressRoute Direct Local pricing/commercial model viability for VAST-managed and customer-tenant deployments @Jeff Denworth Denworth 📅 2025-10-26 🔺 #task #proposed
+- [ ?] Validate Azure GA milestones and align with Lifter program phases (Feb GA vs Sep 1P milestone) @Jeff Denworth Denworth 📅 2025-10-27 ⏫ #task #proposed
+- [ ?] Check internal rumor about regional technical leader role under Jay and management preferences @Jeff Denworth Denworth 📅 2025-10-26 🔽 #task #proposed
 
 ## Decisions
 - Start HR process and interviews for Jason at VAST.

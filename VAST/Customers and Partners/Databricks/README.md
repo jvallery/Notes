@@ -36,6 +36,14 @@ SORT due ASC
 ## Recent Context
 
 - 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 ## Key Facts
 
 ## Opportunities

@@ -40,6 +40,16 @@ SORT due ASC
 - 2025-12-08: Christian Linacre is facilitating a meeting between Jason Vallery and Matthew Thomson in Seattle reg
 
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion related to
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 ## Key Facts
 
 ## Opportunities

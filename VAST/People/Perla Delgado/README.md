@@ -42,3 +42,6 @@ tags:
 
 - [[IHDF]]
 - [[acquisition of former church in Longmont]]
+
+- [[fundraising]]
+- [[Longmont church acquisition]]

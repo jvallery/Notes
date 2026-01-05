@@ -40,6 +40,16 @@ SORT due ASC
 - 2025-09-16: [[2025-09-16 - VAST Azure GTM hiring]] (via VAST)
 
 - 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses a request from Microsoft's lab for an Azure VoC instance for performance testi
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses a request from MSFT for an Azure VoC instance for performance testing due to l
 ## Key Facts
 
 ## Background
@@ -60,3 +70,5 @@ _Career history, expertise, interests, personal details shared..._
 - [[Microsoft]]
 - [[Azure]]
 - [[Azure VoC]]
+
+- [[MSFT]]

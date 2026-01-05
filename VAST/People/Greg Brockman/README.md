@@ -55,3 +55,5 @@ Co-founder and President of OpenAI; former CTO at Stripe; led projects like Open
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

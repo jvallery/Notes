@@ -45,6 +45,14 @@ tags:
 - 2025-10-22: [[2025-10-22 - VAST warm storage POC sync]]
 
 - 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 ## Key Facts
 
 - OpenAI is organized into three major teams: Applications, Scaling, and Research.
@@ -54,6 +62,8 @@ tags:
 - OpenAI is one of the largest customers of Snowflake.
 
 - OpenAI's application side heavily leverages Azure CosmosDB for conversation persistence.
+
+- OpenAI's research data platform is an in-house developed system called DAQ.
 ## Topics
 
 ## Opportunities

@@ -40,3 +40,9 @@ tags:
 - [[ChatGPT]]
 - [[DAQ]]
 - [[Data Platform]]
+
+- [[Vast Data]]
+- [[CosmosDB]]
+- [[Online Data Infrastructure]]
+
+- [[GPT-6 roadmap]]

@@ -30,9 +30,12 @@ WHERE !completed AND contains(text, "Kirstin Bordner")
 SORT due ASC
 ```
 
+- [ ?] Approve the new BF4 blog and share it with Kirstin. @Jeff Denworth 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - The email announces the selection of speakers for the VAST Forward event and outlines the preparatio
+
+- 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - Kirstin Bordner informs selected individuals about their roles as VAST spokespeople for the upcoming
 ## Key Facts
 
 ## Background
@@ -59,3 +62,5 @@ _Career history, expertise, interests, personal details shared..._
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[Siemens keynote]]

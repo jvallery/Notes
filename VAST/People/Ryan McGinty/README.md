@@ -7,6 +7,8 @@ auto_created: true
 tags:
 - type/people
 - needs-review
+email: ryan.terrell@vastdata.com
+company: VAST Data
 ---
 
 # Ryan McGinty
@@ -43,3 +45,12 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-11-07*
+
+- [[Google]]
+- [[CISCO]]
+- [[Dell]]
+- [[HPE]]
+- [[SuperMicro]]
+- [[Arrow]]
+- [[Avnet]]
+- [[GDC Storage RFP]]

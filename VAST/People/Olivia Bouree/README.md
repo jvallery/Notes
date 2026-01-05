@@ -29,7 +29,9 @@ WHERE !completed AND contains(text, "Olivia Bouree")
 SORT due ASC
 ```
 
-- [ ] Book a time for a short briefing on the consultation project. @Myself ⏫ #task #proposed
+- [ ?] Book a time for a short briefing on the consultation project. @Myself ⏫ #task #proposed
+
+- [ ?] Book a time for a short briefing on the consultation project. @Myself ⏫ #task #proposed #auto
 ## Recent Context
 
 - 2025-10-28: [[2025-10-28 - GCP RDMA IP failover options]] (via Google)

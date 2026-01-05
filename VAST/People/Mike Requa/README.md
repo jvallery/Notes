@@ -8,7 +8,7 @@ tags:
 - type/people
 - needs-review
 email: mike.slisinger@vastdata.com
-company: Utility space
+company: VAST Data
 ---
 
 # Mike Requa

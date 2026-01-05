@@ -22,17 +22,17 @@ tags:
 
 Jason Vallery (now at VAST Data) and Kushal Datta (Microsoft Apollo) discussed options to deploy VAST for Apollo training workloads on Azure infrastructure, comparing Azure compute-based storage, VAST bare metal on Azure Gen9 XIO, and VAST-qualified ODM hardware. They aligned on pursuing an apples-to-apples Gen9 XIO test (Azure Storage stack vs VAST bare metal) and on Kushal producing crisp requirements (throughput/capacity/power/rack) to drive a formal proposal and hardware path decisions.
 ## Action Items
-- [ ] Draft and circulate a crisp requirements document (throughput, capacity, power, rack tiles) to drive storage selection for Apollo. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
-- [ ] Start an internal thread to assess swapping Dallas Blob HDD to Premium SSD and feasibility of running VAST bare metal. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
-- [ ] Provide detailed read/write throughput per GPU and final capacity targets (per site and aggregate) for ~120k GPUs. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
-- [ ] Prepare a proposal/BOM for VAST-qualified ODM hardware (performance-optimized vs capacity-optimized) once requirements are received. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Support and advocate internally for an apples-to-apples test on Gen9 XIO (Azure Storage stack vs VAST bare metal). @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Stand up VAST bare metal on Gen9 XIO for the A/B test when scheduled. @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Determine DPU path and qualification plan (Fungible NIC vs NVIDIA BlueField) aligned with Azure networking requirements. @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Confirm whether a Blob API on VAST is required alongside NFS/S3 for existing data loaders. @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Scope and plan Blob API support on VAST if required. @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Clarify which Azure storage offerings/SKUs will be available in January and April timeframes for the target sites. @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Schedule a follow-up meeting after requirements are finalized. @Kushal Datta Datta 📅 2025-11-08 🔽 #task #proposed
+- [ ?] Draft and circulate a crisp requirements document (throughput, capacity, power, rack tiles) to drive storage selection for Apollo. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Start an internal thread to assess swapping Dallas Blob HDD to Premium SSD and feasibility of running VAST bare metal. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Provide detailed read/write throughput per GPU and final capacity targets (per site and aggregate) for ~120k GPUs. @Kushal Datta Datta 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Prepare a proposal/BOM for VAST-qualified ODM hardware (performance-optimized vs capacity-optimized) once requirements are received. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Support and advocate internally for an apples-to-apples test on Gen9 XIO (Azure Storage stack vs VAST bare metal). @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Stand up VAST bare metal on Gen9 XIO for the A/B test when scheduled. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Determine DPU path and qualification plan (Fungible NIC vs NVIDIA BlueField) aligned with Azure networking requirements. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Confirm whether a Blob API on VAST is required alongside NFS/S3 for existing data loaders. @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Scope and plan Blob API support on VAST if required. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Clarify which Azure storage offerings/SKUs will be available in January and April timeframes for the target sites. @Kushal Datta Datta 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Schedule a follow-up meeting after requirements are finalized. @Kushal Datta Datta 📅 2025-11-08 🔽 #task #proposed
 
 ## Key Information
 - Jason Vallery moved from Microsoft Azure Storage to VAST Data and is focused on hyperscaler penetration/product management for cloud.

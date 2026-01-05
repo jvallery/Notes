@@ -28,7 +28,11 @@ tags:
 
 ## Open Tasks
 
-- [ ] Coordinate meeting time with Matthew Thomson in Seattle. @Myself 🔼 #task #proposed
+- [ ?] Coordinate meeting time with Matthew Thomson in Seattle. @Myself 🔼 #task #proposed
+
+- [ ?] Coordinate a meeting with Matthew Thomson in Seattle. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Coordinate meeting time with Matthew Thomson in Seattle. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

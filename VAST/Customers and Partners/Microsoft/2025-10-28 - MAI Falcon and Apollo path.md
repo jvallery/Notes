@@ -29,15 +29,15 @@ tags:
 
 Jason and Alon aligned ahead of Jason’s Friday meeting with Kushal (MAI) on deploying VAST outside Azure data centers, using MAI’s Falcon capacity challenges as a wedge. They discussed Project Apollo (AKS-led slim control plane for single-tenant GPU sites) as the most promising entry path, plus longer-term Azure hardware qualification and optional Blob compatibility exploration while keeping near-term focus on performance to keep GPUs utilized.
 ## Action Items
-- [ ] Meet Kushal (MAI) to discuss VAST deployment options outside Azure data centers and clarify target site and hardware profile @Myself 📅 2025-10-31 🔺 #task #proposed
-- [ ] Send notes to Alon after the Kushal meeting to inform next steps with Vipin @Myself 📅 2025-10-31 ⏫ #task #proposed
-- [ ] Follow up with Vipin after receiving Jason’s notes to align on path and probe AKS/Project Apollo conversations (including whether Vipin spoke with Anson and Keek) @Alon ⏫ #task #proposed
-- [ ] Stay close with Lior and Tiffany to advance the Project Apollo storage integration option and positioning of VAST as standard storage for Apollo deployments @Myself ⏫ #task #proposed
-- [ ] Map Azure stakeholders (AKS/Apollo, Storage, Compute, Hardware) and their priorities to navigate internal incentives and resistance @Myself ⏫ #task #proposed
-- [ ] Engage Azure Hardware (Ronnie Booker’s team) on qualifying a VAST-friendly storage-optimized SKU (including liquid-cooled options) @Myself 🔽 #task #proposed
-- [ ] Explore liquid-cooled storage SKU options with ODMs to leverage data center cooling fungibility and late-binding storage vs GPU rack decisions @Myself 🔽 #task #proposed
-- [ ] Evaluate Blob compatibility and a multi-protocol (Blob + S3) head; test interest with Azure contacts while keeping near-term focus on performance wins @Myself 🔽 #task #proposed
-- [ ] Confirm whether the Microsoft–Nscale contract maps to MAI and assess implications for a potential VAST deployment @Myself 🔽 #task #proposed
+- [ ?] Meet Kushal (MAI) to discuss VAST deployment options outside Azure data centers and clarify target site and hardware profile @Myself 📅 2025-10-31 🔺 #task #proposed
+- [ ?] Send notes to Alon after the Kushal meeting to inform next steps with Vipin @Myself 📅 2025-10-31 ⏫ #task #proposed
+- [ ?] Follow up with Vipin after receiving Jason’s notes to align on path and probe AKS/Project Apollo conversations (including whether Vipin spoke with Anson and Keek) @Alon ⏫ #task #proposed
+- [ ?] Stay close with Lior and Tiffany to advance the Project Apollo storage integration option and positioning of VAST as standard storage for Apollo deployments @Myself ⏫ #task #proposed
+- [ ?] Map Azure stakeholders (AKS/Apollo, Storage, Compute, Hardware) and their priorities to navigate internal incentives and resistance @Myself ⏫ #task #proposed
+- [ ?] Engage Azure Hardware (Ronnie Booker’s team) on qualifying a VAST-friendly storage-optimized SKU (including liquid-cooled options) @Myself 🔽 #task #proposed
+- [ ?] Explore liquid-cooled storage SKU options with ODMs to leverage data center cooling fungibility and late-binding storage vs GPU rack decisions @Myself 🔽 #task #proposed
+- [ ?] Evaluate Blob compatibility and a multi-protocol (Blob + S3) head; test interest with Azure contacts while keeping near-term focus on performance wins @Myself 🔽 #task #proposed
+- [ ?] Confirm whether the Microsoft–Nscale contract maps to MAI and assess implications for a potential VAST deployment @Myself 🔽 #task #proposed
 
 ## Decisions
 - Wait until the Friday Kushal meeting before Alon follows up with Vipin.

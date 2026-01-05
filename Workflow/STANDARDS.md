@@ -392,7 +392,7 @@ Met with [[Jeff Denworth]] to discuss...
 ### 6.6 AI-Proposed Tasks
 
 - AI/automation-created tasks must be tagged `#task #proposed #auto`.
-- Accept a task by removing `#proposed`. Deleting it rejects it.
+- Accept by removing `#proposed` **or** cycling status via the Tasks plugin: **Proposed (`?`) → Accepted (`[ ]`) → Done (`x`)**. Mark Rejected (`X`) to hide/cancel.
 
 ---
 

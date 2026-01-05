@@ -28,7 +28,13 @@ tags:
 
 ## Open Tasks
 
-- [ ] Verify if Trevor Cooper-Chadwick should have access to the VAST Customer Learning portal. @Lior Genzel 🔼 #task #proposed
+- [ ?] Verify if Trevor Cooper-Chadwick should have access to the VAST Customer Learning portal. @Lior Genzel 🔼 #task #proposed
+
+- [ ?] Reach out to Trevor Cooper-Chadwick to learn his objectives for requesting access. @Lior Genzel 🔼 #task #proposed #auto
+
+- [ ?] Keep Trevor's status as 'pending approval' until further information is received. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Lior Genzel to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting access. @Lior Genzel 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

@@ -76,6 +76,16 @@ not done
 - 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
 
 - 2026-01-02: The email discusses comments on a document about integrating VAST with Azure, focusing on data stora
+
+- 2025-12-22: Jeff Denworth assigned an action item related to the VAST and Azure Integration proposal document.
+
+- 2026-01-02: The email discusses comments on a document about integrating VAST with Azure, focusing on data forma
+
+- 2025-12-15: The email discusses follow-up questions from a Google RFP regarding encryption key granularity and s
+
+- 2025-12-22: Lior Genzel is requesting access to the document titled 'VAST and Azure Integration.docx' via Google
+
+- 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 ## Key Facts
 
 ## Topics

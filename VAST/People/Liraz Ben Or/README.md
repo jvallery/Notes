@@ -62,3 +62,12 @@ not done
 - [[Data Platform]]
 
 - [[Tues mens group]]
+
+- [[Vast Data]]
+- [[CosmosDB]]
+- [[Online Data Infrastructure]]
+
+- [[GPT-6 roadmap]]
+
+- [[2084]]
+- [[AI chat]]

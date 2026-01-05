@@ -30,21 +30,21 @@ tags:
 
 Team aligned on a distinct Customer Success (proactive), Support (reactive), and SRE (24/7 operations) model for hyperscaler cloud deployments, with near-term prioritization on Azure/Microsoft opportunities. Key dependencies include Tackle–Salesforce–Polaris integration, improved Salesforce data hygiene and access controls, and defined telemetry/analytics surfaced in Tableau. Compliance/legal implications of becoming a data custodian (including SOC2/FedRAMP path) and enablement/documentation for SKO were highlighted, with an operational readiness target of 2026-02-01.
 ## Action Items
-- [ ] Draft and circulate a simple cloud support plan covering CS/Support/SRE responsibilities, 24/7 coverage, and phasing; circulate for feedback. @Rob Banga 📅 2025-11-08 🔺 #task #proposed
-- [ ] Start recruiting initial SRE and cloud support hires to meet cloud support readiness needs. @Rob Banga 📅 2025-11-08 🔺 #task #proposed
-- [ ] Sync offline on CS/Support/SRE model and on-call rotations. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Define Tableau telemetry/analytics for cloud customers (e.g., churn, feature usage) and required data feeds. @Yancey 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Plan Tackle–Salesforce–Polaris integration for marketplace offers, customer registration, and entitlements/role management. @Yancey 📅 2025-11-08 🔺 #task #proposed
-- [ ] Confirm leadership for cloud implementations (align with Carl and scope the team). @Rob Banga 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Prepare enablement and documentation for SEs, Support, and CS, including SKO content. @Product Marketing 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Define metering evidence and internal control requirements with Finance and auditors for Polaris data. @Finance 📅 2025-11-08 🔺 #task #proposed
-- [ ] Outline overage policy and SaaS pricing unit model options with Jason. @Yancey 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Schedule and run a Salesforce/Tackle deep-dive to understand current flows and gaps. @Christina 📅 2025-10-31 🔺 #task #proposed
-- [ ] Meet offline to refine org design and rotations. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Conduct legal review covering data custodian obligations, EULA updates, and compliance roadmap (SOC2, FedRAMP). @Legal 📅 2025-11-08 🔺 #task #proposed
-- [ ] Attend GCP meeting to review TPU test setup and defend results. @Lior Genzel Genzel 📅 2025-11-04 ⏫ #task #proposed
-- [ ] Validate Salesforce access/role model for customers and internal users; define data hygiene rules and validation. @Sales Operations 📅 2025-11-08 🔺 #task #proposed
-- [ ] Confirm hyperscaler prioritization and target account list for near-term execution. @Yancey 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Draft and circulate a simple cloud support plan covering CS/Support/SRE responsibilities, 24/7 coverage, and phasing; circulate for feedback. @Rob Banga 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Start recruiting initial SRE and cloud support hires to meet cloud support readiness needs. @Rob Banga 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Sync offline on CS/Support/SRE model and on-call rotations. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Define Tableau telemetry/analytics for cloud customers (e.g., churn, feature usage) and required data feeds. @Yancey 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Plan Tackle–Salesforce–Polaris integration for marketplace offers, customer registration, and entitlements/role management. @Yancey 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Confirm leadership for cloud implementations (align with Carl and scope the team). @Rob Banga 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Prepare enablement and documentation for SEs, Support, and CS, including SKO content. @Product Marketing 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Define metering evidence and internal control requirements with Finance and auditors for Polaris data. @Finance 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Outline overage policy and SaaS pricing unit model options with Jason. @Yancey 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Schedule and run a Salesforce/Tackle deep-dive to understand current flows and gaps. @Christina 📅 2025-10-31 🔺 #task #proposed
+- [ ?] Meet offline to refine org design and rotations. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Conduct legal review covering data custodian obligations, EULA updates, and compliance roadmap (SOC2, FedRAMP). @Legal 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Attend GCP meeting to review TPU test setup and defend results. @Lior Genzel Genzel 📅 2025-11-04 ⏫ #task #proposed
+- [ ?] Validate Salesforce access/role model for customers and internal users; define data hygiene rules and validation. @Sales Operations 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Confirm hyperscaler prioritization and target account list for near-term execution. @Yancey 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Adopt distinct Customer Success, Support, and SRE model for cloud deployments (including 24/7 SRE rotation).

@@ -8,6 +8,7 @@ tags:
 - type/people
 - needs-review
 - company/vast-data
+company: VAST Data
 ---
 
 # Randy Hayes
@@ -50,3 +51,5 @@ Randy Hayes has been with VAST Data since its early stages, contributing to its 
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

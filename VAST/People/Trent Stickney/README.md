@@ -35,3 +35,6 @@ tags:
 - [[TMIMITW]]
 
 - [[Tues mens group]]
+
+- [[2084]]
+- [[AI chat]]

@@ -34,3 +34,7 @@ tags:
 - [[Founder Central]]
 - [[CU Boulder]]
 - [[AI for Good]]
+
+- [[Rocky Mountain AI Interest Group]]
+- [[Meetup LLC]]
+- [[Sweater]]

@@ -25,13 +25,13 @@ tags:
 
 Jason Vallery and Jai Menon discussed Apollo’s target workload assumptions and deployment model, including per-site GPU scale (4K vs 8K), geo-disaggregation driven by energy-centric placements, and implications for storage sizing and throughput. They also reviewed the need for a persistent, strongly consistent cross-site key-value store and shared namespace (blobs + KV), and flagged risk around a high-TPS Databricks storage workload potentially moving off Azure.
 ## Action Items
-- [ ] Probe with Pete about the status of the high-TPS Databricks/Chat-related workload and capacity implications. @Myself 📅 2025-10-26 🔺 #task #proposed
-- [ ] Review and incorporate/resolve Jason’s comments on the Apollo documents. @Jai Menon 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Define Apollo workload targets: GPU cluster size per site (e.g., 4K vs 8K), storage throughput per GPU, and degree of geo disaggregation. @TBD 📅 2025-10-26 🔺 #task #proposed
-- [ ] Deepen research on Vast/CoreWeave’s persistent KV and data pipeline approach and assess applicability to Apollo’s shared namespace/consistency needs. @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Provide Jason with specific next research topics and sources to investigate. @Jai Menon 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Confirm whether the new ‘Matt UK’ supercomputer deal aligns with Apollo or Fairwater. @Jai Menon 📅 2025-10-26 🔽 #task #proposed
-- [ ] Clarify details on the DFW enrichment sites (approx. 160,000 GB200s under one roof) and implications for Apollo design. @Jai Menon 📅 2025-10-26 🔽 #task #proposed
+- [ ?] Probe with Pete about the status of the high-TPS Databricks/Chat-related workload and capacity implications. @Myself 📅 2025-10-26 🔺 #task #proposed
+- [ ?] Review and incorporate/resolve Jason’s comments on the Apollo documents. @Jai Menon 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Define Apollo workload targets: GPU cluster size per site (e.g., 4K vs 8K), storage throughput per GPU, and degree of geo disaggregation. @TBD 📅 2025-10-26 🔺 #task #proposed
+- [ ?] Deepen research on Vast/CoreWeave’s persistent KV and data pipeline approach and assess applicability to Apollo’s shared namespace/consistency needs. @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Provide Jason with specific next research topics and sources to investigate. @Jai Menon 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Confirm whether the new ‘Matt UK’ supercomputer deal aligns with Apollo or Fairwater. @Jai Menon 📅 2025-10-26 🔽 #task #proposed
+- [ ?] Clarify details on the DFW enrichment sites (approx. 160,000 GB200s under one roof) and implications for Apollo design. @Jai Menon 📅 2025-10-26 🔽 #task #proposed
 
 ## Key Information
 - Apollo needs clarity on target GPU cluster sizes per site (4K vs 8K) and how disaggregated deployments should be across geographies due to energy-centric placements.

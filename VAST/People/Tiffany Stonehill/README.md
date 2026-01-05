@@ -42,6 +42,12 @@ SORT due ASC
 - 2025-10-29: [[2025-10-29 - VAST on Cloud alignment]] (via Lior Genzel)
 
 - 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation and d
+
+- 2025-12-16: Email re: Re: Your Prospect (Microsoft) & VAST Customer Lear - The email discusses whether Trevor Cooper-Chadwick from Microsoft should be granted access to the VA
+
+- 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with the Microsoft team to follow up on a presentat
+
+- 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation given
 ## Key Facts
 
 - Tiffany Stonehill is working Monday and Tuesday the next two weeks and will be in full swing in January.
@@ -71,3 +77,7 @@ _Career history, expertise, interests, personal details shared..._
 - [[Golden Dome]]
 
 - [[VAST GTM]]
+
+- [[Azure]]
+
+- [[Mission OS]]

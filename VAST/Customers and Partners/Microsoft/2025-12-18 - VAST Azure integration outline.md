@@ -21,7 +21,7 @@ tags:
 
 Discussion focused on drafting a joint document describing how VAST Data integrates with Microsoft Azure, covering business rationale, target workloads, and required engineering on both sides. Key integration themes included GPU-adjacent VAST storage synchronized with a central Azure Blob data lake, MVP compatibility with AzCopy via a minimal Blob API surface, and longer-term options for tiering/offload and deeper first-party Azure service integration (e.g., private endpoints/control-plane wiring).
 ## Action Items
-- [ ] Analyze AzCopy (open source) to enumerate the specific Azure Blob REST APIs/signatures it depends on, to define the minimum viable Blob API surface VAST must emulate for AzCopy compatibility. @TBD ⏫ #task #proposed
+- [ ?] Analyze AzCopy (open source) to enumerate the specific Azure Blob REST APIs/signatures it depends on, to define the minimum viable Blob API surface VAST must emulate for AzCopy compatibility. @TBD ⏫ #task #proposed
 
 ## Key Information
 - The intended deliverable is a single document (with carve-out sections) answering the what/why/how of VAST Data integration with Microsoft Azure, including business strategy, partnership areas, workloads, differentiation, and engineering/design constraints.

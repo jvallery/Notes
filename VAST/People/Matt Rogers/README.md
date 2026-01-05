@@ -5,7 +5,7 @@ created: '2026-01-04'
 last_contact: '2025-12-30'
 email: ''
 phone: ''
-company: Oracle
+company: VAST Data
 tags:
 - type/people
 - needs-review
@@ -28,7 +28,11 @@ tags:
 
 ## Open Tasks
 
-- [ ] Connect with Matt in Seattle. @Myself 🔼 #task #proposed
+- [ ?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed
+
+- [ ?] Connect with Matt in Seattle @Myself 🔼 #task #proposed #auto
+
+- [ ?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]
@@ -39,3 +43,7 @@ tags:
 - [[Golden Dome]]
 
 - [[DRCC/Alloy]]
+
+- [[Oracle]]
+
+- [[Mission OS]]

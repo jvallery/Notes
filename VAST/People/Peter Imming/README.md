@@ -26,6 +26,8 @@ tags:
 - 2025-12-18: First contact via email re: Re: Virtual Introduction to Jason Vallery
 
 - 2025-12-18: Email re: Re: Virtual Introduction to Jason Vallery - Peter Imming introduces Sebastien Berube to Jason Vallery, VP of Cloud at VAST, to discuss potential
+
+- 2025-12-18: Email re: Re: Virtual Introduction to Jason Vallery - Peter Imming introduces Sebastien Berube to Jason Vallery to discuss potential opportunities, with p
 ## Open Tasks
 
 ## Related

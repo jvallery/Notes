@@ -25,18 +25,18 @@ tags:
 
 Jason and Tomer discussed accelerating AI-first software development practices at VAST, highlighting release slippage, limited accountability, and the need to codify AI-enabled workflows. They reviewed VAST’s RFE-to-Feature-to-Jira process, customer support via tier-3 “co-pilots” and per-customer Slack channels, and Global Namespace (strict consistency with read leases today; write leases planned for 5.5 preview). Next steps focus on getting Jason hands-on access to VAST (OVA or SC lab) and continuing the discussion the following week, using cloud as a wedge to drive SaaS operating model maturity.
 ## Action Items
-- [ ] Ping Josh Wentzell (Office of the CTO) to obtain VAST OVA access and onboarding for local lab testing @Myself 📅 2025-10-27 🔺 #task #proposed
-- [ ] Coordinate with Andy Perlsteiner for SC lab access as a backup/quick-start environment @Myself 📅 2025-10-27 ⏫ #task #proposed
-- [ ] Set up a local cluster with the VAST OVA to test Global Namespace, caching/prefetch, and GPU workflows @Myself 📅 2025-10-27 ⏫ #task #proposed
-- [ ] Draft VAST Cloud SaaS operating model requirements (DevOps/LifeSite rotations, telemetry, 24x7 support) @Myself 📅 2025-10-27 ⏫ #task #proposed
-- [ ] Schedule the next 1:1 for next week to continue on cloud plan and process changes @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end @Myself 📅 2025-10-27 🔽 #task #proposed
-- [ ] Confirm with leadership (Brendan/Jeff) that Cloud is P0 and clarify resourcing expectations @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Review Google Anywhere Cache documentation and compare policy/prefetch capabilities to VAST Global Namespace @Tomer Hagay 📅 2025-10-26 ⏫ #task #proposed
-- [ ] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption targets @Tomer Hagay 📅 2025-10-27 🔺 #task #proposed
-- [ ] Clarify VAST’s end-to-end dev lifecycle (gates, signoffs, source control, CI/CD, release) with engineering (Eyal Tritel/Noa Cohen) or documentation @Myself 📅 2025-10-27 ⏫ #task #proposed
-- [ ] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5 @Tomer Hagay 📅 2025-10-27 🔽 #task #proposed
-- [ ] Proceed with Slack multi-channel polling capability with IT and report feasibility/timeline @Tomer Hagay 📅 2025-10-26 🔽 #task #proposed
+- [ ?] Ping Josh Wentzell (Office of the CTO) to obtain VAST OVA access and onboarding for local lab testing @Myself 📅 2025-10-27 🔺 #task #proposed
+- [ ?] Coordinate with Andy Perlsteiner for SC lab access as a backup/quick-start environment @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ?] Set up a local cluster with the VAST OVA to test Global Namespace, caching/prefetch, and GPU workflows @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ?] Draft VAST Cloud SaaS operating model requirements (DevOps/LifeSite rotations, telemetry, 24x7 support) @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ?] Schedule the next 1:1 for next week to continue on cloud plan and process changes @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end @Myself 📅 2025-10-27 🔽 #task #proposed
+- [ ?] Confirm with leadership (Brendan/Jeff) that Cloud is P0 and clarify resourcing expectations @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Review Google Anywhere Cache documentation and compare policy/prefetch capabilities to VAST Global Namespace @Tomer Hagay 📅 2025-10-26 ⏫ #task #proposed
+- [ ?] Ask Shachar to confirm AI-first development mandate, training cadence, and measurable adoption targets @Tomer Hagay 📅 2025-10-27 🔺 #task #proposed
+- [ ?] Clarify VAST’s end-to-end dev lifecycle (gates, signoffs, source control, CI/CD, release) with engineering (Eyal Tritel/Noa Cohen) or documentation @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ?] Review and align on write-lease design and read redirection behaviors with Tel Aviv team for 5.5 @Tomer Hagay 📅 2025-10-27 🔽 #task #proposed
+- [ ?] Proceed with Slack multi-channel polling capability with IT and report feasibility/timeline @Tomer Hagay 📅 2025-10-26 🔽 #task #proposed
 
 ## Key Information
 - VAST has approximately 400 developers.

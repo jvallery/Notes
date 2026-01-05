@@ -25,21 +25,21 @@ tags:
 
 Jason and Kanchan aligned to prioritize Microsoft AI (MAI) and the UK Met Office as flagship customer wins to drive Azure toward a better hardware/storage shape for VAST, since current Azure LSV4 economics and networking are not viable at scale and LSV5 is far out. They agreed on a dual-track approach: progress an Azure Marketplace offer while simultaneously using marquee customer pull (MAI/UKMO) to escalate requirements with Igal’s team and internal stakeholders (e.g., Nidhi). Supercomputing/Ignite coordination (panel/booth/keynote slide) and exploration of Neo-cloud GPU-adjacent storage and VAST KV-store opportunities were also discussed.
 ## Action Items
-- [ ] Meet with MAI (Kushal) and gather requirements/next steps; report back to Kanchan. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ] Connect with Vipin Sachdeva to re-open MAI conversation and align with Kushal. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Build an economics deck comparing 1EB across VAST on LSV4, LSV5, on-prem, and Azure Blob (HDD/Flash) for internal NDA sharing. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ] Share MAI meeting notes with Kanchan and propose a joint plan. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Engage Igal to discuss LSV5 shape, networking needs, and customer-driven pipeline (MAI, UK Met Office). @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Meet UK Met Office leaders (Mike Kiernan, Nico, Alan) at Supercomputing to push the VAST approach. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ] Coordinate Supercomputing/Ignite joint story and VAST booth content with Kanchan, Lior, and Andrew. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Set up a session with Nidhi to review MAI + UK Met Office case and the economics deck (post-Supercomputing if needed). @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Confirm whether Suresh will attend Supercomputing and, if yes, schedule a discussion on Neo-cloud GPU-adjacent storage. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Advance the Azure Marketplace offer with Yancey’s team (control plane integration, listing, billing). @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ] Sync next week after the MAI Friday call to decide the support plan. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Check with Lior on outcomes from dinner with Igal and capture any asks. @Myself 📅 2025-11-08 🔽 #task #proposed
-- [ ] Verify Nidhi’s availability (Supercomputing or post-Supercomputing) and confirm a meeting. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ] Confirm Wave’s current GPU status and whether a VAST proposal is viable on Azure. @Kanchan Mehrotra 📅 2025-11-08 🔽 #task #proposed
-- [ ] Validate UK Met Office networking constraints vs planned LSV5 with Igal’s team. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Meet with MAI (Kushal) and gather requirements/next steps; report back to Kanchan. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Connect with Vipin Sachdeva to re-open MAI conversation and align with Kushal. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Build an economics deck comparing 1EB across VAST on LSV4, LSV5, on-prem, and Azure Blob (HDD/Flash) for internal NDA sharing. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Share MAI meeting notes with Kanchan and propose a joint plan. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Engage Igal to discuss LSV5 shape, networking needs, and customer-driven pipeline (MAI, UK Met Office). @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Meet UK Met Office leaders (Mike Kiernan, Nico, Alan) at Supercomputing to push the VAST approach. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Coordinate Supercomputing/Ignite joint story and VAST booth content with Kanchan, Lior, and Andrew. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Set up a session with Nidhi to review MAI + UK Met Office case and the economics deck (post-Supercomputing if needed). @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Confirm whether Suresh will attend Supercomputing and, if yes, schedule a discussion on Neo-cloud GPU-adjacent storage. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Advance the Azure Marketplace offer with Yancey’s team (control plane integration, listing, billing). @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ?] Sync next week after the MAI Friday call to decide the support plan. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Check with Lior on outcomes from dinner with Igal and capture any asks. @Myself 📅 2025-11-08 🔽 #task #proposed
+- [ ?] Verify Nidhi’s availability (Supercomputing or post-Supercomputing) and confirm a meeting. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [ ?] Confirm Wave’s current GPU status and whether a VAST proposal is viable on Azure. @Kanchan Mehrotra 📅 2025-11-08 🔽 #task #proposed
+- [ ?] Validate UK Met Office networking constraints vs planned LSV5 with Igal’s team. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Near-term focus on MAI and UK Met Office over a broad sales motion.

@@ -27,9 +27,17 @@ phone: 408 888 2102
 
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
 
-- [ ] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed
+- [ ?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed
 
-- [ ] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task #proposed
+- [ ?] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task #proposed
+
+- [ ?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed #auto
+
+- [ ?] Review and grant access to the document 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Keep Trevor Cooper-Chadwick's status as 'pending approval' and wait for Lior Genzel's feedback. @Myself 🔼 #task #proposed #auto
+
+- [ ?] Review and manage the sharing request for 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)
@@ -97,11 +105,19 @@ phone: 408 888 2102
 - 2025-12-22: Email re: Share request for "VAST and Azure Integration.docx - Lior Genzel is requesting access to the document 'VAST and Azure Integration.docx' via Google Docs.
 
 - 2025-12-17: Email re: Re: VAST Data - GDC Storage RFP - Request For Meet - The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
+
+- 2025-12-22: Email re: Share request for "VAST and Azure Integration.docx - Lior Genzel is requesting access to the document titled 'VAST and Azure Integration.docx' via Google
+
+- 2025-12-17: Email re: Re: VAST Data - GDC Storage RFP - Request For Meet - The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 ## Key Facts
 
 - Lior Genzel is in town with the VP of PM for cloud for meetings at Microsoft.
 
 - Lior Genzel has the most recent updates from engineering regarding Global Namespace on Azure.
+
+- Lior Genzel has the most recent updates from engineering regarding showcasing Global Namespace on Azure.
+
+- Lior Genzel is associated with VAST Data.
 ## Topics
 
 ## Key Decisions
@@ -162,3 +178,16 @@ phone: 408 888 2102
 - [[BF4/inference project]]
 - [[Open Models press release]]
 - [[NVIDIA Rubin press release]]
+
+- [[VAST PoC]]
+
+- [[Siemens keynote]]
+
+- [[Mission OS]]
+
+- [[MSFT]]
+
+- [[Ignite]]
+
+- [[Azure Blob]]
+- [[Anson's PoC]]

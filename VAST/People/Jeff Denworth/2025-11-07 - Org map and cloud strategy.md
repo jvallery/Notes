@@ -21,24 +21,24 @@ tags:
 
 Reviewed the org landscape and clarified near-term priorities around building a pragmatic cross-cloud strategy beyond basic S3 hosting. Jeff emphasized embedding with SEs and customers to learn real workflows, cataloging in-flight opportunities from a product-requirements lens, and building a control-plane-partner-led “cloud in a box” motion. Org decisions included moving Carl to ProServe under Rob and transitioning Morty to my team while he continues owning Neo cloud feature requirements; FRDs/requirements should be maintained in Confluence.
 ## Action Items
-- [ ] Prepare for Google RFP/TPU discussion; align questions and decision criteria to avoid block I/O-heavy scope where NetApp excels @Myself 📅 2025-11-13 ⏫ #task #proposed
-- [ ] Create a concise “dagger” slide quantifying Azure Storage gaps vs VAST for Microsoft exec conversations @Myself ⏫ #task #proposed
-- [ ] Catalog all in-flight opportunities in Salesforce from a product-requirements lens; identify gaps, repeatable patterns, and walk-aways @Myself ⏫ #task #proposed
-- [ ] Meet Sagi to understand pipelines/serverless roadmap and cloud packaging gaps @Myself #task #proposed
-- [ ] Meet John (alliances) to shape “cloud in a box” strategy and engage control-plane partners (G Corp, Ori, Arna, Rafe) @Myself #task #proposed
-- [ ] Pull Morty into alliances/control-plane planning to ensure Neo cloud feature alignment @Myself #task #proposed
-- [ ] Schedule a recurring monthly 1:1 with Brandon to align on cloud platform priorities @Myself #task #proposed
-- [ ] Document Walmart and future customer FRDs in Confluence; align structure with A.L. and Tomer @Myself #task #proposed
-- [ ] Evaluate the cost calculator Jeff shared and provide feedback on assumptions @Myself 🔽 #task #proposed
-- [ ] Formalize Carl’s move to ProServe under Rob and communicate to stakeholders @Jeff Denworth Denworth ⏫ #task #proposed
-- [ ] Confirm Morty’s transition to my team while preserving Neo cloud commitments @Jeff Denworth Denworth #task #proposed
-- [ ] Engage Ryan (overlay team) and FWOD (DB/pipeline SEs) to understand current go-to-market motions @Myself 🔽 #task #proposed
-- [ ] Embed with SEs at next week’s events to build relationships and gather field feedback @Myself #task #proposed
-- [ ] Align with Lior to be pulled into strategic customer meetings and maintain visibility on pipeline @Myself #task #proposed
-- [ ] Coordinate a brief in-person check-in with Jeff in Orlando (Tue–Thu next week) @Myself 🔽 #task #proposed
-- [ ] After Google meeting, reassess RFP fit and recommend go/no-go based on workload profile @Myself #task #proposed
-- [ ] Draft initial cross-cloud embedding plan (Foundry, Bedrock, Vertex) for review @Myself #task #proposed
-- [ ] Propose a lightweight quarterly win/loss review cadence with Sales Ops and Product @Myself #task #proposed
+- [ ?] Prepare for Google RFP/TPU discussion; align questions and decision criteria to avoid block I/O-heavy scope where NetApp excels @Myself 📅 2025-11-13 ⏫ #task #proposed
+- [ ?] Create a concise “dagger” slide quantifying Azure Storage gaps vs VAST for Microsoft exec conversations @Myself ⏫ #task #proposed
+- [ ?] Catalog all in-flight opportunities in Salesforce from a product-requirements lens; identify gaps, repeatable patterns, and walk-aways @Myself ⏫ #task #proposed
+- [ ?] Meet Sagi to understand pipelines/serverless roadmap and cloud packaging gaps @Myself #task #proposed
+- [ ?] Meet John (alliances) to shape “cloud in a box” strategy and engage control-plane partners (G Corp, Ori, Arna, Rafe) @Myself #task #proposed
+- [ ?] Pull Morty into alliances/control-plane planning to ensure Neo cloud feature alignment @Myself #task #proposed
+- [ ?] Schedule a recurring monthly 1:1 with Brandon to align on cloud platform priorities @Myself #task #proposed
+- [ ?] Document Walmart and future customer FRDs in Confluence; align structure with A.L. and Tomer @Myself #task #proposed
+- [ ?] Evaluate the cost calculator Jeff shared and provide feedback on assumptions @Myself 🔽 #task #proposed
+- [ ?] Formalize Carl’s move to ProServe under Rob and communicate to stakeholders @Jeff Denworth Denworth ⏫ #task #proposed
+- [ ?] Confirm Morty’s transition to my team while preserving Neo cloud commitments @Jeff Denworth Denworth #task #proposed
+- [ ?] Engage Ryan (overlay team) and FWOD (DB/pipeline SEs) to understand current go-to-market motions @Myself 🔽 #task #proposed
+- [ ?] Embed with SEs at next week’s events to build relationships and gather field feedback @Myself #task #proposed
+- [ ?] Align with Lior to be pulled into strategic customer meetings and maintain visibility on pipeline @Myself #task #proposed
+- [ ?] Coordinate a brief in-person check-in with Jeff in Orlando (Tue–Thu next week) @Myself 🔽 #task #proposed
+- [ ?] After Google meeting, reassess RFP fit and recommend go/no-go based on workload profile @Myself #task #proposed
+- [ ?] Draft initial cross-cloud embedding plan (Foundry, Bedrock, Vertex) for review @Myself #task #proposed
+- [ ?] Propose a lightweight quarterly win/loss review cadence with Sales Ops and Product @Myself #task #proposed
 
 ## Decisions
 - Carl will move to ProServe under Rob due to customer-facing risk.

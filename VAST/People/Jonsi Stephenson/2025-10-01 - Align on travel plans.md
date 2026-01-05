@@ -21,7 +21,7 @@ tags:
 
 A single action item notes aligning with Jonsi on travel to enable an in-person working session. The task is marked complete with a specified due date.
 ## Action Items
-- [ ] Align with Jonsi on travel to enable in-person working session. @Myself 📅 2025-11-08 #task #proposed
+- [ ?] Align with Jonsi on travel to enable in-person working session. @Myself 📅 2025-11-08 #task #proposed
 
 ## Key Information
 - Task to align on travel for an in-person working session was tracked and marked complete.

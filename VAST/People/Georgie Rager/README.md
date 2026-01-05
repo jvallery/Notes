@@ -1,15 +1,14 @@
 ---
 type: people
-title: "Georgie Rager"
-created: "2026-01-04"
-last_contact: "2025-12-30"
-email: ""
-phone: ""
-company: ""
-title: ""
+title: ''
+created: '2026-01-04'
+last_contact: '2025-12-30'
+email: ''
+phone: ''
+company: VAST Data
 tags:
-  - "type/people"
-  - "needs-review"
+- type/people
+- needs-review
 ---
 
 # Georgie Rager
@@ -36,3 +35,5 @@ tags:
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[Mission OS]]

@@ -40,8 +40,17 @@ SORT due ASC
 - 2025-12-21: Jeff Denworth discusses the urgency of securing supply chain resources for VAST Data's deployment pl
 
 - 2025-12-27: Jeff Denworth is concerned about the progress of a Q1 deal with Microsoft Azure MAI due to supply ch
+
+- 2025-12-21: Jeff Denworth discusses the urgency of supply chain issues and the need for a plan to deploy VAST so
+
+- 2025-12-27: Jeff Denworth is expressing concerns about the progress of a deal with Microsoft Azure MAI due to su
+
+- 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's p
+
+- 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
 ## Key Facts
 
+- Testing hasn’t started in earnest at CoreWeave.
 ## Opportunities
 
 - Move faster than others; exemplar NeoCloud; expand services beyond GPUs over time
