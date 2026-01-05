@@ -27,11 +27,16 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Works at Nebius and uses the email address vinitaananth.ai@nebius.com.
+
+- Confirmed availability for a Nebius and VAST Data connection call on Monday 2025-12-15 at 10:00am PT.
 ## Recent Context
 
 - 2025-12-10: First contact via email re: Re: Nebius/VAST -- Connect
 
 - 2025-12-10: Email re: Re: Nebius/VAST -- Connect - Vinita Ananth confirms availability for a meeting with Jason Vallery on December 15th at 10am PT.
+
+- 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
 ## Open Tasks
 
 ## Related

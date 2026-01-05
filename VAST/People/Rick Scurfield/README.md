@@ -2,7 +2,7 @@
 type: people
 title: Rick Scurfield
 created: '2026-01-03'
-last_contact: '2025-12-18'
+last_contact: '2025-12-27'
 auto_created: true
 tags:
 - type/people
@@ -44,8 +44,25 @@ SORT due ASC
 - 2025-12-03: Email re: VAST Forward - Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
 
 - 2025-12-18: Email re: GTM Team Update: RevOps Leadership - Cristina Hasson is leaving her position as Head of Revenue Operations at Vast Data, and Stacy Wynn w
+
+- 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
+
+- 2025-12-03: Mentioned in: VAST Forward (Feb 24-26) internal push for customer outreach and attendance
+
+- 2025-12-18: Mentioned in: RevOps leadership change, Cristina Hasson departing; Stacy Wynn interim lead
+
+- 2025-12-17: Mentioned in: Quote policy change and hardware allocation guidance (effective through 2025-12-31 and monthly price books in 2026)
+
+- 2025-12-27: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
 ## Key Facts
 
+- Rick Scurfield sent an internal email requesting account outreach to drive attendance and engagement for VAST Forward on February 24-26.
+
+- Rick Scurfield sent a GTM organization update to All GTM and All CS (BCC) about the RevOps leadership transition.
+
+- Rick Scurfield stated VAST Data is actively monitoring the global hardware supply environment and is closely engaged with suppliers and hardware partners, and will communicate changes in real time to support deal booking and customer updates.
+
+- Rick Scurfield directed the team to increase software pricing where possible, emphasizing confidence in the value delivered to customers.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

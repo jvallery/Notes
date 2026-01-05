@@ -25,6 +25,7 @@ tags:
 
 - 2025-12-19: First contact via email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast
 
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 ## Open Tasks
 
 ## Related

@@ -21,6 +21,9 @@ tags:
 
 ## Key Facts
 
+- Isabella Lista is an Associate at AlphaSights and coordinates expert discussions with industry professionals.
+
+- Isabella Lista provided a Calendly link for scheduling a 30-minute call: https://calendly.com/isabella-lista-alphasights/30min.
 ## Recent Context
 
 - 2025-12-19: First contact via email re: New Urgent AlphaSights Request for Jason Vallery
@@ -38,6 +41,8 @@ tags:
 - 2025-12-19: Email re: New Urgent AlphaSights Request for Jason Vallery - Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 
 - 2025-12-19: Email re: New Urgent AlphaSights Request for Jason Vallery - Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion (Oracle, AWS, Salesforce, Microsoft)
 ## Open Tasks
 
 - [?] Get back to Isabella with a contact number or schedule a meeting. @Myself 📅 2025-12-19 ⏫ #task #proposed

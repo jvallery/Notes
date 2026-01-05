@@ -42,8 +42,15 @@ not done
 - 2025-10-31: [[2025-10-31 - VAST cloud strategy and enablement]] (via Rob Benoit)
 
 - 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokesperson for breakout session, required prep cadence
+
+- 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
 ## Key Facts
 
+- Andy Perlsteiner is leading Hands-on Labs for VAST Forward.
+
+- Jeff Denworth referenced that Andy Perlsteiner worked out of CoreWeave offices daily during the first CoreWeave deal to accelerate execution.
 ## Topics
 
 - VAST Forward

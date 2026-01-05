@@ -1,6 +1,6 @@
 ---
 created: '2026-01-03'
-last_contact: '2025-12-17'
+last_contact: '2025-12-12'
 tags:
 - type/customer
 - generated
@@ -63,6 +63,8 @@ type: customer
 - 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 
 - 2025-12-19: Mentioned in: Jeff Denworth - Microsoft strategy and SCO prep
+
+- 2025-12-12: John Mao shared notes from a catch-up with a close friend who joined OpenAI to lead the Online Data ...
 ## Key Facts
 
 - OpenAI is organized into three major teams: Applications, Scaling, and Research.
@@ -76,6 +78,16 @@ type: customer
 - OpenAI's research data platform is an in-house developed system called DAQ.
 
 - OpenAI is replatforming away from the Blob API.
+
+- OpenAI is described as organized into three major teams: Applications (ChatGPT and online data), Scaling (between Applications and Research, function unclear), and Research (data scientists reporting up to Jakob Pachoki, focused on offline training data for frontier clusters including OCI).
+
+- OpenAI Applications team's two largest data platforms were described as Rockset (uses local SSDs and persists to Azure Blob) and Snowflake (OpenAI is described as one of Snowflake's largest customers).
+
+- Jason Vallery stated that the application side (ChatGPT) heavily leverages Azure Cosmos DB for conversation persistence and that this is publicly referenced, including that OpenAI is Cosmos DB's largest customer.
+
+- Rockset was described as OpenAI's "vector database" and the platform (persisted to Azure Blob) contains the entire history of ChatGPT conversations.
+
+- OpenAI Research data platform was described by Jason Vallery as an in-house system called DAQ (Data Acquisition), previously mentioned in a conversation with Misha (last name unknown), and said to drive very high throughput and scale (TPS/PiB).
 ## Topics
 
 - OpenAI
@@ -83,6 +95,16 @@ type: customer
 - Snowflake
 - Data Infrastructure
 - Applications
+
+- OpenAI organizational structure: Applications, Scaling, Research
+
+- OpenAI Applications online data platforms: Rockset, Snowflake, Azure Cosmos DB, Azure Blob persistence
+
+- OpenAI Research offline data platform: DAQ (Data Acquisition) and scale characteristics
+
+- OpenAI Data Platform team: Spark/Databricks ownership
+
+- Potential integration/merging of Applications datasets with Research datasets at OpenAI
 ## Opportunities
 
 - Define storage API requirements for GPU-adjacent storage (S3 API sufficiency vs Blob API parity)
@@ -139,3 +161,7 @@ type: customer
 - [[ChatGPT]]
 - [[DAQ]]
 - [[GPT-6 roadmap]]
+
+## Key Decisions
+
+- John Mao will keep the engagement with his OpenAI friend engineering-centered and intends to bring VAST engineering into the dialogue after an in-person visit.

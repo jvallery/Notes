@@ -22,6 +22,8 @@ tags:
 ## Key Facts
 
 - Terika Dilworth is the Sales Enablement Manager at VAST Data.
+
+- Terika Dilworth requested feedback on the VAST on Cloud Course and Project Brief by January 7, 2026 so updates can be incorporated before the January working session.
 ## Recent Context
 
 - 2025-12-15: First contact via email re: VAST on Cloud Course
@@ -33,6 +35,10 @@ tags:
 - 2026-01-01: Email re: Invitation: Urgent Training: Understanding the KV  - Invitation to a training session on KV Cache and NVIDIA's Context Memory Extension (CME) announcemen
 
 - 2025-12-15: Email re: VAST on Cloud Course - Terika Dilworth is requesting feedback on the Cloud course and project brief before a working sessio
+
+- 2025-12-15: Mentioned in: Review request: VAST on Cloud Course and Project Brief feedback due January 7, 2026
+
+- 2026-01-01: Mentioned in: Training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) prep
 ## Open Tasks
 
 - [?] Review and provide feedback on the Cloud course and project brief. @Myself 📅 2026-01-07 🔼 #task #proposed

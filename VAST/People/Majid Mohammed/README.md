@@ -22,10 +22,12 @@ linkedin: https://www.linkedin.com/in/majidmohamed/
 
 ## Key Facts
 
+- Majid Mohammed is the chief of staff to Mustafa (last name unknown), who is described as the final decision maker for MAI storage.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: MAI & VAST: December 8th EoD update
 
+- 2025-12-21: Mentioned in: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Open Tasks
 
 - [?] Establish communication and build trust with key MAI stakeholders. @Lior Genzel ⏫ #task #proposed

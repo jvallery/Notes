@@ -73,11 +73,23 @@ title: GM of Cloud
 
 - 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data forma
 - 2026-01-04: Discussion on MAI and Azure Integration Challenges - Jason Vallery and Jonsi Stefanson discussed the challenges and opportunities related to the integrat
+
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2026-01-02: Mentioned in: Comments on 'VAST and Azure Integration.docx' about cold data tiering format and supply-chain messaging
 ## Key Facts
 
 - Jonsi Stefansson shared a presentation for editing
 
 - Jonsi Stefansson works at Vast Data.
+
+- Jonsi Stefansson (jonsi@vastdata.com) shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" and granted edit access to Jason Vallery.
+
+- Jonsi Stephenson raised a concern that describing cold data as tiered to Azure Blob using VAST object format may be undesirable because data stored in VAST object format would not be readable directly from Azure Blob.
+
+- Jonsi Stephenson suggested reconsidering the cold data tiering description to use native Azure Blob format for ecosystem accessibility and direct readability from Azure Blob.
+
+- Jonsi Stephenson asked whether the document should make a firmer statement that VAST unique data reduction and efficiency features reduce exposure to flash supply-chain constraints.
 ## Topics
 
 - GCP

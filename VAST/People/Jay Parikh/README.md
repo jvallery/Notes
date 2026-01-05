@@ -42,8 +42,11 @@ SORT due ASC
 ## Recent Context
 
 - 2025-11-06: [[2025-11-06 - VAST momentum and Azure Apollo]] (via Microsoft)
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Key Facts
 
+- Jay Parikh is EVP for CoreAI at Microsoft and is participating in Roland's January 6, 2026 keynote that includes NVIDIA and executives from Microsoft, PepsiCo, and Commonwealth Fusion Systems.
 ## Background
 
 Jay Parikh joined Microsoft in October 2024 as Executive Vice President of CoreAI – Platform and Tools, reporting directly to CEO Satya Nadella. Prior to this, he served as CEO of Lacework, a cloud security company, and was the Global Head of Engineering at Facebook (now Meta) from 2009 to 2021. His earlier roles include Senior Vice President of Engineering & Operations at Ning, Inc., and Vice President of Engineering at Akamai Technologies. He holds a Bachelor of Science in Mechanical Engineering from Virginia Tech.

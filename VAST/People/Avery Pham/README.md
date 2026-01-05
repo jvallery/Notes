@@ -34,6 +34,7 @@ last_enriched: '2026-01-04'
 
 - 2025-12-21: First contact via email re: Re: MAI & VAST: December 8th EoD update
 
+- 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Open Tasks
 
 ## Related

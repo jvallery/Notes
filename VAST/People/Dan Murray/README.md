@@ -27,10 +27,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Dan Murray is listed as the host for the RMAIIG event 'AI for Good (New location for January!)' on January 20, 2026.
 ## Recent Context
 
 - 2026-01-04: First contact via email re: 📅 Just scheduled: AI for Good (New location for Ja
 
+- 2026-01-04: Mentioned in: Meetup event scheduled: RMAIIG 'AI for Good' (new January location)
 ## Open Tasks
 
 ## Related

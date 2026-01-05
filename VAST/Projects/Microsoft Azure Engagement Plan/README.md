@@ -9,7 +9,7 @@ tags:
 - type/projects
 - needs-review
 - status/complete
-last_contact: '2025-10-28'
+last_contact: '2026-01-02'
 ---
 
 # Microsoft Azure Engagement Plan
@@ -49,5 +49,20 @@ SORT due ASC
 - 2025-11-06: [[2025-11-06 - VAST adoption in Microsoft programs]] (via Microsoft)
 
 - 2025-12-19: [[2025-12-19 - Microsoft strategy and SCO prep]] (via Microsoft)
+
+- 2026-01-04: Mentioned in: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
+
+- 2026-01-02: Google Docs notification email shows two open comments from Jonsi Stefansson on the document 'VAST a...
 ## Key Facts
 
+- The Weekly VAST GTM Meeting is a recurring Microsoft Teams meeting used to coordinate Microsoft engagement status, pipeline, deal timelines, and Azure Marketplace onboarding blockers for VAST Data.
+
+- The document text claims that integrating VAST with Azure Blob allows customers to place the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set, as a hedge against flash component price volatility.
+
+## Topics
+
+- VAST cold data tiering to Azure Blob: VAST object format versus native Azure Blob format
+
+- Ecosystem accessibility and direct readability of data stored in Azure Blob
+
+- Messaging on flash supply constraints and VAST data reduction efficiencies (DRR)

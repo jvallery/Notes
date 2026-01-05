@@ -2,7 +2,7 @@
 type: people
 title: Michael Myrah
 created: '2026-01-03'
-last_contact: '2025-11-06'
+last_contact: '2026-01-04'
 auto_created: true
 tags:
 - type/people
@@ -45,6 +45,8 @@ SORT due ASC
 - 2025-11-06: [[2025-11-06 - VAST adoption in Microsoft programs]] (via Microsoft)
 
 - 2025-11-06: [[2025-11-06 - VAST momentum and Azure Apollo]] (via Microsoft)
+
+- 2026-01-04: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Key Facts
 
 ## Background

@@ -32,6 +32,12 @@ last_enriched: '2026-01-04'
 - Stacy Wynn will temporarily lead the RevOps team.
 
 - Stacy Wynn is a contact for discussing pricing changes and supply chain impacts.
+
+- Stacy Wynn sent the team the recording and FAQ for the 2025-12-23 'Pricing Changes and Supply Chain' update session and positioned it as a fast-moving situation requiring transparency and proactive communication.
+
+- Stacy Wynn provided a recording link and passcode '&U9eZF98' for the 2025-12-23 Pricing Changes and Supply Chain update session, plus a separate FAQ link for reference.
+
+- Stacy Wynn will temporarily lead the Revenue Operations (RevOps) team at VAST Data while the company searches for a new RevOps leader.
 ## Recent Context
 
 - 2025-12-18: First contact via email re: GTM Team Update: RevOps Leadership
@@ -39,6 +45,10 @@ last_enriched: '2026-01-04'
 - 2025-12-23: Email re: Pricing Changes and Supply Chain Update Recording  - Stacy Wynn shares a recording and FAQ from a session on pricing changes and supply chain updates, in
 
 - 2025-12-23: Email re: Pricing Changes and Supply Chain Update Recording  - Stacy Wynn shares a recording and FAQ from a session on pricing changes and supply chain updates, of
+
+- 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared
+
+- 2025-12-18: Mentioned in: RevOps leadership change, Cristina Hasson departing; Stacy Wynn interim lead
 ## Open Tasks
 
 - [?] Reach out to Stacy, Erik, or Rick if clarification is needed or to discuss impacts on active deals. @Myself 🔼 #task #proposed

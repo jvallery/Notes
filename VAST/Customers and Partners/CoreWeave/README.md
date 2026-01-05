@@ -72,9 +72,23 @@ SORT due ASC
 
 - 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
 - 2025-12-17: Exploring Collaboration Opportunities with Welliptic
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+
+- 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
 ## Key Facts
 
 - Testing hasn’t started in earnest at CoreWeave.
+
+- The RFE is associated with an opportunity named 'DGX-C | Coreweave' in Salesforce.
+
+- Jason Vallery stated VAST Data provides storage solutions used for training data and model distribution for large language models at companies including xAI, Tesla, and CoreWeave.
+
+- Jeff Denworth stated CoreWeave testing for the MAI-related effort has not started in earnest.
+
+- Jeff Denworth referenced that the first CoreWeave deal was supported by having Andy Perlsteiner and an unknown person named Leo working out of CoreWeave offices daily, which he said has netted $1.5B in bookings so far.
 ## Opportunities
 
 - Move faster than others; exemplar NeoCloud; expand services beyond GPUs over time

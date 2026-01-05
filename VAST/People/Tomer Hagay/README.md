@@ -1,7 +1,7 @@
 ---
 type: people
 title: Tomer Hagay
-last_contact: '2025-10-01'
+last_contact: '2025-12-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -43,8 +43,23 @@ not done
 - 2025-10-28: [[2025-10-28 - GCP MVP launch alignment]] (via Google)
 
 - 2025-10-01: [[Pricing vTeam action list]] (via Pricing)
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-15: Mentioned in: GDC RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 ## Key Facts
 
+- Tomer Hagay stated that Violet is the expert for VAST encryption topics related to the Google Distributed Cloud (GDC) RFP follow-up.
+
+- Tomer Hagay stated VAST prefers software-based encryption rather than relying on self-encrypting drive (SED) hardware capabilities or availability, and that software-based encryption can be FIPS certified.
+
+- Tomer Hagay stated encryption keys in VAST are managed at the tenant level or at the path level, and that 'path' includes any protocol including S3 buckets and NFS exports.
+
+- Tomer Hagay stated an encryption group can be assigned to a path to support having a unique encryption key for that path.
+
+- Tomer Hagay stated VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4.
+
+- Tomer Hagay asked where the self-encrypting drive (SED) requirement originates and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption requirements for protection against drive removal, VAST software using FIPS-compatible encryption algorithms should meet the requirement.
 ## Topics
 
 - RFE

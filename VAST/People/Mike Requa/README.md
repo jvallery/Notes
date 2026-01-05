@@ -2,7 +2,7 @@
 type: people
 title: Pastor in training and software developer
 created: '2026-01-03'
-last_contact: '2025-10-28'
+last_contact: '2025-12-01'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,8 @@ SORT due ASC
 ## Recent Context
 
 - 2025-10-28: [[2025-10-28 - UK Met Gen2 pilot planning]] (via Microsoft)
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 ## Key Facts
 
 - Mike N is an accountant who likes non-fiction books.

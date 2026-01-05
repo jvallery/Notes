@@ -1,7 +1,7 @@
 ---
 type: people
 title: Alon Horev
-last_contact: '2025-12-15'
+last_contact: '2025-12-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -36,8 +36,19 @@ company: VAST Data
 - 2025-12-15: Email re: Re: Google Distributed Cloud - RFP Follow-up3) Enc - The email discusses follow-up questions from a Google RFP regarding encryption key granularity and t
 
 - 2025-12-15: Email re: Re: Google Distributed Cloud - RFP Follow-up3) Enc - The email discusses follow-up questions from a Google RFP regarding encryption key granularity and s
+
+- 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-15: Mentioned in: GDC RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokesperson for breakout session, required prep cadence
 ## Key Facts
 
+- Alon Horev advised Jason Vallery to work with Violet as the subject matter expert for encryption-related questions for the Google Distributed Cloud (GDC) RFP follow-up.
+
+- Alon Horev is leading AI Model Builder sessions for VAST Forward.
 ## Topics
 
 - RFE

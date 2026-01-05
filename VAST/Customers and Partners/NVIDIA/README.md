@@ -67,6 +67,12 @@ SORT due ASC
 - 2025-12-21: The email discusses coordination for CES events, including NVIDIA's 'NVIDIA Live' and press releases
 
 - 2026-01-01: Invitation to a training session on KV Cache and NVIDIA's Context Memory Extension (CME) announcemen
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2026-01-01: Mentioned in: Training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) prep
 ## Key Facts
 
 - NVIDIA is hosting 'NVIDIA Live' at CES on January 5.
@@ -78,6 +84,16 @@ SORT due ASC
 - NVIDIA Live event is on January 5 at CES.
 
 - NVIDIA Live is an ancillary event to CES, not a press conference.
+
+- NVIDIA is hosting an open event called "NVIDIA Live" at CES on January 5, 2026 starting at 1:00 PM PT at the Fontainebleau in Las Vegas.
+
+- The embargo for NVIDIA's CME announcement lifts at 3:00 PM PT on January 5, 2026.
+
+- NVIDIA sent VAST two additional press releases requesting VAST inclusion: the NVIDIA Rubin press release and the Open Models press release; VAST is not being asked to provide a quote, only to approve VAST mentions.
+
+- NVIDIA DGX Cloud Storage Team uses VAST across more than five NCPs and manages multiple petabytes of capacity, and expects continued expansion.
+
+- NVIDIA is expected to make major KVCache Storage announcements during CES the week of 2026-01-05.
 ## Opportunities
 
 - Broaden perception of VAST beyond object store; align on evolving inference/storage needs

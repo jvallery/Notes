@@ -36,8 +36,11 @@ not done
 - 2025-10-20: [[2025-10-20 - Multi-cloud VAST architecture alignment]] (via Yogev Vankin)
 
 - 2025-11-03: [[2025-11-03 - 5.5 plan timeline review]] (via Roy)
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Key Facts
 
+- VAST is working with Asaf Levy and NVIDIA's Israel team on slides and animation for CES-related content.
 ## Topics
 
 - CES

@@ -22,10 +22,12 @@ linkedin: https://www.linkedin.com/in/yunchao-gong-150a32a/
 
 ## Key Facts
 
+- Yunchao Gong is the manager of Kushal (last name unknown) in the MAI organization.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: MAI & VAST: December 8th EoD update
 
+- 2025-12-21: Mentioned in: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Open Tasks
 
 ## Related

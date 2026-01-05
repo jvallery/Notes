@@ -2,7 +2,7 @@
 type: customer
 title: Oracle
 created: '2026-01-03'
-last_contact: '2025-10-27'
+last_contact: '2025-12-08'
 status: active
 auto_created: true
 tags:
@@ -59,6 +59,10 @@ SORT due ASC
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-08: Christian Linacre (Oracle OCI) introduced Jason Vallery to Matthew Thomson, who runs product managem...
+
+- 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) replied to Jason Vallery and offered to connect Jaso...
 ## Key Facts
 
 ## Opportunities
@@ -81,6 +85,20 @@ SORT due ASC
 - Salesforce
 - Microsoft
 - urgent discussion
+
+- Oracle Cloud Infrastructure Alloy and Dedicated Regions
+
+- Oracle DRCC/Alloy product management
+
+- Scheduling an in-person meeting in Seattle between VAST Data and Oracle
+
+- Oracle DRCC/Alloy product management introduction
+
+- Potential in-person meeting in Seattle
 ## Related Projects
 
 - [[DRCC/Alloy]]
+
+## Key Decisions
+
+- Christian Linacre introduced Jason Vallery to Matthew Thomson to coordinate a meeting in Seattle regarding Oracle DRCC/Alloy.

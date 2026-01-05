@@ -36,8 +36,17 @@ SORT due ASC
 - 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - The email announces the selection of speakers for the VAST Forward event and outlines the preparatio
 
 - 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - Kirstin Bordner informs selected individuals about their roles as VAST spokespeople for the upcoming
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokesperson for breakout session, required prep cadence
 ## Key Facts
 
+- Kirstin Bordner offered to register Renen Hallak for NVIDIA Live at CES on January 5, 2026.
+
+- Kirstin Bordner identified three CES news-cycle insertion topics for VAST: NVIDIA CME (blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner is Vice President, Global Communications and Customer Marketing at VAST Data.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

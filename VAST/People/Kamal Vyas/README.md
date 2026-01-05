@@ -28,10 +28,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Kamal Vyas asked a question about whether VAST Data's proposed Google GDC Storage RFP offering meets FIPS compliance standards.
 ## Recent Context
 
 - 2025-12-17: First contact via email re: Re: VAST Data - GDC Storage RFP - Request For Meet
 
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: FIPS, SEDs, BYOH partners, and scheduling next review
 ## Open Tasks
 
 - [?] Provide clarification on FIPS compliance and hardware pricing including SEDs. @Lior Genzel 🔼 #task #proposed #auto

@@ -50,8 +50,15 @@ SORT due ASC
 - 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses the need for an Azure VoC instance for performance testing in Microsoft's lab
 
 - 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses a request from MSFT for an Azure VoC instance for performance testing due to l
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 ## Key Facts
 
+- Ray Coetzee is Field Technical Director, UK at VAST Data.
+
+- Ray Coetzee requested input from Lior Genzel and Jason Vallery on whether to entertain Microsoft's request for an Azure VoC instance for GPU performance testing.
+
+- Ray Coetzee asked Karl Vietmeier to define the expected performance profile for a VAST Azure VoC instance.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

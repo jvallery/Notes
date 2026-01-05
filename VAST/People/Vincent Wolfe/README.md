@@ -24,11 +24,16 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Vincent Wolfe uses the email address vwolfe303@gmail.com.
+
+- Vincent Wolfe signs emails as "Vince".
 ## Recent Context
 
 - 2025-12-16: First contact via email re: Merry Christmas!
 
 - 2025-12-16: Email re: Merry Christmas! - Vincent Wolfe sends a holiday greeting to Jason, reflecting on the past year and expressing hope for
+
+- 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday greeting and shared a holiday letter, expressing hope ...
 ## Open Tasks
 
 ## Related
@@ -39,3 +44,7 @@ last_enriched: '2026-01-04'
 - holiday greeting
 - reflection on the year
 - new year wishes
+
+- Holiday greeting
+
+- Personal update and well-wishes for 2026

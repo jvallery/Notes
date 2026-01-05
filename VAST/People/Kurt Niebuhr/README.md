@@ -2,7 +2,7 @@
 type: people
 title: Kurt Niebuhr
 created: '2026-01-03'
-last_contact: '2025-10-01'
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
@@ -59,6 +59,7 @@ SORT due ASC
 
 - 2025-10-27: [[2025-10-27 - VAST into Azure GTM]] (via Microsoft)
 
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 ## Related
 
 - [[VAST Data]]

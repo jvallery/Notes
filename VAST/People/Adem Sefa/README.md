@@ -21,6 +21,7 @@ tags:
 
 ## Key Facts
 
+- Adem Sefa is Managing Director - Strategic Partnerships at Microsoft.
 ## Recent Context
 
 - 2025-11-20: First contact via email re: Re: Introduction for FP&A Director role.
@@ -28,6 +29,8 @@ tags:
 - 2025-11-20: Email re: Re: Introduction for FP&A Director role. - Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role,
 
 - 2025-11-20: Email re: Re: Introduction for FP&A Director role. - Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role.
+
+- 2025-11-20: Mentioned in: Adem Sefa introduces Edwin Trogler for potential FP&A Director opportunities at VAST
 ## Open Tasks
 
 ## Related

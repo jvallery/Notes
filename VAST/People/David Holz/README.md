@@ -55,6 +55,8 @@ SORT due ASC
 - 2026-01-04: Email re: Re: Tues mens group - David Ellis is organizing a final meeting for a book club discussion on '2084' and dinner at Wapos o
 
 - 2025-12-31: Email re: Re: The most interesting men in the world group - David Ellis proposes retiring the current book club and starting a new group called 'The Most Intere
+
+- 2026-01-04: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Key Facts
 
 - David Ellis is taking a hiatus from the book club early next year.

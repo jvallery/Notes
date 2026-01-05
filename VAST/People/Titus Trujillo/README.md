@@ -27,10 +27,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Titus Trujillo (from church) is confirmed attending Brian Bearly's board game session planned for the week after Christmas 2025.
 ## Recent Context
 
 - 2025-12-18: First contact via email re: Re: Early heads up - board game the week after Chr
 
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas
 ## Open Tasks
 
 ## Related

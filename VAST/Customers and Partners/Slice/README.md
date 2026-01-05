@@ -23,6 +23,8 @@ Customer/partner organization discovered from email.
 ## Key Facts
 
 - Slice is an Equity Management platform.
+
+- Slice is an equity management platform used to view and manage equity grants and additional securities.
 ## Recent Context
 
 - 2025-12-22: First contact via email re: VAST Data Invites you to Slice!
@@ -34,6 +36,8 @@ Customer/partner organization discovered from email.
 - 2025-12-22: Email re: VAST Data Invites you to Slice! - The email invites Jason Vallery to join Slice, an Equity Management platform, to manage equity grant
 
 - 2025-12-22: The email invites Jason Vallery to join Slice, an Equity Management platform, to manage equity grant
+
+- 2025-12-22: Slice (no-reply@sliceglobal.com) invited Jason Vallery to join Slice, an equity management platform,...
 ## Open Tasks
 
 ## Related
@@ -45,6 +49,9 @@ Customer/partner organization discovered from email.
 - equity management
 - Slice platform
 
+- Slice account invitation
+
+- Equity grant management for VAST Data
 ## Related Projects
 
 - [[Slice platform]]

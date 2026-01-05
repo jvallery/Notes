@@ -22,10 +22,13 @@ tags:
 ## Key Facts
 
 - Trevor Cooper-Chadwick is a lead Microsoft tech guy testing VAST Data for UK Met.
+
+- Trevor Cooper-Chadwick (Microsoft, Principal Consultant) requested access to the VAST Customer Learning Portal while Microsoft is still a prospect.
 ## Recent Context
 
 - 2025-12-16: First contact via email re: Re: Your Prospect (Microsoft) & VAST Customer Lear
 
+- 2025-12-16: Mentioned in: Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
 ## Open Tasks
 
 - [?] Verify if Trevor Cooper-Chadwick should have access to the VAST Customer Learning portal. @Lior Genzel 🔼 #task #proposed

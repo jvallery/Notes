@@ -21,10 +21,12 @@ tags:
 
 ## Key Facts
 
+- RFE 0482 is categorized as an Existing Feature Enhancement and the Sales Engineer listed is Chuck Cancilla.
 ## Recent Context
 
 - 2025-12-01: First contact via email re: Re: RFE Alert: RFE 0482 - Existing Feature Enhance
 
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 ## Open Tasks
 
 ## Related

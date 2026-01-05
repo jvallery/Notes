@@ -45,8 +45,11 @@ SORT due ASC
 - 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 
 - 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
+
+- 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery automation and CES NAND allocation trip
 ## Key Facts
 
+- Crusoe had a cluster incident that required recovery of nearly 200,000 files using an auxiliary recovery system built by VAST Data R&D.
 ## Opportunities
 
 - Employment offer to Jason with deadline Wednesday

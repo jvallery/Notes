@@ -28,10 +28,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Michal Berdugo was included as a recipient on the Weekly VAST GTM Meeting invite thread with Microsoft Azure Storage partner enablement stakeholders.
 ## Recent Context
 
 - 2026-01-04: First contact via email re: Re: Weekly VAST GTM Meeting
 
+- 2026-01-04: Mentioned in: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
 ## Open Tasks
 
 ## Related

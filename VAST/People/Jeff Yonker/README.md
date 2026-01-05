@@ -2,7 +2,7 @@
 type: people
 title: Sales Engineer
 created: '2026-01-03'
-last_contact: '2025-12-27'
+last_contact: '2025-12-22'
 auto_created: true
 tags:
 - type/people
@@ -84,9 +84,43 @@ SORT due ASC
 - 2026-01-01: Email re: Q4 bookings (to date) in context - Jeff Denworth provides an update on VAST Data's Q4 bookings, highlighting that the company has alrea
 
 - 2025-12-27: Email re: Re: Throwing Up The *Red Flare* on Azure MAI - Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
+
+- 2025-12-23: Mentioned in: Walmart restated hybrid requirements, risk of Alluxio re-emerging
+
+- 2025-12-21: Jeff Denworth escalated that VAST is selling out of supply and lead times are increasing, so any MAI...
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-22: Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx...
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) and plan for resilient cloud-to-on-prem demo
+
+- 2026-01-01: Mentioned in: Jeff Denworth update: Q4 bookings to date exceed FY24 total
+
+- 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
 ## Key Facts
 
 - Jeff Denworth is involved in the VAST and Azure Integration project.
+
+- Jeff Denworth flagged that Walmart's GCS integration requirement could put Alluxio back in the driver seat, creating competitive risk for VAST.
+
+- Jeff Denworth stated VAST Data is selling out of supply quickly and hardware lead times are increasing significantly, creating risk for any near-term MAI deployment.
+
+- Jeff Denworth stated supply chain constraints are expected through 2026 and recommended taking the full MAI deal down in one transaction with partial delivery milestones.
+
+- Jeff Denworth instructed Jason Vallery to track this Leidos Federal cloud PO to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Jeff Denworth assessed RFE 0482 as 'super complex' and asked Mordechai Blaunstein to take ownership and involve additional parties as needed.
+
+- Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" (Azure + VAST: Integration Proposal) to clarify the crawl-walk-run progression so it is obvious to readers.
+
+- Jeff Denworth instructed Jason Vallery to track deals like the Leidos Federal Cloud PO to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Jeff Denworth sent a company update on Q4 bookings performance and historical seasonality (80% of Q4 bookings last year closed in the final month).
+
+- Jeff Denworth stated he is moving quickly to having no confidence in closing a Q1 deal with Microsoft MAI unless VAST becomes more aggressive and executes a January plan.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -98,6 +132,8 @@ _Career history, expertise, interests, personal details shared..._
 - (2025-12-21) Renen will meet flash vendors and cannot change dates.
 
 - (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
+
+- Lior Genzel will take the lead on obtaining introductions to key MAI decision stakeholders (Majid Mohammed, Yunchao Gong, Karén Simonyan) to reduce reliance on Kushal (last name unknown) as the primary conduit.
 ## Related Projects
 
 - [[MAI & VAST]]
@@ -226,6 +262,20 @@ _Career history, expertise, interests, personal details shared..._
 - commercial discussions
 - VAST Data
 - Microsoft
+
+- MAI storage deployment decision process and key decision maker (Mustafa, last name unknown)
+
+- Supply chain constraints, lead times, and whether Microsoft expects to use VAST supply chain
+
+- MAI timeline shift: February 2026 GPU drop and May to June 2026 solution readiness
+
+- PoC scaling environment for Anson (Qi) requiring 1,000 to 2,000 GPUs (MAI/Vipin vs Nscale vs CoreWeave)
+
+- Competitive positioning vs Azure Blob and relationship management with Azure Blob leadership (Vamshi, last name unknown)
+
+- Azure + VAST integration proposal document structure
+
+- Crawl-walk-run phased approach for Azure and VAST integration
 ## Related Customers
 
 - [[Microsoft]]

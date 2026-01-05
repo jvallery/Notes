@@ -32,8 +32,13 @@ company: VAST Federal
 ## Recent Context
 
 - 2025-12-30: Leidos Federal Cloud PO and Deployment
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) and plan for resilient cloud-to-on-prem demo
 ## Key Facts
 
+- Jennifer Azzolina stated the Leidos GovCloud deployment will be connected to an on-prem system to build a completely resilient data platform demo for government customers, with "Golden Dome" as the first pitch and a resilience concept described as "submarine mentality" (expect communication issues and plan for resilience).
 ## Background
 
 Former Senior Director of Global Alliances at Cloudera; extensive experience in global alliances and data management.

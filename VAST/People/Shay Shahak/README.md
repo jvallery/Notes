@@ -28,10 +28,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Shay Shahak was CC'd on the Weekly VAST GTM Meeting invite thread.
 ## Recent Context
 
 - 2026-01-04: First contact via email re: Re: Weekly VAST GTM Meeting
 
+- 2026-01-04: Mentioned in: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
 ## Open Tasks
 
 ## Related

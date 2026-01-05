@@ -56,6 +56,12 @@ SORT due ASC
 - 2025-12-29: Email re: Accepted: Mordi/Jason - Sync @ Fri Jan 2, 2026 1pm - Mordechai Blaunstein has accepted a calendar invitation for a sync meeting with Jason Vallery schedu
 
 - 2025-12-29: Email re: Accepted: Mordi/Jason - Sync @ Fri Jan 2, 2026 1pm - Mordechai Blaunstein has accepted a calendar invitation for a sync meeting with Jason Vallery on Jan
+
+- 2025-12-29: Mordechai Blaunstein accepted a 1:1 Zoom sync meeting invite from Jason Vallery. The meeting is sche...
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-19: Mentioned in: Google Doc shared: CoreWeave-Vast Automation Project - V2
 ## Key Facts
 
 - Mordechai Blaunstein is involved in the CoreWeave-Vast Automation Project.
@@ -63,6 +69,14 @@ SORT due ASC
 - Mordechai Blaunstein is attending a meeting with Jason Vallery.
 
 - Mordechai Blaunstein is associated with Vast Data.
+
+- Mordechai Blaunstein accepted a 1:1 sync meeting invite from Jason Vallery scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Mordechai Blaunstein stated VAST is already working on similar requests from multiple CSPs and referenced a proposed solution: a new VIP pool type called 'Service Aware VIP Pool' enabling multi-VIP access to VMS for GUI, CLI, REST, SSH, and CSI.
+
+- Mordechai Blaunstein indicated a tentative target to support the Service Aware VIP Pool capability in VAST release 5.6, but explicitly noted it is not confirmed.
+
+- Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" with Jason Vallery and granted edit access.
 ## Background
 
 Over 28 years of experience in the technology sector, holding leadership roles in product management, technical business development, and marketing at companies such as NeuroBlade, SolidRun, Marvell Technology, Lightbits Labs, and Sandisk.
@@ -70,6 +84,8 @@ Over 28 years of experience in the technology sector, holding leadership roles i
 ## Key Decisions
 
 - (2025-12-29) Mordechai Blaunstein accepted the meeting invitation.
+
+- Mordechai Blaunstein RSVP'd 'Accepted' for the 1:1 sync meeting with Jason Vallery on January 2, 2026 (1:00pm to 2:00pm MT).
 ## Related Projects
 
 ## Related
@@ -99,3 +115,7 @@ Over 28 years of experience in the technology sector, holding leadership roles i
 - meeting
 - calendar invitation
 - Zoom
+
+- 1:1 sync between Jason Vallery and Mordechai Blaunstein
+
+- Zoom meeting logistics for internal VAST Data sync

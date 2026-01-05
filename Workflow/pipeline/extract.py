@@ -417,11 +417,16 @@ Participants: {', '.join(envelope.participants) if envelope.participants else 'U
             "accounts": [e["name"] for e in data.get("mentioned_entities", []) if e.get("entity_type") == "company"],
         }
         
+        allowed_note_types = {"customer", "people", "projects", "rob", "journal", "partners", "travel"}
+        note_type = data.get("note_type", "people")
+        if note_type not in allowed_note_types:
+            note_type = "people"
+        
         return UnifiedExtraction(
             source_file=str(envelope.source_path),
             content_type=envelope.content_type.value,
             processed_at=datetime.now(),
-            note_type=data.get("note_type", "people"),
+            note_type=note_type,
             primary_entity=primary_entity,
             date=envelope.date,
             title=data.get("title", envelope.title),

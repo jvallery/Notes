@@ -50,9 +50,31 @@ SORT due ASC
 - 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation given
 
 - 2025-12-30: Leidos Federal Cloud PO and Deployment
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
+
+- 2025-12-16: Mentioned in: Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
+
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+
+- 2026-01-04: Mentioned in: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) and plan for resilient cloud-to-on-prem demo
 ## Key Facts
 
 - Tiffany Stonehill is working Monday and Tuesday the next two weeks and will be in full swing in January.
+
+- Tiffany Stonehill stated that she and Lior Genzel are available to help if there are questions about processing the Leidos Federal order.
+
+- Tiffany Stonehill is listed as the account owner for the Microsoft account in Salesforce.
+
+- Tiffany Stonehill recommended not granting VAST Customer Learning Portal access to Microsoft prospect Trevor Cooper-Chadwick yet, to maintain a customer-only boundary, and deferred the final call to the senior executive team on the thread.
+
+- Tiffany Stonehill is working Monday and Tuesday for the next two weeks after 2025-12-19 and will be fully available in January 2026.
+
+- Tiffany Stonehill was included as a recipient on the Weekly VAST GTM Meeting invite thread; the meeting duration was set to 35 minutes with a note about giving Tiffany 30 minutes of additional sleep.
+
+- Tiffany Stonehill stated that she or Lior Genzel are available to help if there are questions about processing the Leidos Federal cloud order.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

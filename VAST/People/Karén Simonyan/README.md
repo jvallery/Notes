@@ -22,10 +22,12 @@ linkedin: https://www.linkedin.com/in/kar%C3%A9n-simonyan-3aba65231/
 
 ## Key Facts
 
+- Karén Simonyan is described as chief scientist, manager of Yunchao Gong, and a direct report to Mustafa (last name unknown) in the MAI organization.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: MAI & VAST: December 8th EoD update
 
+- 2025-12-21: Mentioned in: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Open Tasks
 
 ## Related

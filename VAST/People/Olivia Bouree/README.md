@@ -41,8 +41,11 @@ SORT due ASC
 - 2025-10-29: [[2025-10-29 - VAST on Cloud alignment]] (via Lior Genzel)
 
 - 2025-12-28: Email re: URGENT - New AlphaSights Project in corporate insi - Olivia Bao from AlphaSights is reaching out to Jason for a paid consultation project focused on corp
+
+- 2025-12-28: Mentioned in: AlphaSights outreach: paid consult request on corporate insider threat (urgent)
 ## Key Facts
 
+- Olivia Bao works at AlphaSights and recruits experts for paid consultation projects.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

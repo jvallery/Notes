@@ -36,5 +36,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Key Facts
 
+- VAST plans CES amplification around NVIDIA CME, Rubin platform, and Open Models announcements, including blogs, demos, and press releases.

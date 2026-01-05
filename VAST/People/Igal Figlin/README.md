@@ -32,6 +32,7 @@ last_enriched: '2026-01-04'
 
 - 2025-12-11: First contact via email re: RE: [EXTERNAL] VAST/Microsoft: Ignite follow up
 
+- 2025-12-11: Ignite follow-up: Sushant Rewaskar requests VAST architecture docs and intro call with Jason Vallery
 ## Open Tasks
 
 ## Related

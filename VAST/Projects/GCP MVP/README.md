@@ -9,7 +9,7 @@ tags:
 - type/projects
 - needs-review
 - status/active
-last_contact: '2025-10-28'
+last_contact: '2025-12-17'
 ---
 
 # GCP MVP
@@ -36,5 +36,14 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-17: Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
 ## Key Facts
 
+
+## Topics
+
+- GCP customer-to-sales-to-customer workflow
+
+- Google Slides document collaboration
+
+- GCP go-to-market process documentation

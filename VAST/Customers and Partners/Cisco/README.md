@@ -69,6 +69,10 @@ SORT due ASC
 - 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 
 - 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-03: Mentioned in: VAST Forward (Feb 24-26) internal push for customer outreach and attendance
+
+- 2025-12-17: Mentioned in: Cisco RFE 0526: Regex allow/deny patterns for replication policy filtering
 ## Key Facts
 
 - Cisco manages many sites globally with data replication and requires regex pattern capabilities for file management.
@@ -76,6 +80,14 @@ SORT due ASC
 - Cisco manages many sites globally where data is replicated, involving hundreds of relationships.
 
 - Cisco needs regex pattern capabilities to allow or deny files/objects by name.
+
+- Cisco is participating as a partner/sponsor at VAST Forward.
+
+- Operates many global sites with data replication across hundreds of replication relationships.
+
+- Requests regex patterns in replication policies to allow or deny files/objects by name (examples: allow only *.LIB, deny *.mp3).
+
+- Wants replication exclusions for enterprise multi-geo liability protection, for example preventing replication of copyrighted content via 'never replicate' patterns.
 ## Opportunities
 
 - Cisco gear-based POC with Google DoD/IC and Fort Meade validation path

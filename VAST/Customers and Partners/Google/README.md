@@ -105,8 +105,31 @@ not done
 
 - 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
 - 2025-12-17: Exploring Collaboration Opportunities with Welliptic
+
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2025-12-17: Google (David Pawlak) requested follow-up clarifications on VAST Data's Google Distributed Cloud (GD...
+
+- 2025-12-19: Mentioned in: Google Doc shared: CoreWeave-Vast Automation Project - V2
+
+- 2025-12-15: Mentioned in: GDC RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+
+- 2025-12-22: Mentioned in: Lior Genzel requests access to Google Doc: VAST and Azure Integration.docx
+
+- 2026-01-02: Mentioned in: Comments on 'VAST and Azure Integration.docx' about cold data tiering format and supply-chain messaging
 ## Key Facts
 
+- The presentation share notification was sent from Google Slides via drive-shares-dm-noreply@google.com.
+
+- Lior Genzel stated VAST Data can work with Google to certify a Google-preferred hardware partner for a BYOH approach for the Google GDC Storage RFP due to the large business upside.
+
+- The document share notification was sent from Google Slides/Docs via drive-shares-dm-noreply@google.com.
+
+- Google requested follow-up details in a Google Distributed Cloud (GDC) RFP walkthrough regarding FIPS/SED options, encryption key granularity across S3 and NFS, and S3 SSE-C support.
+
+- The share request email was an automated notification sent from Google Drive (drive-shares-dm-noreply@google.com).
+
+- The notification email for document comments was sent via Google Docs from comments-noreply@docs.google.com.
 ## Topics
 
 - Google Distributed Cloud
@@ -139,6 +162,16 @@ not done
 - data formats
 - flash memory market
 - supply chain
+
+- Google Distributed Cloud (GDC) Storage RFP proposal review and clarification
+
+- FIPS compliance approach for VAST Data offering in Google GDC context
+
+- Recurring pricing scope, including whether hardware and SSDs are included
+
+- Self-Encrypting Drives (SEDs) usage for SSD component
+
+- BYOH (Bring Your Own Hardware) option and preferred/certified hardware partners
 ## Opportunities
 
 - GDC Storage RFP: provide normalized performance + pricing data in Google Excel template for VAST (NVMe/TCP, NFSv4, S3)
@@ -197,3 +230,7 @@ not done
 - [[VAST and Azure Integration]]
 
 - [[GDC Storage RFP]]
+
+## Key Decisions
+
+- Lior Genzel requested to target Monday for the next Google GDC Storage RFP clarification meeting because he was mostly off on Friday.

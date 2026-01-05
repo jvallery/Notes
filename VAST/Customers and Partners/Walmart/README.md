@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Walmart
-last_contact: '2025-11-05'
+last_contact: '2025-12-23'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -43,6 +43,8 @@ not done
 - 2025-12-23: Jeff Denworth discusses Walmart's internal requirements meeting and their need for a hybrid solution
 
 - 2025-11-05: The meeting discussed Walmart's analytics requirements, focusing on data ingestion and processing vi...
+
+- 2025-12-23: Jeff Denworth relayed outcomes from Walmart's internal requirements meeting: Walmart still needs a l...
 ## Key Facts
 
 - Walmart needs a hybrid solution for their data team and is starting a big data POC for on-premises workloads.
@@ -56,6 +58,14 @@ not done
 - Walmart's data lake is approximately 500 PiB with 10% daily churn.
 
 - Walmart has a strong preference for a GCS-like API on-prem to avoid refactoring.
+
+- Walmart held an internal requirements meeting during the week of 2025-12-22 and restated that they need a long-term hybrid solution for their data team.
+
+- Walmart was not successful in getting the business to accept operating two disjoint namespaces, indicating a requirement for a unified namespace across environments.
+
+- Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, limited to workloads that can run exclusively on premises.
+
+- Walmart requires any solution they move forward with to integrate with Google Cloud Storage (GCS), or they will need significant lobbying at the database layer including potentially adopting a hybrid cloud database.
 ## Topics
 
 - Walmart
@@ -71,6 +81,14 @@ not done
 - Technical challenges of strong consistency and latency tolerance
 
 - GCS-like API requirement on-prem
+
+- Walmart hybrid data platform requirements (unified namespace, hybrid architecture)
+
+- Google Cloud Storage (GCS) integration requirement for Walmart
+
+- Competitive risk from Alluxio in Walmart hybrid/on-prem big data POC
+
+- VAST product planning implications from Walmart restated requirements
 ## Opportunities
 
 - Namespace/metadata synchronization with pre-existing cloud object data; proxy/always-fast expectations; tiering discussions

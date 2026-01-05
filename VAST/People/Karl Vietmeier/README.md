@@ -1,7 +1,7 @@
 ---
 type: people
 title: Principal Partner Enablement Program Manager, Azure Storage
-last_contact: '2026-01-04'
+last_contact: '2025-12-01'
 created: '2026-01-03'
 tags:
 - type/people
@@ -58,9 +58,33 @@ phone: +1 9497953118
 - 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
 
 - 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
+
+- 2025-12-01: Karl Vietmeier reports growing interest in VAST support for Google Distributed Cloud (GDC) and Azure...
+
+- 2026-01-04: Mentioned in: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
 ## Key Facts
 
 - Karl's youngest son suffered a badly broken leg.
+
+- Ray Coetzee asked Karl Vietmeier to define the expected performance profile for a VAST Azure VoC instance.
+
+- Lior Genzel told Karl Vietmeier that Karl is optional on the follow-up call with Microsoft Azure because Lior plans to block the Azure VoC request.
+
+- Karl Vietmeier is a Cloud Solutions Architect for VAST on Cloud at VAST Data.
+
+- Karl Vietmeier is seeing growing market interest in whether VAST Data supports Google Distributed Cloud (GDC) and Azure Local.
+
+- Karl Vietmeier observes that GDC and Azure Local opportunities often start as cloud opportunities but shift to on-prem team ownership once hardware is involved, creating confusion over accountability and reducing cloud team's visibility into progress and outcomes.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through VAST Data cloud product management because cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Rautenstrauch is a Principal Partner Enablement Program Manager for Azure Storage at Microsoft.
+
+- Karl Rautenstrauch requested rescheduling the Weekly VAST GTM Meeting during the week of 2026-01-05 because he has an orthopedic surgeon appointment on Monday related to his youngest son's badly broken leg.
+
+- Karl Rautenstrauch tentatively moved the Weekly VAST GTM Meeting to Tuesday (exact date and time not specified in the email) and asked the VAST team to confirm if Wednesday or Thursday would be better.
 ## Topics
 
 - GDC
@@ -78,6 +102,16 @@ phone: +1 9497953118
 - meeting rescheduling
 - VAST GTM meeting
 - Azure Storage
+
+- Ownership and accountability model for Google Distributed Cloud (GDC) opportunities at VAST Data
+
+- Ownership and accountability model for Azure Local opportunities at VAST Data
+
+- Cloud product management vs on-prem team ownership when hardware is involved
+
+- Maintaining visibility into execution progress and outcomes for hybrid/on-prem cloud-adjacent deals
+
+- How aggressively cloud product management should assert ownership over GDC and Azure Local opportunities
 ## Key Decisions
 
 - (2025-12-11) The answer to the request for an Azure VoC instance will be NO.

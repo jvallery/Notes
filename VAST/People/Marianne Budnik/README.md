@@ -24,10 +24,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Marianne Budnik clarified that Jensen Huang does not have his own CES keynote; he is joining the Siemens CEO onstage as part of the Siemens Day 2 CES keynote.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: CES
 
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Open Tasks
 
 ## Related

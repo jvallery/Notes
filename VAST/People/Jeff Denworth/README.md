@@ -100,8 +100,17 @@ type: people
 - 2025-12-19: Jason Vallery and Jeff Denworth discussed the Microsoft strategy, focusing on the Blob API, OpenAI's...
 
 - 2025-12-30: Leidos Federal Cloud PO and Deployment
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokesperson for breakout session, required prep cadence
 ## Key Facts
 
+- Jeff Denworth is driving the talk track for CES-related NVIDIA content to make it as strong as possible.
+
+- Jeff Denworth was asked to approve the new BF4 blog written by Nicole and share it with Kirstin Bordner for drafting a press release.
+
+- Jeff Denworth is the escalation contact (with Kirstin Bordner) for concerns or conflicts with VAST Forward spokesperson assignments.
 ## Topics
 - 2025-12-15: Technical requirements, Pricing and configurations, Data reduction and encryption, Hardware configurations
 

@@ -32,6 +32,7 @@ last_enriched: '2026-01-04'
 
 - 2025-12-30: First contact via email re: Re: Re: [EXTERNAL] [EXTERNAL] Re: OA Alert: FOpp-4
 
+- 2025-12-30: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
 ## Open Tasks
 
 ## Related

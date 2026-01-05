@@ -1,7 +1,7 @@
 ---
 type: people
 title: Shachar Feinblit
-last_contact: '2025-10-01'
+last_contact: '2025-12-21'
 created: '2026-01-03'
 tags:
 - type/people
@@ -33,6 +33,8 @@ not done
 ## Recent Context
 
 - 2025-10-01: [[2025-10-01 - Shachar org roles and actions]] (via Shachar Feinblit)
+
+- 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Key Facts
 
 ## Topics

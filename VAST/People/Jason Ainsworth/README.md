@@ -62,11 +62,28 @@ SORT due ASC
 - [?] Provide a summary of the current status and Jason's feedback by EoD. @Lior Genzel 📅 2025-12-21 🔼 #task #proposed #auto
 ## Recent Context
 
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) via Peter Imming, coffee set for Jan 7 in Lafayette
+
+- 2026-01-04: Mentioned in: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
+
+- 2025-12-31: Mentioned in: David Ellis proposes replacing book club with TMIMITW monthly discussion group
 ## Key Facts
 
 - Jason Vallery was Peter Imming's manager at Microsoft.
 
 - Jason Vallery is VP of Cloud at VAST and was Peter's manager at Microsoft.
+
+- Jason Vallery was added to the email thread by David Ellis as a potential attendee for the board game session.
+
+- Jason Vallery is VP of Cloud at VAST Data.
+
+- Jason Vallery lives in Longmont, Colorado and grew up in Lafayette, Colorado.
+
+- Myself (Jason Vallery) previously said my schedule became very busy with a new job and frequent travel through the end of 2025, and I would attend the men's group if I am in town.
+
+- Expressed interest in the book "The Immortal Mind."
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

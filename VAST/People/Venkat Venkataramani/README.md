@@ -28,10 +28,14 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- John Mao stated his OpenAI friend reports to Venkat (implying Venkat Venkataramani).
+
+- Jason Vallery stated Rockset was founded by the RocksDB founders, including Venkat Venkataramani.
 ## Recent Context
 
 - 2025-12-12: First contact via email re: Re: OpenAI
 
+- 2025-12-12: Mentioned in: OpenAI org and data infrastructure notes via John Mao friend (Online Data Infrastructure)
 ## Open Tasks
 
 ## Related

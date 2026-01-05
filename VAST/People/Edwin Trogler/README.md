@@ -32,10 +32,17 @@ last_enriched: '2026-01-04'
 - Edwin Trogler is visiting London until Sunday.
 
 - Edwin Trogler is interested in FP&A opportunities in Colorado.
+
+- Edwin Trogler is Adem Sefa's brother-in-law.
+
+- Edwin Trogler is visiting London (visiting Adem and Vanessa) until Sunday (relative to 2025-11-21).
+
+- Edwin Trogler is interested in FP&A opportunities at VAST Data, specifically roles that may come up in Colorado.
 ## Recent Context
 
 - 2025-11-20: First contact via email re: Re: Introduction for FP&A Director role.
 
+- 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery and requested h...
 ## Open Tasks
 
 - [?] Review Edwin Trogler's resume and consider for FP&A Director role. @Myself 🔼 #task #proposed
@@ -58,3 +65,7 @@ last_enriched: '2026-01-04'
 - FP&A Director role
 - resume
 - job opportunity
+
+- Potential FP&A opportunities at VAST Data in Colorado
+
+- Scheduling a quick introductory call

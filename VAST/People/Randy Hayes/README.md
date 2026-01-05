@@ -2,7 +2,7 @@
 type: people
 title: Randy Hayes
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-12-30'
 auto_created: true
 tags:
 - type/people
@@ -28,6 +28,7 @@ company: VAST Data
 
 ## Recent Context
 
+- 2025-12-30: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
 ## Key Facts
 
 ## Background

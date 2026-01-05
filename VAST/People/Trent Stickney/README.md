@@ -28,10 +28,16 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Trent Stickney is interested in attending the board game session and can make Monday 2025-12-29 at 1pm; he knows how to play 'Betrayal at House on the Hill' and is willing to learn 'Nemesis'.
+
+- Trent Stickney voted for 'The Immortal Mind' as a candidate for the men's group's next book and said January 6 works best for him and he is down for Wapos.
 ## Recent Context
 
 - 2025-12-18: First contact via email re: Re: Early heads up - board game the week after Chr
 
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas
+
+- 2026-01-04: Mentioned in: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Open Tasks
 
 ## Related

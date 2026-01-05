@@ -24,10 +24,16 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Brandon Dodsworth declined the board game session because he and Priscilla Dodsworth will be traveling to Texas during the week over New Years 2025-2026.
+
+- Brandon & Priscilla Dodsworth said Brandon will be coaching a basketball team for the next few months with practices on Tuesday nights, so he would need to step away from the Tuesday men's group meetings.
 ## Recent Context
 
 - 2025-12-18: First contact via email re: Re: Early heads up - board game the week after Chr
 
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas
+
+- 2026-01-04: Mentioned in: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Open Tasks
 
 ## Related

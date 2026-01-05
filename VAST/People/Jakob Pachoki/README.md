@@ -27,10 +27,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Jakob Pachoki was described as the leader that OpenAI Research data scientists report up to.
 ## Recent Context
 
 - 2025-12-12: First contact via email re: Re: OpenAI
 
+- 2025-12-12: Mentioned in: OpenAI org and data infrastructure notes via John Mao friend (Online Data Infrastructure)
 ## Open Tasks
 
 ## Related

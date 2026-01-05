@@ -21,10 +21,12 @@ tags:
 
 ## Key Facts
 
+- Ranen Carmel is NVIDIA Creative Director based in Tel Aviv and is working with VAST on CES slides and animation.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: CES
 
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Open Tasks
 
 ## Related

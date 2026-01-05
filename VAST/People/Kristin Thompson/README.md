@@ -22,11 +22,14 @@ linkedin: in/kristin-schaller-thompson
 
 ## Key Facts
 
+- Kristin Thompson set Trevor Cooper-Chadwick's VAST Customer Learning Portal access request status to 'pending approval' until Lior Genzel responds after contacting him.
 ## Recent Context
 
 - 2025-12-16: First contact via email re: Re: Your Prospect (Microsoft) & VAST Customer Lear
 
 - 2025-12-16: Email re: Re: Your Prospect (Microsoft) & VAST Customer Lear - Kristin Thompson is verifying if Trevor Cooper-Chadwick from Microsoft should have access to the VAS
+
+- 2025-12-16: Mentioned in: Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
 ## Open Tasks
 
 ## Related

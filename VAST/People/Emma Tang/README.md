@@ -31,10 +31,13 @@ last_enriched: '2026-01-04'
 ## Key Facts
 
 - Emma Tang runs the 'Data Platform' team at OpenAI where all the Spark/Databricks workloads sit.
+
+- Jason Vallery stated Emma Tang runs OpenAI's "Data Platform" team where Spark/Databricks workloads sit.
 ## Recent Context
 
 - 2025-12-12: First contact via email re: Re: OpenAI
 
+- 2025-12-12: Mentioned in: OpenAI org and data infrastructure notes via John Mao friend (Online Data Infrastructure)
 ## Open Tasks
 
 ## Related

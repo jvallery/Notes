@@ -35,8 +35,10 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
+- Zoom sent an automated meeting summary email from no-reply@zoom.us.
 ## Opportunities
 
 - Zoom on OCI mentioned as a strong opportunity; cloud-only deal dynamics discussed

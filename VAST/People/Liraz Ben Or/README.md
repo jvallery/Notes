@@ -37,8 +37,11 @@ not done
 - 2025-10-29: Release process walkthrough and phase-gate model; aligned on sharing 5.4/5.5 materials and follow-up.
 
 - 2025-10-29: 2025-10-29 - Intro 1:1 on release process
+
+- 2026-01-04: Mentioned in: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Key Facts
 
+- Ben Kaiser shared his phone number as (719) 360-9749 for texting about the men's group meetup logistics.
 ## Topics
 
 - OpenAI

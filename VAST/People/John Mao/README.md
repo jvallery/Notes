@@ -42,8 +42,11 @@ SORT due ASC
 ## Recent Context
 
 - 2025-10-31: [[2025-10-31 - Two-track VAST evaluation plan]] (via Microsoft)
+
+- 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 ## Key Facts
 
+- John Mao is planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
 ## Background
 
 John Mao has over 15 years of experience in the IT and cloud sectors. Prior to joining VAST Data, he served as Vice President of Business Development at Stratoscale from March 2014 to January 2020. His earlier roles include Director of Business Development at Calxeda, Inc., Principal Product Manager at CA Technologies, and Product Line Manager at NetQoS. He began his career as a Software Engineer and holds a BS in Computer Science from The University of Texas at Austin.

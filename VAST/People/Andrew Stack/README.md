@@ -2,7 +2,7 @@
 type: people
 title: Andrew Stack
 created: '2026-01-03'
-last_contact: '2025-10-30'
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
@@ -32,6 +32,8 @@ SORT due ASC
 ## Recent Context
 
 - 2025-10-30: [[2025-10-30 - Weekly SE community call]] (via JB)
+
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 ## Key Facts
 
 ## Background

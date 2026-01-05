@@ -45,8 +45,13 @@ SORT due ASC
 - 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 
 - 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+
+- 2025-12-12: Mentioned in: OpenAI org and data infrastructure notes via John Mao friend (Online Data Infrastructure)
 ## Key Facts
 
+- John Mao requested that the relationship with his OpenAI friend remain engineering-centered.
+
+- John Mao committed to flying to San Francisco in early 2026 to visit his OpenAI friend and open a dialogue that brings in VAST engineering.
 ## Background
 
 John Heidgerken has been serving as the Americas West Area Director of Systems Engineering at VAST Data since November 2023. Prior to this, he was a Senior Systems Engineer at Dell EMC from August 2018 to November 2023. His earlier experience includes roles at Rackspace from August 2006 to July 2015, culminating as a SAN Engineer III, as well as positions at Credit Karma and USAA in infrastructure engineering and member support, respectively. He holds a Bachelor's degree in Music Education from The University of Texas at San Antonio, earned between 2000 and 2004.

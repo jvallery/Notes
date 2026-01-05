@@ -9,7 +9,7 @@ tags:
 - type/projects
 - needs-review
 - status/active
-last_contact: '2025-09-03'
+last_contact: '2026-01-01'
 ---
 
 # AI caching strategy for MAI
@@ -36,5 +36,17 @@ SORT due ASC
 
 ## Recent Context
 
+- 2026-01-01: Terika Dilworth invited Jason Vallery to an urgent internal training on KV Cache storage, timed to N...
 ## Key Facts
 
+- The training content is intended to prepare AI sellers to lead customer conversations about KV Cache and the impact of NVIDIA's Context Memory Extension (CME) announcement.
+
+## Topics
+
+- KV Cache storage category and customer positioning
+
+- NVIDIA KVCache Storage announcements at CES
+
+- NVIDIA Context Memory Extension (CME) and inference infrastructure implications
+
+- Internal enablement for AI sellers (live training and recording)

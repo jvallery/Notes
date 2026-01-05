@@ -30,10 +30,12 @@ last_enriched: '2026-01-04'
 
 ## Key Facts
 
+- Lior Genzel reported that Anson (Qi) requested moving his VAST proof of concept into a large GPU environment (MAI/Vipin environment or Nscale/CoreWeave) because Microsoft labs lack 1,000 to 2,000 GPUs for scale performance testing.
 ## Recent Context
 
 - 2025-12-21: First contact via email re: Re: MAI & VAST: December 8th EoD update
 
+- 2025-12-21: Mentioned in: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan (no Microsoft inventory reserved)
 ## Open Tasks
 
 - [?] Strategize the most strategic environment for Anson's PoC. @Alon Horev ⏫ #task #proposed #auto

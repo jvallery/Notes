@@ -30,6 +30,7 @@ last_enriched: '2026-01-04'
 
 - 2026-01-04: First contact via email re: Re: Tues mens group
 
+- 2026-01-04: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Open Tasks
 
 ## Related

@@ -2,7 +2,7 @@
 type: people
 title: Brian Moore
 created: '2026-01-03'
-last_contact: '2025-12-18'
+last_contact: '2026-01-04'
 auto_created: true
 tags:
 - type/people
@@ -50,11 +50,21 @@ SORT due ASC
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas
+
+- 2026-01-04: Tues men's group: Jan 6 Wapos dinner + final discussion of '2084' (AI book), quorum check
 ## Key Facts
 
 - Brian Bearly is hosting a board game session at his place.
 
 - Brian is planning a board game session at his place.
+
+- Brian Bearly is planning to host a board game session at his place during the week after Christmas 2025, featuring the game 'Nemesis'.
+
+- Brian Bearly stated he can make any day from Friday 2025-12-26 through Wednesday 2025-12-31 and proposed Saturday 2025-12-27 at 1pm or Monday 2025-12-29 at 1pm for the board game session.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

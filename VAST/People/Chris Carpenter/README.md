@@ -2,7 +2,7 @@
 type: people
 title: Chris Carpenter
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
@@ -34,6 +34,8 @@ SORT due ASC
 ## Recent Context
 
 - 2025-11-07: Warm-intro mapping session; aligned on pipeline-component messaging and NVIDIA event-based intro strategy. ([[2025-11-07 - Warm intro paths planning]])
+
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 ## Key Facts
 
 ## Background
