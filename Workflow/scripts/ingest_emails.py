@@ -324,27 +324,42 @@ def _find_person_folder(name: str) -> Optional[Path]:
     """Find existing person folder in vault."""
     
     vault = vault_root()
+    name_lower = name.lower()
+    name_parts = name_lower.split()
     
-    # Check VAST/People
-    vast_people = vault / "VAST" / "People"
-    if vast_people.exists():
-        for folder in vast_people.iterdir():
-            if folder.is_dir() and folder.name.lower() == name.lower():
-                return folder
-            # Also check partial matches (first name, last name)
-            name_parts = name.lower().split()
-            folder_parts = folder.name.lower().split()
-            if any(part in folder_parts for part in name_parts if len(part) > 2):
-                # Loose match - check if it's close enough
-                if len(name_parts) > 0 and name_parts[0] in folder.name.lower():
-                    return folder
+    # Check VAST/People and Personal/People
+    people_dirs = [
+        vault / "VAST" / "People",
+        vault / "Personal" / "People"
+    ]
     
-    # Check Personal/People
-    personal_people = vault / "Personal" / "People"
-    if personal_people.exists():
-        for folder in personal_people.iterdir():
-            if folder.is_dir() and folder.name.lower() == name.lower():
+    candidates = []
+    
+    for people_dir in people_dirs:
+        if not people_dir.exists():
+            continue
+        
+        for folder in people_dir.iterdir():
+            if not folder.is_dir():
+                continue
+            
+            folder_lower = folder.name.lower()
+            folder_parts = folder_lower.split()
+            
+            # EXACT match - return immediately
+            if folder_lower == name_lower:
                 return folder
+            
+            # Check if ALL name parts are in folder name (not just first name)
+            # e.g., "Jeff Denworth" should match "Jeff Denworth" but not "Jeff Yonker"
+            if len(name_parts) >= 2 and len(folder_parts) >= 2:
+                # Full name: require both first AND last name to match
+                if name_parts[0] == folder_parts[0] and name_parts[-1] == folder_parts[-1]:
+                    candidates.append(folder)
+    
+    # Return best candidate if any
+    if candidates:
+        return candidates[0]
     
     return None
 
