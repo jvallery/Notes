@@ -15,20 +15,48 @@ This file tracks the remaining collateral, placeholders, and “still-to-write�
 ## Doc Set (Audience-Specific)
 
 - [?] Tighten [VAST/Executive Overview](VAST/Executive%20Overview.md) for exec readability (shorter, fewer jargon terms) #task #proposed #auto #p0 #crawl #owner-vast
-  - Deliverable: ≤1 page narrative + 1 “governance tier ↔ performance tier” diagram + 3 bullets of key internal decisions/asks.
+  - Deliverable: ≤1 page narrative + 1 “governance tier ↔ performance tier” diagram + 3 bullets of key internal decisions/asks + 2–3 market/differentiation bullets (with citations).
   - Acceptance: a VAST exec can explain “why/what/roadmap” in <60 seconds; terms match [Terminology & Conventions](Appendices/Terminology%20%26%20Conventions.md).
+  - References: [Market Opportunity & TAM](Appendices/Market%20Opportunity%20%26%20TAM.md), [Competitive Landscape & Differentiation](Appendices/Competitive%20Landscape%20%26%20Differentiation.md), [Crawl Scope & Prioritization](Appendices/Crawl%20Scope%20%26%20Prioritization.md)
 
 - [?] Expand [VAST/Engineering Delivery Plan](VAST/Engineering%20Delivery%20Plan.md) into an actionable milestone plan (owners, acceptance criteria, risks) #task #proposed #auto #p0 #crawl #owner-vast
-  - Deliverable: add milestone plan (Crawl/Walk/Run), acceptance gates, dependencies, and “what we need from Microsoft” per workstream.
+  - Deliverable: add milestone plan (Crawl/Walk/Run), acceptance gates, dependencies, and “what we need from Microsoft” per workstream; include a traceability map (gates → API surface → workstreams).
   - Acceptance: engineering can use it to staff/sequence work; explicit links to [Blob API Requirements (MVP)](Appendices/Blob%20API%20Requirements%20%28MVP%29.md), [Workloads](Appendices/Workloads%20%26%20Reference%20Topologies.md), and [Services Matrix](Appendices/Azure%20Native%20Services%20Integration%20Matrix.md).
 
 - [?] Tighten [Microsoft/Executive Overview](Microsoft/Executive%20Overview.md) into a Microsoft-ready brief (clear “why Microsoft wins” + asks) #task #proposed #auto #p0 #crawl #owner-vast
-  - Deliverable: ≤1 page brief emphasizing Azure wins, customer outcomes, and a short exec-level ask list (alignment + path to “Run”).
+  - Deliverable: ≤1 page brief emphasizing Azure wins, customer outcomes, and a short exec-level ask list (alignment + path to “Run”); include 2–3 market/differentiation bullets (with citations).
   - Acceptance: Microsoft exec can understand the pitch without VAST context; avoids internal codenames unless explained in [Terminology & Conventions](Appendices/Terminology%20%26%20Conventions.md).
+  - References: [Market Opportunity & TAM](Appendices/Market%20Opportunity%20%26%20TAM.md), [Competitive Landscape & Differentiation](Appendices/Competitive%20Landscape%20%26%20Differentiation.md), [Crawl Scope & Prioritization](Appendices/Crawl%20Scope%20%26%20Prioritization.md)
 
 - [?] Expand [Microsoft/Engineering Alignment & Asks](Microsoft/Engineering%20Alignment%20%26%20Asks.md) with concrete asks per service/team and validation plan #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: “ask list” by Microsoft org/team + a validation checklist derived from the [Services Matrix](Appendices/Azure%20Native%20Services%20Integration%20Matrix.md).
   - Acceptance: each ask has an owner, desired outcome, and evidence (test/validation) required to close it.
+
+## Strategy & Business Case (What/Why)
+
+- [?] Quantify market opportunity + TAM for “Blob governance tier + GPU-adjacent performance tier” #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: [Market Opportunity & TAM](Appendices/Market%20Opportunity%20%26%20TAM.md) with (1) TAM/SAM/SOM framing, (2) 3–5 data points with citations, and (3) 2–3 “why now” bullets tied to Azure + AI trends.
+  - Acceptance: exec collateral can cite numbers without hand-waving; assumptions are explicit and defensible.
+  - Research needed:
+    - AI infrastructure spend growth (public analyst notes / earnings call summaries / hyperscaler capex trends)
+    - Cloud object storage growth and “data lake” expansion drivers
+    - AI training/inference data footprint and checkpointing economics
+
+- [?] Create a competitive landscape + differentiation view (why VAST+Azure vs alternatives) #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: [Competitive Landscape & Differentiation](Appendices/Competitive%20Landscape%20%26%20Differentiation.md) including a competitor table + 5-bullet differentiation narrative.
+  - Acceptance: stakeholders can clearly articulate “why not ANF / Weka / Lustre / ‘just Blob’” in one minute.
+  - Research needed: pricing/perf envelopes and positioning for Azure NetApp Files, Azure Managed Lustre, Weka on Azure, Pure/NetApp hybrid offerings, and “Blob + cache” DIY patterns.
+
+- [?] Define the Crawl “wedge” (ruthless prioritization) and align all docs to it #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: [Crawl Scope & Prioritization](Appendices/Crawl%20Scope%20%26%20Prioritization.md) with explicit in-scope/out-of-scope lists across: workloads (W1–W10), Azure services, and Blob API surfaces.
+  - Acceptance: every audience doc states the same Crawl scope; services matrix priority columns match; prevents scope creep.
+  - Decision points:
+    - Which workloads are “core” for Crawl (default: W2 + W5) vs “adjacent” (e.g., W1/W6/W10)
+    - Which Azure services are top-3 to validate first (default: Databricks, Synapse/Fabric, AI Search)
+
+- [?] Define Crawl success metrics (pilot acceptance) that map to exec outcomes + engineering gates #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: a short metrics table (5–8 metrics) embedded into `VAST/Engineering Delivery Plan` and both exec overviews.
+  - Acceptance: pilots have objective “go/no-go” criteria (e.g., hydrate throughput, checkpoint latency, sync lag, error budget, ops burden).
 
 ## Consistency & Governance
 
@@ -66,11 +94,20 @@ This file tracks the remaining collateral, placeholders, and “still-to-write�
 
 - [?] Define “AzCopy gate” + “SDK gate” execution plan (test cases, environment, pass/fail) #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: a test matrix and step-by-step procedures for validating the Blob API façade with AzCopy and `azure-storage-blob`.
-  - Acceptance: covers endpoint patterns (virtual-host + path-style), block uploads (`PutBlock`/`PutBlockList`/`GetBlockList`), range reads, XML list fidelity, `PutBlockFromURL` (range-based), `ETag`/`Last-Modified` semantics, conditional headers, and metadata translation (`x-ms-meta-*`).
+  - Acceptance: uses upstream AzCopy “smoke tests” (`testSuite/scripts`) as the canonical, repeatable gate for partner endpoints; passes Gate A (Block Blob MVP) and documents what’s explicitly out-of-scope (page blobs, DFS/BlobFS, Files).
+  - Coverage: endpoint patterns (virtual-host + path-style), block uploads (`PutBlob`/`PutBlock`/`PutBlockList`/`GetBlockList`), range reads, XML list fidelity, `PutBlobFromURL`/`PutBlockFromURL` (range-based), `ETag`/`Last-Modified`, MD5 storage (`x-ms-blob-content-md5` ↔ `Content-MD5`), access tier (`x-ms-access-tier`), conditional headers, and metadata translation (`x-ms-meta-*`).
   - References:
+    - [AzCopy Test Suites & Acceptance](Appendices/AzCopy%20Test%20Suites%20%26%20Acceptance.md)
     - AzCopy command reference (includes `--trusted-microsoft-suffixes`): https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy
     - AzCopy getting started: https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
+    - AzCopy repo (tests live here): https://github.com/Azure/azure-storage-azcopy
     - `BlobServiceClient(account_url=...)` constructor: https://learn.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient?view=azure-python
+  - Open questions: which AzCopy smoke tests are “must-pass” for Crawl; do we explicitly *exclude* page blob tests (Gate B) or implement minimal page blob support.
+
+- [?] Create a one-command “AzCopy Gate A” harness (scripts + env template) to run upstream smoke tests against a partner Blob endpoint #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: a small runner that (1) builds AzCopy + `test-validator`, (2) validates env vars, (3) runs only the Gate A unittest classes, and (4) emits a single pass/fail summary with logs.
+  - Acceptance: a new engineer can run Gate A against the VAST Blob façade in <15 minutes with no code edits to AzCopy.
+  - References: [AzCopy Test Suites & Acceptance](Appendices/AzCopy%20Test%20Suites%20%26%20Acceptance.md)
 
 - [?] Specify the Blob API façade “account + endpoint model” (DNS, certs, account naming, container↔bucket mapping, key lifecycle for SAS/shared-key modes) #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: a concrete endpoint model (virtual-host + path-style support, hostname/TLS cert strategy, how `{account}`/containers/blobs map to VAST constructs, and what auth modes are supported in Crawl).
@@ -119,6 +156,7 @@ This file tracks the remaining collateral, placeholders, and “still-to-write�
 - [?] Convert the services matrix “blockers” into a validation checklist and capture results per Azure service #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: checklist per service (connectivity model + auth assumptions + “hello world” test) and a place to record outcomes.
   - Acceptance: reduces repeated debate; turns “🟡” items into explicit validation work with owners.
+  - Prioritize early validation for: Fabric/OneLake shortcuts, Databricks Serverless, Synapse managed private endpoints, AI Search shared private link, Purview scanning.
 
 ## Backlog Sections to Write (from legacy outline)
 

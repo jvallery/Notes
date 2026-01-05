@@ -17,7 +17,11 @@ This folder contains audience-specific collateral for the VAST + Azure integrati
 ## Shared Appendices (Reference)
 
 - Blob API requirements (MVP): [Appendices/Blob API Requirements (MVP)](Appendices/Blob%20API%20Requirements%20%28MVP%29.md)
+- AzCopy test suites & acceptance: [Appendices/AzCopy Test Suites & Acceptance](Appendices/AzCopy%20Test%20Suites%20%26%20Acceptance.md)
 - Azure native services integration matrix: [Appendices/Azure Native Services Integration Matrix](Appendices/Azure%20Native%20Services%20Integration%20Matrix.md)
+- Crawl scope & prioritization: [Appendices/Crawl Scope & Prioritization](Appendices/Crawl%20Scope%20%26%20Prioritization.md)
+- Market opportunity & TAM: [Appendices/Market Opportunity & TAM](Appendices/Market%20Opportunity%20%26%20TAM.md)
+- Competitive landscape & differentiation: [Appendices/Competitive Landscape & Differentiation](Appendices/Competitive%20Landscape%20%26%20Differentiation.md)
 - Terminology & conventions: [Appendices/Terminology & Conventions](Appendices/Terminology%20%26%20Conventions.md)
 - Workloads & reference topologies: [Appendices/Workloads & Reference Topologies](Appendices/Workloads%20%26%20Reference%20Topologies.md)
 

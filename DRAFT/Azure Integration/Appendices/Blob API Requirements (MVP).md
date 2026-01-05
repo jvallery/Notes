@@ -118,6 +118,7 @@ VAST MUST implement Azure list semantics in a way that maps cleanly to prefix/de
 - **Ordering:** lexicographic by blob name.
 - **Virtual directories:** `delimiter=/` returns `BlobPrefix` entries for “folders” (common prefixes) plus `Blob` entries for objects at the current level.
 - **Pagination:** honor `maxresults` and `marker`; return `NextMarker` correctly (SDK parsers depend on it).
+- **Property fidelity:** include the properties used by AzCopy/SDKs for diff logic (at minimum `Last-Modified`, `ETag`, `Content-Length`, `Content-Type`, `Content-MD5`, and access tier when set).
 
 ## MVP REST Surface Area
 
@@ -174,7 +175,9 @@ VAST MUST implement Azure list semantics in a way that maps cleanly to prefix/de
 ### Metadata / Properties
 
 - User metadata: support `x-ms-meta-*` headers on `PUT`/`HEAD`
-- System properties: persist `Content-Type`, `Content-Encoding`, `Content-MD5`, and `Cache-Control`
+- System properties: persist `Content-Type`, `Content-Encoding`, `Cache-Control`, `Content-Disposition`, and `Content-Language`
+- Blob MD5: accept `x-ms-blob-content-md5` on upload/commit and return `Content-MD5` on `HEAD` (and on `GET` when available)
+- Block blob access tier: accept `x-ms-access-tier` (e.g., `Hot`, `Cool`, `Archive`) on upload/commit and return `x-ms-access-tier` on `HEAD`
 
 ## Semantics Contract (Compatibility‑Critical)
 
@@ -182,7 +185,8 @@ VAST MUST implement Azure list semantics in a way that maps cleanly to prefix/de
 
 - `ETag`: strong ETags (quoted strings). MUST be an opaque version identifier (not MD5) and should be consistent across Blob and S3 for the same object.
 - `Last-Modified`: RFC 1123 format (critical for sync logic: “copy only if newer”) and should align with file/S3 mtime semantics for the committed object.
-- `Content-MD5`: if provided by the client on upload, VAST must validate and reject mismatches (`400 Bad Request`).
+- `Content-MD5`: if provided by the client as a *request integrity* check, validate and reject mismatches (`400 Bad Request`).
+  - For stored blob MD5, AzCopy uses `x-ms-blob-content-md5` on upload/commit and expects `Content-MD5` to be returned on `HEAD`/`GET`.
 
 ### Conditional Requests
 
@@ -239,8 +243,8 @@ Azure SDKs do not rely solely on HTTP status codes; they parse the XML error bod
 
 ### AzCopy Gate
 
-- Test: full suite of AzCopy copy (upload/download), sync (differential), and remove.
-- Pass criteria: zero errors, checksum validation passes, no manual flags required (other than endpoint override).
+- Test: use upstream AzCopy “smoke tests” (`testSuite/scripts`) as the primary compatibility gate (parameterized by SAS URLs, so it can target partner endpoints).
+- Pass criteria: pass Gate A (Block Blob MVP) as defined in [AzCopy Test Suites & Acceptance](AzCopy%20Test%20Suites%20%26%20Acceptance.md); expand to Gate B/C only if scope requires page blobs / DFS / Files.
 
 ### High‑Concurrency Clients Gate
 
@@ -260,6 +264,7 @@ BlobClient.download_blob()
 ## Forward Compatibility & API Drift Strategy
 
 - Versioning: advertise a specific Azure Storage API version (e.g., `2021-08-06`).
+- Compatibility: accept older `x-ms-version` values (e.g., `2017-04-17` used by some harnesses) and apply the same MVP semantics.
 - Drift policy: ignore unknown parameters/headers rather than failing with `400`, so newer clients degrade gracefully.
 
 ## Open Items
