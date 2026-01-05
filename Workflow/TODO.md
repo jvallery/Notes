@@ -3611,3 +3611,101 @@ Affected sections in many People READMEs:
 
 - Jeff Denworth README has non-empty Key Facts, Topics, Key Decisions
 - No patches targeting wrong person folders in changeplan files
+
+---
+
+---
+
+
+---
+
+
+---
+
+## 92) Email-First Person Matching
+
+**Goal:** Use email address as primary key for person lookup, with name fallbacks.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+2026-01-05 session: After fixing the first-name partial match bug (item 90), user noted that email should be the primary key since:
+- 94 people already have `email:` in frontmatter
+- Email is more reliable than name matching (unique, no typos)
+- Enables matching even when names are abbreviated or misspelled
+
+**Impact:** HIGH - prevents future matching errors
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Update `_find_person_folder()` to accept optional email parameter
+- [ ] Lookup order: 1) exact email match in README frontmatter, 2) exact full name, 3) partial name match
+- [ ] Build email→folder index from scanning People READMEs (cache on first call)
+- [ ] Update extraction to preserve sender/recipient emails for person lookup
+- [ ] Update changeplan generation to use email when available
+
+**Success Criteria**
+
+- Person with `email: john@company.com` is found by email lookup
+- Falls back to name matching only when email not available
+- Cached index for performance
+
+---
+
+---
+
+
+---
+
+
+---
+
+## 93) Full Vault Reimport (Nuclear Option)
+
+**Goal:** Wipe People, Projects, Customers and rebuild from Sources/ to ensure clean data.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+2026-01-05 session: Due to person folder matching bug (item 90), patches were applied to wrong folders for potentially hundreds of notes. Rather than incrementally fixing, a full reimport ensures clean state.
+
+**Impact:** CRITICAL - ensures data integrity but destructive
+
+**Effort:** 2-4 hours (including prerequisites + verification)
+
+**Prerequisites (must complete first):**
+See analysis below for which TODO items must be addressed before reimport.
+
+**Tasks**
+
+- [ ] Complete all prerequisite items (see list below)
+- [ ] Archive current state: `git tag pre-reimport-2026-01-05`
+- [ ] Backup People/, Projects/, Customers and Partners/ to separate location
+- [ ] Delete all entity folders (preserve Sources/, Inbox/, Workflow/, Personal/Homelab/, Personal/Software/)
+- [ ] Re-run full pipeline on Sources/Email/ and Sources/Transcripts/
+- [ ] Run audit script (item 10) to validate results
+- [ ] Verify key people have populated Key Facts, Topics, Decisions
+- [ ] Compare before/after statistics
+
+**What to Preserve:**
+- `Sources/` - raw source material (never delete)
+- `Inbox/` - landing zone
+- `Workflow/` - automation code
+- `Personal/Homelab/`, `Personal/Software/` - manually created content
+- `.git/` - version history
+
+**What to Delete:**
+- `VAST/People/` - will be recreated
+- `VAST/Projects/` - will be recreated  
+- `VAST/Customers and Partners/` (except _MANIFEST.md) - will be recreated
+- `VAST/ROB/` - will be recreated
+- `Personal/People/` - will be recreated
+- `Personal/Projects/` (except manual ones) - will be recreated
+
+**Success Criteria**
+
+- All entity READMEs have populated sections (no empty Key Facts/Topics/Decisions)
+- No patches targeting wrong folders in any changeplan
+- Audit script passes with zero critical findings
