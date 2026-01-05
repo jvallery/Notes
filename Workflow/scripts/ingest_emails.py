@@ -550,8 +550,28 @@ def _generate_person_patches(
             # Return with basic project patches
             return {"patches": patches, "warnings": warnings, "create": create_info}
         
+        elif entity_type == EntityType.UNKNOWN or discovery.confidence < 0.6:
+            # Low confidence or unknown - route to triage instead of creating folder
+            # This prevents _NEW_* style folders from being created
+            triage_entry = {
+                "name": contact.name,
+                "email": contact.email,
+                "entity_type": str(entity_type.value),
+                "confidence": discovery.confidence,
+                "context": context[:200],
+                "source_file": extraction.source_file,
+                "discovered_at": datetime.now().isoformat()
+            }
+            _add_to_triage_queue(triage_entry)
+            
+            warnings.append(f"Entity '{contact.name}' added to triage queue (type: {entity_type.value}, confidence: {discovery.confidence:.0%})")
+            console.print(f"  [yellow]⚠ Triage: {contact.name} (confidence too low)[/yellow]")
+            
+            # Return empty patches - don't create anything
+            return {"patches": patches, "warnings": warnings, "create": None, "triage": triage_entry}
+        
         else:
-            # Default to person (including UNKNOWN with low confidence)
+            # High confidence person classification - safe to create
             safe_name = sanitize_path_name(contact.name)
             entity_folder = vault / "VAST" / "People" / safe_name
             entity_folder.mkdir(parents=True, exist_ok=True)
@@ -820,6 +840,42 @@ def _generate_task_patches(task: TaskItem, extraction: EmailExtraction) -> List[
                 ))
     
     return patches
+
+
+def _add_to_triage_queue(entry: dict) -> None:
+    """
+    Add an unknown entity to the triage queue for manual review.
+    
+    This prevents auto-creation of folders for low-confidence entities.
+    The triage queue is a YAML file that can be reviewed and processed.
+    """
+    import yaml
+    
+    triage_file = vault_root() / "Inbox" / "_triage" / "entities.yaml"
+    triage_file.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Load existing queue
+    if triage_file.exists():
+        with open(triage_file, 'r') as f:
+            queue = yaml.safe_load(f) or {"entities": []}
+    else:
+        queue = {"entities": []}
+    
+    # Check for duplicate (by email or name+source)
+    for existing in queue.get("entities", []):
+        if entry.get("email") and existing.get("email") == entry.get("email"):
+            # Already in queue
+            return
+        if existing.get("name") == entry.get("name") and existing.get("source_file") == entry.get("source_file"):
+            # Same name from same source
+            return
+    
+    # Add to queue
+    queue["entities"].append(entry)
+    
+    # Write back
+    with open(triage_file, 'w') as f:
+        yaml.dump(queue, f, default_flow_style=False, allow_unicode=True, sort_keys=False)
 
 
 def _create_person_readme(contact: ContactInfo, extraction: EmailExtraction) -> str:
