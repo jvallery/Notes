@@ -104,6 +104,7 @@ class TransactionalApply:
         """Create the meeting note from plan."""
         from jinja2 import Environment, FileSystemLoader
         import re
+        import os
         
         note_path = self.vault_root / plan.meeting_note_path
         
@@ -128,7 +129,21 @@ class TransactionalApply:
             text = re.sub(r'[\s_]+', '-', text)
             return text.strip('-')
         
+        def strip_extension(path):
+            """Remove file extension from path."""
+            if not path:
+                return ""
+            return os.path.splitext(str(path))[0]
+        
+        def basename(path):
+            """Get basename of path."""
+            if not path:
+                return ""
+            return os.path.basename(str(path))
+        
         env.filters['slugify'] = slugify
+        env.filters['strip_extension'] = strip_extension
+        env.filters['basename'] = basename
         
         # Select template based on note type
         note_type = plan.meeting_note.get("type", "people")
