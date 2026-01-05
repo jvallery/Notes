@@ -1,7 +1,7 @@
 ---
 type: customer
 title: Walmart
-last_contact: '2025-11-14'
+last_contact: '2025-11-05'
 created: '2026-01-03'
 tags:
 - type/customer
@@ -41,11 +41,21 @@ not done
 - 2025-12-23: Jeff Denworth discusses Walmart's internal requirements meeting and the need for a hybrid solution f
 
 - 2025-12-23: Jeff Denworth discusses Walmart's internal requirements meeting and their need for a hybrid solution
+
+- 2025-11-05: The meeting discussed Walmart's analytics requirements, focusing on data ingestion and processing vi...
 ## Key Facts
 
 - Walmart needs a hybrid solution for their data team and is starting a big data POC for on-premises workloads.
 
 - Any solution Walmart moves forward with will require integration with GCS.
+
+- Walmart uses BigQuery on GCP for primary data ingestion and processing.
+
+- Walmart requires active/active replication across GCP and two on-prem facilities.
+
+- Walmart's data lake is approximately 500 PiB with 10% daily churn.
+
+- Walmart has a strong preference for a GCS-like API on-prem to avoid refactoring.
 ## Topics
 
 - Walmart
@@ -53,6 +63,14 @@ not done
 - data team
 - big data POC
 - integration with GCS
+
+- Data ingestion and processing via BigQuery in GCP
+
+- Hybrid cloud solution with active/active replication
+
+- Technical challenges of strong consistency and latency tolerance
+
+- GCS-like API requirement on-prem
 ## Opportunities
 
 - Namespace/metadata synchronization with pre-existing cloud object data; proxy/always-fast expectations; tiering discussions
@@ -96,3 +114,7 @@ not done
 ## Related Projects
 
 - [[big data POC]]
+
+## Key Decisions
+
+- POC for VAST is ready to begin with a decision goal by end of CY26.

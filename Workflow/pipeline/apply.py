@@ -182,9 +182,10 @@ class TransactionalApply:
             ensure_wikilinks
         )
         
-        # Frontmatter updates
+        # Frontmatter updates - convert dict to list of {key, value} patches
         if patch.add_frontmatter:
-            content = upsert_frontmatter(content, patch.add_frontmatter)
+            fm_patches = [{"key": k, "value": v} for k, v in patch.add_frontmatter.items()]
+            content = upsert_frontmatter(content, fm_patches)
         
         # Add facts under ## Key Facts
         if patch.add_facts:

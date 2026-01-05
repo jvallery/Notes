@@ -61,6 +61,8 @@ type: customer
 
 - 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 - 2025-12-17: Exploring Collaboration Opportunities with Welliptic
+
+- 2025-12-19: Mentioned in: Jeff Denworth - Microsoft strategy and SCO prep
 ## Key Facts
 
 - OpenAI is organized into three major teams: Applications, Scaling, and Research.
@@ -72,6 +74,8 @@ type: customer
 - OpenAI's application side heavily leverages Azure CosmosDB for conversation persistence.
 
 - OpenAI's research data platform is an in-house developed system called DAQ.
+
+- OpenAI is replatforming away from the Blob API.
 ## Topics
 
 - OpenAI

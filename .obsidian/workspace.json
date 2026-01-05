@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Jason Vallery/README.md",
+                "file": "VAST/People/Jeff Denworth/README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -195,6 +195,10 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Sources/Transcripts/2026/2025-11-05 - Walmart Analytics.md",
+    "VAST/Customers and Partners/Walmart/2025-11-05 - Walmart Analytics Requirements and Strategy.md",
+    "VAST/People/Jason Vallery/README.md",
+    "Workflow/test_apply.py",
     "Inbox/Transcripts/2025-11-05 - Walmart Analytics.md",
     "Inbox/Email/2025-12-30_162801_0557_Re-Re-EXTERNAL-EXTERNAL-Re-OA-Alert-FOpp-4197---9680814---A-.md",
     "Inbox/Transcripts/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md",
@@ -209,7 +213,6 @@
     "Workflow/pipeline/models.py",
     "Workflow/pipeline/entities.py",
     "Workflow/pipeline/context.py",
-    "Workflow/pipeline/adapters/document.py",
     "Workflow/UNIFIED-PIPELINE.md",
     "Sources/Transcripts/2026/Jason Lior Weekly Call.md",
     "VAST/Projects/Microsoft MAI/2026-01-04 - Weekly Strategy Call with Lior Genzel.md",
@@ -228,9 +231,6 @@
     "VAST/Customers and Partners/Supermicro/README.md",
     "VAST/Customers and Partners/SAP/README.md",
     "VAST/Customers and Partners/VAST Data/README.md",
-    "Sources/Transcripts/2026/2026-01-03 - Prep for Microsoft AI talks.md",
-    "VAST/People/Jeff Yonker/README.md",
-    "VAST/People/Jeff Denworth/README.md",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",

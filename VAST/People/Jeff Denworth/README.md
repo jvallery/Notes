@@ -7,7 +7,7 @@ expertise:
 - Microsoft/Azure engagement
 - go-to-market planning
 - program management
-last_contact: '2025-12-15'
+last_contact: '2025-12-19'
 last_enriched: '2026-01-04'
 relationship: colleague
 role: Executive leader
@@ -96,14 +96,20 @@ type: people
 
 - 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
 - 2025-12-15: Discussion on Google Distributed Cloud RFP - The meeting focused on reviewing the proposal for the Google Distributed Cloud RFP. Participants dis
+
+- 2025-12-19: Jason Vallery and Jeff Denworth discussed the Microsoft strategy, focusing on the Blob API, OpenAI's...
 ## Key Facts
 
 ## Topics
 - 2025-12-15: Technical requirements, Pricing and configurations, Data reduction and encryption, Hardware configurations
 
+- Blob API and OpenAI
+
+- Rockset and competitive landscape
 ## Key Decisions
 - 2025-12-15: Use the same concepts from previous CSP projects to size this project.
 
+- Focus on the MVP for day one and consider market expansion opportunities.
 ## Related Customers
 
 ## Related Projects

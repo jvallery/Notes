@@ -315,6 +315,8 @@ not done
 
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 - 2025-12-17: Exploring Collaboration Opportunities with Welliptic
+
+- 2025-12-19: Mentioned in: Jeff Denworth - Microsoft strategy and SCO prep
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.
@@ -322,6 +324,8 @@ not done
 - Microsoft needs 2EB on the floor this year.
 
 - Microsoft is considering HDDs for the first April delivery for MAI scale-up.
+
+- Microsoft owns the IP of every line of code written by OpenAI.
 ## Topics
 
 - introduction

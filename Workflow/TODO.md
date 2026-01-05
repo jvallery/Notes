@@ -3709,3 +3709,159 @@ See analysis below for which TODO items must be addressed before reimport.
 - All entity READMEs have populated sections (no empty Key Facts/Topics/Decisions)
 - No patches targeting wrong folders in any changeplan
 - Audit script passes with zero critical findings
+
+---
+
+## 94) Unified Pipeline Fit-Gap vs Architecture Doc
+
+**Goal:** Close gaps between current pipeline code and `UNIFIED-PIPELINE.md` feature list (prompt caching, persona/manifest/glossary/aliases injection, context enrichment).
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Inventory shows `pipeline/` modules implemented but not fully wired to cached prompts, persona augmentation, manifest/glossary aliases, or search-based README context. Unified extractor still builds prompts manually and skips instrumentation hooks.
+
+**Impact:** Critical - without context + caching the unified pipeline misses accuracy and cost targets.
+
+**Effort:** 4 hours
+
+**Tasks**
+- [ ] Map each architecture component (ContentEnvelope, adapters, ContextBundle, EntityIndex, UnifiedExtraction) to current code and list missing behaviors per UNIFIED-PIPELINE.md
+- [ ] Integrate cached prompts/persona/manifests/glossary/aliases into UnifiedExtractor via ContextBundle (reuse `utils.cached_prompts`, profiles/, entities/)
+- [ ] Add README/manifest enrichment in ContextBundle (fast entity scan + README summaries) and unit tests for adapters/extractor with cached context
+- [ ] Ensure instrumentation (utils.ai_client/logging) wraps unified extractor calls
+
+**Success Criteria**
+- UnifiedExtractor prompt uses cached persona + glossary + aliases and logs via instrumented client
+- ContextBundle returns enriched context (persona + manifests + relevant README summaries) verified by tests
+- Fit-gap checklist documented in UNIFIED-PIPELINE.md or code docstring updates
+
+---
+
+## 95) Smart Patch, Planning, and Entity Dedup Alignment
+
+**Goal:** Align patch generation/apply with unified models: facts-about → patches, entity dedupe/aliases, and transactional apply with rollback per design.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+PatchGenerator/TransactionalApply exist but aren’t fully tied to EntityIndex, alias resolution, or changeplan schema; planning engine (scripts/plan.py) is separate from pipeline orchestration.
+
+**Impact:** High - risk of incorrect entity updates and inability to roll back changes.
+
+**Effort:** 4 hours
+
+**Tasks**
+- [ ] Wire PatchGenerator to EntityIndex + aliases for duplicate detection/merge; add “facts_about” driven patches for all mentioned entities
+- [ ] Route UnifiedPipeline to produce/consume ChangePlan objects (reuse schemas/changeplan + plan.py patterns) before apply
+- [ ] Implement apply rollback/validation hooks and tests (dry-run, conflict detection, manifest sync)
+- [ ] Document dedupe/alias rules (people/customer/project) and update REFACTOR/UNIFIED-PIPELINE notes
+
+**Success Criteria**
+- ChangePlans include patches for every entity with `facts_about` and pass schema validation
+- Apply step supports dry-run + rollback and updates manifests safely
+- Tests cover dedupe/alias resolution and patch routing for at least one email + transcript fixture
+
+---
+
+## 96) Unified Outputs: Tasks, Draft Replies, Calendar Invites
+
+**Goal:** Ensure unified pipeline generates downstream outputs: draft emails, calendar suggestions, and TASKS-compatible tasks (status `?` proposed → `[ ]`/`/`/`R`/`x`).
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Draft generation remains stubbed; task emission varies across scripts; calendar draft path not implemented; TASKS.md dashboards expect status `?` + priority/date sorting.
+
+**Impact:** High - user-facing outputs incomplete; tasks not triaged correctly.
+
+**Effort:** 3 hours
+
+**Tasks**
+- [ ] Add outputs module to generate draft replies/calendar invites using persona + entity context; write to Inbox/_drafts/ with metadata
+- [ ] Standardize task emission (pipeline + ingestion scripts) to `- [?] ... #task #proposed` with priority/dates; ensure TASKS.md queries see them
+- [ ] Add high-priority task mirroring to TASKS_INBOX.md/TASKS.md sections and acceptance flow (`?` → `[ ]`/`/`/`R`/`x`)
+- [ ] Update documentation (README, RUNBOOK, EMAIL-INGESTION) to describe output flow and triage
+
+**Success Criteria**
+- Sample email run produces draft reply + optional .ics suggestion in Inbox/_drafts/
+- Extracted tasks appear in TASKS.md Proposed section with correct status/priority/date sorting
+- Docs show one-click triage path from Proposed to Accepted/Rejected/Done
+
+---
+
+## 97) Single CLI + Retire Legacy Scripts
+
+**Goal:** Make `scripts/ingest.py` the only ingestion entrypoint that invokes UnifiedPipeline; archive/deprecate legacy process_* scripts.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Legacy scripts (`process_emails.py`, `process_inbox.py`, `ingest_emails.py`, `ingest_transcripts.py`) coexist with new `scripts/ingest.py` and pipeline orchestration.
+
+**Impact:** Medium - duplicated logic and user confusion.
+
+**Effort:** 2 hours
+
+**Tasks**
+- [ ] Update `scripts/ingest.py` to call UnifiedPipeline (all flags: type/all, dry-run, verbose, outputs, enrich)
+- [ ] Make legacy scripts thin wrappers or move them to `_archive/` with pointers to unified CLI
+- [ ] Refresh README/RUNBOOK/UNIFIED-PIPELINE with single-command examples; adjust automations/SETUP-CHECKLIST tasks
+- [ ] Add smoke test for ingest CLI over fixture Inbox content
+
+**Success Criteria**
+- `python scripts/ingest.py --all` processes email + transcript fixtures end-to-end
+- Legacy scripts are archived or emit deprecation notice pointing to ingest.py
+- Documentation shows unified CLI only; automated checklist uses it
+
+---
+
+## 98) Observability, Prompt Cache, and Metrics Unification
+
+**Goal:** Apply instrumentation, prompt cache metrics, and run-level telemetry across unified pipeline.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Instrumentation doc exists and some scripts use `utils.ai_client`, but pipeline modules don’t surface cache hit/miss, per-phase timings, or run summaries.
+
+**Impact:** Medium - limits visibility into accuracy/cost/performance.
+
+**Effort:** 2 hours
+
+**Tasks**
+- [ ] Wrap pipeline phases (adapter, extract, patch, apply, outputs) with structured logging + timings; emit run summary table
+- [ ] Expose prompt cache stats (hits/misses, token savings) from cached_prompts + OpenAI responses; add `--show-cache-stats`
+- [ ] Persist per-run metrics to `logs/ai` and human-readable log file; document how to view stats
+- [ ] Add unit test or sample run verifying metrics fields populate
+
+**Success Criteria**
+- Pipeline logs show phase timings and cache hit/miss info; summary printed at end of run
+- `logs/ai/YYYY-MM-DD/summary.json` includes caller `unified_pipeline` stats
+- CLI flag produces cache/latency summary without errors
+
+---
+
+## 99) Context Search, Entity Index, and Alias Coverage
+
+**Goal:** Strengthen entity discovery (search + aliases) for context loading and dedupe across people/customers/projects.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+EntityIndex exists but limited to manifest/name scans; no fuzzy search or OpenAI-backed context enrichment prior to extraction/patch; aliases live in YAML but not enforced everywhere.
+
+**Impact:** Medium - misses context for near-matches and risks duplicate entities.
+
+**Effort:** 3 hours
+
+**Tasks**
+- [ ] Extend EntityIndex with fuzzy search + alias resolution (people/company/project) and cache results
+- [ ] Add pre-extraction context enrichment: search vault for likely READMEs/notes (including Personal) and feed summaries into ContextBundle
+- [ ] Add duplicate detection on apply (same entity via alias/typo) with merge guidance in changeplan
+- [ ] Document search/alias rules in UNIFIED-PIPELINE.md + ENTITY-DISCOVERY.md
+
+**Success Criteria**
+- Extraction loads relevant READMEs even when names are variants/aliases (verified on fixture with alias)
+- Apply step flags potential dupes and suggests merge target
+- Docs updated with how EntityIndex/search/alias flow works
