@@ -39,6 +39,63 @@ from models.email_extraction import (
     VaultPatch, EmailChangePlan
 )
 
+# Cache for email→folder index (built once per run)
+_email_index: Optional[Dict[str, Path]] = None
+_name_index: Optional[Dict[str, Path]] = None
+
+
+def _build_person_index() -> Tuple[Dict[str, Path], Dict[str, Path]]:
+    """Build email→folder and name→folder indices from People READMEs.
+    
+    Returns:
+        (email_index, name_index) where:
+        - email_index: lowercase email → folder path
+        - name_index: lowercase name → folder path
+    """
+    global _email_index, _name_index
+    
+    if _email_index is not None and _name_index is not None:
+        return _email_index, _name_index
+    
+    email_idx = {}
+    name_idx = {}
+    vault = vault_root()
+    
+    people_dirs = [
+        vault / "VAST" / "People",
+        vault / "Personal" / "People"
+    ]
+    
+    for people_dir in people_dirs:
+        if not people_dir.exists():
+            continue
+        
+        for folder in people_dir.iterdir():
+            if not folder.is_dir():
+                continue
+            
+            readme = folder / "README.md"
+            if not readme.exists():
+                continue
+            
+            # Index by folder name
+            name_idx[folder.name.lower()] = folder
+            
+            # Parse frontmatter for email
+            try:
+                content = readme.read_text()
+                fm, _ = parse_frontmatter(content)
+                if fm and fm.get("email"):
+                    email = fm["email"].strip().lower()
+                    if email and email != "''":  # Skip empty strings
+                        email_idx[email] = folder
+            except Exception:
+                pass  # Skip malformed files
+    
+    _email_index = email_idx
+    _name_index = name_idx
+    return email_idx, name_idx
+
 
 def get_glossary_context() -> str:
     """Load the people/projects/customers glossary for prompt context."""
@@ -320,46 +377,45 @@ def generate_patches(extraction: EmailExtraction, openai_client = None) -> Email
     return plan
 
 
-def _find_person_folder(name: str) -> Optional[Path]:
-    """Find existing person folder in vault."""
+def _find_person_folder(name: str, email: Optional[str] = None) -> Optional[Path]:
+    """Find existing person folder in vault.
     
-    vault = vault_root()
+    Lookup order:
+    1. Exact email match (if email provided)
+    2. Exact name match
+    3. Partial name match (first AND last name must match)
+    
+    Args:
+        name: Person's name to search for
+        email: Optional email address (preferred lookup key)
+    
+    Returns:
+        Path to person folder, or None if not found
+    """
+    email_idx, name_idx = _build_person_index()
+    
+    # 1. EMAIL MATCH (highest priority)
+    if email:
+        email_lower = email.strip().lower()
+        if email_lower in email_idx:
+            return email_idx[email_lower]
+    
+    # 2. EXACT NAME MATCH
     name_lower = name.lower()
+    if name_lower in name_idx:
+        return name_idx[name_lower]
+    
+    # 3. PARTIAL NAME MATCH (first AND last name must match)
     name_parts = name_lower.split()
-    
-    # Check VAST/People and Personal/People
-    people_dirs = [
-        vault / "VAST" / "People",
-        vault / "Personal" / "People"
-    ]
-    
-    candidates = []
-    
-    for people_dir in people_dirs:
-        if not people_dir.exists():
-            continue
-        
-        for folder in people_dir.iterdir():
-            if not folder.is_dir():
-                continue
-            
-            folder_lower = folder.name.lower()
-            folder_parts = folder_lower.split()
-            
-            # EXACT match - return immediately
-            if folder_lower == name_lower:
-                return folder
-            
-            # Check if ALL name parts are in folder name (not just first name)
-            # e.g., "Jeff Denworth" should match "Jeff Denworth" but not "Jeff Yonker"
-            if len(name_parts) >= 2 and len(folder_parts) >= 2:
-                # Full name: require both first AND last name to match
+    if len(name_parts) >= 2:
+        for folder_name, folder_path in name_idx.items():
+            folder_parts = folder_name.split()
+            if len(folder_parts) >= 2:
+                # Require both first AND last name to match
                 if name_parts[0] == folder_parts[0] and name_parts[-1] == folder_parts[-1]:
-                    candidates.append(folder)
+                    return folder_path
     
-    # Return best candidate if any
-    if candidates:
-        return candidates[0]
+    return None
     
     return None
 
@@ -398,8 +454,8 @@ def _generate_person_patches(
     warnings = []
     create_info = None
     
-    # First check if entity already exists
-    person_folder = _find_person_folder(contact.name)
+    # First check if entity already exists - use email as primary key
+    person_folder = _find_person_folder(contact.name, email=contact.email)
     company_folder = _find_customer_folder(contact.name) if person_folder is None else None
     
     if person_folder is not None:
