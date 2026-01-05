@@ -423,3 +423,158 @@ class PatchGenerator:
             plan.warnings.append(
                 f"Potential duplicate for '{name}': similar to {', '.join(similar[:2])} (consider merge)"
             )
+
+
+class PatchCollector:
+    """Collect and merge patches from multiple extractions.
+    
+    Used in parallel processing to:
+    1. Collect all patches from concurrent extractions
+    2. Group by target path
+    3. Merge patches for same targets (dedup facts, combine context)
+    4. Return a single merged ChangePlan for atomic apply
+    """
+    
+    def __init__(self, dedupe_facts: bool = True, dedupe_tasks: bool = True, combine_context: bool = True):
+        self.dedupe_facts = dedupe_facts
+        self.dedupe_tasks = dedupe_tasks
+        self.combine_context = combine_context
+        
+        # Collected data
+        self._patches_by_target: dict[str, list[PatchOperation]] = {}
+        self._meeting_notes: list[tuple[str, dict]] = []  # (path, context)
+        self._source_files: list[str] = []
+        self._warnings: list[str] = []
+    
+    @property
+    def has_patches(self) -> bool:
+        """Check if any patches have been collected."""
+        return bool(self._patches_by_target)
+    
+    @property
+    def patch_count(self) -> int:
+        """Get total number of patches across all targets."""
+        return sum(len(patches) for patches in self._patches_by_target.values())
+    
+    def collect(self, plan: ChangePlan):
+        """Collect patches from a single ChangePlan."""
+        self._source_files.append(plan.source_file)
+        
+        # Collect meeting note
+        if plan.meeting_note_path and plan.meeting_note:
+            self._meeting_notes.append((plan.meeting_note_path, plan.meeting_note))
+        
+        # Collect patches by target
+        for patch in plan.patches:
+            target = patch.target_path
+            if target not in self._patches_by_target:
+                self._patches_by_target[target] = []
+            self._patches_by_target[target].append(patch)
+        
+        # Collect warnings
+        self._warnings.extend(plan.warnings)
+    
+    def merge(self) -> ChangePlan:
+        """Merge all collected patches into a single ChangePlan."""
+        merged_patches: list[PatchOperation] = []
+        
+        for target_path, patches in self._patches_by_target.items():
+            if len(patches) == 1:
+                merged_patches.append(patches[0])
+            else:
+                merged = self._merge_patches_for_target(patches)
+                merged_patches.append(merged)
+        
+        # Create merged plan
+        plan = ChangePlan(
+            source_file=", ".join(self._source_files[:3]) + (f" (+{len(self._source_files) - 3} more)" if len(self._source_files) > 3 else ""),
+            patches=merged_patches,
+            warnings=self._warnings,
+        )
+        
+        # Set first meeting note (others are created separately)
+        if self._meeting_notes:
+            plan.meeting_note_path = self._meeting_notes[0][0]
+            plan.meeting_note = self._meeting_notes[0][1]
+        
+        return plan
+    
+    def get_meeting_notes(self) -> list[tuple[str, dict]]:
+        """Get all collected meeting notes for creation."""
+        return self._meeting_notes
+    
+    def _merge_patches_for_target(self, patches: list[PatchOperation]) -> PatchOperation:
+        """Merge multiple patches targeting the same file."""
+        first = patches[0]
+        
+        merged = PatchOperation(
+            operation="patch",
+            target_path=first.target_path,
+            target_entity=first.target_entity,
+            add_frontmatter={},
+            add_facts=[],
+            add_topics=[],
+            add_decisions=[],
+            add_context="",
+            add_tasks=[],
+            add_wikilinks=[],
+        )
+        
+        seen_facts: set[str] = set()
+        seen_tasks: set[str] = set()
+        context_parts: list[str] = []
+        
+        for patch in patches:
+            # Merge frontmatter
+            if patch.add_frontmatter:
+                for key, value in patch.add_frontmatter.items():
+                    # Later values overwrite (e.g., last_contact date)
+                    merged.add_frontmatter[key] = value
+            
+            # Merge facts (dedup if enabled)
+            if patch.add_facts:
+                for fact in patch.add_facts:
+                    fact_key = fact.lower().strip() if self.dedupe_facts else fact
+                    if fact_key not in seen_facts:
+                        merged.add_facts.append(fact)
+                        seen_facts.add(fact_key)
+            
+            # Merge topics
+            if patch.add_topics:
+                for topic in patch.add_topics:
+                    if topic not in merged.add_topics:
+                        merged.add_topics.append(topic)
+            
+            # Merge decisions
+            if patch.add_decisions:
+                for decision in patch.add_decisions:
+                    if decision not in merged.add_decisions:
+                        merged.add_decisions.append(decision)
+            
+            # Merge context
+            if patch.add_context:
+                if self.combine_context:
+                    if patch.add_context not in context_parts:
+                        context_parts.append(patch.add_context)
+                else:
+                    merged.add_context = patch.add_context  # Last wins
+            
+            # Merge tasks (dedup by text if enabled)
+            if patch.add_tasks:
+                for task in patch.add_tasks:
+                    task_key = task.get("text", "").lower().strip() if self.dedupe_tasks else str(task)
+                    if task_key not in seen_tasks:
+                        merged.add_tasks.append(task)
+                        seen_tasks.add(task_key)
+            
+            # Merge wikilinks
+            if patch.add_wikilinks:
+                for link in patch.add_wikilinks:
+                    if link not in merged.add_wikilinks:
+                        merged.add_wikilinks.append(link)
+        
+        # Combine context parts
+        if context_parts:
+            merged.add_context = "\n".join(context_parts)
+        
+        return merged

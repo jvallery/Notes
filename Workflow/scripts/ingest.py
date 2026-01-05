@@ -14,6 +14,8 @@ Usage:
     python ingest.py --draft-replies              # Generate draft email replies
     python ingest.py --trace-dir /tmp/traces      # Save extraction/changeplan artifacts
     python ingest.py --all --show-cache-stats     # Print cache + timing summary
+    python ingest.py --workers 5                  # Use 5 parallel workers
+    python ingest.py --sequential                 # Force sequential (1 worker)
 """
 
 import sys
@@ -48,7 +50,9 @@ console = Console()
 @click.option("--show-cache-stats", is_flag=True, help="Print cache + timing summary after run")
 @click.option("--trace-dir", type=click.Path(), help="Persist extraction/changeplan artifacts to this directory")
 @click.option("--vault-root", type=click.Path(), help="Override vault root (defaults to repo root)")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, show_cache_stats: bool, trace_dir: str, vault_root: str):
+@click.option("--workers", "-w", type=int, default=None, help="Number of parallel workers (default from config, 1=sequential)")
+@click.option("--sequential", is_flag=True, help="Force sequential processing (ignore config)")
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, show_cache_stats: bool, trace_dir: str, vault_root: str, workers: int, sequential: bool):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
@@ -69,9 +73,12 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         "voice": ContentType.VOICE,
     }
     
+    # Determine worker count: --sequential forces 1, --workers N overrides config
+    effective_workers = 1 if sequential else workers
+    
     console.print(Panel.fit(
         "[bold blue]Unified Ingest Pipeline[/bold blue]",
-        subtitle=f"{'DRY RUN' if dry_run else 'LIVE'}"
+        subtitle=f"{'DRY RUN' if dry_run else 'LIVE'}" + (f" | {effective_workers or 'config'} workers" if effective_workers != 1 else "")
     ))
     
     # Initialize pipeline
@@ -84,6 +91,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         trace_dir=Path(trace_dir) if trace_dir else None,
         show_cache_stats=show_cache_stats,
         config=config,
+        max_workers=effective_workers,
     )
     
     batch = None

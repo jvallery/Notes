@@ -385,6 +385,28 @@ sensitive_content:
     - "\\$[0-9,]+[kKmM]?"                # Dollar amounts
     - "SSN|social security"              # SSN references
 
+# === PARALLEL PROCESSING ===
+# Concurrent extraction with deferred patch application
+parallel:
+  enabled: true                          # Enable parallel extraction
+  max_workers: 5                         # Concurrent LLM calls (respect rate limits)
+  
+  # Rate limit protection
+  rate_limit:
+    requests_per_minute: 50              # Stay under RPM limit (typically 60-500)
+    tokens_per_minute: 500000            # Stay under TPM limit
+    backoff_on_429: true                 # Auto-retry with exponential backoff
+    max_retries: 3                       # Max retries per request
+  
+  # Patch collection strategy
+  patch_strategy: "collect-then-merge"   # collect-then-merge | immediate
+  
+  # Merge behavior
+  merge:
+    dedupe_facts: true                   # Remove duplicate facts
+    dedupe_tasks: true                   # Remove duplicate tasks
+    combine_context: true                # Combine context strings
+
 # === FEATURE FLAGS ===
 # Enable/disable experimental features
 features:

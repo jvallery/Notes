@@ -8,11 +8,15 @@ Combines:
 - Patching (generate patches)
 - Apply (transactional execution)
 - Enrichment (trigger for new entities)
+
+Supports parallel extraction with deferred patch application.
 """
 
 import json
 import sys
 import time
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, Any
@@ -24,7 +28,7 @@ from .envelope import ContentEnvelope, ContentType
 from .adapters import AdapterRegistry
 from .context import ContextBundle
 from .extract import UnifiedExtractor
-from .patch import PatchGenerator, ChangePlan
+from .patch import PatchGenerator, ChangePlan, PatchCollector
 from .apply import TransactionalApply, ApplyResult
 from .entities import EntityIndex
 from .outputs import OutputGenerator
@@ -106,6 +110,7 @@ class UnifiedPipeline:
         show_cache_stats: bool = False,
         log_metrics: bool = True,
         config: Optional[dict[str, Any]] = None,
+        max_workers: Optional[int] = None,
     ):
         self.vault_root = vault_root
         self.dry_run = dry_run
@@ -116,6 +121,13 @@ class UnifiedPipeline:
         self.show_cache_stats = show_cache_stats
         self.log_metrics = log_metrics
         self.config = config or load_config(vault_root_override=vault_root)
+        
+        # Parallel processing settings
+        parallel_cfg = self.config.get("parallel", {})
+        self.max_workers = max_workers if max_workers is not None else parallel_cfg.get("max_workers", 1)
+        self.parallel_enabled = parallel_cfg.get("enabled", False) and self.max_workers > 1
+        rate_limit_cfg = parallel_cfg.get("rate_limit", {})
+        self.requests_per_minute = rate_limit_cfg.get("requests_per_minute", 50)
         path_cfg = self.config.get("paths", {})
         self.inbox_paths = {
             k: Path(v) for k, v in path_cfg.get("inbox", {}).items() if isinstance(v, str)
@@ -366,6 +378,141 @@ class UnifiedPipeline:
             extraction.participants = envelope.participants
     
     def _process_paths(self, paths: list[Path]) -> BatchResult:
+        """Process a list of paths and return aggregated results.
+        
+        Uses parallel processing when max_workers > 1 and parallel is enabled.
+        """
+        if self.parallel_enabled and self.max_workers > 1 and len(paths) > 1:
+            return self._process_paths_parallel(paths)
+        return self._process_paths_sequential(paths)
+    
+    def _process_paths_parallel(self, paths: list[Path]) -> BatchResult:
+        """Process paths in parallel with rate limiting and patch collection.
+        
+        Uses ThreadPoolExecutor with a semaphore to respect rate limits.
+        Collects all patches, merges by target, then applies atomically.
+        """
+        batch = BatchResult()
+        batch.total = len(paths)
+        batch_start = time.time()
+        
+        timings_accum: dict[str, int] = {}
+        cache_calls = cache_hits = 0
+        cached_tokens = prompt_tokens = total_tokens = 0
+        
+        # Rate limiting semaphore (max concurrent LLM calls)
+        semaphore = threading.Semaphore(self.max_workers)
+        
+        # Collect patches for deferred merge
+        patch_collector = PatchCollector()
+        source_files: list[Path] = []
+        
+        def process_with_semaphore(path: Path) -> ProcessingResult:
+            """Process a single file with rate limiting."""
+            with semaphore:
+                return self.process_file(path)
+        
+        # Submit all tasks
+        with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
+            future_to_path = {executor.submit(process_with_semaphore, p): p for p in paths}
+            
+            for future in as_completed(future_to_path):
+                path = future_to_path[future]
+                try:
+                    result = future.result()
+                    batch.results.append(result)
+                    
+                    if result.success:
+                        if any("Skipped" in str(err) for err in result.errors):
+                            batch.skipped += 1
+                        else:
+                            batch.success += 1
+                            # Collect successful patches for merge
+                            if result.plan:
+                                patch_collector.collect(result.plan)
+                                source_files.append(path)
+                    else:
+                        batch.failed += 1
+                    
+                    # Aggregate metrics
+                    metrics = result.metrics or {}
+                    timings = metrics.get("timings") or {}
+                    for phase, ms in timings.items():
+                        timings_accum[phase] = timings_accum.get(phase, 0) + ms
+                    
+                    cache = metrics.get("cache") or {}
+                    if cache:
+                        cache_calls += 1
+                        if cache.get("cache_hit"):
+                            cache_hits += 1
+                        cached_tokens += cache.get("cached_tokens", 0)
+                        prompt_tokens += cache.get("prompt_tokens", 0)
+                        total_tokens += cache.get("total_tokens", 0)
+                
+                except Exception as e:
+                    batch.failed += 1
+                    batch.results.append(ProcessingResult(
+                        source_path=str(path),
+                        content_type="unknown",
+                        success=False,
+                        errors=[f"Parallel processing error: {e}"]
+                    ))
+        
+        # Merge all patches and apply atomically
+        if patch_collector.has_patches and not self.dry_run:
+            try:
+                merged_plan = patch_collector.merge()
+                if merged_plan.operations:
+                    applier = TransactionalApply(self.vault_root, dry_run=False)
+                    # Use first source file for commit message context
+                    primary_source = source_files[0] if source_files else paths[0]
+                    apply_result = applier.apply(merged_plan, primary_source)
+                    if not apply_result.success:
+                        # Log but don't fail batch - individual results already recorded
+                        for err in apply_result.errors:
+                            batch.results[-1].errors.append(f"Batch apply error: {err}")
+            except Exception as e:
+                batch.results[-1].errors.append(f"Batch merge/apply error: {e}")
+        
+        count = len(batch.results)
+        phase_avg = {k: int(v / count) for k, v in timings_accum.items()} if count else {}
+        cache_summary = {
+            "calls": cache_calls,
+            "hits": cache_hits,
+            "hit_rate": (cache_hits / cache_calls * 100) if cache_calls else 0,
+            "cached_tokens": cached_tokens,
+            "prompt_tokens": prompt_tokens,
+            "total_tokens": total_tokens,
+        }
+        
+        batch.metrics = {
+            "run_ms": int((time.time() - batch_start) * 1000),
+            "phase_ms_avg": phase_avg,
+            "cache": cache_summary,
+            "parallel": {
+                "workers": self.max_workers,
+                "files_processed": len(paths),
+                "patches_merged": patch_collector.patch_count,
+            }
+        }
+        
+        if self.log_metrics and batch.total > 0:
+            try:
+                log_pipeline_stats({
+                    "timestamp": datetime.now().isoformat(),
+                    "total": batch.total,
+                    "success": batch.success,
+                    "failed": batch.failed,
+                    "skipped": batch.skipped,
+                    **batch.metrics,
+                })
+            except Exception:
+                pass
+        
+        self.entity_index.invalidate()
+        return batch
+    
+    def _process_paths_sequential(self, paths: list[Path]) -> BatchResult:
         """Process a list of paths and return aggregated results."""
         batch = BatchResult()
         batch.total = len(paths)
