@@ -11,6 +11,7 @@ This replaces the duplicated index-building code in ingest_emails.py and ingest_
 """
 
 import sys
+from difflib import get_close_matches
 from pathlib import Path
 from typing import Optional, Tuple
 from functools import lru_cache
@@ -31,6 +32,7 @@ class EntityIndex:
         self._company_index: Optional[dict[str, Path]] = None
         self._project_index: Optional[dict[str, Path]] = None
         self._aliases: Optional[dict[str, str]] = None
+        self._search_cache: dict[tuple[str, str], list[Path]] = {}
     
     def find_person(self, name: str, email: Optional[str] = None) -> Optional[Path]:
         """Find existing person folder.
@@ -70,8 +72,16 @@ class EntityIndex:
             for folder_name, folder_path in self._name_index.items():
                 folder_parts = folder_name.split()
                 if len(folder_parts) >= 2:
+                    first_initial = name_parts[0].strip(".")
                     if name_parts[0] == folder_parts[0] and name_parts[-1] == folder_parts[-1]:
                         return folder_path
+                    if first_initial and first_initial[0] == folder_parts[0][0] and name_parts[-1] == folder_parts[-1]:
+                        return folder_path
+        
+        # Fuzzy match fallback
+        fuzzy = self.search_person(name, limit=1, cutoff=0.82)
+        if fuzzy:
+            return fuzzy[0]
         
         return None
     
@@ -97,6 +107,11 @@ class EntityIndex:
             if company_lower in folder_name or folder_name in company_lower:
                 return folder_path
         
+        # Fuzzy match fallback
+        fuzzy = self.search_company(company, limit=1, cutoff=0.78)
+        if fuzzy:
+            return fuzzy[0]
+        
         return None
     
     def find_project(self, project: str) -> Optional[Path]:
@@ -121,7 +136,84 @@ class EntityIndex:
             if project_lower in folder_name or folder_name in project_lower:
                 return folder_path
         
+        # Fuzzy match fallback
+        fuzzy = self.search_project(project, limit=1)
+        if fuzzy:
+            return fuzzy[0]
+        
         return None
+    
+    def search_person(self, name: str, limit: int = 3, cutoff: float = 0.72) -> list[Path]:
+        """Fuzzy search for a person by name."""
+        self._ensure_indices()
+        normalized = self.normalize_name(name)
+        cache_key = ("person", normalized.lower())
+        if cache_key in self._search_cache:
+            return self._search_cache[cache_key]
+        
+        if normalized.lower() in self._name_index:
+            match = [self._name_index[normalized.lower()]]
+            self._search_cache[cache_key] = match
+            return match
+        
+        matches = self._fuzzy_match(normalized, list(self._name_index.keys()), limit, cutoff)
+        paths = [self._name_index[m] for m in matches]
+        self._search_cache[cache_key] = paths
+        return paths
+    
+    def search_company(self, company: str, limit: int = 3, cutoff: float = 0.7) -> list[Path]:
+        """Fuzzy search for a company by name."""
+        self._ensure_indices()
+        cache_key = ("company", company.lower().strip())
+        if cache_key in self._search_cache:
+            return self._search_cache[cache_key]
+        
+        matches = self._fuzzy_match(company, list(self._company_index.keys()), limit, cutoff)
+        paths = [self._company_index[m] for m in matches]
+        self._search_cache[cache_key] = paths
+        return paths
+    
+    def search_project(self, project: str, limit: int = 3, cutoff: float = 0.65) -> list[Path]:
+        """Fuzzy search for a project by name."""
+        self._ensure_indices()
+        cache_key = ("project", project.lower().strip())
+        if cache_key in self._search_cache:
+            return self._search_cache[cache_key]
+        
+        matches = self._fuzzy_match(project, list(self._project_index.keys()), limit, cutoff)
+        paths = [self._project_index[m] for m in matches]
+        self._search_cache[cache_key] = paths
+        return paths
+    
+    def find_similar_people(self, name: str, limit: int = 2, cutoff: float = 0.82) -> list[str]:
+        """Return similar people names for duplicate detection."""
+        self._ensure_indices()
+        normalized = self.normalize_name(name).lower()
+        matches = [
+            m for m in self._fuzzy_match(normalized, list(self._name_index.keys()), limit + 1, cutoff)
+            if m != normalized
+        ]
+        return [self._name_index[m].name for m in matches[:limit]]
+    
+    def find_similar_companies(self, name: str, limit: int = 2, cutoff: float = 0.8) -> list[str]:
+        """Return similar company names for duplicate detection."""
+        self._ensure_indices()
+        name_lower = name.lower().strip()
+        matches = [
+            m for m in self._fuzzy_match(name_lower, list(self._company_index.keys()), limit + 1, cutoff)
+            if m != name_lower
+        ]
+        return [self._company_index[m].name for m in matches[:limit]]
+    
+    def find_similar_projects(self, name: str, limit: int = 2, cutoff: float = 0.8) -> list[str]:
+        """Return similar project names for duplicate detection."""
+        self._ensure_indices()
+        name_lower = name.lower().strip()
+        matches = [
+            m for m in self._fuzzy_match(name_lower, list(self._project_index.keys()), limit + 1, cutoff)
+            if m != name_lower
+        ]
+        return [self._project_index[m].name for m in matches[:limit]]
     
     def normalize_name(self, name: str) -> str:
         """Normalize a name using aliases.
@@ -158,10 +250,19 @@ class EntityIndex:
         self._name_index = None
         self._company_index = None
         self._project_index = None
+        self._search_cache = {}
     
     # =========================================================================
     # PRIVATE METHODS
     # =========================================================================
+    def _fuzzy_match(self, query: str, choices: list[str], limit: int, cutoff: float) -> list[str]:
+        """Return close matches using difflib for lightweight fuzzy search."""
+        if not query or not choices:
+            return []
+        normalized = " ".join(query.lower().replace(".", " ").split())
+        choice_map = {" ".join(c.split()): c for c in choices}
+        matches = get_close_matches(normalized, list(choice_map.keys()), n=limit, cutoff=cutoff)
+        return [choice_map[m] for m in matches]
     
     def _ensure_indices(self):
         """Build indices if not already cached."""
@@ -254,6 +355,7 @@ class EntityIndex:
             
             # Flatten nested structure
             for canonical, variants in data.items():
+                self._aliases[canonical.lower()] = canonical
                 if isinstance(variants, list):
                     for variant in variants:
                         self._aliases[variant.lower()] = canonical

@@ -334,17 +334,17 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Strengthen entity discovery (search + aliases) for context loading and dedupe.
 
-**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:30)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Medium
 
 **Effort:** 3 hours
 
 **Tasks**
-- [ ] Extend EntityIndex with fuzzy search + alias resolution (people/company/project) and caching
-- [ ] Add pre-extraction context enrichment: search vault for relevant READMEs/notes (VAST + Personal) and feed summaries into ContextBundle
-- [ ] Add duplicate detection on apply with merge guidance in changeplans
-- [ ] Document search/alias rules in UNIFIED-PIPELINE.md and ENTITY-DISCOVERY.md
+- [x] Extend EntityIndex with fuzzy search + alias resolution (people/company/project) and caching
+- [x] Add pre-extraction context enrichment: search vault for relevant READMEs/notes (VAST + Personal) and feed summaries into ContextBundle
+- [x] Add duplicate detection on apply with merge guidance in changeplans
+- [x] Document search/alias rules in UNIFIED-PIPELINE.md and ENTITY-DISCOVERY.md
 
 **Success Criteria**
 - Extraction loads relevant READMEs even with aliases/variants (verified on fixture)

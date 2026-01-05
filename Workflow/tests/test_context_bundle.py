@@ -1,4 +1,5 @@
 from pipeline.context import ContextBundle
+from pipeline.envelope import ContentEnvelope, ContentType
 
 
 def test_cacheable_prefix_includes_persona_glossary_aliases(monkeypatch):
@@ -56,3 +57,27 @@ def test_extraction_context_orders_prefix_before_suffix():
     assert context.startswith(prefix)
     if suffix:
         assert context.endswith(suffix)
+
+
+def test_context_load_includes_fuzzy_matched_readmes(tmp_path):
+    readme = tmp_path / "VAST" / "People" / "Jason Vallery" / "README.md"
+    readme.parent.mkdir(parents=True, exist_ok=True)
+    readme.write_text("# Jason Vallery\n\n## Key Facts\n- Works on Azure\n")
+
+    aliases_dir = tmp_path / "Workflow" / "entities"
+    aliases_dir.mkdir(parents=True, exist_ok=True)
+    (aliases_dir / "aliases.yaml").write_text("Jason Vallery:\n  - JV\n  - Jason V\n")
+
+    env = ContentEnvelope(
+        source_path=tmp_path / "Inbox" / "Email" / "test.md",
+        content_type=ContentType.EMAIL,
+        raw_content="Met with JV about Azure storage.",
+        date="2026-01-05",
+        title="Test",
+        participants=["J. Vallery"],
+    )
+
+    bundle = ContextBundle.load(tmp_path, env)
+
+    assert any("Jason Vallery" in key for key in bundle.relevant_readmes.keys())
+    assert "Works on Azure" in "\n".join(bundle.relevant_readmes.values())

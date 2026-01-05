@@ -30,6 +30,7 @@ from pydantic import BaseModel, Field, ConfigDict
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from .envelope import ContentEnvelope
+from .entities import EntityIndex
 
 # Optional cached prompt helpers (keeps persona/glossary in cache-friendly format)
 try:  # pragma: no cover - helper is optional in runtime
@@ -59,7 +60,7 @@ class ContextBundle(BaseModel):
     relevant_readmes: dict[str, str] = Field(default_factory=dict)
     
     @classmethod
-    def load(cls, vault_root: Path, envelope: Optional[ContentEnvelope] = None) -> "ContextBundle":
+    def load(cls, vault_root: Path, envelope: Optional[ContentEnvelope] = None, entity_index: Optional[EntityIndex] = None) -> "ContextBundle":
         """Load context for extraction.
         
         Args:
@@ -70,6 +71,7 @@ class ContextBundle(BaseModel):
             ContextBundle with all context loaded
         """
         bundle = cls()
+        index = entity_index or EntityIndex(vault_root)
         
         # Load static context
         bundle.persona = _load_persona(vault_root)
@@ -81,8 +83,34 @@ class ContextBundle(BaseModel):
         
         # Load dynamic context if envelope provided
         if envelope:
-            mentioned = _quick_entity_scan(envelope.raw_content, bundle)
-            bundle.relevant_readmes = _load_entity_readmes(mentioned, vault_root)
+            mentioned = set(_quick_entity_scan(envelope.raw_content, bundle))
+            mentioned.update(envelope.participants or [])
+            mentioned.update(_extract_candidate_names(envelope.raw_content))
+            
+            normalized_candidates = {index.normalize_name(name) for name in mentioned if name}
+            enriched: set[str] = set()
+            for name in normalized_candidates:
+                # Try exact matches first
+                folder = index.find_person(name) or index.find_company(name) or index.find_project(name)
+                if folder:
+                    enriched.add(folder.name)
+                    continue
+                
+                # Fuzzy matches by entity type
+                fuzzy_person = index.search_person(name, limit=1)
+                if fuzzy_person:
+                    enriched.add(fuzzy_person[0].name)
+                    continue
+                fuzzy_company = index.search_company(name, limit=1)
+                if fuzzy_company:
+                    enriched.add(fuzzy_company[0].name)
+                    continue
+                fuzzy_project = index.search_project(name, limit=1)
+                if fuzzy_project:
+                    enriched.add(fuzzy_project[0].name)
+            
+            enriched.update(normalized_candidates)
+            bundle.relevant_readmes = _load_entity_readmes(list(enriched)[:12], vault_root, index)
         
         return bundle
     
@@ -390,6 +418,7 @@ def _load_aliases_cached(aliases_path: str) -> dict[str, str]:
         # Flatten nested structure
         aliases = {}
         for canonical, variants in data.items():
+            aliases[canonical.lower()] = canonical
             if isinstance(variants, list):
                 for variant in variants:
                     aliases[variant.lower()] = canonical
@@ -407,6 +436,23 @@ def _load_aliases(vault_root: Path) -> dict[str, str]:
     return _load_aliases_cached(str(aliases_path))
 
 
+def _extract_candidate_names(content: str) -> list[str]:
+    """Extract likely proper names from free text."""
+    import re
+    if not content:
+        return []
+    
+    candidates = re.findall(r"\b[A-Z][a-zA-Z\.]+ [A-Z][a-zA-Z\.]+\b", content)
+    # Preserve order but dedupe
+    seen = set()
+    ordered = []
+    for c in candidates:
+        if c not in seen:
+            seen.add(c)
+            ordered.append(c)
+    return ordered[:10]
+
+
 def _quick_entity_scan(content: str, context: "ContextBundle") -> list[str]:
     """Quick scan for entity mentions in content.
     
@@ -419,14 +465,16 @@ def _quick_entity_scan(content: str, context: "ContextBundle") -> list[str]:
     # Check known people
     people_names = context._extract_names_from_manifest(context.people_manifest)
     for name in people_names:
-        if name.lower() in content_lower:
-            mentioned.append(name)
+        canonical = context.aliases.get(name.lower(), name)
+        if name.lower() in content_lower or canonical.lower() in content_lower:
+            mentioned.append(canonical)
     
     # Check known companies
     company_names = context._extract_names_from_manifest(context.company_manifest)
     for name in company_names:
-        if name.lower() in content_lower:
-            mentioned.append(name)
+        canonical = context.aliases.get(name.lower(), name)
+        if name.lower() in content_lower or canonical.lower() in content_lower:
+            mentioned.append(canonical)
     
     # Check projects
     for project in context.project_list:
@@ -436,22 +484,43 @@ def _quick_entity_scan(content: str, context: "ContextBundle") -> list[str]:
     return mentioned[:20]  # Limit for token efficiency
 
 
-def _load_entity_readmes(entities: list[str], vault_root: Path) -> dict[str, str]:
+def _load_entity_readmes(entities: list[str], vault_root: Path, entity_index: Optional[EntityIndex] = None) -> dict[str, str]:
     """Load README summaries for mentioned entities."""
     readmes = {}
     
     for entity in entities:
-        readme = _find_entity_readme(entity, vault_root)
+        readme = _find_entity_readme(entity, vault_root, entity_index)
         if readme:
             summary = _summarize_readme(readme)
             if summary:
-                readmes[entity] = summary
+                readmes[readme.parent.name] = summary
     
     return readmes
 
 
-def _find_entity_readme(entity: str, vault_root: Path) -> Optional[Path]:
+def _find_entity_readme(entity: str, vault_root: Path, entity_index: Optional[EntityIndex] = None) -> Optional[Path]:
     """Find README for an entity by name."""
+    if entity_index:
+        folder = (
+            entity_index.find_person(entity)
+            or entity_index.find_company(entity)
+            or entity_index.find_project(entity)
+        )
+        if not folder:
+            for search in (
+                entity_index.search_person,
+                entity_index.search_company,
+                entity_index.search_project,
+            ):
+                hits = search(entity, limit=1)
+                if hits:
+                    folder = hits[0]
+                    break
+        if folder:
+            readme_path = folder / "README.md"
+            if readme_path.exists():
+                return readme_path
+    
     # Try People
     people_path = vault_root / "VAST" / "People" / entity / "README.md"
     if people_path.exists():

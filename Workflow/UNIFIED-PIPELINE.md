@@ -257,6 +257,11 @@ class ContextBundle:
         return bundle
 ```
 
+**Entity discovery for context**
+- EntityIndex normalizes names via `entities/aliases.yaml` and lightweight fuzzy search (initial + last name, difflib) across VAST/People, Personal/People, Customers/Partners, and Projects.
+- Candidates come from manifest hits, participants, and capitalized names in the source content; up to 12 matching READMEs are summarized into `relevant_readmes`.
+- Matching order: exact/email → alias → fuzzy (cache of past searches per query).
+
 ### Prompt Caching & Instrumentation
 
 - Persona + entity glossary + aliases are loaded first and placed at the top of the system prompt to trigger OpenAI prompt caching (static prefix ≥1024 tokens).
@@ -374,6 +379,8 @@ def generate_patches(extraction: UnifiedExtraction, context: ContextBundle) -> l
     
     return patches
 ```
+
+- PatchGenerator emits merge warnings when a person/company/project looks similar to an existing entity (alias or fuzzy match) to prevent duplicates.
 
 ---
 

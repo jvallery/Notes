@@ -167,6 +167,7 @@ class PatchGenerator:
             if normalized != extraction.primary_entity.name:
                 plan.warnings.append(f"Resolved alias: '{extraction.primary_entity.name}' → '{normalized}'")
             processed_entities[normalized.lower()] = extraction.primary_entity.name
+            self._warn_duplicate(extraction.primary_entity.name, extraction.primary_entity.entity_type, plan)
             
             patches = self._generate_primary_patches(extraction)
             for patch in patches:
@@ -181,12 +182,15 @@ class PatchGenerator:
             
             # Check for potential duplicates
             if norm_lower in processed_entities and processed_entities[norm_lower] != entity.name:
-                plan.warnings.append(f"Potential duplicate: '{entity.name}' may be same as '{processed_entities[norm_lower]}'")
+                plan.warnings.append(
+                    f"Potential duplicate: '{entity.name}' may be same as '{processed_entities[norm_lower]}' (consider merge)"
+                )
                 continue  # Skip to avoid double-patching
             
             if normalized != entity.name:
                 plan.warnings.append(f"Resolved alias: '{entity.name}' → '{normalized}'")
             processed_entities[norm_lower] = entity.name
+            self._warn_duplicate(entity.name, entity.entity_type, plan)
             
             patches = self._generate_fact_patches(entity, extraction)
             for patch in patches:
@@ -388,3 +392,18 @@ class PatchGenerator:
         elif entity.entity_type == "project":
             return self.entity_index.find_project(entity.name)
         return None
+
+    def _warn_duplicate(self, name: str, entity_type: str, plan: ChangePlan):
+        """Warn when a similar entity already exists (merge guidance)."""
+        similar: list[str] = []
+        if entity_type == "person":
+            similar = self.entity_index.find_similar_people(name)
+        elif entity_type == "company":
+            similar = self.entity_index.find_similar_companies(name)
+        elif entity_type == "project":
+            similar = self.entity_index.find_similar_projects(name)
+        
+        if similar:
+            plan.warnings.append(
+                f"Potential duplicate for '{name}': similar to {', '.join(similar[:2])} (consider merge)"
+            )

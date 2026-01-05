@@ -29,6 +29,16 @@ def _setup_aliases(vault_root: Path):
     (aliases_dir / "aliases.yaml").write_text(yaml.dump(aliases))
 
 
+def test_entity_index_fuzzy_person_lookup(tmp_path):
+    _setup_entities(tmp_path)
+    index = EntityIndex(tmp_path)
+
+    match = index.find_person("Alic Example")
+
+    assert match is not None
+    assert match.name.endswith("Alice Example")
+
+
 def _extraction(source_file: Path) -> UnifiedExtraction:
     primary = EntityRef(entity_type="person", name="Alice Example", confidence=0.9)
     fact_primary = Fact(text="Alice fact", about_entity=primary, fact_type="background")
@@ -222,3 +232,4 @@ def test_patch_generator_detects_duplicate_entities(tmp_path):
     
     # Should have a warning about potential duplicate
     assert any("duplicate" in w.lower() for w in plan.warnings)
+    assert any("merge" in w.lower() for w in plan.warnings)
