@@ -3,14 +3,16 @@
 Unified Ingest CLI - Process all content types through unified pipeline.
 
 Usage:
-    python ingest.py                      # Process all pending content
-    python ingest.py --type email         # Process only emails
-    python ingest.py --type transcript    # Process only transcripts
-    python ingest.py --file path/to/file  # Process single file
-    python ingest.py --dry-run            # Preview without changes
-    python ingest.py --verbose            # Show extraction details
-    python ingest.py --enrich             # Trigger enrichment for new entities
-    python ingest.py --draft-replies      # Generate draft email replies
+    python ingest.py --all                        # Process all pending Inbox content
+    python ingest.py --type email                 # Process only emails
+    python ingest.py --type transcript            # Process only transcripts
+    python ingest.py --file path/to/file          # Process single file
+    python ingest.py --source --type email --force  # Re-process archived sources
+    python ingest.py --dry-run                    # Preview without changes
+    python ingest.py --verbose                    # Show extraction details
+    python ingest.py --enrich                     # Trigger enrichment for new entities
+    python ingest.py --draft-replies              # Generate draft email replies
+    python ingest.py --trace-dir /tmp/traces      # Save extraction/changeplan artifacts
 """
 
 import sys
@@ -34,7 +36,7 @@ console = Console()
 
 @click.command()
 @click.option("--type", "content_type", type=click.Choice(["email", "transcript", "document", "voice", "all"]), default="all", help="Content type to process")
-@click.option("--file", "file_path", type=click.Path(exists=True), help="Process single file")
+@click.option("--file", "file_path", type=click.Path(), help="Process single file")
 @click.option("--dry-run", is_flag=True, help="Preview without making changes")
 @click.option("--verbose", "-v", is_flag=True, help="Show extraction details")
 @click.option("--enrich", is_flag=True, help="Trigger enrichment for new entities")
@@ -42,14 +44,21 @@ console = Console()
 @click.option("--source", is_flag=True, help="Re-process from Sources/ directory")
 @click.option("--force", is_flag=True, help="Skip duplicate detection, reprocess even if already extracted")
 @click.option("--trace-dir", type=click.Path(), help="Persist extraction/changeplan artifacts to this directory")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, trace_dir: str):
+@click.option("--vault-root", type=click.Path(), help="Override vault root (defaults to repo root)")
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, trace_dir: str, vault_root: str):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
     extraction and patching pipeline.
     """
     
-    vault_root = Path(__file__).parent.parent.parent
+    vault_root_path = Path(vault_root).expanduser().resolve() if vault_root else Path(__file__).parent.parent.parent
+    type_map = {
+        "email": ContentType.EMAIL,
+        "transcript": ContentType.TRANSCRIPT,
+        "document": ContentType.DOCUMENT,
+        "voice": ContentType.VOICE,
+    }
     
     console.print(Panel.fit(
         "[bold blue]Unified Ingest Pipeline[/bold blue]",
@@ -58,7 +67,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
     
     # Initialize pipeline
     pipeline = UnifiedPipeline(
-        vault_root=vault_root,
+        vault_root=vault_root_path,
         dry_run=dry_run,
         verbose=verbose,
         generate_outputs=draft_replies,
@@ -69,32 +78,36 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
     # Process based on options
     if file_path:
         # Single file
-        result = pipeline.process_file(Path(file_path))
+        target_path = Path(file_path)
+        if not target_path.is_absolute():
+            target_path = vault_root_path / target_path
+        if not target_path.exists():
+            raise click.ClickException(f"File not found: {target_path}")
+        result = pipeline.process_file(target_path)
         _display_result(result, verbose)
         
+    elif source:
+        # Re-process already archived sources
+        selected = type_map.get(content_type) if content_type != "all" else None
+        batch = pipeline.process_sources(selected)
+        _display_batch(batch, verbose)
     elif content_type == "all":
-        # All content types
+        # All content types from Inbox
         batch = pipeline.process_all()
         _display_batch(batch, verbose)
-        
     else:
-        # Specific content type
-        type_map = {
-            "email": ContentType.EMAIL,
-            "transcript": ContentType.TRANSCRIPT,
-            "document": ContentType.DOCUMENT,
-            "voice": ContentType.VOICE,
-        }
-        batch = pipeline.process_type(type_map[content_type])
+        # Specific content type from Inbox
+        selected = type_map[content_type]
+        batch = pipeline.process_type(selected)
         _display_batch(batch, verbose)
     
     # Run enrichment if requested
     if enrich and not dry_run:
-        _run_enrichment(vault_root, verbose)
+        _run_enrichment(vault_root_path, verbose)
     
     # Git commit if not dry run
     if not dry_run:
-        _git_commit(vault_root)
+        _git_commit(vault_root_path)
 
 
 def _display_result(result, verbose: bool):

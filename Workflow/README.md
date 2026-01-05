@@ -27,13 +27,14 @@ This documentation is for both **human operators** and **AI agents** working wit
 cd ~/Documents/Notes/Workflow
 source .venv/bin/activate
 
-# Process all pending inbox items (recommended)
-python scripts/process_inbox.py --verbose
+# Process all pending Inbox items (emails + transcripts)
+python scripts/ingest.py --all --draft-replies --enrich
 
-# Or run phases individually
-python scripts/extract.py --all --dry-run    # Preview what will be extracted
-python scripts/plan.py --all                  # Generate change plans
-python scripts/apply.py --all                 # Apply changes (transactional)
+# Preview without writing changes
+python scripts/ingest.py --all --dry-run -v
+
+# Re-process archived sources (e.g., after schema changes)
+python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
 ```
 
 ---
@@ -41,6 +42,9 @@ python scripts/apply.py --all                 # Apply changes (transactional)
 ## Pipeline Overview
 
 The system follows a **ChangePlan Pattern** that strictly separates AI reasoning from file execution:
+
+> **Current entry point:** `python scripts/ingest.py --all` wraps normalize → context → extract → plan → apply → outputs.  
+> Legacy phase scripts (extract/plan/apply/process_inbox) are deprecated and forward to `ingest.py`; the details below are kept for reference.
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────┐
@@ -141,79 +145,34 @@ Patterns checked (in order):
 
 ### Core Pipeline Scripts
 
-#### `scripts/process_inbox.py` — Full Pipeline Orchestrator
+#### `scripts/ingest.py` — Unified Pipeline Entry Point
+
+- Normalizes Inbox content → loads context → extracts with cached prompts → generates ChangePlans → applies → emits drafts/tasks.
+- Defaults to processing Inbox; use `--source` to re-run archived content.
 
 ```bash
-# Process all pending items
-python scripts/process_inbox.py
+# Standard run (emails + transcripts, with drafts + enrichment)
+python scripts/ingest.py --all --draft-replies --enrich
 
-# Options
---scope transcripts|email|all   # Filter by content type
---dry-run                       # Preview without changes
---apply-only                    # Skip extract/plan, apply existing changeplans
---allow-dirty                   # Run even if git tree has changes
---verbose                       # Show detailed progress
+# Dry run / verbose
+python scripts/ingest.py --all --dry-run -v
+
+# Scope by type
+python scripts/ingest.py --type email
+python scripts/ingest.py --type transcript
+
+# Re-process archived Sources content
+python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
+
+# Single file (vault-relative paths OK)
+python scripts/ingest.py --file Inbox/Email/example.md --dry-run
 ```
 
-#### `scripts/extract.py` — Phase 1: Content Extraction
+Key flags: `--type {email|transcript|document|voice|all}`, `--source`, `--force`, `--enrich`, `--draft-replies`, `--trace-dir`, `--vault-root`.
 
-```bash
-# Extract single file
-python scripts/extract.py --file "Inbox/Transcripts/meeting.md"
+#### Legacy wrappers
 
-# Extract all pending transcripts
-python scripts/extract.py --all --scope transcripts
-
-# Extract all pending emails
-python scripts/extract.py --all --scope email
-
-# Dry run
-python scripts/extract.py --all --dry-run
-```
-
-**Uses:**
-
-- `prompts/system-extractor.md.j2` (includes `base.md.j2`)
-- `profiles/*.yaml` for extraction focus
-- Outputs: `Inbox/_extraction/*.extraction.json`
-
-#### `scripts/plan.py` — Phase 2: Change Planning
-
-```bash
-# Plan all unplanned extractions
-python scripts/plan.py --all
-
-# Plan specific extraction
-python scripts/plan.py --file "Inbox/_extraction/meeting.extraction.json"
-
-# Dry run
-python scripts/plan.py --all --dry-run
-```
-
-**Uses:**
-
-- `prompts/system-planner.md.j2` (includes `base.md.j2`)
-- `templates/*.md.j2` referenced in plan
-- Outputs: `Inbox/_extraction/*.changeplan.json`
-
-#### `scripts/apply.py` — Phase 3: Transactional Apply
-
-```bash
-# Apply all pending changeplans
-python scripts/apply.py --all
-
-# Dry run (validate without writing)
-python scripts/apply.py --all --dry-run
-
-# Allow overwriting existing files
-python scripts/apply.py --all --allow-overwrite
-```
-
-**Uses:**
-
-- `templates/*.md.j2` for CREATE operations
-- `utils/patch_primitives.py` for PATCH operations
-- No AI calls - purely deterministic
+`process_inbox.py`, `process_emails.py`, `ingest_emails.py`, and `ingest_transcripts.py` now emit a deprecation notice and forward to `ingest.py`. Phase-specific scripts (extract/plan/apply) live in `Workflow/_archive/` for reference.
 
 ### Backfill Scripts
 
@@ -434,31 +393,25 @@ Workflow/
 ├── .env                    # API keys (gitignored)
 │
 ├── scripts/                # Automation scripts
-│   ├── extract.py          # Phase 1: AI extraction
-│   ├── plan.py             # Phase 2: AI planning
-│   ├── apply.py            # Phase 3: Deterministic apply
-│   ├── process_inbox.py    # Full pipeline orchestrator
-│   ├── classify.py         # Content classification
-│   ├── backfill.py         # Historical processing CLI
-│   ├── backfill/           # Backfill submodules
-│   │   ├── scanner.py      # Find existing notes
-│   │   ├── extractor.py    # Extract from notes
-│   │   ├── aggregator.py   # Build update plans
-│   │   ├── applier.py      # Apply updates
-│   │   └── entities.py     # Entity management
-│   ├── cleanup/            # Maintenance scripts
-│   │   ├── readme_normalizer.py
-│   │   ├── source_normalizer.py
-│   │   └── readme_auditor.py
-│   └── utils/              # Shared utilities
-│       ├── config.py       # Config loading
-│       ├── openai_client.py
-│       ├── patch_primitives.py
-│       ├── templates.py
-│       └── ...
+│   ├── ingest.py           # Unified pipeline CLI
+│   ├── process_inbox.py    # Deprecated wrapper → ingest.py
+│   ├── process_emails.py   # Deprecated wrapper → ingest.py
+│   ├── ingest_emails.py    # Deprecated wrapper → ingest.py
+│   ├── ingest_transcripts.py # Deprecated wrapper → ingest.py
+│   ├── manifest_sync.py    # Manifest scan/enrichment
+│   ├── dedupe_emails.py    # Inbox dedupe helper
+│   ├── audit_import.py     # Validate imported sources
+│   ├── cleanup_todo.py     # TODO maintenance
+│   └── utils/              # Shared utilities (ai_client, templates, config)
 │
-├── models/                 # Pydantic schemas
-│   ├── extraction.py       # ExtractionV1
+├── pipeline/               # Unified pipeline modules
+│   ├── adapters/           # Content adapters
+│   ├── context.py          # Persona/manifests/glossary loader
+│   ├── extract.py          # Unified extraction (LLM)
+│   ├── patch.py            # ChangePlan generator
+│   ├── apply.py            # Transactional apply
+│   ├── outputs.py          # Drafts, calendar, tasks
+│   └── pipeline.py         # Orchestrator
 │   └── changeplan.py       # ChangePlan, Operation
 │
 ├── prompts/                # AI prompts (Jinja2)
@@ -508,7 +461,7 @@ Agents have **full autonomy** within this vault. See [AGENTS.md](../AGENTS.md) f
 ```bash
 cd ~/Documents/Notes/Workflow
 source .venv/bin/activate
-python scripts/process_inbox.py --verbose
+python scripts/ingest.py --all --draft-replies --enrich
 ```
 
 #### Check Pending Items
@@ -527,14 +480,8 @@ ls -la ../Inbox/_extraction/
 #### Manual Single-File Processing
 
 ```bash
-# Extract one file
-python scripts/extract.py --file "../Inbox/Transcripts/2026-01-03 Meeting.md"
-
-# Generate plan for extraction
-python scripts/plan.py --extraction "../Inbox/_extraction/2026-01-03 Meeting.extraction.json"
-
-# Apply the plan
-python scripts/apply.py --changeplan "../Inbox/_extraction/2026-01-03 Meeting.changeplan.json"
+# Process one file (vault-relative or absolute)
+python scripts/ingest.py --file "../Inbox/Transcripts/2026-01-03 Meeting.md" --dry-run -v
 ```
 
 #### Create Missing READMEs

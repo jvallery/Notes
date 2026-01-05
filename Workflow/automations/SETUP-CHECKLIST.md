@@ -144,7 +144,7 @@ cp .env.example .env
 
 ```bash
 source .venv/bin/activate
-python scripts/process_inbox.py --dry-run
+python scripts/ingest.py --all --dry-run -v
 ```
 
 ---

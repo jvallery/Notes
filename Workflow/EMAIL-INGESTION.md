@@ -2,7 +2,7 @@
 
 > **Version**: 2.0  
 > **Last Updated**: 2026-01-04  
-> **Entry Point**: `Workflow/scripts/process_emails.py`
+> **Entry Point**: `Workflow/scripts/ingest.py --type email`
 
 ## Overview
 
@@ -15,6 +15,8 @@ The email ingestion pipeline processes emails from the Inbox through knowledge e
 5. **Archive sources** - Move processed emails to Sources/Email/ for reference
 
 ## 6-Step Pipeline
+
+`scripts/ingest.py --type email` runs all phases below; legacy per-phase CLI switches live only in `_archive/process_emails_legacy.py`.
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
@@ -36,29 +38,17 @@ The email ingestion pipeline processes emails from the Inbox through knowledge e
 # Activate environment
 cd ~/Documents/Notes/Workflow && source .venv/bin/activate
 
-# Run full pipeline
-python scripts/process_emails.py
+# Run full pipeline for pending Inbox emails
+python scripts/ingest.py --type email --draft-replies --enrich
 
-# Run knowledge capture only (phases 1-3)
-python scripts/process_emails.py --phase 1-3
+# Preview without writing changes
+python scripts/ingest.py --type email --dry-run -v
 
-# Run response generation only (phases 4-6)
-python scripts/process_emails.py --phase 4-6
+# Re-run archived sources (after prompt/schema changes)
+python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
 
-# Run single phase
-python scripts/process_emails.py --phase extract
-
-# Preview without changes
-python scripts/process_emails.py --dry-run
-
-# Process only first 5 emails
-python scripts/process_emails.py --limit 5
-
-# Skip archiving (keep in Inbox)
-python scripts/process_emails.py --skip-archive
-
-# Verbose output
-python scripts/process_emails.py -v
+# Single file (vault-relative)
+python scripts/ingest.py --file Inbox/Email/sample.md --dry-run
 ```
 
 ## Phase Details

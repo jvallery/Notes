@@ -200,9 +200,6 @@ class UnifiedPipeline:
         Returns:
             BatchResult with all processing results
         """
-        batch = BatchResult()
-        
-        # Collect all pending files
         inbox = self.vault_root / "Inbox"
         pending: list[Path] = []
         
@@ -211,24 +208,7 @@ class UnifiedPipeline:
             if subpath.exists():
                 pending.extend(subpath.glob("*.md"))
         
-        batch.total = len(pending)
-        
-        for path in pending:
-            result = self.process_file(path)
-            batch.results.append(result)
-            
-            if result.success:
-                if "Skipped" in str(result.errors):
-                    batch.skipped += 1
-                else:
-                    batch.success += 1
-            else:
-                batch.failed += 1
-        
-        # Invalidate entity index (new entities may have been created)
-        self.entity_index.invalidate()
-        
-        return batch
+        return self._process_paths(pending)
     
     def process_type(self, content_type: ContentType) -> BatchResult:
         """Process all pending content of a specific type.
@@ -239,8 +219,6 @@ class UnifiedPipeline:
         Returns:
             BatchResult with processing results
         """
-        batch = BatchResult()
-        
         # Map content type to inbox subdirectory
         type_dirs = {
             ContentType.EMAIL: "Email",
@@ -252,25 +230,32 @@ class UnifiedPipeline:
         subdir = type_dirs.get(content_type, "Attachments")
         inbox_path = self.vault_root / "Inbox" / subdir
         
-        if not inbox_path.exists():
-            return batch
-        
         pending = list(inbox_path.glob("*.md"))
-        batch.total = len(pending)
+        return self._process_paths(pending)
+    
+    def process_sources(self, content_type: Optional[ContentType] = None) -> BatchResult:
+        """Re-process archived sources from the Sources/ directory."""
+        sources_root = self.vault_root / "Sources"
+        type_dirs = {
+            ContentType.EMAIL: "Email",
+            ContentType.TRANSCRIPT: "Transcripts",
+            ContentType.VOICE: "Voice",
+            ContentType.DOCUMENT: "Documents",
+        }
         
-        for path in pending:
-            result = self.process_file(path)
-            batch.results.append(result)
-            
-            if result.success:
-                if "Skipped" in str(result.errors):
-                    batch.skipped += 1
-                else:
-                    batch.success += 1
-            else:
-                batch.failed += 1
+        pending: list[Path] = []
         
-        return batch
+        if content_type:
+            dir_name = type_dirs.get(content_type)
+            if dir_name:
+                pending.extend((sources_root / dir_name).rglob("*.md"))
+        else:
+            for dir_name in type_dirs.values():
+                path = sources_root / dir_name
+                if path.exists():
+                    pending.extend(path.rglob("*.md"))
+        
+        return self._process_paths(pending)
     
     def _is_duplicate(self, envelope: ContentEnvelope) -> bool:
         """Check if content has already been processed."""
@@ -285,6 +270,28 @@ class UnifiedPipeline:
             return True
         
         return False
+    
+    def _process_paths(self, paths: list[Path]) -> BatchResult:
+        """Process a list of paths and return aggregated results."""
+        batch = BatchResult()
+        batch.total = len(paths)
+        
+        for path in paths:
+            result = self.process_file(path)
+            batch.results.append(result)
+            
+            if result.success:
+                if any("Skipped" in str(err) for err in result.errors):
+                    batch.skipped += 1
+                else:
+                    batch.success += 1
+            else:
+                batch.failed += 1
+        
+        # Invalidate entity index (new entities may have been created)
+        self.entity_index.invalidate()
+        
+        return batch
     
     def _log_extraction(self, extraction):
         """Log extraction summary in verbose mode."""

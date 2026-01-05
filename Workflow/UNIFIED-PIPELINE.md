@@ -451,10 +451,13 @@ python scripts/ingest.py --type email
 python scripts/ingest.py --type transcript
 
 # Process single file
-python scripts/ingest.py path/to/file.md
+python scripts/ingest.py --file Inbox/Email/example.md
 
-# With outputs
+# With outputs + enrichment
 python scripts/ingest.py --all --draft-replies --enrich
+
+# Re-process archived sources (after prompt/schema change)
+python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
 ```
 
 ---
@@ -496,7 +499,7 @@ Workflow/
 
 1. **Keep existing scripts working** during transition
 2. **New `ingest.py`** calls into `pipeline/` module
-3. **Deprecate** `ingest_emails.py` and `ingest_transcripts.py` after validation
+3. **Deprecate** `ingest_emails.py` and `ingest_transcripts.py` (wrappers now forward to `ingest.py` with a notice)
 4. **Shared code** in `pipeline/` used by both old and new
 
 ---

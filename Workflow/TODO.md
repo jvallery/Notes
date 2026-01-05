@@ -286,7 +286,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Make `scripts/ingest.py` the single entry point that calls UnifiedPipeline; archive legacy process_* and ingest_* scripts.
 
-**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:08)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Note:** Reclaimed from stale @copilot-b620700 on 2026-01-05 (session unresponsive).
 
@@ -295,10 +295,10 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 **Effort:** 2 hours
 
 **Tasks**
-- [ ] Update `scripts/ingest.py` to wrap UnifiedPipeline with flags: type/all, dry-run, verbose, outputs, enrich
-- [ ] Convert legacy scripts to thin wrappers or move to `_archive/` with deprecation notice
-- [ ] Refresh README/RUNBOOK/UNIFIED-PIPELINE and automations/SETUP-CHECKLIST with the single-command workflow
-- [ ] Add smoke test over fixture Inbox content
+- [x] Update `scripts/ingest.py` to wrap UnifiedPipeline with flags: type/all, dry-run, verbose, outputs, enrich
+- [x] Convert legacy scripts to thin wrappers or move to `_archive/` with deprecation notice
+- [x] Refresh README/RUNBOOK/UNIFIED-PIPELINE and automations/SETUP-CHECKLIST with the single-command workflow
+- [x] Add smoke test over fixture Inbox content
 
 **Success Criteria**
 - `python scripts/ingest.py --all` processes email + transcript fixtures end-to-end

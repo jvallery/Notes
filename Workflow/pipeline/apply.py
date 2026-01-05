@@ -222,6 +222,16 @@ class TransactionalApply:
         """Archive source file to Sources directory."""
         from .envelope import ContentType
         
+        try:
+            relative = source_path.relative_to(self.vault_root)
+        except ValueError:
+            relative = None
+
+        # Already archived; no-op but record for reporting
+        if relative and "Sources" in relative.parts:
+            result.files_archived.append(str(relative))
+            return
+
         # Determine archive location
         year = datetime.now().strftime("%Y")
         

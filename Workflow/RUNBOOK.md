@@ -35,7 +35,7 @@ source .venv/bin/activate
 
 ```bash
 # See what would be processed without making changes
-python scripts/process_inbox.py --dry-run --verbose
+python scripts/ingest.py --all --dry-run -v
 ```
 
 Review output for:
@@ -48,12 +48,14 @@ Review output for:
 
 ```bash
 # Standard run (transactional - all or nothing)
-python scripts/process_inbox.py --verbose
+python scripts/ingest.py --all --draft-replies --enrich
 
-# Or individual phases:
-python scripts/extract.py --all --verbose
-python scripts/plan.py --all --verbose
-python scripts/apply.py --all --verbose
+# Scope by content type
+python scripts/ingest.py --type email
+python scripts/ingest.py --type transcript
+
+# Re-process archived sources (after prompt/schema changes)
+python scripts/ingest.py --source --type email --force
 ```
 
 ### Post-Run Review
@@ -285,8 +287,8 @@ git log -p --all -S 'sk-' -- .env
 
 | Scenario          | Command                                                      |
 | ----------------- | ------------------------------------------------------------ |
-| Preview changes   | `python scripts/process_inbox.py --dry-run`                  |
-| Process all       | `python scripts/process_inbox.py --verbose`                  |
+| Preview changes   | `python scripts/ingest.py --all --dry-run -v`                |
+| Process all       | `python scripts/ingest.py --all --draft-replies --enrich`    |
 | Undo last commit  | `git reset --hard HEAD~1`                                    |
 | Find backups      | `ls .workflow_backups/`                                      |
 | Check failed      | `ls ../Inbox/_failed/`                                       |

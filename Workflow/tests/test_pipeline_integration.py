@@ -2,6 +2,7 @@ from datetime import datetime
 from pathlib import Path
 
 from pipeline.pipeline import UnifiedPipeline
+from pipeline.envelope import ContentType
 from pipeline.models import (
     UnifiedExtraction,
     EntityRef,
@@ -77,6 +78,55 @@ def _fake_extraction(source_path: Path) -> UnifiedExtraction:
     )
 
 
+def _fake_extraction_for_env(env) -> UnifiedExtraction:
+    """Generate deterministic extraction per content type."""
+    if env.content_type == ContentType.TRANSCRIPT:
+        primary_name = "Jai Menon"
+        title = f"Transcript - {env.source_path.stem}"
+        fact_text = "Jai shared latency targets for GPU interconnect"
+        task_text = "Follow up with Jai on latency targets"
+    else:
+        primary_name = "Jeff Denworth"
+        title = f"Email - {env.source_path.stem}"
+        fact_text = "Jeff needs Azure marketplace SKU update"
+        task_text = "Send Azure marketplace SKU update"
+    
+    primary = EntityRef(entity_type="person", name=primary_name, confidence=0.9)
+    fact = Fact(text=fact_text, about_entity=primary, fact_type="relationship")
+    mention = MentionedEntity(
+        entity_type="person",
+        name="Jason Vallery",
+        facts_about=["Coordinating follow-up with stakeholders"],
+        confidence=0.8,
+    )
+    task = TaskItem(
+        text=task_text,
+        owner="Myself",
+        due="2026-01-06",
+        priority="high",
+        related_person=primary_name,
+    )
+    
+    return UnifiedExtraction(
+        source_file=str(env.source_path),
+        content_type=env.content_type.value,
+        processed_at=datetime.now(),
+        note_type="people",
+        primary_entity=primary,
+        date=env.date,
+        title=title,
+        summary=fact_text,
+        participants=env.participants or [primary_name],
+        facts=[fact],
+        tasks=[task],
+        questions=[],
+        commitments=[],
+        mentioned_entities=[mention],
+        suggested_outputs=SuggestedOutputs(needs_reply=False),
+        confidence=0.9,
+    )
+
+
 def test_pipeline_processes_email_fixture_end_to_end(monkeypatch, tmp_path):
     # Arrange fixtures
     _write_templates(tmp_path)
@@ -125,6 +175,47 @@ def test_pipeline_processes_email_fixture_end_to_end(monkeypatch, tmp_path):
     # Source archived
     archive_dir = tmp_path / "Sources" / "Email"
     assert any(archive_dir.rglob(email_fixture.name))
+
+
+def test_pipeline_processes_all_inbox_types(monkeypatch, tmp_path):
+    _write_templates(tmp_path)
+    for name in ["Jeff Denworth", "Jason Vallery", "Jai Menon"]:
+        _write_readme(tmp_path, name)
+
+    email_fixture = Path(__file__).parent / "fixtures" / "email_basic.md"
+    transcript_fixture = Path(__file__).parent / "fixtures" / "transcript_basic.md"
+
+    inbox_email = tmp_path / "Inbox" / "Email" / email_fixture.name
+    inbox_email.parent.mkdir(parents=True, exist_ok=True)
+    inbox_email.write_text(email_fixture.read_text())
+
+    inbox_transcript = tmp_path / "Inbox" / "Transcripts" / transcript_fixture.name
+    inbox_transcript.parent.mkdir(parents=True, exist_ok=True)
+    inbox_transcript.write_text(transcript_fixture.read_text())
+
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True)
+    monkeypatch.setattr(
+        pipeline.extractor,
+        "extract",
+        lambda env, ctx: _fake_extraction_for_env(env),
+    )
+
+    batch = pipeline.process_all()
+
+    assert batch.total == 2
+    assert batch.success == 2
+
+    # Both sources archived into Sources/{type}
+    archive_email = tmp_path / "Sources" / "Email"
+    archive_transcripts = tmp_path / "Sources" / "Transcripts"
+    assert any(archive_email.rglob(email_fixture.name))
+    assert any(archive_transcripts.rglob(transcript_fixture.name))
+
+    # People READMEs patched
+    jeff_readme = tmp_path / "VAST" / "People" / "Jeff Denworth" / "README.md"
+    jai_readme = tmp_path / "VAST" / "People" / "Jai Menon" / "README.md"
+    assert "Azure marketplace SKU update" in jeff_readme.read_text()
+    assert "latency targets for GPU interconnect" in jai_readme.read_text()
 
 
 def test_pipeline_apply_archives_source(monkeypatch, tmp_path):
