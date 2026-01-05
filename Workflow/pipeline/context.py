@@ -53,6 +53,7 @@ class ContextBundle(BaseModel):
     persona: str = ""
     people_manifest: str = ""
     company_manifest: str = ""
+    project_manifest: str = ""  # Projects manifest with acronyms/definitions
     project_list: list[str] = Field(default_factory=list)
     glossary: dict[str, str] = Field(default_factory=dict)
     aliases: dict[str, str] = Field(default_factory=dict)
@@ -80,6 +81,7 @@ class ContextBundle(BaseModel):
         
         people_manifest_path = Path(work_paths.get("people", vault_root / "VAST" / "People")) / "_MANIFEST.md"
         company_manifest_path = Path(work_paths.get("accounts", vault_root / "VAST" / "Customers and Partners")) / "_MANIFEST.md"
+        project_manifest_path = Path(work_paths.get("projects", vault_root / "VAST" / "Projects")) / "_MANIFEST.md"
         project_paths = [
             Path(work_paths.get("projects", vault_root / "VAST" / "Projects")),
             Path(personal_paths.get("projects", vault_root / "Personal" / "Projects")),
@@ -91,9 +93,18 @@ class ContextBundle(BaseModel):
         bundle.persona = _load_persona(vault_root, resources_paths)
         bundle.people_manifest = _load_manifest(people_manifest_path)
         bundle.company_manifest = _load_manifest(company_manifest_path)
+        bundle.project_manifest = _load_manifest(project_manifest_path)
         bundle.project_list = _list_projects(project_paths)
+        
+        # Load glossary from YAML file (legacy) and merge with project manifest acronyms
         bundle.glossary = _load_glossary(vault_root, resources_paths)
+        project_acronyms = _extract_acronyms_from_manifest(bundle.project_manifest)
+        bundle.glossary.update(project_acronyms)
+        
+        # Load aliases from YAML file and merge with manifest Aliases column
         bundle.aliases = _load_aliases(vault_root, resources_paths)
+        manifest_aliases = _extract_aliases_from_manifest(bundle.people_manifest)
+        bundle.aliases.update(manifest_aliases)
         
         # Load dynamic context if envelope provided
         if envelope:
@@ -466,6 +477,116 @@ def _load_aliases(vault_root: Path, resources_paths: dict) -> dict[str, str]:
     aliases_root = Path(resources_paths.get("entities", vault_root / "Workflow" / "entities"))
     aliases_path = aliases_root / "aliases.yaml"
     return _load_aliases_cached(str(aliases_path))
+
+
+def _extract_aliases_from_manifest(manifest: str) -> dict[str, str]:
+    """Extract aliases from People manifest Aliases column.
+    
+    The Aliases column contains semicolon-separated nicknames/variants.
+    Returns a dict mapping each alias (lowercase) to the canonical name.
+    
+    Example row:
+        | Jeff Denworth | ... | Jeff; JD; Jeff D | ... |
+    Returns:
+        {"jeff": "Jeff Denworth", "jd": "Jeff Denworth", "jeff d": "Jeff Denworth"}
+    """
+    import re
+    aliases = {}
+    
+    lines = manifest.split('\n')
+    header_idx = -1
+    alias_col_idx = -1
+    
+    # Find header and Aliases column index
+    for i, line in enumerate(lines):
+        if '| Name |' in line:
+            headers = [h.strip() for h in line.split('|')]
+            for j, h in enumerate(headers):
+                if h == 'Aliases':
+                    alias_col_idx = j
+            header_idx = i
+            break
+    
+    if header_idx < 0 or alias_col_idx < 0:
+        return aliases
+    
+    # Parse data rows
+    for line in lines[header_idx + 2:]:  # Skip header and separator
+        if not line.strip() or not line.startswith('|'):
+            continue
+        cols = [c.strip() for c in line.split('|')]
+        if len(cols) < alias_col_idx + 1:
+            continue
+        
+        name = cols[1].strip()  # First data column is Name
+        alias_str = cols[alias_col_idx].strip() if alias_col_idx < len(cols) else ""
+        
+        if name and alias_str and name not in ["Name", "---"]:
+            # Parse semicolon-separated aliases
+            for alias in alias_str.split(';'):
+                alias = alias.strip()
+                if alias and alias.lower() != name.lower():
+                    aliases[alias.lower()] = name
+    
+    return aliases
+
+
+def _extract_acronyms_from_manifest(manifest: str) -> dict[str, str]:
+    """Extract acronyms and definitions from Projects manifest.
+    
+    The Projects manifest has Acronym and Definition columns.
+    Returns a dict mapping each acronym to its full name/definition.
+    
+    Example row:
+        | Microsoft AI Infrastructure | ... | MAI | Microsoft's AI compute infra | ... |
+    Returns:
+        {"MAI": {"full_name": "Microsoft AI Infrastructure", "definition": "Microsoft's AI compute infra"}}
+    """
+    acronyms = {}
+    
+    lines = manifest.split('\n')
+    header_idx = -1
+    acronym_col_idx = -1
+    definition_col_idx = -1
+    
+    # Find header and column indices
+    for i, line in enumerate(lines):
+        if '| Name |' in line:
+            headers = [h.strip() for h in line.split('|')]
+            for j, h in enumerate(headers):
+                if h == 'Acronym':
+                    acronym_col_idx = j
+                if h == 'Definition':
+                    definition_col_idx = j
+            header_idx = i
+            break
+    
+    if header_idx < 0:
+        return acronyms
+    
+    # Parse data rows
+    for line in lines[header_idx + 2:]:
+        if not line.strip() or not line.startswith('|'):
+            continue
+        cols = [c.strip() for c in line.split('|')]
+        if len(cols) < 2:
+            continue
+        
+        name = cols[1].strip()
+        acronym = cols[acronym_col_idx].strip() if acronym_col_idx > 0 and acronym_col_idx < len(cols) else ""
+        definition = cols[definition_col_idx].strip() if definition_col_idx > 0 and definition_col_idx < len(cols) else ""
+        
+        if acronym and name not in ["Name", "---"]:
+            # Handle multiple acronyms separated by semicolons
+            for acr in acronym.split(';'):
+                acr = acr.strip()
+                if acr:
+                    acronyms[acr] = {
+                        "full_name": name,
+                        "definition": definition
+                    }
+    
+    return acronyms
 
 
 def _extract_candidate_names(content: str) -> list[str]:

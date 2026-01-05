@@ -212,7 +212,14 @@ Return a JSON object with this exact structure:
     "commitments": ["Commitment made by anyone"],
     
     "mentioned_entities": [
-        {{"entity_type": "person|company|project", "name": "...", "role": "discussed|action_owner|mentioned", "facts_about": ["fact 1", "fact 2"], "confidence": 0.8}}
+        {{"entity_type": "person|company|project", "name": "...", "role": "discussed|action_owner|mentioned", "facts_about": ["fact 1", "fact 2"], "aliases_discovered": ["nickname", "abbreviation"], "acronym_discovered": "ABC", "confidence": 0.8}}
+    ],
+    
+    "discovered_aliases": [
+        {{"canonical_name": "Full Name", "alias": "nickname or abbreviation", "entity_type": "person|company|project"}}
+    ],
+    "discovered_acronyms": [
+        {{"term": "Full Term Name", "acronym": "ABC", "definition": "Brief definition if mentioned"}}
     ],
     
     "email_requires_response": true|false,
@@ -286,6 +293,21 @@ Return a JSON object with this exact structure:
    - "Jeff Denworth mentioned Q1 2026 timeline for MAI unified cache GA"
    
    If you don't know a specific name, say so: "Unknown Microsoft contact mentioned..."
+
+7. **ALIAS AND ACRONYM DISCOVERY**:
+   When you encounter nicknames, abbreviations, or acronyms that are NOT in the existing 
+   NAME ALIASES or TERMS & ACRONYMS sections, capture them:
+   
+   - **Aliases**: If someone is called by a nickname (e.g., "Lior mentioned that LG would...")
+     where "LG" refers to Lior Genzel, add to `discovered_aliases`:
+     {{"canonical_name": "Lior Genzel", "alias": "LG", "entity_type": "person"}}
+   
+   - **Acronyms**: If a project or term is abbreviated (e.g., "the DASE architecture" where
+     DASE = Data Application Storage Engine), add to `discovered_acronyms`:
+     {{"term": "Data Application Storage Engine", "acronym": "DASE", "definition": "VAST's storage architecture"}}
+   
+   This helps us build our glossary over time. Only capture NEW aliases/acronyms not 
+   already in the glossary provided above.
 
 Return ONLY valid JSON, no markdown fences or explanation."""
 

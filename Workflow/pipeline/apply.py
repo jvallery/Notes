@@ -16,7 +16,7 @@ from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from .patch import ChangePlan, PatchOperation
+from .patch import ChangePlan, PatchOperation, ManifestPatch
 
 
 class ApplyResult:
@@ -73,11 +73,15 @@ class TransactionalApply:
             for patch in plan.patches:
                 self._apply_patch(patch, result)
             
-            # 3. Archive source
+            # 3. Apply manifest patches (aliases and acronyms)
+            for manifest_patch in plan.manifest_patches:
+                self._apply_manifest_patch(manifest_patch, result)
+            
+            # 4. Archive source
             if source_path and source_path.exists():
                 self._archive_source(source_path, result)
             
-            # 4. Cleanup backups on success
+            # 5. Cleanup backups on success
             if self.backup_dir.exists():
                 shutil.rmtree(self.backup_dir)
             
@@ -97,6 +101,9 @@ class TransactionalApply:
         
         for patch in plan.patches:
             result.files_modified.append(patch.target_path)
+        
+        for manifest_patch in plan.manifest_patches:
+            result.files_modified.append(manifest_patch.manifest_path)
         
         return result
     
@@ -218,6 +225,140 @@ class TransactionalApply:
         self._atomic_write(target, content)
         result.files_modified.append(patch.target_path)
     
+    def _apply_manifest_patch(self, patch: ManifestPatch, result: ApplyResult):
+        """Apply a manifest patch (add aliases or acronyms).
+        
+        For People manifest: Adds aliases to the Aliases column
+        For Projects manifest: Adds acronym/definition to appropriate columns
+        """
+        target = self.vault_root / patch.manifest_path
+        
+        if not target.exists():
+            return
+        
+        # Backup
+        self._backup(target)
+        
+        # Read current content
+        content = target.read_text()
+        lines = content.split("\n")
+        
+        if patch.manifest_type == "people" and patch.person_name:
+            # Find the row for this person and update Aliases column
+            lines = self._update_people_manifest_row(lines, patch.person_name, patch.aliases_to_add)
+        elif patch.manifest_type == "projects" and patch.project_name:
+            # Find or add project row with acronym/definition
+            lines = self._update_projects_manifest_row(lines, patch.project_name, patch.acronym, patch.definition)
+        
+        # Write
+        new_content = "\n".join(lines)
+        self._atomic_write(target, new_content)
+        result.files_modified.append(patch.manifest_path)
+    
+    def _update_people_manifest_row(self, lines: list[str], person_name: str, aliases_to_add: list[str]) -> list[str]:
+        """Update a row in the People manifest to add aliases."""
+        # Find header row to get column indices
+        header_idx = None
+        alias_col_idx = None
+        
+        for i, line in enumerate(lines):
+            if line.strip().startswith("|") and "Name" in line and "Role" in line:
+                header_idx = i
+                cols = [c.strip() for c in line.split("|")]
+                for j, col in enumerate(cols):
+                    if "Alias" in col:
+                        alias_col_idx = j
+                        break
+                break
+        
+        if header_idx is None or alias_col_idx is None:
+            return lines  # Can't find manifest structure
+        
+        # Find the person's row
+        person_name_lower = person_name.lower()
+        for i in range(header_idx + 2, len(lines)):  # Skip header and separator
+            line = lines[i]
+            if not line.strip().startswith("|"):
+                continue
+            
+            cols = line.split("|")
+            if len(cols) <= alias_col_idx:
+                continue
+            
+            # Check if this row matches the person
+            name_col = cols[1].strip() if len(cols) > 1 else ""
+            if name_col.lower() == person_name_lower or person_name_lower in name_col.lower():
+                # Found the person - update aliases
+                current_aliases = cols[alias_col_idx].strip() if alias_col_idx < len(cols) else ""
+                
+                # Parse existing aliases
+                existing = set(a.strip() for a in current_aliases.split(",") if a.strip())
+                
+                # Add new aliases
+                existing.update(aliases_to_add)
+                
+                # Update the column
+                new_aliases = ", ".join(sorted(existing))
+                cols[alias_col_idx] = f" {new_aliases} "
+                
+                lines[i] = "|".join(cols)
+                break
+        
+        return lines
+    
+    def _update_projects_manifest_row(self, lines: list[str], project_name: str, acronym: str, definition: str) -> list[str]:
+        """Update or add a row in the Projects manifest with acronym/definition."""
+        # Find header row to get column indices
+        header_idx = None
+        acronym_col_idx = None
+        definition_col_idx = None
+        
+        for i, line in enumerate(lines):
+            if line.strip().startswith("|") and "Name" in line:
+                header_idx = i
+                cols = [c.strip() for c in line.split("|")]
+                for j, col in enumerate(cols):
+                    if "Acronym" in col:
+                        acronym_col_idx = j
+                    if "Definition" in col:
+                        definition_col_idx = j
+                break
+        
+        if header_idx is None:
+            return lines  # Can't find manifest structure
+        
+        # Find the project's row
+        project_name_lower = project_name.lower()
+        for i in range(header_idx + 2, len(lines)):  # Skip header and separator
+            line = lines[i]
+            if not line.strip().startswith("|"):
+                continue
+            
+            cols = line.split("|")
+            if len(cols) < 2:
+                continue
+            
+            # Check if this row matches the project
+            name_col = cols[1].strip() if len(cols) > 1 else ""
+            if name_col.lower() == project_name_lower or project_name_lower in name_col.lower():
+                # Found the project - update acronym and definition
+                if acronym_col_idx and acronym_col_idx < len(cols):
+                    current = cols[acronym_col_idx].strip()
+                    if not current or current == "-":
+                        cols[acronym_col_idx] = f" {acronym} "
+                
+                if definition_col_idx and definition_col_idx < len(cols):
+                    current = cols[definition_col_idx].strip()
+                    if not current or current == "-":
+                        cols[definition_col_idx] = f" {definition} "
+                
+                lines[i] = "|".join(cols)
+                return lines
+        
+        # Project not found - could add a new row, but for now just skip
+        # (would need to know all column values to add properly)
+        return lines
+
     def _archive_source(self, source_path: Path, result: ApplyResult):
         """Archive source file to Sources directory."""
         from .envelope import ContentType

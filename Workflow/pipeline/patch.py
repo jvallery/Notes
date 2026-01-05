@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from .models import UnifiedExtraction, MentionedEntity, TaskItem
+from .models import UnifiedExtraction, MentionedEntity
 from .entities import EntityIndex
 
 
@@ -40,6 +40,22 @@ class PatchOperation(BaseModel):
     add_wikilinks: Optional[list[str]] = None
 
 
+class ManifestPatch(BaseModel):
+    """A patch to update a manifest file (People or Projects)."""
+    
+    manifest_type: str  # "people" or "projects"
+    manifest_path: str  # Relative path to manifest
+    
+    # For People manifest - add aliases to a person
+    person_name: Optional[str] = None
+    aliases_to_add: list[str] = Field(default_factory=list)
+    
+    # For Projects manifest - add acronyms/definitions
+    project_name: Optional[str] = None
+    acronym: Optional[str] = None
+    definition: Optional[str] = None
+
+
 class ChangePlan(BaseModel):
     """Complete change plan for a content extraction."""
     
@@ -54,6 +70,9 @@ class ChangePlan(BaseModel):
     
     # Entity patches
     patches: list[PatchOperation] = Field(default_factory=list)
+    
+    # Manifest patches (for discovered aliases/acronyms)
+    manifest_patches: list[ManifestPatch] = Field(default_factory=list)
     
     # Entities to create (for new entities)
     entities_to_create: list[dict] = Field(default_factory=list)
@@ -225,6 +244,10 @@ class PatchGenerator:
                         if patch.target_path not in patched_paths:
                             plan.patches.append(patch)
                             patched_paths.add(patch.target_path)
+        
+        # 6. Manifest patches (discovered aliases and acronyms)
+        manifest_patches = self._generate_manifest_patches(extraction)
+        plan.manifest_patches.extend(manifest_patches)
         
         return plan
     
@@ -424,6 +447,70 @@ class PatchGenerator:
                 f"Potential duplicate for '{name}': similar to {', '.join(similar[:2])} (consider merge)"
             )
 
+    def _generate_manifest_patches(self, extraction: UnifiedExtraction) -> list[ManifestPatch]:
+        """Generate manifest patches for discovered aliases and acronyms.
+        
+        Updates:
+        - People manifest: add aliases to existing people rows
+        - Projects manifest: add acronym/definition for new terms
+        """
+        patches = []
+        
+        # 1. Process discovered aliases (People manifest)
+        if extraction.discovered_aliases:
+            people_manifest_path = "VAST/People/_MANIFEST.md"
+            
+            # Group aliases by person
+            aliases_by_person: dict[str, list[str]] = {}
+            for alias_discovery in extraction.discovered_aliases:
+                # Resolve canonical name through entity index
+                canonical = self.entity_index.normalize_name(alias_discovery.canonical_name)
+                if canonical not in aliases_by_person:
+                    aliases_by_person[canonical] = []
+                aliases_by_person[canonical].append(alias_discovery.alias)
+            
+            # Create patches for each person
+            for person_name, aliases in aliases_by_person.items():
+                # Verify person exists
+                folder = self.entity_index.find_person(person_name)
+                if folder:
+                    patches.append(ManifestPatch(
+                        manifest_type="people",
+                        manifest_path=people_manifest_path,
+                        person_name=person_name,
+                        aliases_to_add=aliases,
+                    ))
+        
+        # 2. Process discovered acronyms (Projects manifest)
+        if extraction.discovered_acronyms:
+            projects_manifest_path = "VAST/Projects/_MANIFEST.md"
+            
+            for acronym_discovery in extraction.discovered_acronyms:
+                # Check if project exists
+                project_name = acronym_discovery.project_name
+                if project_name:
+                    folder = self.entity_index.find_project(project_name)
+                    if folder:
+                        patches.append(ManifestPatch(
+                            manifest_type="projects",
+                            manifest_path=projects_manifest_path,
+                            project_name=project_name,
+                            acronym=acronym_discovery.acronym,
+                            definition=acronym_discovery.expansion,
+                        ))
+                else:
+                    # General acronym (not tied to a specific project)
+                    # Add as a new row in projects manifest
+                    patches.append(ManifestPatch(
+                        manifest_type="projects",
+                        manifest_path=projects_manifest_path,
+                        project_name=acronym_discovery.acronym,  # Use acronym as project name
+                        acronym=acronym_discovery.acronym,
+                        definition=acronym_discovery.expansion,
+                    ))
+        
+        return patches
+
 
 class PatchCollector:
     """Collect and merge patches from multiple extractions.
@@ -445,16 +532,19 @@ class PatchCollector:
         self._meeting_notes: list[tuple[str, dict]] = []  # (path, context)
         self._source_files: list[str] = []
         self._warnings: list[str] = []
+        
+        # Manifest patches (aliases and acronyms)
+        self._manifest_patches: list[ManifestPatch] = []
     
     @property
     def has_patches(self) -> bool:
         """Check if any patches have been collected."""
-        return bool(self._patches_by_target)
+        return bool(self._patches_by_target) or bool(self._manifest_patches)
     
     @property
     def patch_count(self) -> int:
         """Get total number of patches across all targets."""
-        return sum(len(patches) for patches in self._patches_by_target.values())
+        return sum(len(patches) for patches in self._patches_by_target.values()) + len(self._manifest_patches)
     
     def collect(self, plan: ChangePlan):
         """Collect patches from a single ChangePlan."""
@@ -471,6 +561,9 @@ class PatchCollector:
                 self._patches_by_target[target] = []
             self._patches_by_target[target].append(patch)
         
+        # Collect manifest patches
+        self._manifest_patches.extend(plan.manifest_patches)
+        
         # Collect warnings
         self._warnings.extend(plan.warnings)
     
@@ -485,10 +578,14 @@ class PatchCollector:
                 merged = self._merge_patches_for_target(patches)
                 merged_patches.append(merged)
         
+        # Merge manifest patches
+        merged_manifest_patches = self._merge_manifest_patches()
+        
         # Create merged plan
         plan = ChangePlan(
             source_file=", ".join(self._source_files[:3]) + (f" (+{len(self._source_files) - 3} more)" if len(self._source_files) > 3 else ""),
             patches=merged_patches,
+            manifest_patches=merged_manifest_patches,
             warnings=self._warnings,
         )
         
@@ -503,6 +600,48 @@ class PatchCollector:
         """Get all collected meeting notes for creation."""
         return self._meeting_notes
     
+    def _merge_manifest_patches(self) -> list[ManifestPatch]:
+        """Merge manifest patches, deduplicating aliases/acronyms."""
+        if not self._manifest_patches:
+            return []
+        
+        # Group by manifest_path + person/project name
+        people_aliases: dict[str, set[str]] = {}  # person_name -> aliases
+        project_acronyms: dict[str, tuple[str, str]] = {}  # project_name -> (acronym, definition)
+        
+        for patch in self._manifest_patches:
+            if patch.manifest_type == "people" and patch.person_name:
+                key = patch.person_name
+                if key not in people_aliases:
+                    people_aliases[key] = set()
+                people_aliases[key].update(patch.aliases_to_add)
+            elif patch.manifest_type == "projects" and patch.project_name:
+                key = patch.project_name
+                if key not in project_acronyms and patch.acronym:
+                    project_acronyms[key] = (patch.acronym, patch.definition or "")
+        
+        # Create merged patches
+        merged = []
+        
+        for person_name, aliases in people_aliases.items():
+            merged.append(ManifestPatch(
+                manifest_type="people",
+                manifest_path="VAST/People/_MANIFEST.md",
+                person_name=person_name,
+                aliases_to_add=list(aliases),
+            ))
+        
+        for project_name, (acronym, definition) in project_acronyms.items():
+            merged.append(ManifestPatch(
+                manifest_type="projects",
+                manifest_path="VAST/Projects/_MANIFEST.md",
+                project_name=project_name,
+                acronym=acronym,
+                definition=definition,
+            ))
+        
+        return merged
+
     def _merge_patches_for_target(self, patches: list[PatchOperation]) -> PatchOperation:
         """Merge multiple patches targeting the same file."""
         first = patches[0]

@@ -79,6 +79,33 @@ class MentionedEntity(BaseModel):
     confidence: float = 0.8
 
 
+class DiscoveredAlias(BaseModel):
+    """An alias discovered for a person (to update People manifest).
+    
+    Example: "LG" is an alias for "Lior Genzel" 
+    """
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    alias: str  # The short name/nickname/initials (e.g., "LG")
+    canonical_name: str  # The full name (e.g., "Lior Genzel")
+    confidence: float = 0.8
+
+
+class DiscoveredAcronym(BaseModel):
+    """An acronym discovered for a project/term (to update Projects manifest).
+    
+    Example: "DASE" = "Data Application Storage Engine"
+    """
+    
+    model_config = ConfigDict(extra="ignore")
+    
+    acronym: str  # The acronym (e.g., "DASE")
+    expansion: str  # The expanded form (e.g., "Data Application Storage Engine")
+    project_name: Optional[str] = None  # If this is a project acronym, which project?
+    confidence: float = 0.8
+
+
 class CalendarSuggestion(BaseModel):
     """Suggested calendar invite from content."""
     
@@ -154,6 +181,10 @@ class UnifiedExtraction(BaseModel):
     
     # Entity mentions with facts (enables smart patching)
     mentioned_entities: list[MentionedEntity] = Field(default_factory=list)
+    
+    # Discovered aliases and acronyms (for manifest updates)
+    discovered_aliases: list[DiscoveredAlias] = Field(default_factory=list)
+    discovered_acronyms: list[DiscoveredAcronym] = Field(default_factory=list)
     
     # Legacy compatibility (will be removed)
     mentions: dict[str, list[str]] = Field(
