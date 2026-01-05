@@ -257,6 +257,12 @@ class ContextBundle:
         return bundle
 ```
 
+### Prompt Caching & Instrumentation
+
+- Persona + entity glossary + aliases are loaded first and placed at the top of the system prompt to trigger OpenAI prompt caching (static prefix ≥1024 tokens).
+- Dynamic context (relevant READMEs) is appended after the cacheable prefix.
+- All extractor calls use the instrumented OpenAI client (`utils.ai_client`) so cache hit/miss and token usage are logged alongside caller/context metadata.
+
 ---
 
 ## Unified Extraction Schema

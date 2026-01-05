@@ -22,8 +22,8 @@ rapidfuzz>=3.0.0           # Fuzzy string matching for entities (unpinned for Py
 jsonschema>=4.0.0          # JSON schema validation
 
 # === Testing ===
-pytest>=9.0.0              # Test framework
-pytest-mock>=3.15.0        # Mocking utilities for tests
+pytest==8.4.2              # Test framework (py3.9 compatible)
+pytest-mock==3.12.0        # Mocking utilities for tests
 
 # === Future / Optional ===
 # tiktoken>=0.5.0          # Token counting for context management

@@ -31,6 +31,16 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from .envelope import ContentEnvelope
 
+# Optional cached prompt helpers (keeps persona/glossary in cache-friendly format)
+try:  # pragma: no cover - helper is optional in runtime
+    from scripts.utils.cached_prompts import (  # type: ignore
+        get_persona_context as _cached_persona_context,
+        get_glossary_context as _cached_glossary_context,
+    )
+except Exception:  # pragma: no cover
+    _cached_persona_context = None
+    _cached_glossary_context = None
+
 
 class ContextBundle(BaseModel):
     """All context needed for extraction and output generation."""
@@ -90,11 +100,20 @@ class ContextBundle(BaseModel):
         sections = []
         
         # 1. Persona (static)
-        if self.persona:
-            sections.append(f"## PERSONA\n{self.persona}")
+        persona_text = None
+        if _cached_persona_context:
+            persona_text = _cached_persona_context(include_full=True)
+        elif self.persona:
+            persona_text = self.persona
+        if persona_text:
+            sections.append(f"## PERSONA\n{persona_text}")
         
         # 2. Entity glossary (static - changes only when manifests change)
-        glossary = self._format_compact_glossary()
+        glossary = None
+        if _cached_glossary_context:
+            glossary = _cached_glossary_context(compact=True)
+        else:
+            glossary = self._format_compact_glossary()
         if glossary:
             sections.append(f"## ENTITY GLOSSARY\n{glossary}")
         
