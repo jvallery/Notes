@@ -1,13 +1,12 @@
 ---
-type: person
-name: Avinash Lakshman
+type: people
 email: ''
 company: Welliptic
-title: ''
+title: Avinash Lakshman
 last_contact: '2025-12-17'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -31,8 +30,7 @@ tags:
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
 
 - 2025-12-17: Mentioned in: Whale Iptic platform overview and potential VAST integration (Avinash Lakshman 2025-12-17)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Avinash Lakshman
 not done

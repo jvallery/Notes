@@ -1,13 +1,12 @@
 ---
-type: person
-name: David Ellis
+type: people
 email: dtellis@gmail.com
 company: ''
-title: ''
+title: David Ellis
 last_contact: '2025-12-31'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -51,8 +50,7 @@ tags:
 - 2026-01-04: David Ellis is checking attendance to confirm a quorum for the final men's group discussion of the b...
 
 - 2025-12-31: David Ellis drafted a plan to retire the existing book club and start a smaller group called TMIMITW...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes David Ellis
 not done

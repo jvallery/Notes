@@ -1,31 +1,29 @@
 ---
-type: "customer"
-title: "Azure Managed Lustre architecture, scaling, and pricing comparison vs VAST Azure offering"
-date: "2025-10-31"
-account: ""
-participants: ["Jason Vallery", "Lior Genzel", "Wolfgang"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-31 - Discussion comparing Azure Managed Lustre architecture, scaling, and pricing wit.md"
+type: people
+title: Azure Managed Lustre architecture, scaling, and pricing comparison vs VAST Azure offering
+date: '2025-10-31'
+participants:
+- Jason Vallery
+- Lior Genzel
+- Wolfgang
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-31 - Discussion comparing Azure Managed Lustre architecture, scaling, and pricing wit.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/people
+- generated
+person: Lior Genzel
 ---
 
 # Azure Managed Lustre architecture, scaling, and pricing comparison vs VAST Azure offering
 
 **Date**: 2025-10-31
-**Account**: [[]]
 **Attendees**: Jason Vallery, Lior Genzel, Wolfgang
 
 ## Summary
 
 Jason Vallery, Lior Genzel, and a Microsoft participant (likely Wolfgang) compared Azure Managed Lustre architecture, scaling model, and pricing against VAST Data’s planned Azure offering. The discussion covered Managed Lustre tiers and increments, Premium Disk backing, Availability Zone pinning, asynchronous Blob offload via Lustre HSM, resiliency characteristics, and open items around RDMA, VMSS Flex fault domains, and Azure VM SKU pricing for L192/LSv5.
 
-
 ## Action Items
-
 
 - [?] Deliver Terraform scripts for the VAST Data Azure POC deployment. @TBD 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -53,11 +51,7 @@ Jason Vallery, Lior Genzel, and a Microsoft participant (likely Wolfgang) compar
 
 - [?] Track Lifter and Azure-native VAST milestones and SaaS architecture decisions for the Azure offering. @Myself 📅 2025-11-08 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - VAST Data will use currently available Azure VM SKUs for the initial VAST on Azure release, accepting initial performance limits (for example, 40 Gbps NIC constraints) until higher-performance options are available.
 
@@ -67,11 +61,7 @@ Jason Vallery, Lior Genzel, and a Microsoft participant (likely Wolfgang) compar
 
 - VAST Data’s SaaS control plane approach for Azure will run in a VAST-owned tenant and expose endpoints into customer tenants.
 
-
-
-
 ## Key Information
-
 
 - Azure Managed Lustre has four service tiers named 500, 250, 125, and 40, where the number represents throughput in MB/s per TB provisioned.
 
@@ -82,8 +72,6 @@ Jason Vallery, Lior Genzel, and a Microsoft participant (likely Wolfgang) compar
 - A Microsoft participant (Wolfgang, Azure Managed Lustre) stated he would only share information that is published or clearly allowed, and would cross-validate anything potentially confidential with an engineering manager.
 
 - Lior Genzel stated VAST Data is exploring use of persistent storage on Azure as part of its solution design and wants to learn Managed Lustre best practices for VAST’s next-generation Azure offering.
-
-
 
 ---
 

@@ -1,13 +1,12 @@
 ---
-type: person
-name: Rick Scurfield
+type: people
 email: rick.scurfield@vastdata.com
 company: VAST Data
-title: ''
+title: Rick Scurfield
 last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -47,8 +46,7 @@ tags:
 - 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition, interim lead assigned
 
 - 2025-12-27: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Rick Scurfield
 not done

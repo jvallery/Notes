@@ -1,23 +1,22 @@
 ---
-type: "customer"
-title: "Google Distributed Cloud RFP discussion, security, multi-tenancy, and hardware options"
-date: "2025-11-13"
-account: ""
-participants: []
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-13 - GDC RFP meeting.md"
+type: customer
+title: Google Distributed Cloud RFP discussion, security, multi-tenancy, and hardware options
+date: '2025-11-13'
+account: Google
+participants:
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-13 - GDC RFP meeting.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Google Distributed Cloud RFP discussion, security, multi-tenancy, and hardware options
 
 **Date**: 2025-11-13
-**Account**: [[]]
-**Attendees**: 
+**Account**: [[Google]]
+**Attendees**: Jason Vallery
 
 ## Summary
 

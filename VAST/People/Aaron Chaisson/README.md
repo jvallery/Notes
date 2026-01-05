@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Aaron Chaisson"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-11-06"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: Aaron Chaisson
+last_contact: '2025-11-06'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Aaron Chaisson
@@ -25,8 +24,7 @@ tags:
 - 2025-11-07: Mentioned in: 1:1 with Jeff Denworth, org map, onboarding, and cross-cloud strategy priorities
 
 - 2025-11-06: Mentioned in: Review of Tech Summit AI pipeline slides (training loop + RAG inference) for SE conference
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Aaron Chaisson
 not done

@@ -1,13 +1,12 @@
 ---
-type: person
-name: Brian Bearly
+type: people
 email: pootzwacke@gmail.com
 company: ''
-title: ''
+title: Brian Bearly
 last_contact: '2026-01-04'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -31,8 +30,7 @@ tags:
 - 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's place (week after Christmas 2025)
 
 - 2026-01-04: Men's group: quorum check for Tuesday 2026-01-06 6:30pm at Wapos (book: 2084)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Brian Bearly
 not done

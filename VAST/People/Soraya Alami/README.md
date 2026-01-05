@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Soraya Alami"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-11-07"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: Soraya Alami
+last_contact: '2025-11-07'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Soraya Alami
@@ -21,8 +20,7 @@ tags:
 ## Recent Context
 
 - 2025-11-07: Mentioned in: GSI Team: EY Azure-first design partnership, SI workflow-automation GTM, and cloud readiness gaps
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Soraya Alami
 not done

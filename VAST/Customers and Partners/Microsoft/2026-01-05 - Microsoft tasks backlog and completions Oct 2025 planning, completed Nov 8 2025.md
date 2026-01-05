@@ -1,23 +1,22 @@
 ---
-type: "customer"
-title: "Microsoft tasks backlog and completions (Oct 2025 planning, completed Nov 8 2025)"
-date: "2026-01-05"
-account: ""
-participants: []
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Microsoft Tasks.md"
+type: customer
+title: Microsoft tasks backlog and completions (Oct 2025 planning, completed Nov 8 2025)
+date: '2026-01-05'
+account: Microsoft
+participants:
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Microsoft Tasks.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Microsoft tasks backlog and completions (Oct 2025 planning, completed Nov 8 2025)
 
 **Date**: 2026-01-05
-**Account**: [[]]
-**Attendees**: 
+**Account**: [[Microsoft]]
+**Attendees**: Jason Vallery
 
 ## Summary
 

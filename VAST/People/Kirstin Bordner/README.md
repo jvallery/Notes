@@ -1,14 +1,14 @@
 ---
-type: person
-name: "Kirstin Bordner"
-email: "kirstin.bordner@vastdata.com"
-company: "VAST Data"
-title: "Vice President, Global Communications & Customer Marketing"
-last_contact: "2025-12-23"
-created: "2026-01-05"
+type: people
+email: kirstin.bordner@vastdata.com
+company: VAST Data
+title: Kirstin Bordner
+last_contact: '2025-12-23'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
+role: Vice President, Global Communications & Customer Marketing
 ---
 
 # Kirstin Bordner
@@ -31,8 +31,7 @@ tags:
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Kirstin Bordner
 not done

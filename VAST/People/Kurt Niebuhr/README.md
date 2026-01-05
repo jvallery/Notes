@@ -1,14 +1,14 @@
 ---
-type: person
-name: Kurt Niebuhr
+type: people
 email: kniebuhr@microsoft.com
 company: Microsoft
-title: Global pre-sales lead for AI Infrastructure (under Zia)
+title: Kurt Niebuhr
 last_contact: '2025-12-19'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Global pre-sales lead for AI Infrastructure (under Zia)
 ---
 
 # Kurt Niebuhr
@@ -39,8 +39,7 @@ tags:
 - 2025-12-19: Mentioned in: Microsoft GBB AKS AI Roadshow follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 
 - 2025-12-19: AKS AI Roadshow follow-up: share slides/code, pipeline sync in January, Global Namespace on Azure demo
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Kurt Niebuhr
 not done

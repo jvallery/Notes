@@ -1,22 +1,25 @@
 ---
-type: "customer"
-title: "Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)"
-date: "2025-12-16"
-account: ""
-participants: ["Tiffany Stonehill", "Kristin Thompson", "Lior Genzel", "Jason Vallery", "Trevor Cooper-Chadwick"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_080502_8277_Re-Your-Prospect-Microsoft--VAST-Customer-Learning-Portal-Ac.md"
+type: customer
+title: Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
+date: '2025-12-16'
+account: Microsoft
+participants:
+- Tiffany Stonehill
+- Kristin Thompson
+- Lior Genzel
+- Jason Vallery
+- Trevor Cooper-Chadwick
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_080502_8277_Re-Your-Prospect-Microsoft--VAST-Customer-Learning-Portal-Ac.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
 
 **Date**: 2025-12-16
-**Account**: [[]]
+**Account**: [[Microsoft]]
 **Attendees**: Tiffany Stonehill, Kristin Thompson, Lior Genzel, Jason Vallery, Trevor Cooper-Chadwick
 
 ## Summary

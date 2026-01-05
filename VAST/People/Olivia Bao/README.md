@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Olivia Bao"
-email: "olivia.bao@alphasights.com"
-company: "AlphaSights"
-title: ""
-last_contact: "2025-12-28"
-created: "2026-01-05"
+type: people
+email: olivia.bao@alphasights.com
+company: AlphaSights
+title: Olivia Bao
+last_contact: '2025-12-28'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Olivia Bao
@@ -27,8 +26,7 @@ tags:
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends
 
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends and governance
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Olivia Bao
 not done

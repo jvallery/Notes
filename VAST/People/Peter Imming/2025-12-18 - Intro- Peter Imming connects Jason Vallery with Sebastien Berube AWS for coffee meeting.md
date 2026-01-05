@@ -1,16 +1,17 @@
 ---
-type: "people"
-title: "Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting"
-date: "2025-12-18"
-person: ""
-participants: ["Jason Vallery", "Peter Imming", "Sebastien Berube"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-19_140925_8414_Re-Virtual-Introduction-to-Jason-Vallery.md"
+type: people
+title: 'Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting'
+date: '2025-12-18'
+person: Peter Imming
+participants:
+- Jason Vallery
+- Peter Imming
+- Sebastien Berube
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-19_140925_8414_Re-Virtual-Introduction-to-Jason-Vallery.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting
@@ -22,25 +23,19 @@ tags:
 
 Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to explore potential new opportunities. Sebastien shared he may consider a job change in 2026 and requested a coffee in Boulder County. Jason proposed meeting Wednesday, 2026-01-07 at 8:00am in Lafayette, and Sebastien sent a calendar invite with a location.
 
-
 ## Action Items
-
 
 - [?] Confirm the calendar invite details (exact location in Lafayette, Colorado) for the Wednesday, 2026-01-07 8:00am coffee meeting with Sebastien Berube. @Myself 📅 2026-01-06 ⏫ #task #proposed #auto
 
-
-
+- [?] Confirm the calendar invite details (location and time) for the January 7, 2026 8:00am coffee meeting in Lafayette with Sebastien Berube. @Myself 📅 2026-01-06 ⏫ #task #proposed #auto
 
 ## Decisions
 
-
 - Jason Vallery and Sebastien Berube agreed to meet for coffee on Wednesday, 2026-01-07 at 8:00am in Lafayette, Colorado (location details were included in Sebastien Berube's calendar invite but not in the email text).
 
-
-
+- Jason Vallery and Sebastien Berube agreed to meet for coffee on January 7 (year implied 2026) at 8:00am in Lafayette, Colorado, pending confirmation of the calendar invite details.
 
 ## Key Information
-
 
 - Peter Imming previously managed Jason Vallery at Microsoft.
 
@@ -52,8 +47,8 @@ Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to e
 
 - Peter Imming shared Sebastien Berube's cell phone number with Jason Vallery (number not included in the email).
 
-
-
 ---
 
-*Source: [[2025-12-19_140925_8414_Re-Virtual-Introduction-to-Jason-Vallery]]*
+- Sebastien Berube has worked at Amazon Web Services for several years.
+
+- Sebastien Berube is likely to consider making a job change in 2026 but stated he has no timeline or catalyst yet.

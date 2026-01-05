@@ -1,13 +1,12 @@
 ---
-type: person
-name: Rosanne Kincaid–Smith
+type: people
 email: ''
 company: Dhammak
-title: ''
+title: Rosanne Kincaid–Smith
 last_contact: '2025-10-22'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -27,8 +26,7 @@ tags:
 - 2025-10-22: Rosanne Kincaid–Smith described Dhammak's rapid data center and GPU cloud buildout and their goal of...
 
 - 2025-10-22: Jason Vallery and Rosanne Kincaid–Smith discussed Microsoft’s GPU capacity strategy, including a pre...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Rosanne Kincaid–Smith
 not done

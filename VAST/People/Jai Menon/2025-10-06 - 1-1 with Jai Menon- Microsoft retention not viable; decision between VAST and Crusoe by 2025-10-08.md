@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jai Menon: Microsoft retention not viable; decision between VAST and Crusoe by 2025-10-08"
-date: "2025-10-06"
-person: ""
-participants: ["Jason Vallery", "Jai Menon"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr.md"
+type: people
+title: '1:1 with Jai Menon: Microsoft retention not viable; decision between VAST and Crusoe by 2025-10-08'
+date: '2025-10-06'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-06 - Jason shared he has a complex, risky offer from VAST and a more stable option fr.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jai Menon: Microsoft retention not viable; decision between VAST and Crusoe by 2025-10-08
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery told Jai Menon he has a complex, high-variance compensation offer from VAST Data and a more stable offer from Crusoe with a decision deadline of Wednesday 2025-10-08. Jai confirmed Microsoft cannot provide competitive compensation or a clear scope and path to partner because Apollo remains undefined, and agreed not to pursue a likely-insulting counteroffer; Jason planned to decide by Wednesday and likely resign if taking an external offer.
 
-
 ## Action Items
-
 
 - [?] Decide between the VAST Data offer and the Crusoe offer by Wednesday 2025-10-08, and prepare resignation from Microsoft if accepting an external offer. @Myself 📅 2025-10-08 ⏫ #task #proposed #auto
 
@@ -32,21 +30,13 @@ Jason Vallery told Jai Menon he has a complex, high-variance compensation offer 
 
 - [?] Stop pursuing a Microsoft compensation adjustment/retention package for Jason Vallery with Maneesh Sah due to low likelihood of a competitive offer. @Jai Menon #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jai Menon decided not to push Maneesh Sah to produce a Microsoft retention counteroffer because it would likely be too small to retain Jason Vallery and could be perceived as insulting.
 
 - Jason Vallery decided he will choose between the VAST Data offer and the Crusoe offer by Wednesday 2025-10-08, and will likely resign from Microsoft if he accepts an external offer.
 
-
-
-
 ## Key Information
-
 
 - Crusoe required Jason Vallery to decide by Wednesday 2025-10-08, while VAST Data did not provide a deadline for its offer.
 
@@ -61,8 +51,6 @@ Jason Vallery told Jai Menon he has a complex, high-variance compensation offer 
 - Jason Vallery stated he prioritizes having clear ownership, deliverables, and an upward career trajectory, including a clear path to partner at Microsoft, and that lack of scope clarity was a primary blocker to staying.
 
 - Jason Vallery reported that in an early May 2025 conversation, Maneesh Sah said he would talk to Girish about a path to partner, but Jason did not receive a concrete follow-up before his sabbatical.
-
-
 
 ---
 

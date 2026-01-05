@@ -1,14 +1,14 @@
 ---
-type: person
-name: Liraz Ben Or
+type: people
 email: ''
 company: VAST Data
-title: Head of Program Management
+title: Liraz Ben Or
 last_contact: '2025-10-29'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Head of Program Management
 ---
 
 # Liraz Ben Or
@@ -35,8 +35,7 @@ tags:
 - 2026-01-05: Jason Vallery synced with Liraz Ben Or on program management alignment. The discussion focused on in...
 
 - 2025-10-29: Jason Vallery met 1:1 with Liraz Ben Or to understand VAST Data's non-traditional release management...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Liraz Ben Or
 not done

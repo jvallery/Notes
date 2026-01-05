@@ -1,13 +1,12 @@
 ---
-type: person
-name: Eyal Traitel
+type: people
 email: ''
 company: VAST Data
-title: ''
+title: Eyal Traitel
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -55,8 +54,7 @@ tags:
 - 2026-01-05: No meeting transcript content was included beyond metadata (date/title/entities). Unable to extract ...
 
 - 2025-10-27: Mentioned in: 1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Eyal Traitel
 not done

@@ -1,13 +1,12 @@
 ---
-type: person
-name: Alon Horev
+type: people
 email: alon@vastdata.com
 company: VAST Data
-title: ''
+title: Alon Horev
 last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -83,8 +82,7 @@ tags:
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Alon Horev
 not done

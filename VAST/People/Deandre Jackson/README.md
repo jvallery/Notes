@@ -1,14 +1,14 @@
 ---
-type: person
-name: Deandre Jackson
+type: people
 email: ''
 company: VAST Data
-title: Technical Enablement Director
+title: Deandre Jackson
 last_contact: '2025-10-30'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Technical Enablement Director
 ---
 
 # Deandre Jackson
@@ -27,8 +27,7 @@ tags:
 - 2025-10-30: Jason Vallery and Deandre Jackson held an intro 1:1 focused on SE enablement and how cloud messaging...
 
 - 2025-10-30: Mentioned in: Weekly SE community call: end-of-quarter push, Tech Summit logistics, UserCon registration drive, and SE Toolbox Port Mapper demo
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Deandre Jackson
 not done

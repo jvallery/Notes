@@ -1,13 +1,12 @@
 ---
-type: person
-name: Vishnu Charan TJ
+type: people
 email: ''
 company: ''
-title: ''
+title: Vishnu Charan TJ
 last_contact: '2025-09-15'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -33,8 +32,7 @@ tags:
 - 2025-09-15: Mentioned in: 1:1 with Jai Menon, distributed cache evaluation plan and Oct 15 Silicon Valley offsite
 
 - 2025-09-03: Mentioned in: 1:1 with Jai Menon: MAI AI caching strategy evaluation (OpenAI cache first) and Bifrost direct-read context
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Vishnu Charan TJ
 not done

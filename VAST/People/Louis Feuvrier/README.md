@@ -1,14 +1,14 @@
 ---
-type: person
-name: Louis Feuvrier
+type: people
 email: ''
 company: ''
-title: Learning
+title: Louis Feuvrier
 last_contact: '2025-12-26'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Learning
 ---
 
 # Louis Feuvrier
@@ -27,8 +27,7 @@ tags:
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
 
 - 2025-12-12: Mentioned in: OpenAI org and data platforms, intro path via John Mao's friend (Online Data Infrastructure)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Louis Feuvrier
 not done

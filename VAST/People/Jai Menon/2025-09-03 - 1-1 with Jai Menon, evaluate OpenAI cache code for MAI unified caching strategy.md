@@ -1,16 +1,26 @@
 ---
-type: "people"
-title: "1:1 with Jai Menon, evaluate OpenAI cache code for MAI unified caching strategy"
-date: "2025-09-03"
-person: ""
-participants: ["Jason Vallery", "Jai Menon", "Ong (unknown full name)", "Manish (unknown full name)", "Wamsi (unknown full name)", "Pete (unknown full name)", "Lukasz (unknown full name)", "Brendan Burns", "Qiu Ke (Kiki) (unknown full name)", "Yumin (unknown full name)", "Nagendra (unknown full name)", "Krishnan (unknown full name)"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’.md"
+type: people
+title: 1:1 with Jai Menon, evaluate OpenAI cache code for MAI unified caching strategy
+date: '2025-09-03'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+- Ong (unknown full name)
+- Manish (unknown full name)
+- Wamsi (unknown full name)
+- Pete (unknown full name)
+- Lukasz (unknown full name)
+- Brendan Burns
+- Qiu Ke (Kiki) (unknown full name)
+- Yumin (unknown full name)
+- Nagendra (unknown full name)
+- Krishnan (unknown full name)
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-03 - Jai welcomed Jason back and aligned on a forward-looking scope evaluate OpenAI’.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jai Menon, evaluate OpenAI cache code for MAI unified caching strategy
@@ -22,9 +32,7 @@ tags:
 
 Jai Menon and Jason Vallery aligned on a forward-looking scope to evaluate OpenAI's cache code as an input to Microsoft's AI caching strategy for MAI, targeting a single pluggable cache for both training and inference. Jason will confirm IP and repository access via Pete and SILA, assess technical fit for AKS and Spark at ~100k-node scale, and sync with MAI and adjacent efforts (BlockFuse/C-Store, Alluxio/DAX, Bifrost). They also discussed Jason addressing a disappointing performance snapshot with Ong and potentially Manish.
 
-
 ## Action Items
-
 
 - [?] Confirm IP and repository access to OpenAI cache code with Pete and SILA legal, and obtain code access if permitted for Microsoft MAI services. @Myself 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -48,11 +56,7 @@ Jai Menon and Jason Vallery aligned on a forward-looking scope to evaluate OpenA
 
 - [?] Establish a regular 1:1 cadence with Jai Menon for ongoing alignment on MAI caching strategy and cross-team dependencies. @Myself 📅 2025-10-26 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jason Vallery will evaluate OpenAI cache code as the first concrete step toward defining a unified MAI caching strategy.
 
@@ -60,11 +64,7 @@ Jai Menon and Jason Vallery aligned on a forward-looking scope to evaluate OpenA
 
 - The cache solution must target AKS plus Spark and be evaluated for scaling to approximately 100k nodes.
 
-
-
-
 ## Key Information
-
 
 - Jai Menon and Jason Vallery aligned that the MAI caching strategy goal is a single, pluggable caching solution that can support both training and inference, ideally one cache implementation.
 
@@ -87,8 +87,6 @@ Jai Menon and Jason Vallery aligned on a forward-looking scope to evaluate OpenA
 - Near-term platform focus discussed was Bifrost plus a distributed cache, with DeltaZero positioned as a follow-on effort.
 
 - Jason Vallery stated he was 'wildly disappointed' by a performance snapshot and planned to unpack what happened with Wamsi and discuss it with Ong, and potentially Manish, with Jai Menon's support.
-
-
 
 ---
 

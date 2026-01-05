@@ -1,13 +1,12 @@
 ---
-type: person
-name: Yogev Vankin
+type: people
 email: ''
 company: VAST Data
-title: ''
+title: Yogev Vankin
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -33,8 +32,7 @@ tags:
 - 2026-01-05: A task was captured for Yogev Vankin to summarize Oracle Cloud POC learnings and provide the current...
 
 - 2026-01-05: Mentioned in: 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Yogev Vankin
 not done

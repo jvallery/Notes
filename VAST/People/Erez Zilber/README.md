@@ -1,14 +1,14 @@
 ---
-type: person
-name: Erez Zilber
+type: people
 email: ''
 company: VAST Data
-title: Protocols architect
+title: Erez Zilber
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Protocols architect
 ---
 
 # Erez Zilber
@@ -21,8 +21,7 @@ tags:
 ## Recent Context
 
 - 2025-10-28: Jason Vallery and Erez Zilber aligned on delivering Azure Blob API support in VAST to enable an Azur...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Erez Zilber
 not done

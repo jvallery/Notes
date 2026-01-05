@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jeff Denworth: accelerated cloud GTM hiring, Azure GTM role for Jason, and Microsoft egress strategy"
-date: "2025-09-16"
-person: ""
-participants: ["Jeff Denworth", "Jason Vallery"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md"
+type: people
+title: '1:1 with Jeff Denworth: accelerated cloud GTM hiring, Azure GTM role for Jason, and Microsoft egress strategy'
+date: '2025-09-16'
+person: Jeff Denworth
+participants:
+- Jeff Denworth
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-16 - Jeff outlined VAST’s accelerated cloud push and multiple potential roles for Jas.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jeff Denworth: accelerated cloud GTM hiring, Azure GTM role for Jason, and Microsoft egress strategy
@@ -22,9 +22,7 @@ tags:
 
 Jeff Denworth described VAST Data's accelerated cloud go-to-market push and the need to hire a 10 to 15 person cloud GTM team, with a 3-person core per cloud. Jason Vallery shared his Azure Storage and AI customer background (including leading the OpenAI engagement) and discussed Microsoft execution speed and Azure egress economics, aligning with Jeff to start VAST's interview process and focus Jason initially on an Azure business-facing strategic role paired with a technical counterpart.
 
-
 ## Action Items
-
 
 - [?] Initiate VAST Data HR and recruiting process for Jason Vallery and schedule interviews with relevant VAST leaders. @Jeff Denworth 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -44,21 +42,13 @@ Jeff Denworth described VAST Data's accelerated cloud go-to-market push and the 
 
 - [?] Verify internal information about a potential regional technical leader role under Jay's organization and management preferences, to reduce role-scope ambiguity for Jason Vallery. @Jeff Denworth 📅 2025-10-26 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jeff Denworth and Jason Vallery agreed to start VAST Data's interview and recruiting process for Jason Vallery.
 
 - Jeff Denworth and Jason Vallery agreed the initial role focus for Jason Vallery should be Azure go-to-market as a business development and strategic relationship owner, paired with a highly technical counterpart.
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth is ramping VAST Data's cloud go-to-market team from a single-person effort to a 10 to 15 person team because VAST has decided to make cloud a top priority and believes product-market feasibility is proven enough to scale execution.
 
@@ -77,8 +67,6 @@ Jeff Denworth described VAST Data's accelerated cloud go-to-market push and the 
 - Jeff Denworth and Jason Vallery aligned that Jason's initial role at VAST Data should be Azure-focused and business-facing, owning strategic relationships, paired with a strong technical counterpart.
 
 - Jeff Denworth raised concern that overly advanced cloud integration discussions can confuse sales specialists and reduce confidence if the organization is still at first-level cloud integration maturity.
-
-
 
 ---
 

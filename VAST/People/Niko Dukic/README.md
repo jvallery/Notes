@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Niko Dukic"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-10-28"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: Niko Dukic
+last_contact: '2025-10-28'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Niko Dukic
@@ -19,8 +18,7 @@ tags:
 ## Recent Context
 
 - 2025-10-28: Mentioned in: UK Met Office Gen2 storage/compute pilot planning with Microsoft SKU dependency
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Niko Dukic
 not done

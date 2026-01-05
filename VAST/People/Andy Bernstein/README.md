@@ -1,13 +1,12 @@
 ---
-type: person
-name: Andy Bernstein
+type: people
 email: ''
 company: ''
-title: ''
+title: Andy Bernstein
 last_contact: '2025-10-30'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -25,8 +24,7 @@ tags:
 - 2025-10-27: Mentioned in: 1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)
 
 - 2026-01-05: Mentioned in: Follow-up task from notes labeled '2025-10 - Andy Perlsteiner'
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Andy Bernstein
 not done

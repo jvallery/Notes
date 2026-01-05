@@ -1,13 +1,12 @@
 ---
-type: person
-name: Renen Hallak
+type: people
 email: renen@vastdata.com
 company: VAST Data
-title: ''
+title: Renen Hallak
 last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -41,8 +40,7 @@ tags:
 - 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery automation and CES NAND allocation outreach
 
 - 2025-12-27: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Renen Hallak
 not done

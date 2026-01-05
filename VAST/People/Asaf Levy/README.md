@@ -1,13 +1,12 @@
 ---
-type: person
-name: Asaf Levy
+type: people
 email: ''
 company: ''
-title: ''
+title: Asaf Levy
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -53,8 +52,7 @@ tags:
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Asaf Levy
 not done

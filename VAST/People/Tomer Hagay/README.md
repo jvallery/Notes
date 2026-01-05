@@ -1,13 +1,12 @@
 ---
-type: person
-name: Tomer Hagay
+type: people
 email: tomer.hagay@vastdata.com
 company: VAST Data
-title: ''
+title: Tomer Hagay
 last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -123,8 +122,7 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Tomer Hagay
 not done

@@ -1,14 +1,14 @@
 ---
-type: person
-name: Timo Pervane
+type: people
 email: ''
 company: VAST Data
-title: Corporate Finance leader (FP&A, planning, IR, corp dev)
+title: Timo Pervane
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 ---
 
 # Timo Pervane
@@ -49,8 +49,7 @@ tags:
 - 2025-10-30: Cloud operations org design: distinct Customer Success, Support, and SRE roles with 2026-02-01 readiness target
 
 - 2025-10-28: GCP Marketplace MVP launch readiness, private offers via Tackle, fixed capacity pricing and Polaris entitlements
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Timo Pervane
 not done

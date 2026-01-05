@@ -1,14 +1,13 @@
 ---
-type: person
-name: "JB"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-10-30"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: JB
+last_contact: '2025-10-30'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # JB
@@ -19,8 +18,7 @@ tags:
 ## Recent Context
 
 - 2025-10-30: Mentioned in: Weekly SE community call: end-of-quarter push, Tech Summit logistics, UserCon registration drive, and SE Toolbox Port Mapper demo
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes JB
 not done

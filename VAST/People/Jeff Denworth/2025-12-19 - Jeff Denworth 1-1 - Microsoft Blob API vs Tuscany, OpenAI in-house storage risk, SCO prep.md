@@ -1,16 +1,21 @@
 ---
-type: "people"
-title: "Jeff Denworth 1:1 - Microsoft Blob API vs Tuscany, OpenAI in-house storage risk, SCO prep"
-date: "2025-12-19"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth", "Pete Eming", "Vamshi (last name unknown)", "John Mao", "Venkat (last name unknown)", "Manish Sah"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md"
+type: people
+title: Jeff Denworth 1:1 - Microsoft Blob API vs Tuscany, OpenAI in-house storage risk, SCO prep
+date: '2025-12-19'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+- Pete Eming
+- Vamshi (last name unknown)
+- John Mao
+- Venkat (last name unknown)
+- Manish Sah
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # Jeff Denworth 1:1 - Microsoft Blob API vs Tuscany, OpenAI in-house storage risk, SCO prep
@@ -22,9 +27,7 @@ tags:
 
 Jason Vallery and Jeff Denworth discussed VAST Data's Microsoft strategy, focusing on whether to prioritize Azure Blob API compatibility versus Microsoft's internal project Tuscany, and how to scope an MVP versus a broader market play. They also assessed OpenAI's apparent move away from Azure Blob API toward an internal storage stack (Rockset, FoundationDB, RocksDB) and the strategic risk that Microsoft can reuse OpenAI-written IP across Azure services. Jeff asked Jason to focus less on a narrow OpenAI and Microsoft AI view and more on a broader, "in for a pound" approach, and they planned to cover SCO presentation preparation.
 
-
 ## Action Items
-
 
 - [?] Align VAST Data's Microsoft strategy narrative around the trade-offs between Azure Blob API compatibility, Microsoft's internal Tuscany initiative, and the required feature surface area for an MVP versus a broader market solution. @Myself ⏫ #task #proposed #auto
 
@@ -34,13 +37,7 @@ Jason Vallery and Jeff Denworth discussed VAST Data's Microsoft strategy, focusi
 
 - [?] Investigate and document what Microsoft project Tuscany is (scope, API expectations, and adoption path) to inform VAST Data's decision on Blob API versus Tuscany alignment. @Myself ⏫ #task #proposed #auto
 
-
-
-
-
-
 ## Key Information
-
 
 - Jeff Denworth directed that VAST Data should not scope Azure Blob API work only around OpenAI and Microsoft AI, and instead should pursue a broader market approach ("in for a pound").
 
@@ -63,8 +60,6 @@ Jason Vallery and Jeff Denworth discussed VAST Data's Microsoft strategy, focusi
 - Jason Vallery asserted that Microsoft AI (MAI) is less sophisticated operationally than OpenAI but currently leverages the Azure Blob API.
 
 - The discussion framed a product decision trade-off between implementing Azure Blob API compatibility versus aligning to Microsoft's internal project Tuscany, and determining the breadth of surface area for an MVP versus a complete solution.
-
-
 
 ---
 

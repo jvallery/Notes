@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "Intro call with Welliptic (Whale Chain) on cryptographically secure agent/MCP hosting and auditability"
-date: "2025-12-17"
-person: ""
-participants: ["Jason Vallery", "Avinash Lakshman"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-12-17 13:53 - Google Chrome.md"
+type: people
+title: Intro call with Welliptic (Whale Chain) on cryptographically secure agent/MCP hosting and auditability
+date: '2025-12-17'
+person: Avinash Lakshman
+participants:
+- Jason Vallery
+- Avinash Lakshman
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-12-17 13:53 - Google Chrome.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # Intro call with Welliptic (Whale Chain) on cryptographically secure agent/MCP hosting and auditability
@@ -22,13 +22,7 @@ tags:
 
 Introductory discussion focused on Welliptic's "Whale Chain" platform, a globally distributed, cryptographically secure compute fabric for hosting MCP servers, AI agents, and Web2 applets across AWS, Azure, and GCP. The Welliptic participant positioned the platform as providing fine-grained authorization, immutable audit logs, and protection against prompt poisoning and man-in-the-middle attacks, with optional LLM hosting or BYO keys to cloud LLM services.
 
-
-
-
-
-
 ## Key Information
-
 
 - Jason Vallery spent 13 years at Microsoft prior to joining VAST Data and is based in Colorado (with a prior tour of duty in Seattle).
 
@@ -55,8 +49,6 @@ Introductory discussion focused on Welliptic's "Whale Chain" platform, a globall
 - Welliptic can optionally host LLMs, but typically expects customers to use cloud LLM services (Google Vertex AI, Amazon Bedrock, and an Azure equivalent) with bring-your-own keys.
 
 - Welliptic's chatbot uses an identity model where a user's identity is represented as a wallet deployed as a browser plugin, and users can store API keys (for example OpenAI keys) in the wallet so Welliptic does not see the keys.
-
-
 
 ---
 

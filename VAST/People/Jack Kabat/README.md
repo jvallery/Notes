@@ -1,13 +1,12 @@
 ---
-type: person
-name: Jack Kabat
+type: people
 email: ''
 company: Microsoft
-title: ''
+title: Jack Kabat
 last_contact: '2025-09-18'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -27,8 +26,7 @@ tags:
 - 2025-09-22: Mentioned in: 1:1 with Jai Menon: Apollo workload targets, geo-disaggregation, and need for strongly consistent cross-site KV + shared namespace
 
 - 2025-09-18: Jason Vallery and Jack Kabat aligned on Jason’s new architect remit to assess VAST Data and CoreWeav...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Jack Kabat
 not done

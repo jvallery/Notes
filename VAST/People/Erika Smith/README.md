@@ -1,13 +1,12 @@
 ---
-type: person
-name: Erika Smith
+type: people
 email: erikars702@gmail.com
 company: IHDF (implied)
-title: ''
+title: Erika Smith
 last_contact: '2025-12-10'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -23,8 +22,7 @@ tags:
 - 2025-12-10: Erika Smith sent a confidential recap of an IHDF executive session that Jason Vallery missed. Key po...
 
 - 2025-12-10: Mentioned in: IHDF exec session recap (confidential): public stance, fundraising committee, Longmont church acquisition exploration
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Erika Smith
 not done

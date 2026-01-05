@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Rosanne Kincaid–Smith: Dhammak GPU cloud buildout and Microsoft partnership positioning"
-date: "2025-10-22"
-person: ""
-participants: ["Jason Vallery", "Rosanne Kincaid\u2013Smith"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-22 - Rosanne outlined Dhammak’s rapid data center and GPU cloud buildout and interest.md"
+type: people
+title: '1:1 with Rosanne Kincaid–Smith: Dhammak GPU cloud buildout and Microsoft partnership positioning'
+date: '2025-10-22'
+person: Rosanne Kincaid–Smith
+participants:
+- Jason Vallery
+- Rosanne Kincaid–Smith
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-22 - Rosanne outlined Dhammak’s rapid data center and GPU cloud buildout and interest.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Rosanne Kincaid–Smith: Dhammak GPU cloud buildout and Microsoft partnership positioning
@@ -22,9 +22,7 @@ tags:
 
 Rosanne Kincaid–Smith described Dhammak’s rapid data center expansion and plan to build a vertically integrated GPU cloud, with a goal of landing a marquee Microsoft tenant relationship similar to CoreWeave/Nscale. Jason Vallery shared guidance on Microsoft’s preference for in-house builds, how Microsoft uses neoclouds to shift capex and asset risk, and how workload placement constraints (training vs inference, fiber to hyperscaler hero regions) affect site viability and cluster design.
 
-
 ## Action Items
-
 
 - [?] Define Microsoft partnership positioning that emphasizes Dhammak absorbing GPU capex and asset risk while offering flexible, fungible clusters suitable for Microsoft consumption models. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -38,13 +36,7 @@ Rosanne Kincaid–Smith described Dhammak’s rapid data center expansion and pl
 
 - [?] Share Dhammak site connectivity and timeline assumptions with Jason Vallery to validate workload feasibility (training vs inference) for early capacity coming online. @Rosanne Kincaid–Smith 📅 2025-10-26 #task #proposed #auto
 
-
-
-
-
-
 ## Key Information
-
 
 - Rosanne Kincaid–Smith is based in Dubai and was traveling from the San Francisco Bay Area during the 2025-10-22 meeting.
 
@@ -63,8 +55,6 @@ Rosanne Kincaid–Smith described Dhammak’s rapid data center expansion and pl
 - Jason Vallery joined VAST Data in the week of 2025-10-22 and previously led the Microsoft Storage Platform product, supporting Microsoft AI initiatives and the storage relationship with OpenAI.
 
 - Jason Vallery stated Microsoft prefers to keep AI infrastructure capacity builds in-house, but uses neocloud partners as a hedge to mitigate risk and accelerate capacity when hyperscaler construction schedules lag demand.
-
-
 
 ---
 

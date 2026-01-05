@@ -1,23 +1,22 @@
 ---
-type: "projects"
-title: "Cloud Marketplace MVP - GA acceptance criteria, GTM package, and competitive comparisons"
-date: "2026-01-05"
-project: ""
-participants: []
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Cloud Marketplace MVP.md"
+type: projects
+title: Cloud Marketplace MVP - GA acceptance criteria, GTM package, and competitive comparisons
+date: '2026-01-05'
+project: Cloud Marketplace MVP
+participants:
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Cloud Marketplace MVP.md
 tags:
-  - "type/projects"
-  - "project/"
-  - "generated"
-
+- type/projects
+- generated
 ---
 
 # Cloud Marketplace MVP - GA acceptance criteria, GTM package, and competitive comparisons
 
 **Date**: 2026-01-05
-**Project**: [[]]
-**Attendees**: 
+**Project**: [[Cloud Marketplace MVP]]
+**Attendees**: Jason Vallery
 
 ## Summary
 

@@ -1,13 +1,12 @@
 ---
-type: person
-name: Eirikur Hrafnsson
+type: people
 email: ''
 company: ''
-title: ''
+title: Eirikur Hrafnsson
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -31,8 +30,7 @@ tags:
 - 2025-10-28: Mentioned in: Cloud BU leadership aligns on dual-track GTM: GCP Marketplace MVP launch plus hyperscaler-scale MAI storyline
 
 - 2025-10-28: Mentioned in: GCP Marketplace MVP launch readiness, private offers via Tackle, fixed capacity pricing and Polaris entitlements
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Eirikur Hrafnsson
 not done

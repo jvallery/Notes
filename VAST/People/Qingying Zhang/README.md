@@ -1,14 +1,14 @@
 ---
-type: person
-name: "Qingying Zhang"
-email: ""
-company: "Microsoft"
-title: "Corporate Vice President, Azure (leads AKS and cloud-native services; focused on Apollo AI cloud project)"
-last_contact: "2025-10-31"
-created: "2026-01-05"
+type: people
+email: ''
+company: Microsoft
+title: Qingying Zhang
+last_contact: '2025-10-31'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
+role: Corporate Vice President, Azure (leads AKS and cloud-native services; focused on Apollo AI cloud project)
 ---
 
 # Qingying Zhang
@@ -19,8 +19,7 @@ tags:
 ## Recent Context
 
 - 2025-10-31: Mentioned in: Microsoft Apollo aligned on two-track evaluation for VAST AI cloud storage (Azure lab software validation + VAST loaner hardware POC)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Qingying Zhang
 not done

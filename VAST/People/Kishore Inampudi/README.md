@@ -1,13 +1,12 @@
 ---
-type: person
-name: Kishore Inampudi
+type: people
 email: ''
 company: ''
-title: ''
+title: Kishore Inampudi
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -19,8 +18,7 @@ tags:
 ## Recent Context
 
 - 2026-01-05: Captured an action item to coordinate with Kishore Inampudi on Azure Extended Zones once A2N is appr...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Kishore Inampudi
 not done

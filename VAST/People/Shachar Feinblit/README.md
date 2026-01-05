@@ -1,13 +1,12 @@
 ---
-type: person
-name: Shachar Feinblit
+type: people
 email: shachar@vastdata.com
 company: VAST Data
-title: ''
+title: Shachar Feinblit
 last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -39,8 +38,7 @@ tags:
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate deployment plan
 
 - 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Shachar Feinblit
 not done

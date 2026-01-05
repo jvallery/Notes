@@ -1,13 +1,12 @@
 ---
-type: person
-name: Noa Cohen
+type: people
 email: ''
 company: ''
-title: ''
+title: Noa Cohen
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -27,8 +26,7 @@ tags:
 - 2026-01-05: The note captures a completed action item for Jason Vallery to introduce himself and sync with VAST ...
 
 - 2025-10-29: Mentioned in: 1:1 with Liraz Ben Or, VAST release management process, phase gates, QA cycles, and release trains (5.4-5.6)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Noa Cohen
 not done

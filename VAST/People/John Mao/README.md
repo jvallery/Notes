@@ -1,14 +1,14 @@
 ---
-type: person
-name: "John Mao"
-email: "john@vastdata.com"
-company: "VAST Data"
-title: "VP Business Development"
-last_contact: "2025-12-12"
-created: "2026-01-05"
+type: people
+email: john@vastdata.com
+company: VAST Data
+title: John Mao
+last_contact: '2025-12-12'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
+role: VP Business Development
 ---
 
 # John Mao
@@ -33,8 +33,7 @@ tags:
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 
 - 2025-12-12: Mentioned in: OpenAI org and data platforms, intro path via John Mao's friend (Online Data Infrastructure)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes John Mao
 not done

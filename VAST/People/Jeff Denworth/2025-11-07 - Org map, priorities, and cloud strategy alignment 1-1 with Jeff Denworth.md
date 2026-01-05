@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "Org map, priorities, and cloud strategy alignment (1:1 with Jeff Denworth)"
-date: "2025-11-07"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla.md"
+type: people
+title: Org map, priorities, and cloud strategy alignment (1:1 with Jeff Denworth)
+date: '2025-11-07'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - We reviewed the org landscape and immediate priorities. Jeff highlighted key pla.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # Org map, priorities, and cloud strategy alignment (1:1 with Jeff Denworth)
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Jeff Denworth reviewed VAST Data's org landscape, immediate priorities, and how Cloud Product should embed with SEs and customers to learn real workflows. Jeff set direction to catalog in-flight opportunities from a product requirements lens, centralize FRDs in Confluence, and drive a pragmatic cross-cloud strategy beyond basic S3 by integrating with platform services like Foundry, Bedrock, and Vertex. They also aligned on org moves (Carl to ProServe under Rob; Morty transitioning to Jason's team while continuing Neo cloud feature ownership) and near-term prep for a Google RFP/TPU discussion.
 
-
 ## Action Items
-
 
 - [?] Prepare for the Google RFP and TPU-oriented discussion by aligning questions and decision criteria to avoid block I/O-heavy scope where NetApp excels. @Myself 📅 2025-11-13 ⏫ #task #proposed #auto
 
@@ -62,11 +60,7 @@ Jason Vallery and Jeff Denworth reviewed VAST Data's org landscape, immediate pr
 
 - [?] Propose a lightweight quarterly win and loss review cadence with Sales Ops and Product, including owners and inputs. @Myself 📅 2025-11-08 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Carl will move to Professional Services (ProServe) under Rob Banga because Jeff Denworth assessed Carl as not suitable for customer-facing roles.
 
@@ -76,11 +70,7 @@ Jason Vallery and Jeff Denworth reviewed VAST Data's org landscape, immediate pr
 
 - Jason Vallery will own defining cross-cloud product strategy and prioritization, with emphasis on going beyond basic S3 compatibility.
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth stated that Aaron (in Marianne's marketing organization) is not perceived internally as someone who understands cloud well.
 
@@ -105,8 +95,6 @@ Jason Vallery and Jeff Denworth reviewed VAST Data's org landscape, immediate pr
 - Customer Success at VAST Data was described as largely reactive support at the time of this meeting.
 
 - The product management team at VAST Data was described as small relative to the product scope.
-
-
 
 ---
 

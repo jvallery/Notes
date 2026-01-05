@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment"
-date: "2026-01-05"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Jeff Denworth.md"
+type: people
+title: 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
+date: '2026-01-05'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Jeff Denworth.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
@@ -22,9 +22,7 @@ tags:
 
 Discussion focused on Jason Vallery's travel priorities (SF strategy/planning, Ignite vs Supercomputing, re:Invent, Tel Aviv, Iceland in the second week of December, and a potential Microsoft trip after Ignite), clarifying cloud ownership boundaries across Microsoft and OpenAI, and setting up recurring 1:1s with key internal stakeholders. Follow-up actions included a cloud alignment whiteboard session with Jeff Denworth and Yancey, org reporting changes, alignment with Mordecai on tier-2 cloud coverage, and increased Slack engagement on cloud deployment threads.
 
-
 ## Action Items
-
 
 - [?] Schedule a cloud alignment working session (whiteboard day) with Jeff Denworth and Yancey to align cloud strategy and execution. @Myself 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -34,11 +32,7 @@ Discussion focused on Jason Vallery's travel priorities (SF strategy/planning, I
 
 - [?] Increase presence on Slack, including engaging in pre-sales channel discussions and responding on cloud deployment threads to unblock teams. @Myself 📅 2025-11-08 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jason Vallery and Jeff Denworth agreed to run a cloud alignment working session (whiteboard day) with Jeff Denworth and Yancey to align cloud strategy and execution.
 
@@ -48,11 +42,7 @@ Discussion focused on Jason Vallery's travel priorities (SF strategy/planning, I
 
 - Jason Vallery would increase presence on Slack, including engaging in pre-sales and cloud deployment threads.
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth is Jason Vallery's manager at VAST Data and is involved in defining Jason Vallery's scope, including who will report to Jason Vallery.
 
@@ -67,8 +57,6 @@ Discussion focused on Jason Vallery's travel priorities (SF strategy/planning, I
 - A new direct report was tentatively identified as 'Morticia Blaousey' (likely Mordecai, referred to as Morty), associated with second-tier cloud coverage.
 
 - Pricing model concepts under discussion included VDU/VCU and a fixed ratio pricing approach for VAST Data cloud offerings.
-
-
 
 ---
 

@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Vinita Ananth"
-email: "vinitaananth.ai@nebius.com"
-company: "Nebius"
-title: ""
-last_contact: "2025-12-10"
-created: "2026-01-05"
+type: people
+email: vinitaananth.ai@nebius.com
+company: Nebius
+title: Vinita Ananth
+last_contact: '2025-12-10'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Vinita Ananth
@@ -25,8 +24,7 @@ tags:
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
 
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00am PT
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Vinita Ananth
 not done

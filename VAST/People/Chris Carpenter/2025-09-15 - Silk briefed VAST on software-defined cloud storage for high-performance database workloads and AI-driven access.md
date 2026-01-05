@@ -1,31 +1,31 @@
 ---
-type: "customer"
-title: "Silk briefed VAST on software-defined cloud storage for high-performance database workloads and AI-driven access"
-date: "2025-09-15"
-account: ""
-participants: ["Jason Vallery", "Chris Carpenter", "TBD (Silk contact, referred to as Tom)", "TBD (Silk contact, referred to as Remote)", "TBD (person mentioned as J\u00fcrgen)"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and.md"
+type: people
+title: Silk briefed VAST on software-defined cloud storage for high-performance database workloads and AI-driven access
+date: '2025-09-15'
+participants:
+- Jason Vallery
+- Chris Carpenter
+- TBD (Silk contact, referred to as Tom)
+- TBD (Silk contact, referred to as Remote)
+- TBD (person mentioned as Jürgen)
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Silk briefed Jason on its cloud storage architecture optimized for databases and.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/people
+- generated
+person: Chris Carpenter
 ---
 
 # Silk briefed VAST on software-defined cloud storage for high-performance database workloads and AI-driven access
 
 **Date**: 2025-09-15
-**Account**: [[]]
 **Attendees**: Jason Vallery, Chris Carpenter, TBD (Silk contact, referred to as Tom), TBD (Silk contact, referred to as Remote), TBD (person mentioned as Jürgen)
 
 ## Summary
 
 Silk briefed Jason Vallery on its software-defined cloud storage architecture optimized for relational databases and single source of truth workloads, with increasing AI-driven access patterns. Discussion covered performance characteristics, deployment architecture near database VMs, competitive positioning vs Azure NetApp Files, and a request for RDMA support on Azure L-series to reduce CPU overhead.
 
-
 ## Action Items
-
 
 - [?] Coordinate with Ong to schedule an introduction meeting between Silk and Jai Menon. @Myself 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -39,13 +39,7 @@ Silk briefed Jason Vallery on its software-defined cloud storage architecture op
 
 - [?] Track Silk as a potential option for customer opportunities where Azure native storage offerings cannot meet required database performance. @Myself 📅 2025-10-26 🔽 #task #proposed #auto
 
-
-
-
-
-
 ## Key Information
-
 
 - Silk is a software-defined cloud storage product focused primarily on database workloads and single source of truth systems of record, rather than large-scale HPC or hundreds-of-petabytes configurations.
 
@@ -74,8 +68,6 @@ Silk briefed Jason Vallery on its software-defined cloud storage architecture op
 - Silk stated they are already working with Gal Piglin’s team on the RDMA and Azure L-series topic.
 
 - Silk said Ong told them he wanted to introduce them to Jay Menon, and Silk had not previously spoken with Jay Menon.
-
-
 
 ---
 

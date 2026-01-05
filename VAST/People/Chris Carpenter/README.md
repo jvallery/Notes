@@ -1,14 +1,14 @@
 ---
-type: person
-name: Chris Carpenter
+type: people
 email: chris.carpenter@vastdata.com
 company: VAST Data
-title: Business development / model builder ecosystem focus (new hire)
+title: Chris Carpenter
 last_contact: '2025-12-19'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Business development / model builder ecosystem focus (new hire)
 ---
 
 # Chris Carpenter
@@ -33,8 +33,7 @@ tags:
 - 2025-12-19: Mentioned in: Microsoft GBB AKS AI Roadshow follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 
 - 2025-12-19: AKS AI Roadshow follow-up: share slides/code, pipeline sync in January, Global Namespace on Azure demo
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Chris Carpenter
 not done

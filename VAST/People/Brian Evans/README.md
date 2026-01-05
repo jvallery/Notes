@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Brian Evans"
-email: "brian.evans@vastdata.com"
-company: "VAST Data"
-title: ""
-last_contact: "2025-12-01"
-created: "2026-01-05"
+type: people
+email: brian.evans@vastdata.com
+company: VAST Data
+title: Brian Evans
+last_contact: '2025-12-01'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Brian Evans
@@ -27,8 +26,7 @@ tags:
 - 2025-12-17: Mentioned in: RFE 0526 submitted for Cisco: regex-based allow/deny patterns for replication policies
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Brian Evans
 not done

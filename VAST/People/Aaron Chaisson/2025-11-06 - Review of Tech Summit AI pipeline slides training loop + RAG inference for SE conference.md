@@ -1,31 +1,30 @@
 ---
-type: "projects"
-title: "Review of Tech Summit AI pipeline slides (training loop + RAG inference) for SE conference"
-date: "2025-11-06"
-project: ""
-participants: ["Aaron Chaisson", "Allison Boerum", "Jason Vallery", "Glenn Lockwood"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p.md"
+type: people
+title: Review of Tech Summit AI pipeline slides (training loop + RAG inference) for SE conference
+date: '2025-11-06'
+participants:
+- Aaron Chaisson
+- Allison Boerum
+- Jason Vallery
+- Glenn Lockwood
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-06 - Aaron walked through updated slides for next week’s SE conference covering two p.md
 tags:
-  - "type/projects"
-  - "project/"
-  - "generated"
-
+- type/people
+- generated
+person: Aaron Chaisson
 ---
 
 # Review of Tech Summit AI pipeline slides (training loop + RAG inference) for SE conference
 
 **Date**: 2025-11-06
-**Project**: [[]]
 **Attendees**: Aaron Chaisson, Allison Boerum, Jason Vallery, Glenn Lockwood
 
 ## Summary
 
 Aaron Chaisson reviewed updated slides for next week’s VAST SE conference covering two AI pipelines: model training with a reinforcement learning feedback loop and enterprise inference using RAG. The group aligned on depicting Kafka as an event-stream ingestion and RL feedback head, showing embeddings as precomputed (not inline during inference), and adding Database as an optional component for data prep and logging, with KV cache currently accessed via NFS and a future GPU-direct-to-object option.
 
-
 ## Action Items
-
 
 - [?] Refine the model training slides to show a continuous feedback loop and clarify pretraining versus fine-tuning and reinforcement learning terminology. @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -43,11 +42,7 @@ Aaron Chaisson reviewed updated slides for next week’s VAST SE conference cove
 
 - [?] Present the updated AI pipeline deck at the next week VAST SE conference (Tech Summit). @Aaron Chaisson 📅 2025-11-08 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Use fine-tuning and reinforcement learning terminology in the model training loop, and treat online reinforcement learning as a continuous loop concept rather than a one-time step.
 
@@ -59,11 +54,7 @@ Aaron Chaisson reviewed updated slides for next week’s VAST SE conference cove
 
 - Show current KV cache access via NFS in the inference depiction, with GPU-direct-to-object as a future option.
 
-
-
-
 ## Key Information
-
 
 - Jason Vallery is based in Colorado and previously lived in the Seattle and Redmond area around 2016 before moving back to Colorado.
 
@@ -86,8 +77,6 @@ Aaron Chaisson reviewed updated slides for next week’s VAST SE conference cove
 - Database should be shown as supporting data preparation (for example, analytics tables to Parquet) and logging or archives, and may optionally be shown for KV cache metadata.
 
 - A key open debate for the SE-focused deck is whether to include VAST Data Engine and function triggers, balancing vision value against the risk of confusing storage-centric SEs.
-
-
 
 ---
 

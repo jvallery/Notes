@@ -1,22 +1,22 @@
 ---
-type: "customer"
-title: "Walmart Analytics hybrid replication requirements (GCP BigQuery to two on-prem sites)"
-date: "2025-11-05"
-account: ""
-participants: ["Jason Vallery", "Unknown Walmart participants"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-05 - Walmart Analytics.md"
+type: customer
+title: Walmart Analytics hybrid replication requirements (GCP BigQuery to two on-prem sites)
+date: '2025-11-05'
+account: Walmart
+participants:
+- Jason Vallery
+- Unknown Walmart participants
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-05 - Walmart Analytics.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Walmart Analytics hybrid replication requirements (GCP BigQuery to two on-prem sites)
 
 **Date**: 2025-11-05
-**Account**: [[]]
+**Account**: [[Walmart]]
 **Attendees**: Jason Vallery, Unknown Walmart participants
 
 ## Summary

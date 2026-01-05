@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Dan Murray"
-email: ""
-company: ""
-title: ""
-last_contact: "2026-01-04"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: Dan Murray
+last_contact: '2026-01-04'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Dan Murray
@@ -23,8 +22,7 @@ tags:
 - 2026-01-04: Mentioned in: Meetup event scheduled: RMAIIG 'AI for Good' (new January location in Boulder)
 
 - 2026-01-04: Mentioned in: Meetup event scheduled: RMAIIG 'AI for Good' with new January location (Boulder)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Dan Murray
 not done

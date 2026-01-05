@@ -1,22 +1,21 @@
 ---
-type: "projects"
-title: "Review requested: VAST on Cloud Course and Project Brief feedback due January 7, 2026"
-date: "2025-12-15"
-project: ""
-participants: ["Terika Dilworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-15_111820_6900_VAST-on-Cloud-Course.md"
+type: projects
+title: 'Review requested: VAST on Cloud Course and Project Brief feedback due January 7, 2026'
+date: '2025-12-15'
+project: Cloud
+participants:
+- Terika Dilworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-15_111820_6900_VAST-on-Cloud-Course.md
 tags:
-  - "type/projects"
-  - "project/"
-  - "generated"
-
+- type/projects
+- generated
 ---
 
 # Review requested: VAST on Cloud Course and Project Brief feedback due January 7, 2026
 
 **Date**: 2025-12-15
-**Project**: [[]]
+**Project**: [[Cloud]]
 **Attendees**: Terika Dilworth
 
 ## Summary

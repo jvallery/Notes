@@ -1,15 +1,15 @@
 ---
-type: person
-name: Adem Sefa
+type: people
 email: adem.sefa@microsoft.com
 company: Microsoft
-title: Managing Director - Strategic Partnerships
+title: Adem Sefa
 last_contact: '2025-11-20'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 phone: +44 7966 282 680
+role: Managing Director - Strategic Partnerships
 ---
 
 # Adem Sefa
@@ -24,8 +24,7 @@ phone: +44 7966 282 680
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery for potential F...
 
 - 2025-11-20: Adem Sefa (Microsoft Strategic Partnerships) introduced his brother-in-law, Edwin Trogler, to Jason ...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Adem Sefa
 not done

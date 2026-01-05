@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jeff Denworth, org map, onboarding, and cross-cloud strategy priorities"
-date: "2025-11-07"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md"
+type: people
+title: 1:1 with Jeff Denworth, org map, onboarding, and cross-cloud strategy priorities
+date: '2025-11-07'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - We reviewed the org landscape and aligned on my near-term focus. Jeff outlined k.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jeff Denworth, org map, onboarding, and cross-cloud strategy priorities
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Jeff Denworth reviewed the VAST org landscape, clarified key role owners, and aligned Jason's near-term focus on a first-class cross-cloud platform strategy and cloud-native GTM. They agreed to catalog in-flight opportunities by product requirements, document customer requirements/FRDs in Confluence, and prepare specific near-term deliverables for Google and Microsoft.
 
-
 ## Action Items
-
 
 - [?] Draft a cross-cloud product strategy (including Neo clouds) and outline cloud GTM plays for Foundry, Bedrock, and Vertex, then share v0.1 for feedback. @Myself 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -58,11 +56,7 @@ Jason Vallery and Jeff Denworth reviewed the VAST org landscape, clarified key r
 
 - [?] Update Jeff Denworth on Microsoft progress once a cohesive narrative is ready. @Myself 📅 2025-11-08 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Carl (last name not stated) will move to Professional Services under Rob Banga instead of supporting customer-facing product management work.
 
@@ -72,11 +66,7 @@ Jason Vallery and Jeff Denworth reviewed the VAST org landscape, clarified key r
 
 - Jason Vallery's near-term focus will prioritize architecting a first-class cross-cloud platform strategy and cloud-native GTM over ad hoc deal chasing.
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth wants VAST Data to have a first-class, homogenized cloud platform strategy across hyperscalers and Neo clouds, rather than ad hoc deal-by-deal execution.
 
@@ -107,8 +97,6 @@ Jason Vallery and Jeff Denworth reviewed the VAST org landscape, clarified key r
 - Jeff Denworth planned to be in Orlando Tuesday through Thursday the following week for sales strategy, and Jason Vallery planned to engage SEs at a Tech Summit there.
 
 - A Google RFP was expected to be TPU-oriented; the team should qualify scope and ensure the workload is not block I/O latency sensitive where NetApp typically excels.
-
-
 
 ---
 

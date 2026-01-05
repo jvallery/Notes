@@ -1,14 +1,14 @@
 ---
-type: person
-name: "Christian Linacre"
-email: "christian.linacre@oracle.com"
-company: "Oracle Cloud Infrastructure"
-title: "Vice President, Alloy & Dedicated Regions"
-last_contact: "2025-12-08"
-created: "2026-01-05"
+type: people
+email: christian.linacre@oracle.com
+company: Oracle Cloud Infrastructure
+title: Christian Linacre
+last_contact: '2025-12-08'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
+role: Vice President, Alloy & Dedicated Regions
 ---
 
 # Christian Linacre
@@ -33,8 +33,7 @@ tags:
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matt (DRCC/Alloy PM) in Seattle
 
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson (DRCC/Alloy PM) for Seattle meeting
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Christian Linacre
 not done

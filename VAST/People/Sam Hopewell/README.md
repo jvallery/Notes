@@ -1,14 +1,14 @@
 ---
-type: person
-name: Sam Hopewell
+type: people
 email: ''
 company: OpenAI
-title: Primary storage owner for research
+title: Sam Hopewell
 last_contact: '2025-10-22'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Primary storage owner for research
 ---
 
 # Sam Hopewell
@@ -25,8 +25,7 @@ tags:
 - 2025-10-22: Mentioned in: OpenAI storage strategy: VAST as warm storage near GPUs, POC on hold
 
 - 2025-10-22: Jason Vallery reconnected with Sam Hopewell (OpenAI) to position VAST as GPU-adjacent warm storage a...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Sam Hopewell
 not done

@@ -1,13 +1,12 @@
 ---
-type: person
-name: Peter Imming
+type: people
 email: peterimming@gmail.com
 company: ''
-title: ''
+title: Peter Imming
 last_contact: '2025-12-18'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -23,8 +22,7 @@ tags:
 - 2025-12-18: Mentioned in: Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting
 
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to explore potential new...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Peter Imming
 not done

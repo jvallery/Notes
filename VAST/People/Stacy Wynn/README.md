@@ -1,13 +1,12 @@
 ---
-type: person
-name: Stacy Wynn
+type: people
 email: stacy.wynn@vastdata.com
 company: VAST Data
-title: ''
+title: Stacy Wynn
 last_contact: '2025-12-23'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 phone: 407.810.5017
 ---
@@ -28,8 +27,7 @@ phone: 407.810.5017
 - 2025-12-23: Stacy Wynn shared the recording and FAQ from the 2025-12-23 Pricing Changes and Supply Chain update ...
 
 - 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition, interim lead assigned
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Stacy Wynn
 not done

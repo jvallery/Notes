@@ -1,18 +1,18 @@
 ---
-type: person
-name: Jonsi Stefansson
+type: people
 email: jonsi@vastdata.com
 company: VAST Data
-title: GM of Cloud
+title: Jonsi Stefansson
 last_contact: '2026-01-02'
 created: '2026-01-05'
 phone_iceland: '+3546987478'
 phone_us: '+14079510436'
 aliases:
-  - Jonsi Stephenson
-  - Jonsi Stefanson
+- Jonsi Stephenson
+- Jonsi Stefanson
 tags:
-- type/person
+- type/people
+role: GM of Cloud
 ---
 
 # Jonsi Stefansson
@@ -35,9 +35,8 @@ tags:
 - 2026-01-02: Google Docs comments on 'VAST and Azure Integration.docx' (Azure Blob tiering format and DRR messaging)
 
 - 2025-12-27: Mentioned in: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
-## Tasks
-
+## Open Tasks
 ```tasks
-path includes Jonsi Stefanson
+path includes Jonsi Stefansson
 not done
 ```

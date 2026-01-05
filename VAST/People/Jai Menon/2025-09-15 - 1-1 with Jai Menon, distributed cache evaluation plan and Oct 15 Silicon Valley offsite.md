@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jai Menon, distributed cache evaluation plan and Oct 15 Silicon Valley offsite"
-date: "2025-09-15"
-person: ""
-participants: ["Jason Vallery", "Jai Menon"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t.md"
+type: people
+title: 1:1 with Jai Menon, distributed cache evaluation plan and Oct 15 Silicon Valley offsite
+date: '2025-09-15'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Jason and Jai aligned on next steps for a distributed cache strategy and short-t.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jai Menon, distributed cache evaluation plan and Oct 15 Silicon Valley offsite
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Jai Menon aligned on evaluating distributed cache options for Microsoft AI Infrastructure (MAI) and agreed to frame requirements by fan-out writes, fan-out reads, and fan-in reads, with KV cache treated separately. They also confirmed a Silicon Valley team offsite on 2025-10-15 for about 1.5 days, including DPU and inferencing sessions.
 
-
 ## Action Items
-
 
 - [?] Book travel for the Silicon Valley team offsite starting 2025-10-15 (approximately 1.5 days). @Myself 📅 2025-10-15 ⏫ #task #proposed #auto
 
@@ -36,21 +34,13 @@ Jason Vallery and Jai Menon aligned on evaluating distributed cache options for 
 
 - [?] Evaluate BlobFuse plus AC Store against alternatives (Manifold or Singularity, OpenAI TensorCache, Alluxio, JuiceFS, NVIDIA AIStore) using scenario-based use cases (fan-out writes, fan-out reads, fan-in reads) and treat KV cache separately, then draft a recommendation for MAI adoption criteria. @Myself 📅 2025-10-26 ⏫ #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jason Vallery will travel to the Silicon Valley team offsite on 2025-10-15 (approximately 1.5 days).
 
 - Centralize distributed cache workstream collateral in a new shared Microsoft Teams space.
 
-
-
-
 ## Key Information
-
 
 - Jai Menon is organizing a team offsite in Silicon Valley on 2025-10-15 for approximately 1.5 days, with dinner or a social event on day 1 and a half-day session on day 2 so attendees can fly home around noon.
 
@@ -69,8 +59,6 @@ Jason Vallery and Jai Menon aligned on evaluating distributed cache options for 
 - Alluxio has perceived risks including IP or China perception concerns and implications of its Java-based stack.
 
 - The inference team has been waiting approximately two months for BlobFuse private preview bits after an initial introduction, creating a credibility risk with internal stakeholders.
-
-
 
 ---
 

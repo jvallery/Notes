@@ -1,15 +1,15 @@
 ---
-type: person
-name: Karl Vietmeier
+type: people
 email: karl.vietmeier@vastdata.com
 company: VAST Data
-title: Cloud Solutions Architect - VAST on Cloud
+title: Karl Vietmeier
 last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 phone: +1 9497953118
+role: Cloud Solutions Architect - VAST on Cloud
 ---
 
 # Karl Vietmeier
@@ -46,8 +46,7 @@ phone: +1 9497953118
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST plans to decline
 
 - 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Karl Vietmeier
 not done

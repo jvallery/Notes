@@ -1,31 +1,35 @@
 ---
-type: "projects"
-title: "Pricing vTeam task list and deliverables (Oct-Nov 2025)"
-date: "2026-01-05"
-project: ""
-participants: ["Jason Vallery", "Jeff Denworth", "Tomer Hagay", "Timo Pervane", "Yancey", "Pricing vTeam", "Product", "Polaris team", "Tackle"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Pricing Tasks.md"
+type: people
+title: Pricing vTeam task list and deliverables (Oct-Nov 2025)
+date: '2026-01-05'
+participants:
+- Jason Vallery
+- Jeff Denworth
+- Tomer Hagay
+- Timo Pervane
+- Yancey
+- Pricing vTeam
+- Product
+- Polaris team
+- Tackle
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10 - Pricing Tasks.md
 tags:
-  - "type/projects"
-  - "project/"
-  - "generated"
-
+- type/people
+- generated
+person: Jeff Denworth
 ---
 
 # Pricing vTeam task list and deliverables (Oct-Nov 2025)
 
 **Date**: 2026-01-05
-**Project**: [[]]
 **Attendees**: Jason Vallery, Jeff Denworth, Tomer Hagay, Timo Pervane, Yancey, Pricing vTeam, Product, Polaris team, Tackle
 
 ## Summary
 
 This note is a consolidated task list for VAST cloud pricing workstreams completed between 2025-10-28 and 2025-11-08. It covers private-offer pricing structure and discount guardrails, marketplace entitlements for Google private offers, PAYGO and multi-tenant SaaS offer planning, competitive pricing analysis, and finance alignment on ARR and valuation metrics.
 
-
 ## Action Items
-
 
 - [?] Draft pricing and consumption model write-up and share with Jeff Denworth and Yancey for next discussion. @Myself 📅 2025-10-28 ⏫ #task #proposed #auto
 
@@ -73,19 +77,11 @@ This note is a consolidated task list for VAST cloud pricing workstreams complet
 
 - [?] Provide an update on Finance Business Partner hiring status after the Renan interview. @Timo Pervane 📅 2025-11-08 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - The Pricing vTeam made and documented a decision on whether to introduce a fixed cores-per-PB normalization model for cloud pricing starting 2026-02-01.
 
-
-
-
 ## Key Information
-
 
 - VAST Data cloud pricing work included defining a cloud private-offer pricing structure and discount guidance focused on capacity-only pricing for immediate use by the field.
 
@@ -120,8 +116,6 @@ This note is a consolidated task list for VAST cloud pricing workstreams complet
 - Timo Pervane progressed hiring of a Finance Business Partner for Cloud Solutions and planned to embed the role with the Cloud Solutions leadership team.
 
 - Timo Pervane provided pricing and discounting analysis using price-paid scatter by cohort to inform the cloud normalization plan and sent the dataset with initial insights.
-
-
 
 ---
 

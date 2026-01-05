@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Liraz Ben Or, VAST release management process, phase gates, QA cycles, and release trains (5.4-5.6)"
-date: "2025-10-29"
-person: ""
-participants: ["Jason Vallery", "Liraz Ben Or"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage.md"
+type: people
+title: 1:1 with Liraz Ben Or, VAST release management process, phase gates, QA cycles, and release trains (5.4-5.6)
+date: '2025-10-29'
+person: Liraz Ben Or
+participants:
+- Jason Vallery
+- Liraz Ben Or
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-29 - Intro 1-1 where Liraz walked Jason through VAST’s non-traditional release manage.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Liraz Ben Or, VAST release management process, phase gates, QA cycles, and release trains (5.4-5.6)
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery met 1:1 with Liraz Ben Or to understand VAST Data's non-traditional release management approach, including four phase gates, QA cycles, overlapping release trains, and field-driven prioritization. Liraz explained the org split between core development for future major releases and vForce for field releases and escalations, and shared 5.4 materials with plans to follow up and meet in person during Jason's Tel Aviv trip (Nov 23-26).
 
-
 ## Action Items
-
 
 - [?] Review the shared VAST Data 5.4 phase gate materials and status wiki links provided by Liraz Ben Or. @Myself 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -48,13 +46,7 @@ Jason Vallery met 1:1 with Liraz Ben Or to understand VAST Data's non-traditiona
 
 - [?] Coordinate with VAST Data field teams to identify potential beta customers for 5.5 anchor features that are relevant to cloud initiatives. @Myself 📅 2025-11-08 🔽 #task #proposed #auto
 
-
-
-
-
-
 ## Key Information
-
 
 - Liraz Ben Or has worked at VAST Data for almost six years (six years in March 2026).
 
@@ -85,8 +77,6 @@ Jason Vallery met 1:1 with Liraz Ben Or to understand VAST Data's non-traditiona
 - VAST Data pushed expedited milestones in release 5.4 due to Tesla requirements.
 
 - Liraz Ben Or stated that 5.4 was not yet stable enough at the time of the meeting and the organization was primarily pushing customers to 5.3 until 5.4 stabilizes.
-
-
 
 ---
 

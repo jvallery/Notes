@@ -1,13 +1,12 @@
 ---
-type: person
-name: Paul
+type: people
 email: ''
 company: VAST Data
-title: ''
+title: Paul
 last_contact: '2025-11-14'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -37,8 +36,7 @@ tags:
 - 2025-10-29: Mentioned in: VAST on Cloud positioning and GTM alignment, MVP architecture, marketplace plan, and hyperscaler constraints
 
 - 2025-11-14: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Paul
 not done

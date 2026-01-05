@@ -1,14 +1,14 @@
 ---
-type: person
-name: Billy Kettler
+type: people
 email: ''
 company: Google
-title: VP of Product Management (partner contact)
+title: Billy Kettler
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: VP of Product Management (partner contact)
 ---
 
 # Billy Kettler
@@ -21,8 +21,7 @@ tags:
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
 
 - 2025-10-31: Mentioned in: GCP path for VAST on storage-serving VMs (Z4M), GSC co-placement, and RDMA/GPUDirect roadmap
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Billy Kettler
 not done

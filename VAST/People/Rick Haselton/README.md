@@ -1,13 +1,12 @@
 ---
-type: person
-name: Rick Haselton
+type: people
 email: ''
 company: ''
-title: ''
+title: Rick Haselton
 last_contact: '2025-10-29'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -31,8 +30,7 @@ tags:
 - 2025-10-29: Jason Vallery met 1:1 with Rick Haselton to understand how VAST Customer Success supports CoreWeave ...
 
 - 2025-10-29: Jason Vallery shared a cloud-first vision for VAST Data (VAST-as-a-Service, multi-cloud, GPU-adjacen...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Rick Haselton
 not done

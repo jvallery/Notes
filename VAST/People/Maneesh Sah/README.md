@@ -1,13 +1,12 @@
 ---
-type: person
-name: Maneesh Sah
+type: people
 email: ''
 company: Microsoft
-title: ''
+title: Maneesh Sah
 last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -107,8 +106,7 @@ tags:
 - 2025-09-03: Mentioned in: 1:1 with Jai Menon: MAI caching evaluation focus and OpenAI IP/code access
 
 - 2025-12-27: Red flare escalation: Azure MAI Q1 deal risk, supply chain urgency, and Redmond engagement plan
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Maneesh Sah
 not done

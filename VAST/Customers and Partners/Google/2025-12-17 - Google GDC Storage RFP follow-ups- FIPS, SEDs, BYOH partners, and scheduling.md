@@ -1,31 +1,43 @@
 ---
-type: "customer"
-title: "Google GDC Storage RFP follow-ups: FIPS, SEDs, BYOH partners, and scheduling"
-date: "2025-12-17"
-account: ""
-participants: ["Lior Genzel", "Jason Vallery", "David Pawlak", "Kamal Vyas", "Ryan Terrell"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-23_004718_3592_Re-VAST-Data---GDC-Storage-RFP---Request-For-Meeting.md"
+type: customer
+title: 'Google GDC Storage RFP follow-ups: FIPS, SEDs, BYOH partners, and scheduling'
+date: '2025-12-17'
+account: Google
+participants:
+- Lior Genzel
+- Jason Vallery
+- David Pawlak
+- Kamal Vyas
+- extraction_errors
+- Ryan Terrell
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-23_004718_3592_Re-VAST-Data---GDC-Storage-RFP---Request-For-Meeting.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Google GDC Storage RFP follow-ups: FIPS, SEDs, BYOH partners, and scheduling
 
 **Date**: 2025-12-17
-**Account**: [[]]
+**Account**: [[Google]]
 **Attendees**: Lior Genzel, Jason Vallery, David Pawlak, Kamal Vyas, Ryan Terrell
 
 ## Summary
 
 Google (David Pawlak) requested a follow-up meeting to review and clarify VAST Data's Google Distributed Cloud (GDC) Storage RFP proposal and asked specific questions on FIPS compliance, whether recurring pricing includes hardware and SSDs with Self-Encrypting Drives (SEDs), and BYOH preferred hardware partners. Lior Genzel looped in Jason Vallery to lead the SEDs response and committed to checking VAST's partner org for a full list of certified hardware partners; Google pushed to meet quickly (including Friday) to walk VAST through a document for offline work.
 
-
 ## Action Items
 
+- [?] Respond to Google (David Pawlak) with clarification on whether the proposed Google GDC Storage RFP solution uses Self-Encrypting Drives (SEDs) for the SSD component. @Myself ⏫ #task #proposed #auto
+
+- [?] Provide Google (David Pawlak) a written clarification on how VAST Data's proposed Google GDC Storage RFP offering meets FIPS compliance standards, addressing the question raised by Kamal Vyas. @TBD ⏫ #task #proposed #auto
+
+- [?] Confirm to Google (David Pawlak) that the proposed recurring pricing for the Google GDC Storage RFP includes hardware and SSDs, and that VAST Data does not sell HDDs, and clarify any assumptions or validity period for hardware pricing. @Lior Genzel #task #proposed #auto
+
+- [?] Compile and send Google (David Pawlak) the full list of VAST Data global certified hardware partners for BYOH deployments, beyond Cisco, Dell, HPE, and SuperMicro, and include ODM partners Arrow and Avnet for C-Box and D-Box manufacturing context. @Lior Genzel #task #proposed #auto
+
+- [?] Coordinate scheduling with Google (David Pawlak) for a follow-up one-hour meeting to walk through Google's document and open questions, considering Google's request for Friday with Jason Vallery and Lior Genzel's preference to target Monday. @Myself ⏫ #task #proposed #auto
 
 - [?] Respond to Google (David Pawlak) on whether the proposed GDC Storage RFP solution uses Self-Encrypting Drives (SEDs) for the SSD component. @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
 
@@ -37,19 +49,33 @@ Google (David Pawlak) requested a follow-up meeting to review and clarify VAST D
 
 - [?] Propose and confirm a 60-minute follow-up meeting time with Google to review their document and address open questions on the GDC Storage RFP proposal (Google requested Friday 2025-12-19; Lior proposed Monday). @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
 
-
-
-
 ## Decisions
 
+- VAST Data selected Tuesday, December 15, 2025 at 2:00pm PT for the initial one-hour Google GDC Storage RFP review call (as requested by David Pawlak).
 
 - Meeting time selected for the initial RFP review call: Monday 2025-12-15 at 2:00pm PT (requested by Lior Genzel and confirmed by David Pawlak sending an invite).
 
-
-
-
 ## Key Information
 
+- Google contact David Pawlak is coordinating Q&A and meetings to review and clarify VAST Data's submission for the Google Distributed Cloud (GDC) Storage RFP.
+
+- Kamal Vyas (Google, exact title not stated) raised a question about whether VAST Data's proposed GDC Storage RFP offering meets FIPS compliance standards.
+
+- Lior Genzel stated that VAST Data's proposed recurring pricing for the Google GDC Storage RFP includes hardware pricing and includes SSDs, and that VAST Data does not sell HDDs.
+
+- Lior Genzel stated that the hardware pricing in the proposal is valid for the proposal time and noted a global SSD shortage with expected higher SSD prices into 2026.
+
+- Lior Genzel stated that Jason Vallery will take the lead on answering Google's question about whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component.
+
+- Lior Genzel stated VAST Data can work with Google to certify a Google-preferred hardware partner for a BYOH (Bring Your Own Hardware) approach due to the large business upside of the GDC Storage RFP opportunity.
+
+- Lior Genzel stated VAST Data has Cisco, Dell, HPE, and SuperMicro certified as eBox partners for VAST hardware deployments.
+
+- Lior Genzel stated Arrow and Avnet are certified as ODM partners manufacturing VAST Data C-Box and D-Box solutions.
+
+- Lior Genzel stated he would check with VAST Data partner groups for the full list of global certified partners and share it back with Google.
+
+---
 
 - David Pawlak (Google) stated he did not have Jason Vallery's email address and asked Lior Genzel to loop Jason Vallery into the GDC Storage RFP follow-up thread.
 
@@ -70,9 +96,3 @@ Google (David Pawlak) requested a follow-up meeting to review and clarify VAST D
 - Lior Genzel (VAST Data) said he was mostly off on Friday 2025-12-19 and proposed targeting Monday for the follow-up meeting with Google.
 
 - David Pawlak (Google) asked if it is possible to meet with Jason Vallery on Friday 2025-12-19 because Google has a document they want to walk VAST through for offline work.
-
-
-
----
-
-*Source: [[2025-12-23_004718_3592_Re-VAST-Data---GDC-Storage-RFP---Request-For-Meeting]]*

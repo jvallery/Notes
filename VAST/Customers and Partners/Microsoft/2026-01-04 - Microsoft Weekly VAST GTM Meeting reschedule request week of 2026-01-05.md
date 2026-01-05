@@ -1,22 +1,30 @@
 ---
-type: "customer"
-title: "Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)"
-date: "2026-01-04"
-account: ""
-participants: ["Karl Rautenstrauch", "Lior Genzel", "Tiffany Stonehill", "Lea Rozen", "yana.golosovker@vastdata.com", "Michal Berdugo", "Amir Shengross", "Shay Shahak", "Reshmi Sriram", "Jason Vallery"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2026/2026-01-04_132409_4551_Re-Weekly-VAST-GTM-Meeting.md"
+type: customer
+title: Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
+date: '2026-01-04'
+account: Microsoft
+participants:
+- Karl Rautenstrauch
+- Lior Genzel
+- Tiffany Stonehill
+- Lea Rozen
+- yana.golosovker@vastdata.com
+- Michal Berdugo
+- Amir Shengross
+- Shay Shahak
+- Reshmi Sriram
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2026/2026-01-04_132409_4551_Re-Weekly-VAST-GTM-Meeting.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Microsoft Weekly VAST GTM Meeting reschedule request (week of 2026-01-05)
 
 **Date**: 2026-01-04
-**Account**: [[]]
+**Account**: [[Microsoft]]
 **Attendees**: Karl Rautenstrauch, Lior Genzel, Tiffany Stonehill, Lea Rozen, yana.golosovker@vastdata.com, Michal Berdugo, Amir Shengross, Shay Shahak, Reshmi Sriram, Jason Vallery
 
 ## Summary

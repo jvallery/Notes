@@ -1,13 +1,12 @@
 ---
-type: person
-name: Terika Dilworth
+type: people
 email: terika.dilworth@vastdata.com
 company: VAST Data
-title: ''
+title: Terika Dilworth
 last_contact: '2026-01-01'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -29,8 +28,7 @@ tags:
 - 2025-12-15: Mentioned in: Review requested: VAST on Cloud Course and Project Brief feedback due January 7, 2026
 
 - 2026-01-01: Terika Dilworth invited Jason Vallery and a large group to an urgent internal training on KV Cache s...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Terika Dilworth
 not done

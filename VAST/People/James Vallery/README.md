@@ -1,13 +1,12 @@
 ---
-type: person
-name: James Vallery
+type: people
 email: james@vallery.net
 company: ''
-title: ''
+title: James Vallery
 last_contact: '2026-01-01'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -37,8 +36,7 @@ tags:
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
 
 - 2026-01-01: On 2026-01-01, James Vallery emailed a list of LinkedIn job postings he applied to and asked me to c...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes James Vallery
 not done

@@ -1,23 +1,22 @@
 ---
-type: "customer"
-title: "Microsoft AI capacity scramble and Azure Foundry token monetization, implications for VAST neocloud co-sells"
-date: "2025-11-12"
-account: ""
-participants: []
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-12 - Announcements.md"
+type: customer
+title: Microsoft AI capacity scramble and Azure Foundry token monetization, implications for VAST neocloud co-sells
+date: '2025-11-12'
+account: Microsoft
+participants:
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-12 - Announcements.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Microsoft AI capacity scramble and Azure Foundry token monetization, implications for VAST neocloud co-sells
 
 **Date**: 2025-11-12
-**Account**: [[]]
-**Attendees**: 
+**Account**: [[Microsoft]]
+**Attendees**: Jason Vallery
 
 ## Summary
 

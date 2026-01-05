@@ -1,13 +1,12 @@
 ---
-type: person
-name: Jeff Denworth
+type: people
 email: jeff@vastdata.com
 company: VAST Data
-title: ''
+title: Jeff Denworth
 last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 phone: 856-383-8849
 ---
@@ -272,8 +271,7 @@ phone: 856-383-8849
 - 2025-12-30: An OrderAdmin alert thread confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") for Leidos Fed...
 
 - 2025-12-27: Jeff Denworth escalated concern that VAST is losing the chance of a Q1 deal with Microsoft AI Infras...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Jeff Denworth
 not done

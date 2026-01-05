@@ -1,31 +1,33 @@
 ---
-type: "customer"
-title: "Silk briefing on software-defined cloud storage for high-performance relational databases and RDMA ask on Azure L-series"
-date: "2025-09-15"
-account: ""
-participants: ["Jason Vallery", "Chris Carpenter", "Tom (last name unknown)", "Ong (last name unknown, not present)", "Jay Menon (not present)", "J\u00fcrgen (last name unknown, not present)", "Gal (last name unknown, not present)"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re.md"
+type: people
+title: Silk briefing on software-defined cloud storage for high-performance relational databases and RDMA ask on Azure L-series
+date: '2025-09-15'
+participants:
+- Jason Vallery
+- Chris Carpenter
+- Tom (last name unknown)
+- Ong (last name unknown, not present)
+- Jay Menon (not present)
+- Jürgen (last name unknown, not present)
+- Gal (last name unknown, not present)
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Silk briefed Jason on its software-defined cloud storage for high-performance re.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/people
+- generated
+person: Chris Carpenter
 ---
 
 # Silk briefing on software-defined cloud storage for high-performance relational databases and RDMA ask on Azure L-series
 
 **Date**: 2025-09-15
-**Account**: [[]]
 **Attendees**: Jason Vallery, Chris Carpenter, Tom (last name unknown), Ong (last name unknown, not present), Jay Menon (not present), Jürgen (last name unknown, not present), Gal (last name unknown, not present)
 
 ## Summary
 
 Silk briefed Jason Vallery on its software-defined cloud storage optimized for high-performance relational database workloads across Azure, GCP, and AWS, with emphasis on rising AI-driven load on systems of record. The team discussed Silk architecture (data pod, cache, durability options), observed performance limits, and a feature request for RDMA support on Azure L-series to reduce CPU overhead. Next step is to pursue an introduction to Silk CEO Jay Menon via Ong and keep Silk in mind for customers exceeding Azure native storage performance.
 
-
 ## Action Items
-
 
 - [?] Coordinate an introduction between Silk and Jay Menon via Ong. @TBD 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -39,19 +41,11 @@ Silk briefed Jason Vallery on its software-defined cloud storage optimized for h
 
 - [?] Prepare concise real-world use cases contrasting real-time production database acceleration versus near-real-time instant copies (tens-of-seconds lag) for AI-driven access patterns. @Tom (last name unknown) 📅 2025-10-26 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Proceed with connecting Silk to Jay Menon via Ong for an introductory discussion.
 
-
-
-
 ## Key Information
-
 
 - Silk provides software-defined cloud storage optimized for structured relational database workloads across Azure, Google Cloud Platform, and Amazon Web Services.
 
@@ -74,8 +68,6 @@ Silk briefed Jason Vallery on its software-defined cloud storage optimized for h
 - Silk referenced customer domains including trading, retail, distribution, and healthcare, with performance spikes such as market open driving peak load.
 
 - Ong told Silk he wanted to introduce them to Jay Menon, and Silk had not previously heard of or spoken with Jay Menon before that call.
-
-
 
 ---
 

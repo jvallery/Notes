@@ -1,14 +1,14 @@
 ---
-type: person
-name: Kushal Datta
+type: people
 email: ''
 company: Microsoft
-title: Apollo team member (storage/training infrastructure)
+title: Kushal Datta
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Apollo team member (storage/training infrastructure)
 ---
 
 # Kushal Datta
@@ -39,8 +39,7 @@ tags:
 - 2025-10-28: Cloud BU leadership aligns on dual-track GTM: GCP Marketplace MVP launch plus hyperscaler-scale MAI storyline
 
 - 2026-01-05: Mentioned in: SC25 meeting scheduling and completed outreach (Nidhi, Kurt Niebuhr, Kushal Datta, Vipin Sachdeva)
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Kushal Datta
 not done

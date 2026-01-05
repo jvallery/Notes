@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)"
-date: "2025-12-29"
-person: ""
-participants: ["Jason Vallery", "Mordechai Blaunstein"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-29_200523_5824_Accepted-MordiJason---Sync--Fri-Jan-2-2026-1pm---2pm-MST-Jas.md"
+type: people
+title: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
+date: '2025-12-29'
+person: Mordechai Blaunstein
+participants:
+- Jason Vallery
+- Mordechai Blaunstein
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-29_200523_5824_Accepted-MordiJason---Sync--Fri-Jan-2-2026-1pm---2pm-MST-Jas.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
@@ -22,26 +22,18 @@ tags:
 
 Mordechai Blaunstein accepted a calendar invitation for a 1:1 sync with Jason Vallery. The meeting is scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver) and includes a Zoom link and dial-in details.
 
-
-
-
 ## Decisions
-
 
 - Mordechai Blaunstein confirmed attendance by accepting the 1:1 sync meeting invite with Jason Vallery for Friday, January 2, 2026 1:00pm to 2:00pm MT.
 
-
-
-
 ## Key Information
-
 
 - Mordechai Blaunstein accepted a calendar invitation for a 1:1 sync with Jason Vallery scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
 
 - The 1:1 sync between Jason Vallery and Mordechai Blaunstein will be held over Zoom with Meeting ID 979 8237 9206 and passcode 374598.
 
-
-
 ---
 
-*Source: [[2025-12-29_200523_5824_Accepted-MordiJason---Sync--Fri-Jan-2-2026-1pm---2pm-MST-Jas]]*
+- Mordechai Blaunstein (VAST Data) accepted a calendar invitation for a 1:1 sync with Jason Vallery scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- The Mordi/Jason sync meeting will be held via Zoom using Meeting ID 979 8237 9206 and passcode 374598.

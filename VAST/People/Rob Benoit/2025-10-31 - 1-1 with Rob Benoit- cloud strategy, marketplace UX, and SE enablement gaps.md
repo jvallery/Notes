@@ -1,16 +1,18 @@
 ---
-type: "people"
-title: "1:1 with Rob Benoit: cloud strategy, marketplace UX, and SE enablement gaps"
-date: "2025-10-31"
-person: ""
-participants: ["Jason Vallery", "Rob Benoit", "Glenn Lockwood", "Carl Rounds"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE.md"
+type: people
+title: '1:1 with Rob Benoit: cloud strategy, marketplace UX, and SE enablement gaps'
+date: '2025-10-31'
+person: Rob Benoit
+participants:
+- Jason Vallery
+- Rob Benoit
+- Glenn Lockwood
+- Carl Rounds
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-31 - Intro discussion covering VAST-in-cloud strategy, field enablement gaps, and SE.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Rob Benoit: cloud strategy, marketplace UX, and SE enablement gaps
@@ -22,9 +24,7 @@ tags:
 
 Jason Vallery and Rob Benoit aligned on a VAST-in-cloud approach that uses object storage for capacity economics and bare metal for performance, with DataSpaces/global namespace as a key differentiator for hybrid and multi-cloud AI. They also surfaced field enablement and SE bandwidth gaps, including fragmented content ownership and heavy install burden, and agreed to connect at Tech Summit to continue the feedback loop between field pain points and the cloud roadmap.
 
-
 ## Action Items
-
 
 - [?] Schedule coffee with Rob Benoit during VAST Data Tech Summit. @Myself 📅 2025-11-08 ⏫ #task #proposed #auto
 
@@ -36,19 +36,11 @@ Jason Vallery and Rob Benoit aligned on a VAST-in-cloud approach that uses objec
 
 - [?] Loop in Yancey (last name not provided) and relevant owners on marketplace offer plans and bare-metal instance strategy for hyperscalers, as needed. @Myself 📅 2025-11-08 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Jason Vallery and Rob Benoit decided to meet in person at VAST Data Tech Summit to continue the discussion and deepen alignment between cloud roadmap priorities and field SE pain points.
 
-
-
-
 ## Key Information
-
 
 - Jason Vallery reports to Jeff Denworth and is chartered to make VAST Data successful on hyperscalers and cloud marketplaces, including evolving the product for frontier AI scenarios (for example OpenAI and Microsoft AI Infrastructure).
 
@@ -81,8 +73,6 @@ Jason Vallery and Rob Benoit aligned on a VAST-in-cloud approach that uses objec
 - High networking skills are required across the SE organization, including 400G networking, leaf-spine architectures, VXLAN, and BGP.
 
 - Tech Summit was approved for approximately 200 attendees with a cost a little over $500k, and Renan (last name not provided) supports investment in SE.
-
-
 
 ---
 

@@ -1,14 +1,13 @@
 ---
-type: person
-name: "Leo"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-10-29"
-created: "2026-01-05"
+type: people
+email: ''
+company: ''
+title: Leo
+last_contact: '2025-10-29'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/people
+- needs-review
 ---
 
 # Leo
@@ -19,8 +18,7 @@ tags:
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Parallel tracks for UK Met: Azure LSV4 test cluster (early Dec) and Microsoft-hosted bare-metal dev system
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Leo
 not done

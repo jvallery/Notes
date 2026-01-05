@@ -1,13 +1,12 @@
 ---
-type: person
-name: Vincent Wolfe
+type: people
 email: vwolfe303@gmail.com
 company: ''
-title: ''
+title: Vincent Wolfe
 last_contact: '2025-12-16'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -23,8 +22,7 @@ tags:
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday letter and wished him well for 2026. No requests, ques...
 
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday letter and wished him well for 2025 and 2026. No actio...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Vincent Wolfe
 not done

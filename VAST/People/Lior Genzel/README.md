@@ -1,13 +1,12 @@
 ---
-type: person
-name: Lior Genzel
+type: people
 email: lior.genzel@vastdata.com
 company: VAST Data
-title: ''
+title: Lior Genzel
 last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -269,8 +268,7 @@ tags:
 - 2025-12-30: Mentioned in: Leidos Federal first Cloud PO submitted (FOpp-4197, $96,808.14) and request to track customer expectations
 
 - 2025-12-27: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Lior Genzel
 not done

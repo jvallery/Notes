@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Kurt Niebuhr, Azure GTM path for VAST high-density, low-power storage"
-date: "2025-10-27"
-person: ""
-participants: ["Jason Vallery", "Kurt Niebuhr"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe.md"
+type: people
+title: 1:1 with Kurt Niebuhr, Azure GTM path for VAST high-density, low-power storage
+date: '2025-10-27'
+person: Kurt Niebuhr
+participants:
+- Jason Vallery
+- Kurt Niebuhr
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-27 - Jason and Kurt aligned on a go-to-market path to bring VAST’s high-density, lowe.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Kurt Niebuhr, Azure GTM path for VAST high-density, low-power storage
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Kurt Niebuhr aligned on a go-to-market path to bring VAST Data's high-density, lower-power storage into Microsoft Azure deals, prioritizing a BizDev-led route to executive sponsorship and Ronnie Booker's hardware decision org. Kurt described his remit in Azure AI Infrastructure pre-sales and his proposal to GA Azure Extended Zones (network-only) plus AKS NodeJoin to connect sovereign and neo-cloud training sites to Azure for global inference, while Jason highlighted VAST's density and power advantages and the limitations of the current Azure Marketplace VM-based offer.
 
-
 ## Action Items
-
 
 - [?] Educate Microsoft BizDev on VAST Data density and power advantages and the single-namespace story, and secure introductions to Ronnie Booker's organization via John Tinter. @Myself 📅 2025-10-27 ⏫ #task #proposed #auto
 
@@ -52,21 +50,13 @@ Jason Vallery and Kurt Niebuhr aligned on a go-to-market path to bring VAST Data
 
 - [?] Plan a Supercomputing conference touchpoint and introductions (including an AMD event) with Kurt Niebuhr, and align on joint targets for Azure AI infrastructure and neo-cloud partnerships. @Myself 📅 2025-10-27 🔽 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Pursue a Microsoft BizDev-led engagement path (via Joe Vane and Harish) to secure executive sponsorship from John Tinter and route into Ronnie Booker's organization for hardware design decisions, rather than pursuing an engagement path through Nidhi or Manish.
 
 - Treat the current VAST Data Azure Marketplace VM-based offer on Azure L-series VMs as a procurement checkbox, while pushing a hardware or OEM/ODM storage-dense path to achieve meaningful density and power wins in Azure AI infrastructure deployments.
 
-
-
-
 ## Key Information
-
 
 - Kurt Niebuhr is the global pre-sales lead for AI Infrastructure under Zia at Microsoft; his team scores constrained GPU allocations, supports mega-deal pre-sales, and runs Azure Core feedback loops.
 
@@ -89,8 +79,6 @@ Jason Vallery and Kurt Niebuhr aligned on a go-to-market path to bring VAST Data
 - Kurt Niebuhr expected A2N approval for Azure Extended Zones and AKS NodeJoin in approximately three weeks from 2025-10-27, with target partners including sovereign and neo-cloud providers such as sakura.net in Japan.
 
 - Kurt Niebuhr described internal Microsoft org dynamics where teams are being shifted into 'buildout' work focused on capacity tracking and schedules, which he characterized as spreadsheet-driven execution rather than product or customer-facing work.
-
-
 
 ---
 

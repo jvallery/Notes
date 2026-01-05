@@ -1,14 +1,14 @@
 ---
-type: person
-name: Andy Perlsteiner
+type: people
 email: ''
 company: VAST Data
-title: Field CTO
+title: Andy Perlsteiner
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Field CTO
 ---
 
 # Andy Perlsteiner
@@ -53,8 +53,7 @@ tags:
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Andy Perlsteiner
 not done

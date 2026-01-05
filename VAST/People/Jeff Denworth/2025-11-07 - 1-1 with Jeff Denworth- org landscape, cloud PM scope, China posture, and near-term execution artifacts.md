@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jeff Denworth: org landscape, cloud PM scope, China posture, and near-term execution artifacts"
-date: "2025-11-07"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md"
+type: people
+title: '1:1 with Jeff Denworth: org landscape, cloud PM scope, China posture, and near-term execution artifacts'
+date: '2025-11-07'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-11-07 - Reviewed org landscape and key players; aligned that Jason will deeply understan.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jeff Denworth: org landscape, cloud PM scope, China posture, and near-term execution artifacts
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Jeff Denworth reviewed VAST Data org structure and key players, aligned on Jason owning multi-cloud strategy end-to-end, and emphasized hands-on technical grounding plus tighter PM process (Confluence FRDs, win-loss cadence). They agreed China should be treated as a sales outpost (software-only) rather than a CAPEX or headcount build-out, and confirmed Carl will move to ProServe under Rob.
 
-
 ## Action Items
-
 
 - [?] Set up a 1:1 meeting with John (VAST Data) to understand his scope and discuss cloud-in-a-box strategy and Tier 2 cloud partnerships. @Myself 📅 2025-11-14 ⏫ #task #proposed #auto
 
@@ -54,11 +52,7 @@ Jason Vallery and Jeff Denworth reviewed VAST Data org structure and key players
 
 - [?] Move Carl to ProServe team working for Rob (organizational change execution). @TBD 📅 2025-11-21 #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - VAST Data will treat China as a sales outpost (software-only sales) and will not pursue a significant CAPEX or headcount build-out in China.
 
@@ -66,11 +60,7 @@ Jason Vallery and Jeff Denworth reviewed VAST Data org structure and key players
 
 - VAST Data product requirements and FRDs will be stored in Confluence (Jason Vallery to follow the Confluence process).
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth expects Jason Vallery to own VAST Data multi-cloud strategy end-to-end, translating live deal flow into product requirements, Confluence documentation, and focused cloud plays across Azure, AWS, GCP, and Oracle, including hyperscaler AI platforms (Foundry, Bedrock, Vertex).
 
@@ -89,8 +79,6 @@ Jason Vallery and Jeff Denworth reviewed VAST Data org structure and key players
 - Jeff Denworth uses Apple Calendar alongside Google Calendar for meeting management.
 
 - Jeff Denworth shared a storage TCO calculator (HDD to SSD tipping-point) intended to help tune VAST Data cloud economics narratives.
-
-
 
 ---
 

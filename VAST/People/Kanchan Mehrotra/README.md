@@ -1,13 +1,12 @@
 ---
-type: person
-name: Kanchan Mehrotra
+type: people
 email: ''
 company: ''
-title: ''
+title: Kanchan Mehrotra
 last_contact: '2025-11-06'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -17,11 +16,7 @@ tags:
 
 - Kanchan Mehrotra is increasingly focused on Microsoft OpenAI engagement and Microsoft AI Infrastructure (MAI), including technical problem-solving and supporting 3P GPU customer deployments in Azure.
 
-- Akanksha Mehrotra (referred to as Kanchan in the notes) was the coordination point for socializing the VAST-on-Azure-Storage-hardware approach and preparing for the Nidhi briefing.
-
 - Kanchan Mehrotra reported a lukewarm reception from Azure Storage members regarding Fungible DPU maturity, based on prior partner testing requests, and she was not confident recommending it without more validation.
-
-- Akanksha Mehrotra owns running 100 to 200 node scale tests and capturing throughput reduction and measurement methodology for the distributed cache checkpointing MVP.
 
 - Kanchan Mehrotra is a key contact for discussions related to storage plays and storage density considerations for Supercomputing (FAST).
 
@@ -41,8 +36,7 @@ tags:
 - 2026-01-05: The transcript contains a single completed action item for Jason Vallery to follow up with Kanchan M...
 
 - 2025-11-06: Jason Vallery and Kanchan Mehrotra aligned on a pragmatic approach to accelerate VAST adoption insid...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Kanchan Mehrotra
 not done

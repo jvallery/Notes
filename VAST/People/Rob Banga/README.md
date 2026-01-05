@@ -1,13 +1,12 @@
 ---
-type: person
-name: Rob Banga
+type: people
 email: ''
 company: ''
-title: ''
+title: Rob Banga
 last_contact: '2025-10-30'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -61,8 +60,7 @@ tags:
 - 2025-10-30: Mentioned in: Cloud marketplace support operating model, hyperscaler priority, and readiness plan (target 2026-02-01)
 
 - 2025-10-30: Mentioned in: Cloud operations org design: distinct Customer Success, Support, and SRE roles with 2026-02-01 readiness target
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Rob Banga
 not done

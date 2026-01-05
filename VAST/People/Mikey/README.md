@@ -1,13 +1,12 @@
 ---
-type: person
-name: Mikey
+type: people
 email: ''
 company: ''
-title: ''
+title: Mikey
 last_contact: '2025-11-14'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -27,8 +26,7 @@ tags:
 - 2025-10-29: Mentioned in: Parallel tracks for UK Met: Azure LSV4 test cluster (early Dec) and Microsoft-hosted bare-metal dev system
 
 - 2025-11-14: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Mikey
 not done

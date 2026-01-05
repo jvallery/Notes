@@ -1,22 +1,25 @@
 ---
-type: "customer"
-title: "Cisco RFE 0526: Regex-based allow/deny patterns for replication policies"
-date: "2025-12-17"
-account: ""
-participants: ["Brian Moore", "Cisco", "Brian Evans", "Jeff Mohler"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_103425_2107_RFE-Alert-RFE-0526---Existing-Feature-Enhancement-RFE-Submit.md"
+type: customer
+title: 'Cisco RFE 0526: Regex-based allow/deny patterns for replication policies'
+date: '2025-12-17'
+account: Cisco
+participants:
+- Brian Moore
+- Cisco
+- Brian Evans
+- Jeff Mohler
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_103425_2107_RFE-Alert-RFE-0526---Existing-Feature-Enhancement-RFE-Submit.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- account/cisco
+- generated
 ---
 
 # Cisco RFE 0526: Regex-based allow/deny patterns for replication policies
 
 **Date**: 2025-12-17
-**Account**: [[]]
+**Account**: [[Cisco]]
 **Attendees**: Brian Moore, Cisco, Brian Evans, Jeff Mohler
 
 ## Summary

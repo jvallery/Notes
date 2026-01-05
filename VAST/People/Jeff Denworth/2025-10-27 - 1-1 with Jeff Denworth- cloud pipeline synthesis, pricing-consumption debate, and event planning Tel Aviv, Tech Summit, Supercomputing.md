@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)"
-date: "2025-10-27"
-person: ""
-participants: ["Jason Vallery", "Jeff Denworth"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md"
+type: people
+title: '1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)'
+date: '2025-10-27'
+person: Jeff Denworth
+participants:
+- Jason Vallery
+- Jeff Denworth
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-10-27 - Jason and Jeff aligned on near-term focus synthesize a cloud pipeline view and.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)
@@ -22,9 +22,7 @@ tags:
 
 Jason Vallery and Jeff Denworth aligned on near-term priorities: build a synthesized cloud pipeline and requirements view across major hyperscalers, prioritize Microsoft, and develop a Google TPU strategy. They deferred an OpenAI alignment session until OpenAI actively engages, and they discussed risks of broad consumption pricing on on-prem prepaid revenue and utilization dynamics. They also covered upcoming travel and internal relationship-building, plus imminent org changes moving people under Jason’s scope.
 
-
 ## Action Items
-
 
 - [?] Draft a pricing and consumption model write-up (including unit of billing, PAYGO vs reserved commit, and on-prem guardrails) and share with Jeff Denworth and Yancey (last name unknown) for discussion. @Myself 📅 2025-10-27 ⏫ #task #proposed #auto
 
@@ -62,11 +60,7 @@ Jason Vallery and Jeff Denworth aligned on near-term priorities: build a synthes
 
 - [?] Validate what Microsoft data can be used in ROI comparisons before sharing any ROI comparison content with Nidhi (last name unknown). @Myself 📅 2025-10-27 ⏫ #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - Do not run an OpenAI alignment session until OpenAI actively engages and commits to requirements discussions.
 
@@ -74,11 +68,7 @@ Jason Vallery and Jeff Denworth aligned on near-term priorities: build a synthes
 
 - Include Brett Tanzer in the pricing and consumption model debate due to strong concerns about on-prem consumption pricing.
 
-
-
-
 ## Key Information
-
 
 - Jeff Denworth stated that an OpenAI alignment session is not needed until OpenAI actively engages and commits, because VAST will respond to OpenAI requirements once they engage.
 
@@ -95,8 +85,6 @@ Jason Vallery and Jeff Denworth aligned on near-term priorities: build a synthes
 - Notes indicate Brett Tanzer is currently anti-consumption pricing, especially for on-prem deployments, and should be included in the pricing and consumption model discussion.
 
 - Notes indicate Lior Genzel focuses on hyperscalers and also has sell-to obligations, including Microsoft AI research/MapFalcon with approximately 16,000 GPUs.
-
-
 
 ---
 

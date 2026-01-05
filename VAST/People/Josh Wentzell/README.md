@@ -1,14 +1,14 @@
 ---
-type: person
-name: Josh Wentzell
+type: people
 email: ''
 company: VAST Data
-title: Office of the CTO
+title: Josh Wentzell
 last_contact: '2025-10-31'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Office of the CTO
 ---
 
 # Josh Wentzell
@@ -27,8 +27,7 @@ tags:
 - 2026-01-05: Jason Vallery planned to ping Josh Wentzell (Office of the CTO) to obtain a VAST OVA and onboarding ...
 
 - 2025-10-31: Jason Vallery and Josh Wentzell held an introductory 1:1 focused on VAST on Cloud strategy and curre...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Josh Wentzell
 not done

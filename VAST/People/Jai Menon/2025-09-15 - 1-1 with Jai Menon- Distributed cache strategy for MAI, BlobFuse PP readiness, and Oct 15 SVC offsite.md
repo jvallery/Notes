@@ -1,16 +1,16 @@
 ---
-type: "people"
-title: "1:1 with Jai Menon: Distributed cache strategy for MAI, BlobFuse PP readiness, and Oct 15 SVC offsite"
-date: "2025-09-15"
-person: ""
-participants: ["Jason Vallery", "Jai Menon"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned.md"
+type: people
+title: '1:1 with Jai Menon: Distributed cache strategy for MAI, BlobFuse PP readiness, and Oct 15 SVC offsite'
+date: '2025-09-15'
+person: Jai Menon
+participants:
+- Jason Vallery
+- Jai Menon
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned.md
 tags:
-  - "type/people"
-  - "person/"
-  - "generated"
-
+- type/people
+- generated
 ---
 
 # 1:1 with Jai Menon: Distributed cache strategy for MAI, BlobFuse PP readiness, and Oct 15 SVC offsite
@@ -22,9 +22,7 @@ tags:
 
 Jai Menon and Jason Vallery aligned on evaluating distributed caching options for Microsoft AI Infrastructure (MAI) across clear scenarios (fan-out writes, fan-out reads, fan-in reads, KV cache) and producing a concise recommendation after benchmarking. Jai will stand up a shared Teams room and drive Manifold (Singularity) briefings, while Jason will obtain and test BlobFuse PP, compare against Manifold and OpenAI TensorCache, and craft an MAI-oriented narrative with benchmarks. The team offsite was confirmed for Wednesday 2025-10-15 in Silicon Valley with planned DPU/FunOS and inferencing/KV cache sessions.
 
-
 ## Action Items
-
 
 - [?] Create a Microsoft Teams room for the distributed caching effort, add all current docs/links, and share access with stakeholders (Jason Vallery, Jean, Jay Jagant, and others). @Jai Menon 📅 2025-10-26 ⏫ #task #proposed #auto
 
@@ -66,21 +64,43 @@ Jai Menon and Jason Vallery aligned on evaluating distributed caching options fo
 
 - [?] Align on the long-term vision for hardware offload or a kernel-mode driver versus an interim user-space approach for distributed caching performance. @Jai Menon 📅 2025-10-26 #task #proposed #auto
 
+- [?] Create a Microsoft Teams room for distributed caching work and add all current documents and links, then share access with stakeholders (including Jason Vallery, Jean, and Jay Jagant). @Jai Menon 📅 2025-10-26 ⏫ #task #proposed #auto
 
+- [?] Share Manifold slides and documents plus the Manifold vs OpenAI TensorCache comparison link in the Teams room. @Jai Menon 📅 2025-10-26 #task #proposed #auto
 
+- [?] Prepare an MAI-focused proposal showing how BlobFuse compares to MAI's current async copy approach (local NVMe to Azure Blob) across performance, complexity, risks, and scale, including benchmarks. @Myself 📅 2025-10-26 ⏫ #task #proposed #auto
+
+- [?] Set up a requirements call with Microsoft AI Infrastructure (MAI) stakeholders (including Pete and partners) to validate needs and adoption criteria for distributed caching. @Myself 📅 2025-10-27 ⏫ #task #proposed #auto
+
+- [?] Analyze metadata strategy trade-offs between consistent hashing and a high-TPS metadata store, including implications for scale-in/scale-out and rebalancing. @Myself 📅 2025-10-26 #task #proposed #auto
+
+- [?] Assess BlobFuse implementation trade-offs (Go and FUSE) versus a potential C++ or kernel-mode client, including performance and time-to-market implications. @Myself 📅 2025-10-26 #task #proposed #auto
+
+- [?] Share BlobFuse PP bits and the deployment guide with the Microsoft inferencing team once available and collect feedback on adoption and performance. @Myself 📅 2025-10-26 #task #proposed #auto
+
+- [?] Draft the 2025-10-15 Silicon Valley offsite agenda including DPU/FunOS sessions and inferencing sessions, then circulate to attendees. @Jai Menon 📅 2025-10-26 #task #proposed #auto
+
+- [?] Confirm BlobFuse PP availability and the 100-node test results with Vishnu Charan TJ, capturing metrics and bottlenecks. @Myself 📅 2025-10-26 ⏫ #task #proposed #auto
+
+- [?] Verify Manifold's approach to scale-in/scale-out with consistent hashing and any rebalancing strategy. @Myself 📅 2025-10-26 #task #proposed #auto
+
+- [?] Determine stability and roadmap status of OpenAI TensorCache relevant to near-term evaluations. @Myself 📅 2025-10-26 #task #proposed #auto
+
+- [?] Clarify Alluxio IP and China optics concerns and Java runtime stack implications for enterprise adoption. @Myself 📅 2025-10-26 🔽 #task #proposed #auto
+
+- [?] Align on the long-term vision for hardware offload or a kernel-mode driver versus an interim user-space approach for distributed caching. @Jai Menon 📅 2025-10-26 #task #proposed #auto
 
 ## Decisions
-
 
 - Hold the team offsite in Silicon Valley on 2025-10-15 as a day-and-a-half event with a light schedule and a social/dinner component, and include DPU/FunOS and potentially inferencing/KV cache sessions.
 
 - Create a shared Microsoft Teams room to centralize distributed caching documents, links, and ongoing discussion for the evaluation.
 
+- Hold the team offsite in Silicon Valley on 2025-10-15 with a day-and-a-half agenda and optional social/dinner on day 1.
 
-
+- Create a shared Microsoft Teams room to centralize distributed caching documents, links, and ongoing discussion.
 
 ## Key Information
-
 
 - Jai Menon confirmed a team offsite in Silicon Valley on 2025-10-15, planned as a day-and-a-half with a light schedule and a social dinner, and intended to include DPU and FunOS sessions.
 
@@ -100,8 +120,16 @@ Jai Menon and Jason Vallery aligned on evaluating distributed caching options fo
 
 - Jai Menon planned to reach out to Rajat Monga to invite an inferencing and KV cache session at the Silicon Valley offsite.
 
-
-
 ---
 
-*Source: [[2025-09-15 - Discussed distributed cache strategy, MAI needs, and BlobFuse readiness. Aligned]]*
+- Jai Menon scheduled a team offsite in Silicon Valley for 2025-10-15 with a day-and-a-half format, light schedule, and a social event or dinner on day 1, with an early departure around noon on day 2.
+
+- BlobFuse PP is primarily focused on fan-out writes and has limited read caching; a recent 100-node test occurred but the deployment guide was still pending at the time of the discussion.
+
+- The Microsoft inferencing team expressed interest in BlobFuse but had not received the pre-production bits, with an approximately two-month delay noted.
+
+- Manifold (also referred to as Singularity) claims a consistent-hashing approach without a central metadata store, but questions remain about scale-in/scale-out behavior and data rebalancing.
+
+- Alluxio raised concerns related to IP and China optics and reliance on Java components, which may impact enterprise adoption.
+
+- BlobFuse performance concerns were discussed around Go and FUSE implementation choices versus a potential C++ or kernel-mode client, with kernel-mode or hardware offload viewed as higher risk and longer time-to-market.

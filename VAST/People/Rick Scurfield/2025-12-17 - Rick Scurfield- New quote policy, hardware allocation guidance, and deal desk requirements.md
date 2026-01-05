@@ -1,31 +1,27 @@
 ---
-type: "projects"
-title: "Rick Scurfield: New quote policy, hardware allocation guidance, and deal desk requirements"
-date: "2025-12-17"
-project: ""
-participants: ["Rick Scurfield"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_163626_6775_Important-Update-Quote-Policy--Hardware-Allocation.md"
+type: people
+title: 'Rick Scurfield: New quote policy, hardware allocation guidance, and deal desk requirements'
+date: '2025-12-17'
+participants:
+- Rick Scurfield
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-17_163626_6775_Important-Update-Quote-Policy--Hardware-Allocation.md
 tags:
-  - "type/projects"
-  - "project/"
-  - "generated"
-
+- type/people
+- generated
+person: Rick Scurfield
 ---
 
 # Rick Scurfield: New quote policy, hardware allocation guidance, and deal desk requirements
 
 **Date**: 2025-12-17
-**Project**: [[]]
 **Attendees**: Rick Scurfield
 
 ## Summary
 
 Rick Scurfield communicated an updated quoting policy and operational guidance to manage global hardware supply constraints and keep deals moving. Key changes include all outstanding quotes lapsing on December 31, 2025, moving to monthly price books with month-bound quote validity, and requiring Deal Desk sign-off for deals larger than 15 PB prior to quoting.
 
-
 ## Action Items
-
 
 - [?] Place hardware orders as early as possible so they enter the allocation queue sooner. @TBD ⏫ #task #proposed #auto
 
@@ -37,11 +33,7 @@ Rick Scurfield communicated an updated quoting policy and operational guidance t
 
 - [?] For late-stage opportunities, sync all budgetary quotes to ensure visibility and execution across VAST Data and hardware partners. @TBD ⏫ #task #proposed #auto
 
-
-
-
 ## Decisions
-
 
 - All outstanding VAST Data quotes will lapse on 2025-12-31, and any order placed by 2025-12-31 will be honored at the quoted price.
 
@@ -51,11 +43,7 @@ Rick Scurfield communicated an updated quoting policy and operational guidance t
 
 - Partial licensing is no longer allowed, and all POCs must be paid.
 
-
-
-
 ## Key Information
-
 
 - Rick Scurfield stated VAST Data is actively monitoring the global hardware supply environment and is closely engaged with suppliers and hardware partners to manage allocation and customer expectations.
 
@@ -78,8 +66,6 @@ Rick Scurfield communicated an updated quoting policy and operational guidance t
 - VAST Data policy reminder: all POCs must be paid.
 
 - Rick Scurfield instructed that for all late-stage opportunities, all budgetary quotes must be synced to ensure visibility and execution.
-
-
 
 ---
 

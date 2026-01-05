@@ -1,13 +1,12 @@
 ---
-type: person
-name: Mordechai Blaunstein
+type: people
 email: mordechai.blaunstein@vastdata.com
 company: VAST Data
-title: ''
+title: Mordechai Blaunstein
 last_contact: '2025-12-29'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -37,8 +36,7 @@ tags:
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
 
 - 2025-12-19: Mentioned in: Google Docs share: CoreWeave-Vast Automation Project - V2
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Mordechai Blaunstein
 not done

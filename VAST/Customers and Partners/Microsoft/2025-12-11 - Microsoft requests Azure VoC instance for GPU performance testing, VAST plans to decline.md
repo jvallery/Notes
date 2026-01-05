@@ -1,22 +1,24 @@
 ---
-type: "customer"
-title: "Microsoft requests Azure VoC instance for GPU performance testing, VAST plans to decline"
-date: "2025-12-11"
-account: ""
-participants: ["Ray Coetzee", "Lior Genzel", "Karl Vietmeier", "Jason Vallery"]
-source: "transcript"
-source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-11_091323_2229_Re-Azure-VoC-for-MSFT-testing.md"
+type: customer
+title: Microsoft requests Azure VoC instance for GPU performance testing, VAST plans to decline
+date: '2025-12-11'
+account: Microsoft
+participants:
+- Ray Coetzee
+- Lior Genzel
+- Karl Vietmeier
+- Jason Vallery
+source: transcript
+source_ref: /Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-11_091323_2229_Re-Azure-VoC-for-MSFT-testing.md
 tags:
-  - "type/customer"
-  - "account/"
-  - "generated"
-
+- type/customer
+- generated
 ---
 
 # Microsoft requests Azure VoC instance for GPU performance testing, VAST plans to decline
 
 **Date**: 2025-12-11
-**Account**: [[]]
+**Account**: [[Microsoft]]
 **Attendees**: Ray Coetzee, Lior Genzel, Karl Vietmeier, Jason Vallery
 
 ## Summary

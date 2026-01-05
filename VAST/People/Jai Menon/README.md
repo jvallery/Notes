@@ -1,14 +1,14 @@
 ---
-type: person
-name: Jai Menon
+type: people
 email: ''
 company: Microsoft (Apollo team (storage side))
-title: Founder/CEO
+title: Jai Menon
 last_contact: '2025-09-03'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
+role: Founder/CEO
 ---
 
 # Jai Menon
@@ -101,8 +101,7 @@ tags:
 - 2025-09-15: Mentioned in: Silk briefing on software-defined cloud storage for high-performance database workloads and Azure RDMA ask
 
 - 2025-09-03: Jason Vallery and Jai Menon reconnected after Jason’s sabbatical and aligned Jason’s initial focus o...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Jai Menon
 not done

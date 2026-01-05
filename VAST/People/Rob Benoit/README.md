@@ -1,13 +1,12 @@
 ---
-type: person
-name: Rob Benoit
+type: people
 email: ''
 company: ''
-title: ''
+title: Rob Benoit
 last_contact: '2025-10-31'
 created: '2026-01-05'
 tags:
-- type/person
+- type/people
 - needs-review
 ---
 
@@ -33,8 +32,7 @@ tags:
 - 2026-01-05: Jason Vallery tracked and completed an action item to coordinate with Rob Benoit on Tech Summit cont...
 
 - 2025-10-31: Jason Vallery and Rob Benoit aligned on a VAST-in-cloud approach that uses object storage for capaci...
-## Tasks
-
+## Open Tasks
 ```tasks
 path includes Rob Benoit
 not done
