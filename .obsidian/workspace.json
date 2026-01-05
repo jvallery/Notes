@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Jeff Denworth/README.md",
+                "file": "VAST/Projects/_MANIFEST.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "_MANIFEST"
             }
           }
         ]
@@ -195,6 +195,10 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "VAST/People/_MANIFEST.md",
+    "VAST/People/Jeff Denworth/README.md",
+    "Sources/Email/2026/2025-12-30_162801_0557_Re-Re-EXTERNAL-EXTERNAL-Re-OA-Alert-FOpp-4197---9680814---A-.md",
+    "VAST/Customers and Partners/Leidos/2025-12-30 - Leidos Federal Cloud PO and Deployment.md",
     "Sources/Transcripts/2026/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md",
     "VAST/People/Jeff Denworth/2025-12-19 - Jeff Denworth - Microsoft strategy and SCO prep.md",
     "Sources/Transcripts/2026/2025-11-05 - Walmart Analytics.md",
@@ -227,10 +231,6 @@
     "Sources/Transcripts/2025/2025-12-15 16 10 - Google GDC RFP.md",
     "VAST/Projects/Google Distributed Cloud RFP/2025-12-15 - Discussion on Google Distributed Cloud RFP.md",
     "Sources/Transcripts/2026/Jonsi:Jason 1-1 .md",
-    "VAST/People/Jonsi Stephenson/2026-01-04 - Discussion on MAI and Azure Integration Challenges.md",
-    "VAST/People/Jonsi Stefanson/README.md",
-    "VAST/Customers and Partners/N-Scale/README.md",
-    "VAST/Customers and Partners/Supermicro/README.md",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",

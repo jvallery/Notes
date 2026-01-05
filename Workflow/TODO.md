@@ -3865,3 +3865,273 @@ EntityIndex exists but limited to manifest/name scans; no fuzzy search or OpenAI
 - Extraction loads relevant READMEs even when names are variants/aliases (verified on fixture with alias)
 - Apply step flags potential dupes and suggests merge target
 - Docs updated with how EntityIndex/search/alias flow works
+---
+
+## 100) ✅ Fix Extraction Verbosity - No Vague References
+
+**Goal:** Ensure all extracted facts, decisions, topics, and context are fully self-contained with specific names, not vague references.
+
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:** Added VERBOSITY RULES section to `pipeline/extract.py` with examples of BAD (vague) vs GOOD (self-contained) extractions.
+
+**Discovery:**
+From 2026-01-05 audit: Extractions produce vague context entries like:
+- "Use the same concepts from previous CSP projects" (which projects?)
+- "Discussed storage architecture" (whose storage? which product?)
+- "Follow up on pricing" (which customer? what pricing?)
+
+These entries are useless without full context. The LLM has the information but isn't instructed to be verbose.
+
+**Impact:** CRITICAL - extracted knowledge becomes meaningless over time without specificity
+
+**Effort:** 30 minutes
+
+**Tasks**
+- [ ] Update `pipeline/extract.py` system prompt to add VERBOSITY RULES section:
+  - "Every fact, decision, and topic MUST be self-contained and fully understandable without reading the source"
+  - "Always include: WHO (full names), WHAT (specific project/product), WHERE (customer/team), WHEN (if known)"
+  - "BAD: 'Use the same concepts from previous CSP projects'"
+  - "GOOD: 'Use Microsoft Azure marketplace SKU patterns from the LSv4 launch for the GCP marketplace offer'"
+- [ ] Add few-shot examples to prompt showing verbose vs vague
+- [ ] Test with 3 transcripts and verify outputs are self-contained
+
+**Success Criteria**
+- `rg -l "previous.*projects" VAST/` returns 0 new matches after fix
+- Any extracted fact can be understood 6 months later without source
+- Topics include specific project/customer/product names
+
+---
+
+## 101) ✅ Add Relationship Columns to Manifests
+
+**Goal:** Each manifest should include Jason's role/relationship to enable context-aware extraction and drafting.
+
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:** Updated `manifest_sync.py` dataclasses and generators to include `my_relationship` (People), `my_role` (Projects, Customers). Updated `pipeline/context.py` to format glossary with relationship info.
+
+**Discovery:**
+From 2026-01-05 audit: Manifests only have entity info, not how Jason relates to each entity:
+- People: "Who is this to me?" (manager, peer, direct report, customer contact, partner)
+- Customers: "What's my role?" (technical lead, account owner, support, none)
+- Projects: "What's my involvement?" (owner, contributor, stakeholder, informed)
+
+Without this, the LLM can't properly:
+- Set urgency for responses (manager email > random contact)
+- Assign task owners (my responsibility vs delegate)
+- Craft appropriate tone (executive vs peer)
+
+**Impact:** HIGH - enables persona-aware extraction and response generation
+
+**Effort:** 1 hour
+
+**Tasks**
+- [ ] Add "My Relationship" column to People manifest:
+  - Values: `manager`, `direct-report`, `peer`, `executive`, `customer`, `partner`, `vendor`, `other`
+- [ ] Add "My Role" column to Customers manifest:
+  - Values: `technical-lead`, `account-owner`, `support`, `stakeholder`, `none`
+- [ ] Add "My Role" column to Projects manifest:
+  - Values: `owner`, `contributor`, `stakeholder`, `informed`
+- [ ] Update `manifest_sync.py` to preserve these columns during sync
+- [ ] Update `ContextBundle._format_compact_glossary()` to include relationship info
+- [ ] Backfill key entities (top 20 people, top 10 customers, top 15 projects)
+
+**Success Criteria**
+- Jeff Denworth manifest entry shows "peer (cloud PM)"
+- Microsoft manifest entry shows "technical-lead"
+- MAI project entry shows "owner"
+- Extraction prompt receives relationship context
+
+---
+
+## 102) Wire cached_prompts.py into UnifiedExtractor
+
+**Goal:** Use prompt caching infrastructure for token efficiency and cost reduction.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: `scripts/utils/cached_prompts.py` has 543 lines of caching infrastructure:
+- `load_glossary()`, `build_glossary_from_manifests()`
+- `format_glossary_as_text()` with hash-based caching
+- OpenAI prompt caching support
+
+But `pipeline/context.py` and `pipeline/extract.py` build prompts manually without using this.
+
+**Impact:** HIGH - missing ~40% token savings from cacheable prompt prefix
+
+**Effort:** 1 hour
+
+**Tasks**
+- [ ] Refactor `ContextBundle.get_extraction_context()` to use `cached_prompts.get_glossary_context()`
+- [ ] Move persona loading to use cached prompt pattern
+- [ ] Ensure system prompt has stable prefix (cacheable) + dynamic suffix (entity-specific)
+- [ ] Add cache hit/miss logging in verbose mode
+- [ ] Verify prompt caching works via OpenAI response headers
+
+**Success Criteria**
+- `--verbose` output shows "Cache: HIT" or "Cache: MISS"
+- Prompt prefix is identical across extractions (cacheable)
+- Token usage drops ~40% for batch processing
+
+---
+
+## 103) Consolidate Legacy Scripts to _archive/
+
+**Goal:** Make `ingest.py` the only entry point; archive legacy scripts.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: Multiple scripts do similar things:
+- `process_inbox.py` - legacy orchestrator
+- `process_emails.py` - email-specific processing
+- `ingest_emails.py` - another email processor
+- `ingest_transcripts.py` - transcript processor
+- `extract.py`, `plan.py`, `apply.py` - phase scripts
+
+The unified pipeline (`pipeline/` + `ingest.py`) should replace all of these.
+
+**Impact:** MEDIUM - reduces confusion and maintenance burden
+
+**Effort:** 30 minutes
+
+**Tasks**
+- [ ] Verify `ingest.py` can handle all content types end-to-end
+- [ ] Move to `_archive/`:
+  - `process_inbox.py` → `_archive/process_inbox_legacy.py`
+  - `process_emails.py` → `_archive/process_emails_legacy.py`
+  - `ingest_emails.py` → `_archive/ingest_emails_legacy.py`
+  - `ingest_transcripts.py` → `_archive/ingest_transcripts_legacy.py`
+- [ ] Keep standalone utilities: `enrich_person.py`, `manifest_sync.py`, `draft_responses.py`
+- [ ] Update README.md, RUNBOOK.md to reference only `ingest.py`
+- [ ] Update VS Code tasks.json to use `ingest.py`
+
+**Success Criteria**
+- Only `ingest.py` in scripts/ for content processing
+- Documentation shows unified CLI only
+- Legacy scripts accessible but archived
+
+---
+
+## 104) Integrate Draft Generation into Unified Pipeline
+
+**Goal:** Generate draft replies, calendar invites, and tasks as pipeline output.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: 
+- `draft_responses.py` exists (1368 lines) but is standalone
+- `pipeline/models.py` has `SuggestedOutputs` with `calendar_invite`, `follow_up_reminder`
+- `ingest.py` has `--draft-replies` flag but doesn't fully work
+
+Need to wire outputs through pipeline to `Inbox/_drafts/`.
+
+**Impact:** HIGH - enables automated draft generation (key user-facing feature)
+
+**Effort:** 2 hours
+
+**Tasks**
+- [ ] Create `Inbox/_drafts/` folder structure: `_drafts/replies/`, `_drafts/calendar/`
+- [ ] Add `pipeline/outputs.py` module to generate:
+  - Draft reply markdown with frontmatter (from/to/subject/urgency/draft_body)
+  - Calendar .ics files from `CalendarSuggestion`
+- [ ] Wire `SuggestedOutputs` from extraction → output generation in pipeline
+- [ ] Update `ingest.py` `--draft-replies` to trigger output generation
+- [ ] Add `--show-drafts` flag to preview without writing
+
+**Success Criteria**
+- Email with question generates draft in `Inbox/_drafts/replies/2026-01-05_reply_to_X.md`
+- Calendar suggestion generates `Inbox/_drafts/calendar/2026-01-05_mtg_X.ics`
+- Drafts include context from extraction + persona
+
+---
+
+## 105) Task Emission with Proposed Status
+
+**Goal:** All extracted tasks use `[?]` proposed status for triage workflow.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: AGENTS.md defines task workflow:
+- `[?]` = Proposed (AI-generated, needs human review)
+- `[ ]` = Not Started (accepted)
+- `[/]` = In Progress
+- `[x]` = Done
+- `[R]` = Rejected
+
+But extracted tasks are written with `[ ]` directly, skipping triage.
+
+**Impact:** MEDIUM - enables proper human-in-the-loop task review
+
+**Effort:** 30 minutes
+
+**Tasks**
+- [ ] Update task template in `templates/` to use `[?]` for AI-extracted tasks
+- [ ] Add `#proposed #auto` tags to extracted tasks
+- [ ] Update TASKS.md query to show Proposed section
+- [ ] Document acceptance flow: `[?]` → `[ ]` in TASKS.md header
+
+**Success Criteria**
+- New extracted tasks appear with `[?]` status
+- TASKS.md has "## Proposed" section with query
+- Accepting a task changes `[?]` to `[ ]`
+
+---
+
+## 106) Manifest Auto-Sync on Pipeline Run
+
+**Goal:** Keep manifests in sync with entity folders after each pipeline run.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: `manifest_sync.py` exists but isn't run automatically.
+When new entities are created, manifests become stale until manual sync.
+
+**Impact:** LOW - convenience feature, but improves accuracy
+
+**Effort:** 15 minutes
+
+**Tasks**
+- [ ] Add manifest sync step to `UnifiedPipeline.process_all()` after apply
+- [ ] Only sync if new entities were created (check apply result)
+- [ ] Add `--no-manifest-sync` flag to skip
+
+**Success Criteria**
+- Creating new person folder auto-adds to People manifest
+- Manifests stay in sync without manual runs
+
+---
+
+## 107) ai_client.py Integration Verification
+
+**Goal:** Verify all LLM calls go through instrumented ai_client.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-05 audit: `ai_client.py` has full instrumentation:
+- `AIRequest`/`AIResponse` dataclasses
+- Token tracking, latency logging
+- Daily summaries
+
+But `pipeline/extract.py` uses `get_openai_client()` - need to verify it's instrumented.
+
+**Impact:** MEDIUM - enables cost tracking and debugging
+
+**Effort:** 15 minutes
+
+**Tasks**
+- [ ] Trace `get_openai_client("unified_extractor")` to verify it returns instrumented client
+- [ ] Add caller name to all pipeline LLM calls
+- [ ] Verify `logs/ai/YYYY-MM-DD/` gets entries after pipeline run
+- [ ] Add `--show-stats` to display API usage summary
+
+**Success Criteria**
+- Pipeline run creates log entry in `logs/ai/`
+- Token usage tracked per extraction
+- Can view daily API costs

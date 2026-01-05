@@ -98,27 +98,42 @@ class ContextBundle(BaseModel):
         return "\n\n".join(sections)
     
     def _format_compact_glossary(self) -> str:
-        """Format glossary in compact form for token efficiency."""
+        """Format glossary in compact form for token efficiency.
+        
+        Includes relationship info when available to help the LLM:
+        - Understand urgency (manager email > random contact)
+        - Assign task owners appropriately
+        - Craft appropriate tone
+        """
         lines = []
         
-        # People (just names)
+        # People - include relationship if available
         if self.people_manifest:
             lines.append("**Known People:**")
-            # Extract just names from manifest table
-            names = self._extract_names_from_manifest(self.people_manifest)
-            if names:
-                lines.append(", ".join(names[:100]))  # Limit for tokens
+            # Extract names with relationships from manifest table
+            people_info = self._extract_people_with_relationships(self.people_manifest)
+            if people_info:
+                # Format: "Name (relationship)" or just "Name" if no relationship
+                formatted = [
+                    f"{name} ({rel})" if rel else name 
+                    for name, rel in people_info[:80]
+                ]
+                lines.append(", ".join(formatted))
             lines.append("")
         
-        # Companies (just names)
+        # Companies - include my_role if available
         if self.company_manifest:
             lines.append("**Known Companies:**")
-            names = self._extract_names_from_manifest(self.company_manifest)
-            if names:
-                lines.append(", ".join(names[:50]))
+            company_info = self._extract_companies_with_roles(self.company_manifest)
+            if company_info:
+                formatted = [
+                    f"{name} [{role}]" if role else name
+                    for name, role in company_info[:40]
+                ]
+                lines.append(", ".join(formatted))
             lines.append("")
         
-        # Projects (just names)
+        # Projects (just names for now, could add my_role later)
         if self.project_list:
             lines.append("**Known Projects:**")
             lines.append(", ".join(self.project_list[:50]))
@@ -131,6 +146,90 @@ class ContextBundle(BaseModel):
             lines.append(", ".join(alias_items))
         
         return "\n".join(lines)
+    
+    def _extract_people_with_relationships(self, manifest: str) -> list[tuple[str, str]]:
+        """Extract people names and their relationship to me from manifest table."""
+        import re
+        results = []
+        
+        # Parse manifest table - find column indices first
+        lines = manifest.split('\n')
+        header_idx = -1
+        rel_col_idx = -1
+        
+        for i, line in enumerate(lines):
+            if '| Name |' in line:
+                # Parse header to find My Relationship column
+                headers = [h.strip() for h in line.split('|')]
+                for j, h in enumerate(headers):
+                    if 'My Relationship' in h:
+                        rel_col_idx = j
+                header_idx = i
+                break
+        
+        if header_idx < 0:
+            # Fallback to just names
+            for match in re.finditer(r"\|\s*([^|\[]+)\s*\|", manifest):
+                name = match.group(1).strip()
+                if name and name not in ["Name", "---", ""]:
+                    results.append((name, ""))
+            return results[:80]
+        
+        # Parse data rows
+        for line in lines[header_idx + 2:]:  # Skip header and separator
+            if not line.strip() or not line.startswith('|'):
+                continue
+            cols = [c.strip() for c in line.split('|')]
+            if len(cols) < 2:
+                continue
+            
+            name = cols[1].strip()  # First data column is Name
+            rel = ""
+            if rel_col_idx > 0 and rel_col_idx < len(cols):
+                rel = cols[rel_col_idx].strip()
+            
+            if name and name not in ["Name", "---"]:
+                results.append((name, rel))
+        
+        return results
+    
+    def _extract_companies_with_roles(self, manifest: str) -> list[tuple[str, str]]:
+        """Extract company names and my role from manifest table."""
+        import re
+        results = []
+        
+        lines = manifest.split('\n')
+        header_idx = -1
+        role_col_idx = -1
+        
+        for i, line in enumerate(lines):
+            if '| Name |' in line:
+                headers = [h.strip() for h in line.split('|')]
+                for j, h in enumerate(headers):
+                    if 'My Role' in h:
+                        role_col_idx = j
+                header_idx = i
+                break
+        
+        if header_idx < 0:
+            return results
+        
+        for line in lines[header_idx + 2:]:
+            if not line.strip() or not line.startswith('|'):
+                continue
+            cols = [c.strip() for c in line.split('|')]
+            if len(cols) < 2:
+                continue
+            
+            name = cols[1].strip()
+            role = ""
+            if role_col_idx > 0 and role_col_idx < len(cols):
+                role = cols[role_col_idx].strip()
+            
+            if name and name not in ["Name", "---"]:
+                results.append((name, role))
+        
+        return results
     
     def _format_full_glossary(self) -> str:
         """Format full glossary with details."""

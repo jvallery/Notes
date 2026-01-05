@@ -54,6 +54,7 @@ class PersonEntry:
     role: str = ""
     company: str = ""
     email: str = ""
+    my_relationship: str = ""  # manager, peer, direct-report, customer, partner, executive, vendor, other
     context: str = ""
     last_contact: str = ""
     
@@ -67,6 +68,7 @@ class ProjectEntry:
     """A project in the manifest."""
     name: str
     owner: str = ""
+    my_role: str = ""  # owner, contributor, stakeholder, informed
     description: str = ""
     status: str = "active"
 
@@ -77,6 +79,7 @@ class CustomerEntry:
     name: str
     type: str = ""  # customer, partner, prospect
     industry: str = ""
+    my_role: str = ""  # technical-lead, account-owner, support, stakeholder, none
     context: str = ""
 
 
@@ -121,6 +124,7 @@ def sync_person_to_manifest(
         role=updates.get("role") or updates.get("title") or fm.get("role") or fm.get("title") or "",
         company=updates.get("company") or fm.get("company") or "",
         email=updates.get("email") or fm.get("email") or "",
+        my_relationship=updates.get("my_relationship") or fm.get("my_relationship") or "",
         context=extract_context_summary(content, max_chars=100),
         last_contact=updates.get("last_contact") or fm.get("last_contact") or ""
     )
@@ -368,6 +372,7 @@ def scan_people_folder() -> List[PersonEntry]:
             role=profile.get("role", ""),
             company=profile.get("company", ""),
             email=profile.get("email", ""),
+            my_relationship=fm.get("my_relationship", ""),
             context=context,
             last_contact=fm.get("last_contact", "")
         ))
@@ -411,6 +416,7 @@ def scan_projects_folder() -> List[ProjectEntry]:
         entries.append(ProjectEntry(
             name=folder.name,
             owner=owner,
+            my_role=fm.get("my_role", "") if readme.exists() else "",
             description=desc,
             status=status
         ))
@@ -453,6 +459,7 @@ def scan_customers_folder() -> List[CustomerEntry]:
             name=folder.name,
             type=entry_type,
             industry=industry,
+            my_role=fm.get("my_role", "") if readme.exists() else "",
             context=context
         ))
     
@@ -470,8 +477,8 @@ def generate_people_manifest(entries: List[PersonEntry]) -> str:
         "",
         "## Entities",
         "",
-        "| Name | Role | Company | Email | Context |",
-        "|------|------|---------|-------|---------|",
+        "| Name | Role | Company | Email | My Relationship | Context |",
+        "|------|------|---------|-------|-----------------|---------|",
     ]
     
     for e in entries:
@@ -479,9 +486,10 @@ def generate_people_manifest(entries: List[PersonEntry]) -> str:
         role = e.role.replace("|", "/") if e.role else ""
         company = e.company.replace("|", "/") if e.company else ""
         email = e.email.replace("|", "/") if e.email else ""
+        my_rel = e.my_relationship.replace("|", "/") if e.my_relationship else ""
         context = e.context.replace("|", "/") if e.context else ""
         
-        lines.append(f"| {e.name} | {role} | {company} | {email} | {context} |")
+        lines.append(f"| {e.name} | {role} | {company} | {email} | {my_rel} | {context} |")
     
     lines.extend([
         "",
@@ -520,14 +528,15 @@ def generate_projects_manifest(entries: List[ProjectEntry]) -> str:
         "",
         "## Entities",
         "",
-        "| Name | Owner | Status | Description |",
-        "|------|-------|--------|-------------|",
+        "| Name | Owner | My Role | Status | Description |",
+        "|------|-------|---------|--------|-------------|",
     ]
     
     for e in entries:
         desc = e.description.replace("|", "/")[:100] if e.description else ""
         owner = e.owner.replace("|", "/") if e.owner else ""
-        lines.append(f"| {e.name} | {owner} | {e.status} | {desc} |")
+        my_role = e.my_role.replace("|", "/") if e.my_role else ""
+        lines.append(f"| {e.name} | {owner} | {my_role} | {e.status} | {desc} |")
     
     return "\n".join(lines)
 
@@ -543,15 +552,16 @@ def generate_customers_manifest(entries: List[CustomerEntry]) -> str:
         "",
         "## Entities",
         "",
-        "| Name | Type | Industry | Context |",
-        "|------|------|----------|---------|",
+        "| Name | Type | Industry | My Role | Context |",
+        "|------|------|----------|---------|---------|",
     ]
     
     for e in entries:
         entry_type = e.type.replace("|", "/") if e.type else ""
         industry = e.industry.replace("|", "/") if e.industry else ""
+        my_role = e.my_role.replace("|", "/") if e.my_role else ""
         context = e.context.replace("|", "/")[:80] if e.context else ""
-        lines.append(f"| {e.name} | {entry_type} | {industry} | {context} |")
+        lines.append(f"| {e.name} | {entry_type} | {industry} | {my_role} | {context} |")
     
     return "\n".join(lines)
 

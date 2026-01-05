@@ -190,6 +190,30 @@ Return a JSON object with this exact structure:
    - Group call with Microsoft team → note_type: "customer", primary_entity: Microsoft
    - Internal project standup → note_type: "projects", primary_entity: project name
 
+6. **VERBOSITY - ALL FACTS/DECISIONS/TOPICS MUST BE SELF-CONTAINED**:
+   Every extracted fact, decision, topic, and task MUST be fully understandable 6 months 
+   from now WITHOUT reading the source document. Never use vague references.
+   
+   ALWAYS include:
+   - WHO: Full names of people (not just "he" or "they" or first names only)
+   - WHAT: Specific project, product, or initiative name (not "the project" or "this")
+   - WHICH: Specific customer/company when relevant (not "the customer")
+   - CONTEXT: Enough detail that the statement stands alone
+   
+   BAD EXAMPLES (vague, useless later):
+   - "Use the same concepts from previous CSP projects" → Which projects? What concepts?
+   - "Discussed storage architecture" → Whose storage? Which architecture?
+   - "Follow up on pricing" → Which customer? What pricing tier?
+   - "He mentioned the timeline" → Who? What timeline for what?
+   
+   GOOD EXAMPLES (self-contained, useful later):
+   - "Apply Microsoft Azure marketplace SKU patterns from LSv4 launch to GCP offer design"
+   - "Discussed VAST storage architecture for Google GDC RFP encryption requirements"
+   - "Follow up with Kanchan Mehrotra on Microsoft Apollo project pricing proposal"
+   - "Jeff Denworth mentioned Q1 2026 timeline for MAI unified cache GA"
+   
+   If you don't know a specific name, say so: "Unknown Microsoft contact mentioned..."
+
 Return ONLY valid JSON, no markdown fences or explanation."""
 
         return instructions
