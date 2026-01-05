@@ -9,6 +9,7 @@ created: '2026-01-05'
 tags:
 - type/person
 - needs-review
+phone: +44 7966 282 680
 ---
 
 # Adem Sefa
@@ -21,6 +22,8 @@ tags:
 ## Recent Context
 
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery for potential F...
+
+- 2025-11-20: Adem Sefa (Microsoft Strategic Partnerships) introduced his brother-in-law, Edwin Trogler, to Jason ...
 ## Tasks
 
 ```tasks
@@ -37,3 +40,11 @@ not done
 - Potential Colorado-based FP&A opportunities at VAST Data
 
 - Scheduling a quick call next week
+
+- Introduction for FP&A Director role at VAST Data
+
+- Candidate referral from Microsoft partner contact (Adem Sefa) to VAST Data
+
+- Scheduling a quick call next week with Edwin Trogler
+
+- FP&A opportunities in Colorado

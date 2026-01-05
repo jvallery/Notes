@@ -21,6 +21,8 @@ tags:
 ## Recent Context
 
 - 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion on Oracle, AWS, Salesforce, Microsoft
+
+- 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion with Jason Vallery
 ## Tasks
 
 ```tasks

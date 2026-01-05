@@ -336,11 +336,17 @@ class PatchGenerator:
         facts = [f.text for f in extraction.facts 
                  if f.about_entity and f.about_entity.name == extraction.primary_entity.name]
         
+        # Build frontmatter with contact info if available
+        frontmatter = {"last_contact": extraction.date}
+        if extraction.primary_entity.entity_type == "person":
+            contact_info = self._get_contact_info_for_person(extraction.primary_entity.name, extraction)
+            frontmatter.update(contact_info)
+        
         patches.append(PatchOperation(
             operation="patch",
             target_path=str(readme_path.relative_to(self.vault_root)),
             target_entity=extraction.primary_entity.name,
-            add_frontmatter={"last_contact": extraction.date},
+            add_frontmatter=frontmatter,
             add_facts=facts if facts else None,
             add_topics=extraction.topics[:5] if extraction.topics else None,
             add_decisions=extraction.decisions if extraction.decisions else None,
@@ -396,11 +402,16 @@ class PatchGenerator:
         # Just add context entry (no facts or topics)
         context_entry = f"- {extraction.date}: {extraction.title}"
         
+        # Build frontmatter with contact info if available
+        frontmatter = {"last_contact": extraction.date}
+        contact_info = self._get_contact_info_for_person(participant, extraction)
+        frontmatter.update(contact_info)
+        
         patches.append(PatchOperation(
             operation="patch",
             target_path=str(readme_path.relative_to(self.vault_root)),
             target_entity=participant,
-            add_frontmatter={"last_contact": extraction.date},
+            add_frontmatter=frontmatter,
             add_context=context_entry,
         ))
         
@@ -448,6 +459,29 @@ class PatchGenerator:
         if "@" in name:
             return name
         return None
+    
+    def _get_contact_info_for_person(self, name: str, extraction: UnifiedExtraction) -> dict:
+        """Get full contact info (email, title, company) for a person from contacts."""
+        result = {}
+        if not extraction.contacts:
+            return result
+        
+        normalized_target = self.entity_index.normalize_name(name).lower()
+        for contact in extraction.contacts:
+            contact_name = contact.name or ""
+            normalized_contact = self.entity_index.normalize_name(contact_name).lower() if contact_name else ""
+            if contact_name and normalized_contact == normalized_target:
+                # Only include non-empty fields
+                if contact.email:
+                    result["email"] = contact.email
+                if contact.title:
+                    result["title"] = contact.title
+                if contact.company:
+                    result["company"] = contact.company
+                if contact.phone:
+                    result["phone"] = contact.phone
+                break
+        return result
 
     def _get_entity_folder(self, entity, extraction: Optional[UnifiedExtraction] = None) -> Optional[Path]:
         """Get folder path for an entity reference.

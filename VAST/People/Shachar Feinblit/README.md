@@ -1,7 +1,7 @@
 ---
 type: person
 name: Shachar Feinblit
-email: ''
+email: shachar@vastdata.com
 company: VAST Data
 title: ''
 last_contact: '2025-12-21'
@@ -37,6 +37,8 @@ tags:
 - 2026-01-05: Mentioned in: 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
 
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate deployment plan
+
+- 2025-12-21: Jeff Denworth escalation: MAI supply chain risk and need for immediate deployment plan
 ## Tasks
 
 ```tasks

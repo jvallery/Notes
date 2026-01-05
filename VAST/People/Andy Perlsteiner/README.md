@@ -32,6 +32,8 @@ tags:
 - Andy Perlsteiner provided Jason Vallery a hands-on brain dump and advice related to learning VAST and VAST on Cloud.
 
 - Andy Perlsteiner is leading Hands-on Labs for VAST Forward (as of 2025-12-23 program update).
+
+- Andy Perlsteiner is leading Hands-on Labs for VAST Forward.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -49,6 +51,8 @@ tags:
 - 2026-01-05: The transcript contains a single completed action item: Jason Vallery set up a 1:1 with Andy Bernste...
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
 ## Tasks
 
 ```tasks

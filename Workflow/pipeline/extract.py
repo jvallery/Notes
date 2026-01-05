@@ -388,10 +388,19 @@ Participants: {', '.join(envelope.participants) if envelope.participants else 'U
                 confidence=pe.get("confidence", 0.8)
             )
         
-        # Parse contacts
+        # Parse contacts (check multiple field names for compatibility)
         contacts = []
+        # Standard contacts array
         for c in data.get("contacts", []):
             contacts.append(ContactInfo(**c))
+        # Email-specific: contacts_mentioned
+        for c in data.get("contacts_mentioned", []):
+            contacts.append(ContactInfo(**c))
+        # Email-specific: sender
+        if data.get("sender"):
+            sender = data["sender"]
+            if isinstance(sender, dict) and sender.get("name"):
+                contacts.append(ContactInfo(**sender))
         
         # Parse facts
         facts = []

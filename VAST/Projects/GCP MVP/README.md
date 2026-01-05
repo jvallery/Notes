@@ -61,6 +61,8 @@ tags:
 - 2025-10-28: The team aligned to launch the VAST GCP Marketplace MVP using private offers only, with fixed capaci...
 
 - 2025-12-17: Jonsi Stephenson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
+
+- 2025-12-17: Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
 ## Tasks
 
 ```tasks
@@ -87,6 +89,8 @@ not done
 - GCP customer-to-sales-to-customer process flow documentation
 
 - Google Slides collaboration (edit access)
+
+- Collaborative editing of a Google Slides presentation
 ## Key Decisions
 
 - For the GCP Marketplace MVP, VAST will transact exclusively through cloud marketplaces and will not support BYOL (Bring Your Own License).

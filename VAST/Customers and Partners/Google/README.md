@@ -123,6 +123,16 @@ tags:
 - Google Docs sent an automated email notification about a document access request for 'VAST and Azure Integration.docx'.
 
 - Google is the external party associated with the Google Distributed Cloud (GDC) RFP that requires an updated deck.
+
+- Google Slides sent an automated notification from drive-shares-dm-noreply@google.com indicating a presentation share.
+
+- Google Docs sent an automated document share notification from drive-shares-dm-noreply@google.com.
+
+- Whale Iptic described a multi-pod architecture deployed across AWS, GCP, and Azure to reduce disruption risk from a single cloud provider outage.
+
+- Google Docs generated an automated email notification for a document share access request.
+
+- Google is the external party associated with the Google Distributed Cloud (GDC) RFP effort requiring an updated deck.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -206,6 +216,16 @@ tags:
 - 2025-12-22: Mentioned in: Access request: Google Docs share for 'VAST and Azure Integration.docx' from Lior Genzel
 
 - 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change, GDC RFP deck, MAI unified cache pricing)
+
+- 2025-12-17: Mentioned in: Google Slides share: GCP Flow from customer to sales to customer.pptx
+
+- 2025-12-19: Mentioned in: Google Docs share: CoreWeave-Vast Automation Project - V2
+
+- 2025-12-17: Mentioned in: Whale Iptic platform overview and potential VAST integration (Avinash Lakshman 2025-12-17)
+
+- 2025-12-22: Mentioned in: Lior Genzel requests access to Google Doc: VAST and Azure Integration.docx
+
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace - SKU change request, GDC RFP deck, MAI unified cache pricing follow-up
 ## Tasks
 
 ```tasks
@@ -294,6 +314,26 @@ not done
 - Mapping encryption groups to S3 buckets, NFS exports, and multi-tenant policy models
 
 - S3 SSE-C support via x-amz-server-side-encryption-customer-* headers in VAST 5.4
+
+- Google Distributed Cloud (GDC) Storage RFP proposal review and clarification meeting
+
+- FIPS compliance expectations for the proposed VAST Data offering
+
+- Recurring pricing scope, specifically whether hardware is included and whether HDDs are part of the offer
+
+- SSD Self-Encrypting Drives (SEDs) usage in the proposed solution
+
+- BYOH (Bring Your Own Hardware) option and VAST Data preferred or certified hardware partners
+
+- Google Distributed Cloud (GDC) RFP follow-up questions after RFP walkthrough call
+
+- FIPS certification expectations for data-at-rest encryption and whether self-encrypting drives (SEDs) are required
+
+- VAST Data encryption key granularity and mapping across S3 buckets, NFS exports, and tenant boundaries
+
+- VAST Data encryption groups and assigning unique keys per path
+
+- S3 SSE-C support via x-amz-server-side-encryption-customer-* headers and version dependency (VAST 5.4)
 ## Key Decisions
 
 - Create a shared pros and cons document to re-evaluate GCP VIP and failover options (alias IP, route-based failover, and Internal Load Balancer) including pricing and feature tradeoffs.
@@ -323,3 +363,7 @@ not done
 - Meeting time selected for the initial RFP review call: Monday 2025-12-15 at 2:00pm PT (requested by Lior Genzel and confirmed by David Pawlak sending an invite).
 
 - Route detailed encryption and key management questions for the Google Distributed Cloud RFP to Violet as the subject matter expert.
+
+- VAST Data selected Tuesday, December 15, 2025 at 2:00pm PT for the initial one-hour Google GDC Storage RFP review call (as requested by David Pawlak).
+
+- Route detailed encryption questions for the Google Distributed Cloud RFP to Violet as the VAST Data subject matter expert (per Alon Horev and Tomer Hagay).

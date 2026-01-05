@@ -18,9 +18,15 @@ tags:
 - Louis Feuvrier accepted Jason Vallery's LinkedIn connection invitation on 2025-12-26.
 
 - Louis Feuvrier is listed as 'Learning' and located in the San Francisco Bay Area on LinkedIn (as shown in the LinkedIn notification email).
+
+- Louis Feuvrier is listed on LinkedIn as 'Learning' and located in the San Francisco Bay Area (as shown in the LinkedIn notification email).
+
+- Louis Feuvrier is described as the lead developer/architect of OpenAI's DAQ (Data Acquisition) in-house data platform.
 ## Recent Context
 
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
+
+- 2025-12-12: Mentioned in: OpenAI org and data platforms, intro path via John Mao's friend (Online Data Infrastructure)
 ## Tasks
 
 ```tasks
@@ -33,3 +39,5 @@ not done
 - LinkedIn connection acceptance
 
 - Potential outreach to new professional connection
+
+- Potential outreach to new LinkedIn connection

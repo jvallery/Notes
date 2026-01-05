@@ -107,6 +107,14 @@ tags:
 - Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, limited to workloads that can run exclusively on premises.
 
 - Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or they would need significant lobbying at the database layer including a hybrid cloud database.
+
+- Walmart held an internal requirements meeting during the week of 2025-12-22 and restated that they need a long-term hybrid solution for their data team.
+
+- Walmart was not successful in getting the business to accept operating two disjoint namespaces, indicating a requirement for a unified namespace across environments.
+
+- Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, but only for workloads that can run exclusively on premises.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or they would need significant lobbying at the database layer including potentially a hybrid cloud database.
 ## Recent Context
 
 - 2025-11-06: Internal VAST prep to shape an in-person architecture whiteboarding session with Walmart’s Lakehouse...
@@ -186,6 +194,16 @@ not done
 - Competitive risk and positioning versus Alluxio
 
 - Product planning implications for VAST cloud and hybrid capabilities
+
+- Walmart hybrid data platform requirements (on-prem plus cloud integration)
+
+- Unified namespace requirement (rejection of two disjoint namespaces)
+
+- Google Cloud Storage (GCS) integration requirement for Walmart
+
+- Walmart internal big data POC scope limited to on-prem-only workloads in 2025
+
+- Competitive risk from Alluxio due to GCS-centric architectures
 ## Key Decisions
 
 - Use VAST SyncEngine for the pilot to replicate data from Google Cloud Storage into on-prem VAST clusters, and use VAST DataSpaces to provide a unified view across the two on-prem sites.

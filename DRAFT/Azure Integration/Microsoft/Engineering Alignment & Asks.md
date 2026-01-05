@@ -22,6 +22,18 @@ MVP characteristics:
 - Copy-from-URL primitives for lake→edge hydration at scale (range-based PutBlockFromURL).
 - Clear throttling + retry behavior aligned with client expectations.
 
+### Blob API Design POV (Blob ↔ VAST ↔ S3)
+
+We treat the Blob façade as another access path into the same VAST namespace as S3 and file protocols (not a separate store). MVP mapping decisions:
+
+- **Container ↔ bucket:** Azure container maps 1:1 to a VAST bucket and an S3 bucket of the same name.
+- **Blob name ↔ object key/path:** Blob name is the canonical object key and file path relative to the container; `/` is a directory delimiter.
+- **Filesystem coherence:** keys that create file-vs-prefix conflicts (e.g., `a` and `a/b`) are rejected to preserve NFS/SMB interoperability.
+- **Block uploads ↔ multipart semantics:** `PutBlock` stages parts; `PutBlockList` atomically publishes the committed object (cross-protocol visibility after commit).
+- **Versioning + metadata:** `ETag` is an opaque version identifier (not MD5); user metadata maps between `x-ms-meta-*` and `x-amz-meta-*`.
+
+Details: see “Technical Specification (MVP)” in [Blob API Requirements (MVP)](../Appendices/Blob%20API%20Requirements%20%28MVP%29.md).
+
 ## 3) Networking + Managed VNet Constraints
 
 We expect two classes of connectivity:
@@ -58,6 +70,8 @@ For a legitimate managed-service destination, we expect:
 ## 6) Open Questions / Asks (Initial)
 
 - **Blob API contract:** confirm minimum semantics required by AzCopy/SDKs for partner endpoints (error schemas, headers, conditional behavior).
+- **Partner endpoint trust:** confirm the supported path for making AzCopy and other Azure tooling treat a partner `{blob_suffix}` as trusted (to avoid requiring `--trusted-microsoft-suffixes` for production).
+- **Copy-from-URL auth:** confirm recommended usage of `x-ms-copy-source-authorization` (Bearer scheme) with `PutBlockFromURL` for protected sources.
 - **Serverless private connectivity:** validate Databricks Serverless + other serverless compute planes targeting partner PLS endpoints.
 - **Fabric shortcuts:** confirm private-network options for S3-compatible shortcuts and the limitations around FQDN/PLS.
 - **Managed private endpoint ops:** define/automate approval flows for managed services (Synapse/others).

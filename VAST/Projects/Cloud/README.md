@@ -192,6 +192,24 @@ tags:
 - Microsoft requested VAST slides and code from a VAST + AKS presentation intended for Microsoft AI infrastructure sellers, aligning to VAST's AI cloud enablement efforts.
 
 - An updated deck is needed to support the Google Distributed Cloud (GDC) RFP process.
+
+- The VAST on Cloud Course initiative includes two review assets: a Cloud Course and a Project Brief.
+
+- Feedback on the VAST on Cloud Course and Project Brief is requested by January 7, 2026 so updates can be incorporated before a working session in January 2026.
+
+- VAST product management needs to translate Walmart's hybrid and GCS integration requirements into the VAST cloud product plan.
+
+- The embargo for NVIDIA's CME announcement lifts at 3:00pm PT on January 5, 2026, which is when VAST can announce related blog, demo, and press release content.
+
+- Kirstin Bordner identified three CES news-cycle topics to insert VAST into: NVIDIA CME (with blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Order Admin email stated an action is needed by the AE to review an Order Admin checklist and ensure required order documents are attached to the opportunity in Salesforce (SFDC).
+
+- The Google Distributed Cloud RFP follow-up included questions about FIPS-certified options, self-encrypting drives (SEDs), encryption key granularity across S3 and NFS, and S3 SSE-C support.
+
+- An updated deck is needed to support the Google Distributed Cloud (GDC) RFP effort.
+
+- Leidos Federal FOpp-4197 is described as a cloud deployment in Leidos GovCloud, software-only, and intended to connect to on-prem for a resilient government demo platform.
 ## Recent Context
 
 - 2025-11-14: VAST cloud and federal teams aligned on responding to Google Distributed Cloud's US-based RFP to rep...
@@ -293,6 +311,20 @@ tags:
 - 2025-12-19: Mentioned in: Microsoft GBB AKS AI Roadshow follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 
 - 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change, GDC RFP deck, MAI unified cache pricing)
+
+- 2025-12-15: Terika Dilworth requested team review and feedback on the draft VAST on Cloud Course and associated ...
+
+- 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace, GCS integration, Alluxio risk
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) and request to track customer expectations
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
+
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace - SKU change request, GDC RFP deck, MAI unified cache pricing follow-up
+
+- 2025-12-30: Mentioned in: Leidos Federal first Cloud PO submitted (FOpp-4197, $96,808.14) and request to track customer expectations
 ## Tasks
 
 ```tasks
@@ -369,6 +401,12 @@ not done
 - Technical accuracy validation for VAST on Cloud Course
 
 - Improving clarity of cloud positioning for the field
+
+- Sales enablement content review for VAST on Cloud messaging
+
+- Technical accuracy validation for cloud course materials
+
+- January 2026 working session preparation
 ## Key Decisions
 
 - Greg Castellucci will run point for engagement with Google Federal and coordinate with the corporate Google Distributed Cloud team for the RFP pursuit and validation motion.

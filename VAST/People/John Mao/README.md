@@ -22,9 +22,17 @@ tags:
 - John Mao committed to flying to San Francisco early in the New Year to visit his OpenAI friend and open a dialogue to bring in VAST engineering.
 
 - John Mao stated his OpenAI friend will openly share information OpenAI is willing to share, and John Mao offered to ask for any needed information.
+
+- Kirstin Bordner stated John Mao is planning to be in Las Vegas for CES and can be used for press interviews if Renen Hallak is tied up with flash vendor meetings.
+
+- John Mao stated he will fly to San Francisco in early 2026 to visit his OpenAI contact and open a dialogue to bring in VAST engineering, and requested keeping the relationship engineering-centered.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+
+- 2025-12-12: Mentioned in: OpenAI org and data platforms, intro path via John Mao's friend (Online Data Infrastructure)
 ## Tasks
 
 ```tasks

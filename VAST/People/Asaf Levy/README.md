@@ -32,6 +32,8 @@ tags:
 - Asaf Levy performed field research that drove several platform and control fixes/features included in VAST Data 5.5.
 
 - VAST is working with Asaf Levy and NVIDIA's Israel team on slides and animation for NVIDIA CES materials; a potential VAST press release may point to Asaf Levy's demo.
+
+- Marianne Budnik stated VAST is working with Asaf Levy and NVIDIA team members in Israel, including Idan (last name unknown) and Ranen Carmel (NVIDIA Creative Director based in Tel Aviv), on slides and animation for CES content.
 ## Recent Context
 
 - 2025-10-20: Mentioned in: 1:1 with Yogev Vankin: Multi-cloud global namespace, object-store tiering, GPU-adjacent cache, and metadata persistence
@@ -49,6 +51,8 @@ tags:
 - 2025-11-03: Mentioned in: 5.5 release plan review: feature freeze next week, beta January 2026, restricted release March 2026; scope deferrals and hardware supply risks
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 ## Tasks
 
 ```tasks

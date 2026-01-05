@@ -18,6 +18,8 @@ tags:
 ## Recent Context
 
 - 2025-12-22: Invitation to join Slice equity management platform for VAST Data equity access
+
+- 2025-12-22: Slice invitation for VAST Data equity management access
 ## Tasks
 
 ```tasks

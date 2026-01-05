@@ -66,18 +66,26 @@ This file tracks the remaining collateral, placeholders, and “still-to-write�
 
 - [?] Define “AzCopy gate” + “SDK gate” execution plan (test cases, environment, pass/fail) #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: a test matrix and step-by-step procedures for validating the Blob API façade with AzCopy and `azure-storage-blob`.
+  - Acceptance: covers endpoint patterns (virtual-host + path-style), block uploads (`PutBlock`/`PutBlockList`/`GetBlockList`), range reads, XML list fidelity, `PutBlockFromURL` (range-based), `ETag`/`Last-Modified` semantics, conditional headers, and metadata translation (`x-ms-meta-*`).
   - References:
     - AzCopy command reference (includes `--trusted-microsoft-suffixes`): https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy
     - AzCopy getting started: https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10
     - `BlobServiceClient(account_url=...)` constructor: https://learn.microsoft.com/en-us/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient?view=azure-python
 
 - [?] Specify the Blob API façade “account + endpoint model” (DNS, certs, account naming, container↔bucket mapping, key lifecycle for SAS/shared-key modes) #task #proposed #auto #p0 #crawl #owner-vast
-  - Deliverable: a concrete endpoint model (what the hostname looks like, TLS cert strategy, how accounts/containers map to VAST constructs, and what auth modes are supported in Crawl).
+  - Deliverable: a concrete endpoint model (virtual-host + path-style support, hostname/TLS cert strategy, how `{account}`/containers/blobs map to VAST constructs, and what auth modes are supported in Crawl).
   - References:
     - AzCopy trusted suffixes (for AAD tokens to non-`core.windows.net` domains): https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy
     - Shared key auth: https://learn.microsoft.com/en-us/rest/api/storageservices/authorize-with-shared-key
     - Put Block From URL: https://learn.microsoft.com/en-us/rest/api/storageservices/put-block-from-url
-  - Open questions: do we require `*.core.windows.net`-style domains vs custom domains; what is the token audience/scope for Entra auth in partner endpoints.
+  - Open questions: do we require `*.core.windows.net`-style domains vs custom domains; how do we get a partner `{blob_suffix}` treated as “trusted” (avoid `--trusted-microsoft-suffixes` in production); what is the token audience/scope for Entra auth in partner endpoints; when is `x-ms-copy-source-authorization` required for `PutBlockFromURL`.
+
+- [?] Define multi-protocol namespace constraints for the Blob façade (naming, file/dir conflicts, case collisions) #task #proposed #auto #p0 #crawl #owner-vast
+  - Deliverable: documented rules + chosen Azure-compatible error codes for rejected names/conflicts; align with [Terminology & Conventions](Appendices/Terminology%20%26%20Conventions.md) and [Blob API Requirements (MVP)](Appendices/Blob%20API%20Requirements%20%28MVP%29.md).
+  - Acceptance: Azure tooling/SDKs behave predictably (or have documented workarounds); S3/NFS/SMB views remain coherent.
+  - References:
+    - Naming and referencing containers, blobs, and metadata: https://learn.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata
+    - Common REST API error codes: https://learn.microsoft.com/en-us/rest/api/storageservices/common-rest-api-error-codes
 
 - [?] Define authZ mapping for Blob API façade (Entra principals/claims → VAST users/groups/policies; least-privilege patterns) #task #proposed #auto #p0 #crawl #owner-vast
   - Deliverable: mapping rules, recommended RBAC patterns, and examples for service principals/managed identity.
@@ -195,6 +203,9 @@ This file tracks the remaining collateral, placeholders, and “still-to-write�
     - Event Grid blob event schema: https://learn.microsoft.com/en-us/azure/event-grid/event-schema-blob-storage
 - [?] Metadata mapping model (mtime/etag/content-type/custom metadata) #task #proposed #auto #p2 #backlog #owner-vast
   - Deliverable: mapping table from Blob properties/headers to VAST metadata, including drift rules and edge cases (rename, overwrite, conditional writes).
+  - References:
+    - [Blob API Requirements (MVP)](Appendices/Blob%20API%20Requirements%20%28MVP%29.md)
+    - [Terminology & Conventions](Appendices/Terminology%20%26%20Conventions.md)
 - [?] Security mapping (identity + ACL semantics + drift control) #task #proposed #auto #p2 #backlog #owner-vast
   - Deliverable: security model for federation (who is authoritative, how to prevent privilege escalation, how to audit).
 - [?] Stub/hydration design (metadata-only stubs, cache policies, pinning) #task #proposed #auto #p2 #backlog #owner-vast

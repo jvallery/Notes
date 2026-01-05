@@ -62,6 +62,8 @@ tags:
 - Marketplace offers should expose tenant outcomes and avoid requiring customers to administer complex VAST clusters.
 
 - Jeff Denworth requested that the Azure Marketplace SKU change request be completed and submitted by Friday (relative to the 2026-01-04 email date).
+
+- Jeff Denworth requested an Azure Marketplace SKU change request to be completed by Friday (relative to the 2026-01-04 email date).
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Microsoft and VAST align parallel tracks: UK Met Azure LSV4 test cluster and Microsoft-hosted bare-metal dev system
@@ -103,6 +105,8 @@ tags:
 - 2025-10-31: Mentioned in: 1:1 with Rob Benoit: cloud strategy, marketplace UX, and SE enablement gaps
 
 - 2026-01-05: Jeff Denworth sent a weekly status email with three action items: submit an Azure Marketplace SKU ch...
+
+- 2026-01-05: Jeff Denworth flagged three weekly status items: an Azure Marketplace SKU change request due Friday,...
 ## Tasks
 
 ```tasks

@@ -1,8 +1,8 @@
 ---
 type: person
 name: Tomer Hagay
-email: ''
-company: ''
+email: tomer.hagay@vastdata.com
+company: VAST Data
 title: ''
 last_contact: '2025-12-01'
 created: '2026-01-05'
@@ -66,6 +66,16 @@ tags:
 - Tomer Hagay stated that assigning an encryption group to a path supports having a unique key for that path.
 
 - Tomer Hagay stated that S3 SSE-C using x-amz-server-side-encryption-customer-* headers is supported starting in VAST cluster version 5.4.
+
+- Tomer Hagay stated that VAST Data prefers software-based encryption rather than relying on self-encrypting drive (SED) hardware capabilities or availability, and that the software-based approach could also be FIPS certified.
+
+- Tomer Hagay stated that VAST Data encryption keys are managed at the tenant level or path level, and that a "path" can be defined for any protocol including S3 buckets and NFS exports, using encryption groups.
+
+- Tomer Hagay stated that an encryption group can be assigned to a path to support having a unique encryption key for that path.
+
+- Tomer Hagay stated that VAST Data supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using the x-amz-server-side-encryption-customer-* headers starting from VAST cluster software version 5.4, and referenced the 5.4 release notes as documentation.
+
+- Tomer Hagay suggested that if self-encrypting drives (SEDs) are requested to meet FIPS 140-3 data-at-rest requirements for protection against drive removal, VAST Data software encryption using FIPS-compatible algorithms should meet the same requirement.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -109,6 +119,10 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped visibility
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption at rest, SEDs, and key granularity across S3 and NFS
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 ## Tasks
 
 ```tasks

@@ -20,9 +20,13 @@ tags:
 - Olivia Bao provided a scheduling link for booking a short briefing: https://calendar.app.google/31vJT5sNBPwkGy849.
 
 - Olivia Bao's email signature lists an office address in Shanghai: 16th Floor, China Overseas International Center Tower B, 838 S. Huangpi Road, Huangpu District, Shanghai 200025, China.
+
+- Olivia Bao provided a Google Calendar booking link for scheduling a short briefing: https://calendar.app.google/31vJT5sNBPwkGy849.
 ## Recent Context
 
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends
+
+- 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends and governance
 ## Tasks
 
 ```tasks

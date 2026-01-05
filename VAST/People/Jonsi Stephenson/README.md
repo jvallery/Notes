@@ -50,6 +50,12 @@ tags:
 - Jonsi Stephenson met with Microsoft contacts Aung (last name unknown) and Maneesh Sah who expect an Azure Blob integration proposal from VAST.
 
 - Jonsi Stephenson emailed Microsoft contacts for MAI supply chain clarity but received out-of-office replies indicating return on 2026-01-05.
+
+- Jonsi Stefansson (jonsi@vastdata.com) shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" and invited Jason Vallery to edit it.
+
+- Jonsi Stefansson raised a concern that tiering cold data to Azure Blob using VAST object format would not be readable directly from Azure Blob, and suggested reconsidering native Azure Blob format for ecosystem accessibility.
+
+- Jonsi Stefansson suggested strengthening the document's messaging to more firmly state that VAST data reduction ratio (DRR) and efficiencies reduce the impact of flash supply constraints and rising prices.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Microsoft and VAST align parallel tracks: UK Met Azure LSV4 test cluster and Microsoft-hosted bare-metal dev system
@@ -87,6 +93,8 @@ tags:
 - 2026-01-02: Mentioned in: Comments on 'VAST and Azure Integration' doc, Azure Blob tiering format and supply chain messaging
 
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI Q1 deal risk, supply chain urgency, and Redmond engagement plan
+
+- 2026-01-02: Mentioned in: Google Docs comments on 'VAST and Azure Integration.docx' (Azure Blob tiering format and DRR messaging)
 ## Tasks
 
 ```tasks

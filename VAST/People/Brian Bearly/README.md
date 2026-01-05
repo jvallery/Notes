@@ -1,14 +1,14 @@
 ---
 type: person
-name: "Brian Bearly"
-email: "pootzwacke@gmail.com"
-company: ""
-title: ""
-last_contact: "2025-12-18"
-created: "2026-01-05"
+name: Brian Bearly
+email: pootzwacke@gmail.com
+company: ''
+title: ''
+last_contact: '2026-01-04'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/person
+- needs-review
 ---
 
 # Brian Bearly
@@ -20,9 +20,17 @@ tags:
 - Brian Bearly said he could make any day from Friday, December 26, 2025 through Wednesday, December 31, 2025 for the board game session.
 
 - Brian Bearly proposed two candidate times for the board game session: Saturday, December 27, 2025 at 1:00pm or Monday, December 29, 2025 at 1:00pm, and asked whether an evening game was needed instead.
+
+- Brian Bearly stated he was available any day from Friday 2025-12-26 through Wednesday 2025-12-31 for the board game session.
+
+- Brian Bearly proposed two candidate start times for the board game session: Saturday 2025-12-27 at 1:00pm or Monday 2025-12-29 at 1:00pm.
 ## Recent Context
 
 - 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's place (week after Christmas)
+
+- 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's place (week after Christmas 2025)
+
+- 2026-01-04: Men's group: quorum check for Tuesday 2026-01-06 6:30pm at Wapos (book: 2084)
 ## Tasks
 
 ```tasks

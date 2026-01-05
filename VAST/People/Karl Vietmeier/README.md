@@ -1,14 +1,15 @@
 ---
 type: person
 name: Karl Vietmeier
-email: ''
-company: ''
-title: ''
+email: karl.vietmeier@vastdata.com
+company: VAST Data
+title: Cloud Solutions Architect - VAST on Cloud
 last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/person
 - needs-review
+phone: +1 9497953118
 ---
 
 # Karl Vietmeier
@@ -30,6 +31,12 @@ tags:
 - Karl Vietmeier is a Cloud Solutions Architect focused on VAST on Cloud at VAST Data.
 
 - Karl Vietmeier believes GDC and Azure Local opportunities should be managed through cloud product management because cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier was asked to define the expected performance profile for an Azure VoC instance.
+
+- Lior Genzel told Karl Vietmeier that Karl is optional on the follow-up call with Microsoft Azure because Lior plans to block the Azure VoC request.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through cloud product management because cloud product management has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -65,6 +72,16 @@ not done
 - Cross-team handoff issues between cloud and on-prem teams when hardware is involved
 
 - Alignment of GDC and Azure Local execution with hyperscaler acquisition paths and cloud consumption
+
+- Ownership and accountability for Google Distributed Cloud (GDC) opportunities at VAST Data
+
+- Ownership and accountability for Azure Local opportunities at VAST Data
+
+- Cloud product management vs on-prem team ownership when hardware is involved
+
+- Maintaining visibility into execution progress and outcomes for hybrid/on-prem cloud-adjacent opportunities
+
+- Alignment of GDC and Azure Local motions with hyperscaler acquisition paths and cloud consumption
 ## Key Decisions
 
 - P0 priority for VAST cloud viability is enabling capacity scaling independent of performance via object/S3 offload (cloud economics requirement).

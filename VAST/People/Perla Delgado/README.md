@@ -19,6 +19,8 @@ tags:
 ## Recent Context
 
 - 2025-12-08: Mentioned in: IHDF board: provide feedback on draft strategic plan by 2025-12-18; January board meeting preview
+
+- 2025-12-08: Mentioned in: IHDF strategic plan feedback due Dec 18 and January board meeting preview
 ## Tasks
 
 ```tasks

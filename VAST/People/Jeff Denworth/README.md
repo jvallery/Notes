@@ -1,14 +1,15 @@
 ---
 type: person
 name: Jeff Denworth
-email: ''
-company: ''
+email: jeff@vastdata.com
+company: VAST Data
 title: ''
-last_contact: '2025-12-22'
+last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
 - type/person
 - needs-review
+phone: 856-383-8849
 ---
 
 # Jeff Denworth
@@ -134,6 +135,36 @@ tags:
 - Jeff Denworth escalated that he has low confidence in closing a Q1 2026 Microsoft MAI deal without immediate action and tighter internal communication.
 
 - Jeff Denworth suggested moving to daily updates for the Microsoft MAI deal as of 2026-01-01.
+
+- Jeff Denworth asked VAST product management leadership to analyze Walmart's restated requirements and determine what should be incorporated into the VAST product plan.
+
+- Marianne Budnik stated Jeff Denworth is driving the talk track for the NVIDIA CES press conference presentation content.
+
+- Jeff Denworth stated that VAST Data is quickly selling out of supply and lead times are skyrocketing, so there is nothing reserved for Microsoft MAI unless a plan is made immediately.
+
+- Jeff Denworth asked whether Microsoft MAI expects to use VAST Data's supply chain for the MAI storage deployment.
+
+- Jeff Denworth stated that supply chain constraints are expected through 2026 and recommended taking the whole MAI deal down in one shot with partial delivery milestones.
+
+- Jeff Denworth stated that Sagar took a job at Nscale and that Sagar had stepped into Nidhi's role after she left Microsoft.
+
+- Jeff Denworth instructed Jason Vallery to track this Leidos Federal cloud PO to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Jeff Denworth stated the RFE 0482 request is "super complex" and asked Mordechai Blaunstein to take ownership and involve the appropriate parties.
+
+- Jeff Denworth assigned Jason Vallery an action item in the document 'VAST and Azure Integration.docx' to clarify the crawl-walk-run progression in the Azure + VAST integration proposal.
+
+- Jeff Denworth requested an Azure Marketplace SKU change request to be completed by Friday (relative to the 2026-01-04 email date).
+
+- Jeff Denworth requested an updated deck to support the Google Distributed Cloud (GDC) RFP effort.
+
+- Jeff Denworth requested a follow-up with Microsoft regarding pricing for the Microsoft AI Infrastructure (MAI) unified cache initiative.
+
+- Jeff Denworth sent a company-wide update summarizing VAST Data Q4 bookings performance and historical seasonality.
+
+- Jeff Denworth instructed Jason Vallery to track Cloud purchase orders to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Jeff Denworth stated he is rapidly losing confidence that VAST Data can close a Q1 deal with Microsoft AI Infrastructure (MAI) unless VAST becomes more aggressive and executes a January plan.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -219,6 +250,28 @@ tags:
 - 2026-01-01: Mentioned in: Jeff Denworth update: Q4 bookings to date exceed FY24 total
 
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI Q1 deal risk, supply chain urgency, and Redmond engagement plan
+
+- 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace, GCS integration, Alluxio risk
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+
+- 2025-12-21: Jeff Denworth escalated that VAST is selling out of supply, lead times are rising, and nothing is re...
+
+- 2025-12-30: An OrderAdmin alert confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") for Leidos Federal wa...
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
+
+- 2025-12-22: Jeff Denworth assigned Jason Vallery an action item in the Google Doc 'VAST and Azure Integration.do...
+
+- 2025-12-23: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
+
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace - SKU change request, GDC RFP deck, MAI unified cache pricing follow-up
+
+- 2026-01-01: Mentioned in: Jeff Denworth update: Q4 bookings tracking ahead of FY24 total
+
+- 2025-12-30: An OrderAdmin alert thread confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") for Leidos Fed...
+
+- 2025-12-27: Jeff Denworth escalated concern that VAST is losing the chance of a Q1 deal with Microsoft AI Infras...
 ## Tasks
 
 ```tasks
@@ -329,6 +382,50 @@ not done
 - Azure + VAST integration proposal document clarity
 
 - Crawl-walk-run phased plan for VAST and Microsoft Azure integration
+
+- Microsoft MAI storage decision process and internal politics (Mustafa as final decision maker, concerns about Kushal)
+
+- Supply chain constraints, lead times, and whether Microsoft MAI expects to use VAST supply chain
+
+- MAI deployment timeline shift to February 2026 GPU arrival and May to June 2026 storage readiness
+
+- Where to run Anson (Qi) VAST PoC for 1,000 to 2,000 GPU scale testing (MAI/Vipin environment vs Nscale vs CoreWeave)
+
+- Competitive positioning vs Azure Blob and relationship management with Azure Blob leadership (Vamshi)
+
+- Leidos Federal cloud deployment in Leidos GovCloud (software-only) and connection to on-prem for resilient demo
+
+- Order Admin processing requirements and SFDC documentation checklist
+
+- Government customer demo narrative: resilience and "submarine mentality"; "Golden Dome" first pitch
+
+- Win drivers: strategic relationship and superior architecture scalability; hybrid cloud strategy positioning
+
+- Azure + VAST integration proposal positioning
+
+- Crawl-walk-run framing for go-to-market and delivery phases
+
+- Document editing and clarity for external/internal readers
+
+- Leidos Federal Cloud PO (FOpp-4197) submission to OrderAdmin
+
+- US Federal sector first Cloud PO and implications for cloud product tracking
+
+- Hybrid cloud and resilient demo platform for government customers ("Golden Dome" pitch)
+
+- Order processing requirements and documentation checklist in SFDC
+
+- Deal desk clarification on hardware component vs software-only deployment
+
+- Microsoft MAI Q1 deal risk and urgency due to supply chain constraints
+
+- 2 exabytes storage requirement for Microsoft MAI in 2025
+
+- Arrow and Avnet supply chain limitations for VAST Data
+
+- Microsoft considering HDDs for April MAI scale-up delivery and HDD supply constraints
+
+- CoreWeave testing status for MAI-related validation
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.
@@ -402,3 +499,13 @@ not done
 - Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to build trust beyond Kushal.
 
 - VAST should not assume any Microsoft MAI inventory is reserved and must create an immediate supply chain and ordering plan if Microsoft targets April 2026 to June 2026 deployment.
+
+- Lior Genzel will lead efforts to obtain introductions to key Microsoft MAI stakeholders (Majid Mohammed, Yunchao Gong, Karén Simonyan) to reduce reliance on Kushal as the sole conduit.
+
+- Treat the Leidos Federal FOpp-4197 cloud purchase order as a tracked reference deal to capture customer expectations, user experience learnings, cloud product implications, and business development angles.
+
+- Leidos Federal deal FOpp-4197 is being processed as a cloud deployment in Leidos GovCloud, software-only, and positioned to connect to on-prem for a resilient government demo platform.
+
+- Jeff Denworth proposed operating assumption that CoreWeave testing for the Microsoft MAI deal is largely cosmetic and should not be treated as the gating factor for commercial execution.
+
+- Jeff Denworth proposed that either Lior Genzel or Jonsi Stefansson should be physically in Redmond immediately at the start of the new year to begin commercial discussions with Microsoft MAI.
