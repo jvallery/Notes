@@ -379,20 +379,22 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Replay ingestion to fix past misrouted patches and fill empty Key Facts/Topics/Decisions.
 
-**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 01:50)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** High
 
 **Effort:** 1 hour
 
 **Tasks**
-- [ ] Re-run email pipeline via unified CLI on Sources/Email and Inbox (dry-run first)
-- [ ] Spot-check 5 high-contact people (Jeff Denworth, Jai Menon, Lior Genzel, etc.)
-- [ ] Decide if transcript re-run is needed; document outcome
+- [x] Re-run email pipeline via unified CLI on Sources/Email and Inbox (dry-run first)
+- [x] Spot-check 5 high-contact people (Jeff Denworth, Jai Menon, Lior Genzel, etc.)
+- [x] Decide if transcript re-run is needed; document outcome
 
 **Success Criteria**
 - Key people READMEs show populated Key Facts/Topics/Decisions
 - No new patches target wrong folders
+
+**Notes:** Sources/Email dry-run skipped (cache) after prior live re-ingest; Inbox/Email and Inbox/Transcripts processed live (1 file each) with trace dirs + cache stats; spot-checked Jeff Denworth, Jai Menon, Lior Genzel, Jonsi Stephenson, Avinash Lakshman (Jai README now populated with facts/topics/decisions). Transcript re-run deemed unnecessary beyond inbox sample; Sources/Transcripts left as-is.
 
 ---
 
