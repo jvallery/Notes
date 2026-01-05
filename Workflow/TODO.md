@@ -334,7 +334,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Strengthen entity discovery (search + aliases) for context loading and dedupe.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:30)
 
 **Impact:** Medium
 
