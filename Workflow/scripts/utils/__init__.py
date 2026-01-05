@@ -19,6 +19,8 @@ from .entities import (
     get_entity_metadata,
     resolve_mentions,
     load_aliases,
+    normalize_person_name,
+    normalize_task_owner,
 )
 from .git_ops import (
     is_git_repo,
@@ -106,6 +108,8 @@ __all__ = [
     "get_entity_metadata",
     "resolve_mentions",
     "load_aliases",
+    "normalize_person_name",
+    "normalize_task_owner",
     # Git
     "is_git_repo",
     "is_dirty",

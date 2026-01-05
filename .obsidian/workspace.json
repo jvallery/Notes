@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Outbox/2026-01-04_Reply-To_Re-Tues-mens-group.md",
+                "file": "VAST/People/Jason Vallery/README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-01-04_Reply-To_Re-Tues-mens-group"
+              "title": "README"
             }
           }
         ]
@@ -195,6 +195,11 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Sources/Transcripts/2026/2026-01-03 - Prep for Microsoft AI talks.md",
+    "VAST/People/Jeff Yonker/README.md",
+    "Workflow/scripts/cleanup_todo.py",
+    "VAST/People/Jeff Denworth/README.md",
+    "Outbox/2026-01-04_Reply-To_Re-Tues-mens-group.md",
     "Outbox/2026-01-04_Reply-To_Re-Throwing-Up-The-Red-Flare-on-Azure-MA.md",
     "Outbox/2026-01-04_Reply-To_Re-The-most-interesting-men-in-the-world.md",
     "Outbox/2026-01-04_Reply-To_Re-RFE-Alert-RFE-0482---Existing-Feature_1.md",
@@ -203,7 +208,6 @@
     "Outbox/2026-01-04_Reply-To_Re-Re-EXTERNAL-AKS-AI-Roadshow---GBB---V.md",
     "Outbox/2026-01-04_Reply-To_Re-OpenAI.md",
     "Outbox/2026-01-04_Reply-To_Re-NebiusVAST----Connect.md",
-    "Outbox/2026-01-04_Reply-To_Re-Tues-mens-group.md",
     "Outbox/2026-01-04_Reply-To_Re-Weekly-VAST-GTM-Meeting.md",
     "Outbox/2026-01-04_Reply-To_Re-MAI-VAST-December-8th-EoD-update.md",
     "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
@@ -218,9 +222,6 @@
     "Outbox/2026-01-04_Reply-To_Re-Your-Prospect-Microsoft-VAST-Customer.md",
     "Outbox/2026-01-04_Reply-To_RE-External-Re-Connecting-with-VAST.md",
     "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing.md",
-    "Outbox/2026-01-04_Reply-To_Confidential---IHDF-exec-session-quick-r.md",
-    "VAST/People/_MANIFEST.md",
-    "Outbox/README.md",
     "Workflow/scripts/enrich_person.py",
     "Workflow/_cache/glossary.txt",
     "Workflow/_cache/glossary.json",
@@ -230,7 +231,6 @@
     "Workflow/logs/ai/2026-01-04/responses.jsonl",
     "Workflow/logs/ai/2026-01-04/requests.jsonl",
     "Workflow/logs/ai/2026-01-04",
-    "Workflow/logs/ai",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",

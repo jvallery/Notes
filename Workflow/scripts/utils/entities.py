@@ -30,7 +30,10 @@ def _load_aliases_raw() -> dict:
     alias_file = config.get("entity_matching", {}).get("alias_file", "")
     
     if alias_file:
+        # Resolve relative paths against vault root
         aliases_path = Path(alias_file)
+        if not aliases_path.is_absolute():
+            aliases_path = vault_root() / alias_file
     else:
         aliases_path = workflow_root() / "entities" / "aliases.yaml"
     
@@ -72,6 +75,85 @@ def _load_aliases() -> dict[str, str]:
                 flat[key.lower()] = value
     
     return flat
+
+
+def _load_myself_aliases() -> set[str]:
+    """Load aliases that map to 'Myself' for first-person references."""
+    raw = _load_aliases_raw()
+    myself_list = raw.get("myself", [])
+    if isinstance(myself_list, list):
+        return {alias.lower() for alias in myself_list}
+    return set()
+
+
+def _load_extraction_errors() -> set[str]:
+    """Load names that indicate extraction errors (map to TBD)."""
+    raw = _load_aliases_raw()
+    error_list = raw.get("extraction_errors", [])
+    if isinstance(error_list, list):
+        return {alias.lower() for alias in error_list}
+    return set()
+
+
+def normalize_person_name(name: str) -> str:
+    """
+    Normalize a person name using aliases.
+    
+    - Resolves aliases to canonical names
+    - Handles 'Myself' special case for first-person references
+    - Fixes common typos/variants
+    - Maps extraction errors to TBD
+    
+    Args:
+        name: Raw name from extraction
+        
+    Returns:
+        Canonical name (e.g., "Jeff" -> "Jeff Denworth", "Jason Vallery" -> "Myself")
+    """
+    if not name:
+        return name
+    
+    name_lower = name.lower().strip()
+    
+    # Check if this is a "myself" alias
+    myself_aliases = _load_myself_aliases()
+    if name_lower in myself_aliases:
+        return "Myself"
+    
+    # Check if this is an extraction error (map to TBD)
+    extraction_errors = _load_extraction_errors()
+    if name_lower in extraction_errors:
+        return "TBD"
+    
+    # Check if this matches a people alias
+    aliases = _load_aliases()
+    if name_lower in aliases:
+        return aliases[name_lower]
+    
+    # No match - return original (will use fuzzy matching downstream)
+    return name
+
+
+def normalize_task_owner(owner: str) -> str:
+    """
+    Normalize a task owner name.
+    
+    Similar to normalize_person_name but specifically for @Owner references.
+    Handles the @ prefix if present.
+    
+    Args:
+        owner: Task owner string (may have @ prefix)
+        
+    Returns:
+        Canonical owner name
+    """
+    if not owner:
+        return owner
+    
+    # Strip @ prefix if present
+    clean_owner = owner.lstrip('@').strip()
+    
+    return normalize_person_name(clean_owner)
 
 
 # Public wrapper for loading aliases

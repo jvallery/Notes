@@ -6,23 +6,95 @@
 #   canonical_name:
 #     - alias1
 #     - alias2
+#
+# Special case: "Myself" is the canonical owner for first-person references.
+
+# === MYSELF (First-person references) ===
+# These all map to "Myself" for task ownership
+myself:
+  - "Jason Vallery"
+  - "Jason"
+  - "Jason Valeri"      # Typo variant
+  - "JV"
+  - "Me"
+  - "I"
+
+# === EXTRACTION ERRORS (map to TBD for review) ===
+# These are common extraction errors that should flag for manual review
+extraction_errors:
+  - "localhost"         # MacWhisper sometimes captures this
+  - "Unknown"
+  - "Speaker"
+  - "Speaker 1"
+  - "Speaker 2"
 
 # === PEOPLE ===
 people:
-  # Example entries - add your actual aliases here
+  # Core team
   "Jeff Denworth":
     - "Jeff"
     - "JD"
+    - "Jeff Denworth Denworth"  # Extraction bug duplication
   
   "Jonsi Stephenson":
     - "Jonsi"
     - "JS"
+    - "Jonsi Stefansson"        # Typo variant
+    - "Jonsi Stemmelsson"       # Typo variant
+    - "Yonsi Stephenson"        # Typo variant
   
   "Lior Genzel":
     - "Lior"
+    - "Lior Genzel Genzel"      # Extraction bug duplication
+  
+  "Jai Menon":
+    - "Jai"
+    - "Jai Menon Menon"         # Extraction bug duplication
+  
+  "Tomer Hagay":
+    - "Tomer"
+    - "Tomer Hagey"             # Typo variant
   
   "Kanchan Mehrotra":
     - "Kanchan"
+  
+  "Timo Pervane":
+    - "Timo"
+  
+  "Vishnu Charan TJ":
+    - "Vishnu"
+  
+  "Rosanne Kincaid-Smith":
+    - "Rosanne"
+    - "Rosanne Kincaid"         # Partial name
+  
+  "Maneesh Sah":
+    - "Maneesh"
+    - "Manish Sah"              # Typo variant
+    - "Manish"
+  
+  "Michael Myrah":
+    - "Michael Myra"            # Typo variant
+  
+  "Ronnie Booker":
+    - "Ronnie"
+    - "Ronnie Borker"           # Typo variant
+  
+  # Other frequent mentions
+  "Aaron Chaisson":
+    - "Aaron"
+  
+  "Chris Carpenter":
+    - "Chris"
+  
+  "Rob Banga":
+    - "Rob"
+  
+  "Peter Kapsashi":
+    - "Peter"
+  
+  "Eirikur Hrafnsson":
+    - "Eirikur"
 
 # === ACCOUNTS ===
 accounts:
