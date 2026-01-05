@@ -57,36 +57,64 @@ def load_persona() -> dict:
     return {}
 
 
-def build_persona_prompt(persona: dict) -> str:
+def build_persona_prompt(persona: dict, recipient_type: Optional[str] = None, 
+                         tuning: Optional[dict] = None) -> str:
     """
     Build a prompt section from the persona configuration.
     
     Aligns with jason_persona.yaml structure:
-    - identity (name, role, company, location, domain_expertise, company_positioning)
+    - meta (persona_version, default_timezone, location)
+    - identity (name, role, company, scope_summary, domain_expertise, company_positioning)
     - processing_logic (step_1_extraction, step_2_decision, step_3_delegation_filter)
-    - style (voice, formatting)
+    - style (voice, formatting, tuning_knobs)
+    - calibration (executive, customer, external_partner, technical_team, direct_report)
     - playbooks (delegation, scheduling, declining, introduction, escalation)
     - phrases (openers, action_drivers, closers)
-    - guardrails (brand_safety, style_avoid)
+    - guardrails (brand_safety, sensitive_topics, style_avoid)
+    
+    Args:
+        persona: The loaded persona YAML dict
+        recipient_type: Optional recipient classification (executive, customer, etc.)
+        tuning: Optional dict with verbosity, warmth, urgency overrides
     """
     if not persona:
         return ""
     
+    meta = persona.get("meta", {})
     identity = persona.get("identity", {})
     processing = persona.get("processing_logic", {})
     style = persona.get("style", {})
+    calibration = persona.get("calibration", {})
     playbooks = persona.get("playbooks", {})
     phrases = persona.get("phrases", {})
     guardrails = persona.get("guardrails", {})
+    
+    # Get tuning defaults and apply overrides
+    tuning_knobs = style.get("tuning_knobs", {})
+    effective_tuning = {
+        "verbosity": "standard",
+        "warmth": "balanced", 
+        "urgency": "medium"
+    }
+    if tuning:
+        effective_tuning.update(tuning)
     
     prompt_parts = []
     
     # ==========================================================================
     # IDENTITY
     # ==========================================================================
+    location = meta.get("location") or identity.get("location", "Longmont, CO")
+    timezone = meta.get("default_timezone", "America/Denver")
+    
     prompt_parts.append(f"""## SYSTEM IDENTITY
 You are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
-Location: {identity.get('location', 'Longmont, CO')}""")
+Location: {location} ({timezone})""")
+    
+    # Scope Summary
+    if identity.get("scope_summary"):
+        prompt_parts.append(f"""
+Scope: {identity['scope_summary'].strip()}""")
     
     # Domain Expertise
     if identity.get("domain_expertise"):
@@ -102,6 +130,33 @@ Domain Expertise:
 Core Concept: {company_pos.get('core_concept', '')}
 Products: {', '.join(company_pos.get('products', []))}
 Culture: {company_pos.get('culture', '')}""")
+    
+    # ==========================================================================
+    # RECIPIENT CALIBRATION (Context-Dependent)
+    # ==========================================================================
+    if recipient_type and recipient_type in calibration:
+        cal = calibration[recipient_type]
+        prompt_parts.append(f"""
+## RECIPIENT CONTEXT: {recipient_type.upper()}
+Tone: {cal.get('tone', '')}
+Rule: {cal.get('rule', '')}""")
+    elif calibration:
+        # Include all calibration options so AI can choose
+        prompt_parts.append("""
+## RECIPIENT CALIBRATION (Choose based on context)""")
+        for rtype, cal in calibration.items():
+            prompt_parts.append(f"""
+**{rtype.replace('_', ' ').title()}**: {cal.get('tone', '')}
+- {cal.get('rule', '')}""")
+    
+    # ==========================================================================
+    # TUNING KNOBS (Applied Settings)
+    # ==========================================================================
+    prompt_parts.append(f"""
+## ACTIVE TUNING
+- Verbosity: {effective_tuning['verbosity']} (options: {', '.join(tuning_knobs.get('verbosity', ['standard']))})
+- Warmth: {effective_tuning['warmth']} (options: {', '.join(tuning_knobs.get('warmth', ['balanced']))})
+- Urgency: {effective_tuning['urgency']} (options: {', '.join(tuning_knobs.get('urgency', ['medium']))})""")
     
     # ==========================================================================
     # COGNITIVE PROCESSING
@@ -175,6 +230,14 @@ Openers: {', '.join('"' + o + '"' for o in phrases['openers'][:4])}""")
         prompt_parts.append(f"""
 ## GUARDRAILS (Never Violate)
 {chr(10).join('- ' + g for g in guardrails['brand_safety'])}""")
+    
+    # Sensitive Topics
+    sensitive = guardrails.get("sensitive_topics", {})
+    if sensitive:
+        prompt_parts.append("""
+## SENSITIVE TOPICS (Handle with Care)""")
+        for topic, guidance in sensitive.items():
+            prompt_parts.append(f"- **{topic.replace('_', ' ').title()}**: {guidance}")
     
     if guardrails.get("style_avoid"):
         prompt_parts.append(f"""
@@ -660,12 +723,77 @@ def should_draft_response(metadata: dict, content: str) -> tuple[bool, str]:
     return False, "No response needed"
 
 
+def classify_recipient(metadata: dict, extracted_context: Optional[dict] = None) -> str:
+    """
+    Classify the recipient type for calibration.
+    
+    Returns one of: executive, customer, external_partner, technical_team, direct_report
+    """
+    sender_email = metadata.get("sender_email", "").lower()
+    sender_name = metadata.get("sender", "").lower()
+    companies = extracted_context.get("companies", []) if extracted_context else []
+    
+    # Check for customer/partner domains
+    customer_domains = [
+        "microsoft.com", "google.com", "nvidia.com", "openai.com",
+        "oracle.com", "amazon.com", "aws.amazon.com", "meta.com",
+        "anthropic.com", "snowflake.com", "databricks.com"
+    ]
+    if any(d in sender_email for d in customer_domains):
+        # Check if executive based on title hints in name or context
+        exec_hints = ["ceo", "cto", "cfo", "vp", "director", "head of", "chief"]
+        if any(h in sender_name for h in exec_hints):
+            return "executive"
+        return "customer"
+    
+    # Check for internal VAST
+    if "vastdata.com" in sender_email:
+        # Could be direct report or technical team
+        return "technical_team"  # Default to technical for internal
+    
+    # Check if external partner
+    if companies and any(c.lower() not in ["vast", "vast data"] for c in companies):
+        return "external_partner"
+    
+    return "customer"  # Default
+
+
+def infer_tuning(metadata: dict, extracted_context: Optional[dict] = None) -> dict:
+    """
+    Infer tuning knob settings based on email context.
+    
+    Returns dict with: verbosity, warmth, urgency
+    """
+    tuning = {
+        "verbosity": "standard",
+        "warmth": "balanced",
+        "urgency": "medium"
+    }
+    
+    if extracted_context:
+        urgency = extracted_context.get("urgency", "medium")
+        if urgency == "high":
+            tuning["urgency"] = "high"
+            tuning["verbosity"] = "ultra_crisp"  # Be concise when urgent
+        elif urgency == "low":
+            tuning["urgency"] = "low"
+    
+    # Check for warmth signals
+    content = metadata.get("subject", "").lower()
+    if any(w in content for w in ["thanks", "appreciate", "grateful", "congrats"]):
+        tuning["warmth"] = "high"
+    
+    return tuning
+
+
 def generate_draft_response(
     email_content: str, 
     metadata: dict,
     client,
     extracted_context: Optional[dict] = None,
-    vault_context: Optional[str] = None
+    vault_context: Optional[str] = None,
+    recipient_type: Optional[str] = None,
+    tuning: Optional[dict] = None
 ) -> dict:
     """
     Step 3: Generate a draft response using email + vault context + persona.
@@ -675,21 +803,30 @@ def generate_draft_response(
     - Extracted email analysis (topics, questions, people)
     - Discovered vault context (people history, project status, open tasks)
     - Communication persona (tone, style, impact-driven patterns)
+    - Recipient calibration (executive, customer, etc.)
+    - Tuning knobs (verbosity, warmth, urgency)
     
     Returns a dict with:
-    - subject: Proposed subject line (typically "Re: ...")
+    - subject: Proposed subject line
     - body: The draft email body
-    - internal_thought: AI's reasoning about the response strategy
+    - internal_metadata: AI's reasoning and extracted action items
     """
     
-    model_config = get_model_config("extraction")  # Reuse extraction model config
+    model_config = get_model_config("extraction")
     
-    # Load persona for impact-driven communication
+    # Load persona and classify recipient
     persona = load_persona()
-    persona_prompt = build_persona_prompt(persona)
     
-    # Get output format from persona (or default)
-    output_format = persona.get("output_format", "")
+    # Auto-classify recipient if not provided
+    if not recipient_type:
+        recipient_type = classify_recipient(metadata, extracted_context)
+    
+    # Auto-infer tuning if not provided
+    if not tuning:
+        tuning = infer_tuning(metadata, extracted_context)
+    
+    # Build persona prompt with calibration and tuning
+    persona_prompt = build_persona_prompt(persona, recipient_type=recipient_type, tuning=tuning)
     
     system_prompt = f"""{persona_prompt}
 
@@ -698,12 +835,22 @@ def generate_draft_response(
 2. Analysis of the email (topics, questions, people involved)  
 3. Relevant context from notes (relationship history, project status, open tasks)
 
-## OUTPUT FORMAT
+## OUTPUT FORMAT (Strict JSON)
 Return a JSON object with exactly these fields:
 {{
-  "internal_thought": "Your strategic reasoning: What is the sender really asking? What's the best outcome? Who should be involved? What's the timeline?",
   "subject": "Re: [original subject] or a more specific subject if warranted",
-  "body": "The full email body text"
+  "body": "The full email body text (ready to send)",
+  "internal_metadata": {{
+    "thought_process": "1-2 sentence explanation of your strategy",
+    "classification": {{
+      "recipient_type": "{recipient_type}",
+      "urgency": "{tuning.get('urgency', 'medium')}",
+      "stakes": "low|medium|high"
+    }},
+    "action_items": [
+      {{"owner": "me|them|other", "task": "description", "due_date": "YYYY-MM-DD or null"}}
+    ]
+  }}
 }}
 
 ## RESPONSE STRUCTURE (for body field)
@@ -711,7 +858,7 @@ Return a JSON object with exactly these fields:
 - **Core Response**: Answer their questions, address their needs
 - **Proactive Ask**: What do you need from them? What should they do next?
 - **Offer/Next Step**: What will YOU do? When will you follow up?
-- **Close**: Warm, action-oriented sign-off (Best, Jason)
+- **Close**: Warm, action-oriented sign-off
 
 ## MAKE ASKS NATURALLY
 When making requests or delegating, be direct but collegial:
@@ -757,15 +904,15 @@ Use this to personalize your response and reference relevant history:
 {vault_context}
 """
 
-    # Add specific guidance for this email
     user_prompt += """
 
 --- YOUR TASK ---
-1. First, think through your strategy in internal_thought
+1. Think through your strategy (capture in internal_metadata.thought_process)
 2. Write a response that ANSWERS their questions completely
 3. Include at least ONE proactive ask or clear next step for them
 4. State what YOU will do and by when (if applicable)
-5. Return valid JSON with: internal_thought, subject, body
+5. Extract action_items (owner, task, due_date) from your response
+6. Return valid JSON with: subject, body, internal_metadata
 """
 
     try:
@@ -775,8 +922,8 @@ Use this to personalize your response and reference relevant history:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            temperature=0.7,  # Slightly more creative for email writing
-            response_format={"type": "json_object"},  # Enforce JSON output
+            temperature=0.7,
+            response_format={"type": "json_object"},
         )
         
         raw_response = response.choices[0].message.content.strip()
@@ -788,14 +935,22 @@ Use this to personalize your response and reference relevant history:
             return {
                 "subject": result.get("subject", f"Re: {metadata.get('subject', '')}"),
                 "body": result.get("body", raw_response),
-                "internal_thought": result.get("internal_thought", "")
+                "internal_metadata": result.get("internal_metadata", {
+                    "thought_process": "",
+                    "classification": {"recipient_type": recipient_type, "urgency": tuning.get("urgency", "medium"), "stakes": "medium"},
+                    "action_items": []
+                })
             }
         except json.JSONDecodeError:
             # Fallback: treat entire response as body
             return {
                 "subject": f"Re: {metadata.get('subject', '')}",
                 "body": raw_response,
-                "internal_thought": ""
+                "internal_metadata": {
+                    "thought_process": "JSON parse failed - raw response used",
+                    "classification": {"recipient_type": recipient_type, "urgency": tuning.get("urgency", "medium"), "stakes": "medium"},
+                    "action_items": []
+                }
             }
     
     except Exception as e:
@@ -803,7 +958,11 @@ Use this to personalize your response and reference relevant history:
         return {
             "subject": f"Re: {metadata.get('subject', '')}",
             "body": f"[Error generating draft: {e}]",
-            "internal_thought": ""
+            "internal_metadata": {
+                "thought_process": f"Error: {e}",
+                "classification": {},
+                "action_items": []
+            }
         }
 
 
@@ -819,7 +978,7 @@ def save_draft(
     Save draft response to Outbox folder.
     
     Args:
-        draft_result: Dict with 'subject', 'body', and 'internal_thought' keys
+        draft_result: Dict with 'subject', 'body', and 'internal_metadata' keys
     """
     
     outbox = vault_root() / "Outbox"
@@ -829,11 +988,11 @@ def save_draft(
     if isinstance(draft_result, str):
         draft_body = draft_result
         draft_subject = f"Re: {metadata.get('subject', '')}"
-        internal_thought = ""
+        internal_metadata = {}
     else:
         draft_body = draft_result.get("body", "")
         draft_subject = draft_result.get("subject", f"Re: {metadata.get('subject', '')}")
-        internal_thought = draft_result.get("internal_thought", "")
+        internal_metadata = draft_result.get("internal_metadata", {})
     
     # Generate filename
     today = datetime.now().strftime("%Y-%m-%d")
@@ -854,6 +1013,11 @@ def save_draft(
     topics = extracted_context.get("topics", []) if extracted_context else []
     people = extracted_context.get("people", []) if extracted_context else []
     
+    # Extract classification and action items from internal_metadata
+    classification = internal_metadata.get("classification", {})
+    action_items = internal_metadata.get("action_items", [])
+    thought_process = internal_metadata.get("thought_process", "")
+    
     # Build draft document
     content = f"""---
 status: draft
@@ -867,6 +1031,9 @@ reason: "{reason}"
 topics: {json.dumps(topics)}
 people_mentioned: {json.dumps(people)}
 vault_context_used: {bool(vault_context_summary)}
+recipient_type: "{classification.get('recipient_type', 'unknown')}"
+urgency: "{classification.get('urgency', 'medium')}"
+stakes: "{classification.get('stakes', 'medium')}"
 ---
 
 # Draft Reply: {metadata.get('subject', '')}
@@ -874,6 +1041,7 @@ vault_context_used: {bool(vault_context_summary)}
 **To:** {metadata.get('sender', '')} <{metadata.get('sender_email', '')}>
 **Subject:** {draft_subject}
 **Context:** {reason}
+**Classification:** {classification.get('recipient_type', 'unknown')} | urgency: {classification.get('urgency', 'medium')} | stakes: {classification.get('stakes', 'medium')}
 
 ---
 
@@ -883,16 +1051,29 @@ vault_context_used: {bool(vault_context_summary)}
 """
 
     # Add AI reasoning if present
-    if internal_thought:
+    if thought_process:
         content += f"""
 ## AI Reasoning
 
-> {internal_thought}
-
----
+> {thought_process}
 """
 
+    # Add action items if present
+    if action_items:
+        content += """
+## Action Items (Extracted)
+
+"""
+        for item in action_items:
+            owner = item.get("owner", "?")
+            task = item.get("task", "")
+            due = item.get("due_date", "")
+            due_str = f" 📅 {due}" if due else ""
+            content += f"- [ ] {task} @{owner}{due_str}\n"
+
     content += f"""
+---
+
 ## Original Email
 
 > From: {metadata.get('sender', '')} <{metadata.get('sender_email', '')}>

@@ -11,10 +11,24 @@
             "id": "d53b413e5fffdcfe",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "VAST/People/Jeff Denworth/README.md",
+                "mode": "source",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "README"
             }
           }
         ]
@@ -179,8 +193,9 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "c2c00970aedeeb55",
+  "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
     "Outbox/2026-01-04_Reply-To_Youve-been-selected-VAST-speaker-at-VAST.md",
     "TASKS_INBOX.md",
     "Outbox/2026-01-04_Reply-To_Re-RFE-Alert-RFE-0482---Existing-Feature_1.md",
@@ -200,7 +215,6 @@
     "Outbox/2026-01-04_Reply-To_Confidential---IHDF-exec-session-quick-r.md",
     "Outbox/2026-01-04_Reply-To_Re-OpenAI_1.md",
     "Inbox/Email/2025-12-12_160426_5605_Re-OpenAI.md",
-    "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
     "Outbox/2026-01-04_Reply-To_Re-Your-Prospect-Microsoft-VAST-Customer.md",
     "Outbox/README.md",
     "Outbox/2026-01-04_Reply-To_Re-Introduction-for-FPA-Director-role.md",
