@@ -357,7 +357,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Use email as the primary key for person lookup with name fallback.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:47)
 
 **Impact:** High
 
