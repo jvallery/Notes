@@ -1,14 +1,14 @@
 ---
 type: person
-name: "Unknown OpenAI team members"
-email: ""
-company: ""
-title: ""
-last_contact: "2026-01-05"
-created: "2026-01-05"
+name: Unknown OpenAI team members
+email: ''
+company: ''
+title: ''
+last_contact: '2026-01-05'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/person
+- needs-review
 ---
 
 # Unknown OpenAI team members
@@ -17,6 +17,7 @@ tags:
 
 ## Recent Context
 
+- 2026-01-05: OpenAI: 2025-10 task list and requirements capture
 ## Tasks
 
 ```tasks

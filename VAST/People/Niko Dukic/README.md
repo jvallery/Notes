@@ -15,8 +15,10 @@ tags:
 
 ## Key Facts
 
+- Niko Dukic transitioned onto Mike (unknown last name)'s team on 2025-10-28, with full transition expected after the end of October 2025.
 ## Recent Context
 
+- 2025-10-28: Mentioned in: UK Met Office Gen2 storage/compute pilot planning with Microsoft SKU dependency
 ## Tasks
 
 ```tasks

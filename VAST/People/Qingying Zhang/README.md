@@ -15,8 +15,10 @@ tags:
 
 ## Key Facts
 
+- Qingying Zhang stated she is a Corporate Vice President in Azure, previously leading Azure Kubernetes Service and cloud-native services, and is now focused on the Apollo AI cloud project.
 ## Recent Context
 
+- 2025-10-31: Mentioned in: Microsoft Apollo aligned on two-track evaluation for VAST AI cloud storage (Azure lab software validation + VAST loaner hardware POC)
 ## Tasks
 
 ```tasks

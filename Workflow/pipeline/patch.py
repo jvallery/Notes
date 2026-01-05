@@ -154,6 +154,8 @@ class PatchGenerator:
     def __init__(self, vault_root: Path, entity_index: Optional[EntityIndex] = None):
         self.vault_root = vault_root
         self.entity_index = entity_index or EntityIndex(vault_root)
+        # Track folders created during this plan generation (not yet in manifests)
+        self._created_folders: dict[str, Path] = {}  # normalized name -> folder path
     
     def generate(self, extraction: UnifiedExtraction) -> ChangePlan:
         """Generate change plan from extraction.
@@ -166,6 +168,9 @@ class PatchGenerator:
         Returns:
             ChangePlan with all operations
         """
+        # Reset created folders for this plan generation
+        self._created_folders = {}
+        
         plan = ChangePlan(source_file=extraction.source_file)
         
         # Track patched targets to avoid duplicates
@@ -375,9 +380,12 @@ class PatchGenerator:
         if participant.lower() in ["myself", "jason", "jason vallery"]:
             return patches
         
-        # Find person folder
-        email = self._get_email_for_participant(participant, extraction)
-        folder = self.entity_index.find_person(participant, email=email)
+        # Find person folder (check _created_folders first)
+        normalized = self.entity_index.normalize_name(participant).lower()
+        folder = self._created_folders.get(normalized)
+        if not folder:
+            email = self._get_email_for_participant(participant, extraction)
+            folder = self.entity_index.find_person(participant, email=email)
         if not folder:
             return patches
         
@@ -402,7 +410,11 @@ class PatchGenerator:
         """Generate patches for companies we learned facts about."""
         patches = []
         
-        folder = self.entity_index.find_company(entity.name)
+        # Check _created_folders first
+        normalized = self.entity_index.normalize_name(entity.name).lower()
+        folder = self._created_folders.get(normalized)
+        if not folder:
+            folder = self.entity_index.find_company(entity.name)
         if not folder:
             return patches
         
@@ -438,7 +450,16 @@ class PatchGenerator:
         return None
 
     def _get_entity_folder(self, entity, extraction: Optional[UnifiedExtraction] = None) -> Optional[Path]:
-        """Get folder path for an entity reference."""
+        """Get folder path for an entity reference.
+        
+        Checks both EntityIndex (for existing entities) and _created_folders
+        (for entities created during this plan generation).
+        """
+        # First check if we created this folder during this plan generation
+        normalized = self.entity_index.normalize_name(entity.name).lower()
+        if normalized in self._created_folders:
+            return self._created_folders[normalized]
+        
         email = None
         if extraction and entity.entity_type == "person":
             email = self._get_email_for_participant(entity.name, extraction)
@@ -479,6 +500,10 @@ class PatchGenerator:
             email = self._get_email_for_participant(name, extraction) if entity_type == "person" else None
             readme_content = self._generate_readme_content(name, entity_type, email, extraction)
             readme_path.write_text(readme_content)
+        
+        # Register this folder so _get_entity_folder() can find it during this plan
+        normalized = self.entity_index.normalize_name(name).lower()
+        self._created_folders[normalized] = folder
         
         return folder
 

@@ -15,8 +15,10 @@ tags:
 
 ## Key Facts
 
+- JB is coordinating the SE community call and was assigned to schedule recurring SE Toolbox slots and collect submissions, and to consider scheduling an SCO session for Port Mapper.
 ## Recent Context
 
+- 2025-10-30: Mentioned in: Weekly SE community call: end-of-quarter push, Tech Summit logistics, UserCon registration drive, and SE Toolbox Port Mapper demo
 ## Tasks
 
 ```tasks

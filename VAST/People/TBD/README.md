@@ -1,14 +1,14 @@
 ---
 type: person
-name: "TBD"
-email: ""
-company: ""
-title: ""
-last_contact: "2025-12-16"
-created: "2026-01-05"
+name: TBD
+email: ''
+company: ''
+title: ''
+last_contact: '2025-09-15'
+created: '2026-01-05'
 tags:
-  - type/person
-  - needs-review
+- type/person
+- needs-review
 ---
 
 # TBD
@@ -17,6 +17,7 @@ tags:
 
 ## Recent Context
 
+- 2025-09-15: Silk briefing on software-defined cloud storage for high-performance relational databases and RDMA ask on Azure L-series
 ## Tasks
 
 ```tasks
