@@ -6,6 +6,9 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+company: OpenAI
+email: ben.kaiser12@gmail.com
+phone: (719) 360-9749
 ---
 
 # Liraz Ben Or
@@ -45,3 +48,17 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[Rockset]]
+- [[Snowflake]]
+- [[Instagram]]
+- [[Facebook]]
+- [[Twilio]]
+- [[Azure]]
+- [[OCI]]
+- [[Databricks]]
+- [[ChatGPT]]
+- [[DAQ]]
+- [[Data Platform]]
+
+- [[Tues mens group]]

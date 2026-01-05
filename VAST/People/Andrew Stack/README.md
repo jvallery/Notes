@@ -7,6 +7,8 @@ auto_created: true
 tags:
 - type/people
 - needs-review
+email: andrewthomas@microsoft.com
+company: Microsoft
 ---
 
 # Andrew Stack
@@ -42,3 +44,8 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-10-30*
+
+- [[VAST Data]]
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]

@@ -35,6 +35,9 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing customer and partner participa
+
+- 2025-12-30: The email discusses a successful deal for Leidos Federal involving a cloud deployment in the US Fede
 ## Key Facts
 
 ## Opportunities

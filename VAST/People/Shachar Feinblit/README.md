@@ -6,6 +6,8 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+email: shachar@vastdata.com
+company: VAST Data
 ---
 
 # Shachar Feinblit
@@ -42,3 +44,11 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Nscale]]
+- [[CoreWeave]]
+- [[MAI & VAST]]
+- [[MAI/Vipin environment]]
+- [[Nscale]]

@@ -1,11 +1,14 @@
 ---
 type: people
-title: Karl Vietmeier
-last_contact: '2025-10-31'
+title: Principal Partner Enablement Program Manager, Azure Storage
+last_contact: '2026-01-04'
 created: '2026-01-03'
 tags:
 - type/people
 - generated
+email: karl.rautenstrauch@microsoft.com
+company: Microsoft
+linkedin: Connect with me on LinkedIn
 ---
 
 # Karl Vietmeier
@@ -26,11 +29,15 @@ tags:
 - [ ] Parameterize Karl’s calculator with cloud/region, zones, FD count, per-zone/per-FD SKU counts, EC width, non-EC overheads, rebuild headroom, and rolling-update headroom; output “available capacity” and derived overhead % for pricing.
 - [ ] Work with Karl and dev leads to wire calculator inputs into deployment tooling so customer-facing “available capacity” matches deployed striping for the chosen region/SKU.
 
+- [ ] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task
 ## Recent Context
 
 - 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
+
+- 2026-01-04: Email re: Re: Weekly VAST GTM Meeting - Karl Rautenstrauch is rescheduling the weekly VAST GTM meeting due to a family emergency and propose
 ## Key Facts
 
+- Karl's youngest son suffered a badly broken leg.
 ## Topics
 
 ## Key Decisions
@@ -40,3 +47,10 @@ tags:
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[VAST Data]]
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure VoC]]
+
+- [[VAST GTM]]

@@ -62,6 +62,20 @@ not done
 - 2025-11-05: [[2025-11-05 - Walmart hybrid analytics requirements]] (via Walmart)
 
 - 2025-10-01: TPU strategy outside GCP; align Google contacts; pricing/private offer; pipeline review (Zoom, UK Met, NBCU). [[2025-10-01 - TPU strategy and pipeline]]
+
+- 2025-12-15: The email discusses follow-up questions from a Google RFP regarding encryption key granularity and t
+
+- 2025-12-17: Jonsi Stefansson shared a Google Slides presentation titled 'GCP Flow from customer to sales to cust
+
+- 2025-12-19: Mordechai Blaunstein shared a document titled 'CoreWeave-Vast Automation Project - V2 .docx' with yo
+
+- 2025-12-22: Lior Genzel is requesting access to the document 'VAST and Azure Integration.docx' via Google Docs.
+
+- 2025-12-22: Jeff Denworth assigned an action item to Jason Vallery regarding the VAST and Azure Integration prop
+
+- 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
+
+- 2026-01-02: The email discusses comments on a document about integrating VAST with Azure, focusing on data stora
 ## Key Facts
 
 ## Topics

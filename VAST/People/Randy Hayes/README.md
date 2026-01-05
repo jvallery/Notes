@@ -43,3 +43,10 @@ Randy Hayes has been with VAST Data since its early stages, contributing to its 
 
 ---
 *Last updated: 2025-11-14*
+
+- [[VAST Data]]
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]

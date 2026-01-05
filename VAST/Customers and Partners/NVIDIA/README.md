@@ -36,8 +36,16 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-01: Brian Evans from VAST Data has submitted and approved an RFE for NVIDIA Corporation, requesting enha
+
+- 2025-12-21: The email discusses plans for VAST Data's involvement at CES, including attending NVIDIA Live and co
+
+- 2026-01-01: Invitation to a training session on KV Cache and NVIDIA's Context Memory Extension, scheduled for Ja
 ## Key Facts
 
+- NVIDIA is hosting 'NVIDIA Live' at CES on January 5.
+
+- NVIDIA is making major KVCache Storage announcements at CES.
 ## Opportunities
 
 - Broaden perception of VAST beyond object store; align on evolving inference/storage needs

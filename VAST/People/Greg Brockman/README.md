@@ -8,6 +8,8 @@ tags:
 - type/people
 - needs-review
 - company/openai
+email: greg@vastfederal.com
+company: VAST Federal
 ---
 
 # Greg Brockman
@@ -47,3 +49,9 @@ Co-founder and President of OpenAI; former CTO at Stripe; led projects like Open
 
 ---
 *Last updated: 2025-10-22*
+
+- [[VAST Data]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]

@@ -8,6 +8,8 @@ tags:
 - type/people
 - needs-review
 - company/microsoft
+email: paul.libenson@vastdata.com
+company: VAST Data
 ---
 
 # Paul Clark
@@ -47,3 +49,7 @@ Paul Clark has over 31 years of experience in the technology sector. He joined M
 
 ---
 *Last updated: 2025-11-06*
+
+- [[NVIDIA Corporation]]
+- [[DGX-C | Coreweave]]
+- [[RFE 0482]]

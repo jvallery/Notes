@@ -36,6 +36,10 @@ SORT due ASC
 ## Recent Context
 
 - 2025-10-29: [[2025-10-29 - Dual-path Azure and bare-metal plan]] (via Microsoft)
+
+- 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing customer and partner participa
+
+- 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
 ## Key Facts
 
 ## Opportunities

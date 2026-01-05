@@ -35,6 +35,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
 ## Key Facts
 
 ## Opportunities

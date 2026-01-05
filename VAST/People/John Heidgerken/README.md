@@ -1,12 +1,15 @@
 ---
 type: people
-title: John Heidgerken
+title: VP Business Development
 created: '2026-01-03'
-last_contact: '2025-11-06'
+last_contact: '2025-12-12'
 auto_created: true
 tags:
 - type/people
 - needs-review
+email: john@vastdata.com
+phone: +1-512-535-8234
+company: Vast Data
 ---
 
 # John Heidgerken
@@ -31,6 +34,8 @@ SORT due ASC
 ## Recent Context
 
 - 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)
+
+- 2025-12-12: Email re: Re: OpenAI - John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
 ## Key Facts
 
 ## Background
@@ -43,3 +48,16 @@ John Heidgerken has been serving as the Americas West Area Director of Systems E
 
 ---
 *Last updated: 2025-11-06*
+
+- [[OpenAI]]
+- [[Rockset]]
+- [[Snowflake]]
+- [[Instagram]]
+- [[Facebook]]
+- [[Twilio]]
+- [[Azure]]
+- [[OCI]]
+- [[Databricks]]
+- [[ChatGPT]]
+- [[DAQ]]
+- [[Data Platform]]

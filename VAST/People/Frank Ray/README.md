@@ -1,13 +1,17 @@
 ---
 type: people
-title: Frank Ray
+title: Field Technical Director, UK
 created: '2026-01-03'
-last_contact: '2025-09-16'
+last_contact: '2025-12-11'
 auto_created: true
 tags:
 - type/people
 - needs-review
 - company/microsoft
+email: ray.coetzee@vastdata.com
+phone: +44 759 704 7060
+company: VAST Data
+linkedin: https://www.linkedin.com/in/ray-coetzee-a566ab7/
 ---
 
 # Frank Ray
@@ -34,6 +38,8 @@ SORT due ASC
 - 2025-09-16: [[2025-09-16 - Jason VAST role exploration]] (via Microsoft)
 
 - 2025-09-16: [[2025-09-16 - VAST Azure GTM hiring]] (via VAST)
+
+- 2025-12-11: Email re: Re: Azure VoC for MSFT testing - Ray Coetzee discusses a request from Microsoft's lab for an Azure VoC instance for performance testi
 ## Key Facts
 
 ## Background
@@ -50,3 +56,7 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-09-16*
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure VoC]]

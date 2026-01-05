@@ -1,11 +1,13 @@
 ---
 type: people
 title: Alon Horev
-last_contact: '2025-11-14'
+last_contact: '2025-12-15'
 created: '2026-01-03'
 tags:
 - type/people
 - generated
+email: alon@vastdata.com
+company: VAST Data
 ---
 
 # Alon Horev
@@ -30,6 +32,8 @@ tags:
 - 2025-10-28: [[2025-10-28 - MAI Falcon and Apollo path]] (via Microsoft)
 
 - 2025-11-14: [[2025-11-14 - GDC RFP federal coordination]] (via Google)
+
+- 2025-12-15: Email re: Re: Google Distributed Cloud - RFP Follow-up3) Enc - The email discusses follow-up questions from a Google RFP regarding encryption key granularity and t
 ## Key Facts
 
 ## Topics
@@ -43,3 +47,21 @@ tags:
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[NVIDIA Corporation]]
+- [[DGX-C | Coreweave]]
+- [[RFE 0482]]
+
+- [[Google]]
+- [[Google Distributed Cloud RFP]]
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Nscale]]
+- [[CoreWeave]]
+- [[MAI & VAST]]
+- [[MAI/Vipin environment]]
+- [[Nscale]]
+
+- [[VAST Data]]
+- [[VAST Forward]]

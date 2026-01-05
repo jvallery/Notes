@@ -35,6 +35,11 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-08: Christian Linacre is suggesting that Jason meet with Matt, who runs product management for DRCC/Allo
+
+- 2025-12-08: Christian Linacre is facilitating a meeting between Jason Vallery and Matthew Thomson in Seattle reg
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion related to
 ## Key Facts
 
 ## Opportunities

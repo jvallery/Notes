@@ -1,8 +1,11 @@
 ---
 name: Jonsi Stephenson
 role: CEO
-company: VAST Data
-last_contact: '2025-12-16'
+company: Google LLC
+last_contact: '2026-01-02'
+email: comments-noreply@docs.google.com
+phone: '+3546987478'
+title: GM of Cloud
 ---
 
 # Jonsi Stephenson
@@ -23,6 +26,11 @@ last_contact: '2025-12-16'
 - [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
 - [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson Stephenson
 
+- [ ] Review and edit the shared presentation @Myself 🔼 #task
+
+- [ ] Reconsider using Native Azure Blob format instead of VAST object format for better compatibility. @Myself 🔼 #task
+
+- [ ] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task
 ## Recent Context
 
 - 2025-12-16: Discussed Microsoft AI (MAI) positioning (Blob + VAST GPU-adjacent), Bifrost/Apollo politics, POC/bake-off timing, and flash supply-chain constraints. [[2025-12-16 - Prep for Microsoft AI talks]]
@@ -50,8 +58,13 @@ last_contact: '2025-12-16'
 - 2026-01-03: [[2026-01-03 - Prep for Microsoft AI talks]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - TPU strategy and pipeline]] (via Google)
+
+- 2025-12-17: Email re: Presentation shared with you: "GCP Flow from custo - Jonsi Stefansson shared a Google Slides presentation titled 'GCP Flow from customer to sales to cust
+
+- 2026-01-02: Email re: VAST and Azure Integration.docx - The email discusses comments on a document about integrating VAST with Azure, focusing on data stora
 ## Key Facts
 
+- Jonsi Stefansson shared a presentation for editing
 ## Topics
 
 ## Key Decisions
@@ -63,3 +76,20 @@ last_contact: '2025-12-16'
 ## Related
 
 - [[VAST Data]]
+
+- [[Google LLC]]
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Nscale]]
+- [[CoreWeave]]
+- [[MAI & VAST]]
+- [[MAI/Vipin environment]]
+- [[Nscale]]
+
+- [[Arrow]]
+- [[Avnet]]
+- [[Azure MAI]]
+
+- [[VAST]]
+- [[VAST and Azure Integration]]

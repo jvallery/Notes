@@ -1,11 +1,14 @@
 ---
 type: people
 title: Lior Genzel
-last_contact: '2025-12-15'
+last_contact: '2025-12-17'
 created: '2026-01-03'
 tags:
 - type/people
 - generated
+email: lior.genzel@vastdata.com
+company: NVIDIA
+phone: 408 888 2102
 ---
 
 # Lior Genzel
@@ -24,6 +27,9 @@ tags:
 
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
 
+- [ ] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task
+
+- [ ] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task
 ## Recent Context
 
 - 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)
@@ -85,8 +91,17 @@ tags:
 - 2025-11-20: [[2025-11-20 - MAI Nebius storage alignment]] (via Microsoft)
 
 - 2025-10-01: [[2025-10-01 - TPU strategy and pipeline]] (via Google)
+
+- 2025-12-11: Email re: RE: [EXTERNAL] VAST/Microsoft: Ignite follow up - The email discusses setting up a meeting between VAST Data and Microsoft to enable technical collabo
+
+- 2025-12-22: Email re: Share request for "VAST and Azure Integration.docx - Lior Genzel is requesting access to the document 'VAST and Azure Integration.docx' via Google Docs.
+
+- 2025-12-17: Email re: Re: VAST Data - GDC Storage RFP - Request For Meet - The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
 ## Key Facts
 
+- Lior Genzel is in town with the VP of PM for cloud for meetings at Microsoft.
+
+- Lior Genzel has the most recent updates from engineering regarding Global Namespace on Azure.
 ## Topics
 
 ## Key Decisions
@@ -98,3 +113,52 @@ tags:
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[Oracle]]
+- [[DRCC/Alloy]]
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure VoC]]
+
+- [[UK Met]]
+
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]
+
+- [[Nscale]]
+- [[CoreWeave]]
+- [[MAI & VAST]]
+- [[MAI/Vipin environment]]
+- [[Nscale]]
+
+- [[Google LLC]]
+- [[VAST and Azure Integration]]
+
+- [[Google]]
+- [[CISCO]]
+- [[Dell]]
+- [[HPE]]
+- [[SuperMicro]]
+- [[Arrow]]
+- [[Avnet]]
+- [[GDC Storage RFP]]
+
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]
+
+- [[Azure MAI]]
+
+- [[VAST GTM]]
+
+- [[VAST Data]]
+- [[PepsiCo]]
+- [[Commonwealth Fusion Systems]]
+- [[Siemens]]
+- [[NVIDIA Live]]
+- [[BF4/inference project]]
+- [[Open Models press release]]
+- [[NVIDIA Rubin press release]]

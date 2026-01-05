@@ -1,12 +1,15 @@
 ---
 type: people
-title: Kirstin Bordner
+title: Vice President, Global Communications & Customer Marketing
 created: '2026-01-03'
-last_contact: '2025-10-28'
+last_contact: '2025-12-23'
 auto_created: true
 tags:
 - type/people
 - needs-review
+email: kirstin.bordner@vastdata.com
+phone: +1.208.501.3383
+company: VAST Data
 ---
 
 # Kirstin Bordner
@@ -29,6 +32,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - The email announces the selection of speakers for the VAST Forward event and outlines the preparatio
 ## Key Facts
 
 ## Background
@@ -43,3 +47,15 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-10-28*
+
+- [[VAST Forward]]
+
+- [[NVIDIA]]
+- [[Microsoft]]
+- [[PepsiCo]]
+- [[Commonwealth Fusion Systems]]
+- [[Siemens]]
+- [[NVIDIA Live]]
+- [[BF4/inference project]]
+- [[Open Models press release]]
+- [[NVIDIA Rubin press release]]

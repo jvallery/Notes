@@ -35,6 +35,11 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's s
+
+- 2025-12-21: Jeff Denworth discusses the urgency of securing supply chain resources for VAST Data's deployment pl
+
+- 2025-12-27: Jeff Denworth is concerned about the progress of a Q1 deal with Microsoft Azure MAI due to supply ch
 ## Key Facts
 
 ## Opportunities

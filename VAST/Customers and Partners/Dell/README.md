@@ -35,6 +35,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
 ## Key Facts
 
 ## Opportunities

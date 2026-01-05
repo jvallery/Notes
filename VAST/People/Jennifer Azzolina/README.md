@@ -1,6 +1,6 @@
 ---
 type: people
-title: Jennifer Azzolina
+title: FSI Leader
 created: '2026-01-03'
 last_contact: '2025-11-14'
 auto_created: true
@@ -8,6 +8,8 @@ tags:
 - type/people
 - needs-review
 - company/vast-data
+email: jenn@vastfederal.com
+company: VAST Federal
 ---
 
 # Jennifer Azzolina
@@ -45,3 +47,9 @@ Former Senior Director of Global Alliances at Cloudera; extensive experience in 
 
 ---
 *Last updated: 2025-11-14*
+
+- [[VAST Data]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]

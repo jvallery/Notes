@@ -43,8 +43,17 @@ tags:
 - 2025-10-22: Discussed OpenAI storage tiering (Blob=cold, VAST=warm near GPUs) and POC status/requirements; POC currently on hold. ([[2025-10-22 - OpenAI storage strategy and VAST]])
 
 - 2025-10-22: [[2025-10-22 - VAST warm storage POC sync]]
+
+- 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's organizational structure, including
 ## Key Facts
 
+- OpenAI is organized into three major teams: Applications, Scaling, and Research.
+
+- Rockset is used as a vector database by OpenAI and contains the entire history of conversations.
+
+- OpenAI is one of the largest customers of Snowflake.
+
+- OpenAI's application side heavily leverages Azure CosmosDB for conversation persistence.
 ## Topics
 
 ## Opportunities

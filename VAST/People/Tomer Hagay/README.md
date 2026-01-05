@@ -6,6 +6,8 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+email: tomer.hagay@vastdata.com
+company: VAST Data
 ---
 
 # Tomer Hagay
@@ -54,3 +56,10 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+- [[NVIDIA Corporation]]
+- [[DGX-C | Coreweave]]
+- [[RFE 0482]]
+
+- [[Google]]
+- [[Google Distributed Cloud RFP]]

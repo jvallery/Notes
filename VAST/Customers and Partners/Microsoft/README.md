@@ -164,8 +164,35 @@ not done
 - 2025-12-11: Microsoft Ignite follow-up—coordinated technical collaboration; intro call proposed between Jason Vallery and Sushant Rewaskar; architecture docs requested for offline review.
 
 - 2025-12-11: Microsoft Ignite follow-up—coordinated technical collaboration; intro call proposed between Jason Vallery and Sushant Rewaskar; architecture docs requested for offline review.
+
+- 2025-12-11: Ray Coetzee discusses a request from Microsoft's lab for an Azure VoC instance for performance testi
+
+- 2025-12-11: The email discusses setting up a meeting between VAST Data and Microsoft to enable technical collabo
+
+- 2025-12-16: Kristin Thompson is verifying if Trevor Cooper-Chadwick from Microsoft should have access to the VAS
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion related to
+
+- 2025-12-18: Peter Imming introduces Sebastien Berube to Jason Vallery, VP of Cloud at VAST, to discuss potential
+
+- 2025-12-19: Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation and d
+
+- 2025-12-21: Jeff Denworth discusses the urgency of securing supply chain resources for VAST Data's deployment pl
+
+- 2025-12-29: Express Scripts Pharmacy confirms Jason's order of Lisdexamfetamine capsules and provides details on
+
+- 2025-12-30: The email discusses a successful deal for Leidos Federal involving a cloud deployment in the US Fede
+
+- 2025-12-27: Jeff Denworth is concerned about the progress of a Q1 deal with Microsoft Azure MAI due to supply ch
+
+- 2026-01-04: Karl Rautenstrauch is rescheduling the weekly VAST GTM meeting due to a family emergency and propose
+
+- 2025-12-21: The email discusses plans for VAST Data's involvement at CES, including attending NVIDIA Live and co
 ## Key Facts
 
+- Microsoft's lab does not have GPU nodes available.
+
+- Microsoft needs 2EB on the floor this year.
 ## Topics
 
 ## Opportunities

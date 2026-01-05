@@ -5,13 +5,13 @@ Email Processing Pipeline
 Unified pipeline for processing emails from import to action:
 
 1. DEDUPE - Remove duplicate email exports (same thread, different exports)
-2. EXTRACT - Extract structured data (contacts, tasks, decisions)
+2. INGEST - Extract knowledge and patch vault (contacts, tasks, facts → READMEs)
 3. DRAFT - Generate response drafts for emails needing replies
-4. (Future) APPLY - Update entity READMEs with extracted context
 
 Usage:
     python scripts/process_emails.py              # Run all phases
     python scripts/process_emails.py --phase dedupe  # Run single phase
+    python scripts/process_emails.py --phase ingest  # Extract → Patch vault
     python scripts/process_emails.py --dry-run   # Preview without changes
 """
 
@@ -35,13 +35,14 @@ console = Console()
 @click.command()
 @click.option(
     "--phase", "-p",
-    type=click.Choice(["dedupe", "extract", "draft", "all"]),
+    type=click.Choice(["dedupe", "ingest", "draft", "all"]),
     default="all",
     help="Which phase(s) to run"
 )
 @click.option("--dry-run", is_flag=True, help="Preview without making changes")
 @click.option("--verbose", "-v", is_flag=True, help="Show detailed output")
-def main(phase: str, dry_run: bool, verbose: bool):
+@click.option("--limit", "-n", type=int, default=None, help="Limit emails to process")
+def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int]):
     """Run the email processing pipeline."""
     
     console.print(Panel.fit(
@@ -87,31 +88,70 @@ def main(phase: str, dry_run: bool, verbose: bool):
             archive_duplicates(archive, dry_run=False)
             console.print(f"  [green]Archived {len(archive)} duplicates[/green]")
     
-    # Phase 2: Extract (if needed)
-    if phase in ["extract", "all"]:
-        console.print("\n[bold cyan]Phase 2: Extraction[/bold cyan]")
+    # Phase 2: Ingest (Extract → Plan → Patch vault)
+    if phase in ["ingest", "all"]:
+        console.print("\n[bold cyan]Phase 2: Ingest (Extract → Patch Vault)[/bold cyan]")
         console.print("-" * 40)
         
-        from extract import find_unprocessed_files
+        from ingest_emails import (
+            find_pending_emails, extract_from_email, 
+            generate_patches, apply_patches, get_openai_client
+        )
         
-        unprocessed = [f for f in find_unprocessed_files() if "Email" in str(f)]
+        pending = find_pending_emails()
+        if limit:
+            pending = pending[:limit]
         
-        results["extract"] = {
-            "pending": len(unprocessed)
+        results["ingest"] = {
+            "pending": len(pending),
+            "processed": 0,
+            "patches_applied": 0,
+            "entities_created": 0
         }
         
-        if unprocessed:
-            console.print(f"  [yellow]{len(unprocessed)} emails pending extraction[/yellow]")
-            if verbose:
-                for f in unprocessed[:5]:
-                    console.print(f"    • {f.name}")
-                if len(unprocessed) > 5:
-                    console.print(f"    ... and {len(unprocessed) - 5} more")
+        if pending:
+            console.print(f"  [yellow]{len(pending)} emails pending ingest[/yellow]")
             
             if not dry_run:
-                console.print("  [dim]Run 'python scripts/extract.py' to process[/dim]")
+                client = get_openai_client()
+                extraction_dir = vault_root() / "Inbox" / "_extraction"
+                extraction_dir.mkdir(parents=True, exist_ok=True)
+                
+                for i, email_path in enumerate(pending):
+                    content = email_path.read_text()
+                    subject = email_path.stem[:40]
+                    
+                    if verbose:
+                        console.print(f"  [{i+1}/{len(pending)}] {subject}")
+                    
+                    # Extract
+                    extraction = extract_from_email(email_path, content, client)
+                    extraction_file = extraction_dir / f"{email_path.stem}.email_extraction.json"
+                    extraction_file.write_text(extraction.model_dump_json(indent=2))
+                    
+                    # Plan
+                    plan = generate_patches(extraction)
+                    plan_file = extraction_dir / f"{email_path.stem}.email_changeplan.json"
+                    plan_file.write_text(plan.model_dump_json(indent=2))
+                    
+                    # Apply
+                    apply_results = apply_patches(plan, dry_run=False)
+                    
+                    results["ingest"]["processed"] += 1
+                    results["ingest"]["patches_applied"] += apply_results["applied"]
+                    results["ingest"]["entities_created"] += len(plan.entities_to_create)
+                
+                console.print(f"  [green]Ingested {results['ingest']['processed']} emails[/green]")
+                console.print(f"  [green]Applied {results['ingest']['patches_applied']} patches[/green]")
+            else:
+                console.print("  [dim]Would process these emails[/dim]")
+                if verbose:
+                    for f in pending[:5]:
+                        console.print(f"    • {f.name}")
+                    if len(pending) > 5:
+                        console.print(f"    ... and {len(pending) - 5} more")
         else:
-            console.print("  [green]All emails already extracted[/green]")
+            console.print("  [green]All emails already ingested[/green]")
     
     # Phase 3: Draft Responses (with vault context)
     if phase in ["draft", "all"]:
@@ -196,10 +236,18 @@ def main(phase: str, dry_run: bool, verbose: bool):
         status = "[green]✓[/green]" if r["duplicates"] == 0 else f"[yellow]Archived {r['duplicates']}[/yellow]"
         table.add_row("Dedupe", status, f"{r['kept']} unique emails")
     
-    if "extract" in results:
-        r = results["extract"]
-        status = "[green]✓[/green]" if r["pending"] == 0 else f"[yellow]{r['pending']} pending[/yellow]"
-        table.add_row("Extract", status, "Run extract.py separately")
+    if "ingest" in results:
+        r = results["ingest"]
+        if r["processed"] > 0:
+            status = f"[green]✓ {r['processed']} emails[/green]"
+            details = f"{r['patches_applied']} patches, {r['entities_created']} new entities"
+        elif r["pending"] > 0:
+            status = f"[yellow]{r['pending']} pending[/yellow]"
+            details = "Run without --dry-run"
+        else:
+            status = "[green]Up to date[/green]"
+            details = "No pending emails"
+        table.add_row("Ingest", status, details)
     
     if "draft" in results:
         r = results["draft"]

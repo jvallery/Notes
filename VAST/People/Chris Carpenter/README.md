@@ -8,6 +8,8 @@ tags:
 - type/people
 - needs-review
 - company/vast-data
+email: chris.carpenter@vastdata.com
+company: VAST Data
 ---
 
 # Chris Carpenter
@@ -46,3 +48,8 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-11-07*
+
+- [[Microsoft]]
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]

@@ -1,6 +1,6 @@
 ---
 type: people
-title: Steve Ballmer
+title: FSI SE Manager
 created: '2026-01-03'
 last_contact: '2025-12-19'
 auto_created: true
@@ -45,3 +45,10 @@ Former CEO of Microsoft; Co-founder of Ballmer Group; Founder of USAFacts
 
 ---
 *Last updated: 2025-12-19*
+
+- [[VAST Data]]
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]

@@ -7,6 +7,8 @@ auto_created: true
 tags:
 - type/people
 - needs-review
+email: kniebuhr@microsoft.com
+company: Microsoft
 ---
 
 # Kurt Niebuhr
@@ -56,3 +58,10 @@ SORT due ASC
 - 2025-10-01: Neo-cloud partnership pipeline updates; Supercomputing touchpoints/intros planning.
 
 - 2025-10-27: [[2025-10-27 - VAST into Azure GTM]] (via Microsoft)
+
+## Related
+
+- [[VAST Data]]
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]

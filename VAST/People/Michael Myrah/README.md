@@ -8,6 +8,7 @@ tags:
 - type/people
 - needs-review
 - company/microsoft
+email: mnoreen22@gmail.com
 ---
 
 # Michael Myrah
@@ -51,3 +52,5 @@ Michael Myrah has been with Microsoft since at least 2012, holding various posit
 
 ---
 *Last updated: 2025-11-06*
+
+- [[Tues mens group]]

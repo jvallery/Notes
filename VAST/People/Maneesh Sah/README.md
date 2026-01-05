@@ -1,10 +1,11 @@
 ---
 type: people
-title: "Maneesh Sah"
+title: Maneesh Sah
 last_contact: '2025-09-30'
 created: '2026-01-04'
 tags:
-  - type/people
+- type/people
+company: Microsoft
 ---
 
 # Maneesh Sah
@@ -31,3 +32,9 @@ WHERE !completed
 ```
 
 ## Related
+
+- [[VAST Data]]
+- [[Arrow]]
+- [[Avnet]]
+- [[CoreWeave]]
+- [[Azure MAI]]

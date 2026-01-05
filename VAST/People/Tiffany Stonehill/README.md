@@ -1,13 +1,16 @@
 ---
 type: people
-title: Tiffany Stonehill
+title: Global Sales & Strategic Alliances | Microsoft Azure
 created: '2026-01-03'
-last_contact: '2025-10-29'
+last_contact: '2025-12-19'
 auto_created: true
 tags:
 - type/people
 - needs-review
 - company/vast-data
+email: tiffany.stonehill@vastdata.com
+phone: 949-514-1648
+company: VAST Data
 ---
 
 # Tiffany Stonehill
@@ -37,8 +40,11 @@ SORT due ASC
 - 2025-10-29: 2025-10-29 - VAST on Cloud GTM alignment (via Lior Genzel)
 
 - 2025-10-29: [[2025-10-29 - VAST on Cloud alignment]] (via Lior Genzel)
+
+- 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation and d
 ## Key Facts
 
+- Tiffany Stonehill is working Monday and Tuesday the next two weeks and will be in full swing in January.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -51,3 +57,17 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-10-29*
+
+- [[Microsoft]]
+- [[UK Met]]
+
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]
+
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Leidos DoD Cloud]]
+- [[Golden Dome]]
+
+- [[VAST GTM]]

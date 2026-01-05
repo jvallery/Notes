@@ -1,12 +1,14 @@
 ---
 type: people
-title: Jason Ainsworth
+title: VP of Cloud
 created: '2026-01-03'
 last_contact: '2025-11-07'
 auto_created: true
 tags:
 - type/people
 - needs-review
+email: jason@vallery.net
+company: VAST Data
 ---
 
 # Jason Ainsworth
@@ -31,10 +33,22 @@ WHERE !completed AND contains(text, "Jason Ainsworth")
 SORT due ASC
 ```
 
+- [ ] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task
+
+- [ ] Set up an intro call between Jason Vallery and Sushant Rewaskar. @Myself 🔼 #task
+
+- [ ] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task
+
+- [ ] Set a meeting with Jason Vallery on January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task
+
+- [ ] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task
+
+- [ ] Send an EoD/EoW summary incorporating Jason’s feedback. @Lior Genzel 🔼 #task
 ## Recent Context
 
 ## Key Facts
 
+- Jason Vallery was Peter Imming's manager at Microsoft.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -49,3 +63,60 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-11-07*
+
+- [[Oracle]]
+- [[DRCC/Alloy]]
+
+- [[Nebius]]
+
+- [[VAST Data]]
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure VoC]]
+
+- [[Google]]
+- [[Google Distributed Cloud RFP]]
+
+- [[UK Met]]
+
+- [[Whale Iptic]]
+- [[XAI]]
+- [[Tesla]]
+- [[CoreWeave]]
+- [[AWS]]
+- [[GCP]]
+- [[Icarus]]
+- [[Cerebrum]]
+- [[VAST's storage solutions]]
+- [[GPU-Blockchain Integration Strategy]]
+
+- [[Microsoft Azure]]
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]
+
+- [[Nscale]]
+- [[MAI & VAST]]
+- [[MAI/Vipin environment]]
+- [[Nscale]]
+
+- [[Google LLC]]
+- [[VAST and Azure Integration]]
+
+- [[CISCO]]
+- [[Dell]]
+- [[HPE]]
+- [[SuperMicro]]
+- [[Arrow]]
+- [[Avnet]]
+- [[GDC Storage RFP]]
+
+- [[church]]
+
+- [[Utility space]]
+- [[TMIMITW]]
+
+- [[Azure MAI]]
+
+- [[VAST GTM]]
+
+- [[Tues mens group]]

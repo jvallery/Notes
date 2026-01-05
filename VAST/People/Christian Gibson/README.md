@@ -1,13 +1,16 @@
 ---
 type: people
-title: Christian Gibson
+title: Vice President, Alloy & Dedicated Regions
 created: '2026-01-03'
-last_contact: '2025-11-07'
+last_contact: '2025-12-08'
 auto_created: true
 tags:
 - type/people
 - needs-review
 - company/thinking-machines
+email: christian.linacre@oracle.com
+phone: +1.425.270.9331
+company: Oracle
 ---
 
 # Christian Gibson
@@ -31,8 +34,14 @@ SORT due ASC
 
 ## Recent Context
 
+- 2025-12-08: Email re: Connecting with VAST - Christian Linacre is suggesting that Jason meet with Matt, who runs product management for DRCC/Allo
+
+- 2025-12-08: Email re: RE: [External] : Re: Connecting with VAST - Christian Linacre is facilitating a meeting between Jason Vallery and Matthew Thomson in Seattle reg
 ## Key Facts
 
+- Christian Linacre is traveling and cannot meet.
+
+- Christian Linacre is traveling and cannot meet in person.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._
@@ -45,3 +54,7 @@ _Career history, expertise, interests, personal details shared..._
 
 ---
 *Last updated: 2025-11-07*
+
+- [[DRCC/Alloy]]
+
+- [[VAST Data]]
