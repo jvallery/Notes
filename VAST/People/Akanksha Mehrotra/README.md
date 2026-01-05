@@ -9,6 +9,14 @@ tags:
 - type/people
 - needs-review
 role: ''
+expertise:
+- distributed cache
+- checkpointing
+- throughput measurement
+- scale testing
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Akanksha Mehrotra

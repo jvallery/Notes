@@ -1,13 +1,25 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Rob Benoit
 last_contact: '2025-10-31'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Lead, Global Sales Engineering
+expertise:
+- Tech Summit content coordination
+- Global Sales Engineering
+- Pre-sales Sales Engineering
+- Go-to-market enablement
+- Cloud business strategy
+- Systems administration
+- Networking
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Rob Benoit

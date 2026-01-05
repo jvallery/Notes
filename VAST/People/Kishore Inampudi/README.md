@@ -8,6 +8,13 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+expertise:
+- Azure Extended Zones
+- storage requirements
+- coordination
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Kishore Inampudi

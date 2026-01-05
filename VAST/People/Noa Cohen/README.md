@@ -1,13 +1,23 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Noa Cohen
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+expertise:
+- end-to-end development lifecycle
+- release content planning
+- feature list curation
+- release management process
+- QA cycles
+- release trains
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Noa Cohen

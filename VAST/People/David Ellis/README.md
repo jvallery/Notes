@@ -8,6 +8,13 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+expertise:
+- book club organization
+- event planning
+- community engagement
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # David Ellis

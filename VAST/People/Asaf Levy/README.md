@@ -1,13 +1,23 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Asaf Levy
 last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Chief Architect
+expertise:
+- persistence architecture
+- QoS/governance design
+- multi-cloud object-tiering
+- metadata persistence
+- cloud-related work
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Asaf Levy

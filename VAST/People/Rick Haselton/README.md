@@ -1,13 +1,25 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Rick Haselton
 last_contact: '2025-10-29'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Technical Lead in Customer Success
+expertise:
+- Customer Success account support workflows
+- End-to-end account support process discovery
+- Managed-services/SRE operating model
+- Incident management workflow
+- Ticketing systems and engineering escalation
+- Cloud-first vision for VAST Data
+- Operational pain points in networking
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Rick Haselton

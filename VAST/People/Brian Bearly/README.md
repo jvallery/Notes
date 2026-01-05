@@ -8,6 +8,12 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+expertise:
+- board game planning
+- event organization
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Brian Bearly

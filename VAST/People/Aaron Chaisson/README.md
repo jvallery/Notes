@@ -1,13 +1,22 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Aaron Chaisson
 last_contact: '2025-11-06'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Marketing Specialist
+expertise:
+- AI pipeline development
+- model training
+- RAG inference workflows
+- presentation preparation
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Aaron Chaisson

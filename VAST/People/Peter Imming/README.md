@@ -1,13 +1,21 @@
 ---
 type: people
 email: peterimming@gmail.com
-company: ''
+company: Microsoft
 title: Peter Imming
 last_contact: '2025-12-18'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Manager
+expertise:
+- management
+- networking
+- career development
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Peter Imming

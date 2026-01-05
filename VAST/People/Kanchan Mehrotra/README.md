@@ -1,13 +1,23 @@
 ---
 type: people
 email: ''
-company: ''
+company: Microsoft
 title: Kanchan Mehrotra
 last_contact: '2025-11-06'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Key Contact for Storage Plays and Supercomputing
+expertise:
+- Microsoft AI Infrastructure
+- Azure Storage
+- Supercomputing
+- Technical Problem-Solving
+- Storage Density Considerations
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Kanchan Mehrotra

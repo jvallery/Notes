@@ -1,13 +1,22 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Eirikur Hrafnsson
 last_contact: '2025-10-28'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: VP of Engineering for Cloud Engineering
+expertise:
+- GCP MVP deployment flow
+- networking and failover options
+- GCP Marketplace private offers
+- implementation coordination
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Eirikur Hrafnsson

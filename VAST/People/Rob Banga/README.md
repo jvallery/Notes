@@ -1,13 +1,23 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Rob Banga
 last_contact: '2025-10-30'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Customer Organization Lead
+expertise:
+- Cloud support models
+- Customer success strategies
+- Program management
+- Metrics-driven operations
+- SRE and support roles
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Rob Banga

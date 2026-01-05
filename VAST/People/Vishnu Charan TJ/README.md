@@ -1,13 +1,23 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Vishnu Charan TJ
 last_contact: '2025-09-15'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Senior Software Engineer
+expertise:
+- distributed caching
+- KVCache offload
+- Azure Blob integration
+- checkpointing MVP implementation
+- scale testing
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Vishnu Charan TJ

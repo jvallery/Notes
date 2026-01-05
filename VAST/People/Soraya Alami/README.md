@@ -8,6 +8,9 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Soraya Alami

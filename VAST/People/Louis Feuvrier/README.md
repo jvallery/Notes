@@ -1,14 +1,21 @@
 ---
 type: people
 email: ''
-company: ''
+company: OpenAI
 title: Louis Feuvrier
 last_contact: '2025-12-26'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
-role: Learning
+role: Lead Developer/Architect
+expertise:
+- Data Acquisition
+- Software Development
+- Data Platforms
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Louis Feuvrier

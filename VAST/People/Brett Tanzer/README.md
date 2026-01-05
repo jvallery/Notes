@@ -1,13 +1,20 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Brett Tanzer
 last_contact: '2025-11-06'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+expertise:
+- pricing models
+- cloud pipeline synthesis
+- data architecture
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-05'
 ---
 
 # Brett Tanzer

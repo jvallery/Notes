@@ -2,7 +2,7 @@
 
 > **Glossary of projects and initiatives** - Used for prompt caching in AI calls.
 > Updated automatically by `manifest_sync.py`.
-> Last sync: 2026-01-05 15:11
+> Last sync: 2026-01-05 16:49
 
 ## Entities
 
