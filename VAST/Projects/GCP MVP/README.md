@@ -2,7 +2,7 @@
 type: project
 name: GCP MVP
 status: active
-last_contact: '2025-10-28'
+last_contact: '2025-12-17'
 created: '2026-01-05'
 tags:
 - type/project
@@ -59,6 +59,8 @@ tags:
 - 2026-01-05: A task was tracked to confirm Google Cloud Platform (GCP) general availability (GA) timing after a b...
 
 - 2025-10-28: The team aligned to launch the VAST GCP Marketplace MVP using private offers only, with fixed capaci...
+
+- 2025-12-17: Jonsi Stephenson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
 ## Tasks
 
 ```tasks
@@ -82,6 +84,9 @@ not done
 
 - Overage policy, marketplace limitations, and EULA language requirements
 
+- GCP customer-to-sales-to-customer process flow documentation
+
+- Google Slides collaboration (edit access)
 ## Key Decisions
 
 - For the GCP Marketplace MVP, VAST will transact exclusively through cloud marketplaces and will not support BYOL (Bring Your Own License).

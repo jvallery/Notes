@@ -4,7 +4,7 @@ name: Maneesh Sah
 email: ''
 company: Microsoft
 title: ''
-last_contact: '2025-09-29'
+last_contact: '2025-12-27'
 created: '2026-01-05'
 tags:
 - type/person
@@ -105,6 +105,8 @@ tags:
 - 2025-09-18: Mentioned in: 1:1 with Jack Kabat: architect remit deep dive on VAST, CoreWeave, NVIDIA DGX, and Azure storage gaps (Apollo in scope)
 
 - 2025-09-03: Mentioned in: 1:1 with Jai Menon: MAI caching evaluation focus and OpenAI IP/code access
+
+- 2025-12-27: Red flare escalation: Azure MAI Q1 deal risk, supply chain urgency, and Redmond engagement plan
 ## Tasks
 
 ```tasks

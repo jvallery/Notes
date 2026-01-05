@@ -115,6 +115,14 @@ tags:
 - Google described a regulatory compliance scenario requiring the ability to map a dataset or volume to a specific set of disks so that media associated with that dataset could be confiscated by regulators; Google noted the fallback is using disjoint clusters per dataset/tenant but that is suboptimal.
 
 - A Google participant stated there are workload use cases requiring synchronous replication and zero RPO for files, and they believed VAST's element-level replication architecture might already support it or would soon.
+
+- Google Docs sent an automated share notification from drive-shares-dm-noreply@google.com for a document shared by Mordechai Blaunstein.
+
+- Whale Iptic described a multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce disruption risk from a single cloud provider outage.
+
+- Google Docs sent an automated email notification about a document access request for 'VAST and Azure Integration.docx'.
+
+- Google is the external party associated with the Google Distributed Cloud (GDC) RFP that requires an updated deck.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -186,6 +194,18 @@ tags:
 - 2025-11-03: Mentioned in: Lior Genzel: MAI POC and Microsoft hardware SKU questions
 
 - 2025-12-15: Google participants walked VAST through the submitted Google Distributed Cloud RFP response, focusin...
+
+- 2025-12-19: Mentioned in: Google Docs edit invite: CoreWeave-Vast Automation Project - V2
+
+- 2025-12-17: Google (David Pawlak) requested a follow-up meeting to review and clarify VAST Data's Google Distrib...
+
+- 2025-12-15: After a Google Distributed Cloud RFP walkthrough, Jason Vallery asked Alon Horev and Tomer Hagay for...
+
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+
+- 2025-12-22: Mentioned in: Access request: Google Docs share for 'VAST and Azure Integration.docx' from Lior Genzel
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change, GDC RFP deck, MAI unified cache pricing)
 ## Tasks
 
 ```tasks
@@ -254,6 +274,26 @@ not done
 - Requirement B16: synchronous replication across zones, and the tradeoff between zero RTO/RPO and performance/latency
 
 - Current VAST Data replication capabilities (snapshot-based, cluster-to-cluster block-level sync replication) and potential file replication approaches
+
+- Google Distributed Cloud (GDC) Storage RFP proposal review and clarification call
+
+- FIPS compliance approach for VAST proposed GDC offering
+
+- Recurring pricing scope, including whether hardware and SSDs are included
+
+- Self-Encrypting Drives (SEDs) usage for SSD component in proposed solution
+
+- BYOH (Bring Your Own Hardware) option and VAST preferred or certified hardware partners
+
+- Google Distributed Cloud RFP follow-up questions on encryption at rest and FIPS requirements
+
+- Self-encrypting drives (SEDs) versus software-based encryption approach for FIPS compliance
+
+- Encryption key granularity and management using encryption groups at tenant and path levels
+
+- Mapping encryption groups to S3 buckets, NFS exports, and multi-tenant policy models
+
+- S3 SSE-C support via x-amz-server-side-encryption-customer-* headers in VAST 5.4
 ## Key Decisions
 
 - Create a shared pros and cons document to re-evaluate GCP VIP and failover options (alias IP, route-based failover, and Internal Load Balancer) including pricing and feature tradeoffs.
@@ -279,3 +319,7 @@ not done
 - Use private offers as the initial sales motion, with Tackle supporting listing content population and technical integration once access is granted.
 
 - Proceed through the Google Distributed Cloud RFP technical requirements tab top-to-bottom, starting with the items VAST marked as 'No' (including B8 and B16), to clarify gaps and scenarios.
+
+- Meeting time selected for the initial RFP review call: Monday 2025-12-15 at 2:00pm PT (requested by Lior Genzel and confirmed by David Pawlak sending an invite).
+
+- Route detailed encryption and key management questions for the Google Distributed Cloud RFP to Violet as the subject matter expert.

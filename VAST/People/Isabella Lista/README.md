@@ -1,0 +1,29 @@
+---
+type: person
+name: "Isabella Lista"
+email: "isabella.lista@alphasights.com"
+company: "AlphaSights"
+title: "Associate"
+last_contact: "2025-12-19"
+created: "2026-01-05"
+tags:
+  - type/person
+  - needs-review
+---
+
+# Isabella Lista
+
+## Key Facts
+
+- Isabella Lista is an Associate at AlphaSights and is coordinating an urgent expert discussion request for Jason Vallery.
+
+- Isabella Lista provided a Calendly link for scheduling a 30-minute meeting: https://calendly.com/isabella-lista-alphasights/30min.
+## Recent Context
+
+- 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion on Oracle, AWS, Salesforce, Microsoft
+## Tasks
+
+```tasks
+path includes Isabella Lista
+not done
+```

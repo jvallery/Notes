@@ -9,6 +9,17 @@ This appendix standardizes key terms used across the VAST + Azure integration do
 - **Blob API façade (on VAST):** A high‑fidelity subset of the Azure Blob REST API implemented on VAST to enable Azure tooling/SDK compatibility (not full Blob emulation). See: [Blob API Requirements (MVP)](Blob%20API%20Requirements%20%28MVP%29.md)
 - **Governance tier vs performance tier:** “Blob as truth” (governance, durability, ecosystem) vs “VAST as hot working set” (latency/throughput near GPUs).
 
+## Multi‑Protocol Naming (Blob/S3/NFS/SMB)
+
+When the same dataset must be reachable via Azure Blob, S3, and file protocols, we treat object names as *paths* (not arbitrary byte strings). This imposes additional constraints beyond “pure” Blob/S3.
+
+- **Container/Bucket names:** use Azure container naming rules (lowercase, 3–63 chars, `a-z0-9-`, no leading/trailing `-`). This also satisfies S3 bucket naming constraints.
+- **Blob/Object names:** treat `/` as a directory delimiter and each segment as a filename.
+  - **Disallow empty/special segments:** no `//`, `/.`, `/..`, or trailing `/.` or `/..`.
+  - **Disallow file/dir conflicts:** an object at `a` cannot coexist with objects under `a/` (filesystem coherence).
+  - **Character hygiene (portable paths):** avoid NUL; for SMB interoperability prefer a conservative subset (`A–Z a–z 0–9 . _ -` plus `/`) and avoid Windows-reserved characters (`<>:\"|?*`) and trailing spaces/dots in segments.
+- **Case collisions:** Blob and S3 are case-sensitive; SMB may behave case-insensitively. To avoid ambiguous collisions, do not create keys that differ only by case.
+
 ## Deployment Terms
 
 - **Hero Region / Hero Regions:** A centralized Azure region that anchors the governed data lake and Azure ecosystem access.

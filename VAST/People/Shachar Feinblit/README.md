@@ -4,7 +4,7 @@ name: Shachar Feinblit
 email: ''
 company: VAST Data
 title: ''
-last_contact: '2025-10-28'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/person
@@ -35,6 +35,8 @@ tags:
 - 2025-10-28: Jason Vallery and Shachar Feinblit agreed to establish a weekly 30-minute 1:1 and planned Jason's Te...
 
 - 2026-01-05: Mentioned in: 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
+
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate deployment plan
 ## Tasks
 
 ```tasks

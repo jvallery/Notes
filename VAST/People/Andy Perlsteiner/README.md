@@ -30,6 +30,8 @@ tags:
 - Jason Vallery referenced meeting stakeholders across VAST Data including Andy Perlsteiner's team as part of learning how product management operates at VAST Data.
 
 - Andy Perlsteiner provided Jason Vallery a hands-on brain dump and advice related to learning VAST and VAST on Cloud.
+
+- Andy Perlsteiner is leading Hands-on Labs for VAST Forward (as of 2025-12-23 program update).
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -45,6 +47,8 @@ tags:
 - 2025-10-31: Mentioned in: 1:1 with Josh Wentzell, VAST on Cloud strategy gaps: multi-tenancy, VOC deployment friction, automation tooling
 
 - 2026-01-05: The transcript contains a single completed action item: Jason Vallery set up a 1:1 with Andy Bernste...
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
 ## Tasks
 
 ```tasks

@@ -60,6 +60,8 @@ tags:
 - VAST Data is onboarding Tackle to sell VAST SaaS via Google Cloud Marketplace by reusing an existing private-offer listing and integrating metering, reporting, and order notifications.
 
 - Marketplace offers should expose tenant outcomes and avoid requiring customers to administer complex VAST clusters.
+
+- Jeff Denworth requested that the Azure Marketplace SKU change request be completed and submitted by Friday (relative to the 2026-01-04 email date).
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Microsoft and VAST align parallel tracks: UK Met Azure LSV4 test cluster and Microsoft-hosted bare-metal dev system
@@ -99,6 +101,8 @@ tags:
 - 2025-10-29: Mentioned in: Tackle onboarding kickoff to sell VAST SaaS via Google Cloud Marketplace (reuse existing private offer listing)
 
 - 2025-10-31: Mentioned in: 1:1 with Rob Benoit: cloud strategy, marketplace UX, and SE enablement gaps
+
+- 2026-01-05: Jeff Denworth sent a weekly status email with three action items: submit an Azure Marketplace SKU ch...
 ## Tasks
 
 ```tasks
@@ -123,6 +127,12 @@ not done
 - Pricing and go-to-market package preparation for February SCO
 
 - Competitive benchmarking versus Weka and Hammerspace on Azure L-series VMs
+
+- Azure Marketplace SKU change request deadline and submission
+
+- Updated deck required for Google Distributed Cloud (GDC) RFP
+
+- Microsoft MAI unified cache pricing follow-up
 ## Key Decisions
 
 - Use a designated Slack channel as the primary intake route for all VAST on Cloud opportunities and support, with Tiffany Stonehill triaging AWS and Azure and Olivia triaging GCP and OCI.

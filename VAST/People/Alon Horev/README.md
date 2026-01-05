@@ -4,7 +4,7 @@ name: Alon Horev
 email: ''
 company: ''
 title: ''
-last_contact: '2025-10-28'
+last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/person
@@ -32,6 +32,12 @@ tags:
 - Alon Horev was identified as a coordination point for making Confluence the canonical home for FRDs and customer requirements.
 
 - Alon Horev has prior touchpoints with SSI (Safe Superintelligence Inc.) and can provide a quick read on SSI contacts including Daniel Levy.
+
+- Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST PoC at 1,000 to 2,000 GPU scale.
+
+- Alon Horev stated that Violet should be the primary person to work with on encryption and related RFP matters for Google Distributed Cloud.
+
+- Alon Horev is leading AI Model Builder sessions for VAST Forward (as of 2025-12-23 program update).
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -55,6 +61,14 @@ tags:
 - 2025-11-07: Mentioned in: Org map, priorities, and cloud strategy alignment (1:1 with Jeff Denworth)
 
 - 2025-11-07: Mentioned in: Warm intros and outreach planning for priority model builders (LinkedIn, investors, NVIDIA, NeoClouds)
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate deployment plan
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped visibility
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption at rest, SEDs, and key granularity across S3 and NFS
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
 ## Tasks
 
 ```tasks

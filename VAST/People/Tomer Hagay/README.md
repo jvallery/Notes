@@ -4,7 +4,7 @@ name: Tomer Hagay
 email: ''
 company: ''
 title: ''
-last_contact: '2026-01-05'
+last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/person
@@ -58,6 +58,14 @@ tags:
 - Tomer Hagay was identified as a coordination point for making Confluence the canonical home for FRDs and customer requirements.
 
 - Tomer Hagay owns defining the overage policy (thresholds, grace, pricing) for the GCP Marketplace MVP and defining VAST units of measurement for compute and capacity for future pricing models.
+
+- Tomer Hagay stated that VAST Data prefers software-based encryption (potentially FIPS certified) rather than relying on self-encrypting drives (SEDs) to avoid hardware restrictions.
+
+- Tomer Hagay stated that encryption keys can be managed at tenant or path level, where a path can represent S3 buckets or NFS exports, using encryption groups.
+
+- Tomer Hagay stated that assigning an encryption group to a path supports having a unique key for that path.
+
+- Tomer Hagay stated that S3 SSE-C using x-amz-server-side-encryption-customer-* headers is supported starting in VAST cluster version 5.4.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -97,6 +105,10 @@ tags:
 - 2025-11-07: Mentioned in: Org map, priorities, and cloud strategy alignment (1:1 with Jeff Denworth)
 
 - 2025-10-28: Mentioned in: GCP Marketplace MVP launch readiness, private offers via Tackle, fixed capacity pricing and Polaris entitlements
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped visibility
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption at rest, SEDs, and key granularity across S3 and NFS
 ## Tasks
 
 ```tasks

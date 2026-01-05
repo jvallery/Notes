@@ -2,7 +2,7 @@
 type: project
 name: Cloud
 status: active
-last_contact: '2025-10-30'
+last_contact: '2025-12-15'
 created: '2026-01-05'
 tags:
 - type/project
@@ -184,6 +184,14 @@ tags:
 - VAST's current approach of running VAST on public cloud virtual machines is not viable at the anticipated Walmart big data scale, so the team is prioritizing a hybrid roadmap with deeper native integration to Google Cloud Storage.
 
 - The meeting was a walkthrough of VAST Data's submitted proposal for the Google Distributed Cloud RFP, focusing on the technical requirements tab and items marked 'No' (including B8 and B16).
+
+- A VAST on Cloud Course and a related Project Brief are being assembled from existing materials and require review for messaging accuracy, technical accuracy, and clarity for the field.
+
+- The Google Distributed Cloud RFP follow-up includes questions about FIPS-certified options, self-encrypting drives (SEDs), encryption group key granularity across S3 and NFS, and S3 SSE-C support.
+
+- Microsoft requested VAST slides and code from a VAST + AKS presentation intended for Microsoft AI infrastructure sellers, aligning to VAST's AI cloud enablement efforts.
+
+- An updated deck is needed to support the Google Distributed Cloud (GDC) RFP process.
 ## Recent Context
 
 - 2025-11-14: VAST cloud and federal teams aligned on responding to Google Distributed Cloud's US-based RFP to rep...
@@ -277,6 +285,14 @@ tags:
 - 2025-11-14: Mentioned in: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP review, technical requirement gaps (B8, B16)
+
+- 2025-12-15: Terika Dilworth requested team review and feedback on the draft VAST on Cloud Course and its Project...
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption at rest, SEDs, and key granularity across S3 and NFS
+
+- 2025-12-19: Mentioned in: Microsoft GBB AKS AI Roadshow follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change, GDC RFP deck, MAI unified cache pricing)
 ## Tasks
 
 ```tasks
@@ -347,6 +363,12 @@ not done
 - Microsoft Azure near-term prioritization and target account focus
 
 - Tackle-Salesforce-Polaris integration for marketplace flows and entitlements
+
+- Sales enablement content review for VAST cloud messaging
+
+- Technical accuracy validation for VAST on Cloud Course
+
+- Improving clarity of cloud positioning for the field
 ## Key Decisions
 
 - Greg Castellucci will run point for engagement with Google Federal and coordinate with the corporate Google Distributed Cloud team for the RFP pursuit and validation motion.

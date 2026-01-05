@@ -4,7 +4,7 @@ name: Jonsi Stephenson
 email: ''
 company: VAST Data
 title: GM of Cloud
-last_contact: '2026-01-05'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/person
@@ -38,6 +38,18 @@ tags:
 - Jason Vallery planned to align with Jonsi Stephenson on travel logistics to enable an in-person working session.
 
 - Jason Vallery planned to establish a weekly or monthly 1:1 cadence with Jonsi Stephenson for coordination on cloud-related work.
+
+- Jonsi Stephenson shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and granted edit access.
+
+- Jonsi Stephenson left an open comment in 'VAST and Azure Integration.docx' questioning whether cold data tiered to Azure Blob should use VAST object format (not directly readable from Azure Blob) versus native Azure Blob format for direct readability and ecosystem accessibility.
+
+- Jonsi Stephenson left an open comment in 'VAST and Azure Integration.docx' asking whether the document should make a firmer statement that VAST DRR/efficiencies reduce the impact of flash supply constraints and rising prices.
+
+- Jonsi Stephenson is GM of Cloud at VAST Data.
+
+- Jonsi Stephenson met with Microsoft contacts Aung (last name unknown) and Maneesh Sah who expect an Azure Blob integration proposal from VAST.
+
+- Jonsi Stephenson emailed Microsoft contacts for MAI supply chain clarity but received out-of-office replies indicating return on 2026-01-05.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Microsoft and VAST align parallel tracks: UK Met Azure LSV4 test cluster and Microsoft-hosted bare-metal dev system
@@ -67,6 +79,14 @@ tags:
 - 2026-01-05: Mentioned in: 1:1 with Jeff Denworth - travel planning, scope ownership, and cloud team alignment
 
 - 2025-10-29: Mentioned in: Tackle onboarding kickoff to sell VAST SaaS via Google Cloud Marketplace (reuse existing private offer listing)
+
+- 2025-12-17: Mentioned in: Google Slides share: GCP Flow from customer to sales to customer.pptx (edit access)
+
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate deployment plan
+
+- 2026-01-02: Mentioned in: Comments on 'VAST and Azure Integration' doc, Azure Blob tiering format and supply chain messaging
+
+- 2025-12-27: Mentioned in: Red flare escalation: Azure MAI Q1 deal risk, supply chain urgency, and Redmond engagement plan
 ## Tasks
 
 ```tasks

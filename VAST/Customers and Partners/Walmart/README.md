@@ -1,7 +1,7 @@
 ---
 type: account
 name: Walmart
-last_contact: '2025-11-14'
+last_contact: '2025-12-23'
 created: '2026-01-05'
 tags:
 - type/account
@@ -99,6 +99,14 @@ tags:
 - Walmart's big data initiative has an unresolved disaster recovery requirement: Walmart may need either full VAST namespace access in a public cloud for DR or only a copy of the data for DR.
 
 - Walmart has been pinging the VAST team for answers in the last 24 hours and is expected to provide answers to VAST's requirements questions within about an hour of the meeting time.
+
+- Walmart held an internal requirements meeting during the week of 2025-12-22 and restated that they need to build a long-term hybrid solution for their data team.
+
+- Walmart was not successful in getting the business to accept two disjoint namespaces, so any acceptable solution must avoid separate namespaces.
+
+- Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, limited to workloads that can run exclusively on premises.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or they would need significant lobbying at the database layer including a hybrid cloud database.
 ## Recent Context
 
 - 2025-11-06: Internal VAST prep to shape an in-person architecture whiteboarding session with Walmart’s Lakehouse...
@@ -110,6 +118,8 @@ tags:
 - 2025-11-05: Walmart’s analytics data is ingested and processed in BigQuery on GCP, with a requirement to replica...
 
 - 2025-11-14: Internal VAST sync aligned on how to respond to Walmart's big data initiative, with the key gating i...
+
+- 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting: they need a long...
 ## Tasks
 
 ```tasks
@@ -166,6 +176,16 @@ not done
 - Customer engagement plan: expectations and vision call with Mingming, then deeper technical session with SMEs after requirements are confirmed
 
 - Scheduling constraints due to Supercomputing conference next week
+
+- Walmart hybrid data platform requirements (single namespace expectation)
+
+- Integration requirements with Google Cloud Storage (GCS)
+
+- Walmart on-prem-only big data POC planned for 2025
+
+- Competitive risk and positioning versus Alluxio
+
+- Product planning implications for VAST cloud and hybrid capabilities
 ## Key Decisions
 
 - Use VAST SyncEngine for the pilot to replicate data from Google Cloud Storage into on-prem VAST clusters, and use VAST DataSpaces to provide a unified view across the two on-prem sites.

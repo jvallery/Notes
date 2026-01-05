@@ -26,6 +26,8 @@ tags:
 - Kurt Niebuhr was a targeted SC25 meeting/outreach item and was marked complete on 2025-11-08.
 
 - Kurt Niebuhr is involved in a neo-cloud partnership pipeline (example partner: sakura.net) and is positioned to keep Jason Vallery updated on where VAST Data can integrate or add value.
+
+- Kurt Niebuhr was included as a recipient for the VAST slides and access following the Microsoft GBB AKS AI Roadshow session.
 ## Recent Context
 
 - 2025-10-27: Jason Vallery and Kurt Niebuhr aligned on a go-to-market path to bring VAST Data’s high-density, low...
@@ -33,6 +35,8 @@ tags:
 - 2026-01-05: Mentioned in: SC25 meeting scheduling and completed outreach (Nidhi, Kurt Niebuhr, Kushal Datta, Vipin Sachdeva)
 
 - 2026-01-05: Kurt Niebuhr and Jason Vallery aligned on keeping Jason informed on the neo-cloud partnership pipeli...
+
+- 2025-12-19: Mentioned in: Microsoft GBB AKS AI Roadshow follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 ## Tasks
 
 ```tasks

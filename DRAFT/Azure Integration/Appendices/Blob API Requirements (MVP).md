@@ -28,6 +28,97 @@ Enable standard Azure data movers (AzCopy, Azure Storage Mover, VAST SyncEngine)
 - **Endpoint type:** Emulate the Blob Service endpoint (`blob.core.windows.net`), not the DFS endpoint (`dfs.core.windows.net`).
 - **Directory model:** Directories are virtual (`/` delimiter). MVP does not support atomic directory renames or ACL semantics.
 
+## Technical Specification (MVP)
+
+This section defines the *compatibility contract* VAST will implement, including explicit mapping between Azure Blob concepts, VAST concepts, and S3 concepts (for multi‑protocol coherence).
+
+### Endpoint & Namespace Model
+
+VAST MUST support both request forms (production-friendly and emulator-style):
+
+- **Virtual-host style (preferred):** `https://{account}.{blob_suffix}/{container}/{blob}`
+- **Path style (emulator-compatible):** `https://{blob_host}/{account}/{container}/{blob}`
+
+Namespace rules:
+
+- **`{account}` (Azure “storage account”):** a logical tenant/routing label used for SAS/shared-key validation and request routing. In OAuth-only deployments, `{account}` MAY be treated as a pure routing label.
+- **`{container}`:** maps **1:1** to a **VAST bucket** (and an **S3 bucket**) of the same name.
+- **`{blob}`:** the remainder of the path after `{container}/`, URL-decoded once per RFC 3986. `/` is treated as a virtual directory delimiter.
+
+Multi‑protocol safety constraints (Blob + S3 + NFS/SMB):
+
+- **No file/dir conflicts:** a committed object at `a` MUST prevent creating any object under `a/` and vice-versa (filesystem coherence).
+- **No empty or special path segments:** reject names containing `//`, `/.`, `/..`, or ending with `/.` or `/..`.
+- **Reserved characters:** reject NUL; for SMB compatibility, prefer a conservative “portable path” subset (see: [Terminology & Conventions](Terminology%20%26%20Conventions.md)) and treat non-portable names as out-of-scope for file-protocol access.
+
+**Note:** Azure Blob Storage allows many of these key patterns; these restrictions exist to guarantee coherent behavior across protocols in a shared VAST namespace.
+
+### Concept Mapping (Blob ↔ VAST ↔ S3)
+
+| Azure Blob concept | VAST concept (target) | S3 concept | Compatibility notes |
+| --- | --- | --- | --- |
+| Storage account | Tenant / endpoint routing label | (none; endpoint/tenant) | `{account}` is derived from host/path; used for SAS/shared-key validation if enabled. |
+| Container | Bucket / top-level namespace root | Bucket | Names align exactly. Container policies map to bucket policies (MVP coarse-grain). |
+| Blob name | Object path within bucket | Object key | Same canonical string across Blob + S3; `/` denotes “virtual directories”. |
+| Block (uncommitted) | Staged part | Multipart upload part | Invisible until commit (`PutBlockList` / MPU complete). |
+| `ETag` | Strong version identifier | `ETag` | Opaque; MUST NOT be treated as MD5. Prefer same value across protocols. |
+| `Last-Modified` | Commit timestamp / mtime | `Last-Modified` | RFC 1123; stable for sync/diff logic. |
+| `x-ms-meta-*` | User metadata KV | `x-amz-meta-*` | Keys normalized to lowercase; values preserved byte-for-byte. |
+| `Content-Type`, `Content-Encoding`, `Cache-Control`, `Content-MD5` | System metadata | System metadata | Persist and return consistently across protocols. |
+| SAS token | Pre-signed authorization | Pre-signed URL | MVP targets OAuth; SAS/shared-key are compatibility modes. |
+| Shared Key | Account key | Access key/secret | Compatibility mode only; not required if OAuth is sufficient. |
+| Copy from URL (`Put*FromURL`) | Server-side fetch + stage/commit | CopyObject / UploadPartCopy | Required for lake→edge hydration; supports byte-range fetch. |
+
+### Example: Same Object Across Protocols
+
+Given `{container} = datasets` and `{blob} = imagenet/train/000001.jpg`:
+
+- **Blob:** `https://{account}.{blob_suffix}/datasets/imagenet/train/000001.jpg`
+- **S3:** `s3://datasets/imagenet/train/000001.jpg`
+- **NFS/SMB (if exported):** `{export_root}/datasets/imagenet/train/000001.jpg`
+
+### Metadata & Header Translation (Blob ↔ S3)
+
+To keep multi‑protocol clients coherent, define one internal metadata model and translate protocol-specific headers at the edge:
+
+- **User metadata**
+  - **Blob ingress:** accept `x-ms-meta-*` headers and store as user metadata with keys normalized to lowercase.
+  - **S3 ingress:** accept `x-amz-meta-*` headers and store into the same user metadata map (lowercase keys).
+  - **Egress:** return all stored keys as `x-ms-meta-*` (Blob) or `x-amz-meta-*` (S3); preserve values byte-for-byte.
+- **System metadata**
+  - Persist and return `Content-Type`, `Content-Encoding`, `Cache-Control`, and `Content-MD5` consistently across protocols.
+  - If a client supplies `Content-MD5` on upload, validate it and reject mismatches (`400 Bad Request`) rather than silently accepting corrupt uploads.
+
+### Multi‑Protocol Coherence Rules (MVP)
+
+The Blob façade is not “a separate store”; it is another access path into the same VAST namespace as S3 and file protocols. MVP guarantees:
+
+- **Read-after-write consistency:** after a successful `PutBlob` or `PutBlockList`, subsequent `HEAD`/`GET` and list operations MUST reflect the committed object (no “eventual list” behavior).
+- **Atomic publication:** uncommitted blocks (from `PutBlock`/`PutBlockFromURL`) MUST NOT be visible via Blob, S3, NFS, or SMB until the corresponding `PutBlockList` commits them.
+- **Single-writer versioning:** overwrites create a new version (`ETag` changes). Conditional headers (`If-Match`, `If-None-Match`, `If-Range`) gate updates/reads based on that version.
+- **Metadata coherence:** the committed object’s system metadata + user metadata MUST be readable consistently via Blob (`x-ms-meta-*` / headers) and S3 (`x-amz-meta-*` / headers) for the same object key.
+
+### Upload Semantics (Block Blob ↔ Multipart Upload)
+
+Design intent: `PutBlock`/`PutBlockList` is semantically equivalent to an S3 multipart upload (stage parts → atomically complete).
+
+- **`PutBlob` (single-shot):** atomic create/overwrite of a Block Blob.
+- **`PutBlock` / `PutBlockFromURL` (stage):**
+  - `blockid` is Base64-encoded; after decoding, enforce Azure’s 64-byte block ID limit.
+  - Reusing a `blockid` overwrites the previous uncommitted block of the same ID.
+  - `PutBlockFromURL` MUST support `x-ms-copy-source` and byte-range staging via `x-ms-source-range`.
+- **`PutBlockList` (commit):**
+  - Commits a blob atomically; the block list order defines the final byte stream.
+  - Finalizes `ETag` and `Last-Modified` and makes the object visible across all protocols.
+
+### Listing Semantics (Prefix/Delimiter/Pagination)
+
+VAST MUST implement Azure list semantics in a way that maps cleanly to prefix/delimiter listing patterns used by S3 and hierarchical file browsing:
+
+- **Ordering:** lexicographic by blob name.
+- **Virtual directories:** `delimiter=/` returns `BlobPrefix` entries for “folders” (common prefixes) plus `Blob` entries for objects at the current level.
+- **Pagination:** honor `maxresults` and `marker`; return `NextMarker` correctly (SDK parsers depend on it).
+
 ## MVP REST Surface Area
 
 ### Container Operations (Minimum Needed for Tools/SDKs)
@@ -48,6 +139,8 @@ Enable standard Azure data movers (AzCopy, Azure Storage Mover, VAST SyncEngine)
   - Commits a blob from uncommitted blocks
   - Must support latest/committed/uncommitted block lists
   - Finalizes `ETag` and `Last-Modified`
+- Get Block List (`GET ?comp=blocklist`)
+  - Strongly recommended for upload resume and integrity workflows (AzCopy and some SDK flows)
 
 ### Downloads / Existence
 
@@ -87,8 +180,8 @@ Enable standard Azure data movers (AzCopy, Azure Storage Mover, VAST SyncEngine)
 
 ### Headers
 
-- `ETag`: strong ETags (quoted strings). VAST internal versions must map deterministically.
-- `Last-Modified`: RFC 1123 format (critical for sync logic: “copy only if newer”).
+- `ETag`: strong ETags (quoted strings). MUST be an opaque version identifier (not MD5) and should be consistent across Blob and S3 for the same object.
+- `Last-Modified`: RFC 1123 format (critical for sync logic: “copy only if newer”) and should align with file/S3 mtime semantics for the committed object.
 - `Content-MD5`: if provided by the client on upload, VAST must validate and reject mismatches (`400 Bad Request`).
 
 ### Conditional Requests
@@ -133,7 +226,7 @@ Azure SDKs do not rely solely on HTTP status codes; they parse the XML error bod
 
 ### Authorization Mapping
 
-- MVP: simple mapping — Azure container → VAST bucket; container access policy → bucket policy.
+- MVP: simple mapping — Azure container → VAST bucket (same name); container access policy → bucket policy, using the same underlying principal model as S3 and file protocols.
 - Roadmap: fine‑grained ACL mapping (POSIX ACLs ↔ Azure RBAC) is deferred.
 
 ## Performance Targets
