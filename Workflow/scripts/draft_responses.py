@@ -31,6 +31,7 @@ Usage:
 import json
 import re
 import sys
+import yaml
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, List, Dict, Any
@@ -45,6 +46,97 @@ from utils import load_config, get_model_config, vault_root, workflow_root
 
 
 console = Console()
+
+
+def load_persona() -> dict:
+    """Load the communication persona from profiles/jason_persona.yaml."""
+    persona_path = workflow_root() / "profiles" / "jason_persona.yaml"
+    if persona_path.exists():
+        with open(persona_path) as f:
+            return yaml.safe_load(f)
+    return {}
+
+
+def build_persona_prompt(persona: dict) -> str:
+    """Build a prompt section from the persona configuration."""
+    if not persona:
+        return ""
+    
+    identity = persona.get("identity", {})
+    style = persona.get("style", {})
+    patterns = persona.get("patterns", {})
+    actions = persona.get("actions", {})
+    avoid = persona.get("avoid", [])
+    phrases = persona.get("phrases", {})
+    
+    prompt_parts = []
+    
+    # Identity
+    prompt_parts.append(f"""## YOUR IDENTITY
+You are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
+Scope: {identity.get('scope', 'Cloud products and enterprise storage solutions')}""")
+    
+    # Communication Style
+    if style.get("tone"):
+        prompt_parts.append(f"""
+## YOUR COMMUNICATION STYLE
+Tone:
+{chr(10).join('- ' + t for t in style['tone'])}""")
+    
+    if style.get("principles"):
+        prompt_parts.append(f"""
+Core Principles:
+{chr(10).join('- ' + p for p in style['principles'])}""")
+    
+    # Impact-Driven Patterns
+    prompt_parts.append("""
+## IMPACT-DRIVEN COMMUNICATION
+You drive for IMPACT in every email. You don't just respond - you ADVANCE the conversation.""")
+    
+    if patterns.get("requests"):
+        prompt_parts.append(f"""
+When responding to requests:
+{chr(10).join('- ' + r for r in patterns['requests'])}""")
+    
+    if patterns.get("delegation"):
+        prompt_parts.append(f"""
+When delegating or making asks:
+{chr(10).join('- ' + d for d in patterns['delegation'])}""")
+    
+    if patterns.get("follow_ups"):
+        prompt_parts.append(f"""
+When following up:
+{chr(10).join('- ' + f for f in patterns['follow_ups'])}""")
+    
+    # Action Framework
+    if actions.get("every_response"):
+        prompt_parts.append(f"""
+## BEFORE SENDING, ASK YOURSELF:
+{chr(10).join('- ' + a for a in actions['every_response'])}""")
+    
+    if actions.get("proactive_offers"):
+        prompt_parts.append(f"""
+PROACTIVE VALUE-ADDS to consider:
+{chr(10).join('- ' + p for p in actions['proactive_offers'])}""")
+    
+    if actions.get("delegation_phrases"):
+        prompt_parts.append(f"""
+Natural delegation phrases you use:
+{chr(10).join('- "' + p + '"' for p in actions['delegation_phrases'][:5])}""")
+    
+    # Anti-patterns
+    if avoid:
+        prompt_parts.append(f"""
+## AVOID THESE PATTERNS:
+{chr(10).join('- ' + a for a in avoid)}""")
+    
+    # Signature phrases
+    if phrases.get("action_oriented"):
+        prompt_parts.append(f"""
+## YOUR SIGNATURE PHRASES:
+{chr(10).join('- "' + p + '"' for p in phrases['action_oriented'][:5])}""")
+    
+    return "\n".join(prompt_parts)
 
 
 # =============================================================================
@@ -540,52 +632,66 @@ def generate_draft_response(
     vault_context: Optional[str] = None
 ) -> str:
     """
-    Step 3: Generate a draft response using email + vault context.
+    Step 3: Generate a draft response using email + vault context + persona.
     
     This combines:
     - The original email content
     - Extracted email analysis (topics, questions, people)
     - Discovered vault context (people history, project status, open tasks)
+    - Communication persona (tone, style, impact-driven patterns)
     """
     
     model_config = get_model_config("extraction")  # Reuse extraction model config
     
-    system_prompt = """You are drafting an email reply for Jason Vallery, VP of Product Management for Cloud at VAST Data.
+    # Load persona for impact-driven communication
+    persona = load_persona()
+    persona_prompt = build_persona_prompt(persona)
+    
+    system_prompt = f"""You are drafting an email reply. Your goal is to write an IMPACT-DRIVEN response that advances the conversation, not just answers it.
 
-You have access to:
+{persona_prompt}
+
+## CONTEXT AVAILABLE
 1. The original email requiring a response
-2. Analysis of the email (topics, questions, people involved)
-3. Relevant context from Jason's notes (relationship history, project status, open tasks)
+2. Analysis of the email (topics, questions, people involved)  
+3. Relevant context from notes (relationship history, project status, open tasks)
 
-Use this context to write a MORE INFORMED response that:
-- References relevant history or prior discussions when appropriate
-- Acknowledges ongoing work or projects mentioned
-- Responds with awareness of the relationship and past interactions
-- Connects to open tasks or commitments if relevant
+## YOUR MISSION
+Write a response that:
+1. **ANSWERS** - Address questions/requests directly and completely
+2. **ADVANCES** - Propose specific next steps, don't leave things hanging
+3. **ASKS** - Make proactive requests of others when appropriate (delegate, request info, set deadlines)
+4. **ADDS VALUE** - Offer introductions, share relevant resources, connect dots they might miss
 
-Your tone should be:
-- Professional but warm
-- Concise and direct
-- Helpful and solution-oriented
-- Personally informed (show you know the person/topic)
+## STRUCTURE YOUR RESPONSE
+- **Opening**: Brief acknowledgment, show you understood the context
+- **Core Response**: Answer their questions, address their needs
+- **Proactive Ask**: What do you need from them? What should they do next?
+- **Offer/Next Step**: What will YOU do? When will you follow up?
+- **Close**: Warm, action-oriented sign-off
 
-Guidelines:
-- Address the sender's questions/requests directly
-- Reference relevant context naturally (don't just list facts)
-- Offer specific next steps or information
-- Keep responses focused (2-4 paragraphs typically)
-- Sign off with "Best,\\nJason" or similar
+## MAKE ASKS NATURALLY
+When making requests or delegating, be direct but collegial:
+- "Could you take the lead on X? I can support with Y."
+- "I'd like to get this wrapped up by [date] - is that doable?"
+- "If you can get me X, I can turn around Y by Z."
+- "Let me know what you need from me to move forward."
+- "I'm looping in [person] who can help with [specific thing]."
 
-Do NOT:
-- Include the original email (they have it)
-- Use excessive formality or jargon
-- Make commitments you can't verify (use "I'll check" or "I believe")
-- Include [placeholder] style brackets - write complete text
-- Awkwardly force context in - only use what's naturally relevant
+## FORMATTING
+- Keep it concise (2-4 paragraphs)
+- Use specific dates/times, not "soon" or "when you can"
+- Sign off with "Best,\\nJason" or "Thanks,\\nJason"
+- Return ONLY the email body (no subject line or headers)
 
-Return ONLY the email body text (no subject, headers, etc.)."""
+## AVOID
+- Passive voice that obscures who's doing what
+- Vague commitments without timelines
+- Over-apologizing or excessive hedging
+- Ending with "let me know your thoughts" when you should propose a path
+- Generic responses that could apply to anyone"""
 
-    user_prompt = f"""Draft a response to this email:
+    user_prompt = f"""Draft an IMPACT-DRIVEN response to this email:
 
 FROM: {metadata.get('sender', 'Unknown')} <{metadata.get('sender_email', '')}>
 SUBJECT: {metadata.get('subject', '')}
@@ -612,7 +718,18 @@ Summary: {extracted_context.get('summary', '')}
         user_prompt += f"""
 
 --- RELEVANT CONTEXT FROM MY NOTES ---
+Use this to personalize your response and reference relevant history:
 {vault_context}
+"""
+
+    # Add specific guidance for this email
+    user_prompt += """
+
+--- YOUR TASK ---
+1. Write a response that ANSWERS their questions completely
+2. Include at least ONE proactive ask or clear next step for them
+3. State what YOU will do and by when (if applicable)
+4. Keep it concise but impactful - quality over length
 """
 
     try:
