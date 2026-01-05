@@ -2,7 +2,7 @@
 company: VAST Data
 created: '2026-01-03'
 email: lior.genzel@vastdata.com
-last_contact: '2026-01-04'
+last_contact: '2025-12-30'
 phone: 408 888 2102
 tags:
 - type/people
@@ -112,6 +112,8 @@ type: people
 - 2025-12-15: Discussion on Google Distributed Cloud RFP - The meeting focused on reviewing the proposal for the Google Distributed Cloud RFP. Participants dis
 - 2025-12-19: Performance Benchmarking and Encryption Discussion - The meeting focused on discussing performance benchmarking parameters, encryption strategies, and ha
 - 2026-01-04: Weekly Strategy Call with Lior Genzel - Jason Vallery and Lior Genzel discussed the current status and strategic approach towards Microsoft 
+
+- 2025-12-30: Leidos Federal Cloud PO and Deployment
 ## Key Facts
 
 - Lior Genzel is in town with the VP of PM for cloud for meetings at Microsoft.

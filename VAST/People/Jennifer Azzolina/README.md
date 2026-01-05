@@ -2,7 +2,7 @@
 type: people
 title: FSI Leader
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-12-30'
 auto_created: true
 tags:
 - type/people
@@ -31,6 +31,7 @@ company: VAST Federal
 
 ## Recent Context
 
+- 2025-12-30: Leidos Federal Cloud PO and Deployment
 ## Key Facts
 
 ## Background

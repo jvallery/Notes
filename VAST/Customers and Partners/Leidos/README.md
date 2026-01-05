@@ -2,7 +2,7 @@
 type: customer
 title: Leidos
 created: '2026-01-03'
-last_contact: '2025-11-14'
+last_contact: '2025-12-30'
 status: active
 auto_created: true
 tags:
@@ -54,9 +54,13 @@ SORT due ASC
 - 2025-12-03: Rick Scurfield discusses the upcoming VAST Forward event, emphasizing the participation of key custo
 
 - 2025-12-30: The email discusses the successful submission and processing of a $96,808.14 deal for Leidos Federal
+
+- 2025-12-30: A deal for Leidos Federal has been submitted, marking the first Cloud PO in the US Fed sector. The d...
 ## Key Facts
 
 - Leidos is pursuing Dept of Defense and Civilian Hybrid Cloud Strategies and positioning VAST Data as a foundational component of their 'Mission OS'.
+
+- Leidos Federal is pursuing Dept of Defense and Civilian Hybrid Cloud Strategies.
 ## Opportunities
 
 - Greg expected to focus heavily on Leidos next year (resource planning consideration)
@@ -80,9 +84,19 @@ SORT due ASC
 - cloud strategy
 - VAST Data
 - order processing
+
+- Cloud PO
+
+- Leidos Federal deployment
+
+- Resilient data platform demo
 ## Related Projects
 
 - [[VAST Forward]]
 
 - [[Leidos DoD Cloud]]
 - [[Mission OS]]
+
+## Key Decisions
+
+- Deploy cloud solution in Leidos GovCloud instance.

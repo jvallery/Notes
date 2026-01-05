@@ -7,7 +7,7 @@ expertise:
 - Microsoft/Azure engagement
 - go-to-market planning
 - program management
-last_contact: '2025-12-19'
+last_contact: '2025-12-30'
 last_enriched: '2026-01-04'
 relationship: colleague
 role: Executive leader
@@ -98,6 +98,8 @@ type: people
 - 2025-12-15: Discussion on Google Distributed Cloud RFP - The meeting focused on reviewing the proposal for the Google Distributed Cloud RFP. Participants dis
 
 - 2025-12-19: Jason Vallery and Jeff Denworth discussed the Microsoft strategy, focusing on the Blob API, OpenAI's...
+
+- 2025-12-30: Leidos Federal Cloud PO and Deployment
 ## Key Facts
 
 ## Topics

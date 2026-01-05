@@ -2,7 +2,7 @@
 type: people
 title: Global Sales & Strategic Alliances | Microsoft Azure
 created: '2026-01-03'
-last_contact: '2025-12-19'
+last_contact: '2025-12-30'
 auto_created: true
 tags:
 - type/people
@@ -48,6 +48,8 @@ SORT due ASC
 - 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with the Microsoft team to follow up on a presentat
 
 - 2025-12-19: Email re: Re: Re: [EXTERNAL] AKS AI Roadshow - GBB - Vast - Tiffany Stonehill from VAST Data is coordinating with Microsoft to follow up on a presentation given
+
+- 2025-12-30: Leidos Federal Cloud PO and Deployment
 ## Key Facts
 
 - Tiffany Stonehill is working Monday and Tuesday the next two weeks and will be in full swing in January.
