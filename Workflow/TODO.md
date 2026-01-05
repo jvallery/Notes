@@ -425,20 +425,22 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Extend manifest + enrichment to Customers/Partners and wire into unified pipeline context.
 
-**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 01:56)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Medium
 
 **Effort:** 2 hours
 
 **Tasks**
-- [ ] Create/refresh `VAST/Customers and Partners/_MANIFEST.md` with key columns
-- [ ] Add sync + enrichment functions (or extend enrich pattern) and include in ContextBundle
-- [ ] Include customer manifest in draft/reply context gathering
+- [x] Create/refresh `VAST/Customers and Partners/_MANIFEST.md` with key columns
+- [x] Add sync + enrichment functions (or extend enrich pattern) and include in ContextBundle
+- [x] Include customer manifest in draft/reply context gathering
 
 **Success Criteria**
 - Customer manifest available to extractor and outputs
 - Drafts include relevant customer context
+
+**Notes:** Customer manifest now includes Type/Stage/Industry/My Role/Last Contact; new `scripts/enrich_customer.py` + `manifest_sync.py enrich --entity customers` support README-driven enrichment and glossary refresh. ContextBundle and cached prompts surface stage/role metadata for replies. Synced manifests + glossary cache rebuilt.
 
 ---
 

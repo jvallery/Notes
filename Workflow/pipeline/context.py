@@ -312,6 +312,8 @@ class ContextBundle(BaseModel):
         lines = manifest.split('\n')
         header_idx = -1
         role_col_idx = -1
+        stage_col_idx = -1
+        type_col_idx = -1
         
         for i, line in enumerate(lines):
             if '| Name |' in line:
@@ -319,6 +321,10 @@ class ContextBundle(BaseModel):
                 for j, h in enumerate(headers):
                     if 'My Role' in h:
                         role_col_idx = j
+                    if 'Stage' in h:
+                        stage_col_idx = j
+                    if 'Type' in h:
+                        type_col_idx = j
                 header_idx = i
                 break
         
@@ -334,11 +340,19 @@ class ContextBundle(BaseModel):
             
             name = cols[1].strip()
             role = ""
+            stage = ""
+            account_type = ""
             if role_col_idx > 0 and role_col_idx < len(cols):
                 role = cols[role_col_idx].strip()
+            if stage_col_idx > 0 and stage_col_idx < len(cols):
+                stage = cols[stage_col_idx].strip()
+            if type_col_idx > 0 and type_col_idx < len(cols):
+                account_type = cols[type_col_idx].strip()
+            
+            display_role = role or stage or account_type
             
             if name and name not in ["Name", "---"]:
-                results.append((name, role))
+                results.append((name, display_role))
         
         return results
     

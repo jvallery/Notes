@@ -252,15 +252,30 @@ def format_glossary_as_text(glossary: Dict[str, Any], compact: bool = False) -> 
         name = c.get("name", "")
         ctype = c.get("type", "")
         industry = c.get("industry", "")
+        stage = c.get("stage", "")
+        my_role = c.get("my_role", "")
+        last_contact = c.get("last_contact", "")
         
         if compact:
-            lines.append(f"{name} ({ctype})")
+            parts = [name]
+            meta_parts = [p for p in [ctype, stage] if p]
+            if meta_parts:
+                parts.append(f"({', '.join(meta_parts)})")
+            if my_role:
+                parts.append(f"[{my_role}]")
+            lines.append(" ".join(parts))
         else:
             parts = [f"**{name}**"]
             if ctype:
                 parts.append(f"({ctype})")
+            if stage:
+                parts.append(f"[{stage}]")
             if industry:
                 parts.append(f"- {industry}")
+            if my_role:
+                parts.append(f"— my role: {my_role}")
+            if last_contact:
+                parts.append(f"(last: {last_contact})")
             lines.append("- " + " ".join(parts))
     
     if not compact:

@@ -26,7 +26,7 @@ import re
 import sys
 import yaml
 from dataclasses import dataclass, field, asdict
-from datetime import datetime
+from datetime import datetime, date
 from pathlib import Path
 from typing import Optional, Dict, List, Any
 
@@ -79,8 +79,23 @@ class CustomerEntry:
     name: str
     type: str = ""  # customer, partner, prospect
     industry: str = ""
+    stage: str = ""  # active, prospect, blocked, churn-risk
     my_role: str = ""  # technical-lead, account-owner, support, stakeholder, none
+    last_contact: str = ""
     context: str = ""
+    
+    def is_sparse(self) -> bool:
+        """Determine if entry is missing key data."""
+        return not self.type or not self.industry or not self.stage
+
+
+def _normalize_date(value: Any) -> str:
+    """Normalize date/datetime values to ISO string."""
+    if isinstance(value, (datetime, date)):
+        return value.strftime("%Y-%m-%d")
+    if value is None:
+        return ""
+    return str(value)
 
 
 # =============================================================================
@@ -174,11 +189,15 @@ def sync_customer_to_manifest(
     
     content = readme.read_text()
     fm = parse_frontmatter(content)
+    status_info = extract_account_status(content)
     
     entry = CustomerEntry(
         name=name,
         type=updates.get("account_type") or fm.get("account_type") or "",
         industry=updates.get("industry") or fm.get("industry") or "",
+        stage=updates.get("status") or fm.get("status") or status_info.get("stage") or "",
+        my_role=updates.get("my_role") or fm.get("my_role") or "",
+        last_contact=_normalize_date(updates.get("last_contact") or fm.get("last_contact") or ""),
         context=extract_context_summary(content, max_chars=100)
     )
     
@@ -195,6 +214,7 @@ def sync_customer_to_manifest(
         customers.append(entry)
         updated = True
     
+    CUSTOMERS_MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     manifest_content = generate_customers_manifest(customers)
     CUSTOMERS_MANIFEST.write_text(manifest_content)
     
@@ -314,6 +334,29 @@ def extract_profile_section(content: str) -> Dict[str, str]:
         result["relationship"] = rel_match.group(1).strip()
     
     return result
+
+
+def extract_account_status(content: str) -> Dict[str, str]:
+    """Extract account status fields from the Account Status table."""
+    status = {"status": "", "industry": "", "stage": ""}
+    match = re.search(r'## Account Status\s*\n(.*?)(?=\n##|\Z)', content, re.DOTALL | re.MULTILINE)
+    if not match:
+        return status
+    
+    table = match.group(1)
+    # Rows look like: | **Status** | Active |
+    for row in table.splitlines():
+        cells = [c.strip() for c in row.split("|") if c.strip()]
+        if len(cells) < 2:
+            continue
+        key = re.sub(r'\*', '', cells[0]).strip().lower()
+        value = cells[1].strip()
+        if "status" in key:
+            status["status"] = value
+            status["stage"] = value  # mirror for manifest
+        if "industry" in key and not status["industry"]:
+            status["industry"] = value
+    return status
 
 
 def extract_context_summary(content: str, max_chars: int = 200) -> str:
@@ -438,19 +481,40 @@ def scan_customers_folder() -> List[CustomerEntry]:
         readme = folder / "README.md"
         entry_type = ""
         industry = ""
+        stage = ""
+        my_role = ""
+        last_contact = ""
         context = ""
+        fm = {}
         
         if readme.exists():
             content = readme.read_text()
             fm = parse_frontmatter(content)
+            status_info = extract_account_status(content)
             
             # Extract type
-            if fm.get("account_type"):
-                entry_type = fm["account_type"]
+            entry_type = fm.get("account_type") or fm.get("type") or ""
             
             # Extract industry
-            if fm.get("industry"):
-                industry = fm["industry"]
+            industry = fm.get("industry") or ""
+            if not industry and fm.get("tags"):
+                for tag in fm["tags"]:
+                    if isinstance(tag, str) and tag.startswith("industry/"):
+                        industry = tag.split("/", 1)[1]
+                        break
+            if not industry and status_info.get("industry"):
+                industry = status_info["industry"]
+            
+            # Status / stage
+            stage = fm.get("status") or status_info.get("stage") or status_info.get("status") or ""
+            if not stage and fm.get("tags"):
+                for tag in fm["tags"]:
+                    if isinstance(tag, str) and tag.startswith("status/"):
+                        stage = tag.split("/", 1)[1]
+                        break
+            
+            my_role = fm.get("my_role") or fm.get("account_owner") or ""
+            last_contact = _normalize_date(fm.get("last_contact") or "")
             
             # Brief context
             context = extract_context_summary(content, max_chars=100)
@@ -459,7 +523,9 @@ def scan_customers_folder() -> List[CustomerEntry]:
             name=folder.name,
             type=entry_type,
             industry=industry,
-            my_role=fm.get("my_role", "") if readme.exists() else "",
+            stage=stage,
+            my_role=my_role,
+            last_contact=last_contact,
             context=context
         ))
     
@@ -552,16 +618,18 @@ def generate_customers_manifest(entries: List[CustomerEntry]) -> str:
         "",
         "## Entities",
         "",
-        "| Name | Type | Industry | My Role | Context |",
-        "|------|------|----------|---------|---------|",
+        "| Name | Type | Stage | Industry | My Role | Last Contact | Context |",
+        "|------|------|-------|----------|---------|--------------|---------|",
     ]
     
     for e in entries:
         entry_type = e.type.replace("|", "/") if e.type else ""
+        stage = e.stage.replace("|", "/") if e.stage else ""
         industry = e.industry.replace("|", "/") if e.industry else ""
         my_role = e.my_role.replace("|", "/") if e.my_role else ""
+        last_contact = e.last_contact.replace("|", "/") if e.last_contact else ""
         context = e.context.replace("|", "/")[:80] if e.context else ""
-        lines.append(f"| {e.name} | {entry_type} | {industry} | {my_role} | {context} |")
+        lines.append(f"| {e.name} | {entry_type} | {stage} | {industry} | {my_role} | {last_contact} | {context} |")
     
     return "\n".join(lines)
 
@@ -616,6 +684,59 @@ Return ONLY the JSON object, no markdown."""
         if data.get("context") and not entry.context:
             entry.context = data["context"]
             
+    except (json.JSONDecodeError, KeyError, IndexError):
+        pass
+    
+    return entry
+
+
+def ai_enrich_customer(entry: CustomerEntry, readme_content: str) -> CustomerEntry:
+    """Use AI to extract account details from README if missing."""
+    if not entry.is_sparse():
+        return entry
+    
+    client = get_client(caller="manifest_sync.enrich_customer")
+    prompt = f"""Extract account details for this customer/partner from the README.
+
+Account: {entry.name}
+
+README Content:
+{readme_content[:3000]}
+
+Return JSON with:
+- "account_type": customer|partner|prospect (if unknown, use empty string)
+- "industry": concise industry/vertical (e.g., Hyperscaler, AI, Manufacturing)
+- "stage": lifecycle stage (Active, Prospect, Blocked, Churn Risk, Dormant)
+- "my_role": my relationship to the account (account-owner, technical-lead, support, stakeholder)
+- "last_contact": most recent contact date if stated (YYYY-MM-DD), else empty string
+- "context": 1-sentence summary of what the account is/why it matters
+
+Return ONLY the JSON object, no markdown."""
+    
+    response = client.chat.completions.create(
+        model="gpt-4o-mini",
+        messages=[
+            {"role": "system", "content": "You extract structured data from notes. Return only valid JSON."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.0,
+        store=False
+    )
+    
+    try:
+        text = response.choices[0].message.content.strip()
+        if text.startswith("```"):
+            text = re.sub(r'^```\w*\n?', '', text)
+            text = re.sub(r'\n?```$', '', text)
+        data = json.loads(text)
+        
+        entry.type = data.get("account_type") or entry.type
+        entry.industry = data.get("industry") or entry.industry
+        entry.stage = data.get("stage") or entry.stage
+        entry.my_role = data.get("my_role") or entry.my_role
+        entry.last_contact = data.get("last_contact") or entry.last_contact
+        if data.get("context") and not entry.context:
+            entry.context = data["context"]
     except (json.JSONDecodeError, KeyError, IndexError):
         pass
     
@@ -688,10 +809,24 @@ def format_glossary_for_prompt(glossary: Dict[str, Any]) -> str:
     for c in glossary.get("customers", []):
         ctype = c.get("type", "")
         industry = c.get("industry", "")
-        info = f" ({ctype})" if ctype else ""
+        stage = c.get("stage", "")
+        my_role = c.get("my_role", "")
+        last_contact = c.get("last_contact", "")
+        info_parts = []
+        if ctype:
+            info_parts.append(ctype)
+        if stage:
+            info_parts.append(stage)
         if industry:
-            info += f" - {industry}"
-        lines.append(f"- **{c['name']}**{info}")
+            info_parts.append(industry)
+        details = " (" + ", ".join(info_parts) + ")" if info_parts else ""
+        suffix = []
+        if my_role:
+            suffix.append(f"my role: {my_role}")
+        if last_contact:
+            suffix.append(f"last: {last_contact}")
+        tail = f" — {', '.join(suffix)}" if suffix else ""
+        lines.append(f"- **{c['name']}**{details}{tail}")
     
     lines.extend([
         "",
@@ -722,12 +857,20 @@ def cmd_scan(args):
     
     print("\nScanning Customers folder...")
     customers = scan_customers_folder()
+    sparse_customers = [c for c in customers if c.is_sparse()]
     print(f"  Found {len(customers)} customers/partners")
+    print(f"  Sparse customers needing enrichment: {len(sparse_customers)}")
+    if args.verbose and sparse_customers:
+        for c in sparse_customers[:10]:
+            print(f"    - {c.name}")
+        if len(sparse_customers) > 10:
+            print(f"    ... and {len(sparse_customers) - 10} more")
     
     # Summary
     print("\n=== Summary ===")
     print(f"Total entities: {len(people) + len(projects) + len(customers)}")
     print(f"People needing enrichment: {len(sparse_people)}")
+    print(f"Customers needing enrichment: {len(sparse_customers)}")
     
     # Estimate cache size
     glossary = build_glossary_cache()
@@ -759,48 +902,92 @@ def cmd_sync(args):
 
 def cmd_enrich(args):
     """AI-enrich sparse entries."""
-    print("Finding sparse people entries...")
-    people = scan_people_folder()
-    sparse = [p for p in people if p.is_sparse()]
-    
-    if not sparse:
-        print("No sparse entries found!")
-        return
-    
-    print(f"Found {len(sparse)} sparse entries to enrich")
-    
     limit = args.limit or 10
-    enriched = 0
     
-    for entry in sparse[:limit]:
-        readme_path = VAST_PEOPLE / entry.name / "README.md"
-        if not readme_path.exists():
-            print(f"  ⚠ {entry.name}: No README found")
-            continue
+    if args.entity == "people":
+        print("Finding sparse people entries...")
+        people = scan_people_folder()
+        sparse = [p for p in people if p.is_sparse()]
         
-        print(f"  Enriching {entry.name}...", end=" ")
-        content = readme_path.read_text()
+        if not sparse:
+            print("No sparse people entries found!")
+            return
         
-        enriched_entry = ai_enrich_person(entry, content)
+        print(f"Found {len(sparse)} sparse entries to enrich")
+        enriched = 0
         
-        if enriched_entry.role or enriched_entry.company:
-            print(f"→ {enriched_entry.role} at {enriched_entry.company}")
+        for entry in sparse[:limit]:
+            readme_path = VAST_PEOPLE / entry.name / "README.md"
+            if not readme_path.exists():
+                print(f"  ⚠ {entry.name}: No README found")
+                continue
             
-            # Update the entry in our list
-            for i, p in enumerate(people):
-                if p.name == entry.name:
-                    people[i] = enriched_entry
-                    break
+            print(f"  Enriching {entry.name}...", end=" ")
+            content = readme_path.read_text()
             
-            enriched += 1
-        else:
-            print("(no data extracted)")
-    
-    # Rewrite manifest with enriched data
-    if enriched > 0:
-        manifest_content = generate_people_manifest(people)
-        PEOPLE_MANIFEST.write_text(manifest_content)
-        print(f"\n✓ Enriched {enriched} entries, manifest updated")
+            enriched_entry = ai_enrich_person(entry, content)
+            
+            if enriched_entry.role or enriched_entry.company:
+                print(f"→ {enriched_entry.role} at {enriched_entry.company}")
+                
+                for i, p in enumerate(people):
+                    if p.name == entry.name:
+                        people[i] = enriched_entry
+                        break
+                
+                enriched += 1
+            else:
+                print("(no data extracted)")
+        
+        if enriched > 0:
+            manifest_content = generate_people_manifest(people)
+            PEOPLE_MANIFEST.write_text(manifest_content)
+            glossary = build_glossary_cache()
+            CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+            print(f"\n✓ Enriched {enriched} people, manifest updated")
+    else:
+        print("Finding sparse customer entries...")
+        customers = scan_customers_folder()
+        sparse_customers = [c for c in customers if c.is_sparse()]
+        
+        if not sparse_customers:
+            print("No sparse customers found!")
+            return
+        
+        print(f"Found {len(sparse_customers)} sparse customers to enrich")
+        enriched = 0
+        
+        for entry in sparse_customers[:limit]:
+            readme_path = VAST_CUSTOMERS / entry.name / "README.md"
+            if not readme_path.exists():
+                print(f"  ⚠ {entry.name}: No README found")
+                continue
+            
+            print(f"  Enriching {entry.name}...", end=" ")
+            content = readme_path.read_text()
+            
+            enriched_entry = ai_enrich_customer(entry, content)
+            
+            if enriched_entry.type or enriched_entry.industry or enriched_entry.stage:
+                print(f"→ {enriched_entry.type or 'account'} / {enriched_entry.industry or 'industry'}")
+                
+                for i, c in enumerate(customers):
+                    if c.name == entry.name:
+                        customers[i] = enriched_entry
+                        break
+                
+                enriched += 1
+            else:
+                print("(no data extracted)")
+        
+        if enriched > 0:
+            manifest_content = generate_customers_manifest(customers)
+            CUSTOMERS_MANIFEST.write_text(manifest_content)
+            glossary = build_glossary_cache()
+            CACHE_DIR.mkdir(parents=True, exist_ok=True)
+            GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+            print(f"\n✓ Enriched {enriched} customers, manifest updated")
 
 
 def cmd_build_cache(args):
@@ -843,6 +1030,8 @@ def main():
     enrich_parser = subparsers.add_parser("enrich", help="AI-enrich sparse entries")
     enrich_parser.add_argument("-l", "--limit", type=int, default=10, 
                                help="Max entries to enrich (default: 10)")
+    enrich_parser.add_argument("-e", "--entity", choices=["people", "customers"], default="people",
+                               help="Which manifest to enrich (default: people)")
     
     # build-cache command
     cache_parser = subparsers.add_parser("build-cache", help="Build cached glossary file")

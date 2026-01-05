@@ -262,6 +262,8 @@ class ContextBundle:
 - Candidates come from manifest hits, participants, and capitalized names in the source content; up to 12 matching READMEs are summarized into `relevant_readmes`.
 - Matching order: exact/email → alias → fuzzy (cache of past searches per query).
 - Email headers (From/To) are merged into `extraction.contacts` so people resolve by email before name.
+- Company manifest now carries Type, Stage, Industry, My Role, and Last Contact so drafts can calibrate tone/ownership (e.g., “customer [Active], my role account-owner, last touch 2025-12-23”).
+- Manifests are refreshed via `python scripts/manifest_sync.py sync`; enrichment supports people **and customers** via `python scripts/manifest_sync.py enrich --entity customers` or `python scripts/enrich_customer.py --all --limit 20`.
 
 ### Prompt Caching & Instrumentation
 
