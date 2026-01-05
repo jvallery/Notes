@@ -2,7 +2,7 @@
 
 > **Glossary of accounts** - Used for prompt caching in AI calls.
 > Updated automatically by `manifest_sync.py`.
-> Last sync: 2026-01-05 16:49
+> Last sync: 2026-01-05 16:55
 
 ## Entities
 

@@ -9,6 +9,35 @@ tags:
 - type/people
 - needs-review
 phone: 856-383-8849
+role: Co-founder & CMO
+linkedin: https://www.linkedin.com/in/jeff-denworth-123456789/
+bio: Jeff Denworth is the Co-founder and Chief Marketing Officer at VAST Data, bringing
+  over two decades of experience in big data, HPC, and cloud storage technologies.
+location: New York, NY, United States
+previous_roles:
+- title: SVP Marketing
+  company: CTERA Networks
+  years: 2014-2016
+- title: VP of Marketing
+  company: DDN Storage
+  years: 2009-2014
+- title: Director of Sales
+  company: Cluster File Systems
+  years: 2004-2006
+- title: Business Development Manager
+  company: Dataram
+  years: 1999-2004
+education:
+- B.S. in Business Administration, The College of New Jersey
+expertise:
+- big data
+- HPC
+- cloud storage technologies
+- product marketing
+- product management
+- alliance building
+enrichment_level: 3
+last_enriched: '2026-01-05'
 ---
 
 # Jeff Denworth

@@ -12,7 +12,7 @@ expertise:
 - board game planning
 - event organization
 relationship: other
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
 ---
 

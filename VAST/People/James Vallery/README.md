@@ -1,7 +1,7 @@
 ---
 type: people
 email: james@vallery.net
-company: ''
+company: VAST Data
 title: James Vallery
 last_contact: '2026-01-01'
 created: '2026-01-05'
@@ -9,8 +9,23 @@ tags:
 - type/people
 - needs-review
 relationship: other
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+role: Senior Director of Product Management
+linkedin: https://www.linkedin.com/in/jvallery
+bio: Experienced product management leader with a background in cloud storage and
+  AI infrastructure.
+location: Longmont, CO, USA
+previous_roles:
+- title: Principal Program Manager
+  company: Microsoft Azure Storage
+  years: 2015-2022
+education:
+- Bachelor of Science in Computer Science, University of Colorado Boulder
+expertise:
+- Cloud Storage
+- AI Infrastructure
+- Product Management
 ---
 
 # James Vallery

@@ -1,7 +1,7 @@
 ---
 type: people
 email: dtellis@gmail.com
-company: ''
+company: Illinois Appellate Court, First District
 title: David Ellis
 last_contact: '2025-12-31'
 created: '2026-01-05'
@@ -9,12 +9,28 @@ tags:
 - type/people
 - needs-review
 expertise:
-- book club organization
-- event planning
-- community engagement
+- Constitutional Law
+- Commercial Litigation
+- Crime Fiction Writing
 relationship: colleague
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+role: Appellate Court Justice
+bio: David Ellis is a judge and an Edgar Award–winning author of ten novels of crime
+  fiction, as well as eight bestselling books co-authored with James Patterson. He
+  was sworn in as the youngest-serving Justice of the Illinois Appellate Court for
+  the First District in December 2014.
+location: Chicago, Illinois, USA
+previous_roles:
+- title: Chief Counsel to the Speaker of the Illinois House of Representatives
+  company: Illinois House of Representatives
+  years: 2007-2014
+- title: Private Practice Attorney
+  company: Private Practice
+  years: 1993-2007
+education:
+- Juris Doctor, Northwestern University School of Law
+- Bachelor's Degree, University of Illinois
 ---
 
 # David Ellis

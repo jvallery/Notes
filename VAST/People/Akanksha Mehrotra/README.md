@@ -1,22 +1,31 @@
 ---
 type: people
 email: ''
-company: ''
+company: AMD
 title: Akanksha Mehrotra
 last_contact: '2025-09-16'
 created: '2026-01-05'
 tags:
 - type/people
 - needs-review
-role: ''
+role: Vice President of Artificial Intelligence and Enterprise Marketing
 expertise:
-- distributed cache
-- checkpointing
-- throughput measurement
-- scale testing
+- Artificial Intelligence
+- Enterprise Marketing
+- Technology Marketing
+- Business Leadership
 relationship: colleague
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+bio: Akanksha Mehrotra is a seasoned enterprise technology marketing and business
+  leader with extensive experience in AI and enterprise marketing.
+location: Austin, TX, USA
+previous_roles:
+- title: Vice President of Dell Technologies APEX Marketing
+  company: Dell Technologies
+  years: 2010-2025
+education:
+- Master’s Degree in Personnel Management and Industrial Relations from XLRI Jamshedpur
 ---
 
 # Akanksha Mehrotra

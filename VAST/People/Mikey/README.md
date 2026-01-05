@@ -1,7 +1,7 @@
 ---
 type: people
 email: ''
-company: ''
+company: Point72
 title: Mikey
 last_contact: '2025-11-14'
 created: '2026-01-05'
@@ -9,8 +9,16 @@ tags:
 - type/people
 - needs-review
 relationship: colleague
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+role: Client Solutions Engineer
+linkedin: https://linkedin.com/in/mioblmcghlstin
+bio: Mikey Mcghee is a Client Solutions Engineer at Point72, a financial services
+  firm.
+location: London, England, United Kingdom
+expertise:
+- Engineering
+- Financial Services
 ---
 
 # Mikey

@@ -1,7 +1,7 @@
 ---
 type: people
 email: ''
-company: ''
+company: VAST Data
 title: Soraya Alami
 last_contact: '2025-11-07'
 created: '2026-01-05'
@@ -9,8 +9,32 @@ tags:
 - type/people
 - needs-review
 relationship: colleague
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+role: Sales Director, Global Systems Integrators
+bio: Soraya Alami is a seasoned sales professional with extensive experience in global
+  sales and strategic account management. She currently serves as Sales Director for
+  Global Systems Integrators at VAST Data.
+location: McLean, United States
+previous_roles:
+- title: Americas Partnership Leader for Deloitte
+  company: Dell Technologies
+  years: ''
+- title: Alliance Sales Manager
+  company: Dell Technologies
+  years: ''
+- title: Alliances Sales Lead for the Mid-Atlantic Area
+  company: Dell EMC
+  years: ''
+- title: Account Manager
+  company: Dell EMC
+  years: ''
+- title: Account Manager
+  company: Digex / Intermedia Communications
+  years: 1999-2002
+expertise:
+- global sales
+- strategic account management
 ---
 
 # Soraya Alami

@@ -486,8 +486,8 @@ class InstrumentedResponses:
                 content="[responses.create result]"
             )
             
-            self._logger._log_request(request)
-            self._logger._log_response(response)
+            self._logger.log_request(request)
+            self._logger.log_response(request, response)
             
             return result
             
@@ -501,8 +501,8 @@ class InstrumentedResponses:
                 error=str(e),
                 latency_ms=latency_ms
             )
-            self._logger._log_request(request)
-            self._logger._log_response(response)
+            self._logger.log_request(request)
+            self._logger.log_response(request, response)
             raise
 
 

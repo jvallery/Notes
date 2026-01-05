@@ -1,7 +1,7 @@
 ---
 type: people
 email: vwolfe303@gmail.com
-company: ''
+company: Wolfe Home Repair, LLC
 title: Vincent Wolfe
 last_contact: '2025-12-16'
 created: '2026-01-05'
@@ -9,8 +9,14 @@ tags:
 - type/people
 - needs-review
 relationship: other
-enrichment_level: 2
+enrichment_level: 3
 last_enriched: '2026-01-05'
+role: Owner
+bio: Owner of Wolfe Home Repair, LLC, a home improvement company based in Middletown,
+  Maryland.
+location: Middletown, MD, USA
+expertise:
+- Home Improvement
 ---
 
 # Vincent Wolfe
