@@ -263,7 +263,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Generate downstream outputs from UnifiedPipeline with TASKS-compatible tasks (`?` → `[ ]`/`/`/`R`/`x`).
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@copilot-b620700, started: 2026-01-04 20:00)
 
 **Impact:** High
 
