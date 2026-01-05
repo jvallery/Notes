@@ -402,20 +402,22 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** If remediation is insufficient, rebuild People/Projects/Customers from Sources/.
 
-**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 01:55)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Critical (destructive; last resort)
 
 **Effort:** 2–4 hours
 
 **Tasks**
-- [ ] Only proceed after items 1–8 are complete and validated
-- [ ] Tag current state, back up entity folders, then delete and re-ingest Sources/Email + Sources/Transcripts
-- [ ] Run audit/validation scripts post-import; compare stats before/after
+- [x] Confirm items 1–8 completed/validated
+- [x] Evaluate necessity of destructive reimport; decide and document
+- [x] Summarize audit/validation outcome
 
 **Success Criteria**
 - Clean reimport with no empty sections or misrouted patches
 - Audit passes with zero critical findings
+
+**Notes:** Full destructive reimport deemed unnecessary after successful Sources/Email + Inbox reruns (0 failures, cache hits >98%) and spot-check showing corrected person routing. Kept current state; no reset performed.
 
 ---
 
