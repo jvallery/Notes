@@ -237,7 +237,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Stop emitting placeholder entity header links and ensure account/project headers match the entity.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 16:53)
 
 **Discovery:**
 Dozens of notes were created with `**Account**: [[]]` / `**Project**: [[]]` even when the note lived inside an entity folder.
