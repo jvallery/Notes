@@ -103,6 +103,7 @@ class TransactionalApply:
     def _create_meeting_note(self, plan: ChangePlan, result: ApplyResult):
         """Create the meeting note from plan."""
         from jinja2 import Environment, FileSystemLoader
+        import re
         
         note_path = self.vault_root / plan.meeting_note_path
         
@@ -116,6 +117,18 @@ class TransactionalApply:
         # Load template
         templates_dir = self.vault_root / "Workflow" / "templates"
         env = Environment(loader=FileSystemLoader(str(templates_dir)))
+        
+        # Add custom filters
+        def slugify(text):
+            """Convert text to slug format for tags."""
+            if not text:
+                return ""
+            text = text.lower()
+            text = re.sub(r'[^\w\s-]', '', text)
+            text = re.sub(r'[\s_]+', '-', text)
+            return text.strip('-')
+        
+        env.filters['slugify'] = slugify
         
         # Select template based on note type
         note_type = plan.meeting_note.get("type", "people")
