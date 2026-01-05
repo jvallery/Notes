@@ -94,12 +94,47 @@ class TranscriptAdapter(BaseAdapter):
         return title if title else "Meeting"
     
     def _extract_speakers(self, content: str) -> list[str]:
-        """Extract speaker names from transcript."""
-        speakers = set()
+        """Extract speaker names from transcript.
         
-        # Pattern 1: "Speaker 1:", "Speaker 2:", etc.
+        Handles speaker mapping lines like:
+        - "Speaker 1: Jason Vallery" (header definition - standalone line at top)
+        - "Speaker 1: Hello there..." (dialogue line - has more content)
+        - "[Name]: text" (inline speech)
+        - "**Name:** text" (MacWhisper with names)
+        """
+        speakers = set()
+        speaker_map: dict[str, str] = {}  # e.g., "Speaker 1" -> "Jason Vallery"
+        
+        lines = content.split("\n")
+        
+        # First pass: Look for speaker definitions in header area
+        # These are short lines that look like name mappings, not dialogue
+        # Pattern: "Speaker 1: Jason Vallery" where the value is just a name (2-5 words, no punctuation)
+        for line in lines[:20]:  # Check first 20 lines for definitions
+            mapping_match = re.match(r"^(Speaker \d+):\s*(.+)$", line.strip())
+            if mapping_match:
+                speaker_label = mapping_match.group(1)
+                speaker_value = mapping_match.group(2).strip()
+                # It's a name mapping if: short (< 50 chars), 2-5 words (real names are 2+ words), no sentence punctuation
+                words = speaker_value.split()
+                is_name = (
+                    len(speaker_value) < 50 
+                    and 2 <= len(words) <= 5  # Require at least 2 words (first + last name)
+                    and not any(punct in speaker_value for punct in '.!?')
+                    and not speaker_value.lower().startswith(('i ', "i'", 'we ', 'you ', 'the ', 'a '))
+                )
+                if is_name:
+                    speaker_map[speaker_label] = speaker_value
+        
+        # Second pass: Collect all speakers
+        # Pattern 1: "Speaker 1:" in dialogue
         for match in re.finditer(r"(Speaker \d+):", content):
-            speakers.add(match.group(1))
+            label = match.group(1)
+            # Use mapped name if available, otherwise use the speaker label
+            if label in speaker_map:
+                speakers.add(speaker_map[label])
+            else:
+                speakers.add(label)
         
         # Pattern 2: "[Name]:" format
         for match in re.finditer(r"\[([^\]]+)\]:", content):

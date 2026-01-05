@@ -238,7 +238,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Make patch generation/entity routing match unified models with ChangePlan validation and rollback-ready apply.
 
-**Status: IN PROGRESS** (@copilot-e78e3ae, started: 2026-01-04 19:45)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Discovery:** PatchGenerator/TransactionalApply not fully tied to EntityIndex/aliases or facts_about; planner is separate from pipeline run.
 

@@ -60,6 +60,60 @@ class ChangePlan(BaseModel):
     
     # Warnings
     warnings: list[str] = Field(default_factory=list)
+    
+    def validate_plan(self) -> list[str]:
+        """Validate the change plan and return a list of issues.
+        
+        Returns:
+            List of validation issues (empty if plan is valid)
+        """
+        issues = []
+        
+        # 1. Check source file is set
+        if not self.source_file:
+            issues.append("source_file is required")
+        
+        # 2. Check meeting note path is valid if set
+        if self.meeting_note_path:
+            if ".." in self.meeting_note_path:
+                issues.append(f"meeting_note_path contains invalid path traversal: {self.meeting_note_path}")
+            if not self.meeting_note:
+                issues.append("meeting_note_path is set but meeting_note context is missing")
+        
+        # 3. Validate each patch operation
+        patch_targets = set()
+        for i, patch in enumerate(self.patches):
+            # Check for duplicate targets
+            if patch.target_path in patch_targets:
+                issues.append(f"Duplicate patch target: {patch.target_path}")
+            patch_targets.add(patch.target_path)
+            
+            # Validate operation type
+            if patch.operation not in ("create", "patch", "link"):
+                issues.append(f"Patch {i}: Invalid operation '{patch.operation}'")
+            
+            # Check target path validity
+            if ".." in patch.target_path:
+                issues.append(f"Patch {i}: target_path contains invalid path traversal")
+            
+            # Check that patch operations have something to patch
+            if patch.operation == "patch":
+                has_changes = any([
+                    patch.add_frontmatter,
+                    patch.add_facts,
+                    patch.add_topics,
+                    patch.add_decisions,
+                    patch.add_context,
+                    patch.add_tasks,
+                ])
+                if not has_changes:
+                    issues.append(f"Patch {i}: patch operation has no changes for {patch.target_entity}")
+        
+        return issues
+    
+    def is_valid(self) -> bool:
+        """Check if the change plan is valid."""
+        return len(self.validate_plan()) == 0
 
 
 class PatchGenerator:
@@ -85,6 +139,8 @@ class PatchGenerator:
     def generate(self, extraction: UnifiedExtraction) -> ChangePlan:
         """Generate change plan from extraction.
         
+        Uses EntityIndex for alias resolution and duplicate detection.
+        
         Args:
             extraction: UnifiedExtraction with all extracted knowledge
         
@@ -96,6 +152,9 @@ class PatchGenerator:
         # Track patched targets to avoid duplicates
         patched_paths: set[str] = set()
         
+        # Track entity names we've processed (for dedup warnings)
+        processed_entities: dict[str, str] = {}  # normalized name -> original name
+        
         # 1. Meeting note creation
         note_path, note_context = self._generate_meeting_note(extraction)
         if note_path:
@@ -104,6 +163,11 @@ class PatchGenerator:
         
         # 2. Primary entity patches
         if extraction.primary_entity:
+            normalized = self.entity_index.normalize_name(extraction.primary_entity.name)
+            if normalized != extraction.primary_entity.name:
+                plan.warnings.append(f"Resolved alias: '{extraction.primary_entity.name}' → '{normalized}'")
+            processed_entities[normalized.lower()] = extraction.primary_entity.name
+            
             patches = self._generate_primary_patches(extraction)
             for patch in patches:
                 if patch.target_path not in patched_paths:
@@ -112,6 +176,18 @@ class PatchGenerator:
         
         # 3. Entities with facts (we learned something)
         for entity in extraction.get_entities_with_facts():
+            normalized = self.entity_index.normalize_name(entity.name)
+            norm_lower = normalized.lower()
+            
+            # Check for potential duplicates
+            if norm_lower in processed_entities and processed_entities[norm_lower] != entity.name:
+                plan.warnings.append(f"Potential duplicate: '{entity.name}' may be same as '{processed_entities[norm_lower]}'")
+                continue  # Skip to avoid double-patching
+            
+            if normalized != entity.name:
+                plan.warnings.append(f"Resolved alias: '{entity.name}' → '{normalized}'")
+            processed_entities[norm_lower] = entity.name
+            
             patches = self._generate_fact_patches(entity, extraction)
             for patch in patches:
                 if patch.target_path not in patched_paths:
@@ -120,6 +196,15 @@ class PatchGenerator:
         
         # 4. Participant context updates
         for participant in extraction.participants:
+            normalized = self.entity_index.normalize_name(participant)
+            norm_lower = normalized.lower()
+            
+            # Check for potential duplicates
+            if norm_lower in processed_entities:
+                continue  # Already processed
+            
+            processed_entities[norm_lower] = participant
+            
             patches = self._generate_participant_patches(participant, extraction)
             for patch in patches:
                 if patch.target_path not in patched_paths:

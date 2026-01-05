@@ -103,6 +103,8 @@ class EmailAdapter(BaseAdapter):
         from_match = re.search(r"(?:^|\n)\*?\*?From\*?\*?:\s*([^\n<]+?)(?:\s*<([^>]+)>)?(?:\n|$)", content)
         if from_match:
             name = from_match.group(1).strip()
+            # Strip markdown bold markers
+            name = re.sub(r'^\*\*\s*|\s*\*\*$', '', name)
             email = from_match.group(2) if from_match.group(2) else None
             return (name, email)
         return (None, None)
@@ -121,6 +123,8 @@ class EmailAdapter(BaseAdapter):
                 name_match = re.match(r"([^<]+?)(?:\s*<[^>]+>)?$", part.strip())
                 if name_match:
                     name = name_match.group(1).strip()
+                    # Strip markdown bold markers
+                    name = re.sub(r'^\*\*\s*|\s*\*\*$', '', name)
                     if name:
                         recipients.append(name)
         

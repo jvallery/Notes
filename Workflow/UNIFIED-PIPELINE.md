@@ -501,11 +501,63 @@ Workflow/
 
 ---
 
+## ChangePlan Validation and Alias Resolution
+
+### ChangePlan Validation
+
+Before applying changes, the `ChangePlan.validate_plan()` method checks:
+
+1. **Required fields**: `source_file` must be set
+2. **Path safety**: No `..` path traversal in target paths
+3. **Duplicate targets**: Warns if multiple patches target the same file
+4. **Non-empty patches**: Patch operations must have at least one change
+
+```python
+plan = ChangePlan(source_file="Inbox/Email/test.md", patches=[...])
+issues = plan.validate_plan()
+if issues:
+    print(f"Validation issues: {issues}")
+else:
+    applier.apply(plan)
+```
+
+### Alias Resolution
+
+The `PatchGenerator` uses `EntityIndex` to normalize names via aliases:
+
+1. **Alias lookup**: `"Jeff"` → `"Jeff Denworth"` via `entities/aliases.yaml`
+2. **Warnings**: Logs when an alias is resolved to help debugging
+3. **Duplicate detection**: Warns if the same entity appears under multiple names
+
+```yaml
+# Workflow/entities/aliases.yaml
+Jeff Denworth:
+  - Jeff
+  - Denworth
+  - JD
+```
+
+When generating patches, if `"Jeff"` and `"Jeff Denworth"` both appear, 
+only one patch is created and a warning is logged.
+
+### Dry-Run and Rollback
+
+The `TransactionalApply` class supports:
+
+- **`dry_run=True`**: Reports what would be changed without modifying files
+- **Rollback on failure**: Backs up files before modification, restores on error
+- **Atomic writes**: Uses temp files + rename to prevent partial writes
+
+---
+
 ## Success Criteria
 
-- [ ] Single CLI processes all content types
-- [ ] Extraction has access to persona, manifests, glossary
-- [ ] Facts about any entity trigger patches (not just primary)
+- [x] Single CLI processes all content types
+- [x] Extraction has access to persona, manifests, glossary
+- [x] Facts about any entity trigger patches (not just primary)
+- [x] ChangePlan validation catches common errors
+- [x] Alias resolution prevents duplicate patches
+- [x] Dry-run mode available for testing
 - [ ] New entities trigger enrichment
 - [ ] Emails generate draft replies when appropriate
 - [ ] All shared logic in `pipeline/` module (no duplication)
