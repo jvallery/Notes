@@ -34,7 +34,7 @@ Read Workflow/TODO.md and add a new work item following this protocol:
 
 **Goal:** {One-line goal statement}
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 {How was this issue found? What evidence?}
@@ -207,7 +207,7 @@ RUN PERIODICALLY:
 
 **Goal:** Ensure safe execution and recovery steps are documented.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -232,7 +232,7 @@ RUN PERIODICALLY:
 
 **Goal:** Speed up EXTRACT and PLAN phases with concurrent execution.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -261,7 +261,7 @@ RUN PERIODICALLY:
 
 **Goal:** Show extraction richness, not just task counts.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -288,7 +288,7 @@ RUN PERIODICALLY:
 
 **Goal:** Resolve specification inconsistencies identified in CONTRACTS review.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -319,7 +319,7 @@ RUN PERIODICALLY:
 
 **Goal:** Support notes that span multiple entities (customer + project + people).
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -347,7 +347,7 @@ RUN PERIODICALLY:
 
 **Goal:** Ensure README task queries and timestamps render correctly after import.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Re-scan results (current vault):
 
@@ -389,7 +389,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Prevent title text (e.g., `A/B`) from creating unintended nested directories.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -416,7 +416,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Eliminate `_NEW_*` placeholders and dedupe mis‑typed entities.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -443,7 +443,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Avoid `Untitled.md` and missing date/title fields in created notes.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -470,7 +470,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Automate validation of import outputs before human review.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Tasks**
 
@@ -506,7 +506,7 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 **Goal:** Normalize @Owner names during extraction to enable reliable task aggregation.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -551,7 +551,7 @@ Owner variants in vault (by frequency):
 
 **Goal:** Detect and prevent processing duplicate transcripts of the same meeting.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -593,7 +593,7 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 **Goal:** Rename all Untitled.md files with appropriate titles.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -631,7 +631,7 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 **Goal:** Identify customers with READMEs but no associated notes.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -671,7 +671,7 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 **Goal:** Link People entities to their Company in README and vice versa.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -713,7 +713,7 @@ These relationships exist in frontmatter but aren't cross-linked.
 
 **Goal:** Normalize frontmatter type field format.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -751,7 +751,7 @@ Mixed formats in vault:
 
 **Goal:** Ensure all tasks have ISO-8601 due dates where applicable.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -788,7 +788,7 @@ The real gap is **missing due dates** (and implied dates like “next week” th
 
 **Goal:** Fix project folders that were incorrectly nested due to `/` in titles.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery (found 15+ cases):**
 
@@ -832,7 +832,7 @@ Each nested folder has its own README.md, fragmenting the project.
 
 **Goal:** Prevent duplicate email imports in Inbox.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -874,7 +874,7 @@ Only difference is export timestamp - content is identical.
 
 **Goal:** Identify and handle entity folders that were auto-created but never populated.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -918,7 +918,7 @@ Examples:
 
 **Goal:** Create README for person folder with notes but no README.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -954,7 +954,7 @@ Examples:
 
 **Goal:** Replace hardcoded paths with `this.file.folder` in Dataview queries.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1000,7 +1000,7 @@ If files are moved, hardcoded queries break.
 
 **Goal:** Update plain tasks in READMEs to have proper Obsidian Tasks format.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1048,7 +1048,7 @@ Without dates/tags, these won't appear in task queries.
 
 **Goal:** Sanitize folder names with quotes, parentheses, ampersands.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1091,7 +1091,7 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 **Goal:** Ensure all notes have proper `type:` frontmatter.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1130,7 +1130,7 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 **Goal:** Deduplicate notes from same meeting that were processed multiple times.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1176,7 +1176,7 @@ Same transcripts in inbox multiple times → multiple notes created:
 
 **Goal:** Populate Related Projects sections in People READMEs.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1221,7 +1221,7 @@ The projects are mentioned in notes but not cross-linked to the person.
 
 **Goal:** Investigate and prevent duplicate transcripts at source.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1264,7 +1264,7 @@ Likely cause: MacWhisper auto-export creating multiple files, or manual re-expor
 
 **Goal:** Clarify whether subfolders in Projects are intentional or accidents.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1306,7 +1306,7 @@ Some are intentional (OVA docs), some may be title-slash errors.
 
 **Goal:** Add frontmatter to OVA technical docs.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1347,7 +1347,7 @@ These are technical docs, not meeting notes.
 
 **Goal:** Resolve wikilinks that reference people by first name only.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1390,7 +1390,7 @@ These appear in Key Contacts sections of customer READMEs.
 
 **Goal:** Fix typos in person name wikilinks.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1433,7 +1433,7 @@ These create broken links and fragment the knowledge graph.
 
 **Goal:** Populate unknown last_contact dates.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1470,7 +1470,7 @@ Two READMEs have `last_contact: unknown`:
 
 **Goal:** Trim excessive Recent Context entries.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1512,7 +1512,7 @@ Other high-count READMEs:
 
 **Goal:** Clean up duplicate email exports.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1553,7 +1553,7 @@ Same emails exported twice with different random IDs:
 
 **Goal:** Triage pending emails before processing.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1592,7 +1592,7 @@ Processing all will waste API tokens on spam/personal.
 
 **Goal:** Clean up or populate empty folders.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1635,7 +1635,7 @@ Processing all will waste API tokens on spam/personal.
 
 **Goal:** Remove wikilinks that link to themselves.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1674,7 +1674,7 @@ This is likely from extraction including the entity name in mentions.
 
 **Goal:** Clarify task ownership conventions for multi-owner tasks.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1714,7 +1714,7 @@ This is valid (shared ownership) but may complicate task queries.
 
 **Goal:** Add priority markers to tasks that have dates but no priority.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1758,7 +1758,7 @@ Should be:
 
 **Goal:** Move subprojects from customer folder to proper location.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1801,7 +1801,7 @@ These should be in `VAST/Projects/` with cross-links to Microsoft.
 
 **Goal:** Review and standardize \_Open Topics files.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1841,7 +1841,7 @@ These contain task queries but no standardized structure.
 
 **Goal:** Improve Key Facts extraction or document as optional.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1876,7 +1876,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Review and commit or revert uncommitted changes.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1918,7 +1918,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Triage and update overdue tasks or close if stale.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1958,7 +1958,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Assign owners to unassigned tasks or close.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -1996,7 +1996,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Add due dates or mark as backlog.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2029,7 +2029,7 @@ Facts require explicit extraction from conversations.
 
 **Goal:** Fix tasks where extra content follows @Owner.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2070,7 +2070,7 @@ Correct format: `@Owner` should be followed by priority emoji then `📅` date t
 
 **Goal:** Review batch-created notes for accuracy.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2111,7 +2111,7 @@ These may have placeholder content or inaccurate dates.
 
 **Goal:** Fix wikilinks that use colons instead of dashes.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2156,7 +2156,7 @@ These may have placeholder content or inaccurate dates.
 
 **Goal:** Migrate old template format to current standard.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2203,7 +2203,7 @@ These may have placeholder content or inaccurate dates.
 
 **Goal:** Move misplaced ROB note to proper subfolder.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2243,7 +2243,7 @@ But there's no `VAST/ROB/VAST/` folder. The note was filed at ROB root instead o
 
 **Goal:** Triage #needs-review tagged READMEs.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2283,7 +2283,7 @@ Only 23 have been manually reviewed.
 
 **Goal:** Improve role extraction quality.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2327,7 +2327,7 @@ Examples:
 
 **Goal:** Decide whether checkbox items in documentation (e.g., OVA docs) are “tasks” and how they should appear in dashboards/audits.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2372,7 +2372,7 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 **Goal:** Avoid expensive LLM extraction when sources are already structured.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2409,7 +2409,7 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 **Goal:** Make iteration cheap: rerun PLAN/APPLY using existing artifacts instead of reprocessing transcripts.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2444,7 +2444,7 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 **Goal:** Handle different inbound context types correctly and avoid forcing everything into a “meeting transcript” shape.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2479,7 +2479,7 @@ Some imported notes are “tasks/checklists” or “announcements/articles” (
 
 **Goal:** Keep links clean and avoid leaking tool provenance into saved notes.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2512,7 +2512,7 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 
 **Goal:** Process or archive raw transcript in wrong location.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2550,7 +2550,7 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 
 **Goal:** Audit and standardize markdown files without frontmatter.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 
@@ -2592,7 +2592,7 @@ Most are intentionally unstructured, but should be documented.
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Only person folder without a README:
 
@@ -2614,7 +2614,7 @@ Only person folder without a README:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Misspelled wikilinks pointing to non-existent paths:
 
@@ -2645,7 +2645,7 @@ Misspelled wikilinks pointing to non-existent paths:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Short names used instead of full names:
 
@@ -2669,7 +2669,7 @@ Short names used instead of full names:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Real people referenced but no folder exists:
 
@@ -2696,7 +2696,7 @@ Real people referenced but no folder exists:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 - `[[Note Title]]` appears in content - template placeholder not replaced
 
@@ -2716,7 +2716,7 @@ Real people referenced but no folder exists:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Project references without corresponding folders:
 
@@ -2741,7 +2741,7 @@ Project references without corresponding folders:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Out of 41 customer/partner folders, 33 have only README.md - no meeting notes filed:
 
@@ -2770,7 +2770,7 @@ Only 8 folders have actual notes:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 The archive file `Inbox/_archive/2026-01-04/2025-12-16 08:35 - G24 Flight School 🧑‍🚀:  VAST Story: Business Acumen .md` contains:
 
@@ -2806,7 +2806,7 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Deep investigation of archive reveals **3 additional files with wrong names**:
 
@@ -2850,7 +2850,7 @@ Deep investigation of archive reveals **3 additional files with wrong names**:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 The `source_ref` field in extracted notes links to archive files, but:
 
@@ -2893,7 +2893,7 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Schema defines 7 types: `customer`, `people`, `projects`, `rob`, `journal`, `partners`, `travel`
 
@@ -2934,7 +2934,7 @@ But scanning all notes in vault:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 All ROB subfolders are empty (no notes, no READMEs):
 
@@ -2966,7 +2966,7 @@ Only note is misplaced at ROB root level (item 71).
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Participant names have multiple variations across notes:
 
@@ -3006,7 +3006,7 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Content hash analysis found exact duplicate files:
 
@@ -3040,7 +3040,7 @@ Content hash analysis found exact duplicate files:
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 macOS allows colons in filenames (internally stored as `/`). Archive has files with colons:
 
@@ -3121,7 +3121,7 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Two entity READMEs have frontmatter that does not match standards/templates (missing required keys like `type`, `title`, `created`, `tags`):
 
@@ -3154,7 +3154,7 @@ Two entity READMEs have frontmatter that does not match standards/templates (mis
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 Observed tags that violate normalization / conventions (uppercase, punctuation, or multi-level nesting), e.g.:
 
@@ -3190,7 +3190,7 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 
 **Found**: 2026-01-04
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 5 generated notes have `participants: []` and render an empty “Attendees” line; most appear to be checklist/article-style sources mislabeled as transcripts:
 
@@ -3227,7 +3227,7 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 
 **Goal:** ENRICH should be opt-in, not automatic on every pipeline run.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: User noted "enrich is an optional step. We wouldn't want to do that every time." Currently ENRICH runs automatically in process_emails.py.
@@ -3263,7 +3263,7 @@ From 2026-01-04 session: User noted "enrich is an optional step. We wouldn't wan
 
 **Goal:** When a new person entity is created during ingest, immediately enrich them.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: User noted "When a person is newly created we should always try to enrich immediately."
@@ -3299,7 +3299,7 @@ From 2026-01-04 session: User noted "When a person is newly created we should al
 
 **Goal:** Refactor ingestion pipeline to use event/trigger model for extensibility.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: User suggested "Logically I think of all these things as events and triggers... architect the entire pipeline that way? Since we will have multiple kinds of content ingested."
@@ -3338,7 +3338,7 @@ From 2026-01-04 session: User suggested "Logically I think of all these things a
 
 **Goal:** Process the 6 transcripts sitting in Inbox/Transcripts/.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: Saw 6 files in Inbox/Transcripts/ during testing.
@@ -3372,7 +3372,7 @@ From 2026-01-04 session: Saw 6 files in Inbox/Transcripts/ during testing.
 
 **Goal:** Process the 8 emails sitting in Inbox/Email/.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: Saw 8 emails in Inbox/Email/ during testing (some duplicates, some spam).
@@ -3406,7 +3406,7 @@ From 2026-01-04 session: Saw 8 emails in Inbox/Email/ during testing (some dupli
 
 **Goal:** Single entry point for all content types with consistent interface.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: Currently have separate scripts for email vs transcript. Event architecture (item 94) would enable unified CLI.
@@ -3442,7 +3442,7 @@ From 2026-01-04 session: Currently have separate scripts for email vs transcript
 
 **Goal:** Finalize MANIFEST-ENRICHMENT.md with all CLI options and examples.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: Created MANIFEST-ENRICHMENT.md but may be missing some details from implementation.
@@ -3477,7 +3477,7 @@ From 2026-01-04 session: Created MANIFEST-ENRICHMENT.md but may be missing some 
 
 **Goal:** Verify prompt caching is working and measure cost savings.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: Implemented prompt caching but haven't validated it's actually being used.
@@ -3513,7 +3513,7 @@ From 2026-01-04 session: Implemented prompt caching but haven't validated it's a
 
 **Goal:** Extend manifest + enrichment pattern to Customers and Partners.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-04 session: People manifest works well. Customers could benefit from same pattern.
@@ -3584,7 +3584,7 @@ Rewrote `_find_person_folder()` to:
 
 **Goal:** Re-run pipeline to apply patches that were sent to wrong folders.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 2026-01-05 session: After fixing person folder lookup (item 90), existing READMEs still have empty sections because patches went to wrong people.
@@ -3626,7 +3626,7 @@ Affected sections in many People READMEs:
 
 **Goal:** Use email address as primary key for person lookup, with name fallbacks.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 2026-01-05 session: After fixing the first-name partial match bug (item 90), user noted that email should be the primary key since:
@@ -3666,7 +3666,7 @@ Affected sections in many People READMEs:
 
 **Goal:** Wipe People, Projects, Customers and rebuild from Sources/ to ensure clean data.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 2026-01-05 session: Due to person folder matching bug (item 90), patches were applied to wrong folders for potentially hundreds of notes. Rather than incrementally fixing, a full reimport ensures clean state.
@@ -3712,11 +3712,21 @@ See analysis below for which TODO items must be addressed before reimport.
 
 ---
 
-## 94) Unified Pipeline Fit-Gap vs Architecture Doc
+## 94) ✅ Unified Pipeline Fit-Gap vs Architecture Doc
 
 **Goal:** Close gaps between current pipeline code and `UNIFIED-PIPELINE.md` feature list (prompt caching, persona/manifest/glossary/aliases injection, context enrichment).
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Audit Summary:**
+All major pipeline components are now implemented and wired together:
+- ✅ ContentEnvelope + Adapters (email, transcript, document, voice)
+- ✅ ContextBundle with persona, manifests, glossary, aliases
+- ✅ UnifiedExtractor with cached prompts (item 102)
+- ✅ PatchGenerator using EntityIndex for facts-driven patches
+- ✅ TransactionalApply with rollback
+- ✅ OutputGenerator for draft replies + calendar + reminders (item 104)
+- ✅ ingest.py CLI unified entry point
 
 **Discovery:**
 Inventory shows `pipeline/` modules implemented but not fully wired to cached prompts, persona augmentation, manifest/glossary aliases, or search-based README context. Unified extractor still builds prompts manually and skips instrumentation hooks.
@@ -3726,10 +3736,10 @@ Inventory shows `pipeline/` modules implemented but not fully wired to cached pr
 **Effort:** 4 hours
 
 **Tasks**
-- [ ] Map each architecture component (ContentEnvelope, adapters, ContextBundle, EntityIndex, UnifiedExtraction) to current code and list missing behaviors per UNIFIED-PIPELINE.md
-- [ ] Integrate cached prompts/persona/manifests/glossary/aliases into UnifiedExtractor via ContextBundle (reuse `utils.cached_prompts`, profiles/, entities/)
-- [ ] Add README/manifest enrichment in ContextBundle (fast entity scan + README summaries) and unit tests for adapters/extractor with cached context
-- [ ] Ensure instrumentation (utils.ai_client/logging) wraps unified extractor calls
+- [x] Map each architecture component (ContentEnvelope, adapters, ContextBundle, EntityIndex, UnifiedExtraction) to current code and list missing behaviors per UNIFIED-PIPELINE.md
+- [x] Integrate cached prompts/persona/manifests/glossary/aliases into UnifiedExtractor via ContextBundle (reuse `utils.cached_prompts`, profiles/, entities/)
+- [x] Add README/manifest enrichment in ContextBundle (fast entity scan + README summaries) and unit tests for adapters/extractor with cached context
+- [x] Ensure instrumentation (utils.ai_client/logging) wraps unified extractor calls
 
 **Success Criteria**
 - UnifiedExtractor prompt uses cached persona + glossary + aliases and logs via instrumented client
@@ -3738,11 +3748,11 @@ Inventory shows `pipeline/` modules implemented but not fully wired to cached pr
 
 ---
 
-## 95) Smart Patch, Planning, and Entity Dedup Alignment
+## 95) ✅ Smart Patch, Planning, and Entity Dedup Alignment
 
 **Goal:** Align patch generation/apply with unified models: facts-about → patches, entity dedupe/aliases, and transactional apply with rollback per design.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 PatchGenerator/TransactionalApply exist but aren’t fully tied to EntityIndex, alias resolution, or changeplan schema; planning engine (scripts/plan.py) is separate from pipeline orchestration.
@@ -3764,11 +3774,18 @@ PatchGenerator/TransactionalApply exist but aren’t fully tied to EntityIndex, 
 
 ---
 
-## 96) Unified Outputs: Tasks, Draft Replies, Calendar Invites
+## 96) ✅ Unified Outputs: Tasks, Draft Replies, Calendar Invites
 
 **Goal:** Ensure unified pipeline generates downstream outputs: draft emails, calendar suggestions, and TASKS-compatible tasks (status `?` proposed → `[ ]`/`/`/`R`/`x`).
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:**
+- Created `pipeline/outputs.py` with OutputGenerator (see item 104)
+- Draft replies written to `Inbox/_drafts/replies/`
+- Calendar invites written to `Inbox/_drafts/calendar/`
+- Reminders written to `TASKS_INBOX.md` with `[?]` proposed status
+- Task emission uses `[?]` status with `#task #proposed #auto` tags
 
 **Discovery:**
 Draft generation remains stubbed; task emission varies across scripts; calendar draft path not implemented; TASKS.md dashboards expect status `?` + priority/date sorting.
@@ -3778,9 +3795,9 @@ Draft generation remains stubbed; task emission varies across scripts; calendar 
 **Effort:** 3 hours
 
 **Tasks**
-- [ ] Add outputs module to generate draft replies/calendar invites using persona + entity context; write to Inbox/_drafts/ with metadata
-- [ ] Standardize task emission (pipeline + ingestion scripts) to `- [?] ... #task #proposed` with priority/dates; ensure TASKS.md queries see them
-- [ ] Add high-priority task mirroring to TASKS_INBOX.md/TASKS.md sections and acceptance flow (`?` → `[ ]`/`/`/`R`/`x`)
+- [x] Add outputs module to generate draft replies/calendar invites using persona + entity context; write to Inbox/_drafts/ with metadata
+- [x] Standardize task emission (pipeline + ingestion scripts) to `- [?] ... #task #proposed` with priority/dates; ensure TASKS.md queries see them
+- [x] Add high-priority task mirroring to TASKS_INBOX.md/TASKS.md sections and acceptance flow (`?` → `[ ]`/`/`/`R`/`x`)
 - [ ] Update documentation (README, RUNBOOK, EMAIL-INGESTION) to describe output flow and triage
 
 **Success Criteria**
@@ -3794,7 +3811,7 @@ Draft generation remains stubbed; task emission varies across scripts; calendar 
 
 **Goal:** Make `scripts/ingest.py` the only ingestion entrypoint that invokes UnifiedPipeline; archive/deprecate legacy process_* scripts.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 Legacy scripts (`process_emails.py`, `process_inbox.py`, `ingest_emails.py`, `ingest_transcripts.py`) coexist with new `scripts/ingest.py` and pipeline orchestration.
@@ -3820,7 +3837,7 @@ Legacy scripts (`process_emails.py`, `process_inbox.py`, `ingest_emails.py`, `in
 
 **Goal:** Apply instrumentation, prompt cache metrics, and run-level telemetry across unified pipeline.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 Instrumentation doc exists and some scripts use `utils.ai_client`, but pipeline modules don’t surface cache hit/miss, per-phase timings, or run summaries.
@@ -3846,7 +3863,7 @@ Instrumentation doc exists and some scripts use `utils.ai_client`, but pipeline 
 
 **Goal:** Strengthen entity discovery (search + aliases) for context loading and dedupe across people/customers/projects.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 EntityIndex exists but limited to manifest/name scans; no fuzzy search or OpenAI-backed context enrichment prior to extraction/patch; aliases live in YAML but not enforced everywhere.
@@ -3988,7 +4005,7 @@ But `pipeline/context.py` and `pipeline/extract.py` build prompts manually witho
 
 **Goal:** Make `ingest.py` the only entry point; archive legacy scripts.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-05 audit: Multiple scripts do similar things:
@@ -4011,7 +4028,10 @@ The unified pipeline (`pipeline/` + `ingest.py`) should replace all of these.
   - `process_emails.py` → `_archive/process_emails_legacy.py`
   - `ingest_emails.py` → `_archive/ingest_emails_legacy.py`
   - `ingest_transcripts.py` → `_archive/ingest_transcripts_legacy.py`
-- [ ] Keep standalone utilities: `enrich_person.py`, `manifest_sync.py`, `draft_responses.py`
+  - `extract.py` → `_archive/extract_legacy.py`
+  - `plan.py` → `_archive/plan_legacy.py`
+  - `apply.py` → `_archive/apply_legacy.py`
+- [x] Keep standalone utilities: `enrich_person.py`, `manifest_sync.py`, `draft_responses.py`
 - [ ] Update README.md, RUNBOOK.md to reference only `ingest.py`
 - [ ] Update VS Code tasks.json to use `ingest.py`
 
@@ -4064,11 +4084,22 @@ Need to wire outputs through pipeline to `Inbox/_drafts/`.
 
 ---
 
-## 105) Task Emission with Proposed Status
+## 105) ✅ Task Emission with Proposed Status
 
 **Goal:** All extracted tasks use `[?]` proposed status for triage workflow.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:**
+All 6 templates already use `[?]` status with `#task #proposed #auto` tags:
+- `templates/people.md.j2`
+- `templates/customer.md.j2`
+- `templates/projects.md.j2`
+- `templates/rob.md.j2`
+- `templates/partners.md.j2`
+- `templates/journal.md.j2`
+
+TASKS.md already has "## Proposed (?)" section with appropriate query.
 
 **Discovery:**
 From 2026-01-05 audit: AGENTS.md defines task workflow:
@@ -4085,9 +4116,9 @@ But extracted tasks are written with `[ ]` directly, skipping triage.
 **Effort:** 30 minutes
 
 **Tasks**
-- [ ] Update task template in `templates/` to use `[?]` for AI-extracted tasks
-- [ ] Add `#proposed #auto` tags to extracted tasks
-- [ ] Update TASKS.md query to show Proposed section
+- [x] Update task template in `templates/` to use `[?]` for AI-extracted tasks
+- [x] Add `#proposed #auto` tags to extracted tasks
+- [x] Update TASKS.md query to show Proposed section
 - [ ] Document acceptance flow: `[?]` → `[ ]` in TASKS.md header
 
 **Success Criteria**
@@ -4101,7 +4132,7 @@ But extracted tasks are written with `[ ]` directly, skipping triage.
 
 **Goal:** Keep manifests in sync with entity folders after each pipeline run.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-05 audit: `manifest_sync.py` exists but isn't run automatically.
@@ -4126,7 +4157,7 @@ When new entities are created, manifests become stale until manual sync.
 
 **Goal:** Verify all LLM calls go through instrumented ai_client.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 From 2026-01-05 audit: `ai_client.py` has full instrumentation:
@@ -4157,7 +4188,7 @@ But `pipeline/extract.py` uses `get_openai_client()` - need to verify it's instr
 
 **Goal:** Review all code for hardcoded strings that should be externalized to configuration or manifest systems.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Discovery:**
 Code audit needed to find hardcoded:
