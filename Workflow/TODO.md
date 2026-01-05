@@ -425,7 +425,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Extend manifest + enrichment to Customers/Partners and wire into unified pipeline context.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 01:56)
 
 **Impact:** Medium
 
