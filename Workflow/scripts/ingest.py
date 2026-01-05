@@ -40,7 +40,8 @@ console = Console()
 @click.option("--enrich", is_flag=True, help="Trigger enrichment for new entities")
 @click.option("--draft-replies", is_flag=True, help="Generate draft email replies")
 @click.option("--source", is_flag=True, help="Re-process from Sources/ directory")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool):
+@click.option("--force", is_flag=True, help="Skip duplicate detection, reprocess even if already extracted")
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
@@ -60,6 +61,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         dry_run=dry_run,
         verbose=verbose,
         generate_outputs=draft_replies,
+        force=force,
     )
     
     # Process based on options

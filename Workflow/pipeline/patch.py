@@ -93,6 +93,9 @@ class PatchGenerator:
         """
         plan = ChangePlan(source_file=extraction.source_file)
         
+        # Track patched targets to avoid duplicates
+        patched_paths: set[str] = set()
+        
         # 1. Meeting note creation
         note_path, note_context = self._generate_meeting_note(extraction)
         if note_path:
@@ -102,20 +105,26 @@ class PatchGenerator:
         # 2. Primary entity patches
         if extraction.primary_entity:
             patches = self._generate_primary_patches(extraction)
-            plan.patches.extend(patches)
+            for patch in patches:
+                if patch.target_path not in patched_paths:
+                    plan.patches.append(patch)
+                    patched_paths.add(patch.target_path)
         
         # 3. Entities with facts (we learned something)
         for entity in extraction.get_entities_with_facts():
             patches = self._generate_fact_patches(entity, extraction)
-            plan.patches.extend(patches)
+            for patch in patches:
+                if patch.target_path not in patched_paths:
+                    plan.patches.append(patch)
+                    patched_paths.add(patch.target_path)
         
         # 4. Participant context updates
         for participant in extraction.participants:
-            # Skip if already patched as primary or via facts
-            patched_names = {p.target_entity for p in plan.patches}
-            if participant not in patched_names:
-                patches = self._generate_participant_patches(participant, extraction)
-                plan.patches.extend(patches)
+            patches = self._generate_participant_patches(participant, extraction)
+            for patch in patches:
+                if patch.target_path not in patched_paths:
+                    plan.patches.append(patch)
+                    patched_paths.add(patch.target_path)
         
         # 5. Company patches (only if facts discovered)
         for entity in extraction.mentioned_entities:
@@ -123,7 +132,10 @@ class PatchGenerator:
                 company_lower = entity.name.lower()
                 if company_lower not in self.SKIP_COMPANIES:
                     patches = self._generate_company_patches(entity, extraction)
-                    plan.patches.extend(patches)
+                    for patch in patches:
+                        if patch.target_path not in patched_paths:
+                            plan.patches.append(patch)
+                            patched_paths.add(patch.target_path)
         
         return plan
     

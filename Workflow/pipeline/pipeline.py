@@ -92,11 +92,13 @@ class UnifiedPipeline:
         dry_run: bool = False,
         verbose: bool = False,
         generate_outputs: bool = True,
+        force: bool = False,
     ):
         self.vault_root = vault_root
         self.dry_run = dry_run
         self.verbose = verbose
         self.generate_outputs = generate_outputs
+        self.force = force
         
         # Initialize components
         self.registry = AdapterRegistry.default()
@@ -139,8 +141,8 @@ class UnifiedPipeline:
             result.content_type = envelope.content_type.value
             result.envelope = envelope
             
-            # 2. Check for duplicates
-            if self._is_duplicate(envelope):
+            # 2. Check for duplicates (skip if --force)
+            if not self.force and self._is_duplicate(envelope):
                 result.success = True
                 result.errors.append("Skipped: duplicate content")
                 return result

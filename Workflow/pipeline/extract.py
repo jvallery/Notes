@@ -177,12 +177,18 @@ Return a JSON object with this exact structure:
    - Project discussions → the project is primary_entity (type: project)
    - General updates → primary_entity can be null
 
-5. **NOTE_TYPE CLASSIFICATION**:
-   - "customer" = external customer/partner meeting
-   - "people" = 1:1 or small group with colleagues
-   - "projects" = project-focused discussion
-   - "rob" = recurring team sync (Rhythm of Business)
+5. **NOTE_TYPE CLASSIFICATION** (based on MEETING FORMAT, not content):
+   - "people" = 1:1 meetings or small group with VAST colleagues. The primary_entity is the other person.
+     Even if discussing projects/customers, a 1:1 with Jeff goes under Jeff's folder.
+   - "customer" = external customer/partner meeting (multiple people from customer org present)
+   - "projects" = internal project-focused group discussion (3+ VAST people)
+   - "rob" = recurring team sync (Rhythm of Business) - weekly, biweekly standups
    - "journal" = personal reflection
+
+   **CRITICAL**: Look at WHO is in the meeting, not WHAT is discussed:
+   - 1:1 with Jeff Denworth discussing Microsoft → note_type: "people", primary_entity: Jeff Denworth
+   - Group call with Microsoft team → note_type: "customer", primary_entity: Microsoft
+   - Internal project standup → note_type: "projects", primary_entity: project name
 
 Return ONLY valid JSON, no markdown fences or explanation."""
 
@@ -201,11 +207,15 @@ Pay special attention to:
 - Any scheduling/calendar mentions for calendar_invite suggestion""",
             
             ContentType.TRANSCRIPT: """
-This is a meeting transcript with possible speaker labels.
+This is a meeting transcript with speaker labels.
 Pay special attention to:
+- **PARTICIPANT COUNT**: How many distinct speakers/people are in this meeting?
+  - 2 people (1:1) → note_type: "people", primary_entity is the OTHER person
+  - Multiple VAST employees → note_type: "projects" 
+  - External customer/partner present → note_type: "customer"
 - Identify all participants from speaker labels and mentions
 - Capture action items with clear owners
-- Note decisions made during the meeting
+- Note decisions made during the meeting  
 - Extract facts learned about people, companies, or projects
 - Summarize the main discussion points as topics""",
             
