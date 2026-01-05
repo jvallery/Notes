@@ -28,7 +28,7 @@ from typing import Optional, List, Dict, Any
 from pydantic import BaseModel, Field
 
 sys.path.insert(0, str(Path(__file__).parent))
-from utils import vault_root, workflow_root
+from utils import vault_root, workflow_root, sanitize_path_name
 
 
 def get_glossary_context() -> str:
@@ -437,7 +437,8 @@ def find_or_create_entity(
         folder_path = vault / discovery.suggested_path
     else:
         # Default to People with needs-review
-        folder_path = vault / "VAST" / "People" / discovery.canonical_name
+        safe_name = sanitize_path_name(discovery.canonical_name)
+        folder_path = vault / "VAST" / "People" / safe_name
     
     if not dry_run:
         folder_path.mkdir(parents=True, exist_ok=True)

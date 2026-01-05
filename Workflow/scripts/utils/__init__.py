@@ -53,6 +53,7 @@ from .fs import (
 )
 from .templates import (
     slugify,
+    sanitize_path_name,
     basename,
     strip_extension,
     get_template_env,
@@ -135,6 +136,7 @@ __all__ = [
     "backup_file",
     # Templates
     "slugify",
+    "sanitize_path_name",
     "basename",
     "strip_extension",
     "get_template_env",

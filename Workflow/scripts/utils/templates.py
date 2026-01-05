@@ -32,6 +32,44 @@ def slugify(text: str) -> str:
     return slug.strip("-")
 
 
+def sanitize_path_name(name: str) -> str:
+    """
+    Sanitize a name for use in file/folder paths.
+    
+    Preserves readability (unlike slugify which lowercases everything).
+    Removes/replaces characters that cause problems in paths:
+    - / and \\ -> - (prevent nested directories)
+    - : -> - (invalid on Windows, special on macOS)
+    - " and ' -> removed (shell escaping issues)
+    - & -> and
+    - ( ) [ ] -> removed
+    
+    Example: 
+        "Microsoft Comparison Slide (LSv4/LSv5)" -> "Microsoft Comparison Slide - LSv4-LSv5"
+        "Fort Meade \"Gemini\" on-prem" -> "Fort Meade Gemini on-prem"
+    """
+    if not name:
+        return name
+    
+    # Replace path separators and colons with dashes
+    result = re.sub(r'[/\\:]', '-', name)
+    
+    # Replace ampersand with 'and'
+    result = result.replace('&', 'and')
+    
+    # Remove quotes and brackets
+    result = re.sub(r'["\'\(\)\[\]]', '', result)
+    
+    # Collapse multiple dashes/spaces
+    result = re.sub(r'-+', '-', result)
+    result = re.sub(r'\s+', ' ', result)
+    
+    # Strip leading/trailing dashes and spaces
+    result = result.strip('- ')
+    
+    return result
+
+
 def basename(path: str) -> str:
     """Get the basename of a path (filename without directory)."""
     return Path(path).name

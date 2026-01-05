@@ -31,7 +31,7 @@ from rich.table import Table
 sys.path.insert(0, str(Path(__file__).parent))
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-from utils import load_config, get_model_config, vault_root, workflow_root
+from utils import load_config, get_model_config, vault_root, workflow_root, sanitize_path_name
 from utils.patch_primitives import upsert_frontmatter, append_under_heading, ensure_wikilinks
 from utils.frontmatter import parse_frontmatter, render_frontmatter
 from models.email_extraction import (
@@ -507,7 +507,8 @@ def _generate_person_patches(
         vault = vault_root()
         
         if entity_type == EntityType.COMPANY:
-            entity_folder = vault / "VAST" / "Customers and Partners" / discovery.canonical_name
+            safe_name = sanitize_path_name(discovery.canonical_name)
+            entity_folder = vault / "VAST" / "Customers and Partners" / safe_name
             entity_folder.mkdir(parents=True, exist_ok=True)
             
             # Create company README
@@ -528,7 +529,8 @@ def _generate_person_patches(
             return _generate_company_patches_from_discovery(discovery, extraction, entity_folder)
         
         elif entity_type == EntityType.PROJECT:
-            entity_folder = vault / "VAST" / "Projects" / discovery.canonical_name
+            safe_name = sanitize_path_name(discovery.canonical_name)
+            entity_folder = vault / "VAST" / "Projects" / safe_name
             entity_folder.mkdir(parents=True, exist_ok=True)
             
             # Create project README
@@ -550,7 +552,8 @@ def _generate_person_patches(
         
         else:
             # Default to person (including UNKNOWN with low confidence)
-            entity_folder = vault / "VAST" / "People" / contact.name
+            safe_name = sanitize_path_name(contact.name)
+            entity_folder = vault / "VAST" / "People" / safe_name
             entity_folder.mkdir(parents=True, exist_ok=True)
             
             # Create person README (original behavior)
