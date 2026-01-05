@@ -10,7 +10,7 @@
 # Relative paths are resolved from vault_root.
 #
 # Version: 0.2.0
-# Last Updated: 2026-01-03
+# Last Updated: 2026-01-05
 # ============================================================================
 
 # === PATHS ===
@@ -52,6 +52,14 @@ paths:
     projects: "Personal/Projects"
     tasks: "TASKS.md"                 # Tasks dashboard (root)
     journal: "Personal/Journal"
+  
+  # Sources (for reprocessing)
+  sources:
+    root: "Sources"
+    email: "Sources/Email"
+    transcripts: "Sources/Transcripts"
+    documents: "Sources/Documents"
+    voice: "Sources/Voice"
 
 # === AI MODELS ===
 # Policy-based model selection (not hardcoded)

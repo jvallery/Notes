@@ -23,7 +23,7 @@ CONFIG_PATH = WORKFLOW_ROOT / "config.yaml"
 ENV_PATH = WORKFLOW_ROOT / ".env"
 
 
-def load_config() -> dict[str, Any]:
+def load_config(vault_root_override: Path | None = None) -> dict[str, Any]:
     """Load configuration from config.yaml with environment variable substitution."""
 
     # Load environment variables first
@@ -38,8 +38,14 @@ def load_config() -> dict[str, Any]:
     # Substitute environment variables
     config = _substitute_env_vars(config)
 
+    # Override vault root if provided
+    if vault_root_override:
+        config.setdefault("paths", {})
+        config["paths"]["vault_root"] = str(vault_root_override)
+    
     # Resolve relative paths
-    config = _resolve_paths(config)
+    config = _resolve_paths(config, base=vault_root_override)
+    _validate_config(config)
 
     return config
 
@@ -69,14 +75,15 @@ def _substitute_env_vars(obj: Any) -> Any:
     return obj
 
 
-def _resolve_paths(config: dict) -> dict:
+def _resolve_paths(config: dict, base: Path | None = None) -> dict:
     """Resolve relative paths in the paths section."""
 
-    vault_root = Path(config.get("paths", {}).get("vault_root", str(VAULT_ROOT)))
+    vault_root = Path(base or config.get("paths", {}).get("vault_root", str(VAULT_ROOT)))
 
     if "paths" in config:
         for section in config["paths"]:
             if section == "vault_root":
+                config["paths"]["vault_root"] = str(vault_root)
                 continue
 
             section_data = config["paths"][section]
@@ -93,6 +100,42 @@ def _resolve_paths(config: dict) -> dict:
                         config["paths"][section][key] = str(vault_root / path)
 
     return config
+
+
+def _validate_config(config: dict) -> None:
+    """Fail fast if required keys are missing."""
+    required_keys = [
+        ("paths", "vault_root"),
+        ("paths", "inbox", "email"),
+        ("paths", "inbox", "transcripts"),
+        ("paths", "inbox", "voice"),
+        ("paths", "inbox", "attachments"),
+        ("paths", "inbox", "extraction"),
+        ("paths", "inbox", "archive"),
+        ("paths", "work", "people"),
+        ("paths", "work", "projects"),
+        ("paths", "work", "accounts"),
+        ("paths", "sources", "email"),
+        ("paths", "sources", "transcripts"),
+        ("paths", "sources", "documents"),
+        ("paths", "sources", "voice"),
+        ("models", "default_provider"),
+        ("models", "extract_email", "model"),
+        ("models", "extract_transcript", "model"),
+        ("models", "extract_voice", "model"),
+    ]
+    
+    missing: list[str] = []
+    for path in required_keys:
+        cursor = config
+        for key in path:
+            if isinstance(cursor, dict) and key in cursor:
+                cursor = cursor[key]
+            else:
+                missing.append(".".join(path))
+                break
+    if missing:
+        raise ValueError(f"Missing required config keys: {', '.join(missing)}")
 
 
 def get_model_config(task: str) -> dict[str, Any]:

@@ -469,22 +469,24 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Externalize all hardcoded strings (config, mappings, aliases, keys) into configuration or manifest systems.
 
-**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 02:20)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Medium
 
 **Effort:** 2-3 hours
 
 **Tasks**
-- [ ] Audit all Python scripts for hardcoded paths, entity names, API keys, model names
-- [ ] Audit prompt templates for hardcoded domain terms or mappings
-- [ ] Move discovered magic strings to config.yaml, entities/aliases.yaml, or manifests
-- [ ] Add validation that required config keys exist at startup
+- [x] Audit all Python scripts for hardcoded paths, entity names, API keys, model names
+- [x] Audit prompt templates for hardcoded domain terms or mappings
+- [x] Move discovered magic strings to config.yaml, entities/aliases.yaml, or manifests
+- [x] Add validation that required config keys exist at startup
 
 **Success Criteria**
 - No hardcoded paths or entity names in Python scripts (except test fixtures)
 - All configurable values loaded from config.yaml or manifests
 - Startup fails fast with clear error if required config missing
+
+**Notes:** Centralized vault/inbox/source paths via config.yaml (new sources section) and wired ingest/pipeline/context/entity index/manifest sync/cached prompts to use config + vault-root overrides. Added config validation for required path/model keys; ingest CLI now surfaces config errors early. Prompt templates reviewed (no new domain strings added); tests updated and passing.
 
 ---
 

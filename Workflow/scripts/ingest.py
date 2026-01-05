@@ -30,6 +30,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from pipeline import UnifiedPipeline
 from pipeline.envelope import ContentType
+from scripts.utils.config import load_config
 
 
 console = Console()
@@ -54,7 +55,13 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
     extraction and patching pipeline.
     """
     
-    vault_root_path = Path(vault_root).expanduser().resolve() if vault_root else Path(__file__).parent.parent.parent
+    override_root = Path(vault_root).expanduser().resolve() if vault_root else None
+    try:
+        config = load_config(vault_root_override=override_root)
+    except Exception as exc:
+        raise click.ClickException(f"Config error: {exc}")
+    
+    vault_root_path = Path(config.get("paths", {}).get("vault_root", Path(__file__).parent.parent.parent))
     type_map = {
         "email": ContentType.EMAIL,
         "transcript": ContentType.TRANSCRIPT,
@@ -76,6 +83,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         force=force,
         trace_dir=Path(trace_dir) if trace_dir else None,
         show_cache_stats=show_cache_stats,
+        config=config,
     )
     
     batch = None

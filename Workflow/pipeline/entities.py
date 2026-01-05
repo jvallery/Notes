@@ -13,10 +13,11 @@ This replaces the duplicated index-building code in ingest_emails.py and ingest_
 import sys
 from difflib import get_close_matches
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Any
 from functools import lru_cache
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
+from scripts.utils.config import load_config
 
 
 class EntityIndex:
@@ -25,8 +26,27 @@ class EntityIndex:
     Caches indices on first use, rebuilds if vault changes.
     """
     
-    def __init__(self, vault_root: Path):
+    def __init__(self, vault_root: Path, config: Optional[dict[str, Any]] = None):
         self.vault_root = vault_root
+        self.config = config or load_config(vault_root_override=vault_root)
+        paths = self.config.get("paths", {})
+        work_paths = paths.get("work", {})
+        personal_paths = paths.get("personal", {})
+        resources = paths.get("resources", {})
+        entities_root = resources.get("entities", self.vault_root / "Workflow" / "entities")
+        
+        self.people_dirs = [
+            Path(work_paths.get("people", self.vault_root / "VAST" / "People")),
+            Path(personal_paths.get("people", self.vault_root / "Personal" / "People")),
+        ]
+        self.customer_dirs = [
+            Path(work_paths.get("accounts", self.vault_root / "VAST" / "Customers and Partners")),
+        ]
+        self.project_dirs = [
+            Path(work_paths.get("projects", self.vault_root / "VAST" / "Projects")),
+            Path(personal_paths.get("projects", self.vault_root / "Personal" / "Projects")),
+        ]
+        self.alias_path = Path(entities_root) / "aliases.yaml"
         self._email_index: Optional[dict[str, Path]] = None
         self._name_index: Optional[dict[str, Path]] = None
         self._company_index: Optional[dict[str, Path]] = None
@@ -285,12 +305,7 @@ class EntityIndex:
         self._email_index = {}
         self._name_index = {}
         
-        people_dirs = [
-            self.vault_root / "VAST" / "People",
-            self.vault_root / "Personal" / "People"
-        ]
-        
-        for people_dir in people_dirs:
+        for people_dir in self.people_dirs:
             if not people_dir.exists():
                 continue
             
@@ -320,32 +335,30 @@ class EntityIndex:
         """Build index for companies/customers."""
         self._company_index = {}
         
-        customers_dir = self.vault_root / "VAST" / "Customers and Partners"
-        if not customers_dir.exists():
-            return
-        
-        for folder in customers_dir.iterdir():
-            if folder.is_dir() and not folder.name.startswith("_"):
-                self._company_index[folder.name.lower()] = folder
+        for customers_dir in self.customer_dirs:
+            if not customers_dir.exists():
+                continue
+            for folder in customers_dir.iterdir():
+                if folder.is_dir() and not folder.name.startswith("_"):
+                    self._company_index[folder.name.lower()] = folder
     
     def _build_project_index(self):
         """Build index for projects."""
         self._project_index = {}
         
-        projects_dir = self.vault_root / "VAST" / "Projects"
-        if not projects_dir.exists():
-            return
-        
-        for folder in projects_dir.iterdir():
-            if folder.is_dir() and not folder.name.startswith("_"):
-                self._project_index[folder.name.lower()] = folder
+        for projects_dir in self.project_dirs:
+            if not projects_dir.exists():
+                continue
+            for folder in projects_dir.iterdir():
+                if folder.is_dir() and not folder.name.startswith("_"):
+                    self._project_index[folder.name.lower()] = folder
     
     def _load_aliases(self):
         """Load name aliases from YAML file."""
         import yaml
         
         self._aliases = {}
-        aliases_path = self.vault_root / "Workflow" / "entities" / "aliases.yaml"
+        aliases_path = self.alias_path
         
         if not aliases_path.exists():
             return
@@ -369,11 +382,12 @@ class EntityIndex:
 _entity_index: Optional[EntityIndex] = None
 
 
-def get_entity_index(vault_root: Optional[Path] = None) -> EntityIndex:
+def get_entity_index(vault_root: Optional[Path] = None, config: Optional[dict[str, Any]] = None) -> EntityIndex:
     """Get or create the entity index singleton.
     
     Args:
         vault_root: Vault root path. Required on first call.
+        config: Optional pre-loaded config (avoids reload)
     
     Returns:
         EntityIndex instance
@@ -385,6 +399,6 @@ def get_entity_index(vault_root: Optional[Path] = None) -> EntityIndex:
             # Try to get from utils
             from scripts.utils import vault_root as get_vault_root
             vault_root = get_vault_root()
-        _entity_index = EntityIndex(vault_root)
+        _entity_index = EntityIndex(vault_root, config=config)
     
     return _entity_index

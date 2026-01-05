@@ -43,17 +43,20 @@ import yaml
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional, Dict, Any
+from .config import load_config
 
 # Paths - __file__ is utils/cached_prompts.py
 # parent = utils/, parent.parent = scripts/, parent.parent.parent = Workflow/
 WORKFLOW_DIR = Path(__file__).parent.parent.parent
-VAULT_ROOT = WORKFLOW_DIR.parent
+CONFIG = load_config()
+VAULT_ROOT = Path(CONFIG.get("paths", {}).get("vault_root", WORKFLOW_DIR.parent))
 CACHE_DIR = WORKFLOW_DIR / "_cache"
 GLOSSARY_CACHE = CACHE_DIR / "glossary.json"
 PERSONA_PATH = WORKFLOW_DIR / "profiles" / "jason_persona.yaml"
-PEOPLE_MANIFEST = VAULT_ROOT / "VAST" / "People" / "_MANIFEST.md"
-PROJECTS_MANIFEST = VAULT_ROOT / "VAST" / "Projects" / "_MANIFEST.md"
-CUSTOMERS_MANIFEST = VAULT_ROOT / "VAST" / "Customers and Partners" / "_MANIFEST.md"
+WORK_PATHS = CONFIG.get("paths", {}).get("work", {})
+PEOPLE_MANIFEST = Path(WORK_PATHS.get("people", VAULT_ROOT / "VAST" / "People")) / "_MANIFEST.md"
+PROJECTS_MANIFEST = Path(WORK_PATHS.get("projects", VAULT_ROOT / "VAST" / "Projects")) / "_MANIFEST.md"
+CUSTOMERS_MANIFEST = Path(WORK_PATHS.get("accounts", VAULT_ROOT / "VAST" / "Customers and Partners")) / "_MANIFEST.md"
 
 # Cache settings
 _glossary_cache: Optional[Dict[str, Any]] = None

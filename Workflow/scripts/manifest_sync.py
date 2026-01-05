@@ -33,18 +33,21 @@ from typing import Optional, Dict, List, Any
 # Add parent dir for imports
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.ai_client import get_client
+from utils.config import load_config
 
 # Paths
-VAULT_ROOT = Path(__file__).parent.parent.parent
-VAST_PEOPLE = VAULT_ROOT / "VAST" / "People"
-VAST_PROJECTS = VAULT_ROOT / "VAST" / "Projects"
-VAST_CUSTOMERS = VAULT_ROOT / "VAST" / "Customers and Partners"
+CONFIG = load_config()
+VAULT_ROOT = Path(CONFIG.get("paths", {}).get("vault_root", Path(__file__).parent.parent.parent))
+WORKFLOW_ROOT = Path(__file__).parent.parent
+VAST_PEOPLE = Path(CONFIG.get("paths", {}).get("work", {}).get("people", VAULT_ROOT / "VAST" / "People"))
+VAST_PROJECTS = Path(CONFIG.get("paths", {}).get("work", {}).get("projects", VAULT_ROOT / "VAST" / "Projects"))
+VAST_CUSTOMERS = Path(CONFIG.get("paths", {}).get("work", {}).get("accounts", VAULT_ROOT / "VAST" / "Customers and Partners"))
 PEOPLE_MANIFEST = VAST_PEOPLE / "_MANIFEST.md"
 PROJECTS_MANIFEST = VAST_PROJECTS / "_MANIFEST.md"
 CUSTOMERS_MANIFEST = VAST_CUSTOMERS / "_MANIFEST.md"
-CACHE_DIR = VAULT_ROOT / "Workflow" / "_cache"
+CACHE_DIR = WORKFLOW_ROOT / "_cache"
 GLOSSARY_CACHE = CACHE_DIR / "glossary.json"
-PERSONA_PATH = VAULT_ROOT / "Workflow" / "profiles" / "jason_persona.yaml"
+PERSONA_PATH = WORKFLOW_ROOT / "profiles" / "jason_persona.yaml"
 
 
 @dataclass

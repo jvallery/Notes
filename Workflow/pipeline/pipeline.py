@@ -15,7 +15,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 from dataclasses import dataclass, field
 
 sys.path.insert(0, str(Path(__file__).parent.parent))
@@ -30,6 +30,7 @@ from .entities import EntityIndex
 from .outputs import OutputGenerator
 from .models import ContactInfo
 from scripts.utils.ai_client import log_pipeline_stats
+from scripts.utils.config import load_config
 
 
 @dataclass
@@ -104,6 +105,7 @@ class UnifiedPipeline:
         trace_dir: Optional[Path] = None,
         show_cache_stats: bool = False,
         log_metrics: bool = True,
+        config: Optional[dict[str, Any]] = None,
     ):
         self.vault_root = vault_root
         self.dry_run = dry_run
@@ -113,10 +115,32 @@ class UnifiedPipeline:
         self.trace_dir = trace_dir
         self.show_cache_stats = show_cache_stats
         self.log_metrics = log_metrics
+        self.config = config or load_config(vault_root_override=vault_root)
+        path_cfg = self.config.get("paths", {})
+        self.inbox_paths = {
+            k: Path(v) for k, v in path_cfg.get("inbox", {}).items() if isinstance(v, str)
+        }
+        self.source_paths = {
+            k: Path(v) for k, v in path_cfg.get("sources", {}).items() if isinstance(v, str)
+        }
+        inbox_root = Path(self.inbox_paths.get("root", self.vault_root / "Inbox"))
+        sources_root = Path(self.source_paths.get("root", self.vault_root / "Sources"))
+        self.default_inbox = {
+            "email": inbox_root / "Email",
+            "transcripts": inbox_root / "Transcripts",
+            "voice": inbox_root / "Voice",
+            "attachments": inbox_root / "Attachments",
+        }
+        self.default_sources = {
+            "email": sources_root / "Email",
+            "transcripts": sources_root / "Transcripts",
+            "documents": sources_root / "Documents",
+            "voice": sources_root / "Voice",
+        }
         
         # Initialize components
         self.registry = AdapterRegistry.default()
-        self.entity_index = EntityIndex(vault_root)
+        self.entity_index = EntityIndex(vault_root, config=self.config)
         self.extractor = UnifiedExtractor(vault_root, verbose=verbose)
         self.patch_generator = PatchGenerator(vault_root, self.entity_index)
         self.output_generator = OutputGenerator(vault_root, dry_run=dry_run, verbose=verbose)
@@ -128,7 +152,7 @@ class UnifiedPipeline:
     def context(self) -> ContextBundle:
         """Get or load shared context."""
         if self._context is None:
-            self._context = ContextBundle.load(self.vault_root)
+            self._context = ContextBundle.load(self.vault_root, config=self.config, entity_index=self.entity_index)
         return self._context
     
     def process_file(self, path: Path) -> ProcessingResult:
@@ -244,11 +268,10 @@ class UnifiedPipeline:
         Returns:
             BatchResult with all processing results
         """
-        inbox = self.vault_root / "Inbox"
         pending: list[Path] = []
         
-        for subdir in ["Email", "Transcripts", "Voice", "Attachments"]:
-            subpath = inbox / subdir
+        for key in ["email", "transcripts", "voice", "attachments"]:
+            subpath = Path(self.inbox_paths.get(key, self.default_inbox[key]))
             if subpath.exists():
                 pending.extend(subpath.glob("*.md"))
         
@@ -265,26 +288,25 @@ class UnifiedPipeline:
         """
         # Map content type to inbox subdirectory
         type_dirs = {
-            ContentType.EMAIL: "Email",
-            ContentType.TRANSCRIPT: "Transcripts",
-            ContentType.VOICE: "Voice",
-            ContentType.DOCUMENT: "Attachments",
+            ContentType.EMAIL: "email",
+            ContentType.TRANSCRIPT: "transcripts",
+            ContentType.VOICE: "voice",
+            ContentType.DOCUMENT: "attachments",
         }
         
-        subdir = type_dirs.get(content_type, "Attachments")
-        inbox_path = self.vault_root / "Inbox" / subdir
+        subdir_key = type_dirs.get(content_type, "attachments")
+        inbox_path = Path(self.inbox_paths.get(subdir_key, self.default_inbox[subdir_key]))
         
-        pending = list(inbox_path.glob("*.md"))
+        pending = list(inbox_path.glob("*.md")) if inbox_path.exists() else []
         return self._process_paths(pending)
     
     def process_sources(self, content_type: Optional[ContentType] = None) -> BatchResult:
         """Re-process archived sources from the Sources/ directory."""
-        sources_root = self.vault_root / "Sources"
         type_dirs = {
-            ContentType.EMAIL: "Email",
-            ContentType.TRANSCRIPT: "Transcripts",
-            ContentType.VOICE: "Voice",
-            ContentType.DOCUMENT: "Documents",
+            ContentType.EMAIL: "email",
+            ContentType.TRANSCRIPT: "transcripts",
+            ContentType.VOICE: "voice",
+            ContentType.DOCUMENT: "documents",
         }
         
         pending: list[Path] = []
@@ -292,10 +314,12 @@ class UnifiedPipeline:
         if content_type:
             dir_name = type_dirs.get(content_type)
             if dir_name:
-                pending.extend((sources_root / dir_name).rglob("*.md"))
+                base = Path(self.source_paths.get(dir_name, self.default_sources[dir_name]))
+                if base.exists():
+                    pending.extend(base.rglob("*.md"))
         else:
             for dir_name in type_dirs.values():
-                path = sources_root / dir_name
+                path = Path(self.source_paths.get(dir_name, self.default_sources[dir_name]))
                 if path.exists():
                     pending.extend(path.rglob("*.md"))
         

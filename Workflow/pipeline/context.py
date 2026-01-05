@@ -23,7 +23,7 @@ Followed by dynamic content (per-call):
 import sys
 import hashlib
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Any
 from functools import lru_cache
 from pydantic import BaseModel, Field, ConfigDict
 
@@ -31,6 +31,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from .envelope import ContentEnvelope
 from .entities import EntityIndex
+from scripts.utils.config import load_config
 
 # Optional cached prompt helpers (keeps persona/glossary in cache-friendly format)
 try:  # pragma: no cover - helper is optional in runtime
@@ -60,7 +61,7 @@ class ContextBundle(BaseModel):
     relevant_readmes: dict[str, str] = Field(default_factory=dict)
     
     @classmethod
-    def load(cls, vault_root: Path, envelope: Optional[ContentEnvelope] = None, entity_index: Optional[EntityIndex] = None) -> "ContextBundle":
+    def load(cls, vault_root: Path, envelope: Optional[ContentEnvelope] = None, entity_index: Optional[EntityIndex] = None, config: Optional[dict[str, Any]] = None) -> "ContextBundle":
         """Load context for extraction.
         
         Args:
@@ -71,15 +72,28 @@ class ContextBundle(BaseModel):
             ContextBundle with all context loaded
         """
         bundle = cls()
-        index = entity_index or EntityIndex(vault_root)
+        cfg = config or load_config(vault_root_override=vault_root)
+        paths_cfg = cfg.get("paths", {})
+        work_paths = paths_cfg.get("work", {})
+        personal_paths = paths_cfg.get("personal", {})
+        resources_paths = paths_cfg.get("resources", {})
+        
+        people_manifest_path = Path(work_paths.get("people", vault_root / "VAST" / "People")) / "_MANIFEST.md"
+        company_manifest_path = Path(work_paths.get("accounts", vault_root / "VAST" / "Customers and Partners")) / "_MANIFEST.md"
+        project_paths = [
+            Path(work_paths.get("projects", vault_root / "VAST" / "Projects")),
+            Path(personal_paths.get("projects", vault_root / "Personal" / "Projects")),
+        ]
+        
+        index = entity_index or EntityIndex(vault_root, config=cfg)
         
         # Load static context
-        bundle.persona = _load_persona(vault_root)
-        bundle.people_manifest = _load_manifest(vault_root / "VAST" / "People" / "_MANIFEST.md")
-        bundle.company_manifest = _load_manifest(vault_root / "VAST" / "Customers and Partners" / "_MANIFEST.md")
-        bundle.project_list = _list_projects(vault_root)
-        bundle.glossary = _load_glossary(vault_root)
-        bundle.aliases = _load_aliases(vault_root)
+        bundle.persona = _load_persona(vault_root, resources_paths)
+        bundle.people_manifest = _load_manifest(people_manifest_path)
+        bundle.company_manifest = _load_manifest(company_manifest_path)
+        bundle.project_list = _list_projects(project_paths)
+        bundle.glossary = _load_glossary(vault_root, resources_paths)
+        bundle.aliases = _load_aliases(vault_root, resources_paths)
         
         # Load dynamic context if envelope provided
         if envelope:
@@ -378,9 +392,10 @@ class ContextBundle(BaseModel):
 # LOADERS
 # =============================================================================
 
-def _load_persona(vault_root: Path) -> str:
+def _load_persona(vault_root: Path, resources_paths: dict) -> str:
     """Load persona from prompts/persona.md."""
-    persona_path = vault_root / "Workflow" / "prompts" / "persona.md"
+    prompts_root = Path(resources_paths.get("prompts", vault_root / "Workflow" / "prompts"))
+    persona_path = prompts_root / "persona.md"
     if persona_path.exists():
         return persona_path.read_text()
     return ""
@@ -393,21 +408,23 @@ def _load_manifest(manifest_path: Path) -> str:
     return ""
 
 
-def _list_projects(vault_root: Path) -> list[str]:
+def _list_projects(project_paths: list[Path]) -> list[str]:
     """List all project folder names."""
-    projects_dir = vault_root / "VAST" / "Projects"
-    if not projects_dir.exists():
-        return []
-    
-    return [
-        folder.name for folder in projects_dir.iterdir()
-        if folder.is_dir() and not folder.name.startswith("_")
-    ]
+    names: list[str] = []
+    for projects_dir in project_paths:
+        if not projects_dir.exists():
+            continue
+        names.extend(
+            folder.name for folder in projects_dir.iterdir()
+            if folder.is_dir() and not folder.name.startswith("_")
+        )
+    return names
 
 
-def _load_glossary(vault_root: Path) -> dict[str, str]:
+def _load_glossary(vault_root: Path, resources_paths: dict) -> dict[str, str]:
     """Load glossary of terms and acronyms."""
-    glossary_path = vault_root / "Workflow" / "entities" / "glossary.yaml"
+    glossary_root = Path(resources_paths.get("entities", vault_root / "Workflow" / "entities"))
+    glossary_path = glossary_root / "glossary.yaml"
     if not glossary_path.exists():
         return {}
     
@@ -444,9 +461,10 @@ def _load_aliases_cached(aliases_path: str) -> dict[str, str]:
         return {}
 
 
-def _load_aliases(vault_root: Path) -> dict[str, str]:
+def _load_aliases(vault_root: Path, resources_paths: dict) -> dict[str, str]:
     """Load name aliases."""
-    aliases_path = vault_root / "Workflow" / "entities" / "aliases.yaml"
+    aliases_root = Path(resources_paths.get("entities", vault_root / "Workflow" / "entities"))
+    aliases_path = aliases_root / "aliases.yaml"
     return _load_aliases_cached(str(aliases_path))
 
 
