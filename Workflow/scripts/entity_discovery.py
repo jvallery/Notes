@@ -112,9 +112,14 @@ def _quick_classify(name: str, context: Optional[str] = None) -> Optional[Entity
     
     name_lower = name.lower().strip()
     
-    # Check known companies
+    # Check known companies (exact match)
     if name_lower in KNOWN_COMPANIES:
         return EntityType.COMPANY
+    
+    # Check if name starts with a known company name (e.g., "Slice Team" -> "slice")
+    for company in KNOWN_COMPANIES:
+        if name_lower.startswith(company + " ") or name_lower.startswith(company + ","):
+            return EntityType.COMPANY
     
     # Check company suffixes
     for suffix in COMPANY_SUFFIXES:
@@ -217,15 +222,12 @@ def discover_entity(
     
     # Need to use OpenAI web search
     if client is None:
-        from dotenv import load_dotenv
-        from openai import OpenAI
-        
-        load_dotenv(workflow_root() / ".env")
-        api_key = os.environ.get("OPENAI_API_KEY")
-        if not api_key:
+        from utils.ai_client import get_openai_client
+        try:
+            client = get_openai_client("entity_discovery")
+        except ValueError:
             # Fall back to heuristic classification
             return _heuristic_classify(name, context)
-        client = OpenAI(api_key=api_key)
     
     # Build search and classification prompt
     search_query = _build_search_query(name, context)

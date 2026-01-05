@@ -70,6 +70,23 @@ from .profiles import (
     get_task_rules,
     clear_cache as clear_profile_cache,
 )
+from .ai_client import (
+    get_client as get_ai_client,
+    get_openai_client,
+    get_logger as get_ai_logger,
+    get_daily_stats as get_ai_stats,
+    AILogger,
+    InstrumentedClient,
+)
+from .logging import (
+    setup_logging,
+    get_logger,
+    get_log_file,
+    set_context,
+    clear_context,
+    log_summary,
+    ContextLogger,
+)
 
 __all__ = [
     # Config
@@ -133,4 +150,19 @@ __all__ = [
     "get_profile_ignore",
     "get_task_rules",
     "clear_profile_cache",
+    # AI Client
+    "get_ai_client",
+    "get_openai_client",
+    "get_ai_logger",
+    "get_ai_stats",
+    "AILogger",
+    "InstrumentedClient",
+    # Logging
+    "setup_logging",
+    "get_logger",
+    "get_log_file",
+    "set_context",
+    "clear_context",
+    "log_summary",
+    "ContextLogger",
 ]

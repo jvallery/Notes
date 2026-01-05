@@ -44,18 +44,9 @@ console = Console()
 
 
 def get_openai_client():
-    """Get configured OpenAI client."""
-    import os
-    from dotenv import load_dotenv
-    from openai import OpenAI
-
-    load_dotenv(workflow_root() / ".env")
-
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY not set in environment")
-
-    return OpenAI(api_key=api_key)
+    """Get configured OpenAI client with logging instrumentation."""
+    from utils.ai_client import get_openai_client as get_instrumented_client
+    return get_instrumented_client("ingest_emails")
 
 
 # =============================================================================
@@ -381,8 +372,18 @@ def _generate_person_patches(
         entity_folder = person_folder
     elif company_folder is not None:
         # Existing company - use as-is
-        entity_type = EntityType.COMPANY
-        entity_folder = company_folder
+        # Generate company patches and return early (different patch format)
+        from entity_discovery import EntityDiscovery, EntityType as ET
+        
+        # Create a mock discovery object for existing company
+        discovery = EntityDiscovery(
+            original_name=contact.name,
+            entity_type=ET.COMPANY,
+            canonical_name=company_folder.name,
+            confidence=1.0,
+            source="existing_folder"
+        )
+        return _generate_company_patches_from_discovery(discovery, extraction, company_folder)
     else:
         # New entity - use discovery service to classify
         # Check if we should auto-create

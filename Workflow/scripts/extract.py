@@ -27,18 +27,10 @@ from utils import load_config, get_model_config, get_persona, vault_root, workfl
 console = Console()
 
 
-def get_openai_client() -> OpenAI:
-    """Get configured OpenAI client."""
-    import os
-    from dotenv import load_dotenv
-
-    load_dotenv(workflow_root() / ".env")
-
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY not set in environment")
-
-    return OpenAI(api_key=api_key)
+def get_openai_client():
+    """Get configured OpenAI client with logging instrumentation."""
+    from utils.ai_client import get_openai_client as get_instrumented_client
+    return get_instrumented_client("extract")
 
 
 def get_jinja_env() -> Environment:

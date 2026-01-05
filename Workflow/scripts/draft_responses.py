@@ -471,18 +471,9 @@ def format_vault_context(context: dict) -> str:
 
 
 def get_openai_client():
-    """Get configured OpenAI client."""
-    import os
-    from dotenv import load_dotenv
-    from openai import OpenAI
-
-    load_dotenv(workflow_root() / ".env")
-
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY not set in environment")
-
-    return OpenAI(api_key=api_key)
+    """Get configured OpenAI client with logging instrumentation."""
+    from utils.ai_client import get_openai_client as get_instrumented_client
+    return get_instrumented_client("draft_responses")
 
 
 def parse_email_metadata(content: str) -> dict:
