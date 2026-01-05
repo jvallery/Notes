@@ -80,6 +80,180 @@ class CustomerEntry:
     context: str = ""
 
 
+# =============================================================================
+# ATOMIC SYNC FUNCTIONS (for use by other scripts)
+# =============================================================================
+
+def sync_person_to_manifest(
+    name: str, 
+    updates: Dict[str, Any], 
+    rebuild_cache: bool = True
+) -> bool:
+    """
+    Update a single person's entry in the manifest after README changes.
+    
+    This is called by ingest_emails.py and other scripts after patching a README.
+    It ensures the manifest row stays in sync with the README.
+    
+    Args:
+        name: Person's folder name
+        updates: Dict of fields that were updated (role, company, email, title, etc.)
+        rebuild_cache: Whether to rebuild the glossary cache after
+    
+    Returns:
+        True if manifest was updated
+    """
+    person_folder = VAST_PEOPLE / name
+    if not person_folder.exists():
+        return False
+    
+    # Re-scan this person's README for current state
+    readme = person_folder / "README.md"
+    if not readme.exists():
+        return False
+    
+    content = readme.read_text()
+    fm = parse_frontmatter(content)
+    
+    # Build updated entry from README + updates
+    entry = PersonEntry(
+        name=name,
+        role=updates.get("role") or updates.get("title") or fm.get("role") or fm.get("title") or "",
+        company=updates.get("company") or fm.get("company") or "",
+        email=updates.get("email") or fm.get("email") or "",
+        context=extract_context_summary(content, max_chars=100),
+        last_contact=updates.get("last_contact") or fm.get("last_contact") or ""
+    )
+    
+    # Load current manifest entries
+    people = scan_people_folder()
+    
+    # Find and update the entry
+    updated = False
+    for i, p in enumerate(people):
+        if p.name == name:
+            people[i] = entry
+            updated = True
+            break
+    
+    if not updated:
+        # New entry - add it
+        people.append(entry)
+        updated = True
+    
+    # Regenerate manifest
+    manifest_content = generate_people_manifest(people)
+    PEOPLE_MANIFEST.write_text(manifest_content)
+    
+    # Optionally rebuild the glossary cache
+    if rebuild_cache:
+        glossary = build_glossary_cache()
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+    
+    return True
+
+
+def sync_customer_to_manifest(
+    name: str, 
+    updates: Dict[str, Any], 
+    rebuild_cache: bool = True
+) -> bool:
+    """Update a single customer's entry in the manifest after README changes."""
+    customer_folder = VAST_CUSTOMERS / name
+    if not customer_folder.exists():
+        return False
+    
+    readme = customer_folder / "README.md"
+    if not readme.exists():
+        return False
+    
+    content = readme.read_text()
+    fm = parse_frontmatter(content)
+    
+    entry = CustomerEntry(
+        name=name,
+        type=updates.get("account_type") or fm.get("account_type") or "",
+        industry=updates.get("industry") or fm.get("industry") or "",
+        context=extract_context_summary(content, max_chars=100)
+    )
+    
+    customers = scan_customers_folder()
+    
+    updated = False
+    for i, c in enumerate(customers):
+        if c.name == name:
+            customers[i] = entry
+            updated = True
+            break
+    
+    if not updated:
+        customers.append(entry)
+        updated = True
+    
+    manifest_content = generate_customers_manifest(customers)
+    CUSTOMERS_MANIFEST.write_text(manifest_content)
+    
+    if rebuild_cache:
+        glossary = build_glossary_cache()
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+    
+    return True
+
+
+def sync_project_to_manifest(
+    name: str, 
+    updates: Dict[str, Any], 
+    rebuild_cache: bool = True
+) -> bool:
+    """Update a single project's entry in the manifest after README changes."""
+    project_folder = VAST_PROJECTS / name
+    if not project_folder.exists():
+        return False
+    
+    readme = project_folder / "README.md"
+    if not readme.exists():
+        return False
+    
+    content = readme.read_text()
+    fm = parse_frontmatter(content)
+    
+    entry = ProjectEntry(
+        name=name,
+        owner=updates.get("owner") or fm.get("owner") or "",
+        status=updates.get("status") or fm.get("status") or "active",
+        description=extract_context_summary(content, max_chars=100)
+    )
+    
+    projects = scan_projects_folder()
+    
+    updated = False
+    for i, p in enumerate(projects):
+        if p.name == name:
+            projects[i] = entry
+            updated = True
+            break
+    
+    if not updated:
+        projects.append(entry)
+        updated = True
+    
+    manifest_content = generate_projects_manifest(projects)
+    PROJECTS_MANIFEST.write_text(manifest_content)
+    
+    if rebuild_cache:
+        glossary = build_glossary_cache()
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+    
+    return True
+
+
+# =============================================================================
+# SCANNING FUNCTIONS
+# =============================================================================
+
 def parse_frontmatter(content: str) -> Dict[str, Any]:
     """Extract YAML frontmatter from markdown content."""
     if not content.startswith("---"):

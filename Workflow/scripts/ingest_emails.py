@@ -1009,6 +1009,21 @@ def apply_patches(plan: EmailChangePlan, dry_run: bool = False) -> dict:
             target_path.write_text(content)
             results["applied"] += 1
             
+            # Sync manifest if we updated key fields for a person
+            if patch.operation == "upsert_frontmatter":
+                manifest_sync_fields = {"role", "title", "company", "email", "phone", "linkedin"}
+                if patch.frontmatter and any(k in manifest_sync_fields for k in patch.frontmatter.keys()):
+                    try:
+                        from manifest_sync import sync_person_to_manifest, sync_customer_to_manifest
+                        
+                        # Determine entity type from path
+                        if "VAST/People/" in patch.target_path:
+                            sync_person_to_manifest(patch.target_entity, patch.frontmatter, rebuild_cache=False)
+                        elif "VAST/Customers and Partners/" in patch.target_path:
+                            sync_customer_to_manifest(patch.target_entity, patch.frontmatter, rebuild_cache=False)
+                    except ImportError:
+                        pass  # manifest_sync not available
+            
         except Exception as e:
             results["errors"].append(f"{patch.target_path}: {e}")
             results["skipped"] += 1

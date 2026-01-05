@@ -57,6 +57,13 @@ python scripts/extract.py --all --dry-run
 git add -A && git commit -m "[auto] Processed inbox"
 git status
 git log --oneline -5
+
+# Manifest sync and enrichment (see Workflow/MANIFEST-ENRICHMENT.md)
+python scripts/manifest_sync.py scan     # Rebuild manifests from READMEs
+python scripts/manifest_sync.py enrich   # AI-enrich all manifest rows
+python scripts/enrich_person.py --list-sparse  # Find people needing enrichment
+python scripts/enrich_person.py --all --level 2 --limit 10  # Batch enrich from READMEs
+python scripts/enrich_person.py "John Smith" --web  # Web-enrich specific person
 ```
 
 ## Agent Capabilities

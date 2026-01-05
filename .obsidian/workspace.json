@@ -195,6 +195,8 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Workflow/scripts/enrich_person.py",
+    "Workflow/MANIFEST-ENRICHMENT.md",
     "VAST/People/Adem Sefa/README.md",
     "VAST/People/Aaron Batillo/README.md",
     "TASKS.md",
@@ -229,8 +231,6 @@
     "Outbox/2026-01-04_Reply-To_Re-OpenAI_1.md",
     "Inbox/Email/2025-12-12_160426_5605_Re-OpenAI.md",
     "Outbox/2026-01-04_Reply-To_Re-Your-Prospect-Microsoft-VAST-Customer.md",
-    "Outbox/README.md",
-    "Outbox/2026-01-04_Reply-To_Re-Introduction-for-FPA-Director-role.md",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",
