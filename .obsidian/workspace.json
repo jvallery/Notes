@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Jeff Denworth/README.md",
+                "file": "VAST/People/_MANIFEST.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "_MANIFEST"
             }
           }
         ]
@@ -193,8 +193,10 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "d53b413e5fffdcfe",
+  "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
+    "VAST/Projects/_MANIFEST.md",
+    "VAST/People/Jeff Denworth/README.md",
     "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
     "Outbox/2026-01-04_Reply-To_Youve-been-selected-VAST-speaker-at-VAST.md",
     "TASKS_INBOX.md",
@@ -227,8 +229,6 @@
     "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing.md",
     "Sources/Email/2026/2026-01-04_170011_5198_Tesla-Credits-Expiring-Soon.md",
     "Sources/Email/2026/2026-01-04_153217_8572_On-Tackling-Challenges-and-Sparking-Innovation.md",
-    "Sources/Email/2026/2026-01-04_132809_5619_Re-Tues-mens-group.md",
-    "Sources/Email/2026/2026-01-04_132409_4551_Re-Weekly-VAST-GTM-Meeting.md",
     "Inbox/_extraction/2026-01-04_170011_5198_Tesla-Credits-Expiring-Soon.email_changeplan.json",
     "Inbox/_extraction/2026-01-04_153217_8572_On-Tackling-Challenges-and-Sparking-Innovation.email_changeplan.json",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",

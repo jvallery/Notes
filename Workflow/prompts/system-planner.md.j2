@@ -100,11 +100,66 @@ For each extraction, you MUST generate:
    - Template must match note_type
    - Context includes all extraction fields plus `source_ref`
 
-2. **PATCH** the entity's README.md (if it exists)
-   - Update `last_contact` frontmatter field
-   - Append summary to `## Recent Context`
+2. **PATCH** the entity's README.md (if it exists) with ALL extracted content:
+   - Update `last_contact` frontmatter field to the meeting date
+   - Append summary line to `## Recent Context`
+   - Append each fact to `## Key Facts` (if facts extracted)
+   - Append each decision to `## Key Decisions` with date prefix (if decisions extracted)
+   - Append topics to `## Topics` as bullet list (if topics extracted)
+   - Append mentioned companies to `## Related Customers` as wikilinks
+   - Append mentioned projects to `## Related Projects` as wikilinks
+   - Use `ensure_wikilinks` for `## Related` section for all mentioned entities
 
 3. **LINK** mentioned entities as wikilinks in the new note
+
+### PATCH Examples for README Sections
+
+```json
+{
+  "op": "patch",
+  "path": "VAST/People/Jeff Denworth/README.md",
+  "patches": [
+    {
+      "primitive": "upsert_frontmatter",
+      "frontmatter": [{"key": "last_contact", "value": "2026-01-03"}]
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Recent Context",
+      "content": "- 2026-01-03: Discussed Q1 pipeline and priorities"
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Key Facts",
+      "content": "- Jeff is focusing on Microsoft partnership for Q1"
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Key Decisions",
+      "content": "- (2026-01-03) Approved new headcount for cloud team"
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Topics",
+      "content": "- cloud strategy\n- Microsoft partnership\n- Q1 planning"
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Related Customers",
+      "content": "- [[Microsoft]]\n- [[Google]]"
+    },
+    {
+      "primitive": "append_under_heading",
+      "heading": "## Related Projects",
+      "content": "- [[Azure Integration]]\n- [[Cloud Platform]]"
+    },
+    {
+      "primitive": "ensure_wikilinks",
+      "wikilinks": ["[[Microsoft]]", "[[Google]]", "[[Azure Integration]]"]
+    }
+  ]
+}
+```
 
 ## Output Schema
 

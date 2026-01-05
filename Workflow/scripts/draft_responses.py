@@ -377,15 +377,23 @@ def search_vault_context(extracted: dict, max_results: int = 10) -> dict:
                 readme = person_folder / "README.md"
                 if readme.exists():
                     content = readme.read_text()
-                    # Extract key sections
+                    # Include FULL README content for complete context
+                    # Trim only if extremely large (>8000 chars)
+                    readme_content = content if len(content) <= 8000 else content[:8000] + "\n\n[...README truncated...]"
+                    
                     context["people"].append({
                         "name": person_folder.name,
                         "path": str(readme.relative_to(vault)),
-                        "summary": _extract_section(content, "## Profile", 500)
-                            or _extract_section(content, "## About", 500)
-                            or content[:500],
-                        "recent_context": _extract_section(content, "## Recent Context", 800),
-                        "key_facts": _extract_section(content, "## Key Facts", 500)
+                        "full_readme": readme_content,  # Full README content
+                        # Also extract specific sections for quick reference
+                        "profile": _extract_section(content, "## Profile", 500),
+                        "recent_context": _extract_section(content, "## Recent Context", 1000),
+                        "key_facts": _extract_section(content, "## Key Facts", 800),
+                        "topics": _extract_section(content, "## Topics", 500),
+                        "key_decisions": _extract_section(content, "## Key Decisions", 800),
+                        "related_customers": _extract_section(content, "## Related Customers", 500),
+                        "related_projects": _extract_section(content, "## Related Projects", 500),
+                        "open_tasks": _extract_section(content, "## Open Tasks", 800),
                     })
                     
                     # Also get most recent note
@@ -412,14 +420,21 @@ def search_vault_context(extracted: dict, max_results: int = 10) -> dict:
                 readme = customer_folder / "README.md"
                 if readme.exists():
                     content = readme.read_text()
+                    # Include FULL README content for complete context
+                    readme_content = content if len(content) <= 8000 else content[:8000] + "\n\n[...README truncated...]"
+                    
                     context["customers"].append({
                         "name": customer_folder.name,
                         "path": str(readme.relative_to(vault)),
-                        "summary": _extract_section(content, "## Overview", 500)
-                            or _extract_section(content, "## About", 500)
-                            or content[:500],
-                        "key_contacts": _extract_section(content, "## Key Contacts", 500),
-                        "recent_context": _extract_section(content, "## Recent Context", 800)
+                        "full_readme": readme_content,  # Full README content
+                        # Also extract specific sections for quick reference
+                        "overview": _extract_section(content, "## Overview", 500),
+                        "key_contacts": _extract_section(content, "## Key Contacts", 800),
+                        "key_facts": _extract_section(content, "## Key Facts", 800),
+                        "topics": _extract_section(content, "## Topics", 500),
+                        "key_decisions": _extract_section(content, "## Key Decisions", 800),
+                        "related_projects": _extract_section(content, "## Related Projects", 500),
+                        "recent_context": _extract_section(content, "## Recent Context", 1000),
                     })
     
     # Search Projects
@@ -435,14 +450,19 @@ def search_vault_context(extracted: dict, max_results: int = 10) -> dict:
                 readme = project_folder / "README.md"
                 if readme.exists():
                     content = readme.read_text()
+                    # Include FULL README content for complete context
+                    readme_content = content if len(content) <= 8000 else content[:8000] + "\n\n[...README truncated...]"
+                    
                     context["projects"].append({
                         "name": project_folder.name,
                         "path": str(readme.relative_to(vault)),
-                        "summary": _extract_section(content, "## Overview", 500)
-                            or _extract_section(content, "## About", 500)
-                            or content[:500],
+                        "full_readme": readme_content,  # Full README content
+                        # Also extract specific sections for quick reference
+                        "overview": _extract_section(content, "## Overview", 500),
                         "status": _extract_section(content, "## Status", 300),
-                        "open_tasks": _extract_section(content, "## Open Tasks", 500)
+                        "open_tasks": _extract_section(content, "## Open Tasks", 800),
+                        "key_facts": _extract_section(content, "## Key Facts", 500),
+                        "key_decisions": _extract_section(content, "## Key Decisions", 500),
                     })
     
     # Search for related open tasks across vault
@@ -528,41 +548,104 @@ def _search_open_tasks(vault: Path, search_terms: List[str], max_tasks: int = 5)
     return tasks
 
 
-def format_vault_context(context: dict) -> str:
-    """Format discovered vault context for the LLM prompt."""
+def format_vault_context(context: dict, include_full_readme: bool = True) -> str:
+    """
+    Format discovered vault context for the LLM prompt.
+    
+    Args:
+        context: Dict with people, customers, projects, tasks, recent_notes
+        include_full_readme: If True, include full README content; if False, just sections
+    
+    When include_full_readme=True, the AI gets comprehensive context about each entity
+    including all their Key Facts, Topics, Key Decisions, Related items, etc.
+    """
     
     sections = []
     
     if context.get("people"):
         sections.append("## People Context")
-        for person in context["people"][:3]:  # Limit to top 3
+        for person in context["people"][:3]:  # Limit to top 3 people
             sections.append(f"\n### {person['name']}")
-            if person.get("summary"):
-                sections.append(person["summary"])
-            if person.get("recent_context"):
-                sections.append(f"\n**Recent interactions:**\n{person['recent_context']}")
-            if person.get("key_facts"):
-                sections.append(f"\n**Key facts:**\n{person['key_facts']}")
+            sections.append(f"*Path: {person.get('path', 'unknown')}*\n")
+            
+            if include_full_readme and person.get("full_readme"):
+                # Include the full README for complete context
+                sections.append("#### Full Profile (README.md)")
+                sections.append("```markdown")
+                sections.append(person["full_readme"])
+                sections.append("```")
+            else:
+                # Fall back to extracted sections
+                if person.get("profile"):
+                    sections.append(f"**Profile:**\n{person['profile']}")
+                if person.get("recent_context"):
+                    sections.append(f"\n**Recent interactions:**\n{person['recent_context']}")
+                if person.get("key_facts"):
+                    sections.append(f"\n**Key facts:**\n{person['key_facts']}")
+                if person.get("topics"):
+                    sections.append(f"\n**Topics:**\n{person['topics']}")
+                if person.get("key_decisions"):
+                    sections.append(f"\n**Key decisions:**\n{person['key_decisions']}")
+                if person.get("related_customers"):
+                    sections.append(f"\n**Related customers:**\n{person['related_customers']}")
+                if person.get("related_projects"):
+                    sections.append(f"\n**Related projects:**\n{person['related_projects']}")
+                if person.get("open_tasks"):
+                    sections.append(f"\n**Open tasks:**\n{person['open_tasks']}")
     
     if context.get("customers"):
         sections.append("\n## Customer/Partner Context")
-        for customer in context["customers"][:3]:
+        for customer in context["customers"][:3]:  # Limit to top 3 customers
             sections.append(f"\n### {customer['name']}")
-            if customer.get("summary"):
-                sections.append(customer["summary"])
-            if customer.get("key_contacts"):
-                sections.append(f"\n**Key contacts:**\n{customer['key_contacts']}")
-            if customer.get("recent_context"):
-                sections.append(f"\n**Recent context:**\n{customer['recent_context']}")
+            sections.append(f"*Path: {customer.get('path', 'unknown')}*\n")
+            
+            if include_full_readme and customer.get("full_readme"):
+                # Include the full README for complete context
+                sections.append("#### Full Account Profile (README.md)")
+                sections.append("```markdown")
+                sections.append(customer["full_readme"])
+                sections.append("```")
+            else:
+                # Fall back to extracted sections
+                if customer.get("overview"):
+                    sections.append(f"**Overview:**\n{customer['overview']}")
+                if customer.get("key_contacts"):
+                    sections.append(f"\n**Key contacts:**\n{customer['key_contacts']}")
+                if customer.get("key_facts"):
+                    sections.append(f"\n**Key facts:**\n{customer['key_facts']}")
+                if customer.get("topics"):
+                    sections.append(f"\n**Topics:**\n{customer['topics']}")
+                if customer.get("key_decisions"):
+                    sections.append(f"\n**Key decisions:**\n{customer['key_decisions']}")
+                if customer.get("related_projects"):
+                    sections.append(f"\n**Related projects:**\n{customer['related_projects']}")
+                if customer.get("recent_context"):
+                    sections.append(f"\n**Recent context:**\n{customer['recent_context']}")
     
     if context.get("projects"):
         sections.append("\n## Related Projects")
-        for project in context["projects"][:3]:
+        for project in context["projects"][:3]:  # Limit to top 3 projects
             sections.append(f"\n### {project['name']}")
-            if project.get("summary"):
-                sections.append(project["summary"])
-            if project.get("status"):
-                sections.append(f"\n**Status:**\n{project['status']}")
+            sections.append(f"*Path: {project.get('path', 'unknown')}*\n")
+            
+            if include_full_readme and project.get("full_readme"):
+                # Include the full README for complete context
+                sections.append("#### Full Project Profile (README.md)")
+                sections.append("```markdown")
+                sections.append(project["full_readme"])
+                sections.append("```")
+            else:
+                # Fall back to extracted sections
+                if project.get("overview"):
+                    sections.append(f"**Overview:**\n{project['overview']}")
+                if project.get("status"):
+                    sections.append(f"\n**Status:**\n{project['status']}")
+                if project.get("key_facts"):
+                    sections.append(f"\n**Key facts:**\n{project['key_facts']}")
+                if project.get("key_decisions"):
+                    sections.append(f"\n**Key decisions:**\n{project['key_decisions']}")
+                if project.get("open_tasks"):
+                    sections.append(f"\n**Open tasks:**\n{project['open_tasks']}")
     
     if context.get("tasks"):
         sections.append("\n## Related Open Tasks")
@@ -576,7 +659,6 @@ def format_vault_context(context: dict) -> str:
             sections.append(note["preview"][:500])
     
     return '\n'.join(sections) if sections else ""
-
 
 def get_openai_client():
     """Get configured OpenAI client with logging instrumentation."""

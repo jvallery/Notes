@@ -531,7 +531,57 @@ def _generate_person_patches(
             content=f"- {fact.fact}"
         ))
     
-    # 4. Add wikilinks to mentioned entities
+    # 4. Add topics to ## Topics section
+    if extraction.topics:
+        topic_bullets = [f"- {topic}" for topic in extraction.topics[:5]]  # Limit to 5
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=contact.name,
+            operation="append_under_heading",
+            heading="## Topics",
+            content="\n".join(topic_bullets)
+        ))
+    
+    # 5. Add decisions to ## Key Decisions section
+    if extraction.decisions:
+        for decision in extraction.decisions:
+            patches.append(VaultPatch(
+                target_path=target_path,
+                target_entity=contact.name,
+                operation="append_under_heading",
+                heading="## Key Decisions",
+                content=f"- ({extraction.email_date}) {decision}"
+            ))
+    
+    # 6. Add related customers to ## Related Customers section
+    if extraction.companies_mentioned:
+        customer_links = []
+        for company in extraction.companies_mentioned:
+            # Skip if it's the person's own company
+            if contact.company and company.lower() == contact.company.lower():
+                continue
+            customer_links.append(f"- [[{company}]]")
+        if customer_links:
+            patches.append(VaultPatch(
+                target_path=target_path,
+                target_entity=contact.name,
+                operation="append_under_heading",
+                heading="## Related Customers",
+                content="\n".join(customer_links)
+            ))
+    
+    # 7. Add related projects to ## Related Projects section
+    if extraction.projects_mentioned:
+        project_links = [f"- [[{project}]]" for project in extraction.projects_mentioned]
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=contact.name,
+            operation="append_under_heading",
+            heading="## Related Projects",
+            content="\n".join(project_links)
+        ))
+    
+    # 8. Add wikilinks to mentioned entities (general ## Related section)
     wikilinks = []
     for company in extraction.companies_mentioned:
         if company.lower() != contact.company.lower() if contact.company else True:
@@ -568,7 +618,7 @@ def _generate_customer_patches(company: str, extraction: EmailExtraction) -> dic
     
     target_path = str(readme_path.relative_to(vault_root()))
     
-    # Add context entry
+    # 1. Add context entry
     context_entry = f"- {extraction.email_date}: {extraction.summary[:100]}"
     patches.append(VaultPatch(
         target_path=target_path,
@@ -578,7 +628,7 @@ def _generate_customer_patches(company: str, extraction: EmailExtraction) -> dic
         content=context_entry
     ))
     
-    # Add key facts about this company
+    # 2. Add key facts about this company
     company_facts = [f for f in extraction.key_facts if company.lower() in f.about.lower()]
     for fact in company_facts:
         patches.append(VaultPatch(
@@ -587,6 +637,50 @@ def _generate_customer_patches(company: str, extraction: EmailExtraction) -> dic
             operation="append_under_heading",
             heading="## Key Facts",
             content=f"- {fact.fact}"
+        ))
+    
+    # 3. Add topics
+    if extraction.topics:
+        topic_bullets = [f"- {topic}" for topic in extraction.topics[:5]]
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=company,
+            operation="append_under_heading",
+            heading="## Topics",
+            content="\n".join(topic_bullets)
+        ))
+    
+    # 4. Add decisions
+    if extraction.decisions:
+        for decision in extraction.decisions:
+            patches.append(VaultPatch(
+                target_path=target_path,
+                target_entity=company,
+                operation="append_under_heading",
+                heading="## Key Decisions",
+                content=f"- ({extraction.email_date}) {decision}"
+            ))
+    
+    # 5. Add key contacts (people mentioned)
+    if extraction.people_mentioned:
+        people_links = [f"- [[{person}]]" for person in extraction.people_mentioned[:10]]
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=company,
+            operation="append_under_heading",
+            heading="## Key Contacts",
+            content="\n".join(people_links)
+        ))
+    
+    # 6. Add related projects
+    if extraction.projects_mentioned:
+        project_links = [f"- [[{project}]]" for project in extraction.projects_mentioned]
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=company,
+            operation="append_under_heading",
+            heading="## Related Projects",
+            content="\n".join(project_links)
         ))
     
     return {"patches": patches, "warnings": warnings}
@@ -660,11 +754,19 @@ tags:
 
 ## Key Facts
 
+## Topics
+
+## Key Decisions
+
 ## Recent Context
 
 - {extraction.email_date}: First contact via email re: {extraction.subject[:50]}
 
 ## Open Tasks
+
+## Related Customers
+
+## Related Projects
 
 ## Related
 
@@ -704,11 +806,17 @@ tags:
 
 ## Key Facts
 
+## Topics
+
+## Key Decisions
+
 ## Recent Context
 
 - {extraction.email_date}: First contact via email re: {extraction.subject[:50]}
 
 ## Open Tasks
+
+## Related Projects
 
 ## Related
 
@@ -740,11 +848,17 @@ tags:
 
 ## Key Facts
 
+## Topics
+
+## Key Decisions
+
 ## Recent Context
 
 - {extraction.email_date}: First mention via email re: {extraction.subject[:50]}
 
 ## Open Tasks
+
+## Related Customers
 
 ## Related
 
