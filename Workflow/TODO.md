@@ -469,7 +469,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Externalize all hardcoded strings (config, mappings, aliases, keys) into configuration or manifest systems.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 02:20)
 
 **Impact:** Medium
 
