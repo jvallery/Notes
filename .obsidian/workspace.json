@@ -195,6 +195,7 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Workflow/scripts/audit_import.py",
     "Sources/Transcripts/2026/2026-01-03 - Prep for Microsoft AI talks.md",
     "VAST/People/Jeff Yonker/README.md",
     "Workflow/scripts/cleanup_todo.py",
@@ -221,7 +222,6 @@
     "Outbox/2026-01-04_Reply-To_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-.md",
     "Outbox/2026-01-04_Reply-To_Re-Your-Prospect-Microsoft-VAST-Customer.md",
     "Outbox/2026-01-04_Reply-To_RE-External-Re-Connecting-with-VAST.md",
-    "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing.md",
     "Workflow/scripts/enrich_person.py",
     "Workflow/_cache/glossary.txt",
     "Workflow/_cache/glossary.json",
