@@ -104,6 +104,8 @@ type: people
 - 2025-12-21: Mentioned in: CES 2026 planning, NVIDIA Live (Jan 5) and attempt to meet Microsoft EVP Jay Parikh
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokesperson for breakout session, required prep cadence
+
+- 2026-01-05: Mentioned in: Azure Sync: Marketplace SKU update, GDC RFP deck, and MAI unified cache pricing clarification
 ## Key Facts
 
 - Jeff Denworth is driving the talk track for CES-related NVIDIA content to make it as strong as possible.
@@ -111,6 +113,8 @@ type: people
 - Jeff Denworth was asked to approve the new BF4 blog written by Nicole and share it with Kirstin Bordner for drafting a press release.
 
 - Jeff Denworth is the escalation contact (with Kirstin Bordner) for concerns or conflicts with VAST Forward spokesperson assignments.
+
+- Jeff Denworth committed to sending an updated deck for the Google Distributed Cloud (GDC) RFP.
 ## Topics
 - 2025-12-15: Technical requirements, Pricing and configurations, Data reduction and encryption, Hardware configurations
 

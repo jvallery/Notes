@@ -25,6 +25,8 @@ Project to launch VAST on cloud marketplaces (AWS, Azure, GCP) with MVP feature 
 - 2025-10-01: [[2025-10-01 - Cloud Marketplace MVP checklist]] - GA acceptance criteria, GTM/pricing package, and competitive benchmarking captured.
 
 - 2026-01-05: Jeff Denworth sent a weekly status email with three action items: submit an Azure Marketplace SKU ch...
+
+- 2026-01-05: Mentioned in: Azure Sync: Marketplace SKU update, GDC RFP deck, and MAI unified cache pricing clarification
 ## Open Tasks
 
 ```dataview
@@ -42,3 +44,7 @@ WHERE !completed
 - Deck updates required for Google Distributed Cloud (GDC) RFP
 
 - Microsoft MAI unified cache pricing follow-up
+
+## Key Facts
+
+- Jason Vallery stated that the Azure Marketplace SKU update is needed by Friday, 2026-01-09.

@@ -1,6 +1,6 @@
 ---
 created: '2026-01-03'
-last_contact: '2026-01-04'
+last_contact: '2026-01-05'
 tags:
 - type/customer
 - generated
@@ -339,6 +339,8 @@ not done
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
 
 - 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
+
+- 2026-01-05: In an Azure sync with Microsoft, Jason Vallery requested a marketplace SKU update by Friday. Jeff De...
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.
@@ -477,6 +479,12 @@ not done
 - Rescheduling Weekly VAST GTM Meeting from Monday, 2026-01-05 to another day that week
 
 - Weekly VAST GTM Meeting agenda: pipeline review, deal timelines, Microsoft engagement status, risks and escalations, launch promotional alignment and required assets, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and transactions
+
+- Azure Marketplace SKU update deadline (needed by Friday, 2026-01-09)
+
+- Google Distributed Cloud (GDC) RFP deck update
+
+- Pricing clarification request for MAI unified cache
 ## Opportunities
 
 - Azure offerings engagement plan focused on minimizing egress

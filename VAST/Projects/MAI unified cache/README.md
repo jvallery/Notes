@@ -37,6 +37,10 @@ SORT due ASC
 ## Recent Context
 
 - 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
+
+- 2026-01-05: Mentioned in: Azure Sync: Marketplace SKU update, GDC RFP deck, and MAI unified cache pricing clarification
 ## Key Facts
 
 - Jeff Denworth requested a follow-up with Microsoft regarding pricing for the MAI unified cache initiative.
+
+- A Microsoft product manager requested that VAST Data clarify pricing for the Microsoft AI Infrastructure (MAI) unified cache initiative.

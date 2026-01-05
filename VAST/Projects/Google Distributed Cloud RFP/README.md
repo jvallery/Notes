@@ -55,11 +55,15 @@ SORT due ASC
 - 2025-12-15: Internal email thread between Jason Vallery, Alon Horev, and Tomer Hagay to answer Google Distribute...
 
 - 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
+
+- 2026-01-05: Mentioned in: Azure Sync: Marketplace SKU update, GDC RFP deck, and MAI unified cache pricing clarification
 ## Key Facts
 
 - Google requested a one-hour call for VAST Data to walk through and clarify the GDC Storage RFP proposal submission, including FIPS compliance, pricing scope, SEDs, and BYOH partner options.
 
 - Jeff Denworth requested an updated deck to support the Google Distributed Cloud (GDC) RFP effort.
+
+- Jeff Denworth committed to sending an updated deck for the Google Distributed Cloud (GDC) RFP.
 ## Topics
 
 - Google Distributed Cloud (GDC) RFP follow-up questions on encryption and compliance
