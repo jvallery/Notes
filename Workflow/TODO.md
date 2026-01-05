@@ -210,3 +210,109 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 ---
 
 ---
+
+## 1) Prevent empty `participants` in generated notes
+
+**Goal:** Ensure extracted notes always include at least one participant and avoid blank `**Attendees**:` headers.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+`audit_import.py` flagged multiple notes with `participants: []` and empty `**Attendees**:` during manual vault cleanup.
+
+**Impact:** Medium - Missing participants reduces context quality and makes audits noisy.
+
+**Effort:** 2–4 hours
+
+**Tasks**
+- [ ] Update extraction to infer participants from source metadata (email headers, transcript metadata, or explicit “With/Attendees” lines).
+- [ ] Decide a safe fallback (e.g., include `Jason Vallery` when source implies the note was captured by the user).
+- [ ] Add a regression test with a fixture that previously produced `participants: []`.
+
+**Success Criteria**
+- New imports do not generate `participants: []` for transcript/meeting notes.
+- `Workflow/scripts/audit_import.py` reports zero `participants` warnings for newly ingested items.
+
+## 2) Avoid placeholder entity links like `**Account**: [[]]`
+
+**Goal:** Stop emitting placeholder entity header links and ensure account/project headers match the entity.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Dozens of notes were created with `**Account**: [[]]` / `**Project**: [[]]` even when the note lived inside an entity folder.
+
+**Impact:** Medium - Placeholder headers break link graph and reduce note readability.
+
+**Effort:** 2–3 hours
+
+**Tasks**
+- [ ] In patch/template generation, omit header entity lines when the entity is unknown instead of emitting `[[]]`.
+- [ ] Ensure entity keys are always populated for notes created inside entity folders.
+- [ ] Add tests that assert generated markdown contains no `[[]]` placeholders.
+
+**Success Criteria**
+- Grep across newly generated notes finds zero `**Account**: [[]]` and zero `**Project**: [[]]`.
+
+## 3) Fix README frontmatter duplication / YAML escaping bugs
+
+**Goal:** Ensure entity `README.md` files always have a single valid YAML frontmatter block and safe quoting.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+At least one People README contained two YAML frontmatter blocks and invalid quoting in fields (breaking manifest scan expectations).
+
+**Impact:** Medium - Invalid README frontmatter breaks manifests and entity resolution.
+
+**Effort:** 2–4 hours
+
+**Tasks**
+- [ ] Identify the code path that can create duplicated frontmatter blocks (likely apply/patch README writes).
+- [ ] Add a regression test for a README containing quotes (e.g., organization names) and ensure YAML remains valid.
+- [ ] Add an audit check: README must start with exactly one frontmatter block.
+
+**Success Criteria**
+- `manifest_sync.py sync` succeeds without skipping any README due to YAML errors.
+- No README contains multiple frontmatter blocks.
+
+## 4) Improve entity resolution for similar names (e.g., Kanchan vs Akanksha)
+
+**Goal:** Prevent cross-contamination of facts/tasks between similarly named people and stabilize alias handling.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Facts/tasks for Akanksha Mehrotra were mistakenly attributed in Kanchan Mehrotra context during import/README generation.
+
+**Impact:** Medium - Misattribution reduces trust in entity READMEs and prompts.
+
+**Effort:** 1–2 hours
+
+**Tasks**
+- [ ] Add/extend alias mappings for nicknames/transcript variants.
+- [ ] Add a unit test demonstrating correct resolution for both names.
+
+**Success Criteria**
+- Imports referencing “Akanksha” map to `Akanksha Mehrotra`; “Kanchan/Koncha” maps to `Kanchan Mehrotra`.
+- No People README contains facts belonging to the other person.
+
+## 5) Integrate post-import normalization into the pipeline
+
+**Goal:** Make post-import cleanup automatic and idempotent as part of the ingest flow.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+Multiple cleanup passes were required after import (frontmatter normalization, header placeholders cleanup).
+
+**Impact:** High - Manual cleanup is error-prone and will recur on full reimports.
+
+**Effort:** 1–2 hours
+
+**Tasks**
+- [ ] Add a post-apply phase to run normalization helpers (frontmatter + header cleanup) on updated files.
+- [ ] Document the post-import cleanup phase in `Workflow/UNIFIED-PIPELINE.md`.
+
+**Success Criteria**
+- A fresh ingest run yields entity folders that pass `audit_import.py` without manual intervention.
