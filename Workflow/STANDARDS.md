@@ -389,6 +389,11 @@ Met with [[Jeff Denworth]] to discuss...
 - [x] Send meeting notes @Myself 📅 2026-01-03 ✅ 2026-01-03 #task
 ```
 
+### 6.6 AI-Proposed Tasks
+
+- AI/automation-created tasks must be tagged `#task #proposed #auto`.
+- Accept a task by removing `#proposed`. Deleting it rejects it.
+
 ---
 
 ## 7. Template Conventions

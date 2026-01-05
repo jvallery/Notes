@@ -95,6 +95,7 @@ git log --oneline -5
 **Rules**
 
 - Always tag actionable tasks with `#task` so they appear in dashboards.
+- AI-generated tasks must also include `#proposed #auto`; removing `#proposed` = you accepted the task.
 - Prefer creating tasks under `VAST/` (work) or `Personal/` (personal) so the dashboard can group them cleanly.
 - Do not create or use `{Domain}/_Tasks/` folders; legacy task lists were archived under `Inbox/_archive/`.
 - Legacy manual list is preserved in `TASKS_BACKLOG.md` (referenced from `TASKS.md`).
@@ -173,6 +174,52 @@ The agent loads context from these files to understand the vault:
 4. **`Workflow/schemas/`** - JSON schemas
    - `extraction.schema.json` (ExtractionV1)
    - `changeplan.schema.json` (ChangePlan)
+
+5. **`Workflow/EMAIL-INGESTION.md`** - Email processing pipeline
+   - 6-step email processing workflow
+   - Entity extraction and vault patching
+   - Draft response generation
+   - Email address as primary key for people lookup
+
+## Email Processing
+
+**Quick Reference**: See [Workflow/EMAIL-INGESTION.md](Workflow/EMAIL-INGESTION.md) for full documentation.
+
+### 6-Step Pipeline
+
+```
+DEDUPE → EXTRACT → PATCH → GATHER → DRAFT → ARCHIVE
+```
+
+1. **DEDUPE**: Remove duplicate email exports
+2. **EXTRACT**: AI extraction of contacts, tasks, facts
+3. **PATCH**: Update vault READMEs with knowledge
+4. **GATHER**: Collect related READMEs for context
+5. **DRAFT**: Generate AI response with vault context
+6. **ARCHIVE**: Move to `Sources/Email/YYYY/`
+
+### Commands
+
+```bash
+# Full pipeline
+python scripts/process_emails.py
+
+# Knowledge capture only (phases 1-3)
+python scripts/process_emails.py --phase 1-3
+
+# Response generation only (phases 4-6)
+python scripts/process_emails.py --phase 4-6
+
+# Dry-run
+python scripts/process_emails.py --dry-run
+```
+
+### Entity Indexing
+
+- **Email addresses** are used as primary keys when available
+- **Single names** with email are allowed (email = stable index)
+- **Single names** without email are skipped (ambiguous)
+- **Multi-email** people should list all addresses in frontmatter
 
 ---
 

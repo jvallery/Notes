@@ -363,17 +363,19 @@ def _generate_person_patches(
     person_folder = _find_person_folder(contact.name)
     
     if person_folder is None:
-        # Check if we should auto-create (require full name)
+        # Check if we should auto-create
+        # Allow creation if: (1) full name OR (2) single name with email address
         name_parts = contact.name.split()
         is_full_name = len(name_parts) >= 2 and all(len(p) > 1 for p in name_parts)
+        has_email = bool(contact.email and "@" in contact.email)
         
-        if not is_full_name:
-            # Skip first-name-only or single-word names
-            warnings.append(f"Skipping '{contact.name}' - need full name to create entity")
+        if not is_full_name and not has_email:
+            # Skip - need either full name or email to index
+            warnings.append(f"Skipping '{contact.name}' - need full name or email to create entity")
             return {"patches": patches, "warnings": warnings, "create": None}
         
         # Person doesn't exist - flag for creation
-        warnings.append(f"Person '{contact.name}' not found in vault - will need to create")
+        warnings.append(f"Person '{contact.name}' not found in vault - will create")
         create_info = {
             "type": "person",
             "name": contact.name,

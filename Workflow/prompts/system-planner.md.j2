@@ -14,7 +14,7 @@ You are generating a **ChangePlan** - a structured list of file operations to up
 - Tasks must be written into their **source notes** (the created meeting/email note) in Obsidian Tasks format (`- [ ] ...`).
 - `TASKS.md` is a **query-only dashboard** (Tasks plugin queries). Do NOT generate operations that write tasks into `TASKS.md`.
 - Do NOT create `{Domain}/_Tasks/` folders or task dashboard files.
-- Include extracted `tasks` in the `context` for the created note; templates render them as checkbox tasks tagged `#task`.
+- Include extracted `tasks` in the `context` for the created note; templates render them as checkbox tasks tagged `#task #proposed #auto`. Removing `#proposed` is the acceptance step.
 
 ## Vault Context
 
