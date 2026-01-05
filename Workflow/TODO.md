@@ -448,18 +448,20 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Finish MANIFEST-ENRICHMENT.md to match current CLIs and levels.
 
-**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 02:15)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Low
 
 **Effort:** 30 minutes
 
 **Tasks**
-- [ ] Align doc with enrich_person/customer CLIs and L0–L4 examples
-- [ ] Add troubleshooting and common workflows
+- [x] Align doc with enrich_person/customer CLIs and L0–L4 examples
+- [x] Add troubleshooting and common workflows
 
 **Success Criteria**
 - MANIFEST-ENRICHMENT.md enables a new user to run enrichment end-to-end without assistance
+
+**Notes:** MANIFEST-ENRICHMENT.md now reflects unified ingest + caching, new customer columns, `manifest_sync.py enrich --entity {people|customers}`, `enrich_customer.py`, enrichment levels, and added quick workflows/troubleshooting.
 
 ---
 

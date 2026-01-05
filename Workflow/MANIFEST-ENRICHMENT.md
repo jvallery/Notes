@@ -1,8 +1,8 @@
 # Manifest & Enrichment System
 
-> **Version**: 1.0  
-> **Last Updated**: 2026-01-04  
-> **Entry Points**: `manifest_sync.py`, `enrich_person.py`
+> **Version**: 1.1  
+> **Last Updated**: 2026-01-05  
+> **Entry Points**: `scripts/manifest_sync.py`, `scripts/enrich_person.py`, `scripts/enrich_customer.py`
 
 ## Overview
 
@@ -63,11 +63,10 @@ Our implementation:
 
 | Script | Purpose | Uses Glossary |
 |--------|---------|---------------|
-| `extract.py` | Transcript extraction | ✅ Compact |
-| `plan.py` | ChangePlan generation | ✅ Compact |
-| `ingest_emails.py` | Email extraction | ✅ Compact |
-| `draft_responses.py` | Email drafting | ✅ Full |
-| `entity_discovery.py` | Entity classification | ✅ Compact |
+| `scripts/ingest.py` (pipeline/extract) | Unified ingest (email/transcript/document/voice) | ✅ Compact |
+| `pipeline/extract.py` | Core extractor (used by ingest CLI) | ✅ Compact |
+| `scripts/draft_responses.py` | Email drafting | ✅ Full |
+| `scripts/entity_discovery.py` | Entity classification | ✅ Compact |
 
 ### Verifying Cache Hits
 
@@ -86,9 +85,9 @@ print(f"Cached: {cached} / {response.usage.prompt_tokens} tokens")
 
 | Manifest | Path | Columns |
 |----------|------|---------|
-| People | `VAST/People/_MANIFEST.md` | Name, Role, Company, Email, Context |
-| Projects | `VAST/Projects/_MANIFEST.md` | Name, Owner, Status, Description |
-| Customers | `VAST/Customers and Partners/_MANIFEST.md` | Name, Type, Industry, Context |
+| People | `VAST/People/_MANIFEST.md` | Name, Role, Company, Email, My Relationship, Context |
+| Projects | `VAST/Projects/_MANIFEST.md` | Name, Owner, My Role, Status, Description |
+| Customers | `VAST/Customers and Partners/_MANIFEST.md` | Name, Type, Stage, Industry, My Role, Last Contact, Context |
 
 ### Sync Flow
 
@@ -109,16 +108,21 @@ Glossary cache (Workflow/_cache/glossary.json)
 ```bash
 cd ~/Documents/Notes/Workflow && source .venv/bin/activate
 
-# Scan and report status
-python scripts/manifest_sync.py scan
+# Scan and report status (shows sparse counts)
+python scripts/manifest_sync.py scan --verbose
 
 # Update manifests from READMEs
 python scripts/manifest_sync.py sync
 
-# AI-enrich sparse entries (from README content)
-python scripts/manifest_sync.py enrich --limit 20
+# AI-enrich sparse entries from README content
+python scripts/manifest_sync.py enrich --entity people --limit 20
+python scripts/manifest_sync.py enrich --entity customers --limit 20
 
-# Rebuild glossary cache
+# Customer enrichment helper (per-account or batch)
+python scripts/enrich_customer.py "Microsoft" --from-readme
+python scripts/enrich_customer.py --all --limit 20
+
+# Rebuild glossary cache (persona + manifests)
 python scripts/manifest_sync.py build-cache
 ```
 
@@ -128,44 +132,40 @@ python scripts/manifest_sync.py build-cache
 
 ### Enrichment Levels
 
-Enrichment happens in stages, each adding more information:
+**People**
 
 | Level | Source | Data Added | Trigger |
 |-------|--------|------------|---------|
 | **L0: Stub** | Folder name only | Name | Auto on folder creation |
-| **L1: Contact** | Email extraction | Email, phone, company | Email ingestion |
-| **L2: README** | AI from README | Role, company, context | `enrich --from-readme` |
-| **L3: Web** | OpenAI web search | Bio, LinkedIn, background | `enrich --web` |
-| **L4: Deep** | Multi-source research | Full profile | `enrich --deep` |
+| **L1: Contact** | Email extraction | Email, phone, company | Ingest pipeline |
+| **L2: README** | AI from README | Role, company, context | `enrich_person.py --from-readme` or `manifest_sync.py enrich --entity people` |
+| **L3: Web** | OpenAI web search | Bio, LinkedIn, background | `enrich_person.py --web` |
+| **L4: Deep** | Multi-source research | Full profile | `enrich_person.py --deep` |
+
+**Customers / Partners**
+
+| Level | Source | Data Added | Trigger |
+|-------|--------|------------|---------|
+| **L0: Stub** | Folder name only | Name | Auto on folder creation |
+| **L1: Contact** | Frontmatter/tags | Account type, status, industry (if present) | Ingest/patch |
+| **L2: README** | AI from README | Type, Stage, Industry, My Role, Last Contact, context | `manifest_sync.py enrich --entity customers` or `enrich_customer.py` |
+| **L3–L4** | Web/Deep (TBD) | — | Not implemented |
 
 ### What We Can Extract (by level)
 
-#### L1: Contact Info (from emails)
-- Email address
-- Phone number
-- Job title (from signature)
-- Company (from signature/domain)
+#### People
+- **L1 (Contact)**: email, phone, job title, company (signature/domain)
+- **L2 (README)**: role/title, company affiliation, relationship context, areas of expertise
+- **L3 (Web)**: LinkedIn URL + summary, current role/company (verified), professional background, public bio/about, company website, notable achievements/publications
+- **L4 (Deep)**: full career history, mutual connections, recent news/mentions, company details (size/industry/funding), social links
 
-#### L2: README Context (AI inference)
-- Role/title
-- Company affiliation
-- Relationship context (how we know them)
-- Areas of expertise
-
-#### L3: Web Enrichment (OpenAI Search)
-- LinkedIn URL and profile summary
-- Current role and company (verified)
-- Professional background
-- Public bio/about
-- Company website
-- Notable achievements/publications
-
-#### L4: Deep Research
-- Full career history
-- Mutual connections
-- Recent news/mentions
-- Company details (size, industry, funding)
-- Social media presence
+#### Customers / Partners
+- Account type (customer/partner/prospect)
+- Stage/status (Active, Prospect, Churn Risk, Blocked)
+- Industry/vertical
+- My role/ownership (account-owner, technical-lead, support, stakeholder)
+- Last contact date
+- 1–2 sentence context from README
 
 ### Data Model
 
@@ -201,6 +201,23 @@ tags:
   - company/techcorp
   - needs-review
 ---
+
+# Customer README frontmatter (enriched)
+---
+type: customer
+title: "Contoso"
+account_type: customer
+status: Active
+industry: "Cloud / AI"
+my_role: account-owner
+last_contact: "2026-01-05"
+last_enriched: "2026-01-05"
+enrichment_level: 2
+tags:
+  - type/customer
+  - status/active
+  - industry/cloud
+---
 ```
 
 ### Triggering Enrichment
@@ -208,20 +225,18 @@ tags:
 #### Manual CLI
 
 ```bash
-# Enrich from README content (L2) - uses existing README text
+# People
 python scripts/enrich_person.py "John Smith" --from-readme
-
-# Enrich from web (L3) - uses OpenAI search
 python scripts/enrich_person.py "John Smith" --web
-
-# Deep enrichment (L4) - full research
 python scripts/enrich_person.py "John Smith" --deep
-
-# Enrich all sparse entries (batch)
 python scripts/enrich_person.py --all --level 2 --limit 20
-
-# Enrich specific company's contacts
 python scripts/enrich_person.py --company "Microsoft" --level 3
+python scripts/manifest_sync.py enrich --entity people --limit 20
+
+# Customers / Partners
+python scripts/enrich_customer.py "Microsoft" --from-readme
+python scripts/enrich_customer.py --all --limit 20
+python scripts/manifest_sync.py enrich --entity customers --limit 20
 ```
 
 #### Agent Prompt
@@ -229,25 +244,29 @@ python scripts/enrich_person.py --company "Microsoft" --level 3
 When asking an AI agent to run enrichment:
 
 ```
-Run person enrichment for [Person Name] at level [2/3/4].
+Run enrichment for [Entity] at level [2/3/4].
 
 Commands:
-- Level 2 (from README): python scripts/enrich_person.py "John Smith" --from-readme
-- Level 3 (web search): python scripts/enrich_person.py "John Smith" --web  
-- Level 4 (deep): python scripts/enrich_person.py "John Smith" --deep
+- People (L2): python scripts/enrich_person.py "John Smith" --from-readme
+- People (L3): python scripts/enrich_person.py "John Smith" --web  
+- People (L4): python scripts/enrich_person.py "John Smith" --deep
+- Customers (L2): python scripts/enrich_customer.py "Microsoft" --from-readme
 
-For batch enrichment of all sparse entries:
-python scripts/enrich_person.py --all --level 3 --limit 20
+For batch enrichment of sparse entries:
+python scripts/enrich_person.py --all --level 2 --limit 20
+python scripts/enrich_customer.py --all --limit 20
 ```
 
 #### Automatic Triggers
 
 | Event | Enrichment Triggered |
 |-------|---------------------|
-| New person folder created | L0 (stub) |
-| Email processed with contact | L1 (contact info patched) |
-| `manifest_sync.py enrich` | L2 (from README) |
-| Manual `--web` request | L3 (web search) |
+| New person/customer folder created | L0 (stub) |
+| Email processed with contact | L1 (contact info patched for people) |
+| `scripts/ingest.py` patches README | Manifest sync for people |
+| `manifest_sync.py enrich --entity people` | L2 (from README) |
+| `manifest_sync.py enrich --entity customers` | L2 (from README) |
+| Manual `--web` request | L3 (people only) |
 
 ---
 
@@ -268,19 +287,18 @@ When enrichment adds new data:
 
 ### Patch-to-Manifest Hook
 
-During email ingestion (`ingest_emails.py`), when patching a person's README:
+Unified ingest (`scripts/ingest.py`) calls `sync_person_to_manifest` / `sync_customer_to_manifest` after patches land so manifests + glossary stay fresh. If you apply frontmatter updates in another path, call the same helpers:
 
 ```python
-# After applying patches to README...
-if "frontmatter" in patch and any(k in frontmatter_updates 
-    for k in ["role", "company", "email", "title"]):
-    # Trigger manifest sync for this person
-    sync_person_to_manifest(person_name, frontmatter_updates)
+sync_person_to_manifest("John Smith", updates, rebuild_cache=True)
+sync_customer_to_manifest("Microsoft", updates, rebuild_cache=True)
 ```
 
 ---
 
 ## Web Enrichment Details
+
+> People only; customer/partner web enrichment is not wired yet.
 
 ### OpenAI Search API
 
@@ -317,9 +335,10 @@ For best results, we search with context:
 
 | File | Purpose |
 |------|---------|
-| `manifest_sync.py` | Manifest scan/sync/enrich/cache CLI |
-| `enrich_person.py` | Person enrichment CLI (to be created) |
-| `cached_prompts.py` | Glossary loading for prompt caching |
+| `scripts/manifest_sync.py` | Manifest scan/sync/enrich/cache CLI |
+| `scripts/enrich_person.py` | People enrichment CLI (L2–L4) |
+| `scripts/enrich_customer.py` | Customer/partner enrichment CLI (L2) |
+| `scripts/utils/cached_prompts.py` | Glossary loading for prompt caching |
 | `_MANIFEST.md` | Per-folder manifest tables |
 | `_cache/glossary.json` | Combined glossary cache |
 | `_cache/web_enrichment/` | Web search result cache |
@@ -333,13 +352,22 @@ For best results, we search with context:
 - Glossary cache rebuilt when patches applied
 
 ### Weekly
-- Run `manifest_sync.py scan` to check sparse entry count
-- Run `manifest_sync.py enrich --limit 50` for batch L2 enrichment
+- Run `scripts/manifest_sync.py scan` to check sparse entry count
+- Run `scripts/manifest_sync.py enrich --entity people --limit 50`
+- Run `scripts/manifest_sync.py enrich --entity customers --limit 50`
 
 ### Monthly
 - Review `#needs-review` tagged entities
 - Run L3 web enrichment on key contacts
 - Audit and merge duplicate entities
+
+## Common Workflows
+
+- **Resync everything after pipeline changes:** `python scripts/manifest_sync.py sync && python scripts/manifest_sync.py build-cache`
+- **Batch fill sparse people:** `python scripts/manifest_sync.py enrich --entity people --limit 20`
+- **Batch fill sparse customers:** `python scripts/manifest_sync.py enrich --entity customers --limit 20`
+- **Enrich a single account deeply:** `python scripts/enrich_person.py "Name" --deep` (people) or `python scripts/enrich_customer.py "Account" --from-readme` (customers)
+- **Check sparse counts:** `python scripts/manifest_sync.py scan --verbose`
 
 ---
 
