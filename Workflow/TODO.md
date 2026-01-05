@@ -379,7 +379,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Replay ingestion to fix past misrouted patches and fill empty Key Facts/Topics/Decisions.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 01:50)
 
 **Impact:** High
 
