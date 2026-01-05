@@ -1,0 +1,104 @@
+# Glossary - VAST Data Domain Terms
+# This file is injected into extraction prompts for term normalization
+
+# Company & Product
+VAST:
+  full_name: "VAST Data"
+  definition: "Enterprise data platform company specializing in unified storage"
+  
+VAST Data:
+  aliases: ["VAST", "vastdata"]
+  definition: "Enterprise data platform company"
+
+# Azure & Microsoft
+MAI:
+  full_name: "Microsoft AI Infrastructure"
+  definition: "Microsoft's AI compute infrastructure initiative"
+  
+Azure Marketplace:
+  aliases: ["ACMP", "Marketplace"]
+  definition: "Microsoft's cloud marketplace for enterprise software"
+
+LSv4:
+  definition: "Azure L-series storage-optimized VMs, 4th generation"
+
+LSv5:
+  definition: "Azure L-series storage-optimized VMs, 5th generation"
+
+Bifrost:
+  definition: "Microsoft internal codename for a data platform initiative"
+
+# Google Cloud
+GDC:
+  full_name: "Google Distributed Cloud"
+  definition: "Google's on-premises/edge cloud offering"
+
+GCP:
+  full_name: "Google Cloud Platform"
+  
+TPU:
+  full_name: "Tensor Processing Unit"
+  definition: "Google's custom AI accelerator chips"
+
+# NVIDIA & AI
+DGX:
+  full_name: "NVIDIA DGX"
+  definition: "NVIDIA's AI supercomputer platform"
+
+NVLink:
+  definition: "NVIDIA's high-speed GPU interconnect technology"
+
+InfiniBand:
+  aliases: ["IB"]
+  definition: "High-performance networking fabric for AI/HPC"
+
+RDMA:
+  full_name: "Remote Direct Memory Access"
+  definition: "Network protocol for direct memory access between systems"
+
+# VAST Products & Features
+OVA:
+  full_name: "Open Virtual Appliance"
+  definition: "VAST's virtual deployment format"
+
+DASE:
+  full_name: "Data Application Storage Engine"
+  definition: "VAST's storage architecture"
+
+VIP:
+  full_name: "Virtual IP"
+  definition: "VAST network configuration for failover"
+
+# Business Terms
+ROB:
+  full_name: "Rhythm of Business"
+  definition: "Regular cadence meetings for team sync"
+
+PAYGO:
+  full_name: "Pay As You Go"
+  definition: "Consumption-based pricing model"
+
+OEM:
+  full_name: "Original Equipment Manufacturer"
+  definition: "Hardware partnership model"
+
+ODM:
+  full_name: "Original Design Manufacturer"
+  definition: "Contract manufacturing partner"
+
+GTM:
+  full_name: "Go-To-Market"
+  definition: "Sales and marketing strategy"
+
+# People Shortcuts (map to full names)
+Jeff:
+  canonical: "Jeff Denworth"
+  
+Jonsi:
+  canonical: "Jonsi Stephenson"
+
+Lior:
+  canonical: "Lior Genzel"
+
+Tomer:
+  canonical: "Tomer Hagay"

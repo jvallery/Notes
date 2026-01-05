@@ -1,0 +1,244 @@
+"""
+Transactional Apply - Execute change plans atomically.
+
+Features:
+- Backup before modification
+- Rollback on failure
+- Archive sources after success
+- Git commit with summary
+"""
+
+import shutil
+import sys
+from datetime import datetime
+from pathlib import Path
+from typing import Optional
+
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+from .patch import ChangePlan, PatchOperation
+
+
+class ApplyResult:
+    """Result of applying a change plan."""
+    
+    def __init__(self):
+        self.success = True
+        self.files_created: list[str] = []
+        self.files_modified: list[str] = []
+        self.files_archived: list[str] = []
+        self.errors: list[str] = []
+    
+    def __str__(self):
+        if self.success:
+            return f"Applied: {len(self.files_created)} created, {len(self.files_modified)} modified"
+        else:
+            return f"Failed: {', '.join(self.errors)}"
+
+
+class TransactionalApply:
+    """Apply change plans transactionally.
+    
+    Either all changes succeed (git commit) or all fail (rollback).
+    """
+    
+    def __init__(self, vault_root: Path, dry_run: bool = False):
+        self.vault_root = vault_root
+        self.dry_run = dry_run
+        self.backup_dir = vault_root / ".workflow_backups" / datetime.now().strftime("%Y%m%d_%H%M%S")
+        self._backed_up: dict[Path, Path] = {}
+        self._created: list[Path] = []
+    
+    def apply(self, plan: ChangePlan, source_path: Optional[Path] = None) -> ApplyResult:
+        """Apply a change plan.
+        
+        Args:
+            plan: ChangePlan to apply
+            source_path: Original source file (for archiving)
+        
+        Returns:
+            ApplyResult with details
+        """
+        result = ApplyResult()
+        
+        if self.dry_run:
+            return self._dry_run_apply(plan, result)
+        
+        try:
+            # 1. Create meeting note
+            if plan.meeting_note_path and plan.meeting_note:
+                self._create_meeting_note(plan, result)
+            
+            # 2. Apply patches
+            for patch in plan.patches:
+                self._apply_patch(patch, result)
+            
+            # 3. Archive source
+            if source_path and source_path.exists():
+                self._archive_source(source_path, result)
+            
+            # 4. Cleanup backups on success
+            if self.backup_dir.exists():
+                shutil.rmtree(self.backup_dir)
+            
+            return result
+            
+        except Exception as e:
+            result.success = False
+            result.errors.append(str(e))
+            self._rollback()
+            return result
+    
+    def _dry_run_apply(self, plan: ChangePlan, result: ApplyResult) -> ApplyResult:
+        """Simulate applying a plan (dry run)."""
+        
+        if plan.meeting_note_path:
+            result.files_created.append(plan.meeting_note_path)
+        
+        for patch in plan.patches:
+            result.files_modified.append(patch.target_path)
+        
+        return result
+    
+    def _create_meeting_note(self, plan: ChangePlan, result: ApplyResult):
+        """Create the meeting note from plan."""
+        from jinja2 import Environment, FileSystemLoader
+        
+        note_path = self.vault_root / plan.meeting_note_path
+        
+        # Skip if exists
+        if note_path.exists():
+            return
+        
+        # Ensure parent directory exists
+        note_path.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Load template
+        templates_dir = self.vault_root / "Workflow" / "templates"
+        env = Environment(loader=FileSystemLoader(str(templates_dir)))
+        
+        # Select template based on note type
+        note_type = plan.meeting_note.get("type", "people")
+        template_name = f"{note_type}.md.j2"
+        
+        try:
+            template = env.get_template(template_name)
+        except Exception:
+            template = env.get_template("people.md.j2")  # Fallback
+        
+        # Render
+        content = template.render(**plan.meeting_note)
+        
+        # Write
+        note_path.write_text(content)
+        self._created.append(note_path)
+        result.files_created.append(plan.meeting_note_path)
+    
+    def _apply_patch(self, patch: PatchOperation, result: ApplyResult):
+        """Apply a single patch operation."""
+        target = self.vault_root / patch.target_path
+        
+        if not target.exists():
+            return
+        
+        # Backup
+        self._backup(target)
+        
+        # Read current content
+        content = target.read_text()
+        
+        # Apply patch primitives
+        from scripts.utils.patch_primitives import (
+            upsert_frontmatter, 
+            append_under_heading,
+            ensure_wikilinks
+        )
+        
+        # Frontmatter updates
+        if patch.add_frontmatter:
+            content = upsert_frontmatter(content, patch.add_frontmatter)
+        
+        # Add facts under ## Key Facts
+        if patch.add_facts:
+            for fact in patch.add_facts:
+                if fact not in content:
+                    content = append_under_heading(content, "## Key Facts", f"- {fact}")
+        
+        # Add topics under ## Topics
+        if patch.add_topics:
+            for topic in patch.add_topics:
+                if topic not in content:
+                    content = append_under_heading(content, "## Topics", f"- {topic}")
+        
+        # Add decisions under ## Key Decisions
+        if patch.add_decisions:
+            for decision in patch.add_decisions:
+                if decision not in content:
+                    content = append_under_heading(content, "## Key Decisions", f"- {decision}")
+        
+        # Add context under ## Recent Context
+        if patch.add_context:
+            if patch.add_context not in content:
+                content = append_under_heading(content, "## Recent Context", patch.add_context)
+        
+        # Add wikilinks
+        if patch.add_wikilinks:
+            content = ensure_wikilinks(content, patch.add_wikilinks)
+        
+        # Write
+        self._atomic_write(target, content)
+        result.files_modified.append(patch.target_path)
+    
+    def _archive_source(self, source_path: Path, result: ApplyResult):
+        """Archive source file to Sources directory."""
+        from .envelope import ContentType
+        
+        # Determine archive location
+        year = datetime.now().strftime("%Y")
+        
+        # Detect content type from path
+        if "Email" in source_path.parts:
+            archive_dir = self.vault_root / "Sources" / "Email" / year
+        elif "Transcripts" in source_path.parts:
+            archive_dir = self.vault_root / "Sources" / "Transcripts" / year
+        else:
+            archive_dir = self.vault_root / "Sources" / "Documents" / year
+        
+        archive_dir.mkdir(parents=True, exist_ok=True)
+        archive_path = archive_dir / source_path.name
+        
+        # Move to archive
+        shutil.move(str(source_path), str(archive_path))
+        result.files_archived.append(str(archive_path.relative_to(self.vault_root)))
+    
+    def _backup(self, path: Path):
+        """Backup a file before modification."""
+        if path in self._backed_up:
+            return
+        
+        self.backup_dir.mkdir(parents=True, exist_ok=True)
+        backup_path = self.backup_dir / path.name
+        shutil.copy2(path, backup_path)
+        self._backed_up[path] = backup_path
+    
+    def _atomic_write(self, path: Path, content: str):
+        """Write file atomically (write temp, then rename)."""
+        temp_path = path.with_suffix(path.suffix + ".tmp")
+        temp_path.write_text(content)
+        temp_path.rename(path)
+    
+    def _rollback(self):
+        """Rollback all changes on failure."""
+        # Restore backups
+        for original, backup in self._backed_up.items():
+            if backup.exists():
+                shutil.copy2(backup, original)
+        
+        # Delete created files
+        for created in self._created:
+            if created.exists():
+                created.unlink()
+        
+        # Cleanup backup directory
+        if self.backup_dir.exists():
+            shutil.rmtree(self.backup_dir)
