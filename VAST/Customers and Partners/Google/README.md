@@ -117,6 +117,8 @@ not done
 - 2025-12-22: Mentioned in: Lior Genzel requests access to Google Doc: VAST and Azure Integration.docx
 
 - 2026-01-02: Mentioned in: Comments on 'VAST and Azure Integration.docx' about cold data tiering format and supply-chain messaging
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
 ## Key Facts
 
 - The presentation share notification was sent from Google Slides via drive-shares-dm-noreply@google.com.
@@ -130,6 +132,8 @@ not done
 - The share request email was an automated notification sent from Google Drive (drive-shares-dm-noreply@google.com).
 
 - The notification email for document comments was sent via Google Docs from comments-noreply@docs.google.com.
+
+- Google is the external party associated with the Google Distributed Cloud (GDC) RFP that requires an updated deck.
 ## Topics
 
 - Google Distributed Cloud

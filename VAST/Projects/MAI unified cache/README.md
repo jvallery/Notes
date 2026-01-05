@@ -36,5 +36,7 @@ SORT due ASC
 
 ## Recent Context
 
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
 ## Key Facts
 
+- Jeff Denworth requested a follow-up with Microsoft regarding pricing for the MAI unified cache initiative.

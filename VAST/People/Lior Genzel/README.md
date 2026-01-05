@@ -2,7 +2,7 @@
 company: VAST Data
 created: '2026-01-03'
 email: lior.genzel@vastdata.com
-last_contact: '2025-12-22'
+last_contact: '2026-01-05'
 phone: 408 888 2102
 tags:
 - type/people
@@ -138,6 +138,8 @@ type: people
 - 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) and plan for resilient cloud-to-on-prem demo
 
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
+
+- 2026-01-05: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
 ## Key Facts
 
 - Lior Genzel is in town with the VP of PM for cloud for meetings at Microsoft.

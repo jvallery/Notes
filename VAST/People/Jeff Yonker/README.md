@@ -100,6 +100,8 @@ SORT due ASC
 - 2026-01-01: Mentioned in: Jeff Denworth update: Q4 bookings to date exceed FY24 total
 
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
 ## Key Facts
 
 - Jeff Denworth is involved in the VAST and Azure Integration project.
@@ -121,6 +123,12 @@ SORT due ASC
 - Jeff Denworth sent a company update on Q4 bookings performance and historical seasonality (80% of Q4 bookings last year closed in the final month).
 
 - Jeff Denworth stated he is moving quickly to having no confidence in closing a Q1 deal with Microsoft MAI unless VAST becomes more aggressive and executes a January plan.
+
+- Jeff Denworth requested that the Azure Marketplace SKU change request be completed by Friday following the 2026-01-04 weekly status email.
+
+- Jeff Denworth requested an updated deck to support the Google Distributed Cloud (GDC) RFP effort.
+
+- Jeff Denworth requested a follow-up with Microsoft regarding pricing for the MAI unified cache initiative.
 ## Background
 
 _Career history, expertise, interests, personal details shared..._

@@ -337,6 +337,8 @@ not done
 - 2026-01-04: Karl Rautenstrauch (Microsoft Azure Storage) requested moving the Weekly VAST GTM Meeting originally...
 
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI 2EB deal risk, supply chain constraints, and January execution plan
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.
@@ -372,6 +374,8 @@ not done
 - Jeff Denworth stated Microsoft is considering HDDs for the first April delivery for MAI scale-up, and that HDD supply is also constrained.
 
 - Jonsi Stefansson stated he emailed Microsoft contacts to understand Microsoft supply chain status and platform needs, but received out-of-office replies indicating they return on January 5, 2026.
+
+- Microsoft is the external party to follow up with regarding pricing for the MAI unified cache initiative.
 ## Topics
 
 - introduction
