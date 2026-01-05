@@ -1,1 +1,54 @@
-# Re: Introduction for FP&A Director role.- Exported: 2026-01-04 17:25:30- Messages: 2---## 2025-11-20 14:17:20 — Adem Sefa <adem.sefa@microsoft.com>**Subject:** Introduction for FP&A Director role.> Hey Jason, > > Thanks again for this bud :).  I have added Edwin my brother in law.   He will send his resume over and any introduction would be amazing :) > > Thanks so much > > Managing Director - Strategic Partnerships >  > Microsoft  > Adem.sefa@microsoft.com> +44 7966 282 680> > ---## 2025-11-21 05:33:15 — Edwin Trogler <edwintrogler@gmail.com>**Subject:** Re: Introduction for FP&A Director role.> Thanks for the intro, @adem.sefa@microsoft.com !> > Hi Jason,> > Great to meet you! I am currently in London visiting Adem and Vanessa until Sunday but in the meantime, I wanted to share my resume with you. Let me know if you have some time next week for a quick call. I'd love to learn more about VAST and any FP&A opportunities that may come up in Colorado.> > Take care,> Edwin> > On Thu, Nov 20, 2025 at 2:17 PM Adem Sefa <adem.sefa@microsoft.com> wrote:> Hey Jason, > > Thanks again for this bud :).  I have added Edwin my brother in law.   He will send his resume over and any introduction would be amazing :) > > Thanks so much > > Managing Director - Strategic Partnerships >  > Microsoft  > Adem.sefa@microsoft.com> +44 7966 282 680> > ---
+# Re: Introduction for FP&A Director role.
+
+- Exported: 2026-01-04 17:25:30
+- Messages: 2
+---
+
+## 2025-11-20 14:17:20 — Adem Sefa <adem.sefa@microsoft.com>
+**Subject:** Introduction for FP&A Director role.
+
+> Hey Jason, 
+> 
+> Thanks again for this bud :).  I have added Edwin my brother in law.   He will send his resume over and any introduction would be amazing :) 
+> 
+> Thanks so much 
+> 
+> Managing Director - Strategic Partnerships 
+>  
+> Microsoft  
+> Adem.sefa@microsoft.com
+> +44 7966 282 680
+> 
+> 
+
+---
+
+## 2025-11-21 05:33:15 — Edwin Trogler <edwintrogler@gmail.com>
+**Subject:** Re: Introduction for FP&A Director role.
+
+> Thanks for the intro, @adem.sefa@microsoft.com !
+> 
+> Hi Jason,
+> 
+> Great to meet you! I am currently in London visiting Adem and Vanessa until Sunday but in the meantime, I wanted to share my resume with you. Let me know if you have some time next week for a quick call. I'd love to learn more about VAST and any FP&A opportunities that may come up in Colorado.
+> 
+> Take care,
+> Edwin
+> 
+> On Thu, Nov 20, 2025 at 2:17 PM Adem Sefa <adem.sefa@microsoft.com> wrote:
+> Hey Jason, 
+> 
+> Thanks again for this bud :).  I have added Edwin my brother in law.   He will send his resume over and any introduction would be amazing :) 
+> 
+> Thanks so much 
+> 
+> Managing Director - Strategic Partnerships 
+>  
+> Microsoft  
+> Adem.sefa@microsoft.com
+> +44 7966 282 680
+> 
+> 
+
+---
+

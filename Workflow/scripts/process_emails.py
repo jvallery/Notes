@@ -113,15 +113,16 @@ def main(phase: str, dry_run: bool, verbose: bool):
         else:
             console.print("  [green]All emails already extracted[/green]")
     
-    # Phase 3: Draft Responses
+    # Phase 3: Draft Responses (with vault context)
     if phase in ["draft", "all"]:
-        console.print("\n[bold cyan]Phase 3: Draft Responses[/bold cyan]")
+        console.print("\n[bold cyan]Phase 3: Draft Responses (Context-Aware)[/bold cyan]")
         console.print("-" * 40)
         
         from draft_responses import (
             find_emails_needing_response, parse_email_metadata,
             should_draft_response, get_openai_client,
-            generate_draft_response, save_draft
+            extract_email_context, search_vault_context,
+            format_vault_context, generate_draft_response, save_draft
         )
         
         emails = find_emails_needing_response()
@@ -150,12 +151,30 @@ def main(phase: str, dry_run: bool, verbose: bool):
                 content = email_path.read_text()
                 subject = metadata.get('subject', 'email')[:40]
                 
-                console.print(f"  Drafting: {subject}...")
-                draft_body = generate_draft_response(content, metadata, client)
-                save_draft(email_path, metadata, draft_body, reason)
+                console.print(f"  [{drafts_created + 1}/{len(needs_response)}] {subject}...")
+                
+                # Step 1: Extract email context
+                extracted = extract_email_context(content, metadata, client)
+                
+                # Step 2: Search vault for relevant notes
+                vault_context = search_vault_context(extracted)
+                vault_context_str = format_vault_context(vault_context)
+                
+                # Step 3: Generate draft with full context
+                draft_body = generate_draft_response(
+                    content, metadata, client,
+                    extracted_context=extracted,
+                    vault_context=vault_context_str if vault_context_str else None
+                )
+                
+                save_draft(
+                    email_path, metadata, draft_body, reason,
+                    extracted_context=extracted,
+                    vault_context_summary=vault_context_str if vault_context_str else None
+                )
                 drafts_created += 1
             
-            console.print(f"  [green]Created {drafts_created} draft(s) in Outbox/[/green]")
+            console.print(f"  [green]Created {drafts_created} context-aware draft(s) in Outbox/[/green]")
             results["draft"]["created"] = drafts_created
         elif needs_response:
             console.print("  [dim]Would create drafts for these emails[/dim]")

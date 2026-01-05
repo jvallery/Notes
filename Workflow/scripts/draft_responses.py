@@ -1,8 +1,14 @@
 #!/usr/bin/env python3
 """
-Email Response Draft Generator
+Email Response Draft Generator with Vault Context
 
-Generates AI-drafted responses for emails that need replies.
+Generates AI-drafted responses using a 3-step process:
+
+1. EXTRACT - Analyze email for topics, people, questions, action items
+2. SEARCH - Find relevant notes in vault (people, projects, tasks, history)
+3. GENERATE - Draft response using email + vault context
+
+This ensures responses are grounded in existing knowledge and relationships.
 
 When to generate a draft:
 - Email has a question directed at the user
@@ -27,17 +33,349 @@ import re
 import sys
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict, Any
 
 import click
 from rich.console import Console
 from rich.panel import Panel
+from rich.table import Table
 
 sys.path.insert(0, str(Path(__file__).parent))
 from utils import load_config, get_model_config, vault_root, workflow_root
 
 
 console = Console()
+
+
+# =============================================================================
+# STEP 1: EXTRACT - Analyze email for context
+# =============================================================================
+
+def extract_email_context(email_content: str, metadata: dict, client) -> dict:
+    """
+    Step 1: Extract structured context from the email.
+    
+    Returns dict with:
+    - topics: List of topics/subjects being discussed
+    - people: List of people mentioned or involved
+    - companies: List of companies/organizations mentioned
+    - questions: Specific questions being asked
+    - action_items: Requested actions or commitments
+    - urgency: low/medium/high
+    - summary: Brief summary of what the email is about
+    """
+    
+    model_config = get_model_config("extraction")
+    
+    system_prompt = """You are analyzing an email to extract structured context for drafting a response.
+
+Extract the following as JSON:
+{
+    "topics": ["list of main topics/subjects discussed"],
+    "people": ["list of people mentioned by name"],
+    "companies": ["list of companies/organizations mentioned"],
+    "questions": ["specific questions being asked that need answers"],
+    "action_items": ["requested actions or commitments"],
+    "urgency": "low|medium|high",
+    "summary": "1-2 sentence summary of what this email needs"
+}
+
+Be specific - extract actual names, companies, and concrete topics.
+Return ONLY valid JSON, no markdown fences."""
+
+    user_prompt = f"""Analyze this email:
+
+FROM: {metadata.get('sender', 'Unknown')} <{metadata.get('sender_email', '')}>
+SUBJECT: {metadata.get('subject', '')}
+
+{email_content[:6000]}"""
+
+    try:
+        response = client.chat.completions.create(
+            model=model_config.get("model", "gpt-4o-mini"),
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=0.0,
+        )
+        
+        result = response.choices[0].message.content.strip()
+        
+        # Parse JSON
+        if result.startswith("```"):
+            result = re.sub(r'^```\w*\n?', '', result)
+            result = re.sub(r'\n?```$', '', result)
+        
+        return json.loads(result)
+    
+    except json.JSONDecodeError as e:
+        console.print(f"[yellow]JSON parse error in extraction: {e}[/yellow]")
+        return {
+            "topics": [],
+            "people": [metadata.get("sender", "")],
+            "companies": [],
+            "questions": [],
+            "action_items": [],
+            "urgency": "medium",
+            "summary": metadata.get("subject", "Email requiring response")
+        }
+    except Exception as e:
+        console.print(f"[red]Extraction failed: {e}[/red]")
+        return {
+            "topics": [],
+            "people": [metadata.get("sender", "")],
+            "companies": [],
+            "questions": [],
+            "action_items": [],
+            "urgency": "medium",
+            "summary": metadata.get("subject", "Email requiring response")
+        }
+
+
+# =============================================================================
+# STEP 2: SEARCH - Find relevant vault context
+# =============================================================================
+
+def search_vault_context(extracted: dict, max_results: int = 10) -> dict:
+    """
+    Step 2: Search the vault for relevant notes based on extracted context.
+    
+    Searches for:
+    - People READMEs and recent notes
+    - Customer/Partner READMEs
+    - Project READMEs
+    - Related open tasks
+    
+    Returns dict with discovered context organized by type.
+    """
+    
+    vault = vault_root()
+    context = {
+        "people": [],
+        "customers": [],
+        "projects": [],
+        "tasks": [],
+        "recent_notes": []
+    }
+    
+    # Normalize search terms
+    people_names = [p.lower().strip() for p in extracted.get("people", []) if p]
+    company_names = [c.lower().strip() for c in extracted.get("companies", []) if c]
+    topics = [t.lower().strip() for t in extracted.get("topics", []) if t]
+    
+    # Search People
+    people_dir = vault / "VAST" / "People"
+    if people_dir.exists():
+        for person_folder in people_dir.iterdir():
+            if not person_folder.is_dir():
+                continue
+            person_name = person_folder.name.lower()
+            
+            # Check if this person matches any extracted names
+            if any(name in person_name or person_name in name for name in people_names):
+                readme = person_folder / "README.md"
+                if readme.exists():
+                    content = readme.read_text()
+                    # Extract key sections
+                    context["people"].append({
+                        "name": person_folder.name,
+                        "path": str(readme.relative_to(vault)),
+                        "summary": _extract_section(content, "## Profile", 500)
+                            or _extract_section(content, "## About", 500)
+                            or content[:500],
+                        "recent_context": _extract_section(content, "## Recent Context", 800),
+                        "key_facts": _extract_section(content, "## Key Facts", 500)
+                    })
+                    
+                    # Also get most recent note
+                    notes = sorted([f for f in person_folder.glob("*.md") 
+                                  if f.name != "README.md"], 
+                                  key=lambda x: x.name, reverse=True)
+                    if notes:
+                        recent_note = notes[0]
+                        context["recent_notes"].append({
+                            "path": str(recent_note.relative_to(vault)),
+                            "name": recent_note.name,
+                            "preview": recent_note.read_text()[:1000]
+                        })
+    
+    # Search Customers and Partners
+    customers_dir = vault / "VAST" / "Customers and Partners"
+    if customers_dir.exists():
+        for customer_folder in customers_dir.iterdir():
+            if not customer_folder.is_dir():
+                continue
+            customer_name = customer_folder.name.lower()
+            
+            if any(name in customer_name or customer_name in name for name in company_names):
+                readme = customer_folder / "README.md"
+                if readme.exists():
+                    content = readme.read_text()
+                    context["customers"].append({
+                        "name": customer_folder.name,
+                        "path": str(readme.relative_to(vault)),
+                        "summary": _extract_section(content, "## Overview", 500)
+                            or _extract_section(content, "## About", 500)
+                            or content[:500],
+                        "key_contacts": _extract_section(content, "## Key Contacts", 500),
+                        "recent_context": _extract_section(content, "## Recent Context", 800)
+                    })
+    
+    # Search Projects
+    projects_dir = vault / "VAST" / "Projects"
+    if projects_dir.exists():
+        for project_folder in projects_dir.iterdir():
+            if not project_folder.is_dir():
+                continue
+            project_name = project_folder.name.lower()
+            
+            # Match projects by topic or company name
+            if any(topic in project_name or project_name in topic for topic in topics + company_names):
+                readme = project_folder / "README.md"
+                if readme.exists():
+                    content = readme.read_text()
+                    context["projects"].append({
+                        "name": project_folder.name,
+                        "path": str(readme.relative_to(vault)),
+                        "summary": _extract_section(content, "## Overview", 500)
+                            or _extract_section(content, "## About", 500)
+                            or content[:500],
+                        "status": _extract_section(content, "## Status", 300),
+                        "open_tasks": _extract_section(content, "## Open Tasks", 500)
+                    })
+    
+    # Search for related open tasks across vault
+    # Look for tasks mentioning extracted people or topics
+    all_search_terms = people_names + company_names + topics
+    if all_search_terms:
+        context["tasks"] = _search_open_tasks(vault, all_search_terms, max_tasks=5)
+    
+    return context
+
+
+def _extract_section(content: str, heading: str, max_chars: int) -> Optional[str]:
+    """Extract content under a specific heading."""
+    
+    lines = content.split('\n')
+    heading_level = heading.count('#')
+    heading_text = heading.lstrip('# ').strip().lower()
+    
+    in_section = False
+    section_lines = []
+    
+    for line in lines:
+        if line.strip().lower().startswith('#'):
+            # Check if this is our heading
+            if heading_text in line.lower():
+                in_section = True
+                continue
+            # Check if we hit another heading of same or higher level
+            elif in_section:
+                current_level = len(line) - len(line.lstrip('#'))
+                if current_level <= heading_level:
+                    break
+        
+        if in_section:
+            section_lines.append(line)
+    
+    if section_lines:
+        result = '\n'.join(section_lines).strip()
+        return result[:max_chars] if len(result) > max_chars else result
+    
+    return None
+
+
+def _search_open_tasks(vault: Path, search_terms: List[str], max_tasks: int = 5) -> List[dict]:
+    """Search for open tasks mentioning search terms."""
+    
+    tasks = []
+    
+    # Look in key locations for tasks
+    search_paths = [
+        vault / "VAST" / "People",
+        vault / "VAST" / "Customers and Partners", 
+        vault / "VAST" / "Projects"
+    ]
+    
+    for search_path in search_paths:
+        if not search_path.exists():
+            continue
+            
+        for md_file in search_path.rglob("*.md"):
+            try:
+                content = md_file.read_text()
+                lines = content.split('\n')
+                
+                for i, line in enumerate(lines):
+                    # Find open task lines
+                    if line.strip().startswith('- [ ]'):
+                        task_text = line.strip()
+                        task_lower = task_text.lower()
+                        
+                        # Check if task mentions any search term
+                        if any(term in task_lower for term in search_terms):
+                            tasks.append({
+                                "file": str(md_file.relative_to(vault)),
+                                "task": task_text,
+                            })
+                            
+                            if len(tasks) >= max_tasks:
+                                return tasks
+            except Exception:
+                continue
+    
+    return tasks
+
+
+def format_vault_context(context: dict) -> str:
+    """Format discovered vault context for the LLM prompt."""
+    
+    sections = []
+    
+    if context.get("people"):
+        sections.append("## People Context")
+        for person in context["people"][:3]:  # Limit to top 3
+            sections.append(f"\n### {person['name']}")
+            if person.get("summary"):
+                sections.append(person["summary"])
+            if person.get("recent_context"):
+                sections.append(f"\n**Recent interactions:**\n{person['recent_context']}")
+            if person.get("key_facts"):
+                sections.append(f"\n**Key facts:**\n{person['key_facts']}")
+    
+    if context.get("customers"):
+        sections.append("\n## Customer/Partner Context")
+        for customer in context["customers"][:3]:
+            sections.append(f"\n### {customer['name']}")
+            if customer.get("summary"):
+                sections.append(customer["summary"])
+            if customer.get("key_contacts"):
+                sections.append(f"\n**Key contacts:**\n{customer['key_contacts']}")
+            if customer.get("recent_context"):
+                sections.append(f"\n**Recent context:**\n{customer['recent_context']}")
+    
+    if context.get("projects"):
+        sections.append("\n## Related Projects")
+        for project in context["projects"][:3]:
+            sections.append(f"\n### {project['name']}")
+            if project.get("summary"):
+                sections.append(project["summary"])
+            if project.get("status"):
+                sections.append(f"\n**Status:**\n{project['status']}")
+    
+    if context.get("tasks"):
+        sections.append("\n## Related Open Tasks")
+        for task in context["tasks"]:
+            sections.append(f"- {task['task']} (from {task['file']})")
+    
+    if context.get("recent_notes"):
+        sections.append("\n## Recent Related Notes")
+        for note in context["recent_notes"][:2]:
+            sections.append(f"\n### {note['name']}")
+            sections.append(note["preview"][:500])
+    
+    return '\n'.join(sections) if sections else ""
 
 
 def get_openai_client():
@@ -198,21 +536,42 @@ def generate_draft_response(
     email_content: str, 
     metadata: dict,
     client,
-    context: Optional[str] = None
+    extracted_context: Optional[dict] = None,
+    vault_context: Optional[str] = None
 ) -> str:
-    """Generate a draft response using AI."""
+    """
+    Step 3: Generate a draft response using email + vault context.
+    
+    This combines:
+    - The original email content
+    - Extracted email analysis (topics, questions, people)
+    - Discovered vault context (people history, project status, open tasks)
+    """
     
     model_config = get_model_config("extraction")  # Reuse extraction model config
     
     system_prompt = """You are drafting an email reply for Jason Vallery, VP of Product Management for Cloud at VAST Data.
 
+You have access to:
+1. The original email requiring a response
+2. Analysis of the email (topics, questions, people involved)
+3. Relevant context from Jason's notes (relationship history, project status, open tasks)
+
+Use this context to write a MORE INFORMED response that:
+- References relevant history or prior discussions when appropriate
+- Acknowledges ongoing work or projects mentioned
+- Responds with awareness of the relationship and past interactions
+- Connects to open tasks or commitments if relevant
+
 Your tone should be:
 - Professional but warm
 - Concise and direct
 - Helpful and solution-oriented
+- Personally informed (show you know the person/topic)
 
 Guidelines:
 - Address the sender's questions/requests directly
+- Reference relevant context naturally (don't just list facts)
 - Offer specific next steps or information
 - Keep responses focused (2-4 paragraphs typically)
 - Sign off with "Best,\\nJason" or similar
@@ -222,6 +581,7 @@ Do NOT:
 - Use excessive formality or jargon
 - Make commitments you can't verify (use "I'll check" or "I believe")
 - Include [placeholder] style brackets - write complete text
+- Awkwardly force context in - only use what's naturally relevant
 
 Return ONLY the email body text (no subject, headers, etc.)."""
 
@@ -235,8 +595,25 @@ EMAIL CONTENT:
 {email_content[:4000]}
 """
 
-    if context:
-        user_prompt += f"\n\nADDITIONAL CONTEXT:\n{context}"
+    if extracted_context:
+        user_prompt += f"""
+
+--- EMAIL ANALYSIS ---
+Topics: {', '.join(extracted_context.get('topics', []))}
+Questions to answer: {json.dumps(extracted_context.get('questions', []))}
+Action items requested: {json.dumps(extracted_context.get('action_items', []))}
+People involved: {', '.join(extracted_context.get('people', []))}
+Companies: {', '.join(extracted_context.get('companies', []))}
+Urgency: {extracted_context.get('urgency', 'medium')}
+Summary: {extracted_context.get('summary', '')}
+"""
+
+    if vault_context:
+        user_prompt += f"""
+
+--- RELEVANT CONTEXT FROM MY NOTES ---
+{vault_context}
+"""
 
     try:
         response = client.chat.completions.create(
@@ -259,7 +636,9 @@ def save_draft(
     original_file: Path,
     metadata: dict,
     draft_body: str,
-    reason: str
+    reason: str,
+    extracted_context: Optional[dict] = None,
+    vault_context_summary: Optional[str] = None
 ) -> Path:
     """Save draft response to Outbox folder."""
     
@@ -281,6 +660,10 @@ def save_draft(
         output_path = outbox / filename
         counter += 1
     
+    # Build context summary for frontmatter
+    topics = extracted_context.get("topics", []) if extracted_context else []
+    people = extracted_context.get("people", []) if extracted_context else []
+    
     # Build draft document
     content = f"""---
 status: draft
@@ -291,6 +674,9 @@ to: "{metadata.get('sender_email', '')}"
 to_name: "{metadata.get('sender', '')}"
 subject: "Re: {metadata.get('subject', '')}"
 reason: "{reason}"
+topics: {json.dumps(topics)}
+people_mentioned: {json.dumps(people)}
+vault_context_used: {bool(vault_context_summary)}
 ---
 
 # Draft Reply: {metadata.get('subject', '')}
@@ -310,6 +696,21 @@ reason: "{reason}"
 > From: {metadata.get('sender', '')} <{metadata.get('sender_email', '')}>
 > Date: {metadata.get('date', '')}
 
+"""
+
+    # Add vault context summary if we used it
+    if vault_context_summary:
+        content += f"""
+---
+
+## Vault Context Used
+
+<details>
+<summary>Context from notes that informed this draft</summary>
+
+{vault_context_summary[:2000]}
+
+</details>
 """
     
     output_path.write_text(content)
@@ -335,11 +736,15 @@ def find_emails_needing_response() -> list[Path]:
 @click.option("--dry-run", is_flag=True, help="Show what would be drafted without generating")
 @click.option("--verbose", "-v", is_flag=True, help="Show detailed analysis")
 @click.option("--force", is_flag=True, help="Draft even for emails that don't seem to need response")
-def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool):
-    """Generate draft email responses for Inbox emails."""
+@click.option("--no-context", is_flag=True, help="Skip vault context search (faster, less informed)")
+def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool, no_context: bool):
+    """Generate draft email responses using 3-step context-aware process."""
     
-    console.print("[bold blue]Email Response Draft Generator[/bold blue]")
-    console.print("=" * 50)
+    console.print(Panel.fit(
+        "[bold blue]Email Response Draft Generator[/bold blue]\n"
+        "[dim]3-step process: Extract → Search → Generate[/dim]",
+        border_style="blue"
+    ))
     
     # Find emails to process
     if single_file:
@@ -390,29 +795,81 @@ def main(single_file: Optional[str], dry_run: bool, verbose: bool, force: bool):
             console.print(f"    Reason: {reason}")
         return
     
-    # Generate drafts
+    # Generate drafts using 3-step process
     client = get_openai_client()
     drafts_created = []
     
-    console.print("\n[bold]Generating drafts...[/bold]")
+    console.print("\n[bold]Generating context-aware drafts...[/bold]")
     
     for email_path, metadata, reason in needs_draft:
         content = email_path.read_text()
+        subject = metadata.get('subject', 'email')[:50]
         
-        console.print(f"\n[cyan]Drafting reply to: {metadata.get('subject', 'email')[:50]}[/cyan]")
+        console.print(f"\n[cyan]━━━ {subject} ━━━[/cyan]")
         
-        draft_body = generate_draft_response(content, metadata, client)
-        
-        output_path = save_draft(email_path, metadata, draft_body, reason)
-        drafts_created.append(output_path)
-        
-        console.print(f"  [green]→ {output_path.name}[/green]")
+        # STEP 1: Extract email context
+        console.print("  [dim]Step 1: Extracting email context...[/dim]")
+        extracted = extract_email_context(content, metadata, client)
         
         if verbose:
-            console.print(Panel(draft_body[:500] + "..." if len(draft_body) > 500 else draft_body, 
-                               title="Draft Preview", border_style="dim"))
+            table = Table(show_header=False, box=None, padding=(0, 1))
+            table.add_column("Key", style="dim")
+            table.add_column("Value")
+            table.add_row("Topics", ", ".join(extracted.get("topics", [])[:3]))
+            table.add_row("People", ", ".join(extracted.get("people", [])[:3]))
+            table.add_row("Questions", str(len(extracted.get("questions", []))))
+            table.add_row("Urgency", extracted.get("urgency", "medium"))
+            console.print(table)
+        
+        # STEP 2: Search vault for context
+        vault_context_str = ""
+        if not no_context:
+            console.print("  [dim]Step 2: Searching vault for context...[/dim]")
+            vault_context = search_vault_context(extracted)
+            vault_context_str = format_vault_context(vault_context)
+            
+            # Count what we found
+            people_found = len(vault_context.get("people", []))
+            customers_found = len(vault_context.get("customers", []))
+            projects_found = len(vault_context.get("projects", []))
+            tasks_found = len(vault_context.get("tasks", []))
+            
+            if verbose or (people_found + customers_found + projects_found > 0):
+                console.print(f"    Found: {people_found} people, {customers_found} customers, "
+                            f"{projects_found} projects, {tasks_found} tasks")
+        else:
+            console.print("  [dim]Step 2: Skipped (--no-context)[/dim]")
+        
+        # STEP 3: Generate draft with all context
+        console.print("  [dim]Step 3: Generating draft response...[/dim]")
+        draft_body = generate_draft_response(
+            content, 
+            metadata, 
+            client,
+            extracted_context=extracted,
+            vault_context=vault_context_str if vault_context_str else None
+        )
+        
+        output_path = save_draft(
+            email_path, 
+            metadata, 
+            draft_body, 
+            reason,
+            extracted_context=extracted,
+            vault_context_summary=vault_context_str if vault_context_str else None
+        )
+        drafts_created.append(output_path)
+        
+        console.print(f"  [green]✓ Saved: {output_path.name}[/green]")
+        
+        if verbose:
+            console.print(Panel(
+                draft_body[:500] + "..." if len(draft_body) > 500 else draft_body,
+                title="Draft Preview", 
+                border_style="dim"
+            ))
     
-    console.print(f"\n[bold green]Created {len(drafts_created)} draft(s) in Outbox/[/bold green]")
+    console.print(f"\n[bold green]━━━ Created {len(drafts_created)} context-aware draft(s) in Outbox/ ━━━[/bold green]")
 
 
 if __name__ == "__main__":
