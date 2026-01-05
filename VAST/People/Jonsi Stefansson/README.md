@@ -1,17 +1,21 @@
 ---
 type: person
-name: Jonsi Stefanson
-email: comments-noreply@docs.google.com
-company: Google Docs
-title: ''
+name: Jonsi Stefansson
+email: jonsi@vastdata.com
+company: VAST Data
+title: GM of Cloud
 last_contact: '2026-01-02'
 created: '2026-01-05'
+phone_iceland: '+3546987478'
+phone_us: '+14079510436'
+aliases:
+  - Jonsi Stephenson
+  - Jonsi Stefanson
 tags:
 - type/person
-- needs-review
 ---
 
-# Jonsi Stefanson
+# Jonsi Stefansson
 
 ## Key Facts
 
