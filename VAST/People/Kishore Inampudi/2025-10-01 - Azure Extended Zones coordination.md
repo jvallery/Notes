@@ -21,7 +21,7 @@ tags:
 
 A follow-up action was captured to coordinate with Kishore Inampudi on Azure Extended Zones after A2N approval, with alignment needed on storage requirements. The task is assigned to Jason Vallery with a specified due date.
 ## Action Items
-- [ ] Coordinate with Kishore Inampudi on Azure Extended Zones once A2N is approved; align on storage needs. @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Coordinate with Kishore Inampudi on Azure Extended Zones once A2N is approved; align on storage needs. @Myself 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - Coordination on Azure Extended Zones is dependent on A2N approval.

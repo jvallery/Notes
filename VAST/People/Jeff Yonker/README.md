@@ -32,17 +32,17 @@ WHERE !completed AND contains(text, "Jeff Yonker")
 SORT due ASC
 ```
 
-- [ ] Investigate and address the complex request for enhanced visibility features for NVIDIA's DGX Cloud. @Mordechai Blaunstein ⏫ #task
+- [ ] Investigate and address the complex request for enhanced visibility features for NVIDIA's DGX Cloud. @Mordechai Blaunstein ⏫ #task #proposed
 
-- [ ] Distill down the crawl walk run in the VAST and Azure Integration proposal document. @Jason Vallery 🔼 #task
+- [ ] Distill down the crawl walk run in the VAST and Azure Integration proposal document. @Jason Vallery 🔼 #task #proposed
 
-- [ ] Get smarter on where Microsoft sits supply chain wise. @Lior Genzel and Jonsi Stefansson ⏫ #task
+- [ ] Get smarter on where Microsoft sits supply chain wise. @Lior Genzel and Jonsi Stefansson ⏫ #task #proposed
 
-- [ ] Be in Redmond immediately upon the start of the new year to start the commercial conversation. @Lior Genzel and Jonsi Stefansson 📅 2026-01-01 ⏫ #task
+- [ ] Be in Redmond immediately upon the start of the new year to start the commercial conversation. @Lior Genzel and Jonsi Stefansson 📅 2026-01-01 ⏫ #task #proposed
 
-- [ ] Have real supply chain/build conversations with Microsoft by the second week of January. @Myself 📅 2026-01-14 ⏫ #task
+- [ ] Have real supply chain/build conversations with Microsoft by the second week of January. @Myself 📅 2026-01-14 ⏫ #task #proposed
 
-- [ ] Complete paperwork during the last week of January. @Myself 📅 2026-01-28 ⏫ #task
+- [ ] Complete paperwork during the last week of January. @Myself 📅 2026-01-28 ⏫ #task #proposed
 ## Recent Context
 
 - 2025-12-21: Email re: Re: MAI & VAST: December 8th EoD update - Jeff Denworth discusses the urgency of securing supply chain resources for VAST Data's deployment pl

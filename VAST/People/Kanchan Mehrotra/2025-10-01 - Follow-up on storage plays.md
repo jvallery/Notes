@@ -21,7 +21,7 @@ tags:
 
 A follow-up was tracked to reconnect with Kanchan Mehrotra regarding storage plays and density positioning for Supercomputing (FAST) and to schedule a discussion. The item is marked complete with an explicit due date recorded.
 ## Action Items
-- [ ] Follow up with Kanchan on storage plays/density for Supercomputing (FAST) and schedule discussion. @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Follow up with Kanchan on storage plays/density for Supercomputing (FAST) and schedule discussion. @Myself 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - A follow-up regarding storage plays/density for Supercomputing (FAST) was planned and marked complete.

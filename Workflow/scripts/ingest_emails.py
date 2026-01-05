@@ -225,16 +225,22 @@ def _extract_subject(content: str) -> str:
 # STEP 2: PLAN - Generate patches for vault
 # =============================================================================
 
-def generate_patches(extraction: EmailExtraction) -> EmailChangePlan:
+def generate_patches(extraction: EmailExtraction, openai_client = None) -> EmailChangePlan:
     """
     Generate vault patches based on extraction.
     
     Creates patches to:
     - Update/create People READMEs with contact info
+    - Update/create Customer/Company READMEs (properly classified)
     - Add tasks to appropriate locations
     - Add context entries for interactions
     - Add key facts to relevant entities
     - Cross-link related entities
+    
+    Entity classification uses entity_discovery service to properly route:
+    - People → VAST/People/
+    - Companies → VAST/Customers and Partners/
+    - Projects → VAST/Projects/
     """
     
     vault = vault_root()
@@ -253,7 +259,8 @@ def generate_patches(extraction: EmailExtraction) -> EmailChangePlan:
         sender_patches = _generate_person_patches(
             sender, 
             extraction,
-            is_sender=True
+            is_sender=True,
+            openai_client=openai_client
         )
         patches.extend(sender_patches["patches"])
         warnings.extend(sender_patches["warnings"])
@@ -268,7 +275,8 @@ def generate_patches(extraction: EmailExtraction) -> EmailChangePlan:
                 contact_patches = _generate_person_patches(
                     contact,
                     extraction,
-                    is_sender=False
+                    is_sender=False,
+                    openai_client=openai_client
                 )
                 patches.extend(contact_patches["patches"])
                 warnings.extend(contact_patches["warnings"])
@@ -352,19 +360,32 @@ def _find_customer_folder(company: str) -> Optional[Path]:
 def _generate_person_patches(
     contact: ContactInfo, 
     extraction: EmailExtraction,
-    is_sender: bool
+    is_sender: bool,
+    openai_client = None
 ) -> dict:
-    """Generate patches for a person's README."""
+    """Generate patches for a person's README (or company if classified as such)."""
+    
+    from entity_discovery import discover_entity, find_or_create_entity, EntityType
     
     patches = []
     warnings = []
     create_info = None
     
+    # First check if entity already exists
     person_folder = _find_person_folder(contact.name)
+    company_folder = _find_customer_folder(contact.name) if person_folder is None else None
     
-    if person_folder is None:
+    if person_folder is not None:
+        # Existing person - use as-is
+        entity_type = EntityType.PERSON
+        entity_folder = person_folder
+    elif company_folder is not None:
+        # Existing company - use as-is
+        entity_type = EntityType.COMPANY
+        entity_folder = company_folder
+    else:
+        # New entity - use discovery service to classify
         # Check if we should auto-create
-        # Allow creation if: (1) full name OR (2) single name with email address
         name_parts = contact.name.split()
         is_full_name = len(name_parts) >= 2 and all(len(p) > 1 for p in name_parts)
         has_email = bool(contact.email and "@" in contact.email)
@@ -374,25 +395,86 @@ def _generate_person_patches(
             warnings.append(f"Skipping '{contact.name}' - need full name or email to create entity")
             return {"patches": patches, "warnings": warnings, "create": None}
         
-        # Person doesn't exist - flag for creation
-        warnings.append(f"Person '{contact.name}' not found in vault - will create")
-        create_info = {
-            "type": "person",
-            "name": contact.name,
-            "contact": contact.model_dump(),
-            "source": extraction.source_file
-        }
-        # Create the folder and README
-        vault = vault_root()
-        person_folder = vault / "VAST" / "People" / contact.name
-        person_folder.mkdir(parents=True, exist_ok=True)
+        # Build context from email for better classification
+        context = f"Email about: {extraction.subject}. {extraction.summary[:200]}"
         
-        # Create basic README
-        readme_content = _create_person_readme(contact, extraction)
-        readme_path = person_folder / "README.md"
-        if not readme_path.exists():
-            readme_path.write_text(readme_content)
-            console.print(f"  [green]Created: {person_folder.name}/README.md[/green]")
+        # Discover and classify entity
+        discovery = discover_entity(
+            name=contact.name,
+            context=context,
+            source_type="email",
+            client=openai_client
+        )
+        
+        entity_type = discovery.entity_type
+        
+        warnings.append(f"Entity '{contact.name}' classified as {entity_type.value} (confidence: {discovery.confidence:.0%})")
+        
+        # Create folder based on classification
+        vault = vault_root()
+        
+        if entity_type == EntityType.COMPANY:
+            entity_folder = vault / "VAST" / "Customers and Partners" / discovery.canonical_name
+            entity_folder.mkdir(parents=True, exist_ok=True)
+            
+            # Create company README
+            readme_content = _create_company_readme(discovery, extraction)
+            readme_path = entity_folder / "README.md"
+            if not readme_path.exists():
+                readme_path.write_text(readme_content)
+                console.print(f"  [green]Created: Customers and Partners/{entity_folder.name}/README.md[/green]")
+            
+            create_info = {
+                "type": "company",
+                "name": discovery.canonical_name,
+                "discovery": discovery.model_dump(),
+                "source": extraction.source_file
+            }
+            
+            # Return early - companies get different patch treatment
+            return _generate_company_patches_from_discovery(discovery, extraction, entity_folder)
+        
+        elif entity_type == EntityType.PROJECT:
+            entity_folder = vault / "VAST" / "Projects" / discovery.canonical_name
+            entity_folder.mkdir(parents=True, exist_ok=True)
+            
+            # Create project README
+            readme_content = _create_project_readme(discovery, extraction)
+            readme_path = entity_folder / "README.md"
+            if not readme_path.exists():
+                readme_path.write_text(readme_content)
+                console.print(f"  [green]Created: Projects/{entity_folder.name}/README.md[/green]")
+            
+            create_info = {
+                "type": "project",
+                "name": discovery.canonical_name,
+                "discovery": discovery.model_dump(),
+                "source": extraction.source_file
+            }
+            
+            # Return with basic project patches
+            return {"patches": patches, "warnings": warnings, "create": create_info}
+        
+        else:
+            # Default to person (including UNKNOWN with low confidence)
+            entity_folder = vault / "VAST" / "People" / contact.name
+            entity_folder.mkdir(parents=True, exist_ok=True)
+            
+            # Create person README (original behavior)
+            readme_content = _create_person_readme(contact, extraction)
+            readme_path = entity_folder / "README.md"
+            if not readme_path.exists():
+                readme_path.write_text(readme_content)
+                console.print(f"  [green]Created: People/{entity_folder.name}/README.md[/green]")
+            
+            create_info = {
+                "type": "person",
+                "name": contact.name,
+                "contact": contact.model_dump(),
+                "source": extraction.source_file
+            }
+        
+        person_folder = entity_folder
     
     readme_path = person_folder / "README.md"
     if not readme_path.exists():
@@ -531,7 +613,7 @@ def _generate_task_patches(task: TaskItem, extraction: EmailExtraction) -> List[
     if task.priority in priority_map:
         task_line += f" {priority_map[task.priority]}"
     
-    task_line += " #task"
+    task_line += " #task #proposed #auto"
     
     # Determine where to add the task
     if task.related_person:
@@ -588,6 +670,152 @@ tags:
 """
 
 
+def _create_company_readme(discovery, extraction: EmailExtraction) -> str:
+    """Create a new company README from entity discovery."""
+    
+    from entity_discovery import EntityDiscovery
+    
+    tags = ["type/customer", "needs-review"]
+    if discovery.industry:
+        safe_industry = discovery.industry.lower().replace(" ", "-").replace("/", "-")
+        tags.append(f"industry/{safe_industry}")
+    
+    return f"""---
+type: customer
+title: "{discovery.canonical_name}"
+created: "{datetime.now().strftime('%Y-%m-%d')}"
+last_contact: "{extraction.email_date}"
+industry: "{discovery.industry or ''}"
+website: "{discovery.website or ''}"
+company_type: "{discovery.company_type or 'customer'}"
+tags:
+  - "{tags[0]}"
+  - "{tags[1]}"
+---
+
+# {discovery.canonical_name}
+
+## Overview
+
+{discovery.description or f'Customer/partner organization discovered from email.'}
+
+## Key Contacts
+
+## Key Facts
+
+## Recent Context
+
+- {extraction.email_date}: First contact via email re: {extraction.subject[:50]}
+
+## Open Tasks
+
+## Related
+
+"""
+
+
+def _create_project_readme(discovery, extraction: EmailExtraction) -> str:
+    """Create a new project README from entity discovery."""
+    
+    from entity_discovery import EntityDiscovery
+    
+    return f"""---
+type: projects
+title: "{discovery.canonical_name}"
+created: "{datetime.now().strftime('%Y-%m-%d')}"
+status: "active"
+tags:
+  - "type/projects"
+  - "needs-review"
+---
+
+# {discovery.canonical_name}
+
+## Overview
+
+{discovery.description or 'Project discovered from email correspondence.'}
+
+## Goals
+
+## Key Facts
+
+## Recent Context
+
+- {extraction.email_date}: First mention via email re: {extraction.subject[:50]}
+
+## Open Tasks
+
+## Related
+
+"""
+
+
+def _generate_company_patches_from_discovery(discovery, extraction: EmailExtraction, entity_folder: Path) -> dict:
+    """Generate patches for a company that was discovered and classified."""
+    
+    from entity_discovery import EntityDiscovery
+    
+    patches = []
+    warnings = []
+    
+    readme_path = entity_folder / "README.md"
+    if not readme_path.exists():
+        return {"patches": patches, "warnings": warnings, "create": {
+            "type": "company",
+            "name": discovery.canonical_name,
+            "discovery": discovery.model_dump() if hasattr(discovery, 'model_dump') else {},
+            "source": extraction.source_file
+        }}
+    
+    target_path = str(readme_path.relative_to(vault_root()))
+    
+    # Update frontmatter
+    frontmatter_updates = {"last_contact": extraction.email_date}
+    if discovery.industry:
+        frontmatter_updates["industry"] = discovery.industry
+    if discovery.website:
+        frontmatter_updates["website"] = discovery.website
+    
+    patches.append(VaultPatch(
+        target_path=target_path,
+        target_entity=discovery.canonical_name,
+        operation="upsert_frontmatter",
+        frontmatter=frontmatter_updates
+    ))
+    
+    # Add context entry
+    context_entry = f"- {extraction.email_date}: Email re: {extraction.subject[:50]} - {extraction.summary[:100]}"
+    patches.append(VaultPatch(
+        target_path=target_path,
+        target_entity=discovery.canonical_name,
+        operation="append_under_heading",
+        heading="## Recent Context",
+        content=context_entry
+    ))
+    
+    # Add company facts
+    company_facts = [f for f in extraction.key_facts if discovery.canonical_name.lower() in f.about.lower()]
+    for fact in company_facts:
+        patches.append(VaultPatch(
+            target_path=target_path,
+            target_entity=discovery.canonical_name,
+            operation="append_under_heading",
+            heading="## Key Facts",
+            content=f"- {fact.fact}"
+        ))
+    
+    return {
+        "patches": patches, 
+        "warnings": warnings, 
+        "create": {
+            "type": "company",
+            "name": discovery.canonical_name,
+            "discovery": discovery.model_dump() if hasattr(discovery, 'model_dump') else {},
+            "source": extraction.source_file
+        }
+    }
+
+
 # =============================================================================
 # STEP 3: APPLY - Execute patches
 # =============================================================================
@@ -636,7 +864,7 @@ def apply_patches(plan: EmailChangePlan, dry_run: bool = False) -> dict:
                     task_line += f" @{patch.task.owner}"
                 if patch.task.due:
                     task_line += f" 📅 {patch.task.due}"
-                task_line += " #task"
+                task_line += " #task #proposed #auto"
                 
                 if task_line not in content:
                     content = append_under_heading(content, "## Open Tasks", task_line)
@@ -748,9 +976,9 @@ def main(single_file: Optional[str], dry_run: bool, verbose: bool, limit: Option
             extraction_file = extraction_dir / f"{email_path.stem}.email_extraction.json"
             extraction_file.write_text(extraction.model_dump_json(indent=2))
             
-            # Step 2: Plan patches
-            console.print("  [dim]Step 2: Planning vault updates...[/dim]")
-            plan = generate_patches(extraction)
+            # Step 2: Plan patches (with entity discovery/classification)
+            console.print("  [dim]Step 2: Planning vault updates (with entity classification)...[/dim]")
+            plan = generate_patches(extraction, openai_client=client)
             
             if verbose or plan.warnings:
                 for warning in plan.warnings:

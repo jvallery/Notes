@@ -97,6 +97,7 @@ git log --oneline -5
 - Always tag actionable tasks with `#task` so they appear in dashboards.
 - AI-generated tasks must also include `#proposed #auto`; removing `#proposed` = you accepted the task.
 - Prefer creating tasks under `VAST/` (work) or `Personal/` (personal) so the dashboard can group them cleanly.
+- Quick capture: drop new tasks into `TASKS_INBOX.md` with `#task #proposed #inbox`; move/accept by removing `#proposed` and relocating if needed.
 - Do not create or use `{Domain}/_Tasks/` folders; legacy task lists were archived under `Inbox/_archive/`.
 - Legacy manual list is preserved in `TASKS_BACKLOG.md` (referenced from `TASKS.md`).
 

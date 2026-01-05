@@ -25,12 +25,12 @@ tags:
 
 Rosanne described Dhammak/Dimac’s rapid data center expansion and vertically integrated GPU cloud plans, aiming for a marquee Microsoft partnership similar to CoreWeave/Nscale. Jason shared guidance on Microsoft’s preference for in-house builds, how neocloud partnerships shift GPU capex risk off Microsoft’s balance sheet, and the importance of site fiber connectivity to hyperscaler “hero regions” to support training workloads. They aligned on timing, risk factors (depreciation/obsolescence, demand uncertainty, permitting), and positioning, including VAST’s global namespace advantage for data following distributed compute.
 ## Action Items
-- [ ] Define Microsoft partnership positioning emphasizing Dhammak absorbing GPU capex/risk with flexible, fungible clusters. @Rosanne Kincaid–Smith 📅 2025-10-26 🔺 #task
-- [ ] Assess fiber/backhaul plans from candidate sites to hyperscaler hero regions to enable training-grade throughput. @Rosanne Kincaid–Smith 📅 2025-10-26 🔺 #task
-- [ ] Model workload mix (training vs inference; single-tenant vs multi-tenant) per site to guide cluster design and customer targeting. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task
-- [ ] Prepare an internal brief addressing board concerns on co-location vs neocloud risk-transfer models for Microsoft. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task
-- [ ] Proceed with Microsoft discussions via Anand and update Jason on outcomes/timing. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task
-- [ ] Share site connectivity and timeline assumptions to validate workload feasibility (training vs inference). @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task
+- [ ] Define Microsoft partnership positioning emphasizing Dhammak absorbing GPU capex/risk with flexible, fungible clusters. @Rosanne Kincaid–Smith 📅 2025-10-26 🔺 #task #proposed
+- [ ] Assess fiber/backhaul plans from candidate sites to hyperscaler hero regions to enable training-grade throughput. @Rosanne Kincaid–Smith 📅 2025-10-26 🔺 #task #proposed
+- [ ] Model workload mix (training vs inference; single-tenant vs multi-tenant) per site to guide cluster design and customer targeting. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Prepare an internal brief addressing board concerns on co-location vs neocloud risk-transfer models for Microsoft. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Proceed with Microsoft discussions via Anand and update Jason on outcomes/timing. @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Share site connectivity and timeline assumptions to validate workload feasibility (training vs inference). @Rosanne Kincaid–Smith 📅 2025-10-26 ⏫ #task #proposed
 
 ## Key Information
 - Rosanne Kincaid–Smith is based in Dubai and was traveling from the Bay Area at the time of the call.

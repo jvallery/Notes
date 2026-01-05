@@ -26,20 +26,20 @@ tags:
 
 The group compared Azure Managed Lustre’s architecture, scaling limits, resiliency characteristics, and pricing against VAST’s planned Azure offering. Key discussion points included Lustre performance/capacity tiers, Premium Disk v1 persistence requirements, AZ pinning, asynchronous Blob offload via HSM (no strong consistency), and the RDMA/VM roadmap constraints impacting AI workload performance and availability. They aligned on next steps around RDMA timelines, VMSS Flex/fault-domain changes, and meeting at Supercomputing, while VAST confirmed near-term delivery targets for a Terraform-based POC and Marketplace GA.
 ## Action Items
-- [ ] Deliver Terraform scripts for VAST Azure POC @TBD 📅 2025-11-08 🔺 #task
-- [ ] Define backup/recovery strategy for VAST on Azure (RPO/RTO, snapshot/offload, rehydration) @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Confirm whether Azure Managed Lustre supports Premium Disk v2 (Direct Drive) and share timelines @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Coordinate guest RDMA enablement timeline between VMs and implications for Lustre/VAST @TBD 📅 2025-11-08 🔺 #task
-- [ ] Hold roadmap discussion with VMSS Flex/Jerry Steele’s team on fault domains and Lsv5 readiness @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Share SKU pricing/availability guidance for L192/Lsv5 to inform cost comparisons @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Schedule Supercomputing meetup and add Jason to existing session @Lior Genzel 📅 2025-11-08 🔽 #task
-- [ ] Document current AZ pinning/locality guarantees for Managed Disks and Lustre VMs @TBD 📅 2025-11-08 🔽 #task
-- [ ] Assess feasibility to expose HSM state/automation hooks for users waiting on Blob archive completion @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Advance Marketplace listing work toward February GA @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Share detailed tier/increment documentation and performance tuning notes with Jason @Wolfgang 📅 2025-11-08 🔽 #task
-- [ ] Provide update on Blob HSM enhancements preserving directory hierarchy and any roadmap changes @TBD 📅 2025-11-08 🔽 #task
-- [ ] Confirm dates/logistics for Supercomputing booth and meetings @Wolfgang 📅 2025-11-08 🔽 #task
-- [ ] Track Lifter/Azure-native VAST milestones and SaaS architecture decisions @TBD 📅 2025-11-08 🔽 #task
+- [ ] Deliver Terraform scripts for VAST Azure POC @TBD 📅 2025-11-08 🔺 #task #proposed
+- [ ] Define backup/recovery strategy for VAST on Azure (RPO/RTO, snapshot/offload, rehydration) @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Confirm whether Azure Managed Lustre supports Premium Disk v2 (Direct Drive) and share timelines @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Coordinate guest RDMA enablement timeline between VMs and implications for Lustre/VAST @TBD 📅 2025-11-08 🔺 #task #proposed
+- [ ] Hold roadmap discussion with VMSS Flex/Jerry Steele’s team on fault domains and Lsv5 readiness @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Share SKU pricing/availability guidance for L192/Lsv5 to inform cost comparisons @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Schedule Supercomputing meetup and add Jason to existing session @Lior Genzel 📅 2025-11-08 🔽 #task #proposed
+- [ ] Document current AZ pinning/locality guarantees for Managed Disks and Lustre VMs @TBD 📅 2025-11-08 🔽 #task #proposed
+- [ ] Assess feasibility to expose HSM state/automation hooks for users waiting on Blob archive completion @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Advance Marketplace listing work toward February GA @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Share detailed tier/increment documentation and performance tuning notes with Jason @Wolfgang 📅 2025-11-08 🔽 #task #proposed
+- [ ] Provide update on Blob HSM enhancements preserving directory hierarchy and any roadmap changes @TBD 📅 2025-11-08 🔽 #task #proposed
+- [ ] Confirm dates/logistics for Supercomputing booth and meetings @Wolfgang 📅 2025-11-08 🔽 #task #proposed
+- [ ] Track Lifter/Azure-native VAST milestones and SaaS architecture decisions @TBD 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - VAST will proceed using currently available VM SKUs for the initial Azure release even if limited to 40 Gbps.

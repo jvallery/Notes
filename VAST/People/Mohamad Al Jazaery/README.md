@@ -27,9 +27,9 @@ tags:
 
 ## Open Tasks
 
-- [ ] Sync on the current list of Azure customers and work on expanding it with help of Microsoft sellers. @Tiffany Stonehill 🔼 #task
+- [ ] Sync on the current list of Azure customers and work on expanding it with help of Microsoft sellers. @Tiffany Stonehill 🔼 #task #proposed
 
-- [ ] Plan a demo/accelerator to show the Global Namespace on Azure for the AI roadshow. @Chris Carpenter 🔼 #task
+- [ ] Plan a demo/accelerator to show the Global Namespace on Azure for the AI roadshow. @Chris Carpenter 🔼 #task #proposed
 ## Related
 
 - [[VAST Data]]

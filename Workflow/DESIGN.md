@@ -730,7 +730,7 @@ python scripts/process_inbox.py
 | Activity           | Command                        |
 | ------------------ | ------------------------------ |
 | Review changes     | `git diff HEAD~1`              |
-| Check dashboards   | Open `_Tasks/*.md` in Obsidian |
+| Check dashboards   | Open `TASKS.md` (dashboard) in Obsidian |
 | Find flagged items | Search for `#needs-review`     |
 | Resolve conflicts  | VS Code agent (if needed)      |
 | Push to remote     | `git push` (manual)            |

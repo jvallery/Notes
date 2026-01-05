@@ -25,16 +25,16 @@ tags:
 
 Jason and Erez aligned on delivering Azure Blob API support in VAST to enable Azure marketplace use and OpenAI GPU-adjacent storage scenarios. Key requirements include Entra ID managed identities, JWT validation with cached keys to survive 72–96 hours of network isolation, and mapping Blob RBAC/ABAC semantics to VAST bucket policies; Append Blob and PutBlobFromURL were highlighted as important Blob features. They planned an OpenAI POC to validate offline operation and agreed to schedule in-person working sessions in Tel Aviv the week of 2025-11-23.
 ## Action Items
-- [ ] Send reading material on Azure Instance Metadata Service, Managed Identities, and relevant Entra ID/MS Graph documentation. @Myself 📅 2025-11-08 🔺 #task
-- [ ] Draft FRD for Azure Blob API support covering auth model, RBAC/ABAC mapping, Append Blob, PutBlobFromURL, and offline token validation. @Erez Zilber 📅 2025-11-08 ⏫ #task
-- [ ] Design JWT verification plus public-key caching/rotation strategy to operate 72–96 hours without IdP connectivity. @VAST Protocols team 📅 2025-11-08 🔺 #task
-- [ ] Define authorization mapping from Blob RBAC/ABAC to VAST identity and bucket policies across protocols. @VAST Protocols team 📅 2025-11-08 ⏫ #task
-- [ ] Coordinate POC plan with OpenAI, including a simulated network isolation test to validate uninterrupted operation. @Myself 📅 2025-11-08 🔺 #task
-- [ ] Schedule and send calendar invites for Tel Aviv face-to-face sessions (Nov 23–26). @Erez Zilber 📅 2025-11-08 ⏫ #task
-- [ ] Prepare agenda and session plan for Tel Aviv visit and knowledge sharing sessions. @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Confirm exact dates/times for Tel Aviv meetings during the week of 2025-11-23. @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Set a follow-up design review after Erez returns mid-November. @Erez Zilber 📅 2025-11-08 ⏫ #task
-- [ ] Decide scope and constraints for any legacy account key authentication support. @VAST Engineering 📅 2025-11-08 ⏫ #task
+- [ ] Send reading material on Azure Instance Metadata Service, Managed Identities, and relevant Entra ID/MS Graph documentation. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ] Draft FRD for Azure Blob API support covering auth model, RBAC/ABAC mapping, Append Blob, PutBlobFromURL, and offline token validation. @Erez Zilber 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Design JWT verification plus public-key caching/rotation strategy to operate 72–96 hours without IdP connectivity. @VAST Protocols team 📅 2025-11-08 🔺 #task #proposed
+- [ ] Define authorization mapping from Blob RBAC/ABAC to VAST identity and bucket policies across protocols. @VAST Protocols team 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Coordinate POC plan with OpenAI, including a simulated network isolation test to validate uninterrupted operation. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ] Schedule and send calendar invites for Tel Aviv face-to-face sessions (Nov 23–26). @Erez Zilber 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Prepare agenda and session plan for Tel Aviv visit and knowledge sharing sessions. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Confirm exact dates/times for Tel Aviv meetings during the week of 2025-11-23. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Set a follow-up design review after Erez returns mid-November. @Erez Zilber 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Decide scope and constraints for any legacy account key authentication support. @VAST Engineering 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Use Entra ID managed identities with JWT-based authentication for OpenAI scenarios (no account keys).

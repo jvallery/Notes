@@ -145,6 +145,17 @@ sort by due
 sort by created
 ```
 
+## Inbox (capture list)
+
+```tasks
+not done
+tags include #task
+path includes TASKS_INBOX.md
+sort by priority
+sort by due
+sort by created
+```
+
 ## Backlog (legacy task list)
 
 ```tasks

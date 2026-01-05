@@ -24,12 +24,12 @@ tags:
 
 Jason and Vishnu aligned on Jason’s new focus areas (distributed caching and KB/over-index) and discussed industry confusion around what “distributed caching” means (e.g., Ray vs true replica/redundancy semantics). Vishnu shared status of the Blobfuse distributed caching preview (write replicas, resync on node recovery, async flush to Azure Blobs) and gaps (no cache-on-read, no read replicas, no fan-in), plus early customer testing plans and performance/benchmark needs. They also discussed NVIDIA Dynamo KVCache offload and the opportunity to integrate an Azure Blob backend while learning from NVIDIA’s broader inference ecosystem insights.
 ## Action Items
-- [ ] Attend the Blockfuse execution/status meeting. @Myself 📅 2025-09-16 ⏫ #task
-- [ ] Share Blobfuse distributed caching preview demo steps and bits with Jason once the internal demo setup is ready. @Vishnu 📅 2025-09-16 ⏫ #task
-- [ ] Sync with Tomer and Vikas to learn outcomes of last week’s distributed caching meeting. @Vishnu 📅 2025-09-16 ⏫ #task
-- [ ] Request and compile detailed performance numbers and plan MLPerf-style benchmarks and larger-scale tests (up to ~1000 nodes) for the Blobfuse distributed caching preview. @Vishnu ⏫ #task
-- [ ] Play with the Blobfuse distributed caching preview once bits/instructions are received and provide feedback. @Myself #task
-- [ ] Review NVIDIA Dynamo materials and assess fit alongside alternative frameworks (e.g., LM Cache, VLLM AI Bricks). @Myself #task
+- [ ] Attend the Blockfuse execution/status meeting. @Myself 📅 2025-09-16 ⏫ #task #proposed
+- [ ] Share Blobfuse distributed caching preview demo steps and bits with Jason once the internal demo setup is ready. @Vishnu 📅 2025-09-16 ⏫ #task #proposed
+- [ ] Sync with Tomer and Vikas to learn outcomes of last week’s distributed caching meeting. @Vishnu 📅 2025-09-16 ⏫ #task #proposed
+- [ ] Request and compile detailed performance numbers and plan MLPerf-style benchmarks and larger-scale tests (up to ~1000 nodes) for the Blobfuse distributed caching preview. @Vishnu ⏫ #task #proposed
+- [ ] Play with the Blobfuse distributed caching preview once bits/instructions are received and provide feedback. @Myself #task #proposed
+- [ ] Review NVIDIA Dynamo materials and assess fit alongside alternative frameworks (e.g., LM Cache, VLLM AI Bricks). @Myself #task #proposed
 
 ## Decisions
 - Blobfuse distributed caching preview scope will focus on distributed checkpointing with write replicas, async flush to Azure Blobs, and resync on node recovery; cache-on-read and fan-in are not included initially.

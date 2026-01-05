@@ -30,7 +30,7 @@ tags:
 - 2026-01-01: Email re: Applied Postings - James Vallery has applied for several positions at different companies and is seeking assistance to
 ## Open Tasks
 
-- [ ] Check for 2nd degree connections at the companies James applied to. @Myself 🔼 #task
+- [ ] Check for 2nd degree connections at the companies James applied to. @Myself 🔼 #task #proposed
 ## Related
 
 - [[NasDaq]]

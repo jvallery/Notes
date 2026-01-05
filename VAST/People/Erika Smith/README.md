@@ -28,7 +28,7 @@ tags:
 - 2025-12-10: Email re: Confidential - IHDF exec session quick recap - Erika Smith provides a recap of the IHDF executive session, discussing issues related to public stan
 ## Open Tasks
 
-- [ ] Share start of a SWOT document regarding the acquisition of a former church. @Perla 🔼 #task
+- [ ] Share start of a SWOT document regarding the acquisition of a former church. @Perla 🔼 #task #proposed
 ## Related
 
 - [[IHDF]]

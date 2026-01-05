@@ -23,11 +23,11 @@ tags:
 
 Jason and Jeff aligned on Microsoft strategy, focusing on what Blob API support is actually needed (primarily Microsoft AI via AZCopy) versus broader Azure integration priorities like tiering/offload to Blob and namespace/metadata synchronization for existing cloud data. They discussed competitive dynamics at OpenAI (internal storage efforts via Rockset/FoundationDB/RocksDB and BoostedBlob) and emphasized that engineering work must be staged to near-term revenue, with Microsoft needing to decide quickly due to flash supply constraints. Jeff also tasked Jason to prepare a Sales Kickoff (SCO) session on building an AI cloud with VAST and to help drive clearer NeoCloud user stories and progress with Morty/NeoCloud partners.
 ## Action Items
-- [ ] Follow up with Louie (OpenAI data acquisition) and send a relevant VAST blog/link (e.g., event streaming/Kafka-related) to try to re-engage and advance parallel conversations. @Myself #task
-- [ ] Work with Morty to crystallize NeoCloud-in-a-box user stories and market messaging over the next two months, and help him make progress on the NeoCloud market-shaping plan. @Myself ⏫ #task
-- [ ] Ask Morty in today's 1:1 for details on Lambda’s plan to launch the full VAST portfolio and how NeoCloud roadmaps evolve beyond GPU-only services. @Myself #task
-- [ ] Prepare SCO session content for a 45-minute talk on 'building an AI cloud with VAST' (why VAST is used, where it’s going, multi-tenancy best practices, and control plane direction) aimed at NeoCloud audiences. @Myself ⏫ #task
-- [ ] Develop a near-term roadmap and 'attack vectors' for expanding Microsoft business development (sell-to/sell-with/sell-through), including mapping first-party Azure services and integration opportunities. @Myself ⏫ #task
+- [ ] Follow up with Louie (OpenAI data acquisition) and send a relevant VAST blog/link (e.g., event streaming/Kafka-related) to try to re-engage and advance parallel conversations. @Myself #task #proposed
+- [ ] Work with Morty to crystallize NeoCloud-in-a-box user stories and market messaging over the next two months, and help him make progress on the NeoCloud market-shaping plan. @Myself ⏫ #task #proposed
+- [ ] Ask Morty in today's 1:1 for details on Lambda’s plan to launch the full VAST portfolio and how NeoCloud roadmaps evolve beyond GPU-only services. @Myself #task #proposed
+- [ ] Prepare SCO session content for a 45-minute talk on 'building an AI cloud with VAST' (why VAST is used, where it’s going, multi-tenancy best practices, and control plane direction) aimed at NeoCloud audiences. @Myself ⏫ #task #proposed
+- [ ] Develop a near-term roadmap and 'attack vectors' for expanding Microsoft business development (sell-to/sell-with/sell-through), including mapping first-party Azure services and integration opportunities. @Myself ⏫ #task #proposed
 
 ## Decisions
 - Do not prioritize implementing full Blob API or 'append blob' support speculatively; focus on what Microsoft teams actually require and react to additional needs if/when they arise.

@@ -129,11 +129,18 @@ def phase_extract(emails: List[Path], client, dry_run: bool = False, verbose: bo
 # PHASE 3: PATCH
 # =============================================================================
 
-def phase_patch(extractions: Dict[Path, dict], dry_run: bool = False, verbose: bool = False) -> dict:
-    """Update vault READMEs with extracted knowledge."""
+def phase_patch(extractions: Dict[Path, dict], dry_run: bool = False, verbose: bool = False, openai_client = None) -> dict:
+    """Update vault READMEs with extracted knowledge (with entity classification)."""
     
-    from ingest_emails import generate_patches, apply_patches
+    from ingest_emails import generate_patches, apply_patches, get_openai_client
     from models.email_extraction import EmailExtraction
+    
+    # Get client if not provided
+    if openai_client is None:
+        try:
+            openai_client = get_openai_client()
+        except Exception:
+            pass  # Will fall back to heuristic classification
     
     results = {
         "patches_applied": 0,
@@ -151,8 +158,8 @@ def phase_patch(extractions: Dict[Path, dict], dry_run: bool = False, verbose: b
             else:
                 extraction = extraction_data
             
-            # Generate patches
-            plan = generate_patches(extraction)
+            # Generate patches (with entity discovery/classification)
+            plan = generate_patches(extraction, openai_client=openai_client)
             
             # Save plan
             plan_file = extraction_dir / f"{email_path.stem}.email_changeplan.json"

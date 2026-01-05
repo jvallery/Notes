@@ -21,7 +21,7 @@ tags:
 
 A single action item was recorded to introduce Jason Vallery and sync with several program managers, including Noa Cohen. The task was marked completed with a specified due date.
 ## Action Items
-- [ ] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Myself 📅 2025-11-08 #task
+- [ ] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Myself 📅 2025-11-08 #task #proposed
 
 ## Key Information
 - Task to introduce and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa) was marked completed.

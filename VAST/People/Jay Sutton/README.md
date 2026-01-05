@@ -28,7 +28,7 @@ WHERE !completed AND contains(text, "Jay Sutton")
 SORT due ASC
 ```
 
-- [ ] Arrange a meeting with Jay Parikh from Microsoft during CES. @Myself ⏫ #task
+- [ ] Arrange a meeting with Jay Parikh from Microsoft during CES. @Myself ⏫ #task #proposed
 ## Recent Context
 
 - 2025-11-07: [[2025-11-07 - Warm intro paths planning]] (via Chris Carpenter)

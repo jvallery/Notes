@@ -22,9 +22,9 @@ tags:
 
 Task list for OpenAI covering storage API requirements, global KV store requirements, and planning an in-person meeting in San Francisco. All listed items are marked complete with a completion date of 2025-11-08.
 ## Action Items
-- [ ] Confirm with OpenAI teams whether S3 API suffices for GPU-adjacent storage or if Blob API parity is required @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Capture requirements for global KV store (TPS per PB, <=64 KB IO) and assess feasibility on VAST @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Work with OpenAI on possible in-person meeting in San Francisco Nov 4–6 @Myself 📅 2025-11-08 #task
+- [ ] Confirm with OpenAI teams whether S3 API suffices for GPU-adjacent storage or if Blob API parity is required @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Capture requirements for global KV store (TPS per PB, <=64 KB IO) and assess feasibility on VAST @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Work with OpenAI on possible in-person meeting in San Francisco Nov 4–6 @Myself 📅 2025-11-08 #task #proposed
 
 ## Key Information
 - OpenAI storage API discussion includes S3 API sufficiency vs Blob API parity for GPU-adjacent storage.

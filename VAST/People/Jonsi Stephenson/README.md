@@ -26,11 +26,11 @@ title: GM of Cloud
 - [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish.
 - [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson Stephenson
 
-- [ ] Review and edit the shared presentation @Myself 🔼 #task
+- [ ] Review and edit the shared presentation @Myself 🔼 #task #proposed
 
-- [ ] Reconsider using Native Azure Blob format instead of VAST object format for better compatibility. @Myself 🔼 #task
+- [ ] Reconsider using Native Azure Blob format instead of VAST object format for better compatibility. @Myself 🔼 #task #proposed
 
-- [ ] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task
+- [ ] Consider making a firmer statement about VAST's DRR efficiencies reducing supply chain issues. @Myself 🔼 #task #proposed
 ## Recent Context
 
 - 2025-12-16: Discussed Microsoft AI (MAI) positioning (Blob + VAST GPU-adjacent), Bifrost/Apollo politics, POC/bake-off timing, and flash supply-chain constraints. [[2025-12-16 - Prep for Microsoft AI talks]]

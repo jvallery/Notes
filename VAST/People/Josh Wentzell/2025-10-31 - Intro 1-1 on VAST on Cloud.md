@@ -24,14 +24,14 @@ tags:
 
 Introductory 1:1 to align on VAST on Cloud strategy and surface platform gaps. Josh highlighted multi-tenancy API/GUI limitations, VOC deployment friction (lack of preflight/wizard), and automation gaps (Terraform coverage; no official Ansible), while noting strong CSI adoption and rising CoSy interest. Jason shared 12-month priorities around cloud marketplace offers, improving price/performance via cloud primitives/possible ODM hardware, and enabling multi-cloud data spaces for durable global access and efficient data-to-GPU mobility.
 ## Action Items
-- [ ] Spin up OVA in home lab and/or loopback instance to get hands-on with VAST @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Review flight school materials and attend Tech Summit @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Engage with Rob Gerard to align on CSI/CoSy status and roadmap @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Connect with Carl on VAST on Cloud deployment nuances @Myself 📅 2025-11-08 🔽 #task
-- [ ] Share additional learning links/docs as needed (loopback link sent) @Josh Wentzell 📅 2025-11-08 🔽 #task
-- [ ] Confirm Jason received and used the loopback link; share any additional setup tips @Josh Wentzell 📅 2025-11-08 🔽 #task
-- [ ] Report initial findings from OVA hands-on and list of VOC pain points @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Share marketplace offer plan and timelines across AWS/Azure/GCP with stakeholders @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Spin up OVA in home lab and/or loopback instance to get hands-on with VAST @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Review flight school materials and attend Tech Summit @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Engage with Rob Gerard to align on CSI/CoSy status and roadmap @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Connect with Carl on VAST on Cloud deployment nuances @Myself 📅 2025-11-08 🔽 #task #proposed
+- [ ] Share additional learning links/docs as needed (loopback link sent) @Josh Wentzell 📅 2025-11-08 🔽 #task #proposed
+- [ ] Confirm Jason received and used the loopback link; share any additional setup tips @Josh Wentzell 📅 2025-11-08 🔽 #task #proposed
+- [ ] Report initial findings from OVA hands-on and list of VOC pain points @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Share marketplace offer plan and timelines across AWS/Azure/GCP with stakeholders @Myself 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - Josh Wentzell focuses on automation/DevOps and lab tooling; he is often customer-facing for API automation and previously handled AWS VOC discussions before Carl joined.

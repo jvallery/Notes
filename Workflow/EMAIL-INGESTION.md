@@ -131,19 +131,33 @@ class EmailExtraction:
 
 For each entity (person, customer, project) mentioned in the email:
 1. Find or create the entity's README
-2. Apply structured patches:
+2. **Classify new entities** using entity discovery service
+3. Apply structured patches:
    - Update frontmatter (last_contact, email address)
    - Append to Recent Context section
    - Add key facts
    - Insert tasks
    - Add wikilinks to related entities
 
+**Entity Discovery & Classification**:
+
+New entities are automatically classified using `entity_discovery.py`:
+
+1. **Quick Classification** - Checks known entity lists (Microsoft, Google, Tesla, etc.)
+2. **Heuristic Classification** - Name patterns, suffixes (Inc, LLC, Corp)
+3. **AI Classification** - OpenAI for ambiguous cases (with caching)
+
+| Classification | Destination                        | Example           |
+| -------------- | ---------------------------------- | ----------------- |
+| `person`       | `VAST/People/`                     | John Smith        |
+| `company`      | `VAST/Customers and Partners/`     | Tesla, Slice      |
+| `project`      | `VAST/Projects/`                   | Cloud Marketplace |
+
 **Entity Creation Rules**:
-- **Full names** (2+ words): Always create person README
+- **Full names** (2+ words): Always create entity (classified first)
 - **Single names with email**: Create with email as index
 - **Single names without email**: Skip (can't disambiguate)
-- **Companies**: Create in `VAST/Customers and Partners/`
-- **Projects**: Create in `VAST/Projects/`
+- **Known companies**: Quick-route to Customers (no API call)
 
 **Patch Primitives**:
 - `upsert_frontmatter`: Update/add YAML frontmatter fields

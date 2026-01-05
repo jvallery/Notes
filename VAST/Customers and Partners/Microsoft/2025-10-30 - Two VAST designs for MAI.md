@@ -26,15 +26,15 @@ tags:
 
 Team aligned to present Microsoft MAI two VAST storage design options: an NVIDIA NCP reference-aligned high-performance pod sized around a ~40k GPU building block, plus a capacity/density-optimized Maverick 5400 option for exabyte-scale. They will deliver side-by-side tables and rack diagrams (capacity, read/write performance, rack count, power) and add Azure Blob comparison columns, emphasizing checkpoint write throughput, Kubernetes CSI/COSI integration, file+object support, monitoring/logging, and resiliency during WAN outages for isolated sites.
 ## Action Items
-- [ ] Model NVIDIA NCP-aligned pod (~41,472 GPUs; Series 1350) with capacity, read/write performance, rack count, total power, and extrapolation toward 1 EB @Paul 📅 2025-10-30 ⏫ #task
-- [ ] Validate and model capacity-optimized Maverick 5400 1 EB design (C:D ratios, performance limits, rack count, power) and note any NCP alignment gaps @Ray 📅 2025-10-30 ⏫ #task
-- [ ] Produce side-by-side table and rack diagrams for both designs; update existing EnScale/Portugal deck templates @Paul 📅 2025-10-30 🔺 #task
-- [ ] Provide consolidated sustained read/write performance estimates (TB/s) and total power figures for both designs @Ray 📅 2025-10-30 🔺 #task
-- [ ] Add Kubernetes integration (CSI/COSI), file+object support, monitoring/logging, and offline auth/DNS resiliency notes into the deck @Paul 📅 2025-10-30 ⏫ #task
-- [ ] Create Azure Blob comparison columns (racks, performance, power, capacity) and prepare a one-slide view for MAI @Myself Valleri 📅 2025-10-31 🔺 #task
-- [ ] Confirm with Kushal the cluster sizes, site count, and checkpointing approach to refine performance targets @Myself Valleri 📅 2025-10-31 ⏫ #task
-- [ ] Validate offline identity and RBAC behavior (JWT claims caching, internal DNS/routing) and document limits @Ray 📅 2025-11-05 ⏫ #task
-- [ ] Align on MAI data movement strategy (azcopy vs service-to-service vs Sync Engine) and required tooling @Myself Valleri 📅 2025-11-07 🔽 #task
+- [ ] Model NVIDIA NCP-aligned pod (~41,472 GPUs; Series 1350) with capacity, read/write performance, rack count, total power, and extrapolation toward 1 EB @Paul 📅 2025-10-30 ⏫ #task #proposed
+- [ ] Validate and model capacity-optimized Maverick 5400 1 EB design (C:D ratios, performance limits, rack count, power) and note any NCP alignment gaps @Ray 📅 2025-10-30 ⏫ #task #proposed
+- [ ] Produce side-by-side table and rack diagrams for both designs; update existing EnScale/Portugal deck templates @Paul 📅 2025-10-30 🔺 #task #proposed
+- [ ] Provide consolidated sustained read/write performance estimates (TB/s) and total power figures for both designs @Ray 📅 2025-10-30 🔺 #task #proposed
+- [ ] Add Kubernetes integration (CSI/COSI), file+object support, monitoring/logging, and offline auth/DNS resiliency notes into the deck @Paul 📅 2025-10-30 ⏫ #task #proposed
+- [ ] Create Azure Blob comparison columns (racks, performance, power, capacity) and prepare a one-slide view for MAI @Myself Valleri 📅 2025-10-31 🔺 #task #proposed
+- [ ] Confirm with Kushal the cluster sizes, site count, and checkpointing approach to refine performance targets @Myself Valleri 📅 2025-10-31 ⏫ #task #proposed
+- [ ] Validate offline identity and RBAC behavior (JWT claims caching, internal DNS/routing) and document limits @Ray 📅 2025-11-05 ⏫ #task #proposed
+- [ ] Align on MAI data movement strategy (azcopy vs service-to-service vs Sync Engine) and required tooling @Myself Valleri 📅 2025-11-07 🔽 #task #proposed
 
 ## Decisions
 - Lead with NVIDIA NCP reference architecture for credibility and consistency with InScale.

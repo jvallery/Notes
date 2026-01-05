@@ -25,19 +25,19 @@ tags:
 
 Jason and Kurt aligned on a go-to-market approach to bring VAST’s high-density, lower-power storage into Microsoft Azure deals, emphasizing power/megawatt constraints and the limitations of the current Azure Marketplace VM-based VAST offer. They agreed to pursue a BizDev-led path (Joe Vane/Harish) to secure executive sponsorship (John Tinter) and route into Ronnie Booker’s org for hardware/chassis decisions, while Kurt continues driving A2N approval for Azure Extended Zones (network-only) and AKS NodeJoin to connect neo-/sovereign cloud training sites to Azure for global inference.
 ## Action Items
-- [ ] Educate Microsoft BizDev (Joe Vane/Harish) on VAST density/power and single-namespace story; secure intros to Ronnie Booker via John Tinter. @Myself 📅 2025-10-27 🔺 #task
-- [ ] Create a one-pager converting VAST exabyte power savings into additional GPUs per site; share with Mustafa (MAI), Kushal, and Vipin. @Myself 📅 2025-10-27 🔺 #task
-- [ ] Push MAI and UK Met to pilot VAST OEM/ODM racks (Falcon, UK Met) using the power-density angle. @Myself 📅 2025-10-27 🔺 #task
-- [ ] Follow up with Kanchan Mehrotra on storage plays/density for Supercomputing (FAST) and schedule a discussion. @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Coordinate with Kishore Inampudi on Azure Extended Zones once A2N is approved; align on storage needs. @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Confirm with Yancey and Lior Genzel their awareness of VAST density/power benefits and enlist them to advocate with Mustafa. @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Quantify capex vs power tradeoffs to justify ~2x capex for decision-makers (e.g., Amy Hood, BizDev). @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Drive A2N approval for Extended Zones GA and AKS NodeJoin (ACAS FlexNode); confirm timeline and scope. @Kurt 📅 2025-10-27 🔺 #task
-- [ ] Share Azure Extended Zone PM contact details when available. @Kurt 📅 2025-10-27 🔽 #task
-- [ ] Keep Jason updated on neo-cloud partnership pipeline (e.g., sakura.net) and where VAST can plug in. @Kurt 📅 2025-10-27 ⏫ #task
-- [ ] Validate whether InScale and similar deals follow the 'train on neo-cloud, infer on Azure' model. @Kurt 📅 2025-10-27 🔽 #task
-- [ ] Assess complementing the Marketplace L-series offer with higher-density storage SKUs or an OEM hardware path. @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Plan Supercomputing touchpoint and intros (e.g., AMD event) and align joint targets. @Myself 📅 2025-10-27 🔽 #task
+- [ ] Educate Microsoft BizDev (Joe Vane/Harish) on VAST density/power and single-namespace story; secure intros to Ronnie Booker via John Tinter. @Myself 📅 2025-10-27 🔺 #task #proposed
+- [ ] Create a one-pager converting VAST exabyte power savings into additional GPUs per site; share with Mustafa (MAI), Kushal, and Vipin. @Myself 📅 2025-10-27 🔺 #task #proposed
+- [ ] Push MAI and UK Met to pilot VAST OEM/ODM racks (Falcon, UK Met) using the power-density angle. @Myself 📅 2025-10-27 🔺 #task #proposed
+- [ ] Follow up with Kanchan Mehrotra on storage plays/density for Supercomputing (FAST) and schedule a discussion. @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Coordinate with Kishore Inampudi on Azure Extended Zones once A2N is approved; align on storage needs. @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Confirm with Yancey and Lior Genzel their awareness of VAST density/power benefits and enlist them to advocate with Mustafa. @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Quantify capex vs power tradeoffs to justify ~2x capex for decision-makers (e.g., Amy Hood, BizDev). @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Drive A2N approval for Extended Zones GA and AKS NodeJoin (ACAS FlexNode); confirm timeline and scope. @Kurt 📅 2025-10-27 🔺 #task #proposed
+- [ ] Share Azure Extended Zone PM contact details when available. @Kurt 📅 2025-10-27 🔽 #task #proposed
+- [ ] Keep Jason updated on neo-cloud partnership pipeline (e.g., sakura.net) and where VAST can plug in. @Kurt 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Validate whether InScale and similar deals follow the 'train on neo-cloud, infer on Azure' model. @Kurt 📅 2025-10-27 🔽 #task #proposed
+- [ ] Assess complementing the Marketplace L-series offer with higher-density storage SKUs or an OEM hardware path. @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Plan Supercomputing touchpoint and intros (e.g., AMD event) and align joint targets. @Myself 📅 2025-10-27 🔽 #task #proposed
 
 ## Decisions
 - Pursue a BizDev-led path (Joe Vane/Harish) to engage Ronnie Booker’s org rather than working through Nidhi/Manish.

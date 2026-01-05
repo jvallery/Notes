@@ -24,8 +24,8 @@ tags:
 
 Jonsi and Jason aligned on a “better together” positioning with Microsoft: Azure Blob as the central exabyte-scale data lake and VAST as GPU-adjacent high-performance file storage deeply integrated with Blob. They reviewed Microsoft AI (MAI) political dynamics around Manish’s Bifrost effort, concerns triggered by an internal comparison slide, and MAI timeline slippage with a likely bake-off between VAST and Azure’s Bifrost/Blob approach.
 ## Action Items
-- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish. @Myself ⏫ #task
-- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson #task
+- [ ] Send Jonsi the slide deck/comparison materials (including the power/footprint/throughput slide) before his meeting with Ong and Manish. @Myself ⏫ #task #proposed
+- [ ] Text Jason after the meeting with Ong and Manish and schedule a follow-up call to debrief and formulate the go-forward strategy. @Jonsi Stephenson #task #proposed
 
 ## Decisions
 - Position the partnership narrative as Azure Blob for central data lakes and VAST for GPU-adjacent storage, enabled by deep integration with Blob (avoid expanding into higher-level database/event-broker topics in the Microsoft conversation).

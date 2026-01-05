@@ -33,17 +33,17 @@ WHERE !completed AND contains(text, "Jason Ainsworth")
 SORT due ASC
 ```
 
-- [ ] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task
+- [ ] Attend meeting with Jason Vallery on December 15th at 10am PT. @Vinita Ananth 📅 2025-12-15 🔼 #task #proposed
 
-- [ ] Set up an intro call between Jason Vallery and Sushant Rewaskar. @Myself 🔼 #task
+- [ ] Set up an intro call between Jason Vallery and Sushant Rewaskar. @Myself 🔼 #task #proposed
 
-- [ ] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task
+- [ ] Review the information sent by Jason and consider how Whale Iptic's platform could be integrated or aligned with VAST's roadmap. @Avinash Lakshman 🔼 #task #proposed
 
-- [ ] Set a meeting with Jason Vallery on January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task
+- [ ] Set a meeting with Jason Vallery on January 7th in Lafayette. @Myself 📅 2026-01-07 🔼 #task #proposed
 
-- [ ] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task
+- [ ] Coordinate with Jason on getting the slides and access out to Mohamad and Kurt. @Tiffany Stonehill 🔼 #task #proposed
 
-- [ ] Send an EoD/EoW summary incorporating Jason’s feedback. @Lior Genzel 🔼 #task
+- [ ] Send an EoD/EoW summary incorporating Jason’s feedback. @Lior Genzel 🔼 #task #proposed
 ## Recent Context
 
 ## Key Facts

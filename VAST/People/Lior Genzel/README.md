@@ -27,9 +27,9 @@ phone: 408 888 2102
 
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
 
-- [ ] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task
+- [ ] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed
 
-- [ ] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task
+- [ ] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task #proposed
 ## Recent Context
 
 - 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)

@@ -21,8 +21,8 @@ tags:
 
 Two learning and validation tasks were tracked: setting up a local VAST OVA on a home cluster to validate GPU workflows, and deepening product understanding via an R&D reading list/SOP and internal documentation review. Both items are marked complete with a completion date of 2025-11-08.
 ## Action Items
-- [ ] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Myself 📅 2025-11-08 #task
-- [ ] Deepen product understanding: obtain R&D reading list/SOP and review Confluence/docs @Myself 📅 2025-11-08 ⏫ #task
+- [ ] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Myself 📅 2025-11-08 #task #proposed
+- [ ] Deepen product understanding: obtain R&D reading list/SOP and review Confluence/docs @Myself 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - Local VAST OVA setup and GPU workflow validation were completed by 2025-11-08.

@@ -13,12 +13,22 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/Andrew Stack/README.md",
-                "mode": "source",
-                "source": false
+                "file": "TASKS_INBOX.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": true,
+                "backlinkOpts": {
+                  "collapseAll": false,
+                  "extraContext": false,
+                  "sortOrder": "alphabetical",
+                  "showSearch": false,
+                  "searchQuery": "",
+                  "backlinkCollapsed": false,
+                  "unlinkedCollapsed": true
+                }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "TASKS_INBOX"
             }
           }
         ]
@@ -78,7 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 548.5
+    "width": 208.5
   },
   "right": {
     "id": "7096985b6aa08152",
@@ -183,44 +193,44 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "c2c00970aedeeb55",
+  "active": "b7700b243757b785",
   "lastOpenFiles": [
+    "Workflow/ENTITY-DISCOVERY.md",
+    "TASKS_BACKLOG.md",
+    "TASKS_INBOX.md",
+    "TASKS.md",
+    "AGENTS.md",
+    "2026-01-04.md",
+    "Workflow/_cache/entity_discovery/satya_nadella.json",
+    "Workflow/_cache/entity_discovery",
+    "Workflow/_cache",
+    "Workflow/scripts/entity_discovery.py",
+    "Outbox/README.md",
+    "Outbox/2026-01-04_Reply-To_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-.md",
+    "Outbox/2026-01-04_Reply-To_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-_1.md",
+    "Outbox/2026-01-04_Reply-To_RE-External-Re-Connecting-with-VAST_1.md",
+    "Outbox/2026-01-04_Reply-To_RE-External-Re-Connecting-with-VAST.md",
+    "Outbox/2026-01-04_Reply-To_Re-Early-heads-up---board-game-the-week-_1.md",
+    "Outbox/2026-01-04_Reply-To_Re-Early-heads-up---board-game-the-week-.md",
+    "Outbox/2026-01-04_Reply-To_Re-CES_1.md",
+    "Outbox/2026-01-04_Reply-To_Re-CES.md",
+    "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing_1.md",
+    "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing.md",
+    "Outbox/2026-01-04_Reply-To_Confidential---IHDF-exec-session-quick-r_1.md",
+    "Outbox/2026-01-04_Reply-To_Confidential---IHDF-exec-session-quick-r.md",
+    "Outbox/2026-01-04_Reply-To_Applied-Postings_1.md",
+    "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
+    "VAST/People/Andrew Stack/README.md",
     "Sources/Email/2026/2026-01-04_170011_5198_Tesla-Credits-Expiring-Soon.md",
     "Sources/Email/2026/2026-01-04_153217_8572_On-Tackling-Challenges-and-Sparking-Innovation.md",
     "Sources/Email/2026/2026-01-04_132809_5619_Re-Tues-mens-group.md",
     "Sources/Email/2026/2026-01-04_132409_4551_Re-Weekly-VAST-GTM-Meeting.md",
-    "Sources/Email/2026/2026-01-04_130424_1550_-Just-scheduled-AI-for-Good-New-location-for-January.md",
-    "Sources/Email/2026/2026-01-02_095616_9612_VAST-and-Azure-Integrationdocx.md",
-    "Sources/Email/2026/2026-01-02_092145_6574_Re-Throwing-Up-The-Red-Flare-on-Azure-MAI.md",
-    "Sources/Email/2026/2026-01-01_162958_2905_Applied-Postings.md",
-    "Sources/Email/2026/2026-01-01_152322_4183_Q4-bookings-to-date-in-context.md",
-    "Sources/Email/2026/2026-01-01_141712_0482_Re-The-most-interesting-men-in-the-world-group.md",
-    "Sources/Email/2026/2026-01-01_090631_3041_Invitation-Urgent-Training-Understanding-the-KV-Cache-Opport.md",
-    "Sources/Email/2025/2025-12-30_162801_0557_Re-Re-EXTERNAL-EXTERNAL-Re-OA-Alert-FOpp-4197---9680814---A-.md",
-    "Sources/Email/2025/2025-12-29_200523_5824_Accepted-MordiJason---Sync--Fri-Jan-2-2026-1pm---2pm-MST-Jas.md",
-    "Sources/Email/2025/2025-12-29_134454_9875_Thanks-For-Your-Order-Jason.md",
-    "Sources/Email/2025/2025-12-29_005457_0841_Re-Early-heads-up---board-game-the-week-after-Christmas.md",
-    "Sources/Email/2025/2025-12-28_233859_8920_URGENT---New-AlphaSights-Project-in-corporate-insider-threat.md",
-    "Sources/Email/2025/2025-12-26_194237_1247_Jason-start-a-conversation-with-your-new-connection-Louis.md",
-    "Sources/Email/2025/2025-12-23_150727_5107_Youve-been-selected-VAST-speaker-at-VAST-FWD.md",
-    "Sources/Email/2025/2025-12-23_074723_5604_Pricing-Changes-and-Supply-Chain-Update-Recording--FAQ.md",
-    "Sources/Email/2025/2025-12-23_061931_1979_Walmart---Unsettled.md",
-    "Sources/Email/2025/2025-12-23_004718_3592_Re-VAST-Data---GDC-Storage-RFP---Request-For-Meeting.md",
-    "Sources/Email/2025/2025-12-22_072508_8232_VAST-Data-Invites-you-to-Slice.md",
-    "Sources/Email/2025/2025-12-22_061502_6784_VAST-and-Azure-In---jasonvalleryvastdatacom-we-need-t.md",
-    "Sources/Email/2025/2025-12-22_060718_7469_Share-request-for-VAST-and-Azure-Integrationdocx.md",
-    "Sources/Email/2025/2025-12-22_045254_1667_Re-CES.md",
-    "Sources/Email/2025/2025-12-21_075242_5666_Re-MAI--VAST-December-8th-EoD-update.md",
     "VAST/People/Tesla",
     "VAST/People/Brandon & Priscilla Dodsworth",
     "VAST/People/Slice",
     "VAST/People/kodeON",
     "VAST/People/Andrea",
     "VAST/People/Hannah",
-    "Inbox/_extraction/2026-01-01_090631_3041_Invitation-Urgent-Training-Understanding-the-KV-Cache-Opport.email_changeplan.json",
-    "Inbox/_extraction/2026-01-01_090631_3041_Invitation-Urgent-Training-Understanding-the-KV-Cache-Opport.email_extraction.json",
-    "Inbox/_extraction/2025-12-22_072508_8232_VAST-Data-Invites-you-to-Slice.email_changeplan.json",
-    "Inbox/_extraction/2025-12-22_072508_8232_VAST-Data-Invites-you-to-Slice.email_extraction.json",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",

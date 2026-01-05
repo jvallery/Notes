@@ -28,7 +28,7 @@ tags:
 
 ## Open Tasks
 
-- [ ] Connect with Matt in Seattle. @Myself 🔼 #task
+- [ ] Connect with Matt in Seattle. @Myself 🔼 #task #proposed
 ## Related
 
 - [[VAST Data]]

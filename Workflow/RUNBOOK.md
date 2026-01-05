@@ -61,7 +61,7 @@ python scripts/apply.py --all --verbose
 | Check              | Command                        | Action                      |
 | ------------------ | ------------------------------ | --------------------------- |
 | Review changes     | `git diff HEAD~1`              | Verify changes look correct |
-| Check dashboards   | Open `_Tasks/*.md` in Obsidian | Confirm tasks populated     |
+| Check dashboards   | Open `TASKS.md` in Obsidian    | Confirm tasks populated     |
 | Find flagged items | Search `#needs-review`         | Resolve ambiguous entities  |
 | Check failed       | `ls ../Inbox/_failed/`         | Investigate any failures    |
 | Push changes       | `git push`                     | Manual push after review    |

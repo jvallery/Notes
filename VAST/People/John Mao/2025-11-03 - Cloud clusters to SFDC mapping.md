@@ -26,18 +26,18 @@ tags:
 
 Team aligned on how VAST cloud clusters must map into Salesforce (Account → Site → Cluster asset with PSNT) to enable cluster-level call-home ("Godfather") and Uplink registration via a unique customer subdomain. Phase 1 will be single-tenant per customer via private offers, with Polaris as the deployment/onboarding hook and a near-term stop-gap manual onboarding flow needed for upcoming field POCs. Key concerns include telemetry/support-bundle egress costs and legal/data-custodian constraints on payload visibility for managed services.
 ## Action Items
-- [ ] Draft Phase 1 cloud onboarding process (SFDC Account/Site/PSNT, Uplink subdomain, Polaris/Terraform hooks) and circulate for review @John 📅 2025-11-08 🔺 #task
-- [ ] Define and publish a stop-gap manual flow for immediate field POCs to configure Salesforce assets and Uplink registration @Myself 📅 2025-11-08 🔺 #task
-- [ ] Prepare a reusable template/checklist to create Uplink subdomains and link them to Salesforce accounts/opportunities @Adar 📅 2025-11-08 ⏫ #task
-- [ ] Specify Terraform/Polaris changes to auto-register clusters with Uplink (subdomain injected at deploy time) @John 📅 2025-11-08 ⏫ #task
-- [ ] Document PSNT-to-SFDC matching and Godfather handling, including required fields and error handling @Tomer Hagay 📅 2025-11-08 ⏫ #task
-- [ ] Propose an approach to minimize telemetry egress (e.g., on-demand bundles, proxy via Polaris, S3 staging) with cost estimates @Tomer Hagay 📅 2025-11-08 ⏫ #task
-- [ ] Decide workflow for public marketplace provisioning, including whether Tackle auto-creates Salesforce accounts/opportunities @John 📅 2025-11-08 🔺 #task
-- [ ] Run legal review of call-home/Uplink payload content and operator visibility for managed service data-custodian obligations @TBD 📅 2025-11-08 🔺 #task
-- [ ] Confirm and document policy on tenant-level opt-out in multi-tenant SaaS @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Evaluate feasibility and security posture of any future 'hello/adopt' endpoint for unregistered clusters @Tomer Hagay 📅 2025-11-08 ⏫ #task
-- [ ] Audit existing VoC cloud customers for proper Salesforce and Uplink linkage; remediate gaps @Adar 📅 2025-11-08 🔺 #task
-- [ ] Select the preferred telemetry transport path (direct to GCS vs proxy via Polaris vs S3 staging) and define activation criteria for support bundles @Tomer Hagay 📅 2025-11-08 ⏫ #task
+- [ ] Draft Phase 1 cloud onboarding process (SFDC Account/Site/PSNT, Uplink subdomain, Polaris/Terraform hooks) and circulate for review @John 📅 2025-11-08 🔺 #task #proposed
+- [ ] Define and publish a stop-gap manual flow for immediate field POCs to configure Salesforce assets and Uplink registration @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ] Prepare a reusable template/checklist to create Uplink subdomains and link them to Salesforce accounts/opportunities @Adar 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Specify Terraform/Polaris changes to auto-register clusters with Uplink (subdomain injected at deploy time) @John 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Document PSNT-to-SFDC matching and Godfather handling, including required fields and error handling @Tomer Hagay 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Propose an approach to minimize telemetry egress (e.g., on-demand bundles, proxy via Polaris, S3 staging) with cost estimates @Tomer Hagay 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Decide workflow for public marketplace provisioning, including whether Tackle auto-creates Salesforce accounts/opportunities @John 📅 2025-11-08 🔺 #task #proposed
+- [ ] Run legal review of call-home/Uplink payload content and operator visibility for managed service data-custodian obligations @TBD 📅 2025-11-08 🔺 #task #proposed
+- [ ] Confirm and document policy on tenant-level opt-out in multi-tenant SaaS @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Evaluate feasibility and security posture of any future 'hello/adopt' endpoint for unregistered clusters @Tomer Hagay 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Audit existing VoC cloud customers for proper Salesforce and Uplink linkage; remediate gaps @Adar 📅 2025-11-08 🔺 #task #proposed
+- [ ] Select the preferred telemetry transport path (direct to GCS vs proxy via Polaris vs S3 staging) and define activation criteria for support bundles @Tomer Hagay 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Phase 1 scope is single-tenant per customer deployments; no tenant-level call-home.

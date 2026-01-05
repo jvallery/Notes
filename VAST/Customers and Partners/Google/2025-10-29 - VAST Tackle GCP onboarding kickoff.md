@@ -32,19 +32,19 @@ tags:
 
 Kickoff meeting to onboard VAST’s existing Google Cloud Marketplace listing into Tackle to enable private offers and optional metered overages, while reusing the current GCP project and product number. Key discussion areas included required GCP access (service account JSON key, IAM roles, reporting export), pricing/overage strategy (including a “penny-meter” approach), and defining subscription event notifications/SSO and metadata flow into Salesforce and VAST’s Polaris control plane.
 ## Action Items
-- [ ] Send Tackle platform invitations to meeting participants @Peter Kapsashi 📅 2025-11-08 🔺 #task
-- [ ] Provide GCP project name and product number in Tackle integrations @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Create/provide GCP service account JSON key and assign required IAM roles for Tackle @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Enable GCP Marketplace reporting export and connect it to Tackle @TBD 📅 2025-11-08 🔺 #task
-- [ ] Copy existing GCP listing content into Tackle and propose plans/metrics configuration @Peter Kapsashi 📅 2025-11-08 🔺 #task
-- [ ] Review and update the GCP listing EULA if needed @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Define pricing and overage strategy (units, discounts, finance treatment) for private offers @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Specify required metadata for Salesforce and Polaris to reflect capacity sold vs dollar amounts @A.K. Rapsone 📅 2025-11-08 🔺 #task
-- [ ] Outline subscription event notifications and SSO flow options from marketplace to Polaris @Peter Kapsashi 📅 2025-11-08 🔺 #task
-- [ ] Confirm Polaris endpoints and schema to receive subscription and usage events @A.K. Rapsone 📅 2025-11-08 🔺 #task
-- [ ] Clarify Google behavior on applying private-offer discounts to metered overage lines @Peter Kapsashi 📅 2025-11-08 🔺 #task
-- [ ] Share Tackle documentation for GCP IAM roles, reporting setup, and metering APIs @Peter Kapsashi 📅 2025-11-08 ⏫ #task
-- [ ] Provide examples of multi-meter configurations (TB, seats, CPU) and penny-meter pattern @Peter Kapsashi 📅 2025-11-08 ⏫ #task
+- [ ] Send Tackle platform invitations to meeting participants @Peter Kapsashi 📅 2025-11-08 🔺 #task #proposed
+- [ ] Provide GCP project name and product number in Tackle integrations @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Create/provide GCP service account JSON key and assign required IAM roles for Tackle @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Enable GCP Marketplace reporting export and connect it to Tackle @TBD 📅 2025-11-08 🔺 #task #proposed
+- [ ] Copy existing GCP listing content into Tackle and propose plans/metrics configuration @Peter Kapsashi 📅 2025-11-08 🔺 #task #proposed
+- [ ] Review and update the GCP listing EULA if needed @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Define pricing and overage strategy (units, discounts, finance treatment) for private offers @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Specify required metadata for Salesforce and Polaris to reflect capacity sold vs dollar amounts @A.K. Rapsone 📅 2025-11-08 🔺 #task #proposed
+- [ ] Outline subscription event notifications and SSO flow options from marketplace to Polaris @Peter Kapsashi 📅 2025-11-08 🔺 #task #proposed
+- [ ] Confirm Polaris endpoints and schema to receive subscription and usage events @A.K. Rapsone 📅 2025-11-08 🔺 #task #proposed
+- [ ] Clarify Google behavior on applying private-offer discounts to metered overage lines @Peter Kapsashi 📅 2025-11-08 🔺 #task #proposed
+- [ ] Share Tackle documentation for GCP IAM roles, reporting setup, and metering APIs @Peter Kapsashi 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Provide examples of multi-meter configurations (TB, seats, CPU) and penny-meter pattern @Peter Kapsashi 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Reuse the existing GCP Marketplace listing and existing GCP project/product number (no new project).

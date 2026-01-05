@@ -25,16 +25,16 @@ tags:
 
 Jason and Yogev reviewed VAST on-cloud architecture learnings across AWS/GCP/Azure (and an Oracle Cloud POC), focusing on making cloud object storage (Blob/S3/GCS) the durable system of record with VAST providing compute/caching and a global namespace. Key gaps and requirements discussed included dataset prefetch and cache-on-read semantics for GPU-adjacent storage, metadata persistence tradeoffs (block vs premium object tiers), consistency expectations, and the need for QoS/governance and high-TPS KV-store capabilities. They agreed to avoid overfitting to OpenAI by building a broadly applicable multi-cloud solution and to sync with Asaf on persistence and governance design.
 ## Action Items
-- [ ] Meet with Asaf (chief architect) to align on persistence design, object-store tiering, and QoS/governance. @Myself 📅 2025-10-21 🔺 #task
-- [ ] Prepare a proposal for object-tiering design (Blob/S3/GCS), including metadata persistence options and consistency trade-offs. @Myself 🔺 #task
-- [ ] Draft API requirements for dataset prefetch into GPU-adjacent cache and cache-on-read semantics. @Myself ⏫ #task
-- [ ] Plan travel to Tel Aviv and Iceland; coordinate timing and request/collect pre-reads from Yogev/team. @Myself 🔽 #task
-- [ ] Confirm with OpenAI teams whether S3 API suffices for GPU-adjacent storage or if Blob API parity is required. @Myself ⏫ #task
-- [ ] Capture requirements for a global KV store (maximize TPS per PB, <=64 KB I/O) and assess feasibility on VAST/DataSpaces. @Myself ⏫ #task
-- [ ] Define QoS/governance model: quotas and prioritization by identity across throughput, TPS, and capacity. @Asaf 🔺 #task
-- [ ] Benchmark viability of Premium Blob / S3 Express for metadata persistence versus block storage options (EBS/PD/Premium Disk). @Asaf ⏫ #task
-- [ ] Share current DataSpaces architecture docs and persistence roadmap with Jason. @Asaf ⏫ #task
-- [ ] Summarize Oracle Cloud POC learnings and current AWS/GCP/Azure cluster status for Jason. @Yogev Vankin 🔽 #task
+- [ ] Meet with Asaf (chief architect) to align on persistence design, object-store tiering, and QoS/governance. @Myself 📅 2025-10-21 🔺 #task #proposed
+- [ ] Prepare a proposal for object-tiering design (Blob/S3/GCS), including metadata persistence options and consistency trade-offs. @Myself 🔺 #task #proposed
+- [ ] Draft API requirements for dataset prefetch into GPU-adjacent cache and cache-on-read semantics. @Myself ⏫ #task #proposed
+- [ ] Plan travel to Tel Aviv and Iceland; coordinate timing and request/collect pre-reads from Yogev/team. @Myself 🔽 #task #proposed
+- [ ] Confirm with OpenAI teams whether S3 API suffices for GPU-adjacent storage or if Blob API parity is required. @Myself ⏫ #task #proposed
+- [ ] Capture requirements for a global KV store (maximize TPS per PB, <=64 KB I/O) and assess feasibility on VAST/DataSpaces. @Myself ⏫ #task #proposed
+- [ ] Define QoS/governance model: quotas and prioritization by identity across throughput, TPS, and capacity. @Asaf 🔺 #task #proposed
+- [ ] Benchmark viability of Premium Blob / S3 Express for metadata persistence versus block storage options (EBS/PD/Premium Disk). @Asaf ⏫ #task #proposed
+- [ ] Share current DataSpaces architecture docs and persistence roadmap with Jason. @Asaf ⏫ #task #proposed
+- [ ] Summarize Oracle Cloud POC learnings and current AWS/GCP/Azure cluster status for Jason. @Yogev Vankin 🔽 #task #proposed
 
 ## Decisions
 - Pursue object-store tiering (Blob/S3/GCS) as a core design requirement for durability/system-of-record.

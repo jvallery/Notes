@@ -33,23 +33,23 @@ tags:
 
 Team aligned on launching an MVP on Google Cloud Marketplace using private offers with fixed capacity pricing ($0.07/GB) and no BYOL. Tackle.io will generate private offers integrated with Salesforce, while Polaris will be the source of truth for entitlements, call-home registration, and usage/metering. Key open items include finalizing overage handling (including GCP marketplace limitations), EULA language, and finance processes for billing/reconciliation ahead of first transactions targeted for Nov–Dec.
 ## Action Items
-- [ ] Review and draft marketplace EULA language to enable overage billing at list PAYGO via Tackle workaround @Myself 📅 2025-11-08 🔺 #task
-- [ ] Invite finance (Jason Vallery) to Tackle kickoff and ongoing implementation meetings @Eirikur Hrafnsson 📅 2025-10-29 🔺 #task
-- [ ] Confirm with Tackle.io the feasibility and configuration for overage handling and pricing on GCP @Eirikur Hrafnsson 📅 2025-11-08 🔺 #task
-- [ ] Implement automation to create Uplink organization endpoints from Salesforce metadata for call-home registration @Polaris team 📅 2025-11-08 🔺 #task
-- [ ] Design and implement internal alerting for CS/sales when customers approach or exceed entitlement @Polaris team 📅 2025-11-08 🔺 #task
-- [ ] Define overage policy (thresholds, grace, pricing) and reflect in offer terms and EULA @Tomer Hagay Hagay 📅 2025-11-08 🔺 #task
-- [ ] Set up finance processes for marketplace billing, receivables reconciliation, and revenue recognition for fixed capacity and overages @Finance 📅 2025-11-08 🔺 #task
-- [ ] Provide finance with access to GCP marketplace reporting/portal and sample/mock payout reports @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task
-- [ ] Schedule and run a detailed walkthrough of the Tackle-to-Salesforce private offer flow and data sync @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task
-- [ ] Define VAST units of measurement for compute and capacity for future pricing model @Tomer Hagay Hagay 📅 2025-11-08 ⏫ #task
-- [ ] Plan for cloud customer success coverage to drive expansion and manage entitlement/usage @Lihi Rotchild 📅 2025-11-08 ⏫ #task
-- [ ] Prepare pipeline visibility for expected first GCP transactions and timelines @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task
-- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Myself 📅 2025-11-08 🔺 #task
-- [ ] Set session to define billing, invoicing, payout cadence, and reconciliation across Polaris, Tackle, and GCP @Finance 📅 2025-11-08 🔺 #task
-- [ ] Decide whether to permit automatic expansion beyond entitlement or require account approval @Product 📅 2025-11-08 ⏫ #task
-- [ ] Outline rev rec approach for future hybrid conversion model (on-prem ↔ cloud) @Finance 📅 2025-11-08 ⏫ #task
-- [ ] Assess feasibility and policy for multi-cloud pooling and metadata roll-up to Salesforce @Polaris team 📅 2025-11-08 ⏫ #task
+- [ ] Review and draft marketplace EULA language to enable overage billing at list PAYGO via Tackle workaround @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ] Invite finance (Jason Vallery) to Tackle kickoff and ongoing implementation meetings @Eirikur Hrafnsson 📅 2025-10-29 🔺 #task #proposed
+- [ ] Confirm with Tackle.io the feasibility and configuration for overage handling and pricing on GCP @Eirikur Hrafnsson 📅 2025-11-08 🔺 #task #proposed
+- [ ] Implement automation to create Uplink organization endpoints from Salesforce metadata for call-home registration @Polaris team 📅 2025-11-08 🔺 #task #proposed
+- [ ] Design and implement internal alerting for CS/sales when customers approach or exceed entitlement @Polaris team 📅 2025-11-08 🔺 #task #proposed
+- [ ] Define overage policy (thresholds, grace, pricing) and reflect in offer terms and EULA @Tomer Hagay Hagay 📅 2025-11-08 🔺 #task #proposed
+- [ ] Set up finance processes for marketplace billing, receivables reconciliation, and revenue recognition for fixed capacity and overages @Finance 📅 2025-11-08 🔺 #task #proposed
+- [ ] Provide finance with access to GCP marketplace reporting/portal and sample/mock payout reports @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Schedule and run a detailed walkthrough of the Tackle-to-Salesforce private offer flow and data sync @Eirikur Hrafnsson 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Define VAST units of measurement for compute and capacity for future pricing model @Tomer Hagay Hagay 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Plan for cloud customer success coverage to drive expansion and manage entitlement/usage @Lihi Rotchild 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Prepare pipeline visibility for expected first GCP transactions and timelines @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Validate GCP overage-at-PAYGO approach and confirm Tackle configuration path @Myself 📅 2025-11-08 🔺 #task #proposed
+- [ ] Set session to define billing, invoicing, payout cadence, and reconciliation across Polaris, Tackle, and GCP @Finance 📅 2025-11-08 🔺 #task #proposed
+- [ ] Decide whether to permit automatic expansion beyond entitlement or require account approval @Product 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Outline rev rec approach for future hybrid conversion model (on-prem ↔ cloud) @Finance 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Assess feasibility and policy for multi-cloud pooling and metadata roll-up to Salesforce @Polaris team 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Transact exclusively through cloud marketplaces for MVP (no BYOL).

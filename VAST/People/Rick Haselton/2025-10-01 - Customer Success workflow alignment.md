@@ -21,7 +21,7 @@ tags:
 
 A single action item was captured to meet with Customer Success (e.g., Rich) to understand the end-to-end account support workflows. The task appears assigned to Jason Vallery, with no due date specified.
 ## Action Items
-- [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Myself #task
+- [ ] Meet with Customer Success (e.g., Rich) to understand account support workflows end-to-end. @Myself #task #proposed
 
 ## Key Information
 - Need to understand Customer Success account support workflows end-to-end.

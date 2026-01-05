@@ -24,18 +24,18 @@ tags:
 
 Liraz walked Jason through VAST’s non-traditional major release management using four phase gates (scope, plan/change management, code freeze/beta readiness, release) in a Waterfall model with overlapping planning/execution across releases. They covered decision roles (product, architects, dev leadership), QA’s three-cycle approach and success targets, and the tooling/rhythms used (per-release wiki pages, Excel Gantt, QTest, weekly status decks). They also aligned on sharing 5.4/5.5 materials, scheduling a deeper follow-up, and meeting in person during Jason’s late-November Tel Aviv visit.
 ## Action Items
-- [ ] Review 5.4 phase-gate decks/materials shared by Liraz @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Send 5.5 status wiki and Gantt link(s) to Jason @Liraz 📅 2025-11-08 ⏫ #task
-- [ ] Review 5.5 status wiki and Gantt @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Schedule a follow-up 1:1 next week to go deeper on the release process @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Coordinate with Asaf on thematic/architectural planning approach and how priorities are shaped beyond single-customer asks @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Plan and schedule an in-person sync in Tel Aviv during 2025-11-23 to 2025-11-26 @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Share current 5.5 anchor features and beta customers enlisted @Liraz 📅 2025-11-08 🔽 #task
-- [ ] Ensure cloud-driven features follow phase gates and are included in QA plans @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Confirm the exact calendar date for 5.6 Phase Gate 1 @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Obtain access to the per-release wiki pages, QTest views, and the weekly status deck @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Connect with the current release managers for 5.5 and 5.6 (e.g., Orly and Roy) for working rhythms @Myself 📅 2025-11-08 🔽 #task
-- [ ] Clarify official support policy for older majors (major minus two) and exceptions @Myself 📅 2025-11-08 🔽 #task
+- [ ] Review 5.4 phase-gate decks/materials shared by Liraz @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Send 5.5 status wiki and Gantt link(s) to Jason @Liraz 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Review 5.5 status wiki and Gantt @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Schedule a follow-up 1:1 next week to go deeper on the release process @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Coordinate with Asaf on thematic/architectural planning approach and how priorities are shaped beyond single-customer asks @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Plan and schedule an in-person sync in Tel Aviv during 2025-11-23 to 2025-11-26 @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Share current 5.5 anchor features and beta customers enlisted @Liraz 📅 2025-11-08 🔽 #task #proposed
+- [ ] Ensure cloud-driven features follow phase gates and are included in QA plans @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Confirm the exact calendar date for 5.6 Phase Gate 1 @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Obtain access to the per-release wiki pages, QTest views, and the weekly status deck @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Connect with the current release managers for 5.5 and 5.6 (e.g., Orly and Roy) for working rhythms @Myself 📅 2025-11-08 🔽 #task #proposed
+- [ ] Clarify official support policy for older majors (major minus two) and exceptions @Myself 📅 2025-11-08 🔽 #task #proposed
 
 ## Key Information
 - VAST major releases use four phase gates: PG1 scope review; PG2 plan/timeline and change management; PG3 code freeze and beta readiness; PG4 release.

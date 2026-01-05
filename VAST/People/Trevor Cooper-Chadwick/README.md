@@ -28,7 +28,7 @@ tags:
 
 ## Open Tasks
 
-- [ ] Verify if Trevor Cooper-Chadwick should have access to the VAST Customer Learning portal. @Lior Genzel 🔼 #task
+- [ ] Verify if Trevor Cooper-Chadwick should have access to the VAST Customer Learning portal. @Lior Genzel 🔼 #task #proposed
 ## Related
 
 - [[VAST Data]]

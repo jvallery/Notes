@@ -22,12 +22,12 @@ tags:
 
 Jason and Eyal reviewed VAST’s release intake and planning model (majors, minors, service packs, and hotfixes) and how field requests and urgent customer asks can disrupt planned scope. They aligned that minor releases are treated as full releases with rigorous regression/performance testing, and discussed key cluster-side multi-tenancy gaps (notably authentication provider limits) that block SaaS agility. Eyal committed to share the current multi-tenancy gaps Confluence page, and they planned a follow-up call plus an in-person meeting during Jason’s Tel Aviv visit.
 ## Action Items
-- [ ] Send the Confluence page with the current multi-tenancy gaps list @Eyal 📅 2025-11-08 ⏫ #task
-- [ ] Schedule a follow-up call to continue SaaS and release process discussion @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Coordinate an in-person meeting during the Tel Aviv visit (2025-11-23 to 2025-11-26) @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Review the multi-tenancy gaps list and identify priorities for cloud/SaaS readiness @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Sync with the Polaris/Icelandic team on which gaps can be addressed in control plane vs cluster @Myself 📅 2025-11-08 ⏫ #task
-- [ ] Confirm the backport/forward-port plan when delivering features to customers on hotfix builds @Eyal 📅 2025-11-08 🔽 #task
+- [ ] Send the Confluence page with the current multi-tenancy gaps list @Eyal 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Schedule a follow-up call to continue SaaS and release process discussion @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Coordinate an in-person meeting during the Tel Aviv visit (2025-11-23 to 2025-11-26) @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Review the multi-tenancy gaps list and identify priorities for cloud/SaaS readiness @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Sync with the Polaris/Icelandic team on which gaps can be addressed in control plane vs cluster @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Confirm the backport/forward-port plan when delivering features to customers on hotfix builds @Eyal 📅 2025-11-08 🔽 #task #proposed
 
 ## Key Information
 - Eyal joined VAST in 2024-12; Noa is an early employee and manages major releases while Eyal plans minor releases.

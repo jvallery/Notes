@@ -95,7 +95,7 @@ Managing professional and personal knowledge across multiple input channels (mee
 | SOT-03 | Each **Account** has a root doc: `{Customers and Partners}/{Account}/README.md` | P1       |
 | SOT-04 | Historical notes stored as dated entries within entity folders                  | P0       |
 | SOT-05 | **Tasks live in source notes only** — no duplication to `_Tasks/*.md` files     | P0       |
-| SOT-06 | `_Tasks/*.md` files contain **Dataview queries only** (dashboards, not storage) | P0       |
+| SOT-06 | `TASKS.md` is a **query-only dashboard** (Tasks plugin), no `_Tasks/*.md` lists | P0       |
 
 ### 2.7 Obsidian Usage (Read-Only for Automation)
 
@@ -307,6 +307,6 @@ User → git push (manual)
 | Regex patching                | Structured patch primitives       |
 | Per-file apply                | Transactional batch apply         |
 | Persona injection             | Profile-based rubrics             |
-| Tasks duplicated to `_Tasks/` | Tasks stay in source notes        |
+| Tasks duplicated to `_Tasks/` | Tasks stay in source notes; `TASKS.md` dashboard only |
 | Relied on Templater triggers  | Jinja2 templates, headless        |
 | No `store: false`             | All API calls opt out of training |

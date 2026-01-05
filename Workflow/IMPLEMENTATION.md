@@ -21,7 +21,7 @@ These rules apply to ALL implementation steps:
 3. **Schema enforcement**: Use `client.responses.parse(..., text_format=PydanticModel, store=False)`
 4. **Transactional apply**: Atomic writes + backups + rollback; clean git required
 5. **Standards compliance**: Naming, frontmatter, tags, folders per STANDARDS.md
-6. **Tasks live only in source notes**: `_Tasks/*.md` contain Dataview queries only
+6. **Tasks live only in source notes**: `TASKS.md` is the Tasks-plugin dashboard (queries only)
 7. **Privacy enforcement**: Always pass `store=False` and use explicit runtime checks (no `assert`) to prevent server-side storage.
 
 ---

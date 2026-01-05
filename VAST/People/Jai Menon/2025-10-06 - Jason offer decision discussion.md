@@ -25,10 +25,10 @@ tags:
 
 Jason discussed two external offers: a complex, high-variance compensation offer from VAST and an expiring offer from Crusoe. Microsoft was deemed not viable due to unclear Apollo scope and limited compensation levers; Jai agreed not to push Manish for a small adjustment that could be perceived as insulting. Jason planned final diligence with VAST’s CEO to quantify risk and likely decide between VAST and Crusoe within the week, then update Jai.
 ## Action Items
-- [ ] Meet VAST CEO Renan to quantify offer risks and discuss adjustments to commission and equity terms. @Myself 📅 2025-10-26 🔺 #task
-- [ ] Negotiate specific compensation tweaks with VAST (commission basis and equity size) to reduce downside risk. @Myself 📅 2025-10-26 🔺 #task
-- [ ] Decide between VAST and Crusoe and prepare next steps (including resignation if applicable). @Myself 📅 2025-10-26 🔺 #task
-- [ ] Update Jai with final decision and timing (including resignation plan if leaving Microsoft). @Myself 📅 2025-10-26 ⏫ #task
+- [ ] Meet VAST CEO Renan to quantify offer risks and discuss adjustments to commission and equity terms. @Myself 📅 2025-10-26 🔺 #task #proposed
+- [ ] Negotiate specific compensation tweaks with VAST (commission basis and equity size) to reduce downside risk. @Myself 📅 2025-10-26 🔺 #task #proposed
+- [ ] Decide between VAST and Crusoe and prepare next steps (including resignation if applicable). @Myself 📅 2025-10-26 🔺 #task #proposed
+- [ ] Update Jai with final decision and timing (including resignation plan if leaving Microsoft). @Myself 📅 2025-10-26 ⏫ #task #proposed
 
 ## Decisions
 - Do not pursue Microsoft compensation changes for Jason.

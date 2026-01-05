@@ -27,12 +27,12 @@ tags:
 
 Silk briefed Jason on its software-defined cloud storage architecture optimized for high-performance database workloads and discussed how AI-driven access is increasing load on systems of record. They compared positioning versus Azure native options (notably Azure NetApp Files) and raised a key request for RDMA support on Azure L-series to reduce CPU overhead, with ongoing engagement with Gal Piglin’s team. Next steps include pursuing an intro to Jai Menon via Ong and sharing concrete customer use cases to tailor an executive discussion.
 ## Action Items
-- [ ] Coordinate with Ong to schedule an introduction meeting with Jai Menon. @Tom 📅 2025-10-26 ⏫ #task
-- [ ] Check RDMA front-end support timeline for Azure L-series with Gal Piglin’s team. @Myself 📅 2025-10-27 ⏫ #task
-- [ ] Send architecture and real-time use-case slides (including the discussed slide) to Jason. @Chris 📅 2025-10-26 ⏫ #task
-- [ ] Keep Silk in mind for customer opportunities requiring more performance than Azure native offerings. @Myself 📅 2025-10-26 🔽 #task
-- [ ] Confirm whether the target AI use cases require real-time access or can use near-real-time copies. @Tom 📅 2025-10-26 ⏫ #task
-- [ ] Clarify what topics Jai Menon cares about to tailor the executive meeting. @Myself 📅 2025-10-26 ⏫ #task
+- [ ] Coordinate with Ong to schedule an introduction meeting with Jai Menon. @Tom 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Check RDMA front-end support timeline for Azure L-series with Gal Piglin’s team. @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [ ] Send architecture and real-time use-case slides (including the discussed slide) to Jason. @Chris 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Keep Silk in mind for customer opportunities requiring more performance than Azure native offerings. @Myself 📅 2025-10-26 🔽 #task #proposed
+- [ ] Confirm whether the target AI use cases require real-time access or can use near-real-time copies. @Tom 📅 2025-10-26 ⏫ #task #proposed
+- [ ] Clarify what topics Jai Menon cares about to tailor the executive meeting. @Myself 📅 2025-10-26 ⏫ #task #proposed
 
 ## Key Information
 - Silk is software-defined cloud storage focused on database and system-of-record workloads; typical deployments scale up to ~1 PB per data pod with tens of GB/s throughput and sub-ms latency.

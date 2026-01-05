@@ -31,9 +31,9 @@ tags:
 - 2026-01-01: Email re: Invitation: Urgent Training: Understanding the KV  - Invitation to a training session on KV Cache and NVIDIA's Context Memory Extension, scheduled for Ja
 ## Open Tasks
 
-- [ ] Review and provide feedback on the Cloud course and project brief. @Myself 📅 2026-01-07 🔼 #task
+- [ ] Review and provide feedback on the Cloud course and project brief. @Myself 📅 2026-01-07 🔼 #task #proposed
 
-- [ ] Attend the training session on KV Cache and NVIDIA's Context Memory Extension. @Myself 📅 2026-01-05 ⏫ #task
+- [ ] Attend the training session on KV Cache and NVIDIA's Context Memory Extension. @Myself 📅 2026-01-05 ⏫ #task #proposed
 ## Related
 
 - [[VAST on Cloud Course]]

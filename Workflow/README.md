@@ -498,8 +498,8 @@ Agents have **full autonomy** within this vault. See [AGENTS.md](../AGENTS.md) f
 
 ### Task Management
 
-- Write tasks into the **source note** as checkbox tasks (`- [ ] ...`) tagged `#task`.
-- Use `../TASKS.md` as the **query-only dashboard** (Obsidian Tasks plugin). Completing tasks in the dashboard updates the source note.
+- Write tasks into the **source note** as checkbox tasks (`- [ ] ...`) tagged `#task`; AI/automation adds `#proposed #auto` until you accept by removing `#proposed`.
+- Use `../TASKS.md` as the **query-only dashboard** (Obsidian Tasks plugin). Completing tasks in the dashboard updates the source note. Proposed items and the quick-capture inbox live under the “Proposed”/“Inbox” sections.
 
 ### Common Agent Tasks
 

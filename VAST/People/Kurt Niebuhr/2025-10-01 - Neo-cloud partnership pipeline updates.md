@@ -21,8 +21,8 @@ tags:
 
 Action items focus on keeping Jason informed about the neo-cloud partnership pipeline (including sakura.net) and identifying where VAST can plug in. A second action is to plan Supercomputing touchpoints and introductions (e.g., an AMD event) while aligning on joint targets.
 ## Action Items
-- [ ] Keep Jason updated on neo-cloud partnership pipeline (e.g., sakura.net) and where VAST can plug in. @TBD 📅 2025-11-08 ⏫ #task
-- [ ] Plan Supercomputing touchpoint and intros (e.g., AMD event) and align joint targets. @Myself 📅 2025-11-08 🔽 #task
+- [ ] Keep Jason updated on neo-cloud partnership pipeline (e.g., sakura.net) and where VAST can plug in. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [ ] Plan Supercomputing touchpoint and intros (e.g., AMD event) and align joint targets. @Myself 📅 2025-11-08 🔽 #task #proposed
 
 ## Key Information
 - There is a neo-cloud partnership pipeline that includes sakura.net.

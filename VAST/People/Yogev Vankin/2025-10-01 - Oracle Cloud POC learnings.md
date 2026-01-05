@@ -21,7 +21,7 @@ tags:
 
 A follow-up item was captured to provide Jason with a summary of Oracle Cloud POC learnings and an update on current AWS/GCP/Azure cluster status. The task appears completed with a recorded completion date.
 ## Action Items
-- [ ] Summarize Oracle Cloud POC learnings and current AWS/GCP/Azure cluster status for Jason @Myself 📅 2025-11-08 #task
+- [ ] Summarize Oracle Cloud POC learnings and current AWS/GCP/Azure cluster status for Jason @Myself 📅 2025-11-08 #task #proposed
 
 ## Key Information
 - A task was tracked (and marked complete) to summarize Oracle Cloud POC learnings and provide current AWS/GCP/Azure cluster status to Jason.
