@@ -26,10 +26,10 @@ tags:
 
 Silk briefed Jason on its software-defined cloud storage optimized for structured database workloads, highlighting sub-millisecond latency, tens of GB/s throughput, and scaling up to ~1 PB per pod. The group discussed AI-driven, unpredictable spikes hitting systems of record and two mitigation patterns: accelerating production databases versus creating near-real-time clones. Next steps included pursuing an intro/follow-up with Jay Menon and checking feasibility/timeline for RDMA support on Azure L-series to reduce CPU overhead.
 ## Action Items
-- [ ?] Confirm RDMA support/timeline for L-series front-end access with Azure contacts (Gal Piglin’s team) and report back. @Silk engineering 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Schedule and prepare a follow-up meeting with Jay Menon; define agenda to ensure value for all parties. @Chris 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Flag customer opportunities where native Azure storage cannot meet performance and consider Silk. @Myself 📅 2025-10-26 🔽 #task #proposed
-- [ ?] Compile concrete customer use cases requiring real-time MCP access vs near-real-time clones for discussion with Jay. @Silk product 📅 2025-10-26 ⏫ #task #proposed
+- [?] Confirm RDMA support/timeline for L-series front-end access with Azure contacts (Gal Piglin’s team) and report back. @Silk engineering 📅 2025-10-26 🔺 #task #proposed
+- [?] Schedule and prepare a follow-up meeting with Jay Menon; define agenda to ensure value for all parties. @Chris 📅 2025-10-26 ⏫ #task #proposed
+- [?] Flag customer opportunities where native Azure storage cannot meet performance and consider Silk. @Myself 📅 2025-10-26 🔽 #task #proposed
+- [?] Compile concrete customer use cases requiring real-time MCP access vs near-real-time clones for discussion with Jay. @Silk product 📅 2025-10-26 ⏫ #task #proposed
 
 ## Decisions
 - Proceed with setting up a CEO-level introduction to Jay Menon.

@@ -26,16 +26,16 @@ tags:
 
 Aaron reviewed updated AI pipeline slides for next week’s VAST SE Tech Summit, covering a continuous model-training loop and an enterprise inference (RAG) pipeline. The group aligned on key diagram clarifications: Kafka as an event-stream ingestion/feedback head, embeddings as precomputed, and Database shown in data prep and logging (with KV cache currently via NFS and GPU-direct-to-object as a future option). A key open point was whether to include Data Engine and function triggers in an SE-focused deck; Aaron will consult SE leadership before finalizing.
 ## Action Items
-- [ ?] Refine training slides to show continuous loop, clarify pretraining vs tuning, and depict fine-tuning/reinforcement learning terminology @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Adjust RAG slides to show precomputed embeddings (NIMs on Kubernetes), retriever and re-ranker flow, and explicit chatbot-to-inference linkage @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Depict Kafka as an event-stream ingestion head and RL feedback path; remove Kafka from the core storage lane in the diagrams @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Add Database to data preparation and logging/archives in the diagrams; note optional role around KV cache metadata @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Consult SE leadership on whether/how to include Data Engine and function triggers in the SE conference deck @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share Ray workflow diagrams/links in the Product Marketing drive and notify Aaron @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Present the updated deck at next week’s SE conference @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm final decision on Data Engine inclusion after SE leadership review @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Validate with Glenn that KV cache representation (current NFS, future GPU-direct-to-object) matches engineering reality @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Distribute Ray diagram links and incorporate any applicable patterns into the slides @Aaron Chaisson 📅 2025-11-08 🔽 #task #proposed
+- [?] Refine training slides to show continuous loop, clarify pretraining vs tuning, and depict fine-tuning/reinforcement learning terminology @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Adjust RAG slides to show precomputed embeddings (NIMs on Kubernetes), retriever and re-ranker flow, and explicit chatbot-to-inference linkage @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Depict Kafka as an event-stream ingestion head and RL feedback path; remove Kafka from the core storage lane in the diagrams @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Add Database to data preparation and logging/archives in the diagrams; note optional role around KV cache metadata @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Consult SE leadership on whether/how to include Data Engine and function triggers in the SE conference deck @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share Ray workflow diagrams/links in the Product Marketing drive and notify Aaron @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Present the updated deck at next week’s SE conference @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm final decision on Data Engine inclusion after SE leadership review @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Validate with Glenn that KV cache representation (current NFS, future GPU-direct-to-object) matches engineering reality @Aaron Chaisson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Distribute Ray diagram links and incorporate any applicable patterns into the slides @Aaron Chaisson 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - Use fine-tuning/reinforcement learning phrasing in the training loop (with online RL as a continuous-loop concept).

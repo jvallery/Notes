@@ -24,12 +24,12 @@ tags:
 
 Jason and Tomer aligned that VAST needs clearer product management discipline (OKRs/KRs, traceability from epics to tasks, and a defined rhythm of business) to improve delivery visibility and customer responsiveness. They discussed leadership resistance to formal PM structure (Jeff prioritizing revenue/flexibility, Renan resisting PM authority, and Shahar preferring ambiguity) and agreed any change must be top-down and org-wide across cloud and core. They agreed to defer drafting a proposal until after the Tel Aviv onsite next week, then jointly prepare a concise skunkworks proposal to present to Jeff (and likely Sahar).
 ## Action Items
-- [ ?] Draft an outline for a PM framework (scope, accountability gates, RoB cadence, OKR/KR mapping) to socialize with Jeff/Sahar. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Map current cloud–core workflow interfaces and handoffs to ensure any PM process spans the full stack. @Myself 📅 2025-11-08 #task #proposed
-- [ ?] Schedule a joint review with Jeff (and invite Sahar) to discuss the proposal after the Tel Aviv onsite. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Meet in person in Tel Aviv to observe processes and align on proposal approach. @Myself 📅 2025-11-10 #task #proposed
-- [ ?] Compile concrete pain points and examples (e.g., epic/ticket gaps, release slippage like MD migrate) to inform the proposal. @Tomer Hagay 📅 2025-11-08 #task #proposed
-- [ ?] Reconnect post–Tel Aviv to finalize proposal scope and presentation plan for leadership. @Tomer Hagay 📅 2025-11-08 #task #proposed
+- [?] Draft an outline for a PM framework (scope, accountability gates, RoB cadence, OKR/KR mapping) to socialize with Jeff/Sahar. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Map current cloud–core workflow interfaces and handoffs to ensure any PM process spans the full stack. @Myself 📅 2025-11-08 #task #proposed
+- [?] Schedule a joint review with Jeff (and invite Sahar) to discuss the proposal after the Tel Aviv onsite. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Meet in person in Tel Aviv to observe processes and align on proposal approach. @Myself 📅 2025-11-10 #task #proposed
+- [?] Compile concrete pain points and examples (e.g., epic/ticket gaps, release slippage like MD migrate) to inform the proposal. @Tomer Hagay 📅 2025-11-08 #task #proposed
+- [?] Reconnect post–Tel Aviv to finalize proposal scope and presentation plan for leadership. @Tomer Hagay 📅 2025-11-08 #task #proposed
 
 ## Decisions
 - Defer proposal drafting until after the Tel Aviv onsite next week.

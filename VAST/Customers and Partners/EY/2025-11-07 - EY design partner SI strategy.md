@@ -27,22 +27,22 @@ tags:
 
 The team aligned on a go-to-market strategy with global SIs centered on enterprise workflow automation, prioritizing an Azure-first design-partner motion with EY and executive alignment around Microsoft Ignite. They reviewed VAST’s current cloud posture (no GA marketplace offer yet) and near-term scenarios (burst-to-cloud and repatriation), while planning positioning against Microsoft AI Foundry and progressing a ~3% ACV referral incentive program. Kyndryl will be engaged via an incentive-led workshop, and Accenture/Deloitte learnings reinforced the need for co-developed, productized solutions rather than advisory-only engagements.
 ## Action Items
-- [ ?] Add Jason to EY coordination and Accenture update threads @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share EY background materials and proposed design-partner asks with Jason @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Connect with Lior to align on EY plan and required artifacts @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Schedule internal prep call with Yancey and Renan before the EY CTO meeting @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Identify and introduce Jason to SI BU leaders focused on workflow automation (e.g., Avanade, Accenture) @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Finalize and launch the partner referral incentive program (~3% ACV) through legal @John 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Organize Kyndryl virtual workshop and capture partnership scope and next steps @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Compile EY workload and compliance use-case details to inform product planning @Jesse 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Draft positioning on cloud portability and VAST’s complement vs. compete stance with Microsoft AI Foundry @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Map initial cloud target scenarios (burst/repatriation) and customer profiles for SI plays @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm EY CTO meeting date/time at Ignite and align with Renan’s schedule @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share latest Accenture opinionated stack update and reconnect with Dave when available @John 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Check Cisco SP team alignment and any VAST-qualified opportunities to pursue jointly @John 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Notify GSI team when referral program is approved and live, including partner-facing collateral @John 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Reassess Kyndryl prioritization after workshop and decide next-year focus @Soraya 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Provide Jason introductions to Avanade contacts and Microsoft AI Foundry partner team @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Add Jason to EY coordination and Accenture update threads @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share EY background materials and proposed design-partner asks with Jason @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Connect with Lior to align on EY plan and required artifacts @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Schedule internal prep call with Yancey and Renan before the EY CTO meeting @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Identify and introduce Jason to SI BU leaders focused on workflow automation (e.g., Avanade, Accenture) @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Finalize and launch the partner referral incentive program (~3% ACV) through legal @John 📅 2025-11-08 ⏫ #task #proposed
+- [?] Organize Kyndryl virtual workshop and capture partnership scope and next steps @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Compile EY workload and compliance use-case details to inform product planning @Jesse 📅 2025-11-08 ⏫ #task #proposed
+- [?] Draft positioning on cloud portability and VAST’s complement vs. compete stance with Microsoft AI Foundry @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Map initial cloud target scenarios (burst/repatriation) and customer profiles for SI plays @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm EY CTO meeting date/time at Ignite and align with Renan’s schedule @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share latest Accenture opinionated stack update and reconnect with Dave when available @John 📅 2025-11-08 ⏫ #task #proposed
+- [?] Check Cisco SP team alignment and any VAST-qualified opportunities to pursue jointly @John 📅 2025-11-08 ⏫ #task #proposed
+- [?] Notify GSI team when referral program is approved and live, including partner-facing collateral @John 📅 2025-11-08 ⏫ #task #proposed
+- [?] Reassess Kyndryl prioritization after workshop and decide next-year focus @Soraya 📅 2025-11-08 ⏫ #task #proposed
+- [?] Provide Jason introductions to Avanade contacts and Microsoft AI Foundry partner team @Soraya 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Prioritize an EY design partnership with an Azure-first motion to unlock co-development and a portability-led narrative.

@@ -31,20 +31,20 @@ tags:
 
 Team aligned on positioning for VAST on Cloud, emphasizing the global namespace to place data where compute runs across on-prem, public cloud, cross-cloud, and Neo clouds. Key constraints are current VM shapes and cloud cost (~$0.20/GB-month), with roadmap focus on marketplace automation, larger VM shapes via hyperscalers, and future object storage integration to improve TCO. Field was directed to route opportunities through Salesforce and a dedicated Slack channel, with follow-ups on Visa’s 20PB use case, AWS genomics POC mechanics, and tenant-level peering for multi-tenant clusters.
 ## Action Items
-- [ ?] Follow up with Arik on Visa’s ~20 PB cloud copy use case and propose architecture/cost options. @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Register cloud opportunities in Salesforce and post details in the VAST on Cloud Slack channel for rapid support. @TBD 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Share prior large-scale customer details and current limitations in Slack for team visibility. @Director Hampson 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Coordinate with Lior/Tiffany on AWS genomics use case next steps (POC and marketplace path). @Madhu 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Add Jason Vallery to the VAST on Cloud Slack channel. @Tiffany Stonehill 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Provide a roadmap update on tenant-level peering for multi-tenant clusters replicating to distinct customer cloud clusters. @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Finalize VAST on Cloud positioning assets (battle cards and talk tracks). @TBD 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Deliver SE training deck before Supercomputing and ensure collateral is ready for Supercomputing demos. @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Complete marketplace automation for Azure and AWS following the GCP rollout. @TBD 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Drive AWS FSx partnership discussions and push hyperscalers for larger VM shape support. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Confirm if/when cloud object storage integration (e.g., S3) will be available to reduce cloud TCO at multi-PB scale. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share the Slack channel details and ensure all field sellers have access. @Tiffany Stonehill 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Assess feasibility and timeline for OCI support driven by the Zoom project. @Olivia 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Evaluate SyncEngine as a near-term bridge for moving data in/out of cloud object storage. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [?] Follow up with Arik on Visa’s ~20 PB cloud copy use case and propose architecture/cost options. @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
+- [?] Register cloud opportunities in Salesforce and post details in the VAST on Cloud Slack channel for rapid support. @TBD 📅 2025-11-08 🔺 #task #proposed
+- [?] Share prior large-scale customer details and current limitations in Slack for team visibility. @Director Hampson 📅 2025-11-08 ⏫ #task #proposed
+- [?] Coordinate with Lior/Tiffany on AWS genomics use case next steps (POC and marketplace path). @Madhu 📅 2025-11-08 ⏫ #task #proposed
+- [?] Add Jason Vallery to the VAST on Cloud Slack channel. @Tiffany Stonehill 📅 2025-11-08 🔽 #task #proposed
+- [?] Provide a roadmap update on tenant-level peering for multi-tenant clusters replicating to distinct customer cloud clusters. @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
+- [?] Finalize VAST on Cloud positioning assets (battle cards and talk tracks). @TBD 📅 2025-11-08 🔺 #task #proposed
+- [?] Deliver SE training deck before Supercomputing and ensure collateral is ready for Supercomputing demos. @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [?] Complete marketplace automation for Azure and AWS following the GCP rollout. @TBD 📅 2025-11-08 🔺 #task #proposed
+- [?] Drive AWS FSx partnership discussions and push hyperscalers for larger VM shape support. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Confirm if/when cloud object storage integration (e.g., S3) will be available to reduce cloud TCO at multi-PB scale. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share the Slack channel details and ensure all field sellers have access. @Tiffany Stonehill 📅 2025-11-08 🔽 #task #proposed
+- [?] Assess feasibility and timeline for OCI support driven by the Zoom project. @Olivia 📅 2025-11-08 ⏫ #task #proposed
+- [?] Evaluate SyncEngine as a near-term bridge for moving data in/out of cloud object storage. @TBD 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Use the VAST on Cloud Slack channel as the primary intake for opportunities, with Tiffany (AWS/Azure) and Olivia (GCP/OCI) leading engagement.

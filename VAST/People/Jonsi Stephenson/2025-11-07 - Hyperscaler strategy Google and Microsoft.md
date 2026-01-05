@@ -25,10 +25,10 @@ tags:
 
 Aligned on hyperscaler strategy across Google and Microsoft. For Google, Google Distributed Cloud (GDC) is emerging as the on-prem TPU vehicle, with VAST and NetApp as the only viable file options; VAST real-workload TPU benchmarks reportedly outperformed Google’s managed Lustre by ~20% and a cross-region global namespace demo resonated. For Microsoft, Project Apollo is a new Linux/Kubernetes control plane for supercomputers with MAI as first tenant; LSVx VMs are not viable at scale, pushing toward running VAST on Azure Storage hardware, with MAI’s April Falcon build (120k GPUs in Dallas) at risk if storage underperforms; marketplace listing remains a key checkbox and a simplified cloud pricing unit (managed vCPU+capacity) is being pursued.
 ## Action Items
-- [ ?] Share TPU benchmark write-up and numbers for upcoming Google meetings @Jonsi Stephenson 📅 2025-11-14 ⏫ #task #proposed
-- [ ?] Attend pricing model meeting @Myself 📅 2025-11-10 ⏫ #task #proposed
-- [ ?] Attend Google Distributed Cloud team meeting @Myself 📅 2025-11-14 ⏫ #task #proposed
-- [ ?] Join Google Distributed Cloud leadership sessions remotely @Jonsi Stephenson 📅 2025-11-13 #task #proposed
+- [?] Share TPU benchmark write-up and numbers for upcoming Google meetings @Jonsi Stephenson 📅 2025-11-14 ⏫ #task #proposed
+- [?] Attend pricing model meeting @Myself 📅 2025-11-10 ⏫ #task #proposed
+- [?] Attend Google Distributed Cloud team meeting @Myself 📅 2025-11-14 ⏫ #task #proposed
+- [?] Join Google Distributed Cloud leadership sessions remotely @Jonsi Stephenson 📅 2025-11-13 #task #proposed
 
 ## Decisions
 - Pursue deeper integration with Google Distributed Cloud and aim to be part of the GDC SKU.

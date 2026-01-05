@@ -28,7 +28,7 @@ tags:
 
 ## Open Tasks
 
-- [ ?] Strategize the most strategic environment for Anson's PoC. @Alon Horev ⏫ #task #proposed #auto
+- [?] Strategize the most strategic environment for Anson's PoC. @Alon Horev ⏫ #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

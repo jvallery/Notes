@@ -22,12 +22,12 @@ tags:
 
 Discussion focused on Google TPU strategy outside GCP with an expected two-week timeline for disclosure and the need to align with Google contacts and prep meetings. Additional topics included pricing/private offers, Ignite, and a sales pipeline review (Zoom, UK Met, NBCU) with several action items marked complete by 2025-11-08.
 ## Action Items
-- [ ?] Build a synthesized pipeline and requirements view for Oracle, Microsoft, AWS, and Google, and map product fit. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Schedule call with Microsoft Managed Lustre performance lead to review implementation, performance and pricing/TCO with Jason. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Connect Jason with the UK Met SE/solution team to capture workload and I/O patterns and performance expectations. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Obtain Zoom’s OCI comparison basis (same dense E5 VMs vs NVMe+Object mix) and decide on OCI parity/POC pursuit. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share GCP performance Excel and introduce Jason to the performance lead and product marketing owner for the field calculator. @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Reconnect Product Marketing with Jason/Yonsi and include Polaris/marketplace content requirements. @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Build a synthesized pipeline and requirements view for Oracle, Microsoft, AWS, and Google, and map product fit. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Schedule call with Microsoft Managed Lustre performance lead to review implementation, performance and pricing/TCO with Jason. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Connect Jason with the UK Met SE/solution team to capture workload and I/O patterns and performance expectations. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Obtain Zoom’s OCI comparison basis (same dense E5 VMs vs NVMe+Object mix) and decide on OCI parity/POC pursuit. @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share GCP performance Excel and introduce Jason to the performance lead and product marketing owner for the field calculator. @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Reconnect Product Marketing with Jason/Yonsi and include Polaris/marketplace content requirements. @Lior Genzel Genzel 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - Google TPU strategy outside GCP expected to be disclosed on a two-week timeline.

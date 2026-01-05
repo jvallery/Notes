@@ -25,13 +25,13 @@ tags:
 
 Jason Vallery and Deandre (Dre) Jackson held an intro 1:1 focused on SE enablement for object/S3 and VAST’s cloud positioning. They aligned to emphasize workload-centric enablement (scenarios over generic object features), clarified current cloud status (no marketplace transactability; Google private offers; AWS/Azure roadmap), and discussed GPU scarcity and MinIO price-driven competition as key constraints.
 ## Action Items
-- [ ?] Send S3/Object course link and materials to Jason @Dre 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Review the S3/Object course and provide structured feedback to Dre @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Collect and share SE/customer feedback on cloud blockers and desired workloads @Dre 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Clarify internal messaging to SEs on current cloud status (no marketplace; Google private offers; AWS/Azure roadmap) @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Align with Yonce/Yancey and Tel Aviv platform team on requirements for VAST on Cloud (e.g., capacity offload to CSP object, RDMA to GPUs) @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Assess competitive stance vs MinIO and define qualification guidance for price-driven workloads @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Coordinate a touchpoint at TechSummit to review early enablement feedback and cloud roadmap messaging @Myself 📅 2025-11-08 🔽 #task #proposed
+- [?] Send S3/Object course link and materials to Jason @Dre 📅 2025-11-08 🔺 #task #proposed
+- [?] Review the S3/Object course and provide structured feedback to Dre @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Collect and share SE/customer feedback on cloud blockers and desired workloads @Dre 📅 2025-11-08 🔺 #task #proposed
+- [?] Clarify internal messaging to SEs on current cloud status (no marketplace; Google private offers; AWS/Azure roadmap) @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Align with Yonce/Yancey and Tel Aviv platform team on requirements for VAST on Cloud (e.g., capacity offload to CSP object, RDMA to GPUs) @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Assess competitive stance vs MinIO and define qualification guidance for price-driven workloads @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Coordinate a touchpoint at TechSummit to review early enablement feedback and cloud roadmap messaging @Myself 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - Anchor enablement on workload scenarios rather than generic object features.

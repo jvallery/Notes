@@ -38,11 +38,11 @@ tags:
 - 2025-12-19: Email re: New Urgent AlphaSights Request for Jason Vallery - Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 ## Open Tasks
 
-- [ ?] Get back to Isabella with a contact number or schedule a meeting. @Myself 📅 2025-12-19 ⏫ #task #proposed
+- [?] Get back to Isabella with a contact number or schedule a meeting. @Myself 📅 2025-12-19 ⏫ #task #proposed
 
-- [ ?] Respond to Isabella Lista with a contact number or schedule a meeting. @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Respond to Isabella Lista with a contact number or schedule a meeting. @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
 
-- [ ?] Respond to Isabella Lista with a contact number or schedule a meeting via her Calendly link. @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Respond to Isabella Lista with a contact number or schedule a meeting via her Calendly link. @Myself 📅 2025-12-19 ⏫ #task #proposed #auto
 ## Related
 
 - [[Oracle]]

@@ -27,17 +27,17 @@ phone: 408 888 2102
 
 - [ ] Identify Azure ecosystem gaps (e.g., Azure Key Vault / customer-managed keys) and validate end-to-end Azure deployment to find integration warts
 
-- [ ?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed
+- [?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed
 
-- [ ?] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task #proposed
+- [?] Grant access to 'VAST and Azure Integration.docx' @Myself 🔼 #task #proposed
 
-- [ ?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed #auto
+- [?] Suggest a follow-up call with the team who made the request. @Ray Coetzee 🔼 #task #proposed #auto
 
-- [ ?] Review and grant access to the document 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
+- [?] Review and grant access to the document 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
 
-- [ ?] Keep Trevor Cooper-Chadwick's status as 'pending approval' and wait for Lior Genzel's feedback. @Myself 🔼 #task #proposed #auto
+- [?] Keep Trevor Cooper-Chadwick's status as 'pending approval' and wait for Lior Genzel's feedback. @Myself 🔼 #task #proposed #auto
 
-- [ ?] Review and manage the sharing request for 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
+- [?] Review and manage the sharing request for 'VAST and Azure Integration.docx'. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-15: [[2025-12-15 - Google GDC RFP review]] (via Google)

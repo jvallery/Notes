@@ -24,14 +24,14 @@ tags:
 
 Jason Vallery shared a cloud-first VAST-as-a-Service vision and interviewed Rick Haselton on how Customer Success operates for CoreWeave and XAI, which are managed-services/SRE-style engagements with heavy Slack-based collaboration and strict response expectations. They discussed XAI’s request for a single filesystem across multiple clusters (not supported today), current replication/global-namespace options, common operational issues (networking, C-node/D-node failures), and the RMA/depot process. A key follow-up is to confirm formal SLA/SLO targets and any legal penalties with the CoreWeave CSM, Gordon Brown.
 ## Action Items
-- [ ?] Connect with Gordon Brown to review CoreWeave/XAI SLAs, response targets, and penalty clauses. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Draft an initial operating model for VAST-as-a-Service (SRE vs CS roles, on-call, communications, SLAs). @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Deep-dive with Rick on XAI workload patterns (checkpointing, GPU-adjacent caching, data flows) to inform cloud design. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Assess feasibility/roadmap options for XAI’s multi-cluster single-namespace/filesystem request. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Obtain and review the legal SLA document and any penalty clauses for CoreWeave/XAI. @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Validate the current after-hours and weekend coverage model across APJ/EMEA for critical incidents. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm details of XAI’s cloud data location/provider and how data is repatriated to VAST clusters. @Myself 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Review Slack alarm channel configurations and escalation paths to support proactive outreach. @Myself 📅 2025-11-08 🔽 #task #proposed
+- [?] Connect with Gordon Brown to review CoreWeave/XAI SLAs, response targets, and penalty clauses. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Draft an initial operating model for VAST-as-a-Service (SRE vs CS roles, on-call, communications, SLAs). @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Deep-dive with Rick on XAI workload patterns (checkpointing, GPU-adjacent caching, data flows) to inform cloud design. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Assess feasibility/roadmap options for XAI’s multi-cluster single-namespace/filesystem request. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Obtain and review the legal SLA document and any penalty clauses for CoreWeave/XAI. @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Validate the current after-hours and weekend coverage model across APJ/EMEA for critical incidents. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm details of XAI’s cloud data location/provider and how data is repatriated to VAST clusters. @Myself 📅 2025-11-08 🔽 #task #proposed
+- [?] Review Slack alarm channel configurations and escalation paths to support proactive outreach. @Myself 📅 2025-11-08 🔽 #task #proposed
 
 ## Key Information
 - Rick Haselton is the tech lead for two of VAST’s largest customers: CoreWeave (#1) and XAI (#3).

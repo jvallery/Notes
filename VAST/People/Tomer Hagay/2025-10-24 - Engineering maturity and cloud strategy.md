@@ -25,21 +25,21 @@ tags:
 
 Jason and Tomer aligned on using VAST’s cloud initiative to drive engineering process maturity, including AI-enabled development workflows, stronger release accountability, and SaaS operational readiness (telemetry/Live Site/24x7). They reviewed VAST’s RFE-to-release pipeline (Salesforce→Feature aggregation→Jira), support model (Co-Pilot + customer Slack channels), and Global Namespace architecture (strict consistency, lease-based caching; write-leases targeted for 5.5 preview). They agreed Jason should get hands-on via SE lab/OVA access and continue the discussion in a follow-up meeting the next week.
 ## Action Items
-- [ ?] Align with Shachar on AI development program goals and adoption metrics @Myself 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Draft proposal for AI-enabled dev workflow (PR/audits, agent usage) and training cadence @Myself 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Validate cloud P0 prioritization and resourcing with Brendan and Jeff @Myself 📅 2025-10-27 ⏫ #task #proposed
-- [ ?] Review and document current end-to-end dev lifecycle, gates, and tooling (RFE→Feature→Jira→Release) @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Contact Andy Perlsteiner to obtain SE lab access for hands-on evaluation @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Coordinate with Josh (Office of the CTO) to obtain OVA/bits for local testing @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Read Google Anywhere Cache documentation and compare to VAST Global Namespace; summarize gaps/opportunities @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Myself 📅 2025-10-27 🔽 #task #proposed
-- [ ?] Schedule follow-up 1-1 for next week @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Plan Tel Aviv discussion on write-lease semantics and redirection model for Global Namespace @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
-- [ ?] Connect with Rich to map full customer support structure and escalation paths @Myself 📅 2025-10-26 🔽 #task #proposed
-- [ ?] Share FRD templates/examples for Jason’s review @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
-- [ ?] Introduce Jason to Eyal Tritel and Noah Cohen for planning cadence and scoping @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
-- [ ?] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
-- [ ?] Send Google Anywhere Cache reference links to Tomer @Myself 📅 2025-10-26 🔽 #task #proposed
+- [?] Align with Shachar on AI development program goals and adoption metrics @Myself 📅 2025-10-26 🔺 #task #proposed
+- [?] Draft proposal for AI-enabled dev workflow (PR/audits, agent usage) and training cadence @Myself 📅 2025-10-26 🔺 #task #proposed
+- [?] Validate cloud P0 prioritization and resourcing with Brendan and Jeff @Myself 📅 2025-10-27 ⏫ #task #proposed
+- [?] Review and document current end-to-end dev lifecycle, gates, and tooling (RFE→Feature→Jira→Release) @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Contact Andy Perlsteiner to obtain SE lab access for hands-on evaluation @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Coordinate with Josh (Office of the CTO) to obtain OVA/bits for local testing @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Read Google Anywhere Cache documentation and compare to VAST Global Namespace; summarize gaps/opportunities @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Set up local VAST OVA on home cluster; move test data and validate GPU workflows @Myself 📅 2025-10-27 🔽 #task #proposed
+- [?] Schedule follow-up 1-1 for next week @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Plan Tel Aviv discussion on write-lease semantics and redirection model for Global Namespace @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
+- [?] Connect with Rich to map full customer support structure and escalation paths @Myself 📅 2025-10-26 🔽 #task #proposed
+- [?] Share FRD templates/examples for Jason’s review @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
+- [?] Introduce Jason to Eyal Tritel and Noah Cohen for planning cadence and scoping @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
+- [?] Provide access to PM SFDC RFE/Feature dashboards and Jira links @Tomer Hagay 📅 2025-10-27 ⏫ #task #proposed
+- [?] Send Google Anywhere Cache reference links to Tomer @Myself 📅 2025-10-26 🔽 #task #proposed
 
 ## Decisions
 - Proceed with lab/OVA onboarding for Jason to evaluate capabilities firsthand.

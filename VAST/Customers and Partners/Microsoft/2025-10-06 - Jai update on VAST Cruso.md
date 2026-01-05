@@ -25,9 +25,9 @@ tags:
 
 Jason reviewed competing offers from VAST and Crusoe, emphasizing VAST’s complex, highly variable compensation tied to OpenAI/Azure outcomes and a near-term Crusoe deadline. Jai indicated Microsoft cannot match Crusoe-level compensation and Apollo scope remains too unclear to define a successful role or path to partner, making staying at Microsoft effectively non-viable. Jason planned to speak with VAST’s CEO to quantify risk and negotiate terms, then decide between VAST and Crusoe and update Jai.
 ## Action Items
-- [ ?] Meet Renan (VAST CEO) to quantify compensation risk and negotiate terms (equity/commission). @Myself 📅 2025-10-07 🔺 #task #proposed
-- [ ?] Decide between VAST and Crusoe by the Crusoe deadline. @Myself 📅 2025-10-08 ⏫ #task #proposed
-- [ ?] Inform Jai of final decision/status. @Myself 📅 2025-10-08 #task #proposed
+- [?] Meet Renan (VAST CEO) to quantify compensation risk and negotiate terms (equity/commission). @Myself 📅 2025-10-07 🔺 #task #proposed
+- [?] Decide between VAST and Crusoe by the Crusoe deadline. @Myself 📅 2025-10-08 ⏫ #task #proposed
+- [?] Inform Jai of final decision/status. @Myself 📅 2025-10-08 #task #proposed
 
 ## Decisions
 - Do not pursue a Microsoft counteroffer given compensation constraints and unclear scope.

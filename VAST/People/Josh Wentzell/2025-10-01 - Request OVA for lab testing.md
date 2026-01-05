@@ -23,7 +23,7 @@ tags:
 
 A request was made to ping Josh Wentzell (Office of the CTO) to obtain the VAST OVA and onboarding materials for local lab testing. The task is marked complete with a due date noted in the transcript.
 ## Action Items
-- [ ?] Ping Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding for local lab testing. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Ping Josh Wentzell (Office of the CTO) to obtain VAST OVA and onboarding for local lab testing. @Myself 📅 2025-11-08 ⏫ #task #proposed
 
 ## Key Information
 - Josh Wentzell is associated with the Office of the CTO.

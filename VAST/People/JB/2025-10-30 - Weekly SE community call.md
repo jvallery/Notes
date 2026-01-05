@@ -33,18 +33,18 @@ tags:
 
 Weekly SE community call focused on end-of-quarter push, Tech Summit logistics (agenda email, hotel confirmations, evening events), and driving UserCon registrations for already-sold tickets. A strict expense policy was reiterated (no reimbursement outside official events). Jeff Moeller introduced the SE Toolbox segment with a demo of his Port Mapper tool for switch port mapping, config generation, and planning/validation workflows.
 ## Action Items
-- [ ?] Drive registration for UserCon among customers with sold/bundled tickets; coordinate with AEs and start outreach now @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share dashboard showing UserCon ticket sales and registrations by account @Rob 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Send Tech Summit agenda email @Dre 📅 2025-10-30 🔺 #task #proposed
-- [ ?] Fix hotel confirmation verbiage and ensure hotel confirmation emails are sent @Dre 📅 2025-11-04 🔺 #task #proposed
-- [ ?] Re-send Tech Summit expense policy reminder to attendees @Stacy 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Prepare and distribute sign-up sheets for the Tech Summit gaming night @Dre 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Add Arista 24-port switch profile to Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Establish versioning/hosting (e.g., GitHub) for Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Schedule recurring SE Toolbox slots (1–2 per month) and collect submissions @JB 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Consider scheduling an SCO session to cover Port Mapper @JB 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Try the Port Mapper tool and provide feedback to Jeff @TBD 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Open networking field requests when architecture guidance is needed @TBD 📅 2025-11-08 🔽 #task #proposed
+- [?] Drive registration for UserCon among customers with sold/bundled tickets; coordinate with AEs and start outreach now @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share dashboard showing UserCon ticket sales and registrations by account @Rob 📅 2025-11-08 🔺 #task #proposed
+- [?] Send Tech Summit agenda email @Dre 📅 2025-10-30 🔺 #task #proposed
+- [?] Fix hotel confirmation verbiage and ensure hotel confirmation emails are sent @Dre 📅 2025-11-04 🔺 #task #proposed
+- [?] Re-send Tech Summit expense policy reminder to attendees @Stacy 📅 2025-11-08 ⏫ #task #proposed
+- [?] Prepare and distribute sign-up sheets for the Tech Summit gaming night @Dre 📅 2025-11-08 ⏫ #task #proposed
+- [?] Add Arista 24-port switch profile to Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 ⏫ #task #proposed
+- [?] Establish versioning/hosting (e.g., GitHub) for Port Mapper @Jeff Denworth Moeller 📅 2025-11-08 🔽 #task #proposed
+- [?] Schedule recurring SE Toolbox slots (1–2 per month) and collect submissions @JB 📅 2025-11-08 ⏫ #task #proposed
+- [?] Consider scheduling an SCO session to cover Port Mapper @JB 📅 2025-11-08 🔽 #task #proposed
+- [?] Try the Port Mapper tool and provide feedback to Jeff @TBD 📅 2025-11-08 ⏫ #task #proposed
+- [?] Open networking field requests when architecture guidance is needed @TBD 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - Introduce an SE Toolbox segment approximately monthly.

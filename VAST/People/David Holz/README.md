@@ -31,21 +31,21 @@ WHERE !completed AND contains(text, "David Holz")
 SORT due ASC
 ```
 
-- [ ?] Provide clarification on FIPS compliance and pricing details. @Lior Genzel 🔼 #task #proposed
+- [?] Provide clarification on FIPS compliance and pricing details. @Lior Genzel 🔼 #task #proposed
 
-- [ ?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed
+- [?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed
 
-- [ ?] Decide on a date and time for the board game session. @Brian Bearly 🔼 #task #proposed
+- [?] Decide on a date and time for the board game session. @Brian Bearly 🔼 #task #proposed
 
-- [ ?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed
+- [?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed
 
-- [ ?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed #auto
+- [?] Check with partners groups for the full list of global certified partners and share it back. @Lior Genzel 🔼 #task #proposed #auto
 
-- [ ?] Decide on a date and time for the board game session. @Myself 🔼 #task #proposed #auto
+- [?] Decide on a date and time for the board game session. @Myself 🔼 #task #proposed #auto
 
-- [ ?] Confirm attendance for the meeting at Wapos on Tuesday at 6:30 PM. @Myself 🔼 #task #proposed #auto
+- [?] Confirm attendance for the meeting at Wapos on Tuesday at 6:30 PM. @Myself 🔼 #task #proposed #auto
 
-- [ ?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed #auto
+- [?] Consider the plan for TMIMITW and provide feedback. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-31: Email re: Re: The most interesting men in the world group - David Ellis is planning to retire the current book club and start a new group called 'The Most Inter

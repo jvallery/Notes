@@ -31,9 +31,9 @@ tags:
 - 2025-12-26: Email re: Jason, start a conversation with your new connecti - Louis Feuvrier has accepted Jason Vallery's LinkedIn invitation, suggesting to start a conversation.
 ## Open Tasks
 
-- [ ?] Start a conversation with Louis Feuvrier on LinkedIn. @Myself 🔼 #task #proposed
+- [?] Start a conversation with Louis Feuvrier on LinkedIn. @Myself 🔼 #task #proposed
 
-- [ ?] Start a conversation with Louis Feuvrier on LinkedIn. @Myself 🔼 #task #proposed #auto
+- [?] Start a conversation with Louis Feuvrier on LinkedIn. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[Rockset]]

@@ -24,6 +24,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 from utils import load_config, get_model_config, get_persona, vault_root, workflow_root
 
 
+def get_glossary_context() -> str:
+    """Load the people/projects/customers glossary for prompt context."""
+    try:
+        from utils.cached_prompts import get_glossary_context as _get_glossary
+        return _get_glossary(compact=True)  # Compact for extraction (less tokens)
+    except ImportError:
+        return ""
+
+
 console = Console()
 
 
@@ -140,7 +149,11 @@ def extract_content(
     template = jinja_env.get_template("system-extractor.md.j2")
     tomorrow = (datetime.now() + __import__('datetime').timedelta(days=1)).strftime("%Y-%m-%d")
     next_week = (datetime.now() + __import__('datetime').timedelta(days=7)).strftime("%Y-%m-%d")
-    system_prompt = template.render(
+    
+    # Get glossary context for entity resolution
+    glossary = get_glossary_context()
+    
+    system_prompt_template = template.render(
         current_date=datetime.now().strftime("%Y-%m-%d"),
         tomorrow=tomorrow,
         next_week=next_week,
@@ -151,6 +164,15 @@ def extract_content(
         task_rules=profile.get("task_rules", {}),
         known_entities=classification.get("entities", {}),
     )
+    
+    # Build final system prompt with glossary first (for prompt caching)
+    if glossary:
+        system_prompt = f"""## ENTITY GLOSSARY
+{glossary}
+
+{system_prompt_template}"""
+    else:
+        system_prompt = system_prompt_template
 
     user_prompt = f"""Source file: {filename}
 Classification: {json.dumps(classification)}

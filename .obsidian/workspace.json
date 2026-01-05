@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "VAST/People/_MANIFEST.md",
+                "file": "VAST/People/Andrew Stack/README.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "_MANIFEST"
+              "title": "README"
             }
           }
         ]
@@ -193,13 +193,28 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "c2c00970aedeeb55",
+  "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
-    "VAST/Projects/_MANIFEST.md",
+    "VAST/People/Adem Sefa/README.md",
+    "VAST/People/Aaron Batillo/README.md",
+    "TASKS.md",
+    "VAST/People/Jai Menon/2025-09-03 - MAI AI caching strategy review.md",
+    "Tasks Plugin - Review and check your Statuses 2026-01-04 19-29-43.md",
+    "VAST/People/Amy Shapiro/README.md",
+    "VAST/People/John Lee/README.md",
+    "VAST/People/Rory Carmichael/README.md",
+    "VAST/People/_MANIFEST.md",
+    "Workflow/_cache/glossary.txt",
+    "Workflow/_cache/glossary.json",
+    "TASKS_BACKLOG.md",
+    "TASKS_INBOX.md",
+    "Workflow/scripts/utils/cached_prompts.py",
+    "VAST/People/John Mao/README.md",
+    "Workflow/scripts/manifest_sync.py",
     "VAST/People/Jeff Denworth/README.md",
+    "VAST/Projects/_MANIFEST.md",
     "Outbox/2026-01-04_Reply-To_Applied-Postings.md",
     "Outbox/2026-01-04_Reply-To_Youve-been-selected-VAST-speaker-at-VAST.md",
-    "TASKS_INBOX.md",
     "Outbox/2026-01-04_Reply-To_Re-RFE-Alert-RFE-0482---Existing-Feature_1.md",
     "Workflow/logs/ai/2026-01-04/summary.json",
     "Workflow/logs/ai/2026-01-04/responses.jsonl",
@@ -210,27 +225,12 @@
     "Inbox/Email/2025-12-03_172133_4710_VAST-Forward.md",
     "Workflow/INSTRUMENTATION.md",
     "Workflow/scripts/utils/logging.py",
-    "Workflow/scripts/utils/ai_client.py",
-    "TASKS_BACKLOG.md",
-    "TASKS.md",
-    "Tasks Plugin - Review and check your Statuses 2026-01-04 19-29-43.md",
     "Outbox/2026-01-04_Reply-To_Confidential---IHDF-exec-session-quick-r.md",
     "Outbox/2026-01-04_Reply-To_Re-OpenAI_1.md",
     "Inbox/Email/2025-12-12_160426_5605_Re-OpenAI.md",
     "Outbox/2026-01-04_Reply-To_Re-Your-Prospect-Microsoft-VAST-Customer.md",
     "Outbox/README.md",
     "Outbox/2026-01-04_Reply-To_Re-Introduction-for-FPA-Director-role.md",
-    "Workflow/profiles/jason_persona.yaml",
-    "Outbox/2026-01-04_Reply-To_Re-Google-Distributed-Cloud---RFP-Follow.md",
-    "Outbox/2026-01-04_Reply-To_RE-EXTERNAL-VASTMicrosoft-Ignite-follow-.md",
-    "Outbox/2026-01-04_Reply-To_RE-External-Re-Connecting-with-VAST.md",
-    "Outbox/2026-01-04_Reply-To_Re-Early-heads-up---board-game-the-week-.md",
-    "Outbox/2026-01-04_Reply-To_Re-CES.md",
-    "Outbox/2026-01-04_Reply-To_Re-Azure-VoC-for-MSFT-testing.md",
-    "Sources/Email/2026/2026-01-04_170011_5198_Tesla-Credits-Expiring-Soon.md",
-    "Sources/Email/2026/2026-01-04_153217_8572_On-Tackling-Challenges-and-Sparking-Innovation.md",
-    "Inbox/_extraction/2026-01-04_170011_5198_Tesla-Credits-Expiring-Soon.email_changeplan.json",
-    "Inbox/_extraction/2026-01-04_153217_8572_On-Tackling-Challenges-and-Sparking-Innovation.email_changeplan.json",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
     "Personal/Projects/Frigate/snapshots/backyard_suite_sidewalk_1.jpg",

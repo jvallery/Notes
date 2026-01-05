@@ -32,9 +32,9 @@ WHERE !completed AND contains(text, "Mordechai Blaunstein")
 SORT due ASC
 ```
 
-- [ ?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed
+- [?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed
 
-- [ ?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed #auto
+- [?] Review and edit the document 'CoreWeave-Vast Automation Project - V2 .docx'. @Myself 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-11-07: [[2025-11-07 - Org map and cloud strategy]] (via Jeff Denworth)

@@ -40,6 +40,15 @@ from models.email_extraction import (
 )
 
 
+def get_glossary_context() -> str:
+    """Load the people/projects/customers glossary for prompt context."""
+    try:
+        from utils.cached_prompts import get_glossary_context as _get_glossary
+        return _get_glossary(compact=True)  # Compact for extraction
+    except ImportError:
+        return ""
+
+
 console = Console()
 
 
@@ -66,7 +75,10 @@ def extract_from_email(email_path: Path, content: str, client) -> EmailExtractio
     email_date = _extract_date_from_content(content, email_path.name)
     subject = _extract_subject(content)
     
-    system_prompt = """You are extracting structured knowledge from an email for a personal knowledge management system.
+    # Get glossary for entity resolution
+    glossary = get_glossary_context()
+    
+    extraction_instructions = """You are extracting structured knowledge from an email for a personal knowledge management system.
 
 Extract ALL of the following as JSON:
 
@@ -121,6 +133,15 @@ IMPORTANT:
 - For companies, include both specific companies and general industry mentions
 
 Return ONLY valid JSON, no markdown fences."""
+
+    # Build final system prompt with glossary first (for prompt caching)
+    if glossary:
+        system_prompt = f"""## ENTITY GLOSSARY
+{glossary}
+
+{extraction_instructions}"""
+    else:
+        system_prompt = extraction_instructions
 
     user_prompt = f"""Extract knowledge from this email:
 

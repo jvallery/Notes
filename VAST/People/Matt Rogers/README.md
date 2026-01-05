@@ -28,11 +28,11 @@ tags:
 
 ## Open Tasks
 
-- [ ?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed
+- [?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed
 
-- [ ?] Connect with Matt in Seattle @Myself 🔼 #task #proposed #auto
+- [?] Connect with Matt in Seattle @Myself 🔼 #task #proposed #auto
 
-- [ ?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed #auto
+- [?] Connect with Matt in Seattle. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

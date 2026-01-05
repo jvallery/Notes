@@ -31,21 +31,21 @@ tags:
 
 Working session to identify warm-intro paths into priority model builders using LinkedIn mutuals, investor vectors, and NVIDIA/NeoCloud contacts. The group aligned to shift outreach messaging toward concrete data/pipeline components (e.g., scalable Kafka for RL, real-time vector DB) and to target data/pipeline owners in addition to execs. They also agreed to advance an AI Circle event with NVIDIA customers as a more realistic mechanism for NVIDIA-facilitated introductions.
 ## Action Items
-- [ ?] Follow up with Glenn Lockwood for an intro to Mile Ott and Christian Gibson at Thinking Machines. @Chris Carpenter 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Ask Jay to set a sit-down with Robert Brooks (Lambda) to connect to Giannis at Reflection. @Jeff Denworth Edwards 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Reach out to Henry Perez (Google) to assess a path to Midjourney and appropriateness for intros. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Ping Alon for SSI contacts (including Daniel Levy) and a quick read on other SSI contacts he met. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Ask Grant Lee for an intro to Noah Yonick or Kevin/Tony Wu at Perplexity. @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Engage Aaron Batillo (CoreWeave) for intros to Phil (Cohere) and Eric (Magic). @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Coordinate with AI Circle, Katie, and Lindsay to plan an NVIDIA-customer model builder event. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Work with the pipelines team to draft outreach assets focused on scalable Kafka for RL and a real-time vector DB. @Chris Carpenter 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Audit Salesforce histories for Midjourney and SSI before renewed outreach. @Chris Carpenter 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Ask Rory to introduce NVIDIA rep David Klein for a path to He2. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Engage Bond to pursue an intro to Yuri at Physical Intelligence. @Jeff Denworth Edwards 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Research Black Forest Labs and ping the founder to assess fit and timing. @Myself 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Re-ping investor thread with Jeff Yonker and Bo Wang at Zara to secure a meeting slot. @Jeff Denworth Edwards 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm with NVIDIA (via Katie) whether customer intros will occur primarily via events and align event timing. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm NVIDIA contact details for David Klein with Rory and align on next steps. @Chris Carpenter 📅 2025-11-08 🔽 #task #proposed
+- [?] Follow up with Glenn Lockwood for an intro to Mile Ott and Christian Gibson at Thinking Machines. @Chris Carpenter 📅 2025-11-08 🔺 #task #proposed
+- [?] Ask Jay to set a sit-down with Robert Brooks (Lambda) to connect to Giannis at Reflection. @Jeff Denworth Edwards 📅 2025-11-08 🔺 #task #proposed
+- [?] Reach out to Henry Perez (Google) to assess a path to Midjourney and appropriateness for intros. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Ping Alon for SSI contacts (including Daniel Levy) and a quick read on other SSI contacts he met. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
+- [?] Ask Grant Lee for an intro to Noah Yonick or Kevin/Tony Wu at Perplexity. @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Engage Aaron Batillo (CoreWeave) for intros to Phil (Cohere) and Eric (Magic). @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Coordinate with AI Circle, Katie, and Lindsay to plan an NVIDIA-customer model builder event. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
+- [?] Work with the pipelines team to draft outreach assets focused on scalable Kafka for RL and a real-time vector DB. @Chris Carpenter 📅 2025-11-08 🔺 #task #proposed
+- [?] Audit Salesforce histories for Midjourney and SSI before renewed outreach. @Chris Carpenter 📅 2025-11-08 🔽 #task #proposed
+- [?] Ask Rory to introduce NVIDIA rep David Klein for a path to He2. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
+- [?] Engage Bond to pursue an intro to Yuri at Physical Intelligence. @Jeff Denworth Edwards 📅 2025-11-08 ⏫ #task #proposed
+- [?] Research Black Forest Labs and ping the founder to assess fit and timing. @Myself 📅 2025-11-08 🔽 #task #proposed
+- [?] Re-ping investor thread with Jeff Yonker and Bo Wang at Zara to secure a meeting slot. @Jeff Denworth Edwards 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm with NVIDIA (via Katie) whether customer intros will occur primarily via events and align event timing. @Chris Carpenter 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm NVIDIA contact details for David Klein with Rory and align on next steps. @Chris Carpenter 📅 2025-11-08 🔽 #task #proposed
 
 ## Decisions
 - Reframe outreach to focus on concrete pipeline components (e.g., scalable Kafka for RL, real-time vector DB) rather than generic platform narratives.

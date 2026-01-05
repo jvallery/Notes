@@ -38,7 +38,7 @@ tags:
 - 2026-01-04: Email re: On Tackling Challenges and Sparking Innovation - Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 ## Open Tasks
 
-- [ ?] Register Renen for NVIDIA Live event on January 5. @Kirstin Bordner 🔼 #task #proposed #auto
+- [?] Register Renen for NVIDIA Live event on January 5. @Kirstin Bordner 🔼 #task #proposed #auto
 ## Related
 
 - [[Microsoft]]

@@ -31,6 +31,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 from utils import vault_root, workflow_root
 
 
+def get_glossary_context() -> str:
+    """Load the people/projects/customers glossary for prompt context."""
+    try:
+        from utils.cached_prompts import get_glossary_context as _get_glossary
+        return _get_glossary(compact=True)
+    except ImportError:
+        return ""
+
+
 class EntityType(str, Enum):
     """Classification of entity types in the vault."""
     PERSON = "person"
@@ -232,9 +241,15 @@ def discover_entity(
     # Build search and classification prompt
     search_query = _build_search_query(name, context)
     
-    system_prompt = """You are an entity classification assistant. Given a name and context, determine:
+    # Get glossary for entity resolution
+    glossary = get_glossary_context()
+    
+    classification_instructions = """You are an entity classification assistant. Given a name and context, determine:
 1. What type of entity this is (person, company, or project)
 2. Key information about the entity
+
+IMPORTANT: Check the ENTITY GLOSSARY first - if the entity is already known, use that information.
+Only use web search for entities NOT in the glossary.
 
 Return a JSON object with these fields:
 {
@@ -257,6 +272,15 @@ Key rules:
 - Names like "John Smith" with job titles are PEOPLE
 - Internal initiatives like "Cloud Marketplace MVP" are PROJECTS
 """
+    
+    # Build final system prompt with glossary first (for prompt caching)
+    if glossary:
+        system_prompt = f"""## ENTITY GLOSSARY
+{glossary}
+
+{classification_instructions}"""
+    else:
+        system_prompt = classification_instructions
     
     user_prompt = f"""Classify this entity:
 

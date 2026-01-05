@@ -26,12 +26,12 @@ tags:
 
 Silk briefed Jason on its software-defined cloud storage optimized for high-performance relational databases across Azure/GCP/AWS, emphasizing rising AI/agentic load on systems of record. They discussed performance characteristics, architectural options (accelerate production vs near-real-time instant copies), and a key request for RDMA support on Azure L-series to reduce CPU overhead. Next steps include an introduction to Silk CEO Jay Menon via Ong and follow-up on RDMA timeline with Gal’s team.
 ## Action Items
-- [ ?] Coordinate introduction to Jay Menon as suggested by Ong @TBD 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Advise what topics Jay Menon cares about to tailor the session @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Follow up with Gal’s team on RDMA support timeline for L-series/Duo Boost @Silk engineering team 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Share customer opportunities that exceed native Azure storage performance with Silk @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Schedule meeting with Jay Menon after intro @Chris 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Prepare concise real-world use cases highlighting real-time vs near-real-time DB access needs @Tom 📅 2025-10-26 🔽 #task #proposed
+- [?] Coordinate introduction to Jay Menon as suggested by Ong @TBD 📅 2025-10-26 ⏫ #task #proposed
+- [?] Advise what topics Jay Menon cares about to tailor the session @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Follow up with Gal’s team on RDMA support timeline for L-series/Duo Boost @Silk engineering team 📅 2025-10-26 ⏫ #task #proposed
+- [?] Share customer opportunities that exceed native Azure storage performance with Silk @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Schedule meeting with Jay Menon after intro @Chris 📅 2025-10-26 ⏫ #task #proposed
+- [?] Prepare concise real-world use cases highlighting real-time vs near-real-time DB access needs @Tom 📅 2025-10-26 🔽 #task #proposed
 
 ## Decisions
 - Proceed with connecting to Jay Menon through Ong.

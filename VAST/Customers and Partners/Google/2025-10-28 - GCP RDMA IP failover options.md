@@ -41,18 +41,18 @@ tags:
 
 Teams reviewed GCP IP management and failover approaches (alias IPs, route-based failover, ILB) and the implications of upcoming RDMA-enabled Z4M shapes. Current expectation is alias IPs will not be supported with RDMA; Z4M instances will have separate RDMA and TCP interfaces (likely same VPC, different subnets), and cross-project RDMA will require Private Service Connect interfaces rather than VPC peering. Next steps include a shared pros/cons document, engaging Google networking, and providing testing plus longer-term volume projections for capacity planning.
 ## Action Items
-- [ ?] Send Terraform snippets showing how static VIP IPs are provisioned/reserved. @Ronnie 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Provide estimate for adapting and testing new RDMA (Z4M) shapes. @Ronnie 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Share testing and customer volume projections (include CI needs and client drivers) to support capacity planning. @Ronnie 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Initiate shared document comparing ILB, alias IP, and route-based failover (pros/cons, pricing, features). @Ben 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Schedule follow-up session with Google networking team on RDMA networking and cross-project design. @Billy 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Confirm RDMA support details: alias IP status, separate subnet/interface model, and feasibility of route-based failover. @Billy 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Clarify Z4M NIC topology and bandwidth allocation (number of physical/logical NICs; per-interface bandwidth). @Ben 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Evaluate PSCI requirements and implications for cross-project RDMA data plane. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Determine if MIG-managed static IP pools can help reserve VIPs and mitigate the unassign/reassign race window. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Quantify API execution time and network convergence for route changes and IP reassignments. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Advise whether dual NICs provide kernel/queueing efficiency benefits despite no extra bandwidth. @Google networking team 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Confirm cross-project RDMA constraints (PSCI required; VPC peering unsupported) and performance impact. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
+- [?] Send Terraform snippets showing how static VIP IPs are provisioned/reserved. @Ronnie 📅 2025-11-08 ⏫ #task #proposed
+- [?] Provide estimate for adapting and testing new RDMA (Z4M) shapes. @Ronnie 📅 2025-11-08 🔺 #task #proposed
+- [?] Share testing and customer volume projections (include CI needs and client drivers) to support capacity planning. @Ronnie 📅 2025-11-08 🔺 #task #proposed
+- [?] Initiate shared document comparing ILB, alias IP, and route-based failover (pros/cons, pricing, features). @Ben 📅 2025-11-08 ⏫ #task #proposed
+- [?] Schedule follow-up session with Google networking team on RDMA networking and cross-project design. @Billy 📅 2025-11-08 🔺 #task #proposed
+- [?] Confirm RDMA support details: alias IP status, separate subnet/interface model, and feasibility of route-based failover. @Billy 📅 2025-11-08 🔺 #task #proposed
+- [?] Clarify Z4M NIC topology and bandwidth allocation (number of physical/logical NICs; per-interface bandwidth). @Ben 📅 2025-11-08 ⏫ #task #proposed
+- [?] Evaluate PSCI requirements and implications for cross-project RDMA data plane. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
+- [?] Determine if MIG-managed static IP pools can help reserve VIPs and mitigate the unassign/reassign race window. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
+- [?] Quantify API execution time and network convergence for route changes and IP reassignments. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
+- [?] Advise whether dual NICs provide kernel/queueing efficiency benefits despite no extra bandwidth. @Google networking team 📅 2025-11-08 🔽 #task #proposed
+- [?] Confirm cross-project RDMA constraints (PSCI required; VPC peering unsupported) and performance impact. @Google networking team 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Create a shared pros/cons document to re-evaluate VIP/failover options (ILB, alias IP, route-based).

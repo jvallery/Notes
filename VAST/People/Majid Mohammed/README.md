@@ -28,9 +28,9 @@ linkedin: https://www.linkedin.com/in/majidmohamed/
 
 ## Open Tasks
 
-- [ ?] Establish communication and build trust with key MAI stakeholders. @Lior Genzel ⏫ #task #proposed
+- [?] Establish communication and build trust with key MAI stakeholders. @Lior Genzel ⏫ #task #proposed
 
-- [ ?] Establish communication and build trust with key MAI stakeholders. @Lior Genzel ⏫ #task #proposed #auto
+- [?] Establish communication and build trust with key MAI stakeholders. @Lior Genzel ⏫ #task #proposed #auto
 ## Related
 
 - [[VAST Data]]

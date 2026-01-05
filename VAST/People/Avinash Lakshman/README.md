@@ -27,9 +27,9 @@ tags:
 
 ## Open Tasks
 
-- [ ?] Send Avinash a follow-up email with public links and information about VAST's current and upcoming capabilities. @Jason Vallery 🔼 #task #proposed
+- [?] Send Avinash a follow-up email with public links and information about VAST's current and upcoming capabilities. @Jason Vallery 🔼 #task #proposed
 
-- [ ?] Send Avinash a follow-up email with public links and information about VAST's current and upcoming capabilities. @Jason Vallery 🔼 #task #proposed #auto
+- [?] Send Avinash a follow-up email with public links and information about VAST's current and upcoming capabilities. @Jason Vallery 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST]]

@@ -24,8 +24,8 @@ The follow-up meeting focused on coordinating a technical collaboration between 
 
 ## Action Items
 
-- [ ?] Share the architecture documents discussed in SF with Sushant Rewaskar. @Myself #task #proposed #auto
-- [ ?] Set up a follow-up meeting over Microsoft Teams with Jason Vallery and Sushant Rewaskar. @Myself #task #proposed #auto
+- [?] Share the architecture documents discussed in SF with Sushant Rewaskar. @Myself #task #proposed #auto
+- [?] Set up a follow-up meeting over Microsoft Teams with Jason Vallery and Sushant Rewaskar. @Myself #task #proposed #auto
 
 
 ## Key Information

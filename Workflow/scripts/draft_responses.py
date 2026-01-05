@@ -48,6 +48,23 @@ from utils import load_config, get_model_config, vault_root, workflow_root
 console = Console()
 
 
+def get_glossary_context() -> str:
+    """
+    Load the people/projects/customers glossary for prompt context.
+    
+    This glossary is used for prompt caching - it provides stable context
+    about the user's professional network that can be cached across API calls.
+    
+    Returns:
+        Formatted glossary text, or empty string if unavailable
+    """
+    try:
+        from utils.cached_prompts import get_glossary_context as _get_glossary
+        return _get_glossary(compact=False)
+    except ImportError:
+        return ""
+
+
 def load_persona() -> dict:
     """Load the communication persona from profiles/jason_persona.yaml."""
     persona_path = workflow_root() / "profiles" / "jason_persona.yaml"
@@ -910,7 +927,15 @@ def generate_draft_response(
     # Build persona prompt with calibration and tuning
     persona_prompt = build_persona_prompt(persona, recipient_type=recipient_type, tuning=tuning)
     
-    system_prompt = f"""{persona_prompt}
+    # Get glossary context for prompt caching (static content first)
+    glossary = get_glossary_context()
+    
+    # Build system prompt with static content FIRST (for OpenAI prompt caching)
+    # Glossary is stable across requests → cached; persona + task instructions are semi-stable
+    system_prompt = f"""## CONTEXT GLOSSARY (People, Projects, Customers)
+{glossary}
+
+{persona_prompt}
 
 ## CONTEXT AVAILABLE
 1. The original email requiring a response

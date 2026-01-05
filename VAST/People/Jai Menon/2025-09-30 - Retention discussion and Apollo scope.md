@@ -27,13 +27,13 @@ tags:
 
 Jason Vallery shared he has multiple external management offers and plans to decide by end of week, prioritizing clear ownership/scope, latitude to execute, stability, and competitive compensation. He is open to staying at Microsoft if Apollo role scope/PM ownership/executive support and rewards/compensation can be clarified; Jai will brief Manish and keep the conversation open while offers finalize.
 ## Action Items
-- [ ?] Compile and send best external offer and specific retention asks (scope, ownership, collaborators, resourcing, compensation) to Manish and Jai. @Myself 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Circle back with Manish to share Jason’s concerns and expectations; align on potential retention path and Apollo leadership options. @Jai Menon Menon 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Update Jason after Manish/Ong rewards discussion with any concrete options. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Define Apollo PM ownership, collaborators, resourcing, and executive sponsorship if a retention path is pursued. @Manish 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Clarify whether a management role (not IC) can be offered to Jason within Apollo or related scope. @Manish 📅 2025-10-26 🔺 #task #proposed
-- [ ?] Confirm stance and timeline on clean-sheet versus incremental approach for Apollo storage. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
-- [ ?] Reconnect once offers finalize to review Jason’s decision and any Microsoft counterproposal. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
+- [?] Compile and send best external offer and specific retention asks (scope, ownership, collaborators, resourcing, compensation) to Manish and Jai. @Myself 📅 2025-10-26 ⏫ #task #proposed
+- [?] Circle back with Manish to share Jason’s concerns and expectations; align on potential retention path and Apollo leadership options. @Jai Menon Menon 📅 2025-10-26 🔺 #task #proposed
+- [?] Update Jason after Manish/Ong rewards discussion with any concrete options. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
+- [?] Define Apollo PM ownership, collaborators, resourcing, and executive sponsorship if a retention path is pursued. @Manish 📅 2025-10-26 🔺 #task #proposed
+- [?] Clarify whether a management role (not IC) can be offered to Jason within Apollo or related scope. @Manish 📅 2025-10-26 🔺 #task #proposed
+- [?] Confirm stance and timeline on clean-sheet versus incremental approach for Apollo storage. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
+- [?] Reconnect once offers finalize to review Jason’s decision and any Microsoft counterproposal. @Jai Menon Menon 📅 2025-10-26 ⏫ #task #proposed
 
 ## Decisions
 - Proceed with a wait-and-see approach until Jason’s end-of-week decision.

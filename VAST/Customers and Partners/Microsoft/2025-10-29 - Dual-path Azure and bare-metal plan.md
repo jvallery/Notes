@@ -40,17 +40,17 @@ tags:
 
 Team aligned on a parallel approach for UK Met: deliver an 8-node Azure LSV4 VAST test system by the first week of December while also pursuing a bare-metal/dev system in a Microsoft data center via Anand’s org. Key blockers include LSV4 full-node (LS192) regional availability, RDMA timelines (VM-to-VM and GPU-to-VAST), and defining procurement paths for OEM hardware and non-marketplace software for internal Microsoft subscriptions.
 ## Action Items
-- [ ?] Deliver an 8-node LSV4 VAST test system in Azure for UK Met by the first week of December. @VAST Engineering 📅 2025-12-05 ⏫ #task #proposed
-- [ ?] Prepare Azure demo for Supercomputing/Ignite. @VAST Engineering 📅 2025-11-17 ⏫ #task #proposed
-- [ ?] Verify RDMA availability and timelines (VM-to-VM and GPU-to-VAST), including MTU and VNet constraints, with PM. @Nico 📅 2025-11-15 ⏫ #task #proposed
-- [ ?] Confirm LSV4 LS192 availability in target regions and plan fallback to LS96 as needed. @Nico 📅 2025-11-05 ⏫ #task #proposed
-- [ ?] Verify if Ignite announcements include east-west VM-to-VM RDMA for LSV4 and capture preview/GA dates. @Nico 📅 2025-11-18 #task #proposed
-- [ ?] Discuss with Anand who will purchase/own the bare-metal POC system; target an answer around Supercomputing. @Mike 📅 2025-11-20 ⏫ #task #proposed
-- [ ?] Define a non-marketplace procurement path for VAST software for internal Microsoft subscriptions. @Microsoft Procurement ⏫ #task #proposed
-- [ ?] Coordinate with Ed Kim on OEM sourcing and transacting route; align OEM shortlist. @Myself #task #proposed
-- [ ?] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stephenson Stephenson #task #proposed
-- [ ?] Set up a separate engineering track for OEM/bare-metal automation (hardware/switch APIs). @James #task #proposed
-- [ ?] Ping Sarah to confirm mid-November commitment on EGAL platform update. @Tiff 📅 2025-11-15 ⏫ #task #proposed
+- [?] Deliver an 8-node LSV4 VAST test system in Azure for UK Met by the first week of December. @VAST Engineering 📅 2025-12-05 ⏫ #task #proposed
+- [?] Prepare Azure demo for Supercomputing/Ignite. @VAST Engineering 📅 2025-11-17 ⏫ #task #proposed
+- [?] Verify RDMA availability and timelines (VM-to-VM and GPU-to-VAST), including MTU and VNet constraints, with PM. @Nico 📅 2025-11-15 ⏫ #task #proposed
+- [?] Confirm LSV4 LS192 availability in target regions and plan fallback to LS96 as needed. @Nico 📅 2025-11-05 ⏫ #task #proposed
+- [?] Verify if Ignite announcements include east-west VM-to-VM RDMA for LSV4 and capture preview/GA dates. @Nico 📅 2025-11-18 #task #proposed
+- [?] Discuss with Anand who will purchase/own the bare-metal POC system; target an answer around Supercomputing. @Mike 📅 2025-11-20 ⏫ #task #proposed
+- [?] Define a non-marketplace procurement path for VAST software for internal Microsoft subscriptions. @Microsoft Procurement ⏫ #task #proposed
+- [?] Coordinate with Ed Kim on OEM sourcing and transacting route; align OEM shortlist. @Myself #task #proposed
+- [?] Schedule engineering workshop on Lifter/Polaris integration with Nico, Trevor, and Travis. @Jonsi Stephenson Stephenson #task #proposed
+- [?] Set up a separate engineering track for OEM/bare-metal automation (hardware/switch APIs). @James #task #proposed
+- [?] Ping Sarah to confirm mid-November commitment on EGAL platform update. @Tiff 📅 2025-11-15 ⏫ #task #proposed
 
 ## Decisions
 - Proceed with Azure LSV4-based VAST test in early December and a bare-metal/dev system with Anand’s org.

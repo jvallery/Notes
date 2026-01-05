@@ -31,7 +31,7 @@ WHERE !completed AND contains(text, "John Heidgerken")
 SORT due ASC
 ```
 
-- [ ?] Let John know if there is any information needed from his friend at OpenAI. @Myself 🔽 #task #proposed #auto
+- [?] Let John know if there is any information needed from his friend at OpenAI. @Myself 🔽 #task #proposed #auto
 ## Recent Context
 
 - 2025-11-06: [[2025-11-06 - Walmart lakehouse pilot prep]] (via Walmart)

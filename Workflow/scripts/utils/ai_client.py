@@ -478,6 +478,56 @@ def get_daily_stats() -> Dict:
     return AILogger().get_stats()
 
 
+def get_cached_system_prompt(
+    task: str = "general",
+    include_persona: bool = True,
+    include_glossary: bool = True,
+    additional_instructions: str = ""
+) -> str:
+    """
+    Get a system prompt optimized for OpenAI prompt caching.
+    
+    The prompt is structured with static content FIRST (persona, glossary)
+    and task-specific instructions at the end, enabling cache hits on
+    repeated calls with the same prefix.
+    
+    Args:
+        task: Task type - "email_draft", "extraction", "planning", "general"
+        include_persona: Include Jason's persona (for drafting tasks)
+        include_glossary: Include people/project/customer glossary
+        additional_instructions: Task-specific instructions (added last)
+    
+    Returns:
+        Complete system prompt string (~2000+ tokens for cache eligibility)
+    
+    Usage:
+        from utils.ai_client import get_client, get_cached_system_prompt
+        
+        client = get_client("my_script")
+        system_prompt = get_cached_system_prompt(task="email_draft")
+        
+        response = client.chat.completions.create(
+            model="gpt-4o",
+            messages=[
+                {"role": "system", "content": system_prompt},  # Cached
+                {"role": "user", "content": user_content}  # Dynamic
+            ],
+            store=False
+        )
+    """
+    try:
+        from utils.cached_prompts import get_system_prompt
+        return get_system_prompt(
+            task=task,
+            include_persona=include_persona,
+            include_glossary=include_glossary,
+            additional_instructions=additional_instructions
+        )
+    except ImportError:
+        # Fallback if cached_prompts module not available
+        return additional_instructions or "You are a helpful assistant."
+
+
 def reset_client():
     """Reset the global client (for testing)."""
     global _client

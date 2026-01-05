@@ -24,8 +24,8 @@ tags:
 
 Jason and Andy aligned on how to collaborate between PM and Andy’s Field CTO/Octo team, including major gaps in documentation, training, and release visibility (PRDs vs FRDs, late implementation reviews, limited access to builds/docs). Jason’s near-term focus is making VAST on Cloud sellable (Azure marketplace objects, CSP shapes, multi-tenancy toward SaaS, pricing/legal), while discussing skepticism on cloud economics and the OpenAI multi-region data lake + GPU-adjacent model where VAST could serve as a global data plane. They agreed Jason should get hands-on via OVA and SE Lab, obtain GitLab access, join phase gates/implementation reviews, and schedule a follow-up deep-dive on OpenAI architecture; Sync Engine lacks a PM and urgently needs Azure Blob read support for wave.ai migrations with an early-December customer timeline.
 ## Action Items
-- [ ?] Provide sales team update on Sync Engine Blob-source support status @Andy 📅 2025-10-30 🔺 #task #proposed
-- [ ?] Meet with Josh to obtain OVA and setup guidance @Myself 📅 2025-10-31 ⏫ #task #proposed
+- [?] Provide sales team update on Sync Engine Blob-source support status @Andy 📅 2025-10-30 🔺 #task #proposed
+- [?] Meet with Josh to obtain OVA and setup guidance @Myself 📅 2025-10-31 ⏫ #task #proposed
 
 ## Decisions
 - Use Phil Wagstrom as primary multi-tenancy SME contact.

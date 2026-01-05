@@ -36,9 +36,9 @@ The discussion focused on the strategic relationship between VAST and Microsoft,
 
 ## Action Items
 
-- [ ?] Review the deep integration document with Jeff on Friday. @Myself #task #proposed
-- [ ?] Send the power saving presentation to Jeff. @Myself #task #proposed
-- [ ?] Formulate a strategy after the meeting with Ong and Manish. @Myself #task #proposed
+- [?] Review the deep integration document with Jeff on Friday. @Myself #task #proposed
+- [?] Send the power saving presentation to Jeff. @Myself #task #proposed
+- [?] Formulate a strategy after the meeting with Ong and Manish. @Myself #task #proposed
 
 ## Decisions
 

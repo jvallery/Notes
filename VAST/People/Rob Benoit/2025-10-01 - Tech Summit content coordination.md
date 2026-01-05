@@ -21,7 +21,7 @@ tags:
 
 A single action item was recorded to coordinate with Rob Benoit on Tech Summit content expectations. The task is assigned to Jason Vallery with a specified due date.
 ## Action Items
-- [ ?] Coordinate with Rob Benoit on Tech Summit content expectations. @Myself 📅 2025-11-08 #task #proposed
+- [?] Coordinate with Rob Benoit on Tech Summit content expectations. @Myself 📅 2025-11-08 #task #proposed
 
 ## Key Information
 - Task to align on Tech Summit content expectations with Rob Benoit was created and marked complete in the note.

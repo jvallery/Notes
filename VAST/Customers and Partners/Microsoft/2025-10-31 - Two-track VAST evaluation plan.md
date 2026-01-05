@@ -36,22 +36,22 @@ tags:
 
 Microsoft’s Apollo team and VAST aligned on a two-track evaluation: (A) validate VAST software on Azure-native lab hardware and (B) run a VAST loaner-hardware POC in Microsoft’s Stargate lab and/or via Azure Dedicated. Key blockers are unclear KPI targets and potential delays/constraints for hosting third-party hardware, while the timeline targets a Sep–Nov 2026 launch and an initial 30–40MW data center scaling toward ~400k GPUs.
 ## Action Items
-- [ ?] Share VAST rack/server specifications (C-nodes, D-box/D-node, network uplinks) and estimated costs sized for ~400k GPUs and a 30–40MW initial site @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Send latest VAST hardware specs including AMD Turin-based updates and DPU details @Ray 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Provide proposed Azure lab hardware SKUs/specs (e.g., Gen9 storage pod with BlueField-3 DPU) for software-only POC @Yanzhao 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Confirm Stargate lab can host the POC (rack space, ~30kW power, air cooling, standard rack size, 400GbE uplinks, RoCE/RDMA) @Yanzhao 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Provide POC power specs, rack size, connector types, and network uplink requirements @Ray 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Ship minimal VAST POC kit (≈3 C-nodes, 1 D-box; optionally preconfigured) to Microsoft Stargate lab @Ray 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Share evaluation license and installation/operations guide for deploying VAST on Azure lab hardware @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Engage Anand Ramakrishna to scope an Azure Dedicated path for earlier access to VAST hardware POC @Qingying Zhang 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Coordinate with Anand’s team from VAST side to align on Azure Dedicated POC logistics and timing @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Research precise KPI targets from NVIDIA to build sizing slide; work with John Mao on per-GPU bandwidth, aggregate throughput, and capacity assumptions @Myself 📅 2025-11-08 🔺 #task #proposed
-- [ ?] Validate lab network configuration supports RoCE/RDMA (SP3/SP4) and VLAN/SDN requirements for single-tenant POC @Myself 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Share VAST reference design slides and materials discussed on the call @Lior Genzel 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Arrange Ignite introductions (VAST CEO with Brendan Burns and Microsoft leadership) and confirm scheduling @Qingying Zhang 📅 2025-11-08 🔽 #task #proposed
-- [ ?] Clarify DPU programming interfaces (current DOCA/NVMe-oF usage) and compatibility considerations with DASH API @Alon 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm minimal POC BOM and any switch requirements if not using VAST-provided switching @Ray 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Confirm whether VAST hardware POC will run in Microsoft lab and/or Azure Dedicated, and share expected timeline @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share VAST rack/server specifications (C-nodes, D-box/D-node, network uplinks) and estimated costs sized for ~400k GPUs and a 30–40MW initial site @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
+- [?] Send latest VAST hardware specs including AMD Turin-based updates and DPU details @Ray 📅 2025-11-08 🔺 #task #proposed
+- [?] Provide proposed Azure lab hardware SKUs/specs (e.g., Gen9 storage pod with BlueField-3 DPU) for software-only POC @Yanzhao 📅 2025-11-08 🔺 #task #proposed
+- [?] Confirm Stargate lab can host the POC (rack space, ~30kW power, air cooling, standard rack size, 400GbE uplinks, RoCE/RDMA) @Yanzhao 📅 2025-11-08 🔺 #task #proposed
+- [?] Provide POC power specs, rack size, connector types, and network uplink requirements @Ray 📅 2025-11-08 🔺 #task #proposed
+- [?] Ship minimal VAST POC kit (≈3 C-nodes, 1 D-box; optionally preconfigured) to Microsoft Stargate lab @Ray 📅 2025-11-08 🔺 #task #proposed
+- [?] Share evaluation license and installation/operations guide for deploying VAST on Azure lab hardware @Lior Genzel 📅 2025-11-08 🔺 #task #proposed
+- [?] Engage Anand Ramakrishna to scope an Azure Dedicated path for earlier access to VAST hardware POC @Qingying Zhang 📅 2025-11-08 ⏫ #task #proposed
+- [?] Coordinate with Anand’s team from VAST side to align on Azure Dedicated POC logistics and timing @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
+- [?] Research precise KPI targets from NVIDIA to build sizing slide; work with John Mao on per-GPU bandwidth, aggregate throughput, and capacity assumptions @Myself 📅 2025-11-08 🔺 #task #proposed
+- [?] Validate lab network configuration supports RoCE/RDMA (SP3/SP4) and VLAN/SDN requirements for single-tenant POC @Myself 📅 2025-11-08 ⏫ #task #proposed
+- [?] Share VAST reference design slides and materials discussed on the call @Lior Genzel 📅 2025-11-08 🔽 #task #proposed
+- [?] Arrange Ignite introductions (VAST CEO with Brendan Burns and Microsoft leadership) and confirm scheduling @Qingying Zhang 📅 2025-11-08 🔽 #task #proposed
+- [?] Clarify DPU programming interfaces (current DOCA/NVMe-oF usage) and compatibility considerations with DASH API @Alon 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm minimal POC BOM and any switch requirements if not using VAST-provided switching @Ray 📅 2025-11-08 ⏫ #task #proposed
+- [?] Confirm whether VAST hardware POC will run in Microsoft lab and/or Azure Dedicated, and share expected timeline @Lior Genzel 📅 2025-11-08 ⏫ #task #proposed
 
 ## Decisions
 - Proceed with a two-track evaluation: (A) VAST software on Azure lab hardware and (B) VAST loaner-hardware POC in Microsoft lab and/or Azure Dedicated.

@@ -85,7 +85,7 @@ When you export emails from Apple Mail multiple times, or accidentally drag the 
 Uses OpenAI to parse each email and extract:
 - **Sender/Recipients**: Names, emails, organizations
 - **Topics**: Main themes discussed
-- **Tasks**: Action items with owners, due dates, priority
+- **Tasks**: Action items with owners, due dates, priority (initially `- [?] ... #task #proposed #auto`; triage via status to `[ ]` / `/` / `x` / `R`)
 - **Key Facts**: Important information to remember
 - **Questions**: Items requiring clarification
 - **Companies/Projects**: Mentioned entities

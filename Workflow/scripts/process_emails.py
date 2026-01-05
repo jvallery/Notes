@@ -491,6 +491,18 @@ def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_ar
         results["patch"] = phase_patch(extractions, dry_run, verbose)
         console.print(f"  [green]Applied {results['patch']['patches_applied']} patches[/green]")
         console.print(f"  [green]Created {results['patch']['entities_created']} new entities[/green]")
+        
+        # Rebuild glossary cache after patching (for prompt caching)
+        if not dry_run and results["patch"]["patches_applied"] > 0:
+            try:
+                from manifest_sync import build_glossary_cache, CACHE_DIR, GLOSSARY_CACHE
+                console.print("  [dim]Updating glossary cache...[/dim]")
+                glossary = build_glossary_cache()
+                CACHE_DIR.mkdir(parents=True, exist_ok=True)
+                GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+                console.print(f"  [dim]Updated glossary ({glossary['token_estimate']} tokens)[/dim]")
+            except Exception as e:
+                console.print(f"  [yellow]Note: Could not update glossary cache: {e}[/yellow]")
     
     # Phase 4: GATHER
     if "gather" in phases_to_run and emails:

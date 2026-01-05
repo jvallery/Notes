@@ -29,7 +29,7 @@
     "coreStatuses": [
       {
         "symbol": " ",
-        "name": "Todo",
+        "name": "Not Started",
         "nextStatusSymbol": "/",
         "availableAsCommand": true,
         "type": "TODO"
@@ -54,8 +54,15 @@
         "symbol": "?",
         "name": "Proposed",
         "nextStatusSymbol": " ",
-        "availableAsCommand": false,
+        "availableAsCommand": true,
         "type": "TODO"
+      },
+      {
+        "symbol": "R",
+        "name": "Rejected",
+        "nextStatusSymbol": "?",
+        "availableAsCommand": true,
+        "type": "CANCELLED"
       }
     ]
   },

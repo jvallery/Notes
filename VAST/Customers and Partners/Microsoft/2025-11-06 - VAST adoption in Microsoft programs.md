@@ -25,14 +25,14 @@ tags:
 
 Discussion focused on accelerating VAST adoption inside Microsoft via Apollo and MAI, including two Apollo-requested POCs (VAST-on-VAST hardware and VAST bare metal on Azure storage hardware). Key risks included Fungible DPU readiness and internal political resistance, while NVIDIA DGX Cloud storage requirements were identified as leverage to justify a hardware-led, bare-metal VAST path. Next steps centered on discreetly aligning leadership (Nidhi/Renan) before engaging Azure Storage Hardware (Michael Myrah) and gauging MAI sponsorship (Kushal) for a Dallas timeline.
 ## Action Items
-- [ ?] Reach out to Kushal to gauge willingness to push VAST bare metal on classic Azure for Dallas and align next steps. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Quietly brief Nidhi on the VAST-optimized Azure storage hardware path and secure her support. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] If Nidhi aligns, coordinate an intro with Michael Myrah to discuss a co-designed VAST-optimized Azure storage SKU. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Ask Azure Storage team if NVIDIA has requested DGX storage benchmarking/compliance and relay findings. @Kanchan Mehrotra 📅 2025-11-08 #task #proposed
-- [ ?] Circle with Lior on framing the Nidhi/Renan session, emphasizing DGX storage requirements and bare-metal path. @Myself 📅 2025-11-08 #task #proposed
-- [ ?] Confirm Nidhi’s availability and schedule a focused deep-dive with Renan/Lior and VAST leadership. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Update on Kushal conversation and whether MAI will sponsor the Dallas classic-Azure VAST exploration. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
-- [ ?] Track status of Apollo POC hardware arrival and start of VAST testing in the target Azure data center. @Myself 📅 2025-11-08 #task #proposed
+- [?] Reach out to Kushal to gauge willingness to push VAST bare metal on classic Azure for Dallas and align next steps. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [?] Quietly brief Nidhi on the VAST-optimized Azure storage hardware path and secure her support. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [?] If Nidhi aligns, coordinate an intro with Michael Myrah to discuss a co-designed VAST-optimized Azure storage SKU. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [?] Ask Azure Storage team if NVIDIA has requested DGX storage benchmarking/compliance and relay findings. @Kanchan Mehrotra 📅 2025-11-08 #task #proposed
+- [?] Circle with Lior on framing the Nidhi/Renan session, emphasizing DGX storage requirements and bare-metal path. @Myself 📅 2025-11-08 #task #proposed
+- [?] Confirm Nidhi’s availability and schedule a focused deep-dive with Renan/Lior and VAST leadership. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [?] Update on Kushal conversation and whether MAI will sponsor the Dallas classic-Azure VAST exploration. @Kanchan Mehrotra 📅 2025-11-08 ⏫ #task #proposed
+- [?] Track status of Apollo POC hardware arrival and start of VAST testing in the target Azure data center. @Myself 📅 2025-11-08 #task #proposed
 
 ## Decisions
 - Prioritize a storage-hardware path (Azure Storage Hardware / Myrah’s team) over VM-based approaches for VAST performance and scale.

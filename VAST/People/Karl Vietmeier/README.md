@@ -30,13 +30,13 @@ phone: +1 9497953118
 - [ ] Parameterize Karl’s calculator with cloud/region, zones, FD count, per-zone/per-FD SKU counts, EC width, non-EC overheads, rebuild headroom, and rolling-update headroom; output “available capacity” and derived overhead % for pricing.
 - [ ] Work with Karl and dev leads to wire calculator inputs into deployment tooling so customer-facing “available capacity” matches deployed striping for the chosen region/SKU.
 
-- [ ?] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task #proposed
+- [?] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task #proposed
 
-- [ ?] Provide guidance on how aggressive VAST Data should be in asserting ownership over GDC and Azure Local opportunities. @Myself 🔼 #task #proposed
+- [?] Provide guidance on how aggressive VAST Data should be in asserting ownership over GDC and Azure Local opportunities. @Myself 🔼 #task #proposed
 
-- [ ?] Provide guidance on how aggressive to be in asserting ownership of GDC and Azure Local opportunities. @Myself 🔼 #task #proposed #auto
+- [?] Provide guidance on how aggressive to be in asserting ownership of GDC and Azure Local opportunities. @Myself 🔼 #task #proposed #auto
 
-- [ ?] Confirm if Wednesday or Thursday is better for the meeting. @VAST team 🔼 #task #proposed #auto
+- [?] Confirm if Wednesday or Thursday is better for the meeting. @VAST team 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)

@@ -30,7 +30,7 @@ WHERE !completed AND contains(text, "Kirstin Bordner")
 SORT due ASC
 ```
 
-- [ ?] Approve the new BF4 blog and share it with Kirstin. @Jeff Denworth 🔼 #task #proposed #auto
+- [?] Approve the new BF4 blog and share it with Kirstin. @Jeff Denworth 🔼 #task #proposed #auto
 ## Recent Context
 
 - 2025-12-23: Email re: You've been selected! VAST speaker at VAST FWD - The email announces the selection of speakers for the VAST Forward event and outlines the preparatio

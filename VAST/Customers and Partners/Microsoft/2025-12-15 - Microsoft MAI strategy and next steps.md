@@ -24,11 +24,11 @@ tags:
 
 Lior and Jason aligned on Microsoft MAI stakeholder mapping, positioning for executive meetings (Satya/Scott/Mustafa), and how to navigate internal Azure Storage politics while advancing VAST’s foothold via Apollo/MAI. They discussed a potential “better together” approach via deep Azure Blob integration (including possible Blob API on VAST, tiering/offload), and planned a January Microsoft trip (Florida/Bay Area/Redmond) plus near-term design work and outreach to Microsoft contacts.
 ## Action Items
-- [ ?] Offer Kushal a meet-and-greet with Renan and request help sponsoring/arranging a Renan–Mustafa meeting (or confirm if Mustafa will be at Davos). @Lior Genzel ⏫ #task #proposed
-- [ ?] Write the Azure Blob integration design doc (API surface MVP, transparent offload, namespace management, and Blob-as-capacity-tier options) and review it with Jeff by Friday. @Myself 🔺 #task #proposed
-- [ ?] Send an update email to Vamshi outlining progress (partner onboarding status, Azure prioritized over AWS for marketplace GA, upcoming design doc/design review) and include pipeline signals (EY, NBCU; UKMET testing progress). @Lior Genzel ⏫ #task #proposed
-- [ ?] Plan a Microsoft travel week targeting the week of 2026-01-12 (Florida, Bay Area, Redmond) to advance MAI mapping and Blob integration discussions; ensure schedule works around Jason’s 2026-01-15 commitment. @Lior Genzel 📅 2026-01-12 #task #proposed
-- [ ?] Email Eagle to set up a call on UKMET/LSV5 configuration exercise (compute options for MAI), asking who from his team should join and proposing times. @Myself ⏫ #task #proposed
+- [?] Offer Kushal a meet-and-greet with Renan and request help sponsoring/arranging a Renan–Mustafa meeting (or confirm if Mustafa will be at Davos). @Lior Genzel ⏫ #task #proposed
+- [?] Write the Azure Blob integration design doc (API surface MVP, transparent offload, namespace management, and Blob-as-capacity-tier options) and review it with Jeff by Friday. @Myself 🔺 #task #proposed
+- [?] Send an update email to Vamshi outlining progress (partner onboarding status, Azure prioritized over AWS for marketplace GA, upcoming design doc/design review) and include pipeline signals (EY, NBCU; UKMET testing progress). @Lior Genzel ⏫ #task #proposed
+- [?] Plan a Microsoft travel week targeting the week of 2026-01-12 (Florida, Bay Area, Redmond) to advance MAI mapping and Blob integration discussions; ensure schedule works around Jason’s 2026-01-15 commitment. @Lior Genzel 📅 2026-01-12 #task #proposed
+- [?] Email Eagle to set up a call on UKMET/LSV5 configuration exercise (compute options for MAI), asking who from his team should join and proposing times. @Myself ⏫ #task #proposed
 
 ## Decisions
 - Focus Blob API integration MVP on MAI/OpenAI training workloads first, with a broader roadmap later.

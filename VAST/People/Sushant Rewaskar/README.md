@@ -27,7 +27,7 @@ tags:
 
 ## Open Tasks
 
-- [ ?] Share documents on architecture discussed in SF. @Myself 🔼 #task #proposed #auto
+- [?] Share documents on architecture discussed in SF. @Myself 🔼 #task #proposed #auto
 ## Related
 
 - [[VAST Data]]
