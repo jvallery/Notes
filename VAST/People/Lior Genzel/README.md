@@ -1,14 +1,14 @@
 ---
-type: people
-title: Lior Genzel
-last_contact: '2025-12-17'
+company: VAST Data
 created: '2026-01-03'
+email: lior.genzel@vastdata.com
+last_contact: '2026-01-04'
+phone: 408 888 2102
 tags:
 - type/people
 - generated
-email: lior.genzel@vastdata.com
-company: VAST Data
-phone: 408 888 2102
+title: Lior Genzel
+type: people
 ---
 
 # Lior Genzel
@@ -109,6 +109,9 @@ phone: 408 888 2102
 - 2025-12-22: Email re: Share request for "VAST and Azure Integration.docx - Lior Genzel is requesting access to the document titled 'VAST and Azure Integration.docx' via Google
 
 - 2025-12-17: Email re: Re: VAST Data - GDC Storage RFP - Request For Meet - The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
+- 2025-12-15: Discussion on Google Distributed Cloud RFP - The meeting focused on reviewing the proposal for the Google Distributed Cloud RFP. Participants dis
+- 2025-12-19: Performance Benchmarking and Encryption Discussion - The meeting focused on discussing performance benchmarking parameters, encryption strategies, and ha
+- 2026-01-04: Weekly Strategy Call with Lior Genzel - Jason Vallery and Lior Genzel discussed the current status and strategic approach towards Microsoft 
 ## Key Facts
 
 - Lior Genzel is in town with the VP of PM for cloud for meetings at Microsoft.
@@ -118,6 +121,8 @@ phone: 408 888 2102
 - Lior Genzel has the most recent updates from engineering regarding showcasing Global Namespace on Azure.
 
 - Lior Genzel is associated with VAST Data.
+- Lior Genzel was born during Hanukkah and his name means 'my light'. (2025-12-15)
+- Lior Genzel is back in Tel Aviv. (2026-01-04)
 ## Topics
 
 - meeting scheduling
@@ -179,6 +184,9 @@ phone: 408 888 2102
 - meeting rescheduling
 - VAST GTM meeting
 - Azure Storage
+- 2025-12-15: Technical requirements, Pricing and configurations, Data reduction and encryption, Hardware configurations
+- 2025-12-19: Performance benchmarking, Encryption strategies
+- 2026-01-04: Microsoft MAI strategy, Project Apollo and Bifrost, Organizational mapping, Technical integrations
 ## Key Decisions
 
 - (2025-12-11) The answer to the request for an Azure VoC instance will be NO.
@@ -192,6 +200,9 @@ phone: 408 888 2102
 - (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
 
 - (2026-01-04) Reschedule the meeting to Tuesday for now.
+- 2025-12-15: Use the same concepts from previous CSP projects to size this project.
+- 2025-12-19: VAST Data will use dual software layer encryption instead of self-encrypting drives.
+- 2026-01-04: Focus on MVP for MAI and OpenAI with a roadmap for broader integration.; Plan a proactive Microsoft week including visits to Florida, Bay Area, and Redmond.
 ## Related Customers
 
 - [[MSFT]]

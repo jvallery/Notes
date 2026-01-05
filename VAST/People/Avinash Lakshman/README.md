@@ -1,23 +1,23 @@
 ---
-type: people
-title: ''
-created: '2026-01-04'
-last_contact: '2025-12-17'
-email: ''
-phone: ''
 company: Whale Iptic
-tags:
-- type/people
-- needs-review
+created: '2026-01-04'
+email: ''
+enrichment_level: 2
 expertise:
 - Whale Iptic's platform
 - VAST storage solutions
 - GPU infrastructure
 - distributed ledger technology
 - AI agent execution
-relationship: other
-enrichment_level: 2
+last_contact: '2025-12-17'
 last_enriched: '2026-01-04'
+phone: ''
+relationship: other
+tags:
+- type/people
+- needs-review
+title: ''
+type: people
 ---
 
 # Avinash Lakshman
@@ -29,10 +29,12 @@ last_enriched: '2026-01-04'
 **Email**: _Unknown_
 
 ## Key Facts
+- Avinash Lakshman co-invented the Amazon Dynamo system and created Apache Cassandra. (2025-12-17)
 
 ## Recent Context
 
 - 2025-12-17: First contact via email re: Meeting Summary for Jason Vallery and Avinash Laks
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic - The meeting was a discussion between Jason Vallery and Avinash Lakshman from Welliptic, focusing on 
 
 ## Open Tasks
 
@@ -60,3 +62,9 @@ last_enriched: '2026-01-04'
 - GPU infrastructure
 - distributed ledger technology
 - AI agent execution
+- 2025-12-17: Welliptic's cryptographically secure compute platform, VAST Data's distributed execution and storage solutions
+
+
+## Key Decisions
+
+- 2025-12-17: Continue dialogue to explore potential collaboration between Welliptic and VAST Data.

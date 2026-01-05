@@ -1,14 +1,14 @@
 ---
-type: customer
-title: CoreWeave
-created: '2026-01-03'
-last_contact: '2025-12-19'
-status: active
 auto_created: true
+created: '2026-01-03'
+last_contact: '2025-12-17'
+status: active
 tags:
 - type/customer
 - needs-review
 - status/active
+title: CoreWeave
+type: customer
 ---
 
 # CoreWeave
@@ -71,6 +71,7 @@ SORT due ASC
 - 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's p
 
 - 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 - Testing hasn’t started in earnest at CoreWeave.

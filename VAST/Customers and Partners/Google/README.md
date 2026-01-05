@@ -1,11 +1,11 @@
 ---
-type: customer
-title: Google
-last_contact: '2025-12-15'
 created: '2026-01-03'
+last_contact: '2025-12-17'
 tags:
 - type/customer
 - generated
+title: Google
+type: customer
 ---
 
 # Google
@@ -104,6 +104,7 @@ not done
 - 2025-12-22: Lior Genzel is requesting access to the document titled 'VAST and Azure Integration.docx' via Google
 
 - 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 ## Topics

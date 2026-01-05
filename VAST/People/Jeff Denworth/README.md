@@ -1,21 +1,21 @@
 ---
-type: people
-title: Jeff Denworth
-last_contact: '2025-12-16'
-created: '2026-01-03'
-tags:
-- type/people
-- generated
-role: Executive leader
 company: VAST Data
+created: '2026-01-03'
+enrichment_level: 2
 expertise:
 - cloud strategy
 - Microsoft/Azure engagement
 - go-to-market planning
 - program management
-relationship: colleague
-enrichment_level: 2
+last_contact: '2025-12-15'
 last_enriched: '2026-01-04'
+relationship: colleague
+role: Executive leader
+tags:
+- type/people
+- generated
+title: Jeff Denworth
+type: people
 ---
 
 # Jeff Denworth
@@ -95,11 +95,14 @@ last_enriched: '2026-01-04'
 - 2025-10-01: [[2025-10-01 - Microsoft Azure engagement tasks]] (via Microsoft)
 
 - 2025-12-16: [[2025-12-16 - Prep for Microsoft AI talks]] (via Jonsi Stephenson)
+- 2025-12-15: Discussion on Google Distributed Cloud RFP - The meeting focused on reviewing the proposal for the Google Distributed Cloud RFP. Participants dis
 ## Key Facts
 
 ## Topics
+- 2025-12-15: Technical requirements, Pricing and configurations, Data reduction and encryption, Hardware configurations
 
 ## Key Decisions
+- 2025-12-15: Use the same concepts from previous CSP projects to size this project.
 
 ## Related Customers
 

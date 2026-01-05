@@ -1,14 +1,14 @@
 ---
-type: customer
-title: xAI
-created: '2026-01-03'
-last_contact: '2025-12-19'
-status: active
 auto_created: true
+created: '2026-01-03'
+last_contact: '2025-12-17'
+status: active
 tags:
 - type/customer
 - needs-review
 - status/active
+title: xAI
+type: customer
 ---
 
 # xAI
@@ -40,6 +40,7 @@ SORT due ASC
 - 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's s
 
 - 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's p
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 ## Opportunities

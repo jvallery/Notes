@@ -1,11 +1,11 @@
 ---
-type: customer
-title: Microsoft
-last_contact: '2025-12-11'
 created: '2026-01-03'
+last_contact: '2025-12-17'
 tags:
 - type/customer
 - generated
+title: Microsoft
+type: customer
 ---
 
 # Microsoft
@@ -314,6 +314,7 @@ not done
 - 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
 
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.

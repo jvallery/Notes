@@ -1,15 +1,15 @@
 ---
-type: customer
-title: Tesla
-created: '2026-01-03'
-last_contact: '2026-01-04'
-status: active
 auto_created: true
+created: '2026-01-03'
+last_contact: '2025-12-17'
+status: active
 tags:
 - type/customer
 - needs-review
 - industry/automotive-/-technology
 - status/active
+title: Tesla
+type: customer
 ---
 
 # Tesla
@@ -45,6 +45,7 @@ SORT due ASC
 - 2026-01-04: Email re: Tesla Credits Expiring Soon - Tesla is reminding the recipient that $111.04 of their Tesla Credits will expire by February 4, 2026
 
 - 2025-12-17: The email summarizes a meeting between Jason Vallery and Avinash Lakshman discussing Whale Iptic's p
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 - $111.04 of Tesla Credits will expire by February 4, 2026.

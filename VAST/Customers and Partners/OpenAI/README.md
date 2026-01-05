@@ -1,11 +1,11 @@
 ---
-type: customer
-title: OpenAI
-last_contact: '2025-10-01'
 created: '2026-01-03'
+last_contact: '2025-12-17'
 tags:
 - type/customer
 - generated
+title: OpenAI
+type: customer
 ---
 
 # OpenAI
@@ -60,6 +60,7 @@ tags:
 - 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
 
 - 2025-12-12: John Mao discusses his friend's role at OpenAI and the company's data infrastructure, including the
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 ## Key Facts
 
 - OpenAI is organized into three major teams: Applications, Scaling, and Research.

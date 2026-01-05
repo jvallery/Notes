@@ -1,14 +1,14 @@
 ---
-type: customer
-title: Amazon
-created: '2026-01-03'
-last_contact: '2025-10-27'
-status: active
 auto_created: true
+created: '2026-01-03'
+last_contact: '2025-12-17'
+status: active
 tags:
 - type/customer
 - needs-review
 - status/active
+title: Amazon
+type: customer
 ---
 
 # Amazon
@@ -34,6 +34,7 @@ SORT due ASC
 ```
 
 ## Recent Context
+- 2025-12-17: Exploring Collaboration Opportunities with Welliptic
 
 ## Key Facts
 
