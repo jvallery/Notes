@@ -3039,3 +3039,270 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 
 - `Workflow/scripts/audit_import.py` reports 0 transcript-kind notes with empty participants.
 - Generated notes never render an empty `**Attendees**:` line.
+
+---
+
+---
+
+## 92) Make ENRICH Phase Optional with CLI Flag
+
+**Goal:** ENRICH should be opt-in, not automatic on every pipeline run.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: User noted "enrich is an optional step. We wouldn't want to do that every time." Currently ENRICH runs automatically in process_emails.py.
+
+**Impact:** Medium - prevents unwanted API costs and slow runs
+
+**Effort:** 15 minutes
+
+**Tasks**
+
+- [ ] Add `--enrich` flag to `process_emails.py` (default: off)
+- [ ] Update phase selection logic: enrich only runs when explicitly requested
+- [ ] Update `--phase` choices to reflect optional enrich
+- [ ] Document in MANIFEST-ENRICHMENT.md and process_emails.py docstring
+
+**Success Criteria**
+
+- `python scripts/process_emails.py` runs without enrichment by default
+- `python scripts/process_emails.py --enrich` enables enrichment phase
+- Phase summary table shows "skipped" for enrich when not requested
+
+---
+
+---
+
+## 93) Auto-Enrich Newly Created People
+
+**Goal:** When a new person entity is created during ingest, immediately enrich them.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: User noted "When a person is newly created we should always try to enrich immediately."
+
+**Impact:** High - ensures new contacts have useful context from first touch
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Track newly created entities during PATCH phase (return list of new paths)
+- [ ] In PATCH phase (not ENRICH), immediately enrich new people to L2
+- [ ] This happens regardless of `--enrich` flag (it's triggered by creation event)
+- [ ] Log: "Auto-enriched 3 new people: X, Y, Z"
+
+**Success Criteria**
+
+- New people created during ingest are enriched to L2 automatically
+- Existing people are NOT enriched unless `--enrich` flag is passed
+- Works for all content types (email, transcript, voice)
+
+---
+
+---
+
+## 94) Event-Driven Pipeline Architecture
+
+**Goal:** Refactor ingestion pipeline to use event/trigger model for extensibility.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: User suggested "Logically I think of all these things as events and triggers... architect the entire pipeline that way? Since we will have multiple kinds of content ingested."
+
+**Impact:** High - enables clean multi-content-type support and plugin-style extensions
+
+**Effort:** 2-4 hours (design) + 4-8 hours (implementation)
+
+**Tasks**
+
+- [ ] Design event types: `entity.created`, `entity.updated`, `email.extracted`, `transcript.extracted`, etc.
+- [ ] Design trigger registry: map events → handlers (e.g., `entity.created[person]` → `enrich_person`)
+- [ ] Refactor `process_emails.py` to emit events instead of calling phases directly
+- [ ] Create `Workflow/events/` module with EventBus and handler registration
+- [ ] Migrate existing phases to event handlers
+- [ ] Document architecture in `Workflow/DESIGN.md`
+
+**Success Criteria**
+
+- Pipeline emits events at each stage
+- Handlers can subscribe to specific events
+- Adding new content type requires only: extractor + event handlers
+- Existing functionality preserved
+
+---
+
+---
+
+## 95) Process Pending Inbox Transcripts
+
+**Goal:** Process the 6 transcripts sitting in Inbox/Transcripts/.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: Saw 6 files in Inbox/Transcripts/ during testing.
+
+**Impact:** Medium - captured meetings not yet in vault
+
+**Effort:** 10 minutes (run pipeline)
+
+**Tasks**
+
+- [ ] Run `python scripts/process_inbox.py` on Inbox/Transcripts/
+- [ ] Review extracted notes for quality
+- [ ] Archive sources after verification
+
+**Success Criteria**
+
+- All 6 transcripts processed and archived
+- Meeting notes created in appropriate People/Customer folders
+
+---
+
+---
+
+## 96) Process Pending Inbox Emails
+
+**Goal:** Process the 8 emails sitting in Inbox/Email/.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: Saw 8 emails in Inbox/Email/ during testing (some duplicates, some spam).
+
+**Impact:** Low - mostly duplicates and low-value
+
+**Effort:** 15 minutes (triage + process)
+
+**Tasks**
+
+- [ ] Triage: remove duplicates and spam/personal emails
+- [ ] Process remaining work emails through pipeline
+- [ ] Archive or delete triaged files
+
+**Success Criteria**
+
+- Inbox/Email/ is empty or contains only pending items
+- Work-relevant emails processed and archived
+
+---
+
+---
+
+## 97) Unified Content Ingestion CLI
+
+**Goal:** Single entry point for all content types with consistent interface.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: Currently have separate scripts for email vs transcript. Event architecture (item 94) would enable unified CLI.
+
+**Impact:** Medium - improves UX and reduces cognitive load
+
+**Effort:** 2 hours
+
+**Tasks**
+
+- [ ] Create `scripts/ingest.py` as unified CLI
+- [ ] Subcommands: `ingest email`, `ingest transcript`, `ingest voice`, `ingest all`
+- [ ] Common flags: `--source`, `--enrich`, `--dry-run`, `--limit`, `--verbose`
+- [ ] Deprecate individual scripts or make them thin wrappers
+
+**Success Criteria**
+
+- `python scripts/ingest.py --help` shows all content types
+- `python scripts/ingest.py all --source --enrich` processes everything
+- Consistent output format across content types
+
+---
+
+---
+
+## 98) Manifest Enrichment Documentation Complete
+
+**Goal:** Finalize MANIFEST-ENRICHMENT.md with all CLI options and examples.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: Created MANIFEST-ENRICHMENT.md but may be missing some details from implementation.
+
+**Impact:** Low - documentation completeness
+
+**Effort:** 15 minutes
+
+**Tasks**
+
+- [ ] Review `enrich_person.py --help` and ensure all options documented
+- [ ] Add examples for common workflows
+- [ ] Document L0-L4 levels with concrete examples
+- [ ] Add troubleshooting section
+
+**Success Criteria**
+
+- MANIFEST-ENRICHMENT.md covers all CLI options
+- New user can understand enrichment system from docs alone
+
+---
+
+---
+
+## 99) Prompt Caching Validation and Metrics
+
+**Goal:** Verify prompt caching is working and measure cost savings.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: Implemented prompt caching but haven't validated it's actually being used.
+
+**Impact:** Medium - cost optimization verification
+
+**Effort:** 30 minutes
+
+**Tasks**
+
+- [ ] Add logging to show cache hit/miss in API responses
+- [ ] Run sample batch and check for `cached_tokens` in response
+- [ ] Calculate and log cost savings per run
+- [ ] Add `--show-cache-stats` flag to show caching metrics
+
+**Success Criteria**
+
+- Logs show "Cache hit: X tokens" or "Cache miss"
+- Can verify glossary prefix is being cached across calls
+- Cost comparison before/after caching documented
+
+---
+
+---
+
+## 100) Customer/Account Manifest and Enrichment
+
+**Goal:** Extend manifest + enrichment pattern to Customers and Partners.
+
+**Status: NOT STARTED**
+
+**Discovery:**
+From 2026-01-04 session: People manifest works well. Customers could benefit from same pattern.
+
+**Impact:** Medium - improves customer context in drafts
+
+**Effort:** 2 hours
+
+**Tasks**
+
+- [ ] Create `VAST/Customers and Partners/_MANIFEST.md` with table format
+- [ ] Add `sync_customer_to_manifest()` function
+- [ ] Create `enrich_customer.py` CLI (or extend enrich pattern)
+- [ ] Include customer manifest in draft context gathering
+
+**Success Criteria**
+
+- Customer manifest exists with key columns (name, industry, status, key contacts)
+- Drafts for customer emails include relevant customer context
