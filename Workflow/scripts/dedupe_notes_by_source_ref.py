@@ -150,13 +150,26 @@ def _build_wikilink_counts(roots: list[Path]) -> dict[str, int]:
     return counts
 
 
-def _score_candidate(path: Path, link_counts: dict[str, int]) -> tuple[int, int, int]:
-    """Higher is better: (reference_count, task_count, body_length)."""
+def _kind_score(path: Path) -> int:
+    """Prefer canonical notes in domain folders over People folders."""
+    s = str(path)
+    if "/Customers and Partners/" in s:
+        return 3
+    if "/Projects/" in s:
+        return 2
+    if "/People/" in s:
+        return 1
+    return 0
+
+
+def _score_candidate(path: Path, link_counts: dict[str, int]) -> tuple[int, int, int, int]:
+    """Higher is better: (kind_score, reference_count, task_count, body_length)."""
     doc = _read_markdown(path)
     full_text = path.read_text(errors="ignore")
+    kind = _kind_score(path)
     ref_count = link_counts.get(path.stem, 0)
     task_count = sum(1 for line in full_text.splitlines() if "#task" in line and line.strip().startswith("-"))
-    return (ref_count, task_count, len(doc.body))
+    return (kind, ref_count, task_count, len(doc.body))
 
 
 def _choose_canonical(files: list[Path], link_counts: dict[str, int]) -> Path:
@@ -353,4 +366,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
