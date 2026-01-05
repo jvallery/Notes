@@ -64,6 +64,7 @@ The Entity Discovery Service classifies and enriches entities (people, companies
 - People lookup order: **email → alias normalization (`Workflow/entities/aliases.yaml`) → exact name → initial + last name → fuzzy match** (cached per query). Alias files include canonical names as keys to stabilize normalization.
 - Companies/projects use alias normalization plus fuzzy difflib matching to catch minor spelling variants.
 - ContextBundle uses EntityIndex to pull README summaries (VAST + Personal) for manifest hits, participants, and proper names found in source content before extraction.
+- Email headers (From/To) are injected into `UnifiedExtraction.contacts` so ChangePlans use email-first routing even when the display name is ambiguous.
 
 ## Usage
 

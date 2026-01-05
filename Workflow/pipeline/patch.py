@@ -233,11 +233,13 @@ class PatchGenerator:
         
         # Determine destination folder
         if extraction.primary_entity:
-            folder = self._get_entity_folder(extraction.primary_entity)
+            folder = self._get_entity_folder(extraction.primary_entity, extraction)
         else:
             # Default to first participant
             if extraction.participants:
-                folder = self.entity_index.find_person(extraction.participants[0])
+                first_participant = extraction.participants[0]
+                email = self._get_email_for_participant(first_participant, extraction)
+                folder = self.entity_index.find_person(first_participant, email=email)
             else:
                 folder = None
         
@@ -273,7 +275,7 @@ class PatchGenerator:
         if not extraction.primary_entity:
             return patches
         
-        folder = self._get_entity_folder(extraction.primary_entity)
+        folder = self._get_entity_folder(extraction.primary_entity, extraction)
         if not folder:
             return patches
         
@@ -305,14 +307,7 @@ class PatchGenerator:
         """Generate patches for entities we learned facts about."""
         patches = []
         
-        # Find entity folder
-        folder = None
-        if entity.entity_type == "person":
-            folder = self.entity_index.find_person(entity.name)
-        elif entity.entity_type == "company":
-            folder = self.entity_index.find_company(entity.name)
-        elif entity.entity_type == "project":
-            folder = self.entity_index.find_project(entity.name)
+        folder = self._get_entity_folder(entity, extraction)
         
         if not folder:
             return patches
@@ -340,7 +335,8 @@ class PatchGenerator:
             return patches
         
         # Find person folder
-        folder = self.entity_index.find_person(participant)
+        email = self._get_email_for_participant(participant, extraction)
+        folder = self.entity_index.find_person(participant, email=email)
         if not folder:
             return patches
         
@@ -383,10 +379,30 @@ class PatchGenerator:
         
         return patches
     
-    def _get_entity_folder(self, entity) -> Optional[Path]:
+    def _get_email_for_participant(self, name: str, extraction: UnifiedExtraction) -> Optional[str]:
+        """Attempt to find an email address for a participant from contacts."""
+        if not extraction.contacts:
+            return None
+        
+        normalized_target = self.entity_index.normalize_name(name).lower()
+        for contact in extraction.contacts:
+            if not contact.email:
+                continue
+            contact_name = contact.name or ""
+            normalized_contact = self.entity_index.normalize_name(contact_name).lower() if contact_name else ""
+            if contact_name and normalized_contact == normalized_target:
+                return contact.email
+        if "@" in name:
+            return name
+        return None
+
+    def _get_entity_folder(self, entity, extraction: Optional[UnifiedExtraction] = None) -> Optional[Path]:
         """Get folder path for an entity reference."""
+        email = None
+        if extraction and entity.entity_type == "person":
+            email = self._get_email_for_participant(entity.name, extraction)
         if entity.entity_type == "person":
-            return self.entity_index.find_person(entity.name)
+            return self.entity_index.find_person(entity.name, email=email)
         elif entity.entity_type == "company":
             return self.entity_index.find_company(entity.name)
         elif entity.entity_type == "project":

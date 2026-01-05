@@ -104,3 +104,17 @@ def test_transcript_adapter_with_fixture(tmp_path):
     assert env.content_type.value == "transcript"
     assert any("Jason Vallery" in p for p in env.participants)
     assert "Azure Sync" in env.title or env.title == "transcript_basic"
+
+
+def test_email_adapter_preserves_addresses(tmp_path):
+    fixture = Path(__file__).parent / "fixtures" / "email_basic.md"
+    inbox_path = tmp_path / "Inbox" / "Email" / fixture.name
+    inbox_path.parent.mkdir(parents=True, exist_ok=True)
+    inbox_path.write_text(fixture.read_text())
+
+    env = AdapterRegistry.default().parse(inbox_path)
+    email_meta = env.metadata.get("email", {})
+
+    assert email_meta.get("sender_email") == "jeff@vastdata.com"
+    assert "jason@vastdata.com" in email_meta.get("recipients_emails", [])
+    assert any(rec.get("email") == "lior@vastdata.com" for rec in email_meta.get("recipients_detail", []))

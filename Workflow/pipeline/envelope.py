@@ -58,6 +58,8 @@ class EmailMetadata(BaseModel):
     sender_name: Optional[str] = None
     sender_email: Optional[str] = None
     recipients: list[str] = Field(default_factory=list)
+    recipients_emails: list[str] = Field(default_factory=list)
+    recipients_detail: list[dict] = Field(default_factory=list)
     cc: list[str] = Field(default_factory=list)
     subject: str = ""
     thread_id: Optional[str] = None

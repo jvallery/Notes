@@ -4,7 +4,7 @@ from pathlib import Path
 import yaml
 
 from pipeline.entities import EntityIndex
-from pipeline.models import UnifiedExtraction, EntityRef, Fact, MentionedEntity
+from pipeline.models import UnifiedExtraction, EntityRef, Fact, MentionedEntity, ContactInfo
 from pipeline.patch import PatchGenerator, ChangePlan, PatchOperation
 
 
@@ -37,6 +37,39 @@ def test_entity_index_fuzzy_person_lookup(tmp_path):
 
     assert match is not None
     assert match.name.endswith("Alice Example")
+
+
+def test_participant_lookup_uses_email_first(tmp_path):
+    person_dir = tmp_path / "VAST" / "People" / "Email Match"
+    person_dir.mkdir(parents=True, exist_ok=True)
+    (person_dir / "README.md").write_text("---\nemail: alias@example.com\n---\n# Email Match\n\n## Recent Context\n")
+
+    extraction = UnifiedExtraction(
+        source_file=str(tmp_path / "Inbox" / "Email" / "test.md"),
+        content_type="email",
+        processed_at=datetime.now(),
+        note_type="people",
+        primary_entity=None,
+        date="2026-01-05",
+        title="Meeting",
+        summary="Summary",
+        participants=["Alias Name"],
+        contacts=[ContactInfo(name="Alias Name", email="alias@example.com")],
+        mentioned_entities=[],
+        facts=[],
+        tasks=[],
+        decisions=[],
+        topics=[],
+        questions=[],
+        commitments=[],
+        confidence=0.9,
+    )
+
+    entity_index = EntityIndex(tmp_path)
+    gen = PatchGenerator(tmp_path, entity_index)
+    plan = gen.generate(extraction)
+
+    assert any("Email Match/README.md" in p.target_path for p in plan.patches)
 
 
 def _extraction(source_file: Path) -> UnifiedExtraction:

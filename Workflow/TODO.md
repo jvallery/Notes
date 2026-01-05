@@ -357,17 +357,17 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Use email as the primary key for person lookup with name fallback.
 
-**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:47)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** High
 
 **Effort:** 45 minutes
 
 **Tasks**
-- [ ] Build email→folder index from People READMEs; cache on first call
-- [ ] Lookup order: email match → exact full name → alias/partial match via EntityIndex
-- [ ] Ensure extraction preserves sender/recipient emails; changeplan uses email when available
-- [ ] Add tests for email-first matching in UnifiedPipeline adapters/extractor
+- [x] Build email→folder index from People READMEs; cache on first call
+- [x] Lookup order: email match → exact full name → alias/partial match via EntityIndex
+- [x] Ensure extraction preserves sender/recipient emails; changeplan uses email when available
+- [x] Add tests for email-first matching in UnifiedPipeline adapters/extractor
 
 **Success Criteria**
 - Person with `email:` in frontmatter is resolved by email

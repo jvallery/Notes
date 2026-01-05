@@ -261,6 +261,7 @@ class ContextBundle:
 - EntityIndex normalizes names via `entities/aliases.yaml` and lightweight fuzzy search (initial + last name, difflib) across VAST/People, Personal/People, Customers/Partners, and Projects.
 - Candidates come from manifest hits, participants, and capitalized names in the source content; up to 12 matching READMEs are summarized into `relevant_readmes`.
 - Matching order: exact/email → alias → fuzzy (cache of past searches per query).
+- Email headers (From/To) are merged into `extraction.contacts` so people resolve by email before name.
 
 ### Prompt Caching & Instrumentation
 

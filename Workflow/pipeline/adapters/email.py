@@ -48,14 +48,16 @@ class EmailAdapter(BaseAdapter):
         date = self._extract_date(content, path.name)
         subject = self._extract_subject(content)
         sender_name, sender_email = self._extract_sender(content)
-        recipients = self._extract_recipients(content)
+        recipients_detail = self._extract_recipients(content)
+        recipient_names = [r.get("name") for r in recipients_detail if r.get("name")]
+        recipient_emails = [r.get("email") for r in recipients_detail if r.get("email")]
         is_reply = self._is_reply(subject)
         
         # Build participants list
         participants = []
         if sender_name:
             participants.append(sender_name)
-        participants.extend(recipients)
+        participants.extend(recipient_names)
         
         return ContentEnvelope(
             source_path=path,
@@ -69,7 +71,9 @@ class EmailAdapter(BaseAdapter):
                 "email": EmailMetadata(
                     sender_name=sender_name,
                     sender_email=sender_email,
-                    recipients=recipients,
+                    recipients=recipient_names,
+                    recipients_emails=recipient_emails,
+                    recipients_detail=recipients_detail,
                     subject=subject,
                     is_reply=is_reply,
                 ).model_dump()
@@ -109,9 +113,9 @@ class EmailAdapter(BaseAdapter):
             return (name, email)
         return (None, None)
     
-    def _extract_recipients(self, content: str) -> list[str]:
-        """Extract recipient names from email content."""
-        recipients = []
+    def _extract_recipients(self, content: str) -> list[dict]:
+        """Extract recipient names + emails from email content."""
+        recipients: list[dict] = []
         
         # Look for "To:" line
         to_match = re.search(r"(?:^|\n)\*?\*?To\*?\*?:\s*([^\n]+)", content)
@@ -119,14 +123,16 @@ class EmailAdapter(BaseAdapter):
             to_line = to_match.group(1)
             # Parse comma-separated names
             for part in to_line.split(","):
-                # Extract name from "Name <email>" format
-                name_match = re.match(r"([^<]+?)(?:\s*<[^>]+>)?$", part.strip())
+                name = None
+                email = None
+                name_match = re.match(r"([^<]+?)(?:\s*<([^>]+)>)?$", part.strip())
                 if name_match:
                     name = name_match.group(1).strip()
+                    email = name_match.group(2).strip() if name_match.group(2) else None
                     # Strip markdown bold markers
                     name = re.sub(r'^\*\*\s*|\s*\*\*$', '', name)
-                    if name:
-                        recipients.append(name)
+                if name or email:
+                    recipients.append({"name": name, "email": email})
         
         return recipients
     

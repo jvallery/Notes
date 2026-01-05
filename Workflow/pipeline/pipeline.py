@@ -28,6 +28,7 @@ from .patch import PatchGenerator, ChangePlan
 from .apply import TransactionalApply, ApplyResult
 from .entities import EntityIndex
 from .outputs import OutputGenerator
+from .models import ContactInfo
 from scripts.utils.ai_client import log_pipeline_stats
 
 
@@ -175,6 +176,7 @@ class UnifiedPipeline:
             extract_start = time.time()
             extraction = self.extractor.extract(envelope, context)
             phase_timings["extract_ms"] = int((time.time() - extract_start) * 1000)
+            self._augment_extraction_with_headers(extraction, envelope)
             result.extraction = extraction.model_dump()
             
             if self.verbose:
@@ -312,6 +314,32 @@ class UnifiedPipeline:
             return True
         
         return False
+    
+    def _augment_extraction_with_headers(self, extraction, envelope: ContentEnvelope):
+        """Ensure sender/recipient emails are preserved in contacts/participants."""
+        email_meta = (envelope.metadata or {}).get("email") if envelope.metadata else {}
+        if not email_meta:
+            return
+        
+        header_contacts = []
+        sender_email = email_meta.get("sender_email")
+        sender_name = email_meta.get("sender_name") or sender_email
+        if sender_email:
+            header_contacts.append(ContactInfo(name=sender_name, email=sender_email))
+        
+        for rec in email_meta.get("recipients_detail", []) or []:
+            name = rec.get("name") or rec.get("email")
+            header_contacts.append(ContactInfo(name=name, email=rec.get("email")))
+        
+        existing_emails = {c.email.lower() for c in extraction.contacts if c.email}
+        for contact in header_contacts:
+            if contact.email and contact.email.lower() in existing_emails:
+                continue
+            extraction.contacts.append(contact)
+        
+        # Ensure participants includes header names when extraction omits them
+        if not extraction.participants and envelope.participants:
+            extraction.participants = envelope.participants
     
     def _process_paths(self, paths: list[Path]) -> BatchResult:
         """Process a list of paths and return aggregated results."""
