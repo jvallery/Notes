@@ -1,0 +1,79 @@
+---
+type: "people"
+title: "1:1 with Jai Menon: retention discussion, external offers, and Apollo clean-sheet storage concerns"
+date: "2025-09-30"
+person: ""
+participants: ["Jason Vallery", "Jai Menon", "Maneesh Sah", "Unknown person (Ong)", "Juergen (last name unknown)", "Pete Emig"]
+source: "transcript"
+source_ref: "/Users/jason.vallery/Documents/Notes/Sources/Transcripts/2026/2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl.md"
+tags:
+  - "type/people"
+  - "person/"
+  - "generated"
+
+---
+
+# 1:1 with Jai Menon: retention discussion, external offers, and Apollo clean-sheet storage concerns
+
+**Date**: 2025-09-30
+**With**: Jason Vallery, Jai Menon, Maneesh Sah, Unknown person (Ong), Juergen (last name unknown), Pete Emig
+
+## Summary
+
+Jason Vallery told Jai Menon he started exploring external opportunities after a disappointing rewards outcome and now expects a strong offer soon, with a decision targeted by the end of the week. Jason’s stay criteria include a management role with clear scope and decision authority, latitude to execute, and competitive compensation; Jai will brief Manish Sah and evaluate a retention path. They also discussed Apollo, aligning that a clean-sheet storage approach is likely required and that timing is risky relative to near-term datacenter buildouts.
+
+
+## Action Items
+
+
+- [?] Brief Manish Sah on Jason Vallery’s retention criteria, including a management role, clear scope and ownership for Apollo, decision authority, and competitive compensation expectations. @Jai Menon 📅 2025-10-03 ⏫ #task #proposed #auto
+
+- [?] Send the strongest external offer package and explicit stay requirements (scope and ownership, collaborators, resourcing, compensation) to Manish Sah and Jai Menon once the written offer is received. @Myself 📅 2025-10-03 ⏫ #task #proposed #auto
+
+- [?] Clarify product management ownership, decision authority, key stakeholders, and the funding model for Apollo as part of any Microsoft retention path for Jason Vallery. @Maneesh Sah 📅 2025-10-03 ⏫ #task #proposed #auto
+
+- [?] Provide a decision update by end of week after external offers are finalized, including whether Jason Vallery will stay at Microsoft or accept an external offer. @Myself 📅 2025-10-03 ⏫ #task #proposed #auto
+
+- [?] Assess immediate storage options that can be deployed in near-term Apollo datacenters while a clean-sheet storage solution matures, including build vs buy or partner options. @TBD 📅 2025-10-10 #task #proposed #auto
+
+- [?] Confirm whether Apollo will formally pursue a clean-sheet storage approach and define Azure Storage’s role in that plan. @TBD 📅 2025-10-10 #task #proposed #auto
+
+- [?] Confirm the outcome and timing of Manish Sah’s rewards review with Ong and what changes (if any) will be made to address Jason Vallery’s compensation concerns. @Maneesh Sah 📅 2025-10-03 ⏫ #task #proposed #auto
+
+
+
+
+## Decisions
+
+
+- Jason Vallery and Jai Menon agreed to use a competitive external offer as the basis to evaluate a Microsoft retention path, rather than deciding without market data.
+
+- Jason Vallery and Jai Menon agreed to keep communication open through the end of the week and reassess after Jason receives his strongest written offer.
+
+
+
+
+## Key Information
+
+
+- Jason Vallery has been at Microsoft for 13 years and previously expected to stay long-term in Azure Storage before recent events changed his outlook.
+
+- Jason Vallery interpreted a recent rewards outcome and conversation with an executive named Ong as a signal that he should look for a new job, and he feels he lacks an advocate in Microsoft storage leadership since Juergen left.
+
+- Jason Vallery is pursuing four external opportunities, has ruled out two, and expects at least one strong written offer after a CEO call; he plans to decide by the end of the week once paperwork is complete.
+
+- Jason Vallery’s stay criteria include a management or leadership role (not an individual contributor role), clear scope and ownership, decision latitude to execute, and compensation at industry-competitive levels.
+
+- Jason Vallery is not interested in moving to another hyperscaler and is more likely to join a smaller, faster-moving company if he leaves Microsoft.
+
+- Jason Vallery believes Apollo will likely require a clean-sheet storage approach to be competitive, and he is concerned that near-term datacenter buildouts may outpace readiness of a new storage solution; build vs buy or partner remains open.
+
+- Juergen (last name unknown) previously advised Jason Vallery to obtain a competitive external offer and then matched it with a large stock grant; that four-year grant is expected to complete vesting in a few months from 2025-09-30.
+
+- Jason Vallery met Pete Emig through an Amazon interview process for an S3 product manager role; Jason later hired Pete Emig at Microsoft.
+
+
+
+---
+
+*Source: [[2025-09-30 - Jason shared that after meeting with Manish and reviewing rewards, he began expl]]*
