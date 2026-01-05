@@ -381,6 +381,65 @@ When an entity folder doesn't exist:
 4. **Check extraction quality**: Spot-check extraction JSON for accuracy
 5. **Merge duplicates**: If same person created under multiple names, merge manually
 
+## Task Triage Workflow
+
+AI-extracted tasks use **Proposed** status (`[?]`) and require triage before becoming actionable. This prevents auto-generated tasks from cluttering your real work.
+
+### Task Format
+
+```markdown
+- [?] Follow up with Google on timeline @Myself 📅 2026-01-10 🔺 #task #proposed #auto
+```
+
+| Element | Meaning |
+|---------|---------|
+| `[?]` | Proposed status — needs triage |
+| `@Owner` | Person responsible (Myself = you) |
+| `📅 YYYY-MM-DD` | Due date |
+| `🔺⏫🔼🔽⏬` | Priority (highest → lowest) |
+| `#task` | Makes it visible in dashboards |
+| `#proposed` | Marks as needing acceptance |
+| `#auto` | AI-generated (not manual) |
+
+### Triage in Obsidian
+
+Open `TASKS.md` to see the **Proposed** section at the top. For each task:
+
+| Action | How | Result |
+|--------|-----|--------|
+| **Accept** | Click checkbox → choose `Not Started` (`[ ]`) | Moves to "Not Started" section |
+| **Start** | Click checkbox → choose `In Progress` (`/`) | Moves to "In Progress" section |
+| **Complete** | Click checkbox → choose `Done` (`x`) | Task disappears from dashboard |
+| **Reject** | Click checkbox → choose `Cancelled` (`R`) | Task hidden from all views |
+
+### Status Lifecycle
+
+```
+[?] Proposed   →   [ ] Not Started   →   [/] In Progress   →   [x] Done
+      ↓
+     [R] Rejected (hidden)
+```
+
+### Quick Capture
+
+For manual tasks, add directly to `TASKS_INBOX.md`:
+
+```markdown
+- [?] Quick task idea @Myself #task #proposed #inbox ⏫ 📅 2026-01-15
+```
+
+The `#inbox` tag keeps these separate until you move them to the right note.
+
+### Dashboard Sections
+
+| Section | Query | Contents |
+|---------|-------|----------|
+| Proposed | `status.name includes Proposed` | AI-generated + quick capture |
+| Not Started | `status.name includes Not Started` | Accepted, not yet started |
+| In Progress | `status.name includes In Progress` | Currently working on |
+| Inbox | `path includes TASKS_INBOX.md` | Quick captures only |
+| Backlog | `path includes TASKS_BACKLOG.md` | Legacy task list |
+
 ## Troubleshooting
 
 ### No emails processing

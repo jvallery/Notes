@@ -71,7 +71,9 @@ class UnifiedExtractor:
             _, prefix_hash = context.get_cacheable_prefix()
             self.logger.info(f"System prompt length={len(system_prompt)} chars, cacheable prefix hash={prefix_hash}")
         
-        model_config = get_model_config("extraction")
+        # Select model based on content type if configured (e.g., extract_email, extract_transcript)
+        task_key = f"extract_{envelope.content_type.value}"
+        model_config = get_model_config(task_key)
         
         # Call LLM with prompt caching enabled
         try:

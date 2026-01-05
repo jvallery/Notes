@@ -66,13 +66,15 @@ class OutputGenerator:
             {
                 "reply": Path or None,
                 "calendar": Path or None,
-                "reminder": Path or None
+                "reminder": Path or None,
+                "tasks": list of task lines or []
             }
         """
         outputs = {
             "reply": None,
             "calendar": None,
             "reminder": None,
+            "tasks": [],
         }
         
         suggested = extraction.suggested_outputs
@@ -88,6 +90,10 @@ class OutputGenerator:
         # Generate reminder if suggested
         if suggested.follow_up_reminder:
             outputs["reminder"] = self.generate_reminder(extraction)
+        
+        # Emit all tasks from extraction to TASKS_INBOX.md
+        if extraction.tasks:
+            outputs["tasks"] = self.emit_tasks(extraction)
         
         return outputs
     
@@ -346,6 +352,81 @@ END:VCALENDAR
             return tasks_inbox
         
         # Append to TASKS_INBOX.md
+        self._append_task_to_inbox(task_line)
+        
+        if self.verbose:
+            print(f"  Added reminder to TASKS_INBOX.md")
+        
+        return tasks_inbox
+    
+    def emit_tasks(self, extraction: UnifiedExtraction) -> list[str]:
+        """Emit all tasks from extraction to TASKS_INBOX.md.
+        
+        Formats tasks with Obsidian Tasks plugin syntax:
+        - [?] Task text @Owner 📅 YYYY-MM-DD 🔺 #task #proposed #auto
+        
+        Priority markers: 🔺 highest → ⏫ high → 🔼 medium → 🔽 low → ⏬ lowest
+        
+        Args:
+            extraction: UnifiedExtraction with tasks
+        
+        Returns:
+            List of task lines emitted
+        """
+        if not extraction.tasks:
+            return []
+        
+        # Priority emoji mapping
+        priority_emoji = {
+            "highest": "🔺",
+            "high": "⏫",
+            "medium": "🔼",
+            "low": "🔽",
+            "lowest": "⏬",
+        }
+        
+        task_lines = []
+        
+        for task in extraction.tasks:
+            # Build task line with Obsidian Tasks format
+            parts = [f"- [?] {task.text}"]
+            
+            # Add owner if specified (not myself)
+            if task.owner and task.owner.lower() not in ["myself", "me", "i"]:
+                parts.append(f"@{task.owner}")
+            
+            # Add due date if specified
+            if task.due:
+                parts.append(f"📅 {task.due}")
+            
+            # Add priority marker
+            priority = task.priority.lower() if task.priority else "medium"
+            if priority in priority_emoji:
+                parts.append(priority_emoji[priority])
+            
+            # Add tags
+            parts.append("#task #proposed #auto")
+            
+            task_line = " ".join(parts) + "\n"
+            task_lines.append(task_line)
+            
+            if not self.dry_run:
+                self._append_task_to_inbox(task_line)
+            elif self.verbose:
+                print(f"  [DRY RUN] Would emit task: {task_line.strip()}")
+        
+        if self.verbose and not self.dry_run:
+            print(f"  Emitted {len(task_lines)} tasks to TASKS_INBOX.md")
+        
+        return task_lines
+    
+    def _append_task_to_inbox(self, task_line: str):
+        """Append a task line to TASKS_INBOX.md.
+        
+        Creates the file with proper structure if it doesn't exist.
+        """
+        tasks_inbox = self.vault_root / "TASKS_INBOX.md"
+        
         if tasks_inbox.exists():
             existing = tasks_inbox.read_text()
             # Add under "## Inbox" section if it exists, or at end
@@ -356,11 +437,6 @@ END:VCALENDAR
             tasks_inbox.write_text(existing)
         else:
             tasks_inbox.write_text(f"# Tasks Inbox\n\n## Inbox\n{task_line}")
-        
-        if self.verbose:
-            print(f"  Added reminder to TASKS_INBOX.md")
-        
-        return tasks_inbox
 
 
 def generate_outputs_from_extraction(
