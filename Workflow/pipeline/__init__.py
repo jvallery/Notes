@@ -26,6 +26,7 @@ from .entities import EntityIndex
 from .extract import UnifiedExtractor
 from .patch import PatchGenerator
 from .apply import TransactionalApply
+from .outputs import OutputGenerator
 from .pipeline import UnifiedPipeline
 
 __all__ = [

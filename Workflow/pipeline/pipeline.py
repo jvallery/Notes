@@ -26,6 +26,7 @@ from .extract import UnifiedExtractor
 from .patch import PatchGenerator, ChangePlan
 from .apply import TransactionalApply, ApplyResult
 from .entities import EntityIndex
+from .outputs import OutputGenerator
 
 
 @dataclass
@@ -103,8 +104,9 @@ class UnifiedPipeline:
         # Initialize components
         self.registry = AdapterRegistry.default()
         self.entity_index = EntityIndex(vault_root)
-        self.extractor = UnifiedExtractor(vault_root)
+        self.extractor = UnifiedExtractor(vault_root, verbose=verbose)
         self.patch_generator = PatchGenerator(vault_root, self.entity_index)
+        self.output_generator = OutputGenerator(vault_root, dry_run=dry_run, verbose=verbose)
         
         # Shared context (loaded once)
         self._context: Optional[ContextBundle] = None
@@ -168,10 +170,16 @@ class UnifiedPipeline:
                     result.success = False
                     result.errors.extend(apply_result.errors)
             
-            # 6. Generate outputs (if enabled)
-            if self.generate_outputs and extraction.suggested_outputs.needs_reply:
-                draft = self._generate_draft_reply(extraction)
-                result.draft_reply = draft
+            # 6. Generate outputs (if enabled and extraction suggests needs_reply)
+            suggested = extraction.suggested_outputs
+            if self.generate_outputs and suggested and suggested.needs_reply:
+                outputs = self.output_generator.generate_all(
+                    extraction, 
+                    self.context,
+                    envelope.raw_content if envelope else ""
+                )
+                result.draft_reply = str(outputs.get("reply")) if outputs.get("reply") else None
+                result.calendar_invite = {"path": str(outputs.get("calendar"))} if outputs.get("calendar") else None
             
             return result
             
@@ -282,12 +290,3 @@ class UnifiedPipeline:
         console.print(f"  Facts: {len(extraction.facts)}")
         console.print(f"  Tasks: {len(extraction.tasks)}")
         console.print(f"  Entities with facts: {len(extraction.get_entities_with_facts())}")
-    
-    def _generate_draft_reply(self, extraction) -> Optional[str]:
-        """Generate a draft reply for emails."""
-        if not extraction.suggested_outputs.needs_reply:
-            return None
-        
-        # This would be a separate LLM call with persona + context
-        # For now, just return the reply context
-        return extraction.suggested_outputs.reply_context

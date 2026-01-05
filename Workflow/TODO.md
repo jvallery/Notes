@@ -4022,11 +4022,19 @@ The unified pipeline (`pipeline/` + `ingest.py`) should replace all of these.
 
 ---
 
-## 104) Integrate Draft Generation into Unified Pipeline
+## 104) ✅ Integrate Draft Generation into Unified Pipeline
 
 **Goal:** Generate draft replies, calendar invites, and tasks as pipeline output.
 
-**Status: NOT STARTED**
+**Status: ✅ COMPLETED** (2026-01-05)
+
+**Fix Applied:**
+- Created `pipeline/outputs.py` with OutputGenerator class
+- Added `generate_reply()` method for draft email responses with frontmatter
+- Added `generate_calendar_invite()` method for .ics file generation
+- Added `generate_reminder()` method for task inbox entries
+- Integrated OutputGenerator into UnifiedPipeline
+- Outputs go to `Inbox/_drafts/replies/` and `Inbox/_drafts/calendar/`
 
 **Discovery:**
 From 2026-01-05 audit: 
@@ -4041,12 +4049,12 @@ Need to wire outputs through pipeline to `Inbox/_drafts/`.
 **Effort:** 2 hours
 
 **Tasks**
-- [ ] Create `Inbox/_drafts/` folder structure: `_drafts/replies/`, `_drafts/calendar/`
-- [ ] Add `pipeline/outputs.py` module to generate:
+- [x] Create `Inbox/_drafts/` folder structure: `_drafts/replies/`, `_drafts/calendar/`
+- [x] Add `pipeline/outputs.py` module to generate:
   - Draft reply markdown with frontmatter (from/to/subject/urgency/draft_body)
   - Calendar .ics files from `CalendarSuggestion`
-- [ ] Wire `SuggestedOutputs` from extraction → output generation in pipeline
-- [ ] Update `ingest.py` `--draft-replies` to trigger output generation
+- [x] Wire `SuggestedOutputs` from extraction → output generation in pipeline
+- [x] Update `ingest.py` `--draft-replies` to trigger output generation
 - [ ] Add `--show-drafts` flag to preview without writing
 
 **Success Criteria**
