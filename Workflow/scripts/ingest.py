@@ -41,7 +41,8 @@ console = Console()
 @click.option("--draft-replies", is_flag=True, help="Generate draft email replies")
 @click.option("--source", is_flag=True, help="Re-process from Sources/ directory")
 @click.option("--force", is_flag=True, help="Skip duplicate detection, reprocess even if already extracted")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool):
+@click.option("--trace-dir", type=click.Path(), help="Persist extraction/changeplan artifacts to this directory")
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, trace_dir: str):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
@@ -62,6 +63,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         verbose=verbose,
         generate_outputs=draft_replies,
         force=force,
+        trace_dir=Path(trace_dir) if trace_dir else None,
     )
     
     # Process based on options

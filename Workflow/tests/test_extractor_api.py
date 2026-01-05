@@ -89,3 +89,53 @@ def test_unified_extractor_calls_openai_with_context(monkeypatch, tmp_path):
     assert "Extract knowledge" in captured["messages"][1]["content"]
 
 
+def test_model_selection_by_content_type(monkeypatch, tmp_path):
+    # Verify task-specific model lookup (extract_email, extract_transcript, etc.)
+    monkeypatch.setattr(extract_mod, "_cached_persona_context", None, raising=False)
+    monkeypatch.setattr(extract_mod, "_cached_glossary_context", None, raising=False)
+
+    captured = {}
+
+    def responder(**kwargs):
+        captured["model"] = kwargs.get("model")
+        payload = {
+            "note_type": "people",
+            "primary_entity": {"entity_type": "person", "name": "Alice Example", "confidence": 0.9},
+            "title": "Test Title",
+            "summary": "Summary",
+            "participants": [],
+            "contacts": [],
+            "facts": [],
+            "decisions": [],
+            "topics": [],
+            "tasks": [],
+            "questions": [],
+            "commitments": [],
+            "mentioned_entities": [],
+            "email_requires_response": False,
+            "email_urgency": "medium",
+            "email_type": "other",
+            "suggested_outputs": {"needs_reply": False},
+            "confidence": 0.9,
+        }
+        return FakeOpenAIResponse(payload)
+
+    fake_client = FakeClient(responder)
+    # Return a distinct model for the email task key
+    monkeypatch.setattr("pipeline.extract.get_model_config", lambda task: {"model": f"model-for-{task}"}, raising=False)
+    monkeypatch.setattr("scripts.utils.ai_client.get_openai_client", lambda caller=None: fake_client, raising=False)
+
+    extractor = UnifiedExtractor(tmp_path, verbose=False)
+    env = ContentEnvelope(
+        source_path=tmp_path / "Inbox" / "Email" / "test.md",
+        content_type=ContentType.EMAIL,
+        raw_content="body",
+        date="2026-01-05",
+        title="Title",
+        participants=[],
+    )
+
+    extractor.extract(env)
+
+    assert captured["model"] == "model-for-extract_email"
+

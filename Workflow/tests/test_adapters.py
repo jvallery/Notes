@@ -53,6 +53,19 @@ def test_document_adapter_can_handle_and_parse(tmp_path):
     assert env.metadata["document"]["document_type"] == "general"
 
 
+def test_document_adapter_with_fixture(tmp_path):
+    fixture = Path(__file__).parent / "fixtures" / "document_basic.md"
+    doc_path = tmp_path / "Inbox" / "Attachments" / fixture.name
+    doc_path.parent.mkdir(parents=True, exist_ok=True)
+    doc_path.write_text(fixture.read_text())
+
+    registry = AdapterRegistry.default()
+    env = registry.parse(doc_path)
+
+    assert env.content_type.value == "document"
+    assert "Architecture Notes" in env.title or env.title == "document_basic"
+
+
 def test_adapter_registry_picks_correct_adapter(tmp_path):
     email_path = tmp_path / "Inbox" / "Email" / "2026-01-05_120000_0001_Test.md"
     email_path.parent.mkdir(parents=True, exist_ok=True)

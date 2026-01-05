@@ -94,12 +94,14 @@ class UnifiedPipeline:
         verbose: bool = False,
         generate_outputs: bool = True,
         force: bool = False,
+        trace_dir: Optional[Path] = None,
     ):
         self.vault_root = vault_root
         self.dry_run = dry_run
         self.verbose = verbose
         self.generate_outputs = generate_outputs
         self.force = force
+        self.trace_dir = trace_dir
         
         # Initialize components
         self.registry = AdapterRegistry.default()
@@ -180,6 +182,10 @@ class UnifiedPipeline:
                 )
                 result.draft_reply = str(outputs.get("reply")) if outputs.get("reply") else None
                 result.calendar_invite = {"path": str(outputs.get("calendar"))} if outputs.get("calendar") else None
+            
+            # 7. Persist trace artifacts if requested
+            if self.trace_dir:
+                self._persist_trace(envelope, extraction, plan)
             
             return result
             
@@ -290,3 +296,25 @@ class UnifiedPipeline:
         console.print(f"  Facts: {len(extraction.facts)}")
         console.print(f"  Tasks: {len(extraction.tasks)}")
         console.print(f"  Entities with facts: {len(extraction.get_entities_with_facts())}")
+
+    def _persist_trace(self, envelope: ContentEnvelope, extraction, plan: ChangePlan):
+        """Persist extraction and changeplan artifacts for audit/traceability."""
+        if not self.trace_dir:
+            return
+        
+        trace_root = self.trace_dir
+        trace_root.mkdir(parents=True, exist_ok=True)
+        
+        stem = envelope.source_path.stem
+        extraction_path = trace_root / f"{stem}.extraction.json"
+        changeplan_path = trace_root / f"{stem}.changeplan.json"
+        
+        try:
+            extraction_path.write_text(json.dumps(extraction.model_dump(mode="json"), indent=2))
+        except Exception:
+            pass
+        
+        try:
+            changeplan_path.write_text(json.dumps(plan.model_dump(mode="json", exclude_none=True), indent=2))
+        except Exception:
+            pass
