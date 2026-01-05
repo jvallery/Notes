@@ -265,6 +265,7 @@ def dedupe_by_source_ref(
     vault_root: Path,
     roots: list[Path],
     within_folder_only: bool = True,
+    cross_domain_only: bool = False,
     apply: bool = False,
     update_links: bool = True,
     max_groups: Optional[int] = None,
@@ -287,6 +288,8 @@ def dedupe_by_source_ref(
     dup_groups = [(src, files) for src, files in groups.items() if len(files) > 1]
     if within_folder_only:
         dup_groups = [(src, files) for src, files in dup_groups if len({f.parent for f in files}) == 1]
+    if cross_domain_only:
+        dup_groups = [(src, files) for src, files in dup_groups if len({_kind_score(f) for f in files}) > 1]
 
     dup_groups.sort(key=lambda x: (-len(x[1]), x[0]))
     if max_groups is not None:
@@ -342,6 +345,11 @@ def main() -> None:
     parser.add_argument("--vault-root", default=".", help="Vault root (default: current directory)")
     parser.add_argument("--apply", action="store_true", help="Apply changes (default: dry-run)")
     parser.add_argument("--include-cross-folder", action="store_true", help="Also dedupe cross-folder duplicates")
+    parser.add_argument(
+        "--cross-domain-only",
+        action="store_true",
+        help="Only dedupe duplicates spanning multiple domains (People vs Projects/Customers)",
+    )
     parser.add_argument("--no-link-updates", action="store_true", help="Do not rewrite wikilinks")
     parser.add_argument("--max-groups", type=int, default=None, help="Limit groups processed")
 
@@ -352,6 +360,7 @@ def main() -> None:
         vault_root=vault_root,
         roots=DEFAULT_ROOTS,
         within_folder_only=not args.include_cross_folder,
+        cross_domain_only=args.cross_domain_only,
         apply=args.apply,
         update_links=not args.no_link_updates,
         max_groups=args.max_groups,

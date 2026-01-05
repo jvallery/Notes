@@ -96,3 +96,63 @@ Another (longer) summary that should win.
     assert f"[[{note_b.stem}]]" not in updated_readme
     assert updated_readme.count(f"[[{note_a.stem}]]") == 3
 
+
+def test_dedupe_cross_domain_only_prefers_project_over_people(tmp_path):
+    vault = tmp_path
+    people_root = vault / "VAST" / "People" / "Alice Example"
+    project_root = vault / "VAST" / "Projects" / "My Project"
+    people_root.mkdir(parents=True)
+    project_root.mkdir(parents=True)
+
+    src = "/abs/Sources/Transcripts/2026/2026-01-01_example.md"
+
+    people_note = people_root / "2026-01-01 - People Note.md"
+    people_note.write_text(
+        f"""---
+type: "people"
+title: "People Note"
+date: "2026-01-01"
+source_ref: "{src}"
+---
+
+# People Note
+
+## Summary
+
+People copy.
+"""
+    )
+
+    project_note = project_root / "2026-01-01 - Project Note.md"
+    project_note.write_text(
+        f"""---
+type: "projects"
+title: "Project Note"
+date: "2026-01-01"
+source_ref: "{src}"
+---
+
+# Project Note
+
+## Summary
+
+Project copy.
+"""
+    )
+
+    readme = people_root / "README.md"
+    readme.write_text(f"- [[{people_note.stem}]]\n")
+
+    summary = dedupe_by_source_ref(
+        vault_root=vault,
+        roots=[Path("VAST/People"), Path("VAST/Projects")],
+        within_folder_only=False,
+        cross_domain_only=True,
+        apply=True,
+        update_links=True,
+    )
+
+    assert summary["groups"] == 1
+    assert not people_note.exists()
+    assert project_note.exists()
+    assert f"[[{project_note.stem}]]" in readme.read_text()
