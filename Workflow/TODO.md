@@ -286,7 +286,9 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Make `scripts/ingest.py` the single entry point that calls UnifiedPipeline; archive legacy process_* and ingest_* scripts.
 
-**Status: IN PROGRESS** (@copilot-b620700, started: 2026-01-04 20:15)
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:08)
+
+**Note:** Reclaimed from stale @copilot-b620700 on 2026-01-05 (session unresponsive).
 
 **Impact:** Medium
 
