@@ -51,8 +51,63 @@ def get_jinja_env() -> Environment:
     )
 
 
+def _content_hash(file_path: Path) -> str:
+    """
+    Generate a content hash for duplicate detection.
+    
+    Uses first 2000 chars after stripping frontmatter and whitespace.
+    This catches transcripts that were exported multiple times.
+    """
+    import hashlib
+    
+    content = file_path.read_text()
+    
+    # Strip frontmatter if present
+    if content.startswith("---"):
+        end = content.find("\n---", 3)
+        if end != -1:
+            content = content[end + 4:]
+    
+    # Normalize: strip whitespace, take first 2000 chars
+    normalized = content.strip()[:2000]
+    
+    return hashlib.md5(normalized.encode()).hexdigest()[:12]
+
+
+def _build_content_hash_index(extraction_dir: Path, inbox_root: Path) -> dict[str, str]:
+    """
+    Build index of content hashes for already-processed files.
+    
+    Returns: {hash: original_filename, ...}
+    """
+    if not extraction_dir.exists():
+        return {}
+    
+    index = {}
+    
+    for extraction_file in extraction_dir.glob("*.extraction.json"):
+        # Find the original source file
+        source_stem = extraction_file.stem.replace(".extraction", "")
+        
+        # Check all inbox folders
+        for folder in ["Transcripts", "Email", "Voice", "Attachments"]:
+            source_path = inbox_root / folder / f"{source_stem}.md"
+            if source_path.exists():
+                content_hash = _content_hash(source_path)
+                index[content_hash] = source_stem
+                break
+    
+    return index
+
+
 def find_unprocessed_files() -> list[Path]:
-    """Find files in Inbox that haven't been processed."""
+    """
+    Find files in Inbox that haven't been processed.
+    
+    Uses two checks:
+    1. Already extracted: extraction JSON exists for this file
+    2. Content duplicate: same content already processed (different filename)
+    """
 
     config = load_config()
     root = vault_root()
@@ -65,8 +120,12 @@ def find_unprocessed_files() -> list[Path]:
     ]
 
     extraction_dir = root / "Inbox" / "_extraction"
+    
+    # Build content hash index
+    processed_hashes = _build_content_hash_index(extraction_dir, root / "Inbox")
 
     unprocessed = []
+    duplicates = []
 
     for folder in inbox_folders:
         if not folder.exists():
@@ -78,7 +137,20 @@ def find_unprocessed_files() -> list[Path]:
             if extraction_file.exists():
                 continue
 
+            # Check if content is a duplicate
+            content_hash = _content_hash(file)
+            if content_hash in processed_hashes:
+                duplicates.append((file, processed_hashes[content_hash]))
+                continue
+
             unprocessed.append(file)
+    
+    # Report duplicates (silent unless verbose mode is enabled elsewhere)
+    if duplicates:
+        logger = logging.getLogger(__name__)
+        logger.info(f"Skipping {len(duplicates)} duplicate files")
+        for dup, original in duplicates[:5]:
+            logger.debug(f"  {dup.name} = {original}")
 
     return sorted(unprocessed, key=lambda p: p.name)
 

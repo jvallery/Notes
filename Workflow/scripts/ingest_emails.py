@@ -1166,7 +1166,13 @@ def apply_patches(plan: EmailChangePlan, dry_run: bool = False) -> dict:
 # =============================================================================
 
 def find_pending_emails() -> List[Path]:
-    """Find emails that haven't been ingested yet."""
+    """
+    Find emails that haven't been ingested yet.
+    
+    Uses two checks:
+    1. Already extracted: extraction JSON exists for this file
+    2. Content duplicate: same content already processed (different filename)
+    """
     
     email_dir = vault_root() / "Inbox" / "Email"
     extraction_dir = vault_root() / "Inbox" / "_extraction"
@@ -1174,15 +1180,86 @@ def find_pending_emails() -> List[Path]:
     if not email_dir.exists():
         return []
     
+    # Build content hash index of already-processed emails
+    processed_hashes = _build_content_hash_index(extraction_dir)
+    
     pending = []
+    duplicates = []
     
     for email_file in email_dir.glob("*.md"):
-        # Check if already extracted
+        # Check if already extracted (by filename)
         extraction_file = extraction_dir / f"{email_file.stem}.email_extraction.json"
-        if not extraction_file.exists():
-            pending.append(email_file)
+        if extraction_file.exists():
+            continue
+        
+        # Check if content is a duplicate of already-processed email
+        content_hash = _content_hash(email_file)
+        if content_hash in processed_hashes:
+            duplicates.append((email_file, processed_hashes[content_hash]))
+            continue
+        
+        pending.append(email_file)
+    
+    # Report duplicates
+    if duplicates:
+        console.print(f"[yellow]Skipping {len(duplicates)} duplicate emails:[/yellow]")
+        for dup, original in duplicates[:5]:  # Show first 5
+            console.print(f"  [dim]{dup.name} = {original}[/dim]")
+        if len(duplicates) > 5:
+            console.print(f"  [dim]... and {len(duplicates) - 5} more[/dim]")
     
     return sorted(pending, key=lambda p: p.name)
+
+
+def _content_hash(file_path: Path) -> str:
+    """
+    Generate a content hash for duplicate detection.
+    
+    Uses first 2000 chars after stripping frontmatter and whitespace.
+    This catches emails that were imported with different random IDs.
+    """
+    import hashlib
+    
+    content = file_path.read_text()
+    
+    # Strip frontmatter if present
+    if content.startswith("---"):
+        end = content.find("\n---", 3)
+        if end != -1:
+            content = content[end + 4:]
+    
+    # Normalize: strip whitespace, take first 2000 chars
+    normalized = content.strip()[:2000]
+    
+    return hashlib.md5(normalized.encode()).hexdigest()[:12]
+
+
+def _build_content_hash_index(extraction_dir: Path) -> dict[str, str]:
+    """
+    Build index of content hashes for already-processed emails.
+    
+    Returns: {hash: original_filename, ...}
+    """
+    if not extraction_dir.exists():
+        return {}
+    
+    index = {}
+    
+    for extraction_file in extraction_dir.glob("*.email_extraction.json"):
+        # Find the original email file
+        email_stem = extraction_file.stem.replace(".email_extraction", "")
+        email_dir = vault_root() / "Inbox" / "Email"
+        email_path = email_dir / f"{email_stem}.md"
+        
+        if email_path.exists():
+            content_hash = _content_hash(email_path)
+            index[content_hash] = email_stem
+        else:
+            # Email was archived, try to get hash from extraction JSON
+            # For now, skip - we only care about pending dedup
+            pass
+    
+    return index
 
 
 @click.command()
