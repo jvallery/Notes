@@ -1,0 +1,46 @@
+---
+type: projects
+title: MAI unified cache
+created: '2026-01-03'
+last_updated: ''
+status: active
+auto_created: true
+tags:
+- type/projects
+- needs-review
+- status/active
+last_contact: '2025-09-03'
+---
+
+# MAI unified cache
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | active |
+| **Owner** | Jai Menon |
+
+## Overview
+
+Define and deliver a single, pluggable caching solution for MAI that prioritizes training workloads first and later supports inference/KB caching; must scale to ~100k nodes and run on AKS + Spark, potentially with multi-region logical pooling.
+
+## Open Tasks
+
+```dataview
+TASK
+FROM this.file.folder
+WHERE !completed
+SORT due ASC
+```
+
+## Recent Context
+
+- 2026-01-05: Mentioned in: Weekly status: Azure Marketplace action items (SKU change request, GDC RFP deck, MAI unified cache pricing)
+
+- 2026-01-05: Mentioned in: Azure Sync: Marketplace SKU update, GDC RFP deck, and MAI unified cache pricing clarification
+## Key Facts
+
+- Jeff Denworth requested a follow-up with Microsoft regarding pricing for the MAI unified cache initiative.
+
+- A Microsoft product manager requested that VAST Data clarify pricing for the Microsoft AI Infrastructure (MAI) unified cache initiative.

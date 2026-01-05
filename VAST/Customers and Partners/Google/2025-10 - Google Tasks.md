@@ -1,1 +1,0 @@
-- [x] Confirm GCP GA timing post bottleneck fix and align first 2–3 lighthouse customers. @Cloud Team 🔼 ✅ 2025-11-08

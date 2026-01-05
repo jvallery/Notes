@@ -1,0 +1,48 @@
+---
+type: people
+title: ''
+created: '2026-01-04'
+last_contact: '2025-12-11'
+email: igalf@microsoft.com
+phone: ''
+company: Microsoft
+tags:
+- type/people
+- needs-review
+expertise:
+- meeting scheduling
+- technical collaboration
+- cloud product management
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
+---
+
+# Igal Figlin
+
+## Profile
+
+**Role**: _Unknown_
+**Company**: Microsoft
+**Email**: igalf@microsoft.com
+
+## Key Facts
+
+## Recent Context
+
+- 2025-12-11: First contact via email re: RE: [EXTERNAL] VAST/Microsoft: Ignite follow up
+
+- 2025-12-11: Ignite follow-up: Sushant Rewaskar requests VAST architecture docs and intro call with Jason Vallery
+## Open Tasks
+
+## Related
+
+- [[VAST Data]]
+
+- [[Ignite]]
+
+## Topics
+
+- meeting scheduling
+- technical collaboration
+- cloud product management

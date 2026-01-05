@@ -1,9 +1,0 @@
-
-==============================================
-VAST Data 5.4 - Proxmox Installation Script
-==============================================
-
-Log file: /home/centos/vast_install_20251229_182901.log
-
-[0;31m[ERROR][0m Do not run this script as root. Run as 'centos' user.
-tos' user.

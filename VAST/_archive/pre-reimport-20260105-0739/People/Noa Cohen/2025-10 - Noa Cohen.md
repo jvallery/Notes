@@ -1,0 +1,1 @@
+- [x] Introduce yourself and sync with program managers (Liraz, Daphnas, Eyal Tritle, Noa). @Jason Vallery 🔼 ✅ 2025-11-08
