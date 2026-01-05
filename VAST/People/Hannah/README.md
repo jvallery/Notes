@@ -9,6 +9,13 @@ company: ''
 tags:
 - type/people
 - needs-review
+expertise:
+- strategic planning
+- board meetings
+- feedback
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Hannah
@@ -31,3 +38,9 @@ tags:
 
 - [["I Have A Dream" Foundation of Boulder County]]
 - [[IHDF Strategic Plan]]
+
+## Topics
+
+- strategic plan
+- board meeting
+- feedback

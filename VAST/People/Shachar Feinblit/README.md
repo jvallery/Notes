@@ -37,10 +37,18 @@ not done
 
 ## Topics
 
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
 ## Key Decisions
 
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
 ## Related Projects
 
+- [[MAI & VAST]]
+- [[Anson's PoC]]
 ## Related
 
 <!-- Wikilinks to related entities -->
@@ -57,3 +65,11 @@ not done
 
 - [[Azure Blob]]
 - [[Anson's PoC]]
+
+## Related Customers
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]

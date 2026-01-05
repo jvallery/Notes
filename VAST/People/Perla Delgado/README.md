@@ -45,3 +45,19 @@ tags:
 
 - [[fundraising]]
 - [[Longmont church acquisition]]
+
+## Topics
+
+- strategic plan
+- board meeting
+- feedback
+
+- IHDF executive session
+- public stance
+- fundraising
+- acquisition
+- Longmont church
+
+## Key Decisions
+
+- (2025-12-10) Form a fundraising committee with a broader lens of development

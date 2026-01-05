@@ -9,6 +9,15 @@ company: OpenAI
 tags:
 - type/people
 - needs-review
+role: Unknown
+expertise:
+- Data Platform
+- Spark
+- Databricks
+- Data Infrastructure
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Emma Tang
@@ -46,4 +55,18 @@ tags:
 - [[CosmosDB]]
 - [[Online Data Infrastructure]]
 
+- [[GPT-6 roadmap]]
+
+## Topics
+
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
+
+## Related Projects
+
+- [[ChatGPT]]
+- [[DAQ]]
 - [[GPT-6 roadmap]]

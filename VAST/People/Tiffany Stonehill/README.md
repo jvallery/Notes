@@ -57,8 +57,13 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-16) Do not allow access to the portal for Trevor Cooper-Chadwick until further notice.
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.
 ## Related Projects
 
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
 ## Related
 
 ---
@@ -81,3 +86,33 @@ _Career history, expertise, interests, personal details shared..._
 - [[Azure]]
 
 - [[Mission OS]]
+
+## Topics
+
+- VAST Customer Learning portal
+- Microsoft
+- access verification
+- prospect management
+
+- AKS AI Roadshow
+- Global Namespace on Azure
+- Microsoft Azure
+- VAST Data presentation
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
+## Related Customers
+
+- [[Microsoft]]
+- [[Azure]]
+
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]

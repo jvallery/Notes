@@ -43,6 +43,8 @@ Former Senior Director of Global Alliances at Cloudera; extensive experience in 
 
 ## Related Projects
 
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
 ## Related
 
 ---
@@ -55,3 +57,11 @@ Former Senior Director of Global Alliances at Cloudera; extensive experience in 
 - [[Golden Dome]]
 
 - [[Mission OS]]
+
+## Topics
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing

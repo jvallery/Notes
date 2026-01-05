@@ -9,6 +9,14 @@ company: ''
 tags:
 - type/people
 - needs-review
+role: FP&A Director
+expertise:
+- FP&A
+- financial planning
+- analysis
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Edwin Trogler
@@ -43,3 +51,10 @@ tags:
 
 - [[Microsoft]]
 - [[VAST]]
+
+## Topics
+
+- introduction
+- FP&A Director role
+- resume
+- job opportunity

@@ -93,8 +93,22 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
 ## Related Projects
 
+- [[MAI & VAST]]
+- [[Anson's PoC]]
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
 ## Related
 
 ---
@@ -155,3 +169,85 @@ _Career history, expertise, interests, personal details shared..._
 
 - [[Azure Blob]]
 - [[Anson's PoC]]
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- RFE
+- feature enhancement
+- regex patterns
+- file management
+- Cisco
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+- VAST Data
+- Azure
+- Integration Proposal
+
+- Walmart
+- hybrid solution
+- data team
+- big data POC
+- integration with GCS
+
+- VAST Forward
+- breakout sessions
+- event preparation
+- customer engagement
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+- Q4 bookings
+- financial performance
+- company growth
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+## Related Customers
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+
+- [[NVIDIA]]
+- [[Microsoft]]
+- [[PepsiCo]]
+- [[Commonwealth Fusion Systems]]
+- [[Siemens]]
+
+- [[Azure]]
+- [[Google LLC]]
+
+- [[Walmart]]
+- [[Alluxio]]
+- [[GCS]]
+
+- [[Microsoft]]
+- [[Arrow]]
+- [[Avnet]]
+- [[CoreWeave]]

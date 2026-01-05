@@ -1,15 +1,21 @@
 ---
 type: people
-title: "Kamal Vyas"
-created: "2026-01-04"
-last_contact: "2025-12-17"
-email: ""
-phone: ""
-company: ""
-title: ""
+title: ''
+created: '2026-01-04'
+last_contact: '2025-12-17'
+email: ''
+phone: ''
+company: ''
 tags:
-  - "type/people"
-  - "needs-review"
+- type/people
+- needs-review
+expertise:
+- FIPS compliance
+- pricing
+- hardware partnerships
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Kamal Vyas
@@ -42,3 +48,10 @@ tags:
 - [[Arrow]]
 - [[Avnet]]
 - [[GDC Storage RFP]]
+
+## Topics
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP

@@ -33,3 +33,14 @@ tags:
 ## Related
 
 - [[RevOps]]
+
+## Topics
+
+- RevOps leadership change
+- Cristina Hasson departure
+- interim leadership
+- GTM organization
+
+## Key Decisions
+
+- (2025-12-18) Stacy Wynn will lead the RevOps team temporarily

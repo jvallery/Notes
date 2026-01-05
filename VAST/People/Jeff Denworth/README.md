@@ -6,6 +6,16 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+role: Executive leader
+company: VAST Data
+expertise:
+- cloud strategy
+- Microsoft/Azure engagement
+- go-to-market planning
+- program management
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Jeff Denworth

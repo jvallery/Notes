@@ -60,3 +60,19 @@ _Career history, expertise, interests, personal details shared..._
 - [[VAST Data]]
 
 - [[Oracle]]
+
+## Topics
+
+- meeting
+- product management
+- DRCC/Alloy
+- travel
+
+- meeting scheduling
+- product management
+- DRCC/Alloy
+
+## Related Customers
+
+- [[Oracle]]
+- [[VAST Data]]

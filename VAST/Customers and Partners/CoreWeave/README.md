@@ -24,6 +24,29 @@ tags:
 
 - [[Gordon Brown]]
 
+- [[Jason Vallery]]
+- [[Avinash Lakshman]]
+
+- [[Jeff Denworth]]
+- [[Jason Vallery]]
+- [[Lior Genzel]]
+- [[Renen Hallak]]
+- [[Alon Horev]]
+- [[Shachar Fienblit]]
+- [[Avery Pham]]
+- [[Jonsi Stefansson]]
+- [[Rick Scurfield]]
+- [[Mustafa]]
+
+- [[Jeff Denworth]]
+- [[Jonsi Stefansson]]
+- [[Lior Genzel]]
+- [[Rick Scurfield]]
+- [[Renen Hallak]]
+- [[Jason Vallery]]
+- [[Aung]]
+- [[Maneesh]]
+- [[Scott G]]
 ## Open Tasks
 
 ```dataview
@@ -63,3 +86,39 @@ SORT due ASC
 |--------|------|---------|
 | [[Rick Haselton]] | Tech lead (Customer Success; managed-services/SRE-style pod) | VAST Data |
 | [[Gordon Brown]] | CSM for CoreWeave | VAST Data |
+
+## Topics
+
+- Whale Iptic's platform
+- VAST storage solutions
+- GPU infrastructure
+- distributed ledger technology
+- AI agent execution
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+## Related Projects
+
+- [[Icarus]]
+- [[Cerebrum]]
+- [[VAST's storage solutions]]
+- [[GPU-Blockchain Integration Strategy]]
+
+- [[MAI & VAST]]
+- [[Anson's PoC]]
+
+- [[Azure MAI]]
+## Key Decisions
+
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.

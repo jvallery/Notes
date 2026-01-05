@@ -24,6 +24,13 @@ tags:
 
 _No key contacts identified._
 
+- [[John Mao]]
+- [[Ben Ries]]
+- [[Venkat Venkataramani]]
+- [[Louis Feuvrier]]
+- [[Emma Tang]]
+- [[Jakob Pachoki]]
+- [[Misha]]
 ## Open Tasks
 
 ```dataview
@@ -50,3 +57,17 @@ SORT due ASC
 
 - Referenced as major OpenAI vendor; supports thesis that analytics/warehouse is part of AI stack
 - Use as reference model for unit-based pricing approach
+
+## Topics
+
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
+
+## Related Projects
+
+- [[ChatGPT]]
+- [[DAQ]]
+- [[GPT-6 roadmap]]

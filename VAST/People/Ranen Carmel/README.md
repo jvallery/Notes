@@ -40,3 +40,21 @@ tags:
 - [[NVIDIA Rubin press release]]
 
 - [[Siemens keynote]]
+
+## Topics
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+## Key Decisions
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.
+
+## Related Projects
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]

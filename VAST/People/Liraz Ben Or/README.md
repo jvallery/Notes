@@ -41,10 +41,25 @@ not done
 
 ## Topics
 
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
+
+- book club
+- 2084
+- dinner
+- Wapos
+- meeting schedule
 ## Key Decisions
 
+- (2026-01-04) Meet on January 6th for Wapos and to finish the AI chat.
 ## Related Projects
 
+- [[ChatGPT]]
+- [[DAQ]]
+- [[GPT-6 roadmap]]
 ## Related
 
 <!-- Wikilinks to related entities -->

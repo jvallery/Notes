@@ -30,6 +30,13 @@ tags:
 - [[Sam Hopewell]]
 - [[Rory Carmichael]]
 
+- [[John Mao]]
+- [[Ben Ries]]
+- [[Venkat Venkataramani]]
+- [[Louis Feuvrier]]
+- [[Emma Tang]]
+- [[Jakob Pachoki]]
+- [[Misha]]
 ## Open Tasks
 
 - [ ] Discuss with OpenAI the idea of providing a sync engine/data movement capability (in response to OpenAI moving away from Blob’s replication engine).
@@ -66,6 +73,11 @@ tags:
 - OpenAI's research data platform is an in-house developed system called DAQ.
 ## Topics
 
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
 ## Opportunities
 
 - Define storage API requirements for GPU-adjacent storage (S3 API sufficiency vs Blob API parity)
@@ -116,3 +128,9 @@ tags:
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+## Related Projects
+
+- [[ChatGPT]]
+- [[DAQ]]
+- [[GPT-6 roadmap]]

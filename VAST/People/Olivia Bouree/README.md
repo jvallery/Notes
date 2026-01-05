@@ -57,3 +57,10 @@ _Career history, expertise, interests, personal details shared..._
 *Last updated: 2025-10-29*
 
 - [[corporate insider threat consultation]]
+
+## Topics
+
+- corporate insider threat
+- consultation project
+- industry trends
+- internal risk governance

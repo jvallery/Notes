@@ -24,6 +24,8 @@ tags:
 
 _No key contacts identified._
 
+- [[Jason Vallery]]
+- [[Avinash Lakshman]]
 ## Open Tasks
 
 ```dataview
@@ -43,3 +45,18 @@ SORT due ASC
 ## Opportunities
 
 - 12PB POC starting in next couple weeks (vector database mentioned)
+
+## Topics
+
+- Whale Iptic's platform
+- VAST storage solutions
+- GPU infrastructure
+- distributed ledger technology
+- AI agent execution
+
+## Related Projects
+
+- [[Icarus]]
+- [[Cerebrum]]
+- [[VAST's storage solutions]]
+- [[GPU-Blockchain Integration Strategy]]

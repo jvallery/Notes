@@ -9,6 +9,15 @@ company: Whale Iptic
 tags:
 - type/people
 - needs-review
+expertise:
+- Whale Iptic's platform
+- VAST storage solutions
+- GPU infrastructure
+- distributed ledger technology
+- AI agent execution
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Avinash Lakshman
@@ -43,3 +52,11 @@ tags:
 - [[Cerebrum]]
 - [[VAST's storage solutions]]
 - [[GPU-Blockchain Integration Strategy]]
+
+## Topics
+
+- Whale Iptic's platform
+- VAST storage solutions
+- GPU infrastructure
+- distributed ledger technology
+- AI agent execution

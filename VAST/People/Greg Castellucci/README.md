@@ -8,6 +8,15 @@ tags:
 - type/people
 - needs-review
 - company/vast-data
+role: Federal point person
+company: VAST Data
+expertise:
+- federal sales
+- systems engineering
+- technology sector
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Greg Castellucci

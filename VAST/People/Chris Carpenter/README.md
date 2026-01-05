@@ -55,3 +55,15 @@ _Career history, expertise, interests, personal details shared..._
 - [[Global Namespace on Azure]]
 
 - [[Azure]]
+
+## Topics
+
+- AKS AI Roadshow
+- Global Namespace on Azure
+- Microsoft Azure
+- VAST Data presentation
+
+## Related Customers
+
+- [[Microsoft]]
+- [[Azure]]

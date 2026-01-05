@@ -9,6 +9,10 @@ company: ''
 tags:
 - type/people
 - needs-review
+role: MSEE, PE
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # M.A. Weimer
@@ -33,3 +37,15 @@ tags:
 
 - [[2084]]
 - [[AI chat]]
+
+## Topics
+
+- book club
+- 2084
+- dinner
+- Wapos
+- meeting schedule
+
+## Key Decisions
+
+- (2026-01-04) Meet on January 6th for Wapos and to finish the AI chat.

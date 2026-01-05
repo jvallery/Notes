@@ -69,6 +69,7 @@ Over 28 years of experience in the technology sector, holding leadership roles i
 
 ## Key Decisions
 
+- (2025-12-29) Mordechai Blaunstein accepted the meeting invitation.
 ## Related Projects
 
 ## Related
@@ -83,3 +84,18 @@ Over 28 years of experience in the technology sector, holding leadership roles i
 
 - [[Google LLC]]
 - [[CoreWeave-Vast Automation Project]]
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- document sharing
+- CoreWeave-Vast Automation Project
+
+- meeting
+- calendar invitation
+- Zoom

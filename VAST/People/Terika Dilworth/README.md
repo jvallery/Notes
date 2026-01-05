@@ -50,3 +50,16 @@ tags:
 
 - [[Cloud course]]
 - [[project brief]]
+
+## Topics
+
+- Cloud course
+- project brief
+- feedback
+- sales enablement
+
+- KV Cache
+- NVIDIA
+- Context Memory Extension
+- AI
+- inference infrastructure

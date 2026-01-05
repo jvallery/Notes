@@ -24,6 +24,13 @@ tags:
 
 _No key contacts identified._
 
+- [[Jason]]
+- [[Matt]]
+
+- [[Christian Linacre]]
+- [[Matthew Thomson]]
+- [[Jason Vallery]]
+- [[Lior Genzel]]
 ## Open Tasks
 
 ```dataview
@@ -50,8 +57,30 @@ SORT due ASC
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 
 - 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 ## Key Facts
 
 ## Opportunities
 
 - Referenced as part of OpenAI’s multi-cloud access pattern (context for Azure Extended Zones/partner connectivity)
+
+## Topics
+
+- meeting
+- product management
+- DRCC/Alloy
+- travel
+
+- meeting scheduling
+- product management
+- DRCC/Alloy
+
+- Oracle
+- AWS
+- Salesforce
+- Microsoft
+- urgent discussion
+## Related Projects
+
+- [[DRCC/Alloy]]

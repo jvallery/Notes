@@ -24,6 +24,15 @@ tags:
 
 _No key contacts identified._
 
+- [[Marianne]]
+
+- [[Brian Evans]]
+- [[Jeff Mohler]]
+
+- [[Lior Genzel]]
+- [[Jason Vallery]]
+- [[Kamal Vyas]]
+- [[David Pawlak]]
 ## Open Tasks
 
 ```dataview
@@ -58,6 +67,8 @@ SORT due ASC
 - 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 
 - 2025-12-17: The email discusses follow-up questions regarding VAST Data's GDC Storage RFP proposal, including FI
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 ## Key Facts
 
 - Cisco manages many sites globally with data replication and requires regex pattern capabilities for file management.
@@ -80,3 +91,29 @@ SORT due ASC
 |--------|------|---------|
 | [[Greg Castellucci]] |  | VAST Data |
 | [[John Cedillo]] |  |  |
+
+## Topics
+
+- VAST Forward event
+- customer engagement
+- partner participation
+- event promotion
+- team collaboration
+
+- RFE
+- feature enhancement
+- regex patterns
+- file management
+- Cisco
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+## Related Projects
+
+- [[VAST Forward]]
+
+- [[RFE 0526]]
+
+- [[GDC Storage RFP]]

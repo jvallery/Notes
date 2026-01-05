@@ -43,3 +43,29 @@ linkedin: https://www.linkedin.com/in/yunchao-gong-150a32a/
 
 - [[Azure Blob]]
 - [[Anson's PoC]]
+
+## Topics
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+## Key Decisions
+
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+## Related Customers
+
+- [[VAST Data]]
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+
+## Related Projects
+
+- [[MAI & VAST]]
+- [[Anson's PoC]]

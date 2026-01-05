@@ -9,6 +9,9 @@ company: ''
 tags:
 - type/people
 - needs-review
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Vincent Wolfe
@@ -30,3 +33,9 @@ tags:
 
 ## Related
 
+
+## Topics
+
+- holiday greeting
+- reflection on the year
+- new year wishes

@@ -9,6 +9,13 @@ company: Microsoft
 tags:
 - type/people
 - needs-review
+expertise:
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Amir Shengross
@@ -31,3 +38,13 @@ tags:
 
 - [[VAST Data]]
 - [[VAST GTM]]
+
+## Topics
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
+
+## Key Decisions
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.

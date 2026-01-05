@@ -25,6 +25,8 @@ tags:
 
 _No key contacts identified._
 
+- [[Jason Vallery]]
+- [[Avinash Lakshman]]
 ## Open Tasks
 
 ```dataview
@@ -49,3 +51,21 @@ SORT due ASC
 ## Opportunities
 
 - Ongoing relationship; urgent incremental requests after trials drive additional development and QA work, impacting release scope.
+
+## Topics
+
+- Whale Iptic's platform
+- VAST storage solutions
+- GPU infrastructure
+- distributed ledger technology
+- AI agent execution
+
+- Tesla Credits
+- expiration
+- Tesla App
+## Related Projects
+
+- [[Icarus]]
+- [[Cerebrum]]
+- [[VAST's storage solutions]]
+- [[GPU-Blockchain Integration Strategy]]

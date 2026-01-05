@@ -28,6 +28,24 @@ tags:
 - [[Muninder Singh Sambi]]
 - [[Ben]]
 
+- [[Alon Horev]]
+- [[Jason Vallery]]
+- [[Tomer Hagay]]
+- [[Violet]]
+
+- [[Jonsi Stefansson]]
+
+- [[Mordechai Blaunstein]]
+
+- [[Lior Genzel]]
+
+- [[Jeff Denworth]]
+- [[Jason Vallery]]
+
+- [[Lior Genzel]]
+- [[Jason Vallery]]
+- [[Kamal Vyas]]
+- [[David Pawlak]]
 ## Open Tasks
 
 ```tasks
@@ -90,6 +108,36 @@ not done
 
 ## Topics
 
+- Google Distributed Cloud
+- RFP
+- encryption key granularity
+- self-encrypting drives
+- FIPS certification
+
+- GCP
+- customer flow
+- sales process
+
+- document sharing
+- CoreWeave-Vast Automation Project
+
+- document sharing
+- VAST and Azure Integration
+
+- VAST Data
+- Azure
+- Integration Proposal
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+
+- VAST integration
+- Azure Blob
+- data formats
+- flash memory market
+- supply chain
 ## Opportunities
 
 - GDC Storage RFP: provide normalized performance + pricing data in Google Excel template for VAST (NVMe/TCP, NFSv4, S3)
@@ -136,3 +184,15 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+## Related Projects
+
+- [[Google Distributed Cloud RFP]]
+
+- [[GCP Flow from customer to sales to customer]]
+
+- [[CoreWeave-Vast Automation Project]]
+
+- [[VAST and Azure Integration]]
+
+- [[GDC Storage RFP]]

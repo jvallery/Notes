@@ -61,6 +61,33 @@ VAULT_ROOT = Path(__file__).parent.parent.parent
 WEB_CACHE_DIR = VAULT_ROOT / "Workflow" / "_cache" / "web_enrichment"
 
 
+# =============================================================================
+# EXPORTED HELPERS (for use by other scripts like process_emails.py)
+# =============================================================================
+
+def sync_to_manifest(name: str) -> bool:
+    """
+    Sync a person's README to the manifest.
+    
+    Reads the current README frontmatter and updates the manifest row.
+    """
+    try:
+        sync_person_to_manifest(name, updates={}, rebuild_cache=False)
+        return True
+    except Exception as e:
+        print(f"Warning: Could not sync {name} to manifest: {e}")
+        return False
+
+
+def rebuild_glossary_cache() -> None:
+    """Rebuild the glossary cache from manifests."""
+    import json
+    glossary = build_glossary_cache()
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
+WEB_CACHE_DIR = VAULT_ROOT / "Workflow" / "_cache" / "web_enrichment"
+
+
 @dataclass
 class EnrichmentResult:
     """Result of enrichment operation."""

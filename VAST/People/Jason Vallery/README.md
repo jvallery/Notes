@@ -8,6 +8,17 @@ tags:
 - type/people
 - needs-review
 - company/vast-data
+role: Product management (cloud); partnerships with hyperscale cloud providers
+company: VAST Data
+expertise:
+- cloud partnerships
+- product management
+- collateral coordination
+- customer requirements
+- cloud integration
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Jason Vallery

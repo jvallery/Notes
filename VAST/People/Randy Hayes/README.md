@@ -40,6 +40,8 @@ Randy Hayes has been with VAST Data since its early stages, contributing to its 
 
 ## Related Projects
 
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
 ## Related
 
 ---
@@ -53,3 +55,11 @@ Randy Hayes has been with VAST Data since its early stages, contributing to its 
 - [[Golden Dome]]
 
 - [[Mission OS]]
+
+## Topics
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing

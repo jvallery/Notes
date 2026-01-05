@@ -33,3 +33,14 @@ linkedin: in/kristin-schaller-thompson
 
 - [[Microsoft]]
 - [[UK Met]]
+
+## Topics
+
+- VAST Customer Learning portal
+- Microsoft
+- access verification
+- prospect management
+
+## Key Decisions
+
+- (2025-12-16) Do not allow access to the portal for Trevor Cooper-Chadwick until further notice.

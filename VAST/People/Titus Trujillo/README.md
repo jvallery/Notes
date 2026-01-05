@@ -9,6 +9,12 @@ company: church
 tags:
 - type/people
 - needs-review
+expertise:
+- board game session
+- scheduling
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Titus Trujillo
@@ -29,3 +35,10 @@ tags:
 
 ## Related
 
+
+## Topics
+
+- board game session
+- scheduling
+- Nemesis
+- Betrayal of the House on the Hill

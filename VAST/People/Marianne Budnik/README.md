@@ -9,6 +9,9 @@ company: VAST Data
 tags:
 - type/people
 - needs-review
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Marianne Budnik
@@ -56,3 +59,21 @@ tags:
 - [[VAST Forward]]
 
 - [[Siemens keynote]]
+
+## Topics
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+## Key Decisions
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.
+
+## Related Projects
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]

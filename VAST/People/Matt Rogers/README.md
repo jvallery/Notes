@@ -47,3 +47,21 @@ tags:
 - [[Oracle]]
 
 - [[Mission OS]]
+
+## Topics
+
+- meeting
+- product management
+- DRCC/Alloy
+- travel
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+## Related Projects
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]

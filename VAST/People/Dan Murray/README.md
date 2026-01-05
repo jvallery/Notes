@@ -1,15 +1,20 @@
 ---
 type: people
-title: "Dan Murray"
-created: "2026-01-04"
-last_contact: "2026-01-04"
-email: ""
-phone: ""
-company: ""
-title: ""
+title: ''
+created: '2026-01-04'
+last_contact: '2026-01-04'
+email: ''
+phone: ''
+company: ''
 tags:
-  - "type/people"
-  - "needs-review"
+- type/people
+- needs-review
+expertise:
+- AI for Good
+- event scheduling
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Dan Murray
@@ -38,3 +43,13 @@ tags:
 - [[Rocky Mountain AI Interest Group]]
 - [[Meetup LLC]]
 - [[Sweater]]
+
+## Topics
+
+- AI for Good
+- event scheduling
+- new location
+
+## Key Decisions
+
+- (2026-01-04) The event will be held at Founder Central in January.

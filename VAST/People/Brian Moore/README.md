@@ -2,12 +2,12 @@
 type: people
 title: Brian Moore
 created: '2026-01-03'
-last_contact: '2025-12-01'
+last_contact: '2025-12-18'
 auto_created: true
 tags:
 - type/people
 - needs-review
-email: brian.evans@vastdata.com
+email: pootzwacke@gmail.com
 company: VAST Data
 ---
 
@@ -48,6 +48,8 @@ SORT due ASC
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 ## Key Facts
 
 - Brian Bearly is hosting a board game session at his place.
@@ -59,6 +61,9 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-31) Retire the current book club and start TMIMITW.
+
+- (2026-01-04) Meet on January 6th for Wapos and to finish the AI chat.
 ## Related
 
 ---
@@ -81,3 +86,34 @@ _Career history, expertise, interests, personal details shared..._
 
 - [[2084]]
 - [[AI chat]]
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- RFE
+- feature enhancement
+- regex patterns
+- file management
+- Cisco
+
+- board game session
+- scheduling
+- Nemesis
+- Betrayal of the House on the Hill
+
+- book club
+- TMIMITW
+- reading
+- social gatherings
+- invite list
+
+- book club
+- 2084
+- dinner
+- Wapos
+- meeting schedule

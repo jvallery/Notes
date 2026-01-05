@@ -82,6 +82,90 @@ tags:
 - [[Amy Hood]]
 - [[Anand]]
 
+- [[Adem Sefa]]
+- [[Edwin Trogler]]
+- [[Vanessa]]
+
+- [[Lior Genzel]]
+- [[Jason Vallery]]
+- [[Sushant Rewaskar]]
+- [[Igal Figlin]]
+
+- [[Tiffany Stonehill]]
+- [[Lior Genzel]]
+- [[Trevor Cooper-Chadwick]]
+- [[Jason Vallery]]
+
+- [[Jason Vallery]]
+- [[Peter Imming]]
+- [[Sebastien Berube]]
+
+- [[Mohamad Al Jazaery]]
+- [[Kurt Niebuhr]]
+- [[Jason Vallery]]
+- [[Lior Genzel]]
+- [[Chris Carpenter]]
+- [[Kent Altena]]
+- [[Sooyoung Moon]]
+- [[Andrew Thomas]]
+- [[Sheila Mueller]]
+- [[Yuval Mazor]]
+
+- [[Jeff Denworth]]
+- [[Jason Vallery]]
+- [[Lior Genzel]]
+- [[Renen Hallak]]
+- [[Alon Horev]]
+- [[Shachar Fienblit]]
+- [[Avery Pham]]
+- [[Jonsi Stefansson]]
+- [[Rick Scurfield]]
+- [[Mustafa]]
+
+- [[Renen Hallak]]
+- [[Kirstin Bordner]]
+- [[Jeff Denworth]]
+- [[Marianne Budnik]]
+- [[Jay Parikh]]
+- [[Roland]]
+- [[Sagi]]
+- [[Lior Cohen]]
+- [[Nicole]]
+- [[Jensen]]
+
+- [[Jason]]
+
+- [[Jeff Denworth]]
+- [[Jennifer Azzolina]]
+- [[Tiffany Stonehill]]
+- [[Greg Castellucci]]
+- [[Gaston Rogovsky]]
+- [[Lior Genzel]]
+- [[Deanna Berar]]
+- [[Mark Maynard]]
+- [[Sean O'Donnell]]
+- [[Jeno Cram]]
+
+- [[Jeff Denworth]]
+- [[Jonsi Stefansson]]
+- [[Lior Genzel]]
+- [[Rick Scurfield]]
+- [[Renen Hallak]]
+- [[Jason Vallery]]
+- [[Aung]]
+- [[Maneesh]]
+- [[Scott G]]
+
+- [[Karl Rautenstrauch]]
+- [[Lior Genzel]]
+- [[Tiffany Stonehill]]
+- [[Lea Rozen]]
+- [[Yana Golosovker]]
+- [[Michal Berdugo]]
+- [[Amir Shengross]]
+- [[Shay Shahak]]
+- [[Reshmi Sriram]]
+- [[Jason Vallery]]
 ## Open Tasks
 
 ```tasks
@@ -228,6 +312,8 @@ not done
 - 2025-12-30: The email discusses the successful submission and processing of a $96,808.14 deal for Leidos Federal
 
 - 2025-12-27: Jeff Denworth is expressing concerns about the progress of a Q1 deal with Microsoft Azure MAI due to
+
+- 2025-12-19: Isabella Lista from AlphaSights is reaching out to Jason Vallery for an urgent discussion involving
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.
@@ -237,6 +323,69 @@ not done
 - Microsoft is considering HDDs for the first April delivery for MAI scale-up.
 ## Topics
 
+- introduction
+- FP&A Director role
+- resume
+- job opportunity
+
+- meeting scheduling
+- technical collaboration
+- cloud product management
+
+- VAST Customer Learning portal
+- Microsoft
+- access verification
+- prospect management
+
+- Oracle
+- AWS
+- Salesforce
+- Microsoft
+- urgent discussion
+
+- introduction
+- networking
+- career opportunities
+- meeting scheduling
+
+- AKS AI Roadshow
+- Global Namespace on Azure
+- Microsoft Azure
+- VAST Data presentation
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+- order confirmation
+- prescription
+- shipping details
+- payment information
+- mobile app
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
 ## Opportunities
 
 - Azure offerings engagement plan focused on minimizing egress
@@ -343,3 +492,35 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+## Related Projects
+
+- [[Ignite]]
+
+- [[AKS AI Roadshow]]
+- [[Global Namespace on Azure]]
+
+- [[MAI & VAST]]
+- [[Anson's PoC]]
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
+
+- [[Azure MAI]]
+
+- [[VAST GTM]]
+## Key Decisions
+
+- (2025-12-16) Do not allow access to the portal for Trevor Cooper-Chadwick until further notice.
+
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.

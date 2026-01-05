@@ -54,13 +54,35 @@ phone: +1 9497953118
 - 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
 
 - 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier seeks guidance on managing GDC and Azure Local opportunities, suggesting they should
 ## Key Facts
 
 - Karl's youngest son suffered a badly broken leg.
 ## Topics
 
+- GDC
+- Azure Local
+- cloud product management
+- ownership
+- strategic initiatives
+
+- Azure VoC
+- MSFT testing
+- performance testing
+- GPU nodes
+- VAST Data
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
 ## Key Decisions
 
+- (2025-12-11) The answer to the request for an Azure VoC instance will be NO.
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.
 ## Related Projects
 
 ## Related
@@ -81,3 +103,13 @@ phone: +1 9497953118
 - [[hyperscalers]]
 
 - [[MSFT]]
+
+## Related Customers
+
+- [[GDC]]
+- [[Azure]]
+- [[hyperscalers]]
+
+- [[VAST Data]]
+- [[MSFT]]
+- [[Azure]]

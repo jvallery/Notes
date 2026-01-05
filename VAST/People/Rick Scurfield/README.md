@@ -2,7 +2,7 @@
 type: people
 title: Rick Scurfield
 created: '2026-01-03'
-last_contact: '2025-12-03'
+last_contact: '2025-12-18'
 auto_created: true
 tags:
 - type/people
@@ -52,6 +52,15 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-17) Quotes issued and approved with an active price book are valid for the calendar month in which they are issued.
+
+- (2025-12-17) Any deal larger than 15 PB requires deal desk sign-off prior to quoting.
+
+- (2025-12-18) Stacy Wynn will lead the RevOps team temporarily
+
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
 ## Related
 
 ---
@@ -90,4 +99,56 @@ _Career history, expertise, interests, personal details shared..._
 - [[VAST PoC]]
 
 - [[Azure Blob]]
+- [[Anson's PoC]]
+
+## Topics
+
+- VAST Forward event
+- customer engagement
+- partner participation
+- event promotion
+- team collaboration
+
+- quote policy
+- hardware allocation
+- supply chain
+- pricing
+- order management
+
+- RevOps leadership change
+- Cristina Hasson departure
+- interim leadership
+- GTM organization
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- pricing changes
+- supply chain updates
+- recording
+- FAQ
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+## Related Customers
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+
+- [[Microsoft]]
+- [[Arrow]]
+- [[Avnet]]
+- [[CoreWeave]]
+## Related Projects
+
+- [[MAI & VAST]]
 - [[Anson's PoC]]

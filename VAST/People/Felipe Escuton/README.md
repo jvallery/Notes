@@ -9,6 +9,13 @@ company: VAST Data
 tags:
 - type/people
 - needs-review
+expertise:
+- deal submission
+- cloud strategy
+- order processing
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Felipe Escuton
@@ -36,4 +43,17 @@ tags:
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
 
+- [[Mission OS]]
+
+## Topics
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+## Related Projects
+
+- [[Leidos DoD Cloud]]
 - [[Mission OS]]

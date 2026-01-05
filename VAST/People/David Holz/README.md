@@ -64,6 +64,9 @@ David Holz co-founded Leap Motion in 2010, a company specializing in gesture-rec
 
 ## Key Decisions
 
+- (2025-12-31) Retire the current book club and start TMIMITW.
+
+- (2026-01-04) Meet on January 6th for Wapos and to finish the AI chat.
 ## Related Projects
 
 ## Related
@@ -89,3 +92,27 @@ David Holz co-founded Leap Motion in 2010, a company specializing in gesture-rec
 
 - [[2084]]
 - [[AI chat]]
+
+## Topics
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+
+- board game session
+- scheduling
+- Nemesis
+- Betrayal of the House on the Hill
+
+- book club
+- TMIMITW
+- reading
+- social gatherings
+- invite list
+
+- book club
+- 2084
+- dinner
+- Wapos
+- meeting schedule

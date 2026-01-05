@@ -1,23 +1,25 @@
 #!/usr/bin/env python3
 """
-Email Processing Pipeline - 6-Step Unified Workflow
+Email Processing Pipeline - 7-Step Unified Workflow
 
 Processes emails from Inbox through knowledge extraction to draft responses:
 
 1. DEDUPE   - Remove duplicate email exports (same thread, different exports)
 2. EXTRACT  - Pull structured data from emails (contacts, tasks, facts, topics)
 3. PATCH    - Update/create vault READMEs with extracted knowledge
-4. GATHER   - Collect related READMEs for context (people, projects, customers)
-5. DRAFT    - Generate AI response using email + gathered vault context
-6. ARCHIVE  - Move source email to Sources/Email/YYYY/ and link context
+4. ENRICH   - Run L2 enrichment on touched people (infer from README content)
+5. GATHER   - Collect related READMEs for context (people, projects, customers)
+6. DRAFT    - Generate AI response using email + gathered vault context
+7. ARCHIVE  - Move source email to Sources/Email/YYYY/ and link context
 
 Usage:
     python scripts/process_emails.py              # Run all phases
-    python scripts/process_emails.py --phase 1-3  # Run phases 1-3 only (knowledge capture)
-    python scripts/process_emails.py --phase 4-6  # Run phases 4-6 only (response gen)
+    python scripts/process_emails.py --phase 1-4  # Run phases 1-4 only (knowledge capture + enrich)
+    python scripts/process_emails.py --phase 5-7  # Run phases 5-7 only (response gen)
     python scripts/process_emails.py --phase extract  # Run single phase
     python scripts/process_emails.py --dry-run   # Preview without changes
     python scripts/process_emails.py --limit 5   # Process only 5 emails
+    python scripts/process_emails.py --source    # Re-ingest from Sources/Email instead of Inbox
 """
 
 import json
@@ -188,7 +190,129 @@ def phase_patch(extractions: Dict[Path, dict], dry_run: bool = False, verbose: b
 
 
 # =============================================================================
-# PHASE 4: GATHER
+# PHASE 4: ENRICH
+# =============================================================================
+
+def phase_enrich(
+    patch_results: dict, 
+    extractions: Dict[Path, dict],
+    dry_run: bool = False, 
+    verbose: bool = False
+) -> dict:
+    """
+    Enrich people touched during patch phase.
+    
+    For each person whose README was updated or created:
+    1. Run L2 enrichment (infer from README content)
+    2. Sync to manifest
+    3. Update glossary cache
+    
+    This ensures we capture inferred role/company/context from meeting notes.
+    """
+    
+    from enrich_person import (
+        get_enrichment_level, enrich_from_readme, 
+        sync_to_manifest, rebuild_glossary_cache
+    )
+    
+    results = {
+        "people_touched": set(),
+        "enriched": 0,
+        "synced": 0,
+        "errors": []
+    }
+    
+    vault = vault_root()
+    
+    # Collect people from patch results and extractions
+    people_paths = set()
+    
+    # From patch results - files in VAST/People/
+    for file_path in patch_results.get("files_updated", []):
+        if "People/" in file_path and "README.md" in file_path:
+            path = Path(file_path) if Path(file_path).is_absolute() else vault / file_path
+            if path.exists():
+                people_paths.add(path)
+                # Extract person name from path
+                person_name = path.parent.name
+                results["people_touched"].add(person_name)
+    
+    # From extractions - sender and mentioned contacts
+    for email_path, extraction_data in extractions.items():
+        if isinstance(extraction_data, dict):
+            # Sender
+            sender = extraction_data.get("sender", {})
+            if sender.get("name"):
+                person_folder = vault / "VAST" / "People" / sender["name"] / "README.md"
+                if person_folder.exists():
+                    people_paths.add(person_folder)
+                    results["people_touched"].add(sender["name"])
+            
+            # Contacts mentioned
+            for contact in extraction_data.get("contacts_mentioned", []):
+                if contact.get("name"):
+                    person_folder = vault / "VAST" / "People" / contact["name"] / "README.md"
+                    if person_folder.exists():
+                        people_paths.add(person_folder)
+                        results["people_touched"].add(contact["name"])
+    
+    console.print(f"  Found [bold]{len(people_paths)}[/bold] people to enrich")
+    
+    if dry_run:
+        for path in list(people_paths)[:5]:
+            console.print(f"    [dim]Would enrich: {path.parent.name}[/dim]")
+        if len(people_paths) > 5:
+            console.print(f"    [dim]... and {len(people_paths) - 5} more[/dim]")
+        results["people_touched"] = list(results["people_touched"])
+        return results
+    
+    # Enrich each person
+    for readme_path in people_paths:
+        person_name = readme_path.parent.name
+        
+        try:
+            # Check current level
+            level = get_enrichment_level(readme_path)
+            
+            if verbose:
+                console.print(f"    {person_name} (L{level})", end="")
+            
+            # Run L2 enrichment if not already higher
+            if level < 2:
+                enrich_result = enrich_from_readme(person_name, dry_run=False)
+                if enrich_result.level_after > enrich_result.level_before:
+                    results["enriched"] += 1
+                    if verbose:
+                        console.print(f" → [green]L{enrich_result.level_after}[/green]")
+                else:
+                    if verbose:
+                        console.print(" [dim](no change)[/dim]")
+            else:
+                if verbose:
+                    console.print(" [dim](already L2+)[/dim]")
+            
+            # Sync to manifest
+            sync_to_manifest(person_name)
+            results["synced"] += 1
+            
+        except Exception as e:
+            results["errors"].append((person_name, str(e)))
+            if verbose:
+                console.print(f" [red]✗ {e}[/red]")
+    
+    # Rebuild glossary cache after all enrichment
+    try:
+        rebuild_glossary_cache()
+        console.print("  [dim]Updated glossary cache[/dim]")
+    except Exception as e:
+        console.print(f"  [yellow]Could not update glossary: {e}[/yellow]")
+    
+    results["people_touched"] = list(results["people_touched"])
+    return results
+
+
+# =============================================================================
+# PHASE 5: GATHER
 # =============================================================================
 
 def phase_gather(emails: List[Path], verbose: bool = False) -> Dict[Path, dict]:
@@ -401,6 +525,22 @@ def find_pending_emails() -> List[Path]:
     return sorted(email_dir.glob("*.md"), key=lambda p: p.name)
 
 
+def find_source_emails() -> List[Path]:
+    """Find all emails in Sources/Email (for re-ingest)."""
+    
+    sources_dir = vault_root() / "Sources" / "Email"
+    if not sources_dir.exists():
+        return []
+    
+    # Find all .md files across year subdirectories
+    emails = []
+    for year_dir in sources_dir.iterdir():
+        if year_dir.is_dir() and year_dir.name.isdigit():
+            emails.extend(year_dir.glob("*.md"))
+    
+    return sorted(emails, key=lambda p: p.name)
+
+
 # =============================================================================
 # MAIN PIPELINE
 # =============================================================================
@@ -409,7 +549,7 @@ def find_pending_emails() -> List[Path]:
 @click.command()
 @click.option(
     "--phase", "-p",
-    type=click.Choice(["dedupe", "extract", "patch", "gather", "draft", "archive", "1-3", "4-6", "all"]),
+    type=click.Choice(["dedupe", "extract", "patch", "enrich", "gather", "draft", "archive", "1-4", "5-7", "all"]),
     default="all",
     help="Which phase(s) to run"
 )
@@ -417,22 +557,23 @@ def find_pending_emails() -> List[Path]:
 @click.option("--verbose", "-v", is_flag=True, help="Show detailed output")
 @click.option("--limit", "-n", type=int, default=None, help="Limit emails to process")
 @click.option("--skip-archive", is_flag=True, help="Skip archiving (keep emails in Inbox)")
-def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_archive: bool):
-    """Run the 6-step email processing pipeline."""
+@click.option("--source", is_flag=True, help="Re-ingest from Sources/Email instead of Inbox")
+def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_archive: bool, source: bool):
+    """Run the 7-step email processing pipeline."""
     
     console.print(Panel.fit(
         "[bold blue]Email Processing Pipeline[/bold blue]\n"
-        "[dim]DEDUPE → EXTRACT → PATCH → GATHER → DRAFT → ARCHIVE[/dim]",
+        "[dim]DEDUPE → EXTRACT → PATCH → ENRICH → GATHER → DRAFT → ARCHIVE[/dim]",
         border_style="blue"
     ))
     
     # Determine which phases to run
     phases_to_run = []
     if phase == "all":
-        phases_to_run = ["dedupe", "extract", "patch", "gather", "draft", "archive"]
-    elif phase == "1-3":
-        phases_to_run = ["dedupe", "extract", "patch"]
-    elif phase == "4-6":
+        phases_to_run = ["dedupe", "extract", "patch", "enrich", "gather", "draft", "archive"]
+    elif phase == "1-4":
+        phases_to_run = ["dedupe", "extract", "patch", "enrich"]
+    elif phase == "5-7":
         phases_to_run = ["gather", "draft", "archive"]
     else:
         phases_to_run = [phase]
@@ -440,29 +581,39 @@ def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_ar
     if skip_archive and "archive" in phases_to_run:
         phases_to_run.remove("archive")
     
+    # When using --source, skip dedupe and archive (emails are already in Sources)
+    if source:
+        phases_to_run = [p for p in phases_to_run if p not in ["dedupe", "archive"]]
+        console.print("[cyan]Re-ingest mode: Reading from Sources/Email/[/cyan]")
+    
     if dry_run:
         console.print("[yellow]DRY RUN - no changes will be made[/yellow]")
     
     console.print(f"Running phases: {' → '.join(phases_to_run)}")
     
     # Get emails to process
-    emails = find_pending_emails()
+    if source:
+        emails = find_source_emails()
+    else:
+        emails = find_pending_emails()
     if limit:
         emails = emails[:limit]
     
-    console.print(f"Found [bold]{len(emails)}[/bold] emails in Inbox/Email/")
+    source_label = "Sources/Email/" if source else "Inbox/Email/"
+    console.print(f"Found [bold]{len(emails)}[/bold] emails in {source_label}")
     
     if not emails and "dedupe" not in phases_to_run:
-        console.print("[yellow]No emails in Inbox/Email to process.[/yellow]")
+        console.print(f"[yellow]No emails in {source_label} to process.[/yellow]")
         return
     
     results = {}
     extractions = {}
     gathered = {}
+    patch_results = {}
     
     # Initialize OpenAI client if needed
     client = None
-    if any(p in phases_to_run for p in ["extract", "draft"]):
+    if any(p in phases_to_run for p in ["extract", "enrich", "draft"]):
         client = get_openai_client()
     
     # Phase 1: DEDUPE
@@ -488,33 +639,30 @@ def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_ar
     if "patch" in phases_to_run and extractions:
         console.print("\n[bold cyan]Phase 3: PATCH[/bold cyan]")
         console.print("-" * 40)
-        results["patch"] = phase_patch(extractions, dry_run, verbose)
-        console.print(f"  [green]Applied {results['patch']['patches_applied']} patches[/green]")
-        console.print(f"  [green]Created {results['patch']['entities_created']} new entities[/green]")
-        
-        # Rebuild glossary cache after patching (for prompt caching)
-        if not dry_run and results["patch"]["patches_applied"] > 0:
-            try:
-                from manifest_sync import build_glossary_cache, CACHE_DIR, GLOSSARY_CACHE
-                console.print("  [dim]Updating glossary cache...[/dim]")
-                glossary = build_glossary_cache()
-                CACHE_DIR.mkdir(parents=True, exist_ok=True)
-                GLOSSARY_CACHE.write_text(json.dumps(glossary, indent=2, default=str))
-                console.print(f"  [dim]Updated glossary ({glossary['token_estimate']} tokens)[/dim]")
-            except Exception as e:
-                console.print(f"  [yellow]Note: Could not update glossary cache: {e}[/yellow]")
+        patch_results = phase_patch(extractions, dry_run, verbose)
+        results["patch"] = patch_results
+        console.print(f"  [green]Applied {patch_results['patches_applied']} patches[/green]")
+        console.print(f"  [green]Created {patch_results['entities_created']} new entities[/green]")
     
-    # Phase 4: GATHER
+    # Phase 4: ENRICH
+    if "enrich" in phases_to_run and (patch_results or extractions):
+        console.print("\n[bold cyan]Phase 4: ENRICH[/bold cyan]")
+        console.print("-" * 40)
+        results["enrich"] = phase_enrich(patch_results, extractions, dry_run, verbose)
+        console.print(f"  [green]Enriched {results['enrich']['enriched']} people[/green]")
+        console.print(f"  [green]Synced {results['enrich']['synced']} to manifest[/green]")
+    
+    # Phase 5: GATHER
     if "gather" in phases_to_run and emails:
-        console.print("\n[bold cyan]Phase 4: GATHER[/bold cyan]")
+        console.print("\n[bold cyan]Phase 5: GATHER[/bold cyan]")
         console.print("-" * 40)
         gathered = phase_gather(emails, verbose)
         results["gather"] = {"count": len(gathered)}
         console.print(f"  [green]Gathered context for {len(gathered)} emails[/green]")
     
-    # Phase 5: DRAFT
+    # Phase 6: DRAFT
     if "draft" in phases_to_run:
-        console.print("\n[bold cyan]Phase 5: DRAFT[/bold cyan]")
+        console.print("\n[bold cyan]Phase 6: DRAFT[/bold cyan]")
         console.print("-" * 40)
         
         # If we didn't gather, do it now
@@ -527,9 +675,9 @@ def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_ar
             if results["draft"]["skipped"]:
                 console.print(f"  [dim]Skipped {len(results['draft']['skipped'])} (no response needed)[/dim]")
     
-    # Phase 6: ARCHIVE
+    # Phase 7: ARCHIVE
     if "archive" in phases_to_run and emails:
-        console.print("\n[bold cyan]Phase 6: ARCHIVE[/bold cyan]")
+        console.print("\n[bold cyan]Phase 7: ARCHIVE[/bold cyan]")
         console.print("-" * 40)
         results["archive"] = phase_archive(emails, dry_run, verbose)
         console.print(f"  [green]Archived {results['archive']['archived']} emails to Sources/Email/[/green]")
@@ -559,23 +707,28 @@ def main(phase: str, dry_run: bool, verbose: bool, limit: Optional[int], skip_ar
         table.add_row("3. Patch", f"[green]✓ {r['patches_applied']}[/green]", 
                      f"{r['entities_created']} new entities, {len(r['files_updated'])} files")
     
+    if "enrich" in results:
+        r = results["enrich"]
+        table.add_row("4. Enrich", f"[green]✓ {r['enriched']}[/green]", 
+                     f"{r['synced']} synced, {len(r['people_touched'])} people touched")
+    
     if "gather" in results:
         r = results["gather"]
-        table.add_row("4. Gather", f"[green]✓ {r['count']}[/green]", "Related READMEs collected")
+        table.add_row("5. Gather", f"[green]✓ {r['count']}[/green]", "Related READMEs collected")
     
     if "draft" in results:
         r = results["draft"]
         if r["created"] > 0:
-            table.add_row("5. Draft", f"[green]✓ {r['created']}[/green]", f"{r['needs_response']} needed response")
+            table.add_row("6. Draft", f"[green]✓ {r['created']}[/green]", f"{r['needs_response']} needed response")
         else:
-            table.add_row("5. Draft", "[dim]—[/dim]", f"{len(r['skipped'])} skipped (no response needed)")
+            table.add_row("6. Draft", "[dim]—[/dim]", f"{len(r['skipped'])} skipped (no response needed)")
     
     if "archive" in results:
         r = results["archive"]
         if r["archived"] > 0:
-            table.add_row("6. Archive", f"[green]✓ {r['archived']}[/green]", "Moved to Sources/Email/")
+            table.add_row("7. Archive", f"[green]✓ {r['archived']}[/green]", "Moved to Sources/Email/")
         else:
-            table.add_row("6. Archive", "[dim]—[/dim]", f"{r['skipped']} skipped")
+            table.add_row("7. Archive", "[dim]—[/dim]", f"{r['skipped']} skipped")
     
     console.print(table)
     

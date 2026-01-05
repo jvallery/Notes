@@ -24,6 +24,12 @@ tags:
 
 _No key contacts identified._
 
+- [[Marianne]]
+
+- [[Lior Genzel]]
+- [[Jason Vallery]]
+- [[Kamal Vyas]]
+- [[David Pawlak]]
 ## Open Tasks
 
 ```dataview
@@ -51,3 +57,21 @@ SORT due ASC
 - Include HPE SKU recommendations; potential platform for Fort Meade (HPE Alletra/E-box referenced)
 - Potential ODM/manufacturing partner for VAST-qualified hardware SKUs
 - Referenced as example OEM/hardware partner type for Azure Dedicated-style specs
+
+## Topics
+
+- VAST Forward event
+- customer engagement
+- partner participation
+- event promotion
+- team collaboration
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+## Related Projects
+
+- [[VAST Forward]]
+
+- [[GDC Storage RFP]]

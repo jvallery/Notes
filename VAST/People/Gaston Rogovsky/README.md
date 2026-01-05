@@ -36,3 +36,16 @@ tags:
 - [[Golden Dome]]
 
 - [[Mission OS]]
+
+## Topics
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+## Related Projects
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]

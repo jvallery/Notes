@@ -32,3 +32,14 @@ Customer/partner organization discovered from email.
 
 ## Related
 
+
+## Topics
+
+- BetterDisplay
+- license key
+- download instructions
+- activation
+
+## Related Projects
+
+- [[BetterDisplay]]

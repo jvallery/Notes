@@ -9,6 +9,14 @@ company: ''
 tags:
 - type/people
 - needs-review
+expertise:
+- introduction
+- networking
+- career opportunities
+- meeting scheduling
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Peter Imming
@@ -35,3 +43,10 @@ tags:
 - [[VAST]]
 - [[Microsoft]]
 - [[AWS]]
+
+## Topics
+
+- introduction
+- networking
+- career opportunities
+- meeting scheduling

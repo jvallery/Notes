@@ -21,6 +21,8 @@ tags:
 
 - Vandana
 
+- [[Jeff Denworth]]
+- [[Mikey]]
 ## Open Tasks
 
 ```tasks
@@ -46,6 +48,11 @@ not done
 - Any solution Walmart moves forward with will require integration with GCS.
 ## Topics
 
+- Walmart
+- hybrid solution
+- data team
+- big data POC
+- integration with GCS
 ## Opportunities
 
 - Namespace/metadata synchronization with pre-existing cloud object data; proxy/always-fast expectations; tiering discussions
@@ -85,3 +92,7 @@ not done
 ## Related
 
 <!-- Wikilinks to related entities -->
+
+## Related Projects
+
+- [[big data POC]]

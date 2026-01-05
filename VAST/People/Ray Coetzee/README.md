@@ -7,6 +7,16 @@ auto_created: true
 tags:
 - type/people
 - needs-review
+role: Solution Architect Lead
+company: VAST Data
+expertise:
+- multi-tenancy
+- technical validations
+- presentations
+- parallel filesystem engineering
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Ray Coetzee

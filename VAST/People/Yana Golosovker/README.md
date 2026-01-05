@@ -9,6 +9,13 @@ company: VAST Data
 tags:
 - type/people
 - needs-review
+expertise:
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Yana Golosovker
@@ -31,3 +38,13 @@ tags:
 
 - [[Microsoft]]
 - [[VAST GTM]]
+
+## Topics
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
+
+## Key Decisions
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.

@@ -1,11 +1,20 @@
 ---
 type: people
 title: Nidhi
-last_contact: "2025-10-01"
-created: "2026-01-04"
+last_contact: '2025-10-01'
+created: '2026-01-04'
 tags:
-  - type/people
-  - needs-review
+- type/people
+- needs-review
+expertise:
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Nidhi
@@ -29,8 +38,14 @@ _Tasks for or from this person will appear here..._
 
 ## Topics
 
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
 ## Key Decisions
 
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
 ## Related Customers
 
 ## Related Projects

@@ -9,6 +9,13 @@ company: Microsoft
 tags:
 - type/people
 - needs-review
+expertise:
+- Azure
+- AI
+- Cloud Computing
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Mohamad Al Jazaery
@@ -41,4 +48,16 @@ tags:
 - [[AKS AI Roadshow]]
 - [[Global Namespace on Azure]]
 
+- [[Azure]]
+
+## Topics
+
+- AKS AI Roadshow
+- Global Namespace on Azure
+- Microsoft Azure
+- VAST Data presentation
+
+## Related Customers
+
+- [[VAST Data]]
 - [[Azure]]

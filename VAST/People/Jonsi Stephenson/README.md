@@ -79,12 +79,51 @@ title: GM of Cloud
 - Jonsi Stefansson works at Vast Data.
 ## Topics
 
+- GCP
+- customer flow
+- sales process
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+
+- VAST integration
+- Azure Blob
+- data formats
+- flash memory market
+- supply chain
 ## Key Decisions
 
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
 ## Related Customers
 
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+
+- [[Microsoft]]
+- [[Arrow]]
+- [[Avnet]]
+- [[CoreWeave]]
+
+- [[VAST]]
+- [[Azure]]
 ## Related Projects
 
+- [[MAI & VAST]]
+- [[Anson's PoC]]
 ## Related
 
 - [[VAST Data]]

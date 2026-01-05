@@ -53,3 +53,11 @@ Paul Clark has over 31 years of experience in the technology sector. He joined M
 - [[NVIDIA Corporation]]
 - [[DGX-C | Coreweave]]
 - [[RFE 0482]]
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility

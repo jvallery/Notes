@@ -46,6 +46,10 @@ not done
 
 ## Topics
 
+- VAST Forward
+- breakout sessions
+- event preparation
+- customer engagement
 ## Key Decisions
 
 ## Related Projects

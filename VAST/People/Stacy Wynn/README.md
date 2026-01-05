@@ -9,6 +9,14 @@ company: VAST Data
 tags:
 - type/people
 - needs-review
+role: Interim RevOps Team Leader
+expertise:
+- RevOps leadership
+- pricing changes
+- supply chain management
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Stacy Wynn
@@ -41,3 +49,18 @@ tags:
 ## Related
 
 - [[RevOps]]
+
+## Topics
+
+- RevOps leadership change
+- Cristina Hasson departure
+- interim leadership
+- GTM organization
+
+- pricing changes
+- supply chain updates
+- recording
+- FAQ
+## Key Decisions
+
+- (2025-12-18) Stacy Wynn will lead the RevOps team temporarily

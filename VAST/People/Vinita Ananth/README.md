@@ -9,6 +9,12 @@ company: Nebius
 tags:
 - type/people
 - needs-review
+expertise:
+- meeting scheduling
+- communication
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Vinita Ananth
@@ -31,3 +37,13 @@ tags:
 ## Related
 
 - [[VAST Data]]
+
+## Topics
+
+- meeting scheduling
+- Nebius
+- VAST Data
+
+## Key Decisions
+
+- (2025-12-10) Vinita Ananth agreed to the meeting time proposed by Jason Vallery.

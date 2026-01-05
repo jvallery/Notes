@@ -24,6 +24,7 @@ tags:
 
 _No key contacts identified._
 
+- [[Renen Hallak]]
 ## Open Tasks
 
 ```dataview
@@ -42,6 +43,8 @@ SORT due ASC
 - 2026-01-04: Renen Hallak discusses the challenges and successes of VAST Data's R&D team in recovering data for C
 
 - 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
+
+- 2026-01-04: Renen Hallak discusses the challenges faced by VAST Data's R&D team in recovering data for Crusoe's
 ## Key Facts
 
 ## Opportunities
@@ -53,3 +56,11 @@ SORT due ASC
 | Person | Role | Company |
 |--------|------|---------|
 | [[Jason Vallery]] | Product management (cloud); partnerships with hyperscale cloud providers | VAST Data |
+
+## Topics
+
+- data recovery
+- innovation
+- team collaboration
+- NAND market
+- global teams

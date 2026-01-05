@@ -9,6 +9,15 @@ company: Express Scripts
 tags:
 - type/people
 - needs-review
+expertise:
+- order confirmation
+- prescription management
+- shipping details
+- payment processing
+- mobile app services
+relationship: vendor
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Express Scripts Pharmacy
@@ -31,3 +40,11 @@ tags:
 ## Related
 
 - [[Microsoft]]
+
+## Topics
+
+- order confirmation
+- prescription
+- shipping details
+- payment information
+- mobile app

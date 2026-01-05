@@ -58,8 +58,11 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-11) The answer to the request for an Azure VoC instance will be NO.
 ## Related Customers
 
+- [[MSFT]]
+- [[Azure]]
 ## Related Projects
 
 ## Related
@@ -72,3 +75,11 @@ _Career history, expertise, interests, personal details shared..._
 - [[Azure VoC]]
 
 - [[MSFT]]
+
+## Topics
+
+- Azure VoC
+- MSFT testing
+- performance testing
+- GPU nodes
+- VAST Data

@@ -7,6 +7,16 @@ auto_created: true
 tags:
 - type/people
 - needs-review
+role: Alliances team lead
+company: VAST Data
+expertise:
+- IT
+- cloud sectors
+- business development
+- partner integration
+relationship: colleague
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # John Mao

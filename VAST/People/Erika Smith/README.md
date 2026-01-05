@@ -9,6 +9,13 @@ company: ''
 tags:
 - type/people
 - needs-review
+expertise:
+- public stance
+- fundraising
+- acquisition
+relationship: other
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Erika Smith
@@ -42,3 +49,15 @@ tags:
 
 - [[fundraising]]
 - [[Longmont church acquisition]]
+
+## Topics
+
+- IHDF executive session
+- public stance
+- fundraising
+- acquisition
+- Longmont church
+
+## Key Decisions
+
+- (2025-12-10) Form a fundraising committee with a broader lens of development

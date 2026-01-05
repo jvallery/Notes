@@ -9,6 +9,12 @@ company: Meetup
 tags:
 - type/people
 - needs-review
+expertise:
+- event scheduling
+- artificial intelligence
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Rocky Mountain AI Interest Group RMAIIG
@@ -28,6 +34,8 @@ tags:
 - 2026-01-04: Email re: 📅 Just scheduled: AI for Good (New location for Ja - The Rocky Mountain AI Interest Group has scheduled an event titled 'AI for Good' on January 20, 2026
 
 - 2026-01-04: Email re: 📅 Just scheduled: AI for Good (New location for Ja - The Rocky Mountain AI Interest Group has scheduled an event titled 'AI for Good' at a new location,
+
+- 2026-01-04: Email re: 📅 Just scheduled: AI for Good (New location for Ja - The Rocky Mountain AI Interest Group has scheduled an event titled 'AI for Good' at a new location,
 ## Open Tasks
 
 ## Related
@@ -39,3 +47,13 @@ tags:
 - [[Rocky Mountain AI Interest Group]]
 - [[Meetup LLC]]
 - [[Sweater]]
+
+## Topics
+
+- AI for Good
+- event scheduling
+- new location
+
+## Key Decisions
+
+- (2026-01-04) The event will be held at Founder Central in January.

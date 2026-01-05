@@ -24,6 +24,10 @@ tags:
 
 _No key contacts identified._
 
+- [[Lior Genzel]]
+- [[Jason Vallery]]
+- [[Kamal Vyas]]
+- [[David Pawlak]]
 ## Open Tasks
 
 ```dataview
@@ -55,3 +59,14 @@ SORT due ASC
 |--------|------|---------|
 | [[Tomer Hagay]] | Product management (implied; PM leader/participant) | VAST Data |
 | [[Billy Kettler]] |  | Google |
+
+## Topics
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+
+## Related Projects
+
+- [[GDC Storage RFP]]

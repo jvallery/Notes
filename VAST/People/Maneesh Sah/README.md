@@ -38,3 +38,15 @@ WHERE !completed
 - [[Avnet]]
 - [[CoreWeave]]
 - [[Azure MAI]]
+
+## Topics
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+
+## Key Decisions
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.

@@ -24,6 +24,18 @@ tags:
 
 _No key contacts identified._
 
+- [[Marianne]]
+
+- [[Jeff Denworth]]
+- [[Jennifer Azzolina]]
+- [[Tiffany Stonehill]]
+- [[Greg Castellucci]]
+- [[Gaston Rogovsky]]
+- [[Lior Genzel]]
+- [[Deanna Berar]]
+- [[Mark Maynard]]
+- [[Sean O'Donnell]]
+- [[Jeno Cram]]
 ## Open Tasks
 
 ```dataview
@@ -54,3 +66,23 @@ SORT due ASC
 | Person | Role | Company |
 |--------|------|---------|
 | [[Greg Castellucci]] |  | VAST Data |
+
+## Topics
+
+- VAST Forward event
+- customer engagement
+- partner participation
+- event promotion
+- team collaboration
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+## Related Projects
+
+- [[VAST Forward]]
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]

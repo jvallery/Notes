@@ -75,3 +75,17 @@ John Heidgerken has been serving as the Americas West Area Director of Systems E
 - [[Online Data Infrastructure]]
 
 - [[GPT-6 roadmap]]
+
+## Topics
+
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
+
+## Related Projects
+
+- [[ChatGPT]]
+- [[DAQ]]
+- [[GPT-6 roadmap]]

@@ -33,3 +33,10 @@ tags:
 ## Related
 
 - [[VAST]]
+
+## Topics
+
+- introduction
+- FP&A Director role
+- resume
+- job opportunity

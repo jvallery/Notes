@@ -19,6 +19,7 @@ Customer/partner organization discovered from email.
 
 ## Key Contacts
 
+- [[Jason Vallery]]
 ## Key Facts
 
 - Slice is an Equity Management platform.
@@ -37,3 +38,13 @@ Customer/partner organization discovered from email.
 
 ## Related
 
+
+## Topics
+
+- invitation
+- equity management
+- Slice platform
+
+## Related Projects
+
+- [[Slice platform]]

@@ -6,6 +6,16 @@ created: '2026-01-03'
 tags:
 - type/people
 - generated
+role: Apollo team member
+company: Microsoft
+expertise:
+- MAI execution planning
+- stakeholder relationships
+- deployment planning
+- Proof of Concept
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Kushal Datta
@@ -36,8 +46,14 @@ tags:
 - Kushal claims VAST is the preferred solution for MAI.
 ## Topics
 
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
 ## Key Decisions
 
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
 ## Related Customers
 
 ## Related Projects

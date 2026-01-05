@@ -120,12 +120,117 @@ phone: 408 888 2102
 - Lior Genzel is associated with VAST Data.
 ## Topics
 
+- meeting scheduling
+- product management
+- DRCC/Alloy
+
+- Azure VoC
+- MSFT testing
+- performance testing
+- GPU nodes
+- VAST Data
+
+- meeting scheduling
+- technical collaboration
+- cloud product management
+
+- VAST Customer Learning portal
+- Microsoft
+- access verification
+- prospect management
+
+- AKS AI Roadshow
+- Global Namespace on Azure
+- Microsoft Azure
+- VAST Data presentation
+
+- supply chain
+- deployment planning
+- stakeholder relationships
+- Proof of Concept
+- internal politics
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+- document sharing
+- VAST and Azure Integration
+
+- FIPS compliance
+- pricing
+- hardware partnerships
+- GDC Storage RFP
+
+- deal submission
+- Leidos Federal
+- cloud strategy
+- VAST Data
+- order processing
+
+- Azure MAI
+- supply chain
+- commercial discussions
+- VAST Data
+- Microsoft
+
+- meeting rescheduling
+- VAST GTM meeting
+- Azure Storage
 ## Key Decisions
 
+- (2025-12-11) The answer to the request for an Azure VoC instance will be NO.
+
+- (2025-12-16) Do not allow access to the portal for Trevor Cooper-Chadwick until further notice.
+
+- (2025-12-21) Kushal made it clear that MAI will decide on the storage deployment.
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.
+
+- (2025-12-27) Assume CoreWeave testing is largely a cosmetic exercise.
+
+- (2026-01-04) Reschedule the meeting to Tuesday for now.
 ## Related Customers
 
+- [[MSFT]]
+- [[Azure]]
+
+- [[Microsoft]]
+- [[UK Met]]
+
+- [[Microsoft]]
+- [[Azure]]
+- [[Azure Blob]]
+- [[Nscale]]
+- [[CoreWeave]]
+
+- [[VAST Data]]
+- [[Microsoft]]
+- [[PepsiCo]]
+- [[Commonwealth Fusion Systems]]
+- [[Siemens]]
+
+- [[VAST Federal]]
+- [[Leidos Federal]]
+- [[Microsoft Azure]]
+
+- [[Microsoft]]
+- [[Arrow]]
+- [[Avnet]]
+- [[CoreWeave]]
 ## Related Projects
 
+- [[MAI & VAST]]
+- [[Anson's PoC]]
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]
+
+- [[Leidos DoD Cloud]]
+- [[Mission OS]]
 ## Related
 
 <!-- Wikilinks to related entities -->

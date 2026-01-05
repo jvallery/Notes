@@ -9,6 +9,15 @@ tags:
 - needs-review
 - company/microsoft
 email: mnoreen22@gmail.com
+role: Partner PM (Azure Storage Hardware)
+company: Microsoft
+expertise:
+- Azure Storage
+- Hardware Engineering
+- Product Management
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Michael Myrah
@@ -44,6 +53,7 @@ Michael Myrah has been with Microsoft since at least 2012, holding various posit
 
 ## Key Decisions
 
+- (2026-01-04) Meet on January 6th for Wapos and to finish the AI chat.
 ## Related Customers
 
 ## Related Projects
@@ -57,3 +67,11 @@ Michael Myrah has been with Microsoft since at least 2012, holding various posit
 
 - [[2084]]
 - [[AI chat]]
+
+## Topics
+
+- book club
+- 2084
+- dinner
+- Wapos
+- meeting schedule

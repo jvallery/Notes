@@ -25,6 +25,28 @@ tags:
 
 _No key contacts identified._
 
+- [[Brian Evans]]
+- [[Chuck Cancilla]]
+- [[Jeff Denworth]]
+- [[Mordechai Blaunstein]]
+- [[Paul Libenson]]
+- [[Tomer Hagay]]
+- [[Alon]]
+- [[Mike Slisinger]]
+
+- [[Renen Hallak]]
+- [[Kirstin Bordner]]
+- [[Jeff Denworth]]
+- [[Marianne Budnik]]
+- [[Jay Parikh]]
+- [[Roland]]
+- [[Sagi]]
+- [[Lior Cohen]]
+- [[Nicole]]
+- [[Jensen]]
+
+- [[Terika Dilworth]]
+- [[Jason Vallery]]
 ## Open Tasks
 
 ```dataview
@@ -60,3 +82,34 @@ SORT due ASC
 
 - Broaden perception of VAST beyond object store; align on evolving inference/storage needs
 - Feature intake example: NVIDIA-driven request for S3 RDMA targeted for a next major release.
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- CES
+- NVIDIA Live
+- press releases
+- meetings
+- travel plans
+
+- KV Cache
+- NVIDIA
+- Context Memory Extension
+- AI
+- inference infrastructure
+## Related Projects
+
+- [[DGX-C | Coreweave]]
+- [[RFE 0482]]
+
+- [[BF4/inference project]]
+- [[NVIDIA Rubin press release]]
+- [[Open Models press release]]
+## Key Decisions
+
+- (2025-12-21) Renen will meet flash vendors and cannot change dates.

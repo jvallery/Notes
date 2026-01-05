@@ -47,6 +47,17 @@ not done
 
 ## Topics
 
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- Google Distributed Cloud
+- RFP
+- encryption key granularity
+- self-encrypting drives
+- FIPS certification
 ## Key Decisions
 
 ## Related Customers

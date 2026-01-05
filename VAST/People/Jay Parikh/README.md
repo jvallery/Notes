@@ -8,6 +8,15 @@ tags:
 - type/people
 - needs-review
 - company/microsoft
+role: Executive Vice President of CoreAI – Platform and Tools
+company: Microsoft
+expertise:
+- cloud security
+- engineering management
+- platform development
+relationship: partner
+enrichment_level: 2
+last_enriched: '2026-01-04'
 ---
 
 # Jay Parikh

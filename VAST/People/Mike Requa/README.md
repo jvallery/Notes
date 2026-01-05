@@ -8,7 +8,7 @@ tags:
 - type/people
 - needs-review
 email: mike.slisinger@vastdata.com
-company: VAST Data
+company: Utility space
 ---
 
 # Mike Requa
@@ -43,6 +43,7 @@ _Career history, expertise, interests, personal details shared..._
 
 ## Key Decisions
 
+- (2025-12-31) Retire the current book club and start TMIMITW.
 ## Related
 
 ---
@@ -54,3 +55,17 @@ _Career history, expertise, interests, personal details shared..._
 
 - [[Utility space]]
 - [[TMIMITW]]
+
+## Topics
+
+- RFE
+- NVIDIA Corporation
+- DGX Cloud
+- VAST Data
+- cluster visibility
+
+- book club
+- TMIMITW
+- reading
+- social gatherings
+- invite list

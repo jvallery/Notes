@@ -24,6 +24,13 @@ tags:
 
 _No key contacts identified._
 
+- [[John Mao]]
+- [[Ben Ries]]
+- [[Venkat Venkataramani]]
+- [[Louis Feuvrier]]
+- [[Emma Tang]]
+- [[Jakob Pachoki]]
+- [[Misha]]
 ## Open Tasks
 
 ```dataview
@@ -50,3 +57,17 @@ SORT due ASC
 
 - If pursuing as a Microsoft-adjacent opportunity, may require deeper Blob/ABFS compatibility or selling Databricks on VAST-native formats
 - Use as reference model for unit-based pricing approach
+
+## Topics
+
+- OpenAI
+- Rockset
+- Snowflake
+- Data Infrastructure
+- Applications
+
+## Related Projects
+
+- [[ChatGPT]]
+- [[DAQ]]
+- [[GPT-6 roadmap]]
