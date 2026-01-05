@@ -199,312 +199,11 @@ RUN PERIODICALLY:
 
 ---
 
-## 1) Privacy + API Compliance (Blocker)
-
-**Goal:** Align all OpenAI usage with documented privacy requirements and a single API surface.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Note:** Standardized Structured Outputs on `client.responses.parse(...)` + enforced privacy via `models.privacy.*` config.
-
-**Tasks**
-
-- Unify on one API pattern (`responses.parse` preferred) across core pipeline and backfill.
-- Ensure `store=False` is passed on all API calls (extract/plan/backfill/audits).
-- Fix privacy config source: code should read `models.privacy.store` (or update config to match code).
-
-**Success Criteria**
-
-- All OpenAI calls include `store=False`.
-- No direct `chat.completions.create` usage for structured outputs.
-- Privacy check reads the correct config field and fails fast if violated.
-
 ---
 
 ---
 
-## 2) Fix Backup + Git Staging Safety (Blocker)
-
-**Goal:** Prevent data loss and dirty repos during Apply/Migration/Backfill.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Tasks**
-
-- [x] Update `backup_file()` to preserve vault-relative structure for all callers.
-- [x] Switch staging to `git add -A -- Inbox/ VAST/ Personal/` (or `add_content_dirs_all`).
-- [x] Ensure migration/backfill apply flows use same staging strategy.
-
-**Completion Notes:**
-
-- Fixed `migration/executor.py` to pass `vault_root` to `backup_file()` (was missing)
-- Replaced `add_files()` with `stage_content_dirs()` in migration executor
-- `apply.py` already had correct implementations
-- `backfill/applier.py` has its own inline implementation that already preserves structure
-- Added test: two README.md files in different folders backup to distinct paths
-
-**Success Criteria**
-
-- ✅ Running Apply on multiple README.md files produces distinct backups.
-- ✅ Git commits capture renames/deletions with a clean working tree.
-
----
-
----
-
-## 3) Standards Consistency (Docs + Templates + Validators)
-
-**Goal:** Resolve conflicts between `STANDARDS.md`, templates, and validators.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-
-- Fixed `readme-migration.md.j2`: Changed `type: "readme"` to `type: "{{ entity_type }}"` so it renders correct type per entity
-- Standardized all 7 note templates to use unquoted type values (per STANDARDS.md)
-- Fixed `VAST/Projects/Cloud Marketplace MVP/README.md`: Changed `type: project` to `type: projects`
-- Fixed 2 misclassified notes in `VAST/People/Shachar Feinblit/`: Changed `type: rob` to `type: people`
-- Verified scanner EXPECTED_TYPES already matches STANDARDS.md
-- Scanner reports 0 wrong_type issues for People scope
-
-**Tasks**
-
-- [x] Choose one README root schema (`person-root` vs `people`) and update:
-  - `STANDARDS.md`
-  - README templates (`readme-*.md.j2`)
-  - Migration checks (`migration/scanner.py` expected types)
-- [x] Update tag taxonomy rules if nested tags are ever allowed.
-
-**Success Criteria**
-
-- ✅ README templates produce frontmatter that matches `STANDARDS.md`.
-- ✅ Migration scanner reports no false positives for correct README types.
-
----
-
----
-
-## 4) Schema Alignment (JSON Schema vs Pydantic Models)
-
-**Goal:** Ensure JSON schemas match actual Pydantic models.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Tasks**
-
-- Update `schemas/changeplan.schema.json` to match `PatchSpec` shape
-  - `append_under_heading` should match nested `heading` object.
-- Update `schemas/extraction.schema.json` to align with ExtractionV1 (or explicitly document system-set fields).
-
-**Success Criteria**
-
-- `scripts/validate.py` passes on artifacts that Pydantic accepts.
-- No “valid by schema / invalid by model” discrepancy.
-
----
-
----
-
-## 5) Backfill Extractor Hardening
-
-**Goal:** Make backfill extraction deterministic, privacy‑safe, and schema‑enforced.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-
-- Web enrichment uses Responses API + Pydantic schemas (no regex JSON parsing).
-- Added config gate `features.backfill_web_enrichment` (default false) and disk cache under `Workflow/_cache/backfill_web_enrichment` (gitignored).
-- `backfill.py enrich` fails fast when disabled; added unit tests for caching + gating.
-
-**Tasks**
-
-- Replace backfill chat extraction with Responses API + Pydantic schema.
-- Remove brittle JSON code-fence parsing and duplicate `decisions` fallback bug.
-- Gate web enrichment behind config flag + caching (if kept).
-
-**Success Criteria**
-
-- Backfill extractor returns valid typed objects without manual JSON parsing.
-- Web search enrichment can be disabled centrally; no unbounded API calls.
-
----
-
----
-
-## 6) Classification & Profile Selection Reliability
-
-**Goal:** Ensure correct profile selection for Inbox sources.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Decision:** Heuristic-only classification (no LLM).
-
-**Rationale:**
-
-- Current `scripts/classify.py` uses regex pattern matching, no API calls
-- Faster (no latency), cheaper (no tokens), deterministic (same input = same output)
-- DESIGN.md already specified "no LLM classification step" - code matches design
-- Patterns cover common cases: ROB, customer, people, projects
-
-**Documentation Updated:**
-
-- `README.md`: Changed "Classify (AI)" to "Classify (Heuristics)", added pattern list
-- `REQUIREMENTS.md`: Updated model table to show "Heuristics" not "gpt-4o-mini"
-- `config.yaml`: Added note that classify config is reserved for future use
-
-**Tasks**
-
-- [x] Decide on heuristic vs LLM classification; update docs to match.
-- [x] If heuristic-only: document explicitly in README/Design.
-
-**Success Criteria**
-
-- ✅ Extract runs select correct profile for transcripts vs customer vs projects in test cases.
-- ✅ Documentation reflects actual behavior.
-
----
-
----
-
-## 7) Planner Context Quality
-
-**Goal:** Avoid ambiguous entities and improve plan accuracy.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-
-- `entity_paths` now preserves multiple folders per name (VAST + Personal) instead of overwriting.
-- Planner prompt includes `mentioned_entities` plus explicit disambiguation guidance.
-
-**Tasks**
-
-- Provide full entity folder paths to planner (not just names).
-- Include aliases from `entities/aliases.yaml` in planner prompt.
-- Disambiguate Personal vs VAST entities in context.
-
-**Success Criteria**
-
-- Planner can generate correct `path` for known entities without guessing.
-- Fewer warnings about ambiguous entity names.
-
----
-
----
-
-## 8) Archive Collision & Idempotency
-
-**Goal:** Prevent overwriting archives and duplicate patches.
-
-**Status: ✅ COMPLETED** (2026-01-05)
-
-**Completion Notes:**
-
-- Archive strategy: `get_archive_path()` now preserves source subfolder (Transcripts/, Email/, Voice/) in archive path
-- Idempotency: `append_under_heading()` already had dedup logic (checks if text exists in section, checks for duplicate wikilinks)
-- Rollback: `apply.py._rollback()` already restores archived sources via `moved_sources` tracking
-
-**Tasks**
-
-- [x] Update archive strategy to preserve relative paths or add unique suffixes.
-- [x] Make `append_under_heading` idempotent (dedupe or marker).
-- [x] Ensure apply rollback restores archived sources (if moved).
-
-**Success Criteria**
-
-- ✅ Two sources with same filename can be archived without overwrite.
-- ✅ Re-running Apply does not duplicate appended content.
-
----
-
----
-
-## 9) README Coverage in Vault
-
-**Goal:** Bring vault to SOT compliance for entity roots.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-
-- Created missing README for `VAST/People/Nidhi/` (only missing entity README)
-- All VAST/People, VAST/Customers and Partners, VAST/Projects folders now have READMEs
-- All Personal/Projects folders already had READMEs
-- Documented exemptions in STANDARDS.md section 1.3:
-  - `Personal/Homelab/*` — Technical docs hierarchy, not entities
-  - `Personal/People/`, `Personal/Journal/`, `Personal/Travel/` — Empty, not in use
-  - `*/ROB/*/` — Forum subfolders exempt until meetings processed
-
-**Tasks**
-
-- [x] Run migration to create missing READMEs (People, Projects, Customers).
-- [x] Decide on Personal READMEs strategy and either create or explicitly exempt.
-
-**Success Criteria**
-
-- ✅ All entity folders have README.md, or exemptions are documented.
-
----
-
----
-
-## 10) Documentation Cleanup
-
-**Goal:** Remove stale/duplicate docs and align all references.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-- Removed stale `Inbox/_bins` references across agent docs; canonical paths are `Workflow/prompts/` + `Workflow/templates/`.
-- Updated `Workflow/README.md`, `Workflow/REQUIREMENTS.md`, `Workflow/DESIGN.md`, and `Workflow/BACKFILL-DESIGN.md` to match current scripts/CLI flags and config structure.
-- Added `Workflow/_archive/README.md` and marked archived docs as non-canonical.
-
-**Tasks**
-
-- Remove or mark archived docs as outdated.
-- Update `Workflow/README.md`, `REQUIREMENTS.md`, `DESIGN.md`, `BACKFILL-DESIGN.md` to match code.
-- Align config path references (`Inbox/_bins` vs `Workflow/*`).
-
-**Success Criteria**
-
-- All docs agree on API usage, model policy, and paths.
-- No contradictory instructions remain.
-
----
-
----
-
-## 11) Test Coverage Gaps
-
-**Goal:** Catch regressions in core pipeline.
-
-**Status: ✅ COMPLETED** (2026-01-04)
-
-**Completion Notes:**
-
-All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
-
-- **Path validation + rollback**: `test_apply.py` (TestApplyPathValidation, TestApplyRollbackBehavior)
-- **Round-trip tests**: `test_apply.py` (TestExtractionToChangePlanRoundTrip) with fixtures
-- **Schema consistency**: `test_apply.py` (TestSchemaConsistency) validates JSON schemas match Pydantic
-
-**Tasks**
-
-- [x] Add unit test for `apply.py` path validation + rollback.
-- [x] Add plan/apply round‑trip test using fixture extraction JSON.
-- [x] Add schema vs Pydantic consistency tests.
-
-**Success Criteria**
-
-- ✅ Tests fail when paths are unsafe or schema drift exists.
-- ✅ CI passes with new tests (94/94 pass).
-
----
-
----
-
-## 12) Operational Runbooks
+## 1) Operational Runbooks
 
 **Goal:** Ensure safe execution and recovery steps are documented.
 
@@ -523,7 +222,13 @@ All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
 
 ---
 
-## 13) Parallel Execution for process_inbox.py
+
+---
+
+
+---
+
+## 2) Parallel Execution for process_inbox.py
 
 **Goal:** Speed up EXTRACT and PLAN phases with concurrent execution.
 
@@ -546,7 +251,13 @@ All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
 
 ---
 
-## 14) Enhanced Verbose Output
+
+---
+
+
+---
+
+## 3) Enhanced Verbose Output
 
 **Goal:** Show extraction richness, not just task counts.
 
@@ -567,7 +278,13 @@ All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
 
 ---
 
-## 15) CONTRACTS.md Alignment Fixes
+
+---
+
+
+---
+
+## 4) CONTRACTS.md Alignment Fixes
 
 **Goal:** Resolve specification inconsistencies identified in CONTRACTS review.
 
@@ -592,7 +309,13 @@ All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
 
 ---
 
-## 16) Multi-Entity Attribution
+
+---
+
+
+---
+
+## 5) Multi-Entity Attribution
 
 **Goal:** Support notes that span multiple entities (customer + project + people).
 
@@ -614,7 +337,13 @@ All 94 tests pass. Required coverage already exists in `Workflow/tests/`:
 
 ---
 
-## 17) Post‑Import README Template Fixes
+
+---
+
+
+---
+
+## 6) Post‑Import README Template Fixes
 
 **Goal:** Ensure README task queries and timestamps render correctly after import.
 
@@ -650,7 +379,13 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ---
 
-## 18) Title → Path Sanitization (Slashes, Nested Folders)
+
+---
+
+
+---
+
+## 7) Title → Path Sanitization (Slashes, Nested Folders)
 
 **Goal:** Prevent title text (e.g., `A/B`) from creating unintended nested directories.
 
@@ -671,7 +406,13 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ---
 
-## 19) `_NEW_` Entity Triage + Duplicate Merge
+
+---
+
+
+---
+
+## 8) `_NEW_` Entity Triage + Duplicate Merge
 
 **Goal:** Eliminate `_NEW_*` placeholders and dedupe mis‑typed entities.
 
@@ -692,7 +433,13 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ---
 
-## 20) Note Naming + Missing Metadata Cleanup
+
+---
+
+
+---
+
+## 9) Note Naming + Missing Metadata Cleanup
 
 **Goal:** Avoid `Untitled.md` and missing date/title fields in created notes.
 
@@ -713,7 +460,13 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ---
 
-## 21) Post‑Import QC Audit Script
+
+---
+
+
+---
+
+## 10) Post‑Import QC Audit Script
 
 **Goal:** Automate validation of import outputs before human review.
 
@@ -743,7 +496,13 @@ This indicates `last_updated` is frequently missing/blank, and `TASK FROM ...` s
 
 ---
 
-## 22) Inconsistent Task Owner Names (Normalization Needed)
+
+---
+
+
+---
+
+## 11) Inconsistent Task Owner Names (Normalization Needed)
 
 **Goal:** Normalize @Owner names during extraction to enable reliable task aggregation.
 
@@ -782,7 +541,13 @@ Owner variants in vault (by frequency):
 
 ---
 
-## 23) Duplicate Notes from Same Meeting (Deduplication)
+
+---
+
+
+---
+
+## 12) Duplicate Notes from Same Meeting (Deduplication)
 
 **Goal:** Detect and prevent processing duplicate transcripts of the same meeting.
 
@@ -818,7 +583,13 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 ---
 
-## 24) 4 Untitled Files Need Proper Names
+
+---
+
+
+---
+
+## 13) 4 Untitled Files Need Proper Names
 
 **Goal:** Rename all Untitled.md files with appropriate titles.
 
@@ -850,7 +621,13 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 ---
 
-## 25) 33 Customers with No Meeting Notes
+
+---
+
+
+---
+
+## 14) 33 Customers with No Meeting Notes
 
 **Goal:** Identify customers with READMEs but no associated notes.
 
@@ -884,7 +661,13 @@ All three are from the same 1:1 meeting, just different MacWhisper exports.
 
 ---
 
-## 26) Company-to-Person Cross-Links Missing
+
+---
+
+
+---
+
+## 15) Company-to-Person Cross-Links Missing
 
 **Goal:** Link People entities to their Company in README and vice versa.
 
@@ -920,7 +703,13 @@ These relationships exist in frontmatter but aren't cross-linked.
 
 ---
 
-## 27) Frontmatter Type Inconsistency (Quoted vs Unquoted)
+
+---
+
+
+---
+
+## 16) Frontmatter Type Inconsistency (Quoted vs Unquoted)
 
 **Goal:** Normalize frontmatter type field format.
 
@@ -952,7 +741,13 @@ Mixed formats in vault:
 
 ---
 
-## 28) Tasks Without Proper ISO Dates
+
+---
+
+
+---
+
+## 17) Tasks Without Proper ISO Dates
 
 **Goal:** Ensure all tasks have ISO-8601 due dates where applicable.
 
@@ -983,7 +778,13 @@ The real gap is **missing due dates** (and implied dates like “next week” th
 
 ---
 
-## 29) Nested Folder Paths from Title Slashes (Major Issue)
+
+---
+
+
+---
+
+## 18) Nested Folder Paths from Title Slashes (Major Issue)
 
 **Goal:** Fix project folders that were incorrectly nested due to `/` in titles.
 
@@ -1021,7 +822,13 @@ Each nested folder has its own README.md, fragmenting the project.
 
 ---
 
-## 30) Duplicate Email Imports
+
+---
+
+
+---
+
+## 19) Duplicate Email Imports
 
 **Goal:** Prevent duplicate email imports in Inbox.
 
@@ -1057,7 +864,13 @@ Only difference is export timestamp - content is identical.
 
 ---
 
-## 31) 103 People + 53 Projects with README Only (No Notes)
+
+---
+
+
+---
+
+## 20) 103 People + 53 Projects with README Only (No Notes)
 
 **Goal:** Identify and handle entity folders that were auto-created but never populated.
 
@@ -1095,7 +908,13 @@ Examples:
 
 ---
 
-## 32) Orphan Note: Nidhi Missing README
+
+---
+
+
+---
+
+## 21) Orphan Note: Nidhi Missing README
 
 **Goal:** Create README for person folder with notes but no README.
 
@@ -1125,7 +944,13 @@ Examples:
 
 ---
 
-## 33) 14 READMEs with Hardcoded Dataview Paths
+
+---
+
+
+---
+
+## 22) 14 READMEs with Hardcoded Dataview Paths
 
 **Goal:** Replace hardcoded paths with `this.file.folder` in Dataview queries.
 
@@ -1165,7 +990,13 @@ If files are moved, hardcoded queries break.
 
 ---
 
-## 34) 37 Tasks in People READMEs Missing Format
+
+---
+
+
+---
+
+## 23) 37 Tasks in People READMEs Missing Format
 
 **Goal:** Update plain tasks in READMEs to have proper Obsidian Tasks format.
 
@@ -1207,7 +1038,13 @@ Without dates/tags, these won't appear in task queries.
 
 ---
 
-## 35) Folder Names with Special Characters
+
+---
+
+
+---
+
+## 24) Folder Names with Special Characters
 
 **Goal:** Sanitize folder names with quotes, parentheses, ampersands.
 
@@ -1244,7 +1081,13 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 ---
 
-## 36) 68 Files Without Type Field in Frontmatter
+
+---
+
+
+---
+
+## 25) 68 Files Without Type Field in Frontmatter
 
 **Goal:** Ensure all notes have proper `type:` frontmatter.
 
@@ -1277,7 +1120,13 @@ Shell commands, some tools, and sync may have issues with these characters.
 
 ---
 
-## 37) 20 Duplicate Meeting Notes (Same Meeting, Multiple Files)
+
+---
+
+
+---
+
+## 26) 20 Duplicate Meeting Notes (Same Meeting, Multiple Files)
 
 **Goal:** Deduplicate notes from same meeting that were processed multiple times.
 
@@ -1317,7 +1166,13 @@ Same transcripts in inbox multiple times → multiple notes created:
 
 ---
 
-## 38) 92 Empty Related Projects Sections
+
+---
+
+
+---
+
+## 27) 92 Empty Related Projects Sections
 
 **Goal:** Populate Related Projects sections in People READMEs.
 
@@ -1356,7 +1211,13 @@ The projects are mentioned in notes but not cross-linked to the person.
 
 ---
 
-## 39) September 2025 Has Most Duplicate Transcripts
+
+---
+
+
+---
+
+## 28) September 2025 Has Most Duplicate Transcripts
 
 **Goal:** Investigate and prevent duplicate transcripts at source.
 
@@ -1393,7 +1254,13 @@ Likely cause: MacWhisper auto-export creating multiple files, or manual re-expor
 
 ---
 
-## 40) Projects Folder Has Deep Nesting (Subprojects)
+
+---
+
+
+---
+
+## 29) Projects Folder Has Deep Nesting (Subprojects)
 
 **Goal:** Clarify whether subfolders in Projects are intentional or accidents.
 
@@ -1429,7 +1296,13 @@ Some are intentional (OVA docs), some may be title-slash errors.
 
 ---
 
-## 41) OVA Project Has 68 Undocumented Files
+
+---
+
+
+---
+
+## 30) OVA Project Has 68 Undocumented Files
 
 **Goal:** Add frontmatter to OVA technical docs.
 
@@ -1464,7 +1337,13 @@ These are technical docs, not meeting notes.
 
 ---
 
-## 42) 57+ Broken First-Name-Only Wikilinks
+
+---
+
+
+---
+
+## 31) 57+ Broken First-Name-Only Wikilinks
 
 **Goal:** Resolve wikilinks that reference people by first name only.
 
@@ -1501,7 +1380,13 @@ These appear in Key Contacts sections of customer READMEs.
 
 ---
 
-## 43) 15 Typo/Misspelled Person Names in Wikilinks
+
+---
+
+
+---
+
+## 32) 15 Typo/Misspelled Person Names in Wikilinks
 
 **Goal:** Fix typos in person name wikilinks.
 
@@ -1538,7 +1423,13 @@ These create broken links and fragment the knowledge graph.
 
 ---
 
-## 44) 2 READMEs with `last_contact: unknown`
+
+---
+
+
+---
+
+## 33) 2 READMEs with `last_contact: unknown`
 
 **Goal:** Populate unknown last_contact dates.
 
@@ -1569,7 +1460,13 @@ Two READMEs have `last_contact: unknown`:
 
 ---
 
-## 45) Jason Vallery README Has 56 Context Entries
+
+---
+
+
+---
+
+## 34) Jason Vallery README Has 56 Context Entries
 
 **Goal:** Trim excessive Recent Context entries.
 
@@ -1605,7 +1502,13 @@ Other high-count READMEs:
 
 ---
 
-## 46) Email Inbox Has Duplicate Exports
+
+---
+
+
+---
+
+## 35) Email Inbox Has Duplicate Exports
 
 **Goal:** Clean up duplicate email exports.
 
@@ -1640,7 +1543,13 @@ Same emails exported twice with different random IDs:
 
 ---
 
-## 47) Pending Emails Include Low-Value Spam
+
+---
+
+
+---
+
+## 36) Pending Emails Include Low-Value Spam
 
 **Goal:** Triage pending emails before processing.
 
@@ -1673,7 +1582,13 @@ Processing all will waste API tokens on spam/personal.
 
 ---
 
-## 48) 15 Empty Folders in Vault
+
+---
+
+
+---
+
+## 37) 15 Empty Folders in Vault
 
 **Goal:** Clean up or populate empty folders.
 
@@ -1710,7 +1625,13 @@ Processing all will waste API tokens on spam/personal.
 
 ---
 
-## 49) 3 Self-Referential Wikilinks
+
+---
+
+
+---
+
+## 38) 3 Self-Referential Wikilinks
 
 **Goal:** Remove wikilinks that link to themselves.
 
@@ -1743,7 +1664,13 @@ This is likely from extraction including the entity name in mentions.
 
 ---
 
-## 50) Tasks with Multiple @Owners
+
+---
+
+
+---
+
+## 39) Tasks with Multiple @Owners
 
 **Goal:** Clarify task ownership conventions for multi-owner tasks.
 
@@ -1777,7 +1704,13 @@ This is valid (shared ownership) but may complicate task queries.
 
 ---
 
-## 51) Tasks Missing Priority Markers
+
+---
+
+
+---
+
+## 40) Tasks Missing Priority Markers
 
 **Goal:** Add priority markers to tasks that have dates but no priority.
 
@@ -1815,7 +1748,13 @@ Should be:
 
 ---
 
-## 52) Microsoft Subfolders in Wrong Location
+
+---
+
+
+---
+
+## 41) Microsoft Subfolders in Wrong Location
 
 **Goal:** Move subprojects from customer folder to proper location.
 
@@ -1852,7 +1791,13 @@ These should be in `VAST/Projects/` with cross-links to Microsoft.
 
 ---
 
-## 53) 4 \_Open Topics Files Need Review
+
+---
+
+
+---
+
+## 42) 4 \_Open Topics Files Need Review
 
 **Goal:** Review and standardize \_Open Topics files.
 
@@ -1886,7 +1831,13 @@ These contain task queries but no standardized structure.
 
 ---
 
-## 54) Only 32/135 People Have Key Facts Populated
+
+---
+
+
+---
+
+## 43) Only 32/135 People Have Key Facts Populated
 
 **Goal:** Improve Key Facts extraction or document as optional.
 
@@ -1915,7 +1866,13 @@ Facts require explicit extraction from conversations.
 
 ---
 
-## 55) 7 Uncommitted README Changes
+
+---
+
+
+---
+
+## 44) 7 Uncommitted README Changes
 
 **Goal:** Review and commit or revert uncommitted changes.
 
@@ -1951,7 +1908,13 @@ Facts require explicit extraction from conversations.
 
 ---
 
-## 56) 792 Open Tasks Have Overdue Dates (Oct/Nov 2025)
+
+---
+
+
+---
+
+## 45) 792 Open Tasks Have Overdue Dates (Oct/Nov 2025)
 
 **Goal:** Triage and update overdue tasks or close if stale.
 
@@ -1985,7 +1948,13 @@ Facts require explicit extraction from conversations.
 
 ---
 
-## 57) 44 Tasks Have @TBD Owner (Unassigned)
+
+---
+
+
+---
+
+## 46) 44 Tasks Have @TBD Owner (Unassigned)
 
 **Goal:** Assign owners to unassigned tasks or close.
 
@@ -2017,7 +1986,13 @@ Facts require explicit extraction from conversations.
 
 ---
 
-## 58) 207 Open Tasks Missing Due Dates
+
+---
+
+
+---
+
+## 47) 207 Open Tasks Missing Due Dates
 
 **Goal:** Add due dates or mark as backlog.
 
@@ -2044,7 +2019,13 @@ Facts require explicit extraction from conversations.
 
 ---
 
-## 59) Malformed Task Owner Syntax
+
+---
+
+
+---
+
+## 48) Malformed Task Owner Syntax
 
 **Goal:** Fix tasks where extra content follows @Owner.
 
@@ -2079,7 +2060,13 @@ Correct format: `@Owner` should be followed by priority emoji then `📅` date t
 
 ---
 
-## 60) 25 Batch Backfill Notes Dated 2025-10-01
+
+---
+
+
+---
+
+## 49) 25 Batch Backfill Notes Dated 2025-10-01
 
 **Goal:** Review batch-created notes for accuracy.
 
@@ -2114,7 +2101,13 @@ These may have placeholder content or inaccurate dates.
 
 ---
 
-## 61) 7 Wikilinks Use 1:1 Instead of 1-1
+
+---
+
+
+---
+
+## 50) 7 Wikilinks Use 1:1 Instead of 1-1
 
 **Goal:** Fix wikilinks that use colons instead of dashes.
 
@@ -2153,7 +2146,13 @@ These may have placeholder content or inaccurate dates.
 
 ---
 
-## 62) 10 READMEs Use Old Template (Contact Information)
+
+---
+
+
+---
+
+## 51) 10 READMEs Use Old Template (Contact Information)
 
 **Goal:** Migrate old template format to current standard.
 
@@ -2194,7 +2193,13 @@ These may have placeholder content or inaccurate dates.
 
 ---
 
-## 63) ROB Note Filed at Root Instead of Subfolder
+
+---
+
+
+---
+
+## 52) ROB Note Filed at Root Instead of Subfolder
 
 **Goal:** Move misplaced ROB note to proper subfolder.
 
@@ -2228,7 +2233,13 @@ But there's no `VAST/ROB/VAST/` folder. The note was filed at ROB root instead o
 
 ---
 
-## 64) 112/135 People Need Review (83%)
+
+---
+
+
+---
+
+## 53) 112/135 People Need Review (83%)
 
 **Goal:** Triage #needs-review tagged READMEs.
 
@@ -2262,7 +2273,13 @@ Only 23 have been manually reviewed.
 
 ---
 
-## 65) Inconsistent Role Extraction (13 Unknown, 11 Company-Only)
+
+---
+
+
+---
+
+## 54) Inconsistent Role Extraction (13 Unknown, 11 Company-Only)
 
 **Goal:** Improve role extraction quality.
 
@@ -2300,7 +2317,13 @@ Examples:
 
 ---
 
-## 66) Checkbox Semantics: Tasks vs Checklists (OVA Docs Skew Task Audits)
+
+---
+
+
+---
+
+## 55) Checkbox Semantics: Tasks vs Checklists (OVA Docs Skew Task Audits)
 
 **Goal:** Decide whether checkbox items in documentation (e.g., OVA docs) are “tasks” and how they should appear in dashboards/audits.
 
@@ -2339,7 +2362,13 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 ---
 
-## 67) Deterministic Extraction for Structured `Sources/Transcripts/*` Notes
+
+---
+
+
+---
+
+## 56) Deterministic Extraction for Structured `Sources/Transcripts/*` Notes
 
 **Goal:** Avoid expensive LLM extraction when sources are already structured.
 
@@ -2370,7 +2399,13 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 ---
 
-## 68) Persist Extraction/Plan Artifacts for Re-Planning Without Re-Extracting
+
+---
+
+
+---
+
+## 57) Persist Extraction/Plan Artifacts for Re-Planning Without Re-Extracting
 
 **Goal:** Make iteration cheap: rerun PLAN/APPLY using existing artifacts instead of reprocessing transcripts.
 
@@ -2399,7 +2434,13 @@ If we treat all `- [ ]` items as tasks, these docs will dominate “missing form
 
 ---
 
-## 69) Source Kind Classification (Transcript vs Checklist vs Article) + Template Branching
+
+---
+
+
+---
+
+## 58) Source Kind Classification (Transcript vs Checklist vs Article) + Template Branching
 
 **Goal:** Handle different inbound context types correctly and avoid forcing everything into a “meeting transcript” shape.
 
@@ -2428,7 +2469,13 @@ Some imported notes are “tasks/checklists” or “announcements/articles” (
 
 ---
 
-## 70) URL Hygiene: Remove `utm_source=chatgpt.com` and Prevent New Tracking Params
+
+---
+
+
+---
+
+## 59) URL Hygiene: Remove `utm_source=chatgpt.com` and Prevent New Tracking Params
 
 **Goal:** Keep links clean and avoid leaking tool provenance into saved notes.
 
@@ -2455,7 +2502,13 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 
 ---
 
-## 71) Unprocessed Personal Transcript in Projects Folder
+
+---
+
+
+---
+
+## 60) Unprocessed Personal Transcript in Projects Folder
 
 **Goal:** Process or archive raw transcript in wrong location.
 
@@ -2487,7 +2540,13 @@ Some notes include URLs with `utm_source=chatgpt.com`.
 
 ---
 
-## 72) 45 Files Without Frontmatter
+
+---
+
+
+---
+
+## 61) 45 Files Without Frontmatter
 
 **Goal:** Audit and standardize markdown files without frontmatter.
 
@@ -2523,7 +2582,13 @@ Most are intentionally unstructured, but should be documented.
 
 ---
 
-## 73) Nidhi Folder Missing README
+
+---
+
+
+---
+
+## 62) Nidhi Folder Missing README
 
 **Found**: 2026-01-04
 
@@ -2539,7 +2604,13 @@ Only person folder without a README:
 
 ---
 
-## 74) Wikilink Name Misspellings (65+ broken links)
+
+---
+
+
+---
+
+## 63) Wikilink Name Misspellings (65+ broken links)
 
 **Found**: 2026-01-04
 
@@ -2564,7 +2635,13 @@ Misspelled wikilinks pointing to non-existent paths:
 
 ---
 
-## 75) Short Name Wikilinks (Alias Resolution Needed)
+
+---
+
+
+---
+
+## 64) Short Name Wikilinks (Alias Resolution Needed)
 
 **Found**: 2026-01-04
 
@@ -2582,7 +2659,13 @@ Short names used instead of full names:
 
 ---
 
-## 76) Orphan Wikilinks - Notable People Without Folders
+
+---
+
+
+---
+
+## 65) Orphan Wikilinks - Notable People Without Folders
 
 **Found**: 2026-01-04
 
@@ -2603,7 +2686,13 @@ Real people referenced but no folder exists:
 
 ---
 
-## 77) Template Artifact in Wikilinks
+
+---
+
+
+---
+
+## 66) Template Artifact in Wikilinks
 
 **Found**: 2026-01-04
 
@@ -2617,7 +2706,13 @@ Real people referenced but no folder exists:
 
 ---
 
-## 78) Project Wikilinks Without Folders
+
+---
+
+
+---
+
+## 67) Project Wikilinks Without Folders
 
 **Found**: 2026-01-04
 
@@ -2636,7 +2731,13 @@ Project references without corresponding folders:
 
 ---
 
-## 79) 33 Customer Folders with Only README (No Notes)
+
+---
+
+
+---
+
+## 68) 33 Customer Folders with Only README (No Notes)
 
 **Found**: 2026-01-04
 
@@ -2659,7 +2760,13 @@ Only 8 folders have actual notes:
 
 ---
 
-## 80) CRITICAL: Archive Filename Mismatch - Wrong Content Association
+
+---
+
+
+---
+
+## 69) CRITICAL: Archive Filename Mismatch - Wrong Content Association
 
 **Found**: 2026-01-04
 
@@ -2689,7 +2796,13 @@ The extracted note `VAST/ROB/2025-12-16 - VAST and Microsoft Strategic Discussio
 
 ---
 
-## 81) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
+
+---
+
+
+---
+
+## 70) CRITICAL: MacWhisper Captures App Title, Not Meeting Title
 
 **Found**: 2026-01-04
 
@@ -2727,7 +2840,13 @@ Deep investigation of archive reveals **3 additional files with wrong names**:
 
 ---
 
-## 82) Source Attribution Chain Is Broken
+
+---
+
+
+---
+
+## 71) Source Attribution Chain Is Broken
 
 **Found**: 2026-01-04
 
@@ -2764,7 +2883,13 @@ This points to a file whose NAME suggests Flight School training, but whose CONT
 
 ---
 
-## 83) `type: "projects"` Never Used - 3 Project Notes Have Wrong Types
+
+---
+
+
+---
+
+## 72) `type: "projects"` Never Used - 3 Project Notes Have Wrong Types
 
 **Found**: 2026-01-04
 
@@ -2799,7 +2924,13 @@ But scanning all notes in vault:
 
 ---
 
-## 84) 3 Empty ROB Subfolders
+
+---
+
+
+---
+
+## 73) 3 Empty ROB Subfolders
 
 **Found**: 2026-01-04
 
@@ -2825,7 +2956,13 @@ Only note is misplaced at ROB root level (item 71).
 
 ---
 
-## 85) Participant Name Inconsistencies
+
+---
+
+
+---
+
+## 74) Participant Name Inconsistencies
 
 **Found**: 2026-01-04
 
@@ -2859,7 +2996,13 @@ Also many first-name-only entries that can't be resolved: "Leo", "Tom", "Paul", 
 
 ---
 
-## 86) Duplicate Files Across Personal/VAST
+
+---
+
+
+---
+
+## 75) Duplicate Files Across Personal/VAST
 
 **Found**: 2026-01-04
 
@@ -2887,7 +3030,13 @@ Content hash analysis found exact duplicate files:
 
 ---
 
-## 87) Archive Files Have Colons in Filenames (macOS Quirk)
+
+---
+
+
+---
+
+## 76) Archive Files Have Colons in Filenames (macOS Quirk)
 
 **Found**: 2026-01-04
 
@@ -2917,7 +3066,13 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 ---
 
-## 88) Vault-Wide Statistics Summary
+
+---
+
+
+---
+
+## 77) Vault-Wide Statistics Summary
 
 **Snapshot**: 2026-01-04
 
@@ -2956,7 +3111,13 @@ This file was created by MacWhisper from a Zoom meeting title.
 
 ---
 
-## 89) README Frontmatter Gaps (2 files)
+
+---
+
+
+---
+
+## 78) README Frontmatter Gaps (2 files)
 
 **Found**: 2026-01-04
 
@@ -2983,7 +3144,13 @@ Two entity READMEs have frontmatter that does not match standards/templates (mis
 
 ---
 
-## 90) Tag Hygiene (Invalid Characters + Deep Paths)
+
+---
+
+
+---
+
+## 79) Tag Hygiene (Invalid Characters + Deep Paths)
 
 **Found**: 2026-01-04
 
@@ -3013,7 +3180,13 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 
 ---
 
-## 91) Meeting Notes with Empty `participants: []` (5 files)
+
+---
+
+
+---
+
+## 80) Meeting Notes with Empty `participants: []` (5 files)
 
 **Found**: 2026-01-04
 
@@ -3044,7 +3217,13 @@ Observed tags that violate normalization / conventions (uppercase, punctuation, 
 
 ---
 
-## 92) Make ENRICH Phase Optional with CLI Flag
+
+---
+
+
+---
+
+## 81) Make ENRICH Phase Optional with CLI Flag
 
 **Goal:** ENRICH should be opt-in, not automatic on every pipeline run.
 
@@ -3074,7 +3253,13 @@ From 2026-01-04 session: User noted "enrich is an optional step. We wouldn't wan
 
 ---
 
-## 93) Auto-Enrich Newly Created People
+
+---
+
+
+---
+
+## 82) Auto-Enrich Newly Created People
 
 **Goal:** When a new person entity is created during ingest, immediately enrich them.
 
@@ -3104,7 +3289,13 @@ From 2026-01-04 session: User noted "When a person is newly created we should al
 
 ---
 
-## 94) Event-Driven Pipeline Architecture
+
+---
+
+
+---
+
+## 83) Event-Driven Pipeline Architecture
 
 **Goal:** Refactor ingestion pipeline to use event/trigger model for extensibility.
 
@@ -3137,7 +3328,13 @@ From 2026-01-04 session: User suggested "Logically I think of all these things a
 
 ---
 
-## 95) Process Pending Inbox Transcripts
+
+---
+
+
+---
+
+## 84) Process Pending Inbox Transcripts
 
 **Goal:** Process the 6 transcripts sitting in Inbox/Transcripts/.
 
@@ -3165,7 +3362,13 @@ From 2026-01-04 session: Saw 6 files in Inbox/Transcripts/ during testing.
 
 ---
 
-## 96) Process Pending Inbox Emails
+
+---
+
+
+---
+
+## 85) Process Pending Inbox Emails
 
 **Goal:** Process the 8 emails sitting in Inbox/Email/.
 
@@ -3193,7 +3396,13 @@ From 2026-01-04 session: Saw 8 emails in Inbox/Email/ during testing (some dupli
 
 ---
 
-## 97) Unified Content Ingestion CLI
+
+---
+
+
+---
+
+## 86) Unified Content Ingestion CLI
 
 **Goal:** Single entry point for all content types with consistent interface.
 
@@ -3223,7 +3432,13 @@ From 2026-01-04 session: Currently have separate scripts for email vs transcript
 
 ---
 
-## 98) Manifest Enrichment Documentation Complete
+
+---
+
+
+---
+
+## 87) Manifest Enrichment Documentation Complete
 
 **Goal:** Finalize MANIFEST-ENRICHMENT.md with all CLI options and examples.
 
@@ -3252,7 +3467,13 @@ From 2026-01-04 session: Created MANIFEST-ENRICHMENT.md but may be missing some 
 
 ---
 
-## 99) Prompt Caching Validation and Metrics
+
+---
+
+
+---
+
+## 88) Prompt Caching Validation and Metrics
 
 **Goal:** Verify prompt caching is working and measure cost savings.
 
@@ -3282,7 +3503,13 @@ From 2026-01-04 session: Implemented prompt caching but haven't validated it's a
 
 ---
 
-## 100) Customer/Account Manifest and Enrichment
+
+---
+
+
+---
+
+## 89) Customer/Account Manifest and Enrichment
 
 **Goal:** Extend manifest + enrichment pattern to Customers and Partners.
 
