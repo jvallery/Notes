@@ -263,17 +263,17 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Generate downstream outputs from UnifiedPipeline with TASKS-compatible tasks (`?` → `[ ]`/`/`/`R`/`x`).
 
-**Status: IN PROGRESS** (@copilot-b620700, started: 2026-01-04 20:00)
+**Status: ✅ COMPLETED** (2026-01-04)
 
 **Impact:** High
 
 **Effort:** 3 hours
 
 **Tasks**
-- [ ] Implement outputs module for draft replies and calendar suggestions (persona + context) to `Inbox/_drafts/`
-- [ ] Standardize task emission to `- [?] ... #task #proposed #auto` with priority/dates; mirror high-priority tasks into TASKS.md views
-- [ ] Add acceptance flow notes (`?` → accepted/rejected/in-progress/done) to TASKS.md dashboards
-- [ ] Update EMAIL-INGESTION/README/RUNBOOK to describe output + triage path
+- [x] Implement outputs module for draft replies and calendar suggestions (persona + context) to `Inbox/_drafts/`
+- [x] Standardize task emission to `- [?] ... #task #proposed #auto` with priority/dates; mirror high-priority tasks into TASKS.md views
+- [x] Add acceptance flow notes (`?` → accepted/rejected/in-progress/done) to TASKS.md dashboards
+- [x] Update EMAIL-INGESTION/README/RUNBOOK to describe output + triage path
 
 **Success Criteria**
 - Sample email run yields draft reply + optional .ics suggestion
