@@ -9,6 +9,7 @@ Workflow/logs/*.log
 Workflow/__pycache__/
 Workflow/**/__pycache__/
 Workflow/**/*.pyc
+Workflow/.pytest_cache/
 
 # === Inbox Processing ===
 Inbox/_extraction/*.json

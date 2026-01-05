@@ -58,6 +58,7 @@ class PersonEntry:
     company: str = ""
     email: str = ""
     my_relationship: str = ""  # manager, peer, direct-report, customer, partner, executive, vendor, other
+    aliases: list[str] = field(default_factory=list)
     context: str = ""
     last_contact: str = ""
     
@@ -135,6 +136,13 @@ def sync_person_to_manifest(
     
     content = readme.read_text()
     fm = parse_frontmatter(content)
+
+    aliases_raw = updates.get("aliases") or fm.get("aliases") or []
+    aliases: list[str] = []
+    if isinstance(aliases_raw, str):
+        aliases = [a.strip() for a in re.split(r"[;,]", aliases_raw) if a.strip()]
+    elif isinstance(aliases_raw, list):
+        aliases = [str(a).strip() for a in aliases_raw if str(a).strip()]
     
     # Build updated entry from README + updates
     entry = PersonEntry(
@@ -143,8 +151,9 @@ def sync_person_to_manifest(
         company=updates.get("company") or fm.get("company") or "",
         email=updates.get("email") or fm.get("email") or "",
         my_relationship=updates.get("my_relationship") or fm.get("my_relationship") or "",
+        aliases=aliases,
         context=extract_context_summary(content, max_chars=100),
-        last_contact=updates.get("last_contact") or fm.get("last_contact") or ""
+        last_contact=_normalize_date(updates.get("last_contact") or fm.get("last_contact") or "")
     )
     
     # Load current manifest entries
@@ -412,15 +421,29 @@ def scan_people_folder() -> List[PersonEntry]:
         fm = parse_frontmatter(content)
         profile = extract_profile_section(content)
         context = extract_context_summary(content)
+
+        # Fallback to frontmatter when Profile section is missing (common in fresh imports)
+        role = profile.get("role") or fm.get("role") or fm.get("title") or ""
+        company = profile.get("company") or fm.get("company") or ""
+        email = profile.get("email") or fm.get("email") or ""
+        my_relationship = profile.get("relationship") or fm.get("my_relationship") or ""
+
+        aliases_raw = fm.get("aliases") or []
+        aliases: list[str] = []
+        if isinstance(aliases_raw, str):
+            aliases = [a.strip() for a in re.split(r"[;,]", aliases_raw) if a.strip()]
+        elif isinstance(aliases_raw, list):
+            aliases = [str(a).strip() for a in aliases_raw if str(a).strip()]
         
         entries.append(PersonEntry(
             name=folder.name,
-            role=profile.get("role", ""),
-            company=profile.get("company", ""),
-            email=profile.get("email", ""),
-            my_relationship=fm.get("my_relationship", ""),
+            role=role,
+            company=company,
+            email=email,
+            my_relationship=my_relationship,
+            aliases=aliases,
             context=context,
-            last_contact=fm.get("last_contact", "")
+            last_contact=_normalize_date(fm.get("last_contact") or "")
         ))
     
     return entries
@@ -546,8 +569,8 @@ def generate_people_manifest(entries: List[PersonEntry]) -> str:
         "",
         "## Entities",
         "",
-        "| Name | Role | Company | Email | My Relationship | Context |",
-        "|------|------|---------|-------|-----------------|---------|",
+        "| Name | Role | Company | Email | My Relationship | Aliases | Context |",
+        "|------|------|---------|-------|-----------------|---------|---------|",
     ]
     
     for e in entries:
@@ -556,9 +579,10 @@ def generate_people_manifest(entries: List[PersonEntry]) -> str:
         company = e.company.replace("|", "/") if e.company else ""
         email = e.email.replace("|", "/") if e.email else ""
         my_rel = e.my_relationship.replace("|", "/") if e.my_relationship else ""
+        aliases = "; ".join(e.aliases).replace("|", "/") if e.aliases else ""
         context = e.context.replace("|", "/") if e.context else ""
         
-        lines.append(f"| {e.name} | {role} | {company} | {email} | {my_rel} | {context} |")
+        lines.append(f"| {e.name} | {role} | {company} | {email} | {my_rel} | {aliases} | {context} |")
     
     lines.extend([
         "",

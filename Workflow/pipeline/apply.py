@@ -10,6 +10,7 @@ Features:
 
 import shutil
 import sys
+import re
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -45,16 +46,25 @@ class TransactionalApply:
     def __init__(self, vault_root: Path, dry_run: bool = False):
         self.vault_root = vault_root
         self.dry_run = dry_run
-        self.backup_dir = vault_root / ".workflow_backups" / datetime.now().strftime("%Y%m%d_%H%M%S")
+        # Use microseconds to avoid collisions when multiple applies run concurrently.
+        self.backup_dir = vault_root / ".workflow_backups" / datetime.now().strftime("%Y%m%d_%H%M%S_%f")
         self._backed_up: dict[Path, Path] = {}
         self._created: list[Path] = []
     
-    def apply(self, plan: ChangePlan, source_path: Optional[Path] = None) -> ApplyResult:
+    def apply(
+        self,
+        plan: ChangePlan,
+        source_path: Optional[Path] = None,
+        extra_meeting_notes: Optional[list[tuple[str, dict]]] = None,
+        extra_source_paths: Optional[list[Path]] = None,
+    ) -> ApplyResult:
         """Apply a change plan.
         
         Args:
             plan: ChangePlan to apply
             source_path: Original source file (for archiving)
+            extra_meeting_notes: Additional meeting notes to create atomically
+            extra_source_paths: Additional source files to archive atomically
         
         Returns:
             ApplyResult with details
@@ -62,12 +72,16 @@ class TransactionalApply:
         result = ApplyResult()
         
         if self.dry_run:
-            return self._dry_run_apply(plan, result)
+            return self._dry_run_apply(plan, result, extra_meeting_notes=extra_meeting_notes, extra_source_paths=extra_source_paths)
         
         try:
             # 1. Create meeting note
             if plan.meeting_note_path and plan.meeting_note:
-                self._create_meeting_note(plan, result)
+                self._create_meeting_note(plan.meeting_note_path, plan.meeting_note, result)
+            if extra_meeting_notes:
+                for note_path, note_context in extra_meeting_notes:
+                    if note_path and note_context:
+                        self._create_meeting_note(note_path, note_context, result)
             
             # 2. Apply patches
             for patch in plan.patches:
@@ -78,8 +92,14 @@ class TransactionalApply:
                 self._apply_manifest_patch(manifest_patch, result)
             
             # 4. Archive source
-            if source_path and source_path.exists():
-                self._archive_source(source_path, result)
+            sources_to_archive: list[Path] = []
+            if source_path:
+                sources_to_archive.append(source_path)
+            if extra_source_paths:
+                sources_to_archive.extend(extra_source_paths)
+            for src in sources_to_archive:
+                if src and src.exists():
+                    self._archive_source(src, result)
             
             # 5. Cleanup backups on success
             if self.backup_dir.exists():
@@ -93,27 +113,44 @@ class TransactionalApply:
             self._rollback()
             return result
     
-    def _dry_run_apply(self, plan: ChangePlan, result: ApplyResult) -> ApplyResult:
+    def _dry_run_apply(
+        self,
+        plan: ChangePlan,
+        result: ApplyResult,
+        extra_meeting_notes: Optional[list[tuple[str, dict]]] = None,
+        extra_source_paths: Optional[list[Path]] = None,
+    ) -> ApplyResult:
         """Simulate applying a plan (dry run)."""
         
         if plan.meeting_note_path:
             result.files_created.append(plan.meeting_note_path)
+        if extra_meeting_notes:
+            for note_path, _ctx in extra_meeting_notes:
+                if note_path:
+                    result.files_created.append(note_path)
         
         for patch in plan.patches:
             result.files_modified.append(patch.target_path)
         
         for manifest_patch in plan.manifest_patches:
             result.files_modified.append(manifest_patch.manifest_path)
+
+        sources_to_archive: list[Path] = []
+        if extra_source_paths:
+            sources_to_archive.extend(extra_source_paths)
+        for src in sources_to_archive:
+            if src:
+                result.files_archived.append(str(src))
         
         return result
     
-    def _create_meeting_note(self, plan: ChangePlan, result: ApplyResult):
+    def _create_meeting_note(self, note_path_rel: str, note_context: dict, result: ApplyResult):
         """Create the meeting note from plan."""
         from jinja2 import Environment, FileSystemLoader
         import re
         import os
         
-        note_path = self.vault_root / plan.meeting_note_path
+        note_path = self.vault_root / note_path_rel
         
         # Skip if exists
         if note_path.exists():
@@ -153,7 +190,7 @@ class TransactionalApply:
         env.filters['basename'] = basename
         
         # Select template based on note type
-        note_type = plan.meeting_note.get("type", "people")
+        note_type = note_context.get("type", "people")
         template_name = f"{note_type}.md.j2"
         
         try:
@@ -162,12 +199,12 @@ class TransactionalApply:
             template = env.get_template("people.md.j2")  # Fallback
         
         # Render
-        content = template.render(**plan.meeting_note)
+        content = template.render(**note_context)
         
         # Write
         note_path.write_text(content)
         self._created.append(note_path)
-        result.files_created.append(plan.meeting_note_path)
+        result.files_created.append(note_path_rel)
     
     def _apply_patch(self, patch: PatchOperation, result: ApplyResult):
         """Apply a single patch operation."""
@@ -292,13 +329,14 @@ class TransactionalApply:
                 current_aliases = cols[alias_col_idx].strip() if alias_col_idx < len(cols) else ""
                 
                 # Parse existing aliases
-                existing = set(a.strip() for a in current_aliases.split(",") if a.strip())
+                parts = [a.strip() for a in re.split(r"[;,]", current_aliases or "") if a.strip()]
+                existing = set(parts)
                 
                 # Add new aliases
                 existing.update(aliases_to_add)
                 
                 # Update the column
-                new_aliases = ", ".join(sorted(existing))
+                new_aliases = "; ".join(sorted(existing))
                 cols[alias_col_idx] = f" {new_aliases} "
                 
                 lines[i] = "|".join(cols)

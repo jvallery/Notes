@@ -167,11 +167,12 @@ class UnifiedPipeline:
             self._context = ContextBundle.load(self.vault_root, config=self.config, entity_index=self.entity_index)
         return self._context
     
-    def process_file(self, path: Path) -> ProcessingResult:
+    def process_file(self, path: Path, apply: bool = True) -> ProcessingResult:
         """Process a single content file.
         
         Args:
             path: Path to content file
+            apply: If False, only extract + plan (no filesystem changes)
         
         Returns:
             ProcessingResult with all details
@@ -226,7 +227,7 @@ class UnifiedPipeline:
             
             # 5. Apply changes
             apply_ms = 0
-            if not self.dry_run:
+            if apply and not self.dry_run:
                 apply_start = time.time()
                 applier = TransactionalApply(self.vault_root, dry_run=False)
                 apply_result = applier.apply(plan, path)
@@ -241,7 +242,7 @@ class UnifiedPipeline:
             # 6. Generate outputs (if enabled and extraction suggests needs_reply)
             outputs_ms = 0
             suggested = extraction.suggested_outputs
-            if self.generate_outputs and suggested and suggested.needs_reply:
+            if apply and self.generate_outputs and suggested and suggested.needs_reply:
                 outputs_start = time.time()
                 outputs = self.output_generator.generate_all(
                     extraction, 
@@ -410,7 +411,7 @@ class UnifiedPipeline:
         def process_with_semaphore(path: Path) -> ProcessingResult:
             """Process a single file with rate limiting."""
             with semaphore:
-                return self.process_file(path)
+                return self.process_file(path, apply=False)
         
         # Submit all tasks
         with ThreadPoolExecutor(max_workers=self.max_workers) as executor:
@@ -422,17 +423,10 @@ class UnifiedPipeline:
                     result = future.result()
                     batch.results.append(result)
                     
-                    if result.success:
-                        if any("Skipped" in str(err) for err in result.errors):
-                            batch.skipped += 1
-                        else:
-                            batch.success += 1
-                            # Collect successful patches for merge
-                            if result.plan:
-                                patch_collector.collect(result.plan)
-                                source_files.append(path)
-                    else:
-                        batch.failed += 1
+                    should_apply = result.success and not any("Skipped" in str(err) for err in result.errors)
+                    if should_apply and result.plan:
+                        patch_collector.collect(result.plan)
+                        source_files.append(path)
                     
                     # Aggregate metrics
                     metrics = result.metrics or {}
@@ -450,7 +444,6 @@ class UnifiedPipeline:
                         total_tokens += cache.get("total_tokens", 0)
                 
                 except Exception as e:
-                    batch.failed += 1
                     batch.results.append(ProcessingResult(
                         source_path=str(path),
                         content_type="unknown",
@@ -458,21 +451,46 @@ class UnifiedPipeline:
                         errors=[f"Parallel processing error: {e}"]
                     ))
         
-        # Merge all patches and apply atomically
-        if patch_collector.has_patches and not self.dry_run:
+        # Merge all patches and apply atomically (single-writer)
+        meeting_notes = patch_collector.get_meeting_notes()
+        needs_apply = (patch_collector.has_patches or bool(meeting_notes)) and not self.dry_run and bool(source_files)
+        if needs_apply:
             try:
                 merged_plan = patch_collector.merge()
-                if merged_plan.operations:
-                    applier = TransactionalApply(self.vault_root, dry_run=False)
-                    # Use first source file for commit message context
-                    primary_source = source_files[0] if source_files else paths[0]
-                    apply_result = applier.apply(merged_plan, primary_source)
-                    if not apply_result.success:
-                        # Log but don't fail batch - individual results already recorded
-                        for err in apply_result.errors:
-                            batch.results[-1].errors.append(f"Batch apply error: {err}")
+                applier = TransactionalApply(self.vault_root, dry_run=False)
+                primary_source = source_files[0]
+                extra_sources = source_files[1:] if len(source_files) > 1 else None
+                extra_notes = meeting_notes[1:] if len(meeting_notes) > 1 else None
+                apply_result = applier.apply(
+                    merged_plan,
+                    primary_source,
+                    extra_meeting_notes=extra_notes,
+                    extra_source_paths=extra_sources,
+                )
+
+                # Propagate apply result to individual items
+                for r in batch.results:
+                    if r.success and not any("Skipped" in str(err) for err in r.errors):
+                        r.apply_result = apply_result
+                        if not apply_result.success:
+                            r.success = False
+                            r.errors.extend(apply_result.errors)
             except Exception as e:
-                batch.results[-1].errors.append(f"Batch merge/apply error: {e}")
+                for r in batch.results:
+                    if r.success and not any("Skipped" in str(err) for err in r.errors):
+                        r.success = False
+                        r.errors.append(f"Batch merge/apply error: {e}")
+
+        # Recompute counts after batch apply
+        batch.success = batch.failed = batch.skipped = 0
+        for r in batch.results:
+            if r.success:
+                if any("Skipped" in str(err) for err in r.errors):
+                    batch.skipped += 1
+                else:
+                    batch.success += 1
+            else:
+                batch.failed += 1
         
         count = len(batch.results)
         phase_avg = {k: int(v / count) for k, v in timings_accum.items()} if count else {}
