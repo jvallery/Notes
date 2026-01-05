@@ -260,30 +260,54 @@ class PatchGenerator:
         """Generate meeting note path and context."""
         
         # Determine destination folder
-        folder = None
-        entity_name = None
-        entity_type = None
-        
-        if extraction.primary_entity:
-            folder = self._get_entity_folder(extraction.primary_entity, extraction)
-            entity_name = extraction.primary_entity.name
-            entity_type = extraction.primary_entity.entity_type
-        
-        if not folder:
+        folder: Optional[Path] = None
+        entity_name: Optional[str] = None
+        entity_type: Optional[str] = None
+
+        note_type = (extraction.note_type or "people").lower()
+        desired_entity_type = {
+            "people": "person",
+            "customer": "company",
+            "partners": "company",
+            "projects": "project",
+        }.get(note_type)
+
+        # Pick an entity matching the note_type when possible (prevents customer/project
+        # notes from being filed under a person just because a person was the sender).
+        candidate = None
+        if extraction.primary_entity and (
+            desired_entity_type is None or extraction.primary_entity.entity_type == desired_entity_type
+        ):
+            candidate = extraction.primary_entity
+        elif desired_entity_type in ("company", "project"):
+            best = None
+            for e in extraction.mentioned_entities or []:
+                if e.entity_type != desired_entity_type:
+                    continue
+                if best is None or (e.confidence or 0) > (best.confidence or 0):
+                    best = e
+            candidate = best
+        elif desired_entity_type == "person" and extraction.participants:
             # Default to first participant (skip self)
-            if extraction.participants:
-                for participant in extraction.participants:
-                    if participant.lower() not in ["myself", "jason", "jason vallery"]:
-                        email = self._get_email_for_participant(participant, extraction)
-                        folder = self.entity_index.find_person(participant, email=email)
-                        if folder:
-                            entity_name = participant
-                            entity_type = "person"
-                            break
-                        # Entity doesn't exist - create it
-                        entity_name = participant
-                        entity_type = "person"
-                        break
+            for participant in extraction.participants:
+                if participant.lower() in ["myself", "jason", "jason vallery"]:
+                    continue
+                email = self._get_email_for_participant(participant, extraction)
+                folder = self.entity_index.find_person(participant, email=email)
+                entity_name = participant
+                entity_type = "person"
+                break
+
+        if not folder and candidate:
+            folder = self._get_entity_folder(candidate, extraction)
+            entity_name = candidate.name
+            entity_type = candidate.entity_type
+        
+        if not folder and extraction.primary_entity:
+            # Fallback to primary entity even when it doesn't match note_type
+            folder = self._get_entity_folder(extraction.primary_entity, extraction)
+            entity_name = entity_name or extraction.primary_entity.name
+            entity_type = entity_type or extraction.primary_entity.entity_type
         
         if not folder and entity_name:
             # Create entity folder on-demand
@@ -303,6 +327,12 @@ class PatchGenerator:
             "title": extraction.title,
             "date": extraction.date,
             "type": extraction.note_type,
+            # Template expects `source` for correct defaulting.
+            "source": extraction.content_type,
+            # Entity key fields expected by templates (people/customer/projects).
+            "person": entity_name if entity_type == "person" else "",
+            "account": entity_name if entity_type == "company" else "",
+            "project": entity_name if entity_type == "project" else "",
             "participants": extraction.participants,
             "summary": extraction.summary,
             "topics": extraction.topics,
@@ -475,7 +505,8 @@ class PatchGenerator:
                 if contact.email:
                     result["email"] = contact.email
                 if contact.title:
-                    result["title"] = contact.title
+                    # Align with README schema: `title` is the person's name; job title goes in `role`.
+                    result["role"] = contact.title
                 if contact.company:
                     result["company"] = contact.company
                 if contact.phone:
@@ -558,15 +589,15 @@ class PatchGenerator:
                     break
             
             return f"""---
-type: person
-name: "{name}"
+type: people
+title: "{name}"
+created: "{today}"
+last_contact: "{extraction.date}"
 email: "{email or ''}"
 company: "{company or ''}"
-title: "{title or ''}"
-last_contact: "{extraction.date}"
-created: "{today}"
+role: "{title or ''}"
 tags:
-  - type/person
+  - type/people
   - needs-review
 ---
 
@@ -576,61 +607,95 @@ tags:
 
 ## Recent Context
 
-## Tasks
+## Open Tasks
 
 ```tasks
 path includes {name}
 not done
 ```
+
+## Topics
+
+## Key Decisions
 """
         elif entity_type == "company":
             return f"""---
-type: account
-name: "{name}"
-last_contact: "{extraction.date}"
+type: customer
+title: "{name}"
+account_type: ""
+status: ""
+industry: _Unknown_
 created: "{today}"
+last_contact: "{extraction.date}"
 tags:
-  - type/account
+  - type/customer
   - needs-review
 ---
 
 # {name}
 
-## Key Facts
+## Account Status
 
-## Recent Context
+| Field | Value |
+|-------|-------|
+| **Status** | _Unknown_ |
+| **Industry** | _Unknown_ |
 
-## Tasks
+## Key Contacts
+
+## Open Tasks
 
 ```tasks
 path includes {name}
 not done
 ```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
 """
         else:
             return f"""---
-type: project
-name: "{name}"
+type: projects
+title: "{name}"
 status: active
-last_contact: "{extraction.date}"
 created: "{today}"
+last_contact: "{extraction.date}"
 tags:
-  - type/project
+  - type/projects
+  - status/active
   - needs-review
 ---
 
 # {name}
 
-## Key Facts
+## Status
 
-## Recent Context
+| Field | Value |
+|-------|-------|
+| **Status** | active |
+| **Owner** | _Unknown_ |
 
-## Tasks
+## Overview
+
+## Open Tasks
 
 ```tasks
 path includes {name}
 not done
 ```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
 """
 
     def _warn_duplicate(self, name: str, entity_type: str, plan: ChangePlan):
