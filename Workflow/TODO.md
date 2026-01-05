@@ -311,17 +311,17 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Apply instrumentation and cache metrics across pipeline phases.
 
-**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:21)
+**Status: ✅ COMPLETED** (2026-01-05)
 
 **Impact:** Medium
 
 **Effort:** 2 hours
 
 **Tasks**
-- [ ] Wrap adapter/extract/patch/apply/output phases with structured logging + timings; print run summary
-- [ ] Surface prompt cache hit/miss and token savings; add `--show-cache-stats` flag
-- [ ] Persist metrics to `logs/ai` and human-readable logs; document how to view stats
-- [ ] Add unit/fixture test to ensure metrics fields populate
+- [x] Wrap adapter/extract/patch/apply/output phases with structured logging + timings; print run summary
+- [x] Surface prompt cache hit/miss and token savings; add `--show-cache-stats` flag
+- [x] Persist metrics to `logs/ai` and human-readable logs; document how to view stats
+- [x] Add unit/fixture test to ensure metrics fields populate
 
 **Success Criteria**
 - Logs show phase timings and cache hit/miss data; summary emitted at run end

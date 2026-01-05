@@ -70,7 +70,7 @@ def test_process_file_dry_run(monkeypatch, tmp_path):
     inbox_file.parent.mkdir(parents=True, exist_ok=True)
     inbox_file.write_text("hello")
 
-    pipeline = UnifiedPipeline(tmp_path, dry_run=True, verbose=False, generate_outputs=False)
+    pipeline = UnifiedPipeline(tmp_path, dry_run=True, verbose=False, generate_outputs=False, log_metrics=False)
 
     monkeypatch.setattr(pipeline.registry, "parse", lambda p: _fake_envelope(p))
     monkeypatch.setattr(pipeline.extractor, "extract", lambda env, ctx: _fake_extraction(env.source_path))
@@ -89,7 +89,7 @@ def test_process_file_with_apply(monkeypatch, tmp_path):
     inbox_file.parent.mkdir(parents=True, exist_ok=True)
     inbox_file.write_text("hello")
 
-    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False)
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, log_metrics=False)
 
     monkeypatch.setattr(pipeline.registry, "parse", lambda p: _fake_envelope(p))
     monkeypatch.setattr(pipeline.extractor, "extract", lambda env, ctx: _fake_extraction(env.source_path))

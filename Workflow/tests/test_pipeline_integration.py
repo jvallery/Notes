@@ -138,7 +138,7 @@ def test_pipeline_processes_email_fixture_end_to_end(monkeypatch, tmp_path):
     inbox_path.parent.mkdir(parents=True, exist_ok=True)
     inbox_path.write_text(email_fixture.read_text())
 
-    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True)
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True, log_metrics=False)
 
     # Stub extractor to bypass network/LLM
     monkeypatch.setattr(
@@ -193,7 +193,7 @@ def test_pipeline_processes_all_inbox_types(monkeypatch, tmp_path):
     inbox_transcript.parent.mkdir(parents=True, exist_ok=True)
     inbox_transcript.write_text(transcript_fixture.read_text())
 
-    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True)
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True, log_metrics=False)
     monkeypatch.setattr(
         pipeline.extractor,
         "extract",
@@ -229,7 +229,7 @@ def test_pipeline_apply_archives_source(monkeypatch, tmp_path):
     inbox_path.parent.mkdir(parents=True, exist_ok=True)
     inbox_path.write_text(email_fixture.read_text())
 
-    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True)
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=False, force=True, log_metrics=False)
 
     monkeypatch.setattr(
         pipeline.extractor,

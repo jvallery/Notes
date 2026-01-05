@@ -12,6 +12,7 @@ Combines:
 
 import json
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -27,6 +28,7 @@ from .patch import PatchGenerator, ChangePlan
 from .apply import TransactionalApply, ApplyResult
 from .entities import EntityIndex
 from .outputs import OutputGenerator
+from scripts.utils.ai_client import log_pipeline_stats
 
 
 @dataclass
@@ -47,6 +49,9 @@ class ProcessingResult:
     draft_reply: Optional[str] = None
     calendar_invite: Optional[dict] = None
     
+    # Metrics
+    metrics: dict = field(default_factory=dict)
+    
     # Errors
     errors: list[str] = field(default_factory=list)
     
@@ -66,6 +71,7 @@ class BatchResult:
     failed: int = 0
     skipped: int = 0
     results: list[ProcessingResult] = field(default_factory=list)
+    metrics: dict = field(default_factory=dict)
     
     def __str__(self):
         return f"Processed {self.total}: {self.success} success, {self.failed} failed, {self.skipped} skipped"
@@ -95,6 +101,8 @@ class UnifiedPipeline:
         generate_outputs: bool = True,
         force: bool = False,
         trace_dir: Optional[Path] = None,
+        show_cache_stats: bool = False,
+        log_metrics: bool = True,
     ):
         self.vault_root = vault_root
         self.dry_run = dry_run
@@ -102,6 +110,8 @@ class UnifiedPipeline:
         self.generate_outputs = generate_outputs
         self.force = force
         self.trace_dir = trace_dir
+        self.show_cache_stats = show_cache_stats
+        self.log_metrics = log_metrics
         
         # Initialize components
         self.registry = AdapterRegistry.default()
@@ -133,13 +143,18 @@ class UnifiedPipeline:
             source_path=str(path),
             content_type="unknown"
         )
+        phase_timings: dict[str, int] = {}
+        run_start = time.time()
         
         try:
             # 1. Parse with adapter
+            parse_start = time.time()
             envelope = self.registry.parse(path)
+            phase_timings["adapter_ms"] = int((time.time() - parse_start) * 1000)
             if not envelope:
                 result.success = False
                 result.errors.append(f"No adapter found for {path}")
+                result.metrics = {"timings": phase_timings, "cache": {}}
                 return result
             
             result.content_type = envelope.content_type.value
@@ -149,32 +164,47 @@ class UnifiedPipeline:
             if not self.force and self._is_duplicate(envelope):
                 result.success = True
                 result.errors.append("Skipped: duplicate content")
+                result.metrics = {"timings": phase_timings, "cache": {}}
                 return result
             
             # 3. Extract with LLM
-            extraction = self.extractor.extract(envelope, self.context)
+            ctx_start = time.time()
+            context = self.context
+            phase_timings["context_ms"] = int((time.time() - ctx_start) * 1000)
+            
+            extract_start = time.time()
+            extraction = self.extractor.extract(envelope, context)
+            phase_timings["extract_ms"] = int((time.time() - extract_start) * 1000)
             result.extraction = extraction.model_dump()
             
             if self.verbose:
                 self._log_extraction(extraction)
             
             # 4. Generate patches
+            patch_start = time.time()
             plan = self.patch_generator.generate(extraction)
+            phase_timings["patch_ms"] = int((time.time() - patch_start) * 1000)
             result.plan = plan
             
             # 5. Apply changes
+            apply_ms = 0
             if not self.dry_run:
+                apply_start = time.time()
                 applier = TransactionalApply(self.vault_root, dry_run=False)
                 apply_result = applier.apply(plan, path)
                 result.apply_result = apply_result
+                apply_ms = int((time.time() - apply_start) * 1000)
                 
                 if not apply_result.success:
                     result.success = False
                     result.errors.extend(apply_result.errors)
+            phase_timings["apply_ms"] = apply_ms
             
             # 6. Generate outputs (if enabled and extraction suggests needs_reply)
+            outputs_ms = 0
             suggested = extraction.suggested_outputs
             if self.generate_outputs and suggested and suggested.needs_reply:
+                outputs_start = time.time()
                 outputs = self.output_generator.generate_all(
                     extraction, 
                     self.context,
@@ -182,16 +212,28 @@ class UnifiedPipeline:
                 )
                 result.draft_reply = str(outputs.get("reply")) if outputs.get("reply") else None
                 result.calendar_invite = {"path": str(outputs.get("calendar"))} if outputs.get("calendar") else None
+                outputs_ms = int((time.time() - outputs_start) * 1000)
+            phase_timings["outputs_ms"] = outputs_ms
             
             # 7. Persist trace artifacts if requested
             if self.trace_dir:
                 self._persist_trace(envelope, extraction, plan)
+            
+            result.metrics = {
+                "timings": phase_timings,
+                "cache": getattr(self.extractor, "last_usage", {}),
+                "run_ms": int((time.time() - run_start) * 1000),
+            }
             
             return result
             
         except Exception as e:
             result.success = False
             result.errors.append(str(e))
+            result.metrics = {
+                "timings": phase_timings,
+                "cache": getattr(self.extractor, "last_usage", {}),
+            }
             return result
     
     def process_all(self) -> BatchResult:
@@ -275,6 +317,11 @@ class UnifiedPipeline:
         """Process a list of paths and return aggregated results."""
         batch = BatchResult()
         batch.total = len(paths)
+        batch_start = time.time()
+        
+        timings_accum: dict[str, int] = {}
+        cache_calls = cache_hits = 0
+        cached_tokens = prompt_tokens = total_tokens = 0
         
         for path in paths:
             result = self.process_file(path)
@@ -287,6 +334,52 @@ class UnifiedPipeline:
                     batch.success += 1
             else:
                 batch.failed += 1
+            
+            # Aggregate metrics
+            metrics = result.metrics or {}
+            timings = metrics.get("timings") or {}
+            for phase, ms in timings.items():
+                timings_accum[phase] = timings_accum.get(phase, 0) + ms
+            
+            cache = metrics.get("cache") or {}
+            if cache:
+                cache_calls += 1
+                if cache.get("cache_hit"):
+                    cache_hits += 1
+                cached_tokens += cache.get("cached_tokens", 0)
+                prompt_tokens += cache.get("prompt_tokens", 0)
+                total_tokens += cache.get("total_tokens", 0)
+        
+        count = len(batch.results)
+        phase_avg = {k: int(v / count) for k, v in timings_accum.items()} if count else {}
+        cache_summary = {
+            "calls": cache_calls,
+            "hits": cache_hits,
+            "hit_rate": (cache_hits / cache_calls * 100) if cache_calls else 0,
+            "cached_tokens": cached_tokens,
+            "prompt_tokens": prompt_tokens,
+            "total_tokens": total_tokens,
+        }
+        
+        batch.metrics = {
+            "run_ms": int((time.time() - batch_start) * 1000),
+            "phase_ms_avg": phase_avg,
+            "cache": cache_summary,
+        }
+        
+        if self.log_metrics and batch.total > 0:
+            try:
+                log_pipeline_stats({
+                    "timestamp": datetime.now().isoformat(),
+                    "total": batch.total,
+                    "success": batch.success,
+                    "failed": batch.failed,
+                    "skipped": batch.skipped,
+                    **batch.metrics,
+                })
+            except Exception:
+                # Metrics logging should never break the pipeline
+                pass
         
         # Invalidate entity index (new entities may have been created)
         self.entity_index.invalidate()

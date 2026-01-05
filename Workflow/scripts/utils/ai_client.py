@@ -104,6 +104,7 @@ class DailySummary:
     by_operation: Dict[str, int] = field(default_factory=dict)
     by_caller: Dict[str, int] = field(default_factory=dict)
     estimated_cost_usd: float = 0.0
+    pipeline_runs: List[Dict] = field(default_factory=list)
     
     def add_response(self, request: AIRequest, response: AIResponse):
         """Add a request/response pair to the summary."""
@@ -168,6 +169,10 @@ class DailySummary:
                     cost += (tokens * 0.3 / 1000) * output_cost
                     break
         return round(cost, 4)
+
+    def add_pipeline_run(self, stats: Dict[str, Any]):
+        """Append unified pipeline run metrics."""
+        self.pipeline_runs.append(stats)
 
 
 class AILogger:
@@ -266,6 +271,18 @@ class AILogger:
             f.write(json.dumps(asdict(response), default=str) + "\n")
         
         self.summary.add_response(request, response)
+        self._save_summary()
+
+    def log_pipeline_stats(self, stats: Dict[str, Any]):
+        """Persist unified pipeline metrics into the daily summary."""
+        self._check_day_rollover()
+        try:
+            self.summary.add_pipeline_run(stats)
+        except Exception:
+            # Backward compatibility if summary lacks pipeline_runs
+            if not hasattr(self.summary, "pipeline_runs"):
+                self.summary.pipeline_runs = []
+            self.summary.pipeline_runs.append(stats)
         self._save_summary()
     
     def log_completion(
@@ -476,6 +493,11 @@ def get_logger() -> AILogger:
 def get_daily_stats() -> Dict:
     """Get today's API usage statistics."""
     return AILogger().get_stats()
+
+
+def log_pipeline_stats(stats: Dict[str, Any]):
+    """Append unified pipeline metrics to the daily AI summary."""
+    AILogger().log_pipeline_stats(stats)
 
 
 def get_cached_system_prompt(

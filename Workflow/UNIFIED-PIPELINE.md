@@ -458,6 +458,9 @@ python scripts/ingest.py --all --draft-replies --enrich
 
 # Re-process archived sources (after prompt/schema change)
 python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
+
+# Inspect cache/timing metrics
+python scripts/ingest.py --all --show-cache-stats
 ```
 
 ---

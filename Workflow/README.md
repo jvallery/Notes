@@ -169,6 +169,7 @@ python scripts/ingest.py --file Inbox/Email/example.md --dry-run
 ```
 
 Key flags: `--type {email|transcript|document|voice|all}`, `--source`, `--force`, `--enrich`, `--draft-replies`, `--trace-dir`, `--vault-root`.
+Key observability flag: `--show-cache-stats` (prints per-run cache + timing summary).
 
 #### Legacy wrappers
 

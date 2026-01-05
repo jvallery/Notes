@@ -13,6 +13,7 @@ Usage:
     python ingest.py --enrich                     # Trigger enrichment for new entities
     python ingest.py --draft-replies              # Generate draft email replies
     python ingest.py --trace-dir /tmp/traces      # Save extraction/changeplan artifacts
+    python ingest.py --all --show-cache-stats     # Print cache + timing summary
 """
 
 import sys
@@ -43,9 +44,10 @@ console = Console()
 @click.option("--draft-replies", is_flag=True, help="Generate draft email replies")
 @click.option("--source", is_flag=True, help="Re-process from Sources/ directory")
 @click.option("--force", is_flag=True, help="Skip duplicate detection, reprocess even if already extracted")
+@click.option("--show-cache-stats", is_flag=True, help="Print cache + timing summary after run")
 @click.option("--trace-dir", type=click.Path(), help="Persist extraction/changeplan artifacts to this directory")
 @click.option("--vault-root", type=click.Path(), help="Override vault root (defaults to repo root)")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, trace_dir: str, vault_root: str):
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, show_cache_stats: bool, trace_dir: str, vault_root: str):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
@@ -73,8 +75,12 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         generate_outputs=draft_replies,
         force=force,
         trace_dir=Path(trace_dir) if trace_dir else None,
+        show_cache_stats=show_cache_stats,
     )
     
+    batch = None
+    single_result = None
+
     # Process based on options
     if file_path:
         # Single file
@@ -85,6 +91,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
             raise click.ClickException(f"File not found: {target_path}")
         result = pipeline.process_file(target_path)
         _display_result(result, verbose)
+        single_result = result
         
     elif source:
         # Re-process already archived sources
@@ -100,6 +107,11 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         selected = type_map[content_type]
         batch = pipeline.process_type(selected)
         _display_batch(batch, verbose)
+    
+    if (show_cache_stats or verbose) and batch:
+        _print_batch_metrics(batch)
+    if (show_cache_stats or verbose) and single_result:
+        _print_result_metrics(single_result)
     
     # Run enrichment if requested
     if enrich and not dry_run:
@@ -153,6 +165,65 @@ def _display_batch(batch, verbose: bool):
         console.print("\n[bold]Details:[/bold]")
         for result in batch.results:
             _display_result(result, verbose)
+
+
+def _print_batch_metrics(batch):
+    """Print cache + timing summary for batch runs."""
+    metrics = getattr(batch, "metrics", {}) or {}
+    if not metrics:
+        return
+    
+    console.print("\n[bold]Run Summary[/bold]")
+    console.print(
+        f"Duration: {metrics.get('run_ms', 0)} ms | Files: {batch.total} "
+        f"(success {batch.success}, failed {batch.failed}, skipped {batch.skipped})"
+    )
+    
+    timings = metrics.get("phase_ms_avg", {}) or {}
+    if timings:
+        table = Table(title="Avg Phase Timings (ms)")
+        table.add_column("Phase")
+        table.add_column("ms", justify="right")
+        for phase, ms in sorted(timings.items()):
+            label = phase.replace("_ms", "")
+            table.add_row(label, str(ms))
+        console.print(table)
+    
+    cache = metrics.get("cache", {}) or {}
+    if cache.get("calls"):
+        hit_rate = cache.get("hit_rate", 0)
+        console.print(
+            f"Cache: {cache.get('hits', 0)}/{cache.get('calls', 0)} hits "
+            f"({hit_rate:.0f}%), saved {cache.get('cached_tokens', 0)} tokens "
+            f"of {cache.get('prompt_tokens', 0)} prompt tokens"
+        )
+
+
+def _print_result_metrics(result):
+    """Print cache + timing summary for single-file runs."""
+    metrics = getattr(result, "metrics", {}) or {}
+    if not metrics:
+        return
+    
+    console.print("\n[bold]Run Summary (single file)[/bold]")
+    timings = metrics.get("timings", {}) or {}
+    if timings:
+        table = Table(title="Phase Timings (ms)")
+        table.add_column("Phase")
+        table.add_column("ms", justify="right")
+        for phase, ms in sorted(timings.items()):
+            label = phase.replace("_ms", "")
+            table.add_row(label, str(ms))
+        console.print(table)
+    
+    cache = metrics.get("cache", {}) or {}
+    if cache:
+        hit_text = "hit" if cache.get("cache_hit") else "miss"
+        console.print(
+            f"Cache {hit_text}: "
+            f"{cache.get('cached_tokens', 0)}/{cache.get('prompt_tokens', 0)} prompt tokens "
+            f"saved, latency={cache.get('latency_ms', 0)} ms"
+        )
 
 
 def _run_enrichment(vault_root: Path, verbose: bool):

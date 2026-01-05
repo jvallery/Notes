@@ -13,6 +13,7 @@ All automation scripts share a common infrastructure for:
 2. **Unified Logging** — Consistent log formatting, context tracking, and file output
 3. **Cost Tracking** — Token usage and cost estimation per model/caller
 4. **Audit Trail** — Complete record of all AI interactions for debugging
+5. **Pipeline Metrics** — Phase timings + prompt cache stats recorded per ingest run
 
 ## Architecture
 
@@ -165,7 +166,33 @@ Every API call logs:
     "ingest_emails": 20,
     "entity_discovery": 10
   },
-  "estimated_cost_usd": 0.85
+  "estimated_cost_usd": 0.85,
+  "pipeline_runs": [
+    {
+      "timestamp": "2026-01-05T00:15:00.123Z",
+      "total": 3,
+      "success": 3,
+      "failed": 0,
+      "skipped": 0,
+      "run_ms": 1820,
+      "phase_ms_avg": {
+        "adapter_ms": 8,
+        "context_ms": 10,
+        "extract_ms": 520,
+        "patch_ms": 40,
+        "apply_ms": 650,
+        "outputs_ms": 90
+      },
+      "cache": {
+        "calls": 3,
+        "hits": 2,
+        "hit_rate": 66.7,
+        "cached_tokens": 900,
+        "prompt_tokens": 1500,
+        "total_tokens": 1800
+      }
+    }
+  ]
 }
 ```
 
@@ -179,6 +206,11 @@ print(f"Requests today: {stats['total_requests']}")
 print(f"Tokens used: {stats['total_tokens']}")
 print(f"Estimated cost: ${stats['estimated_cost_usd']:.2f}")
 ```
+
+### Unified Pipeline Metrics
+
+- Show per-run timings + cache stats inline: `python scripts/ingest.py --all --show-cache-stats`
+- Aggregated metrics live in `Workflow/logs/ai/YYYY-MM-DD/summary.json` under `pipeline_runs` (hit rate, cached tokens, average phase timings).
 
 ## Logging (`utils.logging`)
 

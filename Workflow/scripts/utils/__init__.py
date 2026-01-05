@@ -78,6 +78,7 @@ from .ai_client import (
     get_openai_client,
     get_logger as get_ai_logger,
     get_daily_stats as get_ai_stats,
+    log_pipeline_stats,
     AILogger,
     InstrumentedClient,
 )
@@ -161,6 +162,7 @@ __all__ = [
     "get_openai_client",
     "get_ai_logger",
     "get_ai_stats",
+    "log_pipeline_stats",
     "AILogger",
     "InstrumentedClient",
     # Logging

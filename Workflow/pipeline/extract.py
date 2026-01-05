@@ -8,6 +8,7 @@ UnifiedExtraction for downstream patching and output generation.
 import json
 import re
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 from typing import Optional
@@ -40,6 +41,7 @@ class UnifiedExtractor:
         self._client = None
         self._context: Optional[ContextBundle] = None
         self.logger = get_logger("unified_extractor")
+        self.last_usage: dict = {}
     
     @property
     def client(self):
@@ -63,6 +65,7 @@ class UnifiedExtractor:
         if context is None:
             context = ContextBundle.load(self.vault_root, envelope)
         
+        self.last_usage = {}
         # Build prompt - pass verbose flag for cache logging
         system_prompt = self._build_system_prompt(envelope, context)
         user_prompt = self._build_user_prompt(envelope)
@@ -76,6 +79,7 @@ class UnifiedExtractor:
         model_config = get_model_config(task_key)
         
         # Call LLM with prompt caching enabled
+        call_start = time.time()
         try:
             with self.logger.context(phase="extract", file=str(envelope.source_path)):
                 response = self.client.chat.completions.create(
@@ -88,15 +92,17 @@ class UnifiedExtractor:
                     # Prompt caching: static context (persona/glossary/aliases) is first in system prompt.
                 )
             
+            latency_ms = int((time.time() - call_start) * 1000)
+            self.last_usage = self._capture_usage(response, model_config.get("model", "gpt-4o"), latency_ms)
+            
             # Log cache stats if available (OpenAI returns cached_tokens in usage)
-            if self.verbose and hasattr(response, 'usage') and response.usage:
-                usage = response.usage
-                prompt_tokens = getattr(usage, 'prompt_tokens', 0)
-                cached_tokens = getattr(usage, 'cached_tokens', 0) or getattr(getattr(usage, 'prompt_tokens_details', {}), 'cached_tokens', 0)
-                if cached_tokens > 0:
+            if self.verbose and self.last_usage:
+                prompt_tokens = self.last_usage.get("prompt_tokens", 0)
+                cached_tokens = self.last_usage.get("cached_tokens", 0)
+                if self.last_usage.get("cache_hit"):
                     cache_pct = (cached_tokens / prompt_tokens * 100) if prompt_tokens > 0 else 0
                     self.logger.info(f"Cache HIT: {cached_tokens}/{prompt_tokens} tokens ({cache_pct:.0f}%)")
-                else:
+                elif prompt_tokens:
                     self.logger.info(f"Cache miss: {prompt_tokens} prompt tokens")
             
             result = response.choices[0].message.content.strip()
@@ -115,6 +121,46 @@ class UnifiedExtractor:
         except Exception as e:
             self.logger.error("Extraction failed", exc_info=True)
             raise RuntimeError(f"Extraction failed: {e}")
+    
+    def _capture_usage(self, response, model: str, latency_ms: int) -> dict:
+        """Capture token + cache usage stats from an OpenAI response."""
+        usage = getattr(response, "usage", None)
+        prompt_tokens = self._get_usage_value(usage, "prompt_tokens")
+        completion_tokens = self._get_usage_value(usage, "completion_tokens")
+        total_tokens = self._get_usage_value(usage, "total_tokens")
+        cached_tokens = self._get_usage_value(usage, "cached_tokens")
+        
+        # Some SDKs nest cached tokens under prompt_tokens_details
+        if not cached_tokens and usage is not None:
+            details = getattr(usage, "prompt_tokens_details", None)
+            if isinstance(details, dict):
+                cached_tokens = details.get("cached_tokens", 0) or 0
+            elif details is not None:
+                cached_tokens = getattr(details, "cached_tokens", 0) or 0
+        
+        if total_tokens == 0:
+            total_tokens = (prompt_tokens or 0) + (completion_tokens or 0)
+        
+        cache_hit = cached_tokens > 0
+        
+        return {
+            "model": model,
+            "prompt_tokens": prompt_tokens or 0,
+            "completion_tokens": completion_tokens or 0,
+            "total_tokens": total_tokens or 0,
+            "cached_tokens": cached_tokens or 0,
+            "cache_hit": cache_hit,
+            "cache_savings_tokens": cached_tokens or 0,
+            "latency_ms": latency_ms,
+        }
+    
+    def _get_usage_value(self, usage, key: str) -> int:
+        """Helper to safely read usage values from dicts or SDK objects."""
+        if usage is None:
+            return 0
+        if isinstance(usage, dict):
+            return usage.get(key, 0) or 0
+        return getattr(usage, key, 0) or 0
     
     def _build_system_prompt(self, envelope: ContentEnvelope, context: ContextBundle) -> str:
         """Build system prompt with context and extraction instructions.

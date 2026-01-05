@@ -28,8 +28,8 @@ def test_ingest_cli_routes(monkeypatch, tmp_path):
             self.errors = []
 
     class FakePipeline:
-        def __init__(self, vault_root, dry_run, verbose, generate_outputs, force, trace_dir=None):
-            calls.append(("init", vault_root, dry_run, verbose, generate_outputs, force, trace_dir))
+        def __init__(self, vault_root, dry_run, verbose, generate_outputs, force, trace_dir=None, show_cache_stats=False, log_metrics=True):
+            calls.append(("init", vault_root, dry_run, verbose, generate_outputs, force, trace_dir, show_cache_stats, log_metrics))
 
         def process_file(self, path):
             calls.append(("file", Path(path)))
