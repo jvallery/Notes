@@ -1,6 +1,6 @@
 ---
 type: people
-title: ''
+title: Pharmacist
 created: '2026-01-04'
 last_contact: '2026-01-04'
 email: ndfuller07@gmail.com
@@ -21,6 +21,7 @@ tags:
 
 ## Key Facts
 
+- Nathan is a pharmacist.
 ## Recent Context
 
 - 2026-01-04: First contact via email re: Re: Tues mens group
@@ -30,3 +31,6 @@ tags:
 ## Related
 
 - [[Tues mens group]]
+
+- [[Utility space]]
+- [[TMIMITW]]

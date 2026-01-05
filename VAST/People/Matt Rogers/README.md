@@ -5,7 +5,7 @@ created: '2026-01-04'
 last_contact: '2025-12-30'
 email: ''
 phone: ''
-company: ''
+company: Oracle
 tags:
 - type/people
 - needs-review
@@ -21,12 +21,14 @@ tags:
 
 ## Key Facts
 
+- Matt runs product management for DRCC/Alloy.
 ## Recent Context
 
 - 2025-12-30: First contact via email re: Re: Re: [EXTERNAL] [EXTERNAL] Re: OA Alert: FOpp-4
 
 ## Open Tasks
 
+- [ ] Connect with Matt in Seattle. @Myself 🔼 #task
 ## Related
 
 - [[VAST Data]]
@@ -35,3 +37,5 @@ tags:
 - [[Microsoft Azure]]
 - [[Leidos DoD Cloud]]
 - [[Golden Dome]]
+
+- [[DRCC/Alloy]]

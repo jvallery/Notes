@@ -188,6 +188,8 @@ not done
 - 2026-01-04: Karl Rautenstrauch is rescheduling the weekly VAST GTM meeting due to a family emergency and propose
 
 - 2025-12-21: The email discusses plans for VAST Data's involvement at CES, including attending NVIDIA Live and co
+
+- 2025-11-20: Adem Sefa introduces his brother-in-law, Edwin Trogler, to Jason for a potential FP&A Director role,
 ## Key Facts
 
 - Microsoft's lab does not have GPU nodes available.

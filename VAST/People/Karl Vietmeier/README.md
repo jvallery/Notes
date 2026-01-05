@@ -9,6 +9,7 @@ tags:
 email: karl.rautenstrauch@microsoft.com
 company: Microsoft
 linkedin: Connect with me on LinkedIn
+phone: +1 9497953118
 ---
 
 # Karl Vietmeier
@@ -30,11 +31,15 @@ linkedin: Connect with me on LinkedIn
 - [ ] Work with Karl and dev leads to wire calculator inputs into deployment tooling so customer-facing “available capacity” matches deployed striping for the chosen region/SKU.
 
 - [ ] Confirm if Wednesday or Thursday is better for the rescheduled meeting. @VAST team 🔼 #task
+
+- [ ] Provide guidance on how aggressive VAST Data should be in asserting ownership over GDC and Azure Local opportunities. @Myself 🔼 #task
 ## Recent Context
 
 - 2025-10-31: [[2025-10-31 - Aligning on VAST cloud strategy]] (via VAST)
 
 - 2026-01-04: Email re: Re: Weekly VAST GTM Meeting - Karl Rautenstrauch is rescheduling the weekly VAST GTM meeting due to a family emergency and propose
+
+- 2025-12-01: Email re: Support for GDC/Azure Local - Karl Vietmeier is seeking guidance on how aggressively VAST Data should assert ownership over GDC an
 ## Key Facts
 
 - Karl's youngest son suffered a badly broken leg.
@@ -54,3 +59,5 @@ linkedin: Connect with me on LinkedIn
 - [[Azure VoC]]
 
 - [[VAST GTM]]
+
+- [[GDC]]

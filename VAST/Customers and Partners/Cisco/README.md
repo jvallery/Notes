@@ -42,6 +42,8 @@ SORT due ASC
 - 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 
 - 2025-12-17: The email discusses the follow-up on a meeting regarding VAST Data's GDC Storage RFP proposal, addre
+
+- 2025-12-17: Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 ## Key Facts
 
 - Cisco manages many sites globally with data replication and requires regex pattern capabilities for file management.

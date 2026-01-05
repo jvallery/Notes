@@ -36,6 +36,8 @@ SORT due ASC
 - 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 
 - 2025-12-18: Email re: Re: Early heads up - board game the week after Chr - Brian Bearly is organizing a board game session the week after Christmas and is coordinating with fr
+
+- 2025-12-17: Email re: RFE Alert: RFE 0526 - Existing Feature Enhancement - Brian Evans has submitted and approved an RFE for an existing feature enhancement related to Cisco,
 ## Key Facts
 
 - Brian Bearly is hosting a board game session at his place.

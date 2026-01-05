@@ -1,15 +1,14 @@
 ---
 type: people
-title: "Edwin Trogler"
-created: "2026-01-04"
-last_contact: "2025-11-20"
-email: "edwintrogler@gmail.com"
-phone: ""
-company: ""
-title: ""
+title: ''
+created: '2026-01-04'
+last_contact: '2025-11-20'
+email: edwintrogler@gmail.com
+phone: ''
+company: ''
 tags:
-  - "type/people"
-  - "needs-review"
+- type/people
+- needs-review
 ---
 
 # Edwin Trogler
@@ -22,11 +21,19 @@ tags:
 
 ## Key Facts
 
+- Edwin Trogler is visiting London until Sunday.
+
+- Edwin Trogler is interested in FP&A opportunities in Colorado.
 ## Recent Context
 
 - 2025-11-20: First contact via email re: Re: Introduction for FP&A Director role.
 
 ## Open Tasks
 
+- [ ] Review Edwin Trogler's resume and consider for FP&A Director role. @Myself 🔼 #task
+
+- [ ] Schedule a call with Edwin Trogler next week. @Myself 🔼 #task
 ## Related
 
+- [[Microsoft]]
+- [[VAST]]

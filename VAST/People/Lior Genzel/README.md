@@ -7,7 +7,7 @@ tags:
 - type/people
 - generated
 email: lior.genzel@vastdata.com
-company: NVIDIA
+company: VAST Data
 phone: 408 888 2102
 ---
 
