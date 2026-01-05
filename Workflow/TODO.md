@@ -311,7 +311,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Apply instrumentation and cache metrics across pipeline phases.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 00:21)
 
 **Impact:** Medium
 
