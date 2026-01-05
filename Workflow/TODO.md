@@ -448,7 +448,7 @@ Legacy remediation items (1–93) have been archived; see git history if needed.
 
 **Goal:** Finish MANIFEST-ENRICHMENT.md to match current CLIs and levels.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105-1, started: 2026-01-05 02:15)
 
 **Impact:** Low
 
