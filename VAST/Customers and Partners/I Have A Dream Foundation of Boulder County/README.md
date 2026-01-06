@@ -5,7 +5,7 @@ account_type: ''
 status: ''
 industry: _Unknown_
 created: '2026-01-05'
-last_contact: '2025-12-08'
+last_contact: '2025-12-10'
 tags:
 - type/customer
 - needs-review
@@ -75,6 +75,12 @@ not done
 - IHDF Board of Directors members are requested to provide feedback on the IHDF Draft Strategic Plan using a Feedback Form by 2025-12-18; questions in the form are optional and feedback can alternatively be provided via email or a 1:1 meeting with Hannah or Andrea Ostroy.
 
 - I Have A Dream Foundation of Boulder County (IHDF) address is 5390 Manhattan Circle, Boulder, CO 80303.
+
+- IHDF executive session participants agreed to form a fundraising committee with a broader development scope beyond events and marketing, including volunteers, stewardship, and potentially non-board members and a budget.
+
+- IHDF is in very early-stage exploration of acquiring a former church in Longmont that is for sale at a low price; the idea is not currently part of any organizational plan and was requested to be kept confidential.
+
+- A small group (Maureen, Jorin, Tracy, and Perla Delgado) will evaluate initial feasibility of the potential Longmont former church acquisition and report back to the IHDF board.
 ## Topics
 
 - IHDF Draft Strategic Plan feedback collection process
@@ -118,6 +124,12 @@ not done
 - IHDF Draft Strategic Plan review and feedback collection
 
 - January IHDF board meeting presentation of designed strategic plan by consultants
+
+- IHDF governance and communications risk related to public stances and tax-exempt status
+
+- Fundraising strategy and creation of a broader development-focused fundraising committee
+
+- Early-stage feasibility exploration of acquiring a former church property in Longmont, including SWOT analysis
 ## Key Decisions
 
 - IHDF will form a fundraising committee with a broader development scope beyond events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.

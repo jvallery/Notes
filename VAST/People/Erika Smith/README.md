@@ -34,6 +34,8 @@ tags:
 - 2025-12-10: Erika Smith emailed a confidential recap of an IHDF executive session that Jason Vallery missed. Key...
 
 - 2025-12-10: Mentioned in: IHDF executive session recap: public stance risk, fundraising committee, Longmont church acquisition exploration
+
+- 2025-12-10: Mentioned in: IHDF executive session recap: public stances, fundraising committee, Longmont church acquisition exploration
 ## Open Tasks
 ```tasks
 path includes Erika Smith
