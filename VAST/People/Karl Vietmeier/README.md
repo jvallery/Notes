@@ -99,6 +99,8 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Lior Genzel indicated Karl Vietmeier is optional on the follow-up call with Microsoft because Lior plans to block the Azure VoC request.
 
 - Karl Vietmeier believes GDC and Azure Local opportunities should be managed through Cloud Product Management because the cloud team has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through VAST cloud product management because these solutions are expected to be acquired through hyperscalers and tied to cloud consumption, and cloud product management has the strongest hyperscaler relationships.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -199,6 +201,8 @@ not done
 - Cross-team handoff friction between cloud product management and on-prem teams when hardware is involved
 
 - Hyperscaler-led acquisition and cloud consumption alignment for hybrid/on-prem cloud offerings
+
+- Cross-team handoff issues between VAST cloud and on-prem teams when hardware is involved
 ## Key Decisions
 
 - P0 priority for VAST cloud viability is enabling capacity scaling independent of performance via object/S3 offload (cloud economics requirement).

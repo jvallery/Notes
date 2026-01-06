@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Clarify internally the accountability model and ownership boundaries between VAST cloud product management and on-prem teams for opportunities that start as cloud but involve hardware (for example GDC and Azure Local), to prevent diluted visibility into progress and outcomes. 📅 2025-12-10 🔼 #task #proposed #auto
+- [?] Respond to Karl Vietmeier with guidance on whether VAST cloud product management should assert ownership of Google Distributed Cloud (GDC) and Azure Local opportunities, including how aggressively to maintain control vs share ownership with on-prem teams. 📅 2025-12-03 ⏫ #task #proposed #auto
 - [?] Propose specific times for a quick introductory call with Edwin Trogler next week to discuss VAST Data and potential FP&A opportunities. 🔼 #task #proposed #auto
 - [?] Review Edwin Trogler's resume and determine appropriate VAST Data FP&A/Finance contacts for an introduction regarding potential FP&A Director opportunities in Colorado. 🔼 #task #proposed #auto
 - [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin, per Rick Scurfield's request. 🔼 #task #proposed #auto
