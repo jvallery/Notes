@@ -3,7 +3,7 @@ type: people
 email: rick.scurfield@vastdata.com
 company: VAST Data
 title: Rick Scurfield
-last_contact: '2025-12-27'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -185,6 +185,8 @@ role: Technical Lead in Customer Success
 - 2025-12-18: Mentioned in: GTM update: RevOps leadership transition, Cristina Hasson departing and Stacy Wynn interim lead
 - 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2025-12-27: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Rick Scurfield

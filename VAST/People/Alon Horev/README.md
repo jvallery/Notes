@@ -79,6 +79,10 @@ tags:
 - Kushal Datta requested a meeting with Alon Horev to discuss solution design for Microsoft MAI.
 
 - Alon Horev advised Jason Vallery to work with Violet (last name unknown) on Google Distributed Cloud RFP encryption and FIPS/SED questions, indicating Violet is the subject-matter expert.
+
+- Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST PoC and to potentially merge MAI and PoC plans.
+
+- Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -156,6 +160,8 @@ tags:
 - 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Alon Horev

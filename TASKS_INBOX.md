@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Alon Horev to evaluate options for Anson (Qi)'s PoC environment and to potentially merge Kushal Datta's MAI plans with Qi's PoC plans. @Lior Genzel 📅 2025-12-19 🔼 #task #proposed #auto
+- [?] Identify the most strategic environment to run Anson (Qi)'s VAST PoC for 1,000 to 2,000 GPU scale testing, choosing between Microsoft MAI/Vipin environment and third-party clusters (Nscale or CoreWeave). @Lior Genzel 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Obtain introductions and establish communication with Microsoft MAI stakeholders Majid Mohammed (Mustafa chief of staff), Yunchao Gong (Kushal Datta's manager), and Karén Simonyan (chief scientist reporting to Mustafa). @Lior Genzel 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] DM Jeff Denworth the most recent analysis Jason Vallery has on the Microsoft MAI deal (context: working capital, opportunity cost, and/or supply chain implications). 📅 2025-12-12 ⏫ #task #proposed #auto
+- [?] Provide Jeff Denworth a clear plan for how VAST Data will support Microsoft MAI deployments targeted for April 2026 through June 2026, including whether Microsoft would use VAST's supply chain and what inventory can be allocated. 📅 2025-12-22 ⏫ #task #proposed #auto
 - [?] Respond to Microsoft on whether there is a plan to build a demo/accelerator that showcases VAST Global Namespace on Microsoft Azure for inclusion in the AKS AI Roadshow, aligning with Lior Genzel for engineering status. @Chris Carpenter 📅 2026-01-10 ⏫ #task #proposed #auto
 - [?] Provide Mohamad Al Jazaery a proposed time in January 2026 to sync on the current Microsoft Azure pipeline and customer list expansion with VAST and Microsoft sellers. @TBD 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Coordinate with Tiffany Stonehill to ensure the AKS AI Roadshow slides and any required access are packaged and delivered to Microsoft contacts (Mohamad Al Jazaery and Kurt Niebuhr). 📅 2026-01-10 ⏫ #task #proposed #auto

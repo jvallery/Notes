@@ -3,7 +3,7 @@ type: people
 email: jonsi@vastdata.com
 company: VAST Data
 title: Jonsi Stefansson
-last_contact: '2025-12-17'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 phone_iceland: '+3546987478'
 phone_us: '+14079510436'
@@ -126,6 +126,8 @@ role: GM of Cloud @ VAST Data
 - 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2025-12-17: On 2025-12-17, Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer t...
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Jonsi Stefansson

@@ -134,6 +134,8 @@ not done
 - 2025-12-01: Karl Vietmeier flagged growing market interest in VAST support for Google Distributed Cloud (GDC) an...
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -302,6 +304,8 @@ not done
 - VAST Azure readiness is a gating factor for supporting Microsoft requests for Azure VoC performance testing against Azure GPU instances.
 
 - A VAST on Cloud course and a project brief are being built from existing material and will be reviewed in a January working session.
+
+- VAST Data cloud team discussions include supply chain planning and deployment readiness for Microsoft MAI timelines (May to June 2026).
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

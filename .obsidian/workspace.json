@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Outbox/2026-01-05_Reply-To_11-with-Avinash-Lakshman-Whale-Iptic-sec.md",
+                "file": "Outbox/2026-01-05_Reply-To_IHDF-strategic-plan-feedback-request-due.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "2026-01-05_Reply-To_11-with-Avinash-Lakshman-Whale-Iptic-sec"
+              "title": "2026-01-05_Reply-To_IHDF-strategic-plan-feedback-request-due"
             }
           }
         ]
@@ -195,6 +195,13 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Outbox/2026-01-05_Reply-To_Holiday-greeting-from-Vincent-Wolfe.md",
+    "Outbox/2026-01-05_Reply-To_Cisco-RFE-0526-Regex-based-allowdeny-pat.md",
+    "Outbox/2026-01-05_Reply-To_BetterDisplay-purchase-confirmation-and-.md",
+    "Outbox/2026-01-05_Reply-To_Adem-Sefa-introduces-Edwin-Trogler-for-p_1.md",
+    "Outbox/2026-01-05_Reply-To_Adem-Sefa-introduces-Edwin-Trogler-for-p.md",
+    "Outbox/2026-01-05_Reply-To_11-with-Avinash-Lakshman-Whale-Iptic-sec.md",
+    "Outbox/2026-01-05_Reply-To_Microsoft-AKS-AI-Roadshow-GBB-follow-up-.md",
     "Outbox/2026-01-05_Reply-To_Ownership-and-support-model-for-Google-D.md",
     "Outbox/2026-01-05_Reply-To_Intro-to-Sebastien-Berube-AWS-and-coffee.md",
     "VAST/People/Sebastien Berube/2025-12-18 - Intro to Sebastien Berube AWS and coffee meeting scheduled for 2026-01-07 08-00 in Lafayette.md",
@@ -204,14 +211,10 @@
     "Outbox/2026-01-05_Reply-To_GTM-update-RevOps-leadership-transition-.md",
     "Outbox/2026-01-05_Reply-To_Rick-Scurfield-New-quote-policy-hardware.md",
     "Outbox/2026-01-05_Reply-To_Jonsi-Stefansson-shared-Google-Slides-de.md",
-    "Outbox/2026-01-05_Reply-To_Cisco-RFE-0526-Regex-based-allowdeny-pat.md",
-    "Outbox/2026-01-05_Reply-To_11-with-Avinash-Lakshman-Whale-Iptic-sec.md",
     "Outbox/2026-01-05_Reply-To_Microsoft-prospect-requests-VAST-Custome.md",
     "VAST/Customers and Partners/Microsoft/2025-12-16 - Microsoft prospect requests VAST Customer Learning Portal access Trevor Cooper-Chadwick.md",
-    "Outbox/2026-01-05_Reply-To_Holiday-greeting-from-Vincent-Wolfe.md",
     "Outbox/2026-01-05_Reply-To_Google-Distributed-Cloud-RFP-follow-up-e.md",
     "Outbox/2026-01-05_Reply-To_Terika-Dilworth-requests-review-of-VAST-.md",
-    "Outbox/2026-01-05_Reply-To_BetterDisplay-purchase-confirmation-and-.md",
     "VAST/People/Unknown kodeON support via Paddle.com/README.md",
     "VAST/People/Unknown kodeON support via Paddle.com/2025-12-14 - BetterDisplay purchase confirmation and license key kodeON via Paddle.md",
     "VAST/People/Unknown kodeON support via Paddle.com",
@@ -219,9 +222,6 @@
     "VAST/People/John Mao/2025-12-12 - John Mao update- OpenAI org, data platforms Rockset, Snowflake, CosmosDB, DAQ and engineering relationship.md",
     "Outbox/2026-01-05_Reply-To_Microsoft-Ignite-follow-up-intro-request.md",
     "VAST/Customers and Partners/Microsoft/2025-12-11 - Microsoft Ignite follow-up- intro requested with Jason Vallery; architecture docs requested.md",
-    "Outbox/2026-01-05_Reply-To_Microsoft-requests-Azure-VoC-instance-fo.md",
-    "Outbox/2026-01-05_Reply-To_Nebius-and-VAST-intro-call-scheduling-co.md",
-    "VAST/Customers and Partners/Nebius/2025-12-10 - Nebius and VAST intro call scheduling confirmation 12-15 10am PT.md",
     "Workflow/scripts/batch_drafts.sh",
     "Outbox/_calendar",
     "VAST/People/kodeON via Paddle.com",

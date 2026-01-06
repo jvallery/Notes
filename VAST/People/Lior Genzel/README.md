@@ -514,6 +514,16 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access during an engineering-level PoC.
 
 - Tiffany Stonehill indicated Lior Genzel has the most recent engineering updates for showcasing VAST Global Namespace on Microsoft Azure.
+
+- Lior Genzel reported that Anson (Qi) requested moving a VAST PoC into either the Microsoft MAI/Vipin environment or other clusters (Nscale or CoreWeave) because their lab cluster lacks 1,000 to 2,000 GPUs needed for scale performance testing.
+
+- Lior Genzel reported that Kushal Datta said Microsoft MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for the May 2026 to June 2026 timeframe, and that January 2026 is no longer a hard date.
+
+- Lior Genzel reported that Kushal Datta stated Microsoft MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense versus VAST Data for MAI requirements.
+
+- Lior Genzel reported that Vamshi (Azure Blob product leader, last name not provided) communicated that Microsoft's decision is internal and expressed frustration with VAST Data's aggressive approach in highlighting Azure Blob deficiencies.
+
+- Lior Genzel reported that Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -768,6 +778,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro requested with Jason Vallery; architecture docs requested
 
 - 2025-12-16: Mentioned in: Microsoft prospect requests VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Lior Genzel

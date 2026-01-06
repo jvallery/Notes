@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2026-01-01'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -430,6 +430,16 @@ last_enriched: '2026-01-05'
 - Jeff Denworth referenced a prior CoreWeave deal where Andy Bernstein and an individual named Leo worked out of CoreWeave offices daily, which Jeff credits with generating $1.5B in bookings so far.
 
 - Jeff Denworth stated that RFE 0482 is 'super complex' and asked Mordechai Blaunstein to lead the investigation and involve the appropriate parties.
+
+- Jeff Denworth stated VAST Data is quickly selling out of inventory and lead times are increasing, so there is no hardware reserved for Microsoft MAI unless a plan is made immediately.
+
+- Jeff Denworth asked whether Microsoft MAI expects to use VAST Data's supply chain for the deployment, given constrained inventory and rising lead times.
+
+- Jeff Denworth indicated that if Microsoft MAI wants to deploy in April 2026, May 2026, or June 2026, VAST Data needs a supply and execution plan immediately.
+
+- Jeff Denworth stated supply chain constraints are expected to be a major issue for the upcoming year and asked how VAST Data would source a 2 EB requirement for Microsoft MAI and when it must be ordered.
+
+- Jeff Denworth requested a summary of status by end of week (relative to 2025-12-12) and asked for analysis of working capital and opportunity cost if Microsoft is buying 100 EB.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -623,6 +633,8 @@ last_enriched: '2026-01-05'
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-21: Jeff Denworth raised urgent concerns about whether Microsoft MAI expects to use VAST's supply chain,...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -974,6 +986,10 @@ not done
 - Seasonality of VAST Data Q4 bookings, with most closing in the final month
 
 - Company-wide recognition and year-end optimism
+
+- Sizing and sourcing questions for large capacity requirements (2 EB and 100 EB mentioned)
+
+- PoC placement strategy for Anson (Qi) requiring 1,000 to 2,000 GPUs for scale testing
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.
@@ -1085,3 +1101,5 @@ not done
 - PM management will own analyzing Walmart's re-stated requirements and determining what should be incorporated into the VAST product plan, working with Mikey and team.
 
 - Lior Genzel will lead efforts to obtain introductions to key Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to reduce reliance on Kushal Datta as the sole channel.
+
+- Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders (Majid Mohammed, Yunchao Gong, and Karén Simonyan) to build trust beyond Kushal Datta.

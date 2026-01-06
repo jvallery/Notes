@@ -182,6 +182,8 @@ not done
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
 
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting scheduled for 2026-01-07 08:00 in Lafayette
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -478,6 +480,8 @@ not done
 - The Microsoft engagement referenced is an engineering-level proof of concept (PoC) and Microsoft is not yet a VAST customer for this effort.
 
 - Whale Iptic's multi-pod architecture was described as running across Microsoft Azure as one of the cloud providers used for redundancy.
+
+- Microsoft MAI initial GPU drop was communicated by Kushal Datta as arriving in February 2026, with a storage solution needed for May 2026 to June 2026.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

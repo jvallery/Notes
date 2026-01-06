@@ -77,6 +77,8 @@ tags:
 - Lior Genzel reported that Kushal Datta told Manish Sah that Azure Blob does not meet MAI requirements compared to VAST Data.
 
 - Jonsi Stefansson stated he met with Maneesh Sah at Microsoft and that Microsoft expects an Azure Blob integration proposal from VAST.
+
+- Lior Genzel reported that Kushal Datta told Maneesh Sah that Azure Blob does not make sense versus VAST Data for Microsoft MAI requirements.
 ## Recent Context
 
 - 2025-11-07: Mentioned in: Cloud strategy 1:1 with Jonsi Stephenson, Google GDC TPU positioning and Microsoft Apollo storage path
@@ -140,6 +142,8 @@ tags:
 - 2025-12-21: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Maneesh Sah

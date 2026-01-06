@@ -158,6 +158,10 @@ expertise:
 - Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on December 29 or December 30, 2025.
 
 - Jason Vallery led a walkthrough call with Google for the Google Distributed Cloud RFP and collected follow-up questions on FIPS/SED requirements and encryption key granularity across S3 and NFS.
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that the final Microsoft MAI storage decision is made by a person named Mustafa (last name not provided in the email).
+
+- Jason Vallery stated he has no existing relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan (Microsoft MAI stakeholders) and that Lior Genzel will lead efforts to get introductions.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -210,6 +214,8 @@ expertise:
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes James Vallery

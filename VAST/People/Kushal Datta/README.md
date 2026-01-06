@@ -70,6 +70,14 @@ role: Apollo team member (storage/training infrastructure)
 - Kushal Datta requested a meeting with Alon Horev to discuss solution design for Microsoft MAI.
 
 - Jason Vallery reported hearing from multiple Azure stakeholders that Kushal Datta cannot be trusted.
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that Kushal Datta cannot be trusted, and Jason is concerned Kushal may be misrepresenting VAST Data's status as the preferred solution.
+
+- Lior Genzel reported that Kushal Datta said Microsoft MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for the May 2026 to June 2026 timeframe, and that January 2026 is no longer a hard date.
+
+- Lior Genzel reported that Kushal Datta stated Microsoft MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense versus VAST Data for MAI requirements.
+
+- Lior Genzel reported that Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
 ## Recent Context
 
 - 2025-10-31: Jason Vallery and Kushal Datta discussed options to deploy VAST Data for Microsoft Apollo training w...
@@ -97,6 +105,8 @@ role: Apollo team member (storage/training infrastructure)
 
 - 2025-12-21: Mentioned in: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Kushal Datta

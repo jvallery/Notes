@@ -141,6 +141,8 @@ tags:
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery effort and CES NAND allocation trip
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 ## Open Tasks
 ```tasks
 path includes Renen Hallak
