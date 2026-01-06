@@ -87,6 +87,12 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Karl Vietmeier believes GDC and Azure Local opportunities should be managed through VAST Data Cloud Product Management because Cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
 
 - Karl Vietmeier was asked by Ray Coetzee to define the expected performance profile for an Azure VoC deployment.
+
+- Karl Vietmeier is a Cloud Solutions Architect for VAST on Cloud at VAST Data.
+
+- Karl Vietmeier observes that when GDC or Azure Local opportunities involve hardware, VAST Data on-prem teams tend to take ownership, which creates confusion over accountability and reduces visibility into progress and outcomes for cloud product management.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through VAST Data cloud product management because cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -174,6 +180,12 @@ not done
 - Cross-team handoff and visibility issues when hardware is involved in cloud-adjacent opportunities
 
 - Role of Cloud Product Management in hyperscaler-tied acquisition and cloud consumption alignment
+
+- Ownership and accountability model for Microsoft Azure Local opportunities at VAST Data
+
+- Cross-team handoff friction between cloud product management and on-prem teams when hardware is involved
+
+- Hyperscaler-led acquisition and cloud consumption alignment for hybrid/on-prem cloud offerings
 ## Key Decisions
 
 - P0 priority for VAST cloud viability is enabling capacity scaling independent of performance via object/S3 offload (cloud economics requirement).

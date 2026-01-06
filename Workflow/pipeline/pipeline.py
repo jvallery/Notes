@@ -255,7 +255,8 @@ class UnifiedPipeline:
                 outputs = self.output_generator.generate_all(
                     extraction, 
                     context,
-                    envelope.raw_content if envelope else ""
+                    envelope.raw_content if envelope else "",
+                    force_reply=is_email  # Always generate reply for emails
                 )
                 result.draft_reply = str(outputs.get("reply")) if outputs.get("reply") else None
                 result.calendar_invite = {"path": str(outputs.get("calendar"))} if outputs.get("calendar") else None

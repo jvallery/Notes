@@ -52,7 +52,8 @@ class OutputGenerator:
         self, 
         extraction: UnifiedExtraction, 
         context_bundle: Optional[object] = None,
-        source_content: str = ""
+        source_content: str = "",
+        force_reply: bool = False
     ) -> dict:
         """Generate all outputs based on extraction.
         
@@ -60,6 +61,7 @@ class OutputGenerator:
             extraction: The UnifiedExtraction with suggested_outputs
             context_bundle: Optional ContextBundle for reply generation
             source_content: Original content for reply generation
+            force_reply: If True, generate reply regardless of needs_reply
         
         Returns:
             Dict with paths to generated files:
@@ -79,8 +81,8 @@ class OutputGenerator:
         
         suggested = extraction.suggested_outputs
         
-        # Generate reply if needed
-        if suggested.needs_reply:
+        # Generate reply if needed (or forced for emails)
+        if suggested.needs_reply or force_reply:
             outputs["reply"] = self.generate_reply(extraction, context_bundle, source_content)
         
         # Generate calendar invite if suggested
@@ -118,8 +120,8 @@ class OutputGenerator:
         """
         suggested = extraction.suggested_outputs
         
-        if not suggested.needs_reply:
-            return None
+        # Note: needs_reply check is handled by caller (generate_all)
+        # This method generates a reply unconditionally when called
         
         # Determine recipient from extraction
         # For emails, the sender is in contacts[0] (not participants which includes "Myself")
