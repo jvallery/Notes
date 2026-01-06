@@ -40,6 +40,8 @@ phone: 407.810.5017
 - Stacy Wynn is a VAST Data contact helping teams navigate pricing changes and supply chain updates and their impact on active deals.
 
 - Stacy Wynn stated the pricing changes and supply chain situation is fast-moving and VAST Data intends to be transparent and proactive as it evolves.
+
+- Stacy Wynn asked the team to reach out to her, Erik (last name unknown), or Rick (last name unknown) for questions, clarification, or to discuss how pricing and supply chain changes impact an active deal.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared
@@ -68,6 +70,8 @@ phone: 407.810.5017
 - 2025-12-18: Mentioned in: GTM update: RevOps leadership transition, interim lead assigned
 - 2025-12-23: Mentioned in: Pricing Changes and Supply Chain Update, recording and FAQ shared (passcode included)
 - 2025-12-18: Mentioned in: GTM update: RevOps leadership transition, Cristina Hasson departing and Stacy Wynn interim lead
+
+- 2025-12-23: Mentioned in: Pricing Changes and Supply Chain Update session recording and FAQ shared by Stacy Wynn
 ## Open Tasks
 ```tasks
 path includes Stacy Wynn
