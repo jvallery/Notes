@@ -552,6 +552,8 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated Microsoft is at an engineering-level proof of concept (PoC) for the UK Met effort and is not yet a VAST customer.
 
 - Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access.
+
+- Lior Genzel described Trevor Cooper-Chadwick as the lead Microsoft technical contact who tests VAST for the UK Met effort.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Provide a decision on whether Microsoft prospect Trevor Cooper-Chadwick should be granted access to the VAST Customer Learning Portal customer materials, based on Lior Genzel's findings and senior executive guidance. 🔼 #task #proposed #auto
+- [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in "pending approval" status until Lior Genzel provides guidance on whether access should be granted. @Kristin Thompson 🔼 #task #proposed #auto
+- [?] Reach out to Trevor Cooper-Chadwick (Microsoft, Principal Consultant, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access, given Microsoft is in an engineering-level PoC (UK Met) and not yet a customer. @Lior Genzel ⏫ #task #proposed #auto
 - [?] Provide a decision on whether to approve VAST Customer Learning Portal access for Microsoft prospect Trevor Cooper-Chadwick after Lior Genzel confirms objectives and senior exec alignment is reached. 🔼 #task #proposed #auto
 - [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request marked as "pending approval" until Lior Genzel provides guidance after speaking with Trevor. @Kristin Thompson 🔼 #task #proposed #auto
 - [?] Reach out to Trevor Cooper-Chadwick (Microsoft Principal Consultant, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access given Microsoft is in an engineering-level PoC (UK Met) and not yet a customer. @Lior Genzel ⏫ #task #proposed #auto

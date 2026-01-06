@@ -504,6 +504,8 @@ not done
 - Jason Vallery stated OpenAI uses Azure Cosmos DB heavily for conversation persistence.
 
 - Lior Genzel stated Microsoft is at an engineering-level proof of concept (PoC) for the UK Met effort and is not yet a VAST customer.
+
+- Microsoft is in an engineering-level proof of concept with VAST for the UK Met effort and is not yet a customer.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -982,3 +984,5 @@ not done
 - VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST on Azure is not ready for this use case.
 
 - Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in a pending approval state until Lior Genzel confirms objectives and senior exec guidance is available.
+
+- Trevor Cooper-Chadwick's VAST Customer Learning Portal access request will remain in "pending approval" status until Lior Genzel confirms objectives and the team decides whether to grant access.
