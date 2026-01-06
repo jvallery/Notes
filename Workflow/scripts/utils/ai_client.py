@@ -405,6 +405,9 @@ class InstrumentedClient:
     def set_context(self, context: Dict):
         """Set additional context for subsequent requests."""
         self.chat._context = context
+        # InstrumentedCompletions reads context from its own attribute.
+        # Keep chat + completions in sync so callers can attach file/trace metadata.
+        self.chat.completions._context = context
 
 
 class InstrumentedChat:
