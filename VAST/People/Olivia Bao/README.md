@@ -27,6 +27,8 @@ tags:
 - Olivia Bao's email signature lists an office address: 16th Floor, China Overseas International Center Tower B, 838 S. Huangpi Road, Huangpu District, Shanghai 200025, China.
 
 - Olivia Bao provided a scheduling link (https://calendar.app.google/31vJT5sNBPwkGy849) to book a short briefing for the AlphaSights paid consultation project on corporate insider threat.
+
+- Olivia Bao's email signature lists an office address at 16th Floor, China Overseas International Center Tower B, 838 S. Huangpi Road, Huangpu District, Shanghai 200025, China.
 ## Recent Context
 
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends
@@ -36,6 +38,8 @@ tags:
 - 2025-12-28: Mentioned in: AlphaSights outreach: urgent paid consult on corporate insider threat trends
 
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat (urgent)
+
+- 2025-12-28: Mentioned in: AlphaSights request for paid consultation on corporate insider threat trends
 ## Open Tasks
 ```tasks
 path includes Olivia Bao

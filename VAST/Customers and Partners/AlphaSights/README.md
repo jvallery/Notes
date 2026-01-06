@@ -5,7 +5,7 @@ account_type: ''
 status: ''
 industry: _Unknown_
 created: '2026-01-05'
-last_contact: '2025-12-19'
+last_contact: '2025-12-28'
 tags:
 - type/customer
 - needs-review
@@ -54,6 +54,8 @@ not done
 - AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including overall trends, internal risk governance teams, future direction, and an industry macro view.
 
 - AlphaSights requested an urgent discussion with Jason Vallery focused on cloud and enterprise technology topics including Oracle, AWS, Salesforce, and Microsoft.
+
+- AlphaSights provided a Google Calendar booking link (https://calendar.app.google/31vJT5sNBPwkGy849) to schedule a short briefing for the paid consultation project.
 ## Topics
 
 - AlphaSights paid expert consultation
@@ -107,4 +109,6 @@ not done
 - Salesforce market discussion
 
 - Microsoft market discussion
+
+- Industry macro trends
 ## Key Decisions
