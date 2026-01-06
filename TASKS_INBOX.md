@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Evaluate initial feasibility of acquiring the former church in Longmont and report back to the IHDF board. @TBD 🔼 #task #proposed #auto
+- [?] Share the initial SWOT document for the former church in Longmont acquisition idea (co-created with Erika Smith) with relevant board members. @Perla Delgado 🔼 #task #proposed #auto
+- [?] Assess IHDF staff needs related to fundraising support and report findings to the board/fundraising committee. @Perla Delgado ⏫ #task #proposed #auto
+- [?] Follow up with Erika Smith to request any additional details from the IHDF executive session recap (including what actions are needed from me). 🔼 #task #proposed #auto
 - [?] Coordinate with Lior Genzel on attendance and agenda for the Oracle Alloy and Dedicated Regions Cloud@Customer (DRCC) discussion with Matthew Thomson in Seattle. 📅 2025-12-10 🔼 #task #proposed #auto
 - [?] Reply to Matthew Thomson to confirm a specific meeting time in Seattle on Thursday, 2025-12-11 (options offered: 11:30-12:30, 1:30-2:30, or 3:00; confirm time zone and location). 📅 2025-12-10 ⏫ #task #proposed #auto
 - [?] Coordinate with Lior Genzel on whether he will attend the Oracle meeting with Matthew Thomson in Seattle and align on discussion goals for Oracle Alloy and Dedicated Regions. 📅 2025-12-10 🔼 #task #proposed #auto

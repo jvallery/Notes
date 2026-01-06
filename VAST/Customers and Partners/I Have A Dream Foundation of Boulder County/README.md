@@ -5,7 +5,7 @@ account_type: ''
 status: ''
 industry: _Unknown_
 created: '2026-01-05'
-last_contact: '2025-12-08'
+last_contact: '2025-12-10'
 tags:
 - type/customer
 - needs-review
@@ -85,6 +85,12 @@ not done
 - I Have A Dream Foundation of Boulder County is conducting a strategic planning process and has a Draft Strategic Plan and a designed version of the strategic plan to be previewed at a January board meeting.
 
 - I Have A Dream Foundation of Boulder County (IHDF) is collecting board feedback on the Draft Strategic Plan via a feedback form due by 2025-12-18.
+
+- IHDF board members agreed to form a fundraising committee beyond events and marketing, with a broader development lens including volunteers and stewardship, and it may include non-board members and potentially a budget.
+
+- IHDF is exploring (very early stage) a potential acquisition of a former church in Longmont that is for sale at a low price; it is not currently in any plan and is considered confidential.
+
+- A small group (Maureen, Jorin, Tracy, and Perla Delgado) will look at initial feasibility of the Longmont former church acquisition idea and report back to the IHDF board.
 ## Topics
 
 - IHDF Draft Strategic Plan feedback collection process
@@ -142,6 +148,12 @@ not done
 - January IHDF board meeting agenda item: first look at designed strategic plan with consultants Hannah and Andrea Ostroy
 
 - December IHDF board meeting reminder (Wednesday)
+
+- IHDF governance: handling public stances and protecting tax-exempt status and donor/community relationships
+
+- Potential real estate acquisition: former church in Longmont, early-stage feasibility and SWOT analysis
+
+- Confidentiality expectations for board executive session topics
 ## Key Decisions
 
 - IHDF will form a fundraising committee with a broader development scope beyond events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.
@@ -155,3 +167,7 @@ not done
 - IHDF will form a fundraising committee with a broader development scope than events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.
 
 - IHDF will discuss the impact and risks of taking public stances in an executive session at the end of board meetings.
+
+- IHDF will form a fundraising committee that goes beyond events and marketing, with a broader development focus (volunteers, stewardship, and fundraising support needs).
+
+- IHDF will discuss the impact and risks of taking public stances in an executive session at the end of board meetings rather than treating it as an ad hoc topic.
