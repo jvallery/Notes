@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Follow up with Adem Sefa to confirm what specific introductions he is requesting for Edwin Trogler (e.g., VAST Data finance leadership, recruiting, or FP&A hiring manager) and align on the best path. 📅 2025-11-24 🔽 #task #proposed #auto
+- [?] Reply to Edwin Trogler to acknowledge receipt of his resume and propose specific times for a quick call next week to discuss VAST Data and potential FP&A opportunities in Colorado. 📅 2025-11-24 🔼 #task #proposed #auto
 - [?] Consider whether to connect Edwin Trogler with VAST Data finance leadership or recruiting for FP&A Director or related FP&A roles, and make introductions if appropriate. 📅 2025-11-26 🔼 #task #proposed #auto
 - [?] Reply to Edwin Trogler to acknowledge receipt of his resume and propose times for a quick call next week to discuss VAST Data and potential FP&A opportunities in Colorado. 📅 2025-11-24 🔼 #task #proposed #auto
 - [?] Watch for the Express Scripts Pharmacy shipment confirmation email for the lisdexamfetamine 40mg order tied to invoice 08245103465. 📅 2026-01-06 🔼 #task #proposed #auto
