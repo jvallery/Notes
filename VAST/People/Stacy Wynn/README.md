@@ -36,6 +36,10 @@ phone: 407.810.5017
 - Stacy Wynn asked the team to reach out to Stacy Wynn, Erik (unknown last name), or Rick (unknown last name) for questions, clarification, or to discuss how the pricing changes and supply chain updates impact an active deal.
 
 - Stacy Wynn is a VAST Data point of contact helping teams navigate pricing changes and supply chain updates and their impact on active deals.
+
+- Stacy Wynn is a VAST Data contact helping teams navigate pricing changes and supply chain updates and their impact on active deals.
+
+- Stacy Wynn stated the pricing changes and supply chain situation is fast-moving and VAST Data intends to be transparent and proactive as it evolves.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared
