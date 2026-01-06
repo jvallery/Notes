@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] After receiving the intro, coordinate scheduling with Matt (Oracle DRCC/Alloy product management lead) for an in-person meeting in Seattle during Jason Vallery's trip (dates not provided). 🔼 #task #proposed #auto
+- [?] Reply to Christian Linacre to confirm interest in meeting and request an email introduction to Matt (Oracle DRCC/Alloy product management lead) for a Seattle meeting. 📅 2025-12-09 ⏫ #task #proposed #auto
 - [?] Complete the IHDF Draft Strategic Plan Feedback Form and submit feedback to I Have A Dream Foundation of Boulder County (IHDF) by 2025-12-18. 📅 2025-12-18 ⏫ #task #proposed #auto
 - [?] Confirm with Chuck Cancilla and Brian Evans whether the proposed 'Service Aware VIP Pool' approach (ORION-261324) satisfies NVIDIA DGX Cloud requirements and whether a VAST 5.6 target (not confirmed) meets the customer timeline or if a workaround is required. @Mordechai Blaunstein ⏫ #task #proposed #auto
 - [?] Lead technical investigation for RFE 0482 (dual-uplink visibility and tenant-scoped visibility via VAST Uplink) and bring in required parties across VAST engineering/product as needed. @Mordechai Blaunstein ⏫ #task #proposed #auto
