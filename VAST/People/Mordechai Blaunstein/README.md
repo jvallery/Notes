@@ -3,7 +3,7 @@ type: people
 email: mordechai.blaunstein@vastdata.com
 company: VAST Data
 title: Mordechai Blaunstein
-last_contact: '2025-12-19'
+last_contact: '2025-12-29'
 created: '2026-01-05'
 tags:
 - type/people
