@@ -56,6 +56,8 @@ not done
 - 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26) and VIP Ski nominations
 
 - 2025-12-30: An Order Admin alert and internal thread confirms a $96,808.14 deal (FOpp-4197) for Leidos Federal, ...
+
+- 2025-12-30: Mentioned in: Leidos Federal first Cloud PO submitted (FOpp-4197, $96,808.14) and request to track customer expectations
 ## Key Facts
 
 - Leidos leaders are expected to speak at VAST Forward about how they use VAST Data in production environments.
@@ -139,6 +141,10 @@ not done
 - Leidos Federal opportunity FOpp-4197 (Opp Name: "Leidos DoD Cloud") was submitted to VAST Order Admin with Opp Amount/TCV of $96,808.14 and Close Date of 2025-12-26.
 
 - The Leidos Federal deal is described internally as the very first Cloud PO in the US Federal sector for VAST Data, and it is a software-only cloud deployment in a Leidos GovCloud instance.
+
+- Opportunity FOpp-4197 for Leidos Federal (Opp Name: 'Leidos DoD Cloud') was submitted to VAST Order Administration with Opp Amount/TCV $96,808.14 and Close Date 2025-12-26.
+
+- The Leidos Federal deal FOpp-4197 is described as a cloud deployment in a Leidos GovCloud instance, software-only, and is stated to be the first Cloud PO in the US Federal sector for VAST.
 ## Topics
 
 - Leidos Federal opportunity FOpp-4197 order submission and OrderAdmin processing

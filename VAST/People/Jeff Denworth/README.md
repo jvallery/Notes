@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-23'
+last_contact: '2025-12-30'
 created: '2026-01-05'
 tags:
 - type/people
@@ -476,6 +476,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth asked VAST Product Management leadership to analyze Walmart's re-stated requirements and decide what should be incorporated into the VAST product plan, coordinating with Mikey and team.
 
 - Jeff Denworth warned that Walmart's requirements may put Alluxio back in the driver seat and that VAST must be careful competitively.
+
+- Jeff Denworth instructed Jason Vallery to track these Cloud POs to understand customer expectations, user experience, cloud product angles, and business development angles.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -693,6 +695,8 @@ last_enriched: '2026-01-05'
 - 2025-12-23: VAST Forward 2026 speaker selection and required prep cadence
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout spokesperson, required prep cadence and key dates
+
+- 2025-12-30: Jeff Denworth forwarded an OrderAdmin alert thread indicating VAST's first US Federal sector Cloud P...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -1086,6 +1090,14 @@ not done
 - Unified namespace requirement (no disjoint namespaces)
 
 - Competitive risk: Alluxio positioning for Walmart hybrid use case
+
+- Leidos Federal first US Federal sector Cloud PO (FOpp-4197) and OrderAdmin processing
+
+- Connecting Leidos GovCloud deployment to on-prem for resilient government demo ('Golden Dome')
+
+- Tracking Cloud POs for customer expectations, user experience, cloud product implications, and business development insights
+
+- Hybrid cloud positioning for defense and civilian public sector use cases
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.
@@ -1201,3 +1213,5 @@ not done
 - Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders (Majid Mohammed, Yunchao Gong, and Karén Simonyan) to build trust beyond Kushal Datta.
 
 - VAST Order Administration will review and book the Leidos Federal order FOpp-4197 once all required documents are attached in Salesforce; stated SLA is same business day if received before 3PM local time.
+
+- Leidos Federal FOpp-4197 is being processed as a cloud deployment in Leidos GovCloud with software-only scope (no hardware component).

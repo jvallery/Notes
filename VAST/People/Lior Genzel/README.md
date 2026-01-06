@@ -868,6 +868,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-22: Google Docs notification that Lior Genzel (lior.genzel@vastdata.com) requested access to the documen...
 
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: FIPS, SEDs, BYOH partner list, and meeting scheduling
+
+- 2025-12-30: Leidos Federal first Cloud PO submitted (FOpp-4197, $96,808.14) and request to track customer expectations
 ## Open Tasks
 ```tasks
 path includes Lior Genzel

@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Track the Leidos Federal Cloud PO (FOpp-4197, $96,808.14) and capture customer expectations, user experience feedback, cloud product implications, and business development angles as requested by Jeff Denworth. ⏫ #task #proposed #auto
 - [?] Confirm whether any hardware component is involved for Leidos Federal FOpp-4197 (Deal Desk asked if there is a HW part or if it is an upgrade) and ensure Order Admin documentation reflects software-only deployment if applicable. @TBD 🔼 #task #proposed #auto
 - [?] Track the Leidos Federal cloud PO (FOpp-4197) end-to-end to understand customer expectations, user experience requirements, cloud product implications, and business development angles, and capture learnings for VAST on Cloud strategy. ⏫ #task #proposed #auto
 - [?] Monitor for the Express Scripts Pharmacy shipment confirmation email for the lisdexamfetamine 40mg order tied to invoice 08245103465. 📅 2026-01-06 🔽 #task #proposed #auto
