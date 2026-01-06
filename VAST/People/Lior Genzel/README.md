@@ -842,6 +842,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
 
 - 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
+
+- 2025-12-22: Google Docs notification that Lior Genzel (lior.genzel@vastdata.com) requested access to the documen...
 ## Open Tasks
 ```tasks
 path includes Lior Genzel
@@ -941,6 +943,10 @@ not done
 - Zoom meeting logistics (join link, meeting ID, passcode, dial-in)
 
 - Google Drive document sharing request
+
+- Google Docs share/access request workflow
+
+- VAST Data integration with Microsoft Azure (document: "VAST and Azure Integration.docx")
 ## Key Decisions
 
 - Proceed with initiating VAST Data's formal interview process for Jason Vallery.
