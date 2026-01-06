@@ -56,10 +56,19 @@ class OutputGenerator:
         self.outbox_dir = vault_root / "Outbox"
         self.replies_dir = self.outbox_dir
         self.calendar_dir = self.outbox_dir / "_calendar"
+        self.prompts_dir = self.outbox_dir / "_prompts"
         
         if not dry_run:
             self.outbox_dir.mkdir(parents=True, exist_ok=True)
             self.calendar_dir.mkdir(parents=True, exist_ok=True)
+            self.prompts_dir.mkdir(parents=True, exist_ok=True)
+
+    def _as_vault_relative(self, path: Path) -> str:
+        """Return a vault-relative path string when possible."""
+        try:
+            return str(path.relative_to(self.vault_root))
+        except Exception:
+            return str(path)
     
     def generate_all(
         self, 
@@ -167,23 +176,36 @@ class OutputGenerator:
             filename = f"{today}_Reply-To_{subject_slug}_{counter}.md"
             output_path = self.replies_dir / filename
             counter += 1
+
+        prompt_path = self.prompts_dir / f"{output_path.stem}.prompt.json"
+        prompt_ref = self._as_vault_relative(prompt_path)
+        model_config = get_model_config("draft_responses")
         
         # Build draft content
         # Use LLM with persona for high-quality replies
-        draft_body = self._build_reply_body(extraction, suggested.reply_context or "", source_content)
+        draft_body = self._build_reply_body(
+            extraction,
+            suggested.reply_context or "",
+            source_content,
+            prompt_path=prompt_path,
+            draft_path=output_path,
+        )
         
         # Include email if available
         to_field = f"{sender} <{sender_email}>" if sender_email else sender
         
         content = f"""---
-type: draft-reply
-status: pending
-created: "{datetime.now().isoformat()}"
-urgency: "{suggested.reply_urgency}"
-to: "{to_field}"
-subject: "Re: {extraction.title}"
-source_file: "{extraction.source_file}"
----
+	type: draft-reply
+	status: pending
+	created: "{datetime.now().isoformat()}"
+	urgency: "{suggested.reply_urgency}"
+	to: "{to_field}"
+	subject: "Re: {extraction.title}"
+	source_file: "{extraction.source_file}"
+	ai_model: "{model_config.get('model', '')}"
+	ai_temperature: {float(model_config.get('temperature', 0.7))}
+	prompt_file: "{prompt_ref}"
+	---
 
 # Draft Reply to {sender}
 
@@ -225,7 +247,15 @@ source_file: "{extraction.source_file}"
         
         return output_path
     
-    def _build_reply_body(self, extraction: UnifiedExtraction, reply_context: str, source_content: str = "") -> str:
+    def _build_reply_body(
+        self,
+        extraction: UnifiedExtraction,
+        reply_context: str,
+        source_content: str = "",
+        *,
+        prompt_path: Optional[Path] = None,
+        draft_path: Optional[Path] = None,
+    ) -> str:
         """Build the draft reply body using LLM with persona.
         
         Uses the jason_persona.yaml to generate impact-driven, persona-aligned responses.
@@ -233,17 +263,30 @@ source_file: "{extraction.source_file}"
         """
         # Try LLM-based generation
         try:
-            return self._generate_llm_reply(extraction, reply_context, source_content)
+            return self._generate_llm_reply(
+                extraction,
+                reply_context,
+                source_content,
+                prompt_path=prompt_path,
+                draft_path=draft_path,
+            )
         except Exception as e:
             if self.verbose:
                 print(f"  [WARN] LLM reply generation failed: {e}, using template fallback")
             return self._build_template_reply(extraction, reply_context)
     
-    def _generate_llm_reply(self, extraction: UnifiedExtraction, reply_context: str, source_content: str = "") -> str:
+    def _generate_llm_reply(
+        self,
+        extraction: UnifiedExtraction,
+        reply_context: str,
+        source_content: str = "",
+        *,
+        prompt_path: Optional[Path] = None,
+        draft_path: Optional[Path] = None,
+    ) -> str:
         """Generate reply body using LLM with persona."""
-        from openai import OpenAI
+        from scripts.utils.ai_client import get_openai_client
         
-        client = OpenAI()
         model_config = get_model_config("draft_responses")
         persona = _load_persona()
         
@@ -286,7 +329,7 @@ If you don't have enough information to answer something, either:
 1. Make a reasonable assumption and answer
 2. Acknowledge you'll need to check and get back to them with a specific timeframe
 
-Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
+	Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
 
         user_prompt = f"""Write a reply to {sender} about: {extraction.title}
 
@@ -306,14 +349,42 @@ Return ONLY the email body text (no subject line, no markdown headers, no frontm
 - Recipient first name: {first_name}
 - Urgency: {extraction.suggested_outputs.reply_urgency if extraction.suggested_outputs else "normal"}
 
-Write the complete email body now (greeting through signature):"""
+	Write the complete email body now (greeting through signature):"""
+
+        messages = [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ]
+
+        if prompt_path and not self.dry_run:
+            try:
+                prompt_payload = {
+                    "created": datetime.now().isoformat(),
+                    "operation": "draft_reply",
+                    "model": model_config.get("model", ""),
+                    "temperature": model_config.get("temperature", 0.7),
+                    "source_file": extraction.source_file,
+                    "draft_path": str(draft_path) if draft_path else None,
+                    "messages": messages,
+                }
+                prompt_path.write_text(json.dumps(prompt_payload, indent=2))
+            except Exception as exc:
+                if self.verbose:
+                    print(f"  [WARN] Failed to write prompt artifact: {exc}")
+
+        client = get_openai_client("pipeline.outputs.generate_reply")
+        if draft_path:
+            client.set_context(
+                {
+                    "source_file": extraction.source_file,
+                    "draft_path": str(draft_path),
+                    "prompt_path": str(prompt_path) if prompt_path else None,
+                }
+            )
 
         response = client.chat.completions.create(
             model=model_config["model"],
-            messages=[
-                {"role": "system", "content": system_prompt},
-                {"role": "user", "content": user_prompt},
-            ],
+            messages=messages,
             temperature=model_config.get("temperature", 0.7),
         )
         

@@ -138,6 +138,8 @@ role: Mordechai Blaunstein @ VAST Data
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
+
+- 2025-12-19: Mentioned in: Google Docs invite to edit: CoreWeave-Vast Automation Project - V2
 ## Open Tasks
 ```tasks
 path includes Mordechai Blaunstein

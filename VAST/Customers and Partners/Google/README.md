@@ -136,6 +136,8 @@ not done
 - 2025-12-15: Internal email thread between Jason Vallery, Alon Horev, and Tomer Hagay to answer Google Distribute...
 
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+
+- 2025-12-19: Mentioned in: Google Docs invite to edit: CoreWeave-Vast Automation Project - V2
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -274,6 +276,8 @@ not done
 - Google Slides sent an automated share notification email from drive-shares-dm-noreply@google.com for a presentation shared by a VAST Data user.
 
 - The presentation was shared via Google Slides (Google LLC).
+
+- Google Docs sent an automated document-share notification email from drive-shares-dm-noreply@google.com.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications

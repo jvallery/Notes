@@ -29,8 +29,13 @@ not done
 
 ## Recent Context
 
+- 2025-12-19: Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .d...
 ## Key Facts
 
+- A document exists titled "CoreWeave-Vast Automation Project - V2 .docx" related to a "CoreWeave-Vast Automation Project" and it was shared for edit access via Google Docs.
 ## Topics
 
+- CoreWeave-Vast Automation Project documentation
+
+- Google Docs document sharing and edit access
 ## Key Decisions

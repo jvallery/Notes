@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Open and review the shared Google Docs document "CoreWeave-Vast Automation Project - V2 .docx" to understand scope, requirements, and any requested feedback. 🔼 #task #proposed #auto
 - [?] Begin search process to hire a new Head of Revenue Operations (RevOps) leader for VAST Data. @TBD 🔼 #task #proposed #auto
 - [?] Coordinate with Stacy Wynn (interim RevOps lead) to confirm any immediate impacts to active GTM processes (forecasting cadence, deal desk, pricing approvals) following Cristina Hasson's departure. 📅 2025-12-23 🔼 #task #proposed #auto
 - [?] For any deal larger than 15 PB, obtain Deal Desk sign-off prior to issuing a quote and ensure the quote is synced before submission. @TBD ⏫ #task #proposed #auto
