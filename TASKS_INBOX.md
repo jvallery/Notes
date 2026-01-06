@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Follow up with Christian Linacre to get Matt's full name and contact details, then coordinate a meeting with Matt in Seattle regarding Oracle DRCC/Alloy and VAST collaboration. 📅 2025-12-10 🔼 #task #proposed #auto
 - [?] Reply to Christian Linacre to accept the introduction and request Matt's full name and contact details, then propose specific meeting times while Jason Vallery is in Seattle. 📅 2025-12-10 🔼 #task #proposed #auto
 - [?] Complete the IHDF Draft Strategic Plan feedback form and submit feedback by 2025-12-18, or alternatively email Hannah (hanna@bigpictureimpact.com) or Andrea Ostroy (andreaostroy01@gmail.com) or request a 1:1 meeting to provide feedback. @TBD 📅 2025-12-18 ⏫ #task #proposed #auto
 - [?] If not using the Feedback Form, send strategic plan feedback to Hannah (hanna@bigpictureimpact.com) and/or Andrea Ostroy (andreaostroy01@gmail.com), or request a 1:1 meeting to provide feedback. 📅 2025-12-18 🔼 #task #proposed #auto

@@ -52,6 +52,8 @@ not done
 - 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) introduced Jason Vallery to Matthew Thomson, who run...
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
+
+- 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) replied that he is traveling and suggested Jason con...
 ## Key Facts
 
 - Oracle was listed as a topic for an AlphaSights expert discussion request sent to Jason Vallery.
@@ -112,6 +114,8 @@ not done
 - Oracle DRCC/Alloy product management contact for follow-up
 
 - Potential meeting in Seattle between VAST Data and Oracle DRCC/Alloy product management
+
+- DRCC/Alloy product management contact introduction
 ## Key Decisions
 
 - Christian Linacre will connect Jason Vallery and Matthew Thomson so they can meet while Jason is in Seattle.
@@ -123,3 +127,5 @@ not done
 - Christian Linacre decided to connect Jason Vallery with Matthew Thomson to meet while Jason is in Seattle, since Christian Linacre is traveling.
 
 - Christian Linacre will connect Jason Vallery (VAST Data) with Matthew Thomson (Oracle Cloud Infrastructure) to meet while Jason is in Seattle.
+
+- Christian Linacre will connect Jason Vallery with Matt (Oracle product management lead for DRCC/Alloy) for a potential in-person meeting in Seattle.
