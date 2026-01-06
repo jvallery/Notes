@@ -118,6 +118,8 @@ role: Technical Lead in Customer Success
 - Rick Scurfield stated VAST Data is actively monitoring the global supply environment and is closely engaged with suppliers and hardware partners to manage hardware allocation and keep deals progressing.
 
 - Rick Scurfield directed teams to increase software pricing where possible, emphasizing confidence in the value delivered to customers.
+
+- Rick Scurfield requested internal teams across Sales, Marketing, Support, and Product to conduct account outreach to drive attendance and engagement for VAST Forward.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience

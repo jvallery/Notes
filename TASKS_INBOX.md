@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin (exclusive customer experience during the February 24-26 conference). 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] Encourage customer accounts to plan for VAST Forward onsite certification, hands-on labs, and meetings with VAST Data product and leadership teams as part of their conference attendance plan. 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] For each assigned customer account, identify which VAST Forward customer speakers (Pixar, Lowe's, NHL, Leidos, Aquatic, T-Mobile, and others) and partner sponsors (Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, Starfish, and others) will resonate most, and tailor outreach accordingly. 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] Share the VAST Forward agenda directly with assigned customer accounts to drive attendance for the February 24-26 VAST Forward conference. 📅 2026-02-24 ⏫ #task #proposed #auto
 - [?] Confirm whether the Leidos Federal FOpp-4197 order is strictly software-only or includes any hardware/upgrade component, and ensure the opportunity documentation in Salesforce reflects the correct scope for OrderAdmin processing. @TBD 🔼 #task #proposed #auto
 - [?] Track the Leidos Federal cloud PO (FOpp-4197, "Leidos DoD Cloud") and capture customer expectations, user experience feedback, cloud product implications, and business development learnings for VAST Cloud strategy. ⏫ #task #proposed #auto
 - [?] Provide guidance to Karl Vietmeier on how aggressively Cloud Product Management should assert ownership and how much control Jason Vallery wants to maintain over Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities. 📅 2025-12-03 ⏫ #task #proposed #auto

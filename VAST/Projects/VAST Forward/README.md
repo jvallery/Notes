@@ -3,7 +3,7 @@ type: projects
 title: VAST Forward
 status: active
 created: '2026-01-05'
-last_contact: '2025-12-23'
+last_contact: '2025-12-03'
 tags:
 - type/projects
 - status/active
@@ -168,6 +168,12 @@ not done
 - VAST Forward has 13 confirmed customer-led breakout sessions (with more in progress), 9 VAST technical breakout sessions, Hands-on Labs led by Andy Bernstein, and AI Model Builder sessions led by Alon Horev.
 
 - Recipients of Kirstin Bordner's email were selected to serve as VAST spokespeople for VAST Forward breakout sessions.
+
+- Rick Scurfield stated that leaders from Pixar, Lowe's, NHL, Leidos, Aquatic, and T-Mobile will be on stage at VAST Forward to discuss real AI pipelines and production outcomes using VAST Data.
+
+- Rick Scurfield noted that VAST Forward will include onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams.
+
+- Rick Scurfield highlighted a VIP Ski Experience at SnowBasin as an exclusive opportunity for select guests during VAST Forward.
 ## Topics
 
 - VAST Forward conference positioning as customer and partner proof point
@@ -257,6 +263,12 @@ not done
 - Partner sponsorship and participation at VAST Forward
 
 - VAST Forward breakout session program status (customer-led and VAST technical sessions)
+
+- VAST Forward conference positioning and customer attendance
+
+- Account outreach to share agenda and highlight relevant speakers
+
+- Partner sponsorship and ecosystem validation for VAST Data
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.
