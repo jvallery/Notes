@@ -252,6 +252,8 @@ not done
 - Whale Iptic's multi-pod architecture was described as running across Google Cloud Platform (GCP) as one of the cloud providers used for redundancy.
 
 - Google Slides was used to share and request edit access for the presentation "GCP Flow from customer to sales to customer.pptx".
+
+- Google Docs (Google Drive) sent an automated email notification that a document was shared for editing.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications

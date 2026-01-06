@@ -161,6 +161,8 @@ not done
 - Zoom meeting logistics for internal VAST Data sync
 
 - Google Docs document collaboration (edit invitation)
+
+- CoreWeave-VAST automation project document (V2)
 ## Key Decisions
 
 - Mordechai Blaunstein confirmed attendance by accepting the 1:1 sync meeting invite with Jason Vallery for Friday, January 2, 2026 1:00pm to 2:00pm MT.
