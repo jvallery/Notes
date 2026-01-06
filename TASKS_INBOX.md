@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Lior Genzel on whether he should attend the meeting with Matthew Thomson and align on desired outcomes for an Oracle Alloy and Dedicated Regions discussion. 📅 2025-12-09 🔼 #task #proposed #auto
+- [?] Reply to Matthew Thomson to confirm one of his Thursday Seattle meeting time windows (11:30-12:30, 1:30-2:30, or 3:00pm) and propose a specific time and location. 📅 2025-12-09 ⏫ #task #proposed #auto
 - [?] After receiving the intro, coordinate scheduling with Matt (Oracle DRCC/Alloy product management lead) for an in-person meeting in Seattle during Jason Vallery's trip (dates not provided). 🔼 #task #proposed #auto
 - [?] Reply to Christian Linacre to confirm interest in meeting and request an email introduction to Matt (Oracle DRCC/Alloy product management lead) for a Seattle meeting. 📅 2025-12-09 ⏫ #task #proposed #auto
 - [?] Complete the IHDF Draft Strategic Plan Feedback Form and submit feedback to I Have A Dream Foundation of Boulder County (IHDF) by 2025-12-18. 📅 2025-12-18 ⏫ #task #proposed #auto

@@ -3,7 +3,7 @@ type: people
 email: lior.genzel@vastdata.com
 company: VAST Data
 title: Lior Genzel
-last_contact: '2025-12-30'
+last_contact: '2025-12-08'
 created: '2026-01-05'
 tags:
 - type/people
@@ -752,6 +752,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and meeting request
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, Lior plans to decline
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-08: Oracle OCI Alloy and Dedicated Regions intro, meeting availability in Seattle
 ## Open Tasks
 ```tasks
 path includes Lior Genzel
