@@ -62,6 +62,8 @@ not done
 - 2025-12-17: Brian Evans notified the PM team that Cisco RFE 0526 (Existing Feature Enhancement) was submitted an...
 
 - 2025-12-17: Brian Evans alerted the PM team that Cisco submitted RFE 0526 (Existing Feature Enhancement) request...
+
+- 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26) and VIP Ski nominations
 ## Key Facts
 
 - Cisco request (RFE 0526) focuses on regex-based allow/deny patterns for replication policies.

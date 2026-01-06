@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin (exclusive customer experience). 📅 2026-02-10 ⏫ #task #proposed #auto
+- [?] Encourage assigned accounts attending VAST Forward to plan for onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams. 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] For each assigned account, highlight the most relevant VAST Forward customer and partner speakers (for example Pixar, Lowe’s, NHL, Leidos, Aquatic, T-Mobile, Cisco, HPE) to increase registration and engagement. 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] Share the VAST Forward agenda directly with assigned customer accounts to drive attendance for the February 24-26, 2026 conference. 📅 2026-02-24 ⏫ #task #proposed #auto
 - [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin (exclusive customer experience during the February 24-26 conference). 📅 2026-02-24 🔼 #task #proposed #auto
 - [?] Encourage customer accounts to plan for VAST Forward onsite certification, hands-on labs, and meetings with VAST Data product and leadership teams as part of their conference attendance plan. 📅 2026-02-24 🔼 #task #proposed #auto
 - [?] For each assigned customer account, identify which VAST Forward customer speakers (Pixar, Lowe's, NHL, Leidos, Aquatic, T-Mobile, and others) and partner sponsors (Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, Starfish, and others) will resonate most, and tailor outreach accordingly. 📅 2026-02-24 🔼 #task #proposed #auto

@@ -52,6 +52,8 @@ not done
 - 2025-12-03: Mentioned in: Rick Scurfield requests account outreach and VIP nominations for VAST Forward (Feb 24-26)
 - 2025-12-30: An OrderAdmin alert and internal thread confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") f...
 - 2025-12-30: An Order Admin alert confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") for Leidos Federal w...
+
+- 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26) and VIP Ski nominations
 ## Key Facts
 
 - Leidos leaders are expected to speak at VAST Forward about how they use VAST Data in production environments.
