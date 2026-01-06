@@ -51,6 +51,8 @@ last_enriched: '2026-01-05'
 - 2025-12-23: Mentioned in: VAST Forward 2026: Selected as VAST breakout spokesperson, required prep cadence and key dates
 - 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
 ## Open Tasks
 ```tasks
 path includes Andy Bernstein

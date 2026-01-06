@@ -125,6 +125,8 @@ role: Vice President, Global Communications & Customer Marketing
 - 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
 ## Open Tasks
 ```tasks
 path includes Kirstin Bordner

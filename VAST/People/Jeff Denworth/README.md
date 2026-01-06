@@ -442,6 +442,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth requested a summary of status by end of week (relative to 2025-12-12) and asked for analysis of working capital and opportunity cost if Microsoft is buying 100 EB.
 
 - Jeff Denworth delegated to VAST Data product management leadership to work with Mikey and team to analyze Walmart's restated requirements and determine what should enter the VAST product plan.
+
+- Jeff Denworth is an escalation contact for concerns or conflicts with VAST Forward spokesperson assignments (contact Jeff Denworth and Kirstin Bordner directly, do not reply-all).
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -641,6 +643,8 @@ last_enriched: '2026-01-05'
 - 2025-12-21: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 
 - 2025-12-23: Jeff Denworth shared that Walmart restated requirements after an internal meeting, emphasizing a lon...
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth

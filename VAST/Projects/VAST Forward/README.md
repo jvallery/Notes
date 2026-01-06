@@ -3,7 +3,7 @@ type: projects
 title: VAST Forward
 status: active
 created: '2026-01-05'
-last_contact: '2025-12-03'
+last_contact: '2025-12-23'
 tags:
 - type/projects
 - status/active
@@ -53,6 +53,8 @@ not done
 - 2025-12-23: Kirstin Bordner announced that VAST Forward is two months away and that recipients of the email have...
 
 - 2025-12-03: Rick Scurfield emphasized the strategic importance of VAST Forward (February 24-26, 2026) and highli...
+
+- 2025-12-23: Kirstin Bordner announced that recipients of the email have been selected as VAST spokespeople to le...
 ## Key Facts
 
 - VAST Forward is scheduled for February 24-26 (year implied as 2026 based on email date 2025-12-03).
@@ -162,6 +164,10 @@ not done
 - Partners including Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, and Starfish are participating in VAST Forward as sponsors/partners, which Rick Scurfield framed as validation of VAST Data's category and leadership position.
 
 - VAST Forward will include onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams for attending customers.
+
+- VAST Forward has 13 confirmed customer-led breakout sessions (with more in progress), 9 VAST technical breakout sessions, Hands-on Labs led by Andy Bernstein, and AI Model Builder sessions led by Alon Horev.
+
+- Recipients of Kirstin Bordner's email were selected to serve as VAST spokespeople for VAST Forward breakout sessions.
 ## Topics
 
 - VAST Forward conference positioning as customer and partner proof point
@@ -249,6 +255,8 @@ not done
 - Customer outreach to drive VAST Forward attendance
 
 - Partner sponsorship and participation at VAST Forward
+
+- VAST Forward breakout session program status (customer-led and VAST technical sessions)
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.
@@ -268,3 +276,5 @@ not done
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople/SMEs for assigned VAST Forward breakout sessions.
 
 - VAST Forward breakout sessions will each have a designated VAST spokesperson to lead the session narrative and guide the discussion alongside customers.
+
+- VAST Forward breakout sessions will be led by designated VAST spokespeople/SMEs who will frame the narrative and guide discussion alongside customers.
