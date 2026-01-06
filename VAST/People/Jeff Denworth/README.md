@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-22'
+last_contact: '2025-12-23'
 created: '2026-01-05'
 tags:
 - type/people
@@ -440,6 +440,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated supply chain constraints are expected to be a major issue for the upcoming year and asked how VAST Data would source a 2 EB requirement for Microsoft MAI and when it must be ordered.
 
 - Jeff Denworth requested a summary of status by end of week (relative to 2025-12-12) and asked for analysis of working capital and opportunity cost if Microsoft is buying 100 EB.
+
+- Jeff Denworth delegated to VAST Data product management leadership to work with Mikey and team to analyze Walmart's restated requirements and determine what should enter the VAST product plan.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -637,6 +639,8 @@ last_enriched: '2026-01-05'
 - 2025-12-21: Jeff Denworth raised urgent concerns about whether Microsoft MAI expects to use VAST's supply chain,...
 
 - 2025-12-21: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
+
+- 2025-12-23: Jeff Denworth shared that Walmart restated requirements after an internal meeting, emphasizing a lon...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -992,6 +996,12 @@ not done
 - Sizing and sourcing questions for large capacity requirements (2 EB and 100 EB mentioned)
 
 - PoC placement strategy for Anson (Qi) requiring 1,000 to 2,000 GPUs for scale testing
+
+- Unified namespace requirement (Walmart rejection of two disjoint namespaces)
+
+- Integration requirement with Google Cloud Storage (GCS)
+
+- Competitive risk: Alluxio potentially regaining lead position at Walmart
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

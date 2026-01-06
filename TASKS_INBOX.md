@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Propose a concrete path and milestones (non-date commitments) toward 'total estate takeover' at Walmart, including how VAST would address unified namespace and GCS integration constraints. 🔼 #task #proposed #auto
+- [?] Coordinate with Mikey and the Walmart account team to determine which Walmart requirements should be incorporated into the VAST product plan and what near-term actions reduce Alluxio competitive risk. ⏫ #task #proposed #auto
+- [?] Analyze Walmart's restated requirements from their internal requirements meeting (hybrid long-term, unified namespace, on-prem-only POC, GCS integration requirement) and summarize gaps versus current VAST capabilities. ⏫ #task #proposed #auto
 - [?] Coordinate scheduling with Google (David Pawlak) for an additional one-hour meeting to walk through a Google-provided document, with Google requesting Friday (December 19, 2025) specifically with Jason Vallery if possible, otherwise target Monday. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Check with VAST Data partner organization for the full list of globally certified hardware partners and share the list with Google for BYOH planning in the Google GDC Storage RFP. @Lior Genzel 🔼 #task #proposed #auto
 - [?] Confirm to Google (David Pawlak) that recurring pricing in the Google GDC Storage RFP proposal includes hardware and SSDs, and explicitly state that VAST Data does not sell HDDs. @TBD 🔼 #task #proposed #auto

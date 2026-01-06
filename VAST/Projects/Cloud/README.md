@@ -136,6 +136,8 @@ not done
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, need analysis and product plan input
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -308,6 +310,8 @@ not done
 - VAST Data cloud team discussions include supply chain planning and deployment readiness for Microsoft MAI timelines (May to June 2026).
 
 - A document titled "VAST and Azure Integration.docx" is referenced in a Google Docs share request, indicating cloud integration documentation work.
+
+- Walmart requirements analysis and product plan implications are being routed through VAST product management leadership, likely impacting VAST's Cloud product strategy.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

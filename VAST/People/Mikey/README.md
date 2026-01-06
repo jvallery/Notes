@@ -35,6 +35,8 @@ expertise:
 - Mikey and team were identified by Jeff Denworth as the group PM management should work with to analyze Walmart's re-stated requirements and product plan implications.
 
 - Jeff Denworth asked PM management to work with Mikey and team to analyze Walmart's restated requirements and determine product plan implications.
+
+- Jeff Denworth asked VAST product management leadership to work with Mikey and team on analyzing Walmart's restated requirements and determining product plan implications.
 ## Recent Context
 
 - 2025-11-06: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -57,6 +59,8 @@ expertise:
 
 - 2025-12-23: Walmart requirements update: hybrid namespace, GCS integration, Alluxio risk
 - 2025-12-23: Walmart requirements restated, hybrid namespace and GCS integration required
+
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, need analysis and product plan input
 ## Open Tasks
 ```tasks
 path includes Mikey

@@ -92,3 +92,7 @@ not done
 - Introduction request for FP&A Director role candidate (Edwin Trogler)
 
 - Scheduling a quick introductory call next week
+
+- Candidate referral (Edwin Trogler) for VAST Data finance roles
+
+- Scheduling a call to discuss VAST Data and FP&A opportunities in Colorado
