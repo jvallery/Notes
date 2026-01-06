@@ -89,6 +89,27 @@ not done
 - 2025-12-15: Terika Dilworth requested team review and feedback on the draft VAST on Cloud Course and associated ...
 - 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos DoD Cloud
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+
+- 2025-12-15: Terika Dilworth asked the team to review and provide feedback on a draft VAST on Cloud Course and a ...
+- 2025-12-23: Mentioned in: Jeff Denworth: Walmart requirements reset, hybrid + single namespace, GCS integration risk
+- 2025-12-01: Brian Evans alerted the PM team about RFE 0482 for NVIDIA Corporation requesting unified operational...
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+- 2025-12-22: Mentioned in: Lior Genzel requested access to Google Doc: VAST and Azure Integration.docx
+- 2026-01-05: Mentioned in: Microsoft PRD sync, plan escalation path using Renen Hallak meeting with Nick Parker
+- 2026-01-05: Internal VAST thread to support a Microsoft workback plan by building a financial and TCO model that...
+- 2026-01-05: Mentioned in: Microsoft Teams meeting invite: Sync on PRD for VAST on Azure
+- 2026-01-02: Google Docs notification from Jonsi Stefansson with two open comments on the document "VAST and Azur...
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro between Jason Vallery and Sushant Rewaskar + architecture docs request
+- 2025-12-01: Brian Evans alerted the PM team about RFE 0482 for NVIDIA Corporation (opportunity: "DGX-C | Corewea...
+- 2026-01-01: Terika Dilworth invited Jason Vallery to an urgent internal training on Monday, January 5, 2026 from...
+- 2026-01-05: Lior Genzel shared operational details for a Microsoft AI Infrastructure (MAI) training deployment p...
+- 2025-12-01: Mentioned in: Karl Vietmeier asks for guidance on Cloud PM ownership for GDC and Azure Local opportunities
+- 2026-01-05: Rob Benoit forwarded an approved Documentation RFE (RFE 0538) tied to NTT DATA Japan Corporation. Th...
+- 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace and GCS integration risk
+- 2026-01-01: Terika Dilworth invited Jason Vallery and a large group of VAST AI sellers to an urgent Zoom trainin...
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos DoD Cloud
+- 2026-01-02: Google Docs notification shows two open comments from Jonsi Stefansson on the document "VAST and Azu...
+- 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -175,6 +196,50 @@ not done
 - The document text argues that constrained flash supply and rising prices make an 'all-flash everything' strategy economically risky for exabyte-scale data, and proposes using Azure Blob (HDD-based object storage) for the long tail while reserving VAST flash for the GPU-adjacent working set.
 
 - VAST on Azure readiness is insufficient to support a Microsoft-requested Azure VoC instance for GPU performance testing as of 2025-12-11.
+
+- A VAST on Cloud Course and a Cloud project brief are being assembled from existing material and are intended to be reviewed for messaging accuracy, technical accuracy, and clarity for the field before a January working session.
+
+- Walmart requirement analysis and resulting product plan updates were requested as PM management work, implying impact to VAST Cloud product planning.
+
+- Mordechai Blaunstein referenced internal documentation and tracking for the "Service Aware VIP Pool" work in Atlassian wiki and Jira ticket ORION-261324.
+
+- The Microsoft request for an Azure VoC instance relates to VAST's cloud offering readiness (VAST Azure).
+
+- The document "VAST and Azure Integration.docx" appears related to VAST Data cloud integration work.
+
+- The Microsoft PRD sync is intended to drive procurement/partnership escalation with Microsoft, which is relevant to VAST Data cloud strategy and execution.
+
+- A meeting titled "Sync with Microsoft on PRD vast on Azure" relates to VAST's cloud work for Azure.
+
+- The document text asserts that integrating VAST with Azure Blob enables customers to place the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set, as a hedge against flash component price volatility.
+
+- The email thread concerns VAST Data cloud product leadership engagement with Microsoft for technical collaboration and architecture review.
+
+- The training meeting is scheduled for Monday, January 5, 2026 from 9:00am to 9:45am Mountain Time (Denver) and will be held via Zoom (Meeting ID 981 5909 6262, passcode 378430).
+
+- Salesforce opportunity Opp-17629 currently calls out only the hardware for the first hall of the Microsoft MAI Nebius New Jersey deployment.
+
+- Plan for Salesforce opportunity Opp-17629 is to request a software purchase order that covers the full scope of the Microsoft MAI Nebius New Jersey project, not just the first hall hardware.
+
+- The current Salesforce quote for the Microsoft MAI Nebius New Jersey deployment does not include switches because 800 Gigabit switches are not available in VAST Data's price book.
+
+- When GDC or Azure Local opportunities involve hardware, VAST Data on-prem teams tend to take ownership, which creates confusion over accountability and reduces visibility into progress and outcomes for the cloud organization.
+
+- Walmart requirement analysis is expected to feed into VAST cloud and hybrid product planning.
+
+- A VAST on Cloud Course and a Cloud project brief have been started using existing material and are being reviewed for messaging and technical accuracy before a January working session.
+
+- Jeff Denworth requested tracking of the Leidos Federal cloud PO to capture customer expectations, user experience, cloud implications, and business development angles relevant to VAST's Cloud product work.
+
+- The Leidos Federal FOpp-4197 win is a cloud deployment that should be tracked for product learnings on customer expectations, user experience, and cloud business development angles.
+
+- The document text claims cold data can be transparently tiered to Azure Blob using either VAST native opaque formats (for maximum data reduction) or transparent open standard formats (for ecosystem accessibility), positioning this as enabling infinite scale without flash price premium.
+
+- The document text argues that constrained flash supply and rising prices make an all-flash exabyte-scale strategy economically risky, and that deep integration with Azure Blob allows customers to keep the long tail on HDD-based object storage while reserving VAST flash for GPU-adjacent working set.
+
+- VAST Azure readiness is a blocker for providing an Azure VoC instance to Microsoft for GPU performance testing as of 2025-12-11.
+
+- The Microsoft MAI effort requires an Azure Blob integration proposal from VAST and an engineering workshop in Redmond in January 2026 to progress integration discussions.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -354,6 +419,78 @@ not done
 - Tradeoff between VAST object format data reduction vs Azure Blob native readability
 
 - Hybrid storage economics for GPU-adjacent working set vs long-tail data
+
+- Cloud project brief review for alignment, clarity, and technical accuracy
+
+- Holiday timing and maintaining momentum before January working session
+
+- RFE 0482 for NVIDIA DGX Cloud unified visibility across VAST clusters deployed in multiple NCPs
+
+- Service Aware VIP Pool design for multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI)
+
+- Jira ORION-261324 tracking for VIP pool enhancements
+
+- Microsoft workback plan financial analysis and spreadsheet model
+
+- CoreWeave MFN clause and exclusivity implications for Microsoft pricing discussions
+
+- CoreWeave pricing reference point ($3.60/TB/month) and list price discount (about 94.9% before price hike)
+
+- Cost split scenarios for Microsoft: VAST software on Azure Storage bare metal vs VAST ODM hardware plus VAST software
+
+- TCO model refinement including COGS, power consumption, and opportunity cost value to Microsoft
+
+- VAST cold data tiering to Azure Blob, VAST opaque object format vs native Azure Blob format
+
+- Messaging on flash supply constraints and rising prices for exabyte-scale data
+
+- Positioning VAST flash for GPU-adjacent working set and Azure Blob for long-tail storage
+
+- VAST data reduction ratio (DRR) and efficiency claims in Azure integration narrative
+
+- RFE 0482 for NVIDIA DGX Cloud operational visibility across multiple NCPs
+
+- Dual-uplink visibility for dedicated VAST cluster LAX-02 (lambda.cloud.vastdata.com and nvidiadgxc.cloud.vastdata.com)
+
+- Tenant-filtered visibility for multi-tenant VAST cluster LAX-03 via NVIDIA Uplink
+
+- Unified dashboard/visibility layer aggregating telemetry, performance, health, and alerts across VAST clusters
+
+- NVIDIA KV Cache storage announcements at CES and implications for enterprise inference infrastructure
+
+- How VAST Data positions and sells KV Cache storage to customers
+
+- NVIDIA Context Memory Extension (CME) and its impact on KV Cache storage requirements
+
+- Internal enablement for AI sellers, live attendance vs watching the recording
+
+- Phased installation plan: first hall 58 x 58, full scale 812 x 812, 14 halls total
+
+- Supply chain constraints: NAND sourcing and 800 Gigabit switch availability
+
+- Salesforce opportunity management: Opp-17629 scope (first hall hardware) and plan for software PO for full scope
+
+- Potential March 2026 shipment of a 57 x 57 configuration (unconfirmed)
+
+- VAST OS 5.3+ tenant naming character restrictions (underscore not supported)
+
+- Documentation updates needed: Administrator Guide and CLI Command Reference
+
+- Customer deployment friction reduction and support ticket avoidance via clearer documentation
+
+- NVIDIA KV Cache storage announcements at CES 2026
+
+- VAST on Cloud Course content review
+
+- Sales enablement messaging accuracy and technical accuracy
+
+- Improving clarity of cloud messaging for the field
+
+- VAST cold data tiering to Azure Blob, format choice (VAST object format vs native Azure Blob format)
+
+- Messaging on flash supply constraints and VAST data reduction efficiencies (DRR) as mitigation
+
+- Azure Blob integration positioning for GPU-adjacent working set vs long-tail storage
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
@@ -374,3 +511,13 @@ not done
 - Target decision is between deploying VAST Data versus using Azure Blob (Microsoft's original plan) for the Microsoft MAI training deployment at the Nebius New Jersey data center.
 
 - Team aims to reach a decision in the coming business days to enable a procurement decision before 2026-01-31.
+
+- Mordechai Blaunstein will drive investigation and coordination for RFE 0482 due to its complexity, bringing in additional parties as needed.
+
+- Decision pending between deploying VAST Data versus using Azure Blob (Microsoft's original plan) for the MAI training deployment at the Nebius New Jersey data center.
+
+- Target to reach a decision in the coming business days to enable a procurement decision before 2026-01-31.
+
+- RFE 0538 (Documentation) was submitted to the PM team and approved by Rob Benoit.
+
+- VAST AI sellers are expected to attend the KV Cache and NVIDIA CME training live or watch the recording to prepare for customer conversations.

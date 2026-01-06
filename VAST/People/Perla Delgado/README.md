@@ -32,6 +32,12 @@ role: Executive Director
 - Perla Delgado will share the start of a SWOT document for the potential acquisition of the former church in Longmont that Erika Smith co-created.
 
 - Perla Delgado is part of the group evaluating initial feasibility of acquiring a former church in Longmont and will report back to the IHDF board.
+
+- Perla Delgado's mailing address for I Have A Dream Foundation of Boulder County is 5390 Manhattan Circle, Boulder, CO 80303.
+
+- Perla Delgado (Executive Director, I Have A Dream Foundation of Boulder County) needs to assess IHDF staff needs related to fundraising support.
+
+- Perla Delgado will share the start of a SWOT document for the potential acquisition of a former church in Longmont.
 ## Recent Context
 
 - 2025-12-08: Mentioned in: [[2025-12-08 - IHDF board- provide feedback on draft strategic plan by 2025-12-18; January board meeting preview]]

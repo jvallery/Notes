@@ -34,6 +34,9 @@ not done
 
 - 2025-12-08: Perla Delgado asked the IHDF Board of Directors to review the Draft Strategic Plan and submit feedba...
 - 2025-12-10: Erika Smith sent a confidential recap of an IHDF executive session that Jason Vallery missed. Key po...
+
+- 2025-12-08: Perla Delgado (Executive Director, I Have A Dream Foundation of Boulder County) asked the IHDF Board...
+- 2025-12-10: Erika Smith sent a confidential recap of an IHDF executive session that I missed. Key points were ri...
 ## Key Facts
 
 - Strategic planning consultants Hannah (Big Picture Impact) and Andrea Ostroy will join the IHDF January board meeting to provide a first look at the designed version of the IHDF strategic plan.
@@ -47,6 +50,14 @@ not done
 - IHDF board members agreed to form a fundraising committee that goes beyond events and marketing, with a broader development lens including volunteers and stewardship, and it may include non-board members and potentially a budget.
 
 - IHDF is in very early exploration of acquiring a former church in Longmont that is for sale at a low price; it is not currently in any organizational plan and is considered confidential and in infancy.
+
+- IHDF Board of Directors members are requested to provide feedback on the IHDF draft strategic plan using a feedback form by December 18, 2025.
+
+- IHDF Board of Directors members can alternatively provide strategic plan feedback by emailing Hannah (hanna@bigpictureimpact.com) or Andrea Ostroy (andreaostroy01@gmail.com) or requesting a 1:1 meeting with them.
+
+- IHDF board members agreed to form a fundraising committee with a broader development lens beyond events and marketing, including volunteers and stewardship, and it may include non-board members and potentially a budget.
+
+- IHDF is exploring a very early-stage idea to potentially acquire a former church in Longmont that is for sale at a low price; the idea is not currently in IHDF's plan and is to be kept confidential.
 ## Topics
 
 - IHDF Draft Strategic Plan feedback collection process
@@ -64,6 +75,18 @@ not done
 - Real estate exploration: potential acquisition of a former church in Longmont
 
 - Confidentiality expectations for early-stage board discussions
+
+- IHDF strategic plan draft review and feedback collection
+
+- January IHDF board meeting preview of designed strategic plan
+
+- December IHDF board meeting reminder
+
+- IHDF governance: risks of taking public stances and protecting tax-exempt status
+
+- IHDF fundraising strategy: forming a broader development-focused fundraising committee
+
+- Potential acquisition: former church property in Longmont and initial feasibility/SWOT
 ## Key Decisions
 
 - IHDF will form a fundraising committee with a broader development scope beyond events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.
@@ -71,3 +94,5 @@ not done
 - IHDF will use executive session time at the end of board meetings to discuss the impact and risks of taking public stances on certain matters (including tax-exempt status and donor/community impact).
 
 - IHDF will conduct an initial feasibility assessment of acquiring a former church in Longmont and have Maureen (last name unknown), Jorin (last name unknown), Tracy (last name unknown), and Perla Delgado report back to the board.
+
+- IHDF will have Maureen (last name unknown), Jorin (last name unknown), Tracy (last name unknown), and Perla Delgado do an initial feasibility assessment of acquiring a former church in Longmont and report back to the IHDF Board.

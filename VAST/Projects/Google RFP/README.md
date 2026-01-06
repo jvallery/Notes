@@ -30,6 +30,8 @@ not done
 ## Recent Context
 
 - 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST Data sync to coordinate on the Go...
+
+- 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST Data sync titled "Google RFP: Int...
 ## Key Facts
 
 ## Topics
@@ -37,4 +39,6 @@ not done
 - Google RFP internal coordination
 
 - Internal sync meeting scheduling
+
+- Scheduling and RSVP for internal sync
 ## Key Decisions

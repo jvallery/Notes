@@ -49,6 +49,12 @@ not done
 - 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26, 2026)
 - 2025-12-17: Brian Evans notified the PM team that Cisco RFE 0526 (Existing Feature Enhancement) was submitted an...
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up questions and request to meet Jason Vallery
+
+- 2025-12-03: Mentioned in: Rick Scurfield requests account outreach and VIP nominations for VAST Forward (Feb 24-26, 2026)
+- 2025-12-17: Brian Evans alerted the PM team that Cisco RFE 0526 (Existing Feature Enhancement) was submitted and...
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partners, and scheduling
+- 2025-12-17: Brian Evans notified the PM team that Cisco RFE 0526 (Existing Feature Enhancement) was submitted an...
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and scheduling
 ## Key Facts
 
 - Cisco request (RFE 0526) focuses on regex-based allow/deny patterns for replication policies.
@@ -92,6 +98,20 @@ not done
 - The RFE record indicates 'Deal Blocker: No', 'Opportunity Amount: 0', and 'Additional PB from RFE: 100' for Cisco RFE 0526.
 
 - Cisco is a VAST Data certified eBox hardware partner (per Lior Genzel) for the GDC Storage RFP context.
+
+- Cisco requested the ability to use regex patterns to allow or deny files/objects by name in replication policies (examples: allow *.LIB, deny *.mp3).
+
+- Cisco's value proposition for RFE 0526 is enterprise multi-geo liability protection by preventing replication of copyrighted content via 'never replicate' patterns.
+
+- Cisco is a VAST Data certified eBox partner referenced in the context of BYOH options for the Google GDC Storage RFP.
+
+- Cisco requires replication policy filtering that can allow or deny files/objects by name using regex patterns (examples: allow only *.LIB, deny all *.mp3).
+
+- Cisco's value proposition for RFE 0526 includes enterprise multi-geo liability protection by preventing replication of copyrighted content via a small set of 'never replicate' patterns.
+
+- RFE 0526 is marked as not a deal blocker and indicates an estimated additional 100 PB associated with the request; opportunity amount is listed as 0 in the RFE record.
+
+- Cisco is a VAST Data certified eBox hardware partner referenced in the Google GDC Storage RFP follow-up.
 ## Topics
 
 - Cisco replication policy enhancements
@@ -117,6 +137,16 @@ not done
 - Enterprise multi-geo compliance and liability protection for replicated data
 
 - Enterprise multi-geo compliance and liability protection via replication exclusions
+
+- Cisco RFE 0526: replication policy filtering by filename/object name using regex allow/deny patterns
+
+- Salesforce RFE workflow for PM team (link RFE to Related Feature)
+
+- Replication policy enhancements for file/object name filtering
+
+- Regex-based allow/deny patterns for replication inclusion/exclusion
+
+- Enterprise multi-geo compliance and liability protection use cases
 ## Key Decisions
 
 - RFE 0526 for Cisco was approved by Brian Evans and submitted to the VAST PM team.
@@ -124,3 +154,5 @@ not done
 - RFE 0526 for Cisco was approved by Brian Evans and submitted to the VAST PM team for processing in Salesforce.
 
 - Cisco RFE 0526 was approved by Brian Evans for PM team review and processing in Salesforce.
+
+- RFE 0526 for Cisco was submitted to the PM team and approved by Brian Evans.

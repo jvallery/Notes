@@ -41,6 +41,11 @@ not done
 - 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO (FOpp-4197) and request to track customer expectations
 - 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26, 2026)
 - 2025-12-30: An OrderAdmin alert confirms a $96,808.14 deal (FOpp-4197) for Leidos Federal, titled "Leidos DoD Cl...
+
+- 2025-12-03: Mentioned in: Rick Scurfield requests account outreach and VIP nominations for VAST Forward (Feb 24-26, 2026)
+- 2025-12-30: An OrderAdmin alert and internal thread confirms a $96,808.14 software-only cloud deployment order f...
+- 2025-12-30: An OrderAdmin alert and internal thread confirms VAST Data's first US Federal sector Cloud PO: a sof...
+- 2025-12-30: An OrderAdmin alert and internal thread confirm a software-only cloud deployment order for Leidos Fe...
 ## Key Facts
 
 - Leidos leaders are expected to speak at VAST Forward about how they use VAST Data in production environments.
@@ -82,6 +87,22 @@ not done
 - The Leidos Federal Cloud PO is described as a software-only cloud deployment in a Leidos GovCloud instance and is stated to be the first Cloud PO in the US Federal sector.
 
 - Leidos Federal opportunity "Leidos DoD Cloud" (FOpp-4197) for $96,808.14 was submitted to VAST Order Admin and is under review; close date was 2025-12-26 and deal type was Land with standard transaction type.
+
+- Leidos leaders are expected to speak at VAST Forward about how they use VAST Data in production environments for AI pipelines and outcomes.
+
+- Leidos Federal opportunity "Leidos DoD Cloud" (Opp Number FOpp-4197) has an amount/TCV of $96,808.14 and a close date of 2025-12-26.
+
+- The Leidos Federal deal FOpp-4197 is a cloud deployment in a Leidos GovCloud instance and is software-only (no hardware).
+
+- Leidos leaders are planned speakers at VAST Forward to discuss how Leidos uses VAST in production environments.
+
+- Opportunity FOpp-4197 for account Leidos Federal is named "Leidos DoD Cloud" with TCV $96,808.14 and close date 2025-12-26; the order was submitted to VAST Order Admin (S11 / OrderAdmin) for review and booking.
+
+- The win rationale recorded in the OrderAdmin alert emphasized Leidos pursuing Department of Defense and civilian hybrid cloud strategies, positioning VAST Data as a foundational component of their "Mission OS" across multiple locations (cloud and on-prem) using capabilities including ABAC, Global Namespace, Similarity, DASE (on-prem), and site-to-site meshed replication.
+
+- Leidos Federal opportunity "Leidos DoD Cloud" (Opp FOpp-4197) for $96,808.14 TCV closed on 2025-12-26 and was submitted to VAST Order Admin for booking.
+
+- The Leidos Federal deal is a software-only cloud deployment in a Leidos GovCloud instance and is described as the first Cloud PO in the US Federal sector.
 ## Topics
 
 - Leidos Federal opportunity FOpp-4197 order submission and OrderAdmin processing
@@ -111,8 +132,38 @@ not done
 - Win drivers: strategic relationship and superior architecture scalability; hybrid cloud strategy for defense and civilian sectors
 
 - VAST differentiated capabilities referenced in win notes: ABAC, Global Namespace, Similarity, DASE (on-prem), and site-to-site meshed replication
+
+- Leidos Federal cloud deployment order submission and OrderAdmin processing (FOpp-4197)
+
+- US Federal sector first VAST Cloud PO
+
+- Hybrid cloud demo architecture connecting GovCloud to on-prem for resilience
+
+- Order documentation checklist and booking SLA (same-day if received before 3PM local time)
+
+- Tracking customer expectations, user experience, cloud considerations, and business development angles for the Leidos Federal Cloud PO
+
+- Leidos Federal first US Federal sector Cloud PO (software-only) and OrderAdmin processing
+
+- Hybrid cloud demo architecture connecting Leidos GovCloud deployment to on-prem system for resilience
+
+- Government customer pitch concept: "Golden Dome" and resilience planning ("submarine mentality")
+
+- Order documentation checklist and Order Operations booking SLA (same-day if before 3PM local time)
+
+- Win drivers: strategic relationship and superior architecture scalability; hybrid cloud unwind from all-cloud
+
+- Hybrid cloud resilience demo for government customers ("submarine mentality")
+
+- OrderAdmin process and booking SLA (same business day if received before 3PM local time)
 ## Key Decisions
 
 - Leidos Federal FOpp-4197 was submitted to VAST Order Administration for processing as a software-only cloud deployment in Leidos GovCloud.
 
 - Treat the Leidos Federal FOpp-4197 win as a tracked reference point for cloud customer expectations, user experience, cloud product implications, and business development learnings (per Jeff Denworth instruction to Jason Vallery).
+
+- Proceed with a software-only cloud deployment for Leidos Federal in a Leidos GovCloud instance and connect it to an on-prem system to support a resilient government demo ("Golden Dome" first pitch).
+
+- Proceed with a software-only cloud deployment of VAST Data in the Leidos GovCloud instance for opportunity FOpp-4197 (Leidos DoD Cloud), intended to later connect to an on-prem system for a resilient hybrid demo platform.
+
+- Position the Leidos Federal cloud deployment as connected to an on-prem system to demonstrate a resilient hybrid data platform for government customers, with "Golden Dome" as the first pitch.

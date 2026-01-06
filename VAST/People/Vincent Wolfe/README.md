@@ -36,6 +36,8 @@ expertise:
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday greeting and shared his holiday letter. He expressed h...
 
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday greeting and shared their holiday letter. He expressed...
+
+- 2025-12-16: Vincent Wolfe sent Jason Vallery a holiday greeting and referenced an attached holiday letter. He ex...
 ## Open Tasks
 ```tasks
 path includes Vincent Wolfe
@@ -55,3 +57,5 @@ not done
 - Holiday letter shared by Vincent Wolfe
 
 - Personal year-end update (2025 reflection and 2026 outlook)
+
+- Personal year-end check-in (2025 reflection, 2026 outlook)

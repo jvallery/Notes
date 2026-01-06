@@ -46,6 +46,9 @@ tags:
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped uplink access
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped Uplink access
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-01: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
 ## Open Tasks
 ```tasks
 path includes Paul

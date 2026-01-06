@@ -97,6 +97,24 @@ education:
 - David Ellis received the book "Fashionable Nonsense: Postmodern Intellectuals' Abuse of Science" as a Christmas gift and said it looks interesting as a possible TMIMITW read.
 
 - David Ellis described the reduced TMIMITW invite list as including Trent, Brandon, Brian, and two people referred to as "the Mikes."
+
+- David Ellis confirmed he was in for the board game session at Brian Bearly's house the week after Christmas 2025.
+
+- David Ellis nominated the board game Betrayal of the House on the Hill (referred to as 'the haunting on the house on the hill') as an additional game option for the session.
+
+- David Ellis said Monday, 2025-12-29 is better for him than Saturday, 2025-12-27 for the board game session time options proposed by Brian Bearly.
+
+- David Ellis added Jason Vallery to the email thread about the board game session planning.
+
+- David Ellis planned a final men's group discussion about the book '2084' followed by dinner at Wapos on Tuesday, 2026-01-06 at 6:30pm, contingent on having a quorum.
+
+- David Ellis stated he planned to take a hiatus from the men's book club early in 2026 and reassess what to do going forward, with no future plans after the Jan 6 meeting for now.
+
+- David Ellis plans to retire the existing "book club" and start a smaller group called TMIMITW (The Most Interesting Men In The World) focused on monthly book discussions plus quarterly social events like dinner or beers.
+
+- David Ellis suggested starting the new TMIMITW group on either January 27, 2026 or February 3, 2026.
+
+- David Ellis proposed inviting a reduced list for TMIMITW including Trent, Brandon, Brian, and the Mikes.
 ## Recent Context
 
 - 2026-01-04: David Ellis is trying to confirm attendance for the final mens group chat about the book '2084' and ...
@@ -116,6 +134,10 @@ education:
 - 2025-12-18: Mentioned in: Board game session planning (Nemesis) for week after Christmas 2025
 - 2026-01-04: David Ellis asked the mens group to confirm attendance for the final discussion of the book "2084" f...
 - 2025-12-31: David Ellis drafted a plan to retire the existing book club and start a smaller group called TMIMITW...
+
+- 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's house (week after Christmas 2025)
+- 2026-01-04: David Ellis asked the men's group to confirm attendance for the final discussion of the book '2084' ...
+- 2025-12-31: David Ellis drafted a message proposing to retire the existing book club and start a smaller group c...
 ## Open Tasks
 ```tasks
 path includes David Ellis
@@ -191,6 +213,20 @@ not done
 - Proposed TMIMITW start dates: Tuesday, 2026-01-27 or Tuesday, 2026-02-03
 
 - Reduced invite list composition (Trent, Brandon, Brian, Mike N, Mike W) and whether to include Nathan
+
+- Attendance confirmation and quorum for the Tuesday men's group meeting
+
+- Final discussion of the book '2084' (referred to as the 'AI book' in the thread)
+
+- Potential future book selections including 'Consider Phlebas' (Culture series) and 'The Immortal Mind'
+
+- Men's group continuity and David Ellis taking a hiatus from organizing/attending
+
+- Cadence proposal: monthly discussions plus quarterly dinner/beers/activities (for example escape rooms)
+
+- Potential start dates for the new group: January 27, 2026 or February 3, 2026
+
+- Reduced invite list for TMIMITW (Trent, Brandon, Brian, and the Mikes)
 ## Key Decisions
 
 - Tentative plan to meet Tuesday, 2026-01-06 at 6:30pm at Wapos for dinner and the final discussion of the book '2084', pending enough attendees to form a quorum.
@@ -206,3 +242,5 @@ not done
 - Tentative plan to meet Tuesday, 2026-01-06 for Wapos dinner and the final discussion of the book "2084", pending quorum confirmation.
 
 - David Ellis decided to retire the existing book club and replace it with a smaller group called TMIMITW (The Most Interesting Men In The World).
+
+- Plan (pending quorum) to meet Tuesday, 2026-01-06 at 6:30pm for the final discussion of the book '2084' and dinner at Wapos.

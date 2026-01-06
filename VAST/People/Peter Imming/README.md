@@ -29,6 +29,8 @@ last_enriched: '2026-01-05'
 - Peter Imming shared Sebastien Berube's cell phone number with Jason Vallery (cell number not included in the email).
 
 - Peter Imming shared Sebastien Berube's cell phone number with Jason Vallery (phone number not included in the email).
+
+- Peter Imming told Sebastien Berube that he shared Sebastien's cell phone number with Jason Vallery.
 ## Recent Context
 
 - 2025-12-18: Mentioned in: Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting
@@ -38,6 +40,8 @@ last_enriched: '2026-01-05'
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) via Peter Imming, coffee set for Jan 7, 2026
 
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube via Peter Imming, coffee meeting set for 2026-01-07
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube via Peter Imming, coffee meeting set for Jan 7 in Lafayette
 ## Open Tasks
 ```tasks
 path includes Peter Imming

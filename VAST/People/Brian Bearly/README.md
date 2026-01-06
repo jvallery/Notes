@@ -35,6 +35,10 @@ last_enriched: '2026-01-05'
 - Brian Bearly proposed two candidate start times for the board game session: Saturday, 2025-12-27 at 1:00pm or Monday, 2025-12-29 at 1:00pm, and asked whether an evening session is needed instead.
 
 - Brian Bearly said he could make any day from Friday 2025-12-26 through Wednesday 2025-12-31 for the board game session.
+
+- Brian Bearly said he could make a board game session work any day from Friday, 2025-12-26 through Wednesday, 2025-12-31.
+
+- Brian Bearly proposed holding the board game session either Saturday, 2025-12-27 at 1:00pm or Monday, 2025-12-29 at 1:00pm.
 ## Recent Context
 
 - 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's place (week after Christmas)
@@ -48,6 +52,9 @@ last_enriched: '2026-01-05'
 
 - 2025-12-18: Mentioned in: Board game session planning (Nemesis) for week after Christmas 2025
 - 2026-01-04: Mens group: confirm quorum for 2084 final discussion and Wapos dinner (Tuesday 2026-01-06 6:30pm)
+
+- 2025-12-18: Brian Bearly is organizing a board game session at his home the week after Christmas 2025, initially...
+- 2026-01-04: David Ellis: Jan 6 men's group final '2084' discussion and Wapos dinner quorum check
 ## Open Tasks
 ```tasks
 path includes Brian Bearly
@@ -61,3 +68,9 @@ not done
 - Game selection: Nemesis and Betrayal of the House on the Hill
 
 - Proposed times: 2025-12-27 1:00pm vs 2025-12-29 1:00pm
+
+- Scheduling a board game session the week after Christmas 2025 at Brian Bearly's house
+
+- Game selection for the session, including Nemesis and Betrayal of the House on the Hill
+
+- Availability polling for Saturday 2025-12-27 at 1:00pm vs Monday 2025-12-29 at 1:00pm

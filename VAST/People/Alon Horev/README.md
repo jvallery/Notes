@@ -61,6 +61,14 @@ tags:
 - Kushal Datta requested a meeting with Alon Horev to discuss MAI solution design.
 
 - Alon Horev is leading AI Model Builder sessions for VAST Forward (as of 2025-12-23 program plan).
+
+- Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST proof of concept requiring 1,000 to 2,000 GPUs.
+
+- Alon Horev advised Jason Vallery to work with Violet (VAST Data) on Google Distributed Cloud RFP encryption and key management questions.
+
+- Lior Genzel said he messaged Alon Horev to strategize options for the most strategic environment for Anson (Qi)'s VAST PoC.
+
+- Alon Horev leads AI Model Builder sessions for VAST Forward.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -120,6 +128,14 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped Uplink access
 - 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 - 2025-12-23: Mentioned in: VAST Forward: VAST spokesperson selection and required prep schedule (Jan 6 kickoff, Feb 25-26 live)
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
+- 2025-12-01: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
+- 2025-12-23: Mentioned in: VAST Forward: selected as VAST breakout spokesperson, required prep cadence and key dates
 ## Open Tasks
 ```tasks
 path includes Alon Horev

@@ -41,6 +41,10 @@ last_enriched: '2026-01-05'
 - Noa Cohen asked for the required date from Google to consider TLS for Block in a minor release after 5.6.
 
 - Noa Cohen is an engineering stakeholder for clarifying VAST’s end-to-end development lifecycle (gates, signoffs, source control, CI/CD).
+
+- Noa Cohen confirmed TLS support for the VAST Block protocol was planned for VAST release 5.6 but was deferred due to other protocol features requested by more customers.
+
+- Noa Cohen asked for Google's required-by date for TLS support for the VAST Block protocol to consider it for a minor release after 5.6.
 ## Recent Context
 
 - 2026-01-05: Mentioned in: 1:1 setup and org mapping with Shachar Feinblit (Tel Aviv trip prep, Cloud/5.5, release planning)
@@ -54,6 +58,8 @@ last_enriched: '2026-01-05'
 - 2026-01-05: Mentioned in: TLS support for VAST Block protocol needed for Google GDC RFP, deferred from VAST 5.6
 
 - 2026-01-05: Mentioned in: TLS support for VAST Block protocol requested for Google GDC RFP, deferred from 5.6
+
+- 2026-01-05: Mentioned in: TLS support for VAST Block protocol requested for Google GDC RFP, deferred from VAST 5.6
 ## Open Tasks
 ```tasks
 path includes Noa Cohen

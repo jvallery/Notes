@@ -49,6 +49,9 @@ not done
 
 - 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting: they need a long...
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements restated, GCS integration required, Alluxio risk
+
+- 2025-12-23: Mentioned in: Jeff Denworth: Walmart requirements reset, hybrid + single namespace, GCS integration risk
+- 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace and GCS integration risk
 ## Key Facts
 
 - Walmart’s enterprise analytics system-of-record is GCP (BigQuery + GCS); their operational systems are Azure.
@@ -88,6 +91,18 @@ not done
 - Walmart plans to start an internal big data proof of concept (POC) sometime in 2026, limited to workloads that can run exclusively on premises.
 
 - Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or alternatively would need significant database-layer lobbying including a hybrid cloud database approach.
+
+- Walmart stated they need to build a long-term hybrid solution for their data team and were not successful in getting the business to accept two disjoint namespaces.
+
+- Walmart plans to start an internal big data proof of concept (POC) in 2025, limited to workloads that can exclusively run on premises.
+
+- Walmart indicated any solution they move forward with will require integration with Google Cloud Storage (GCS), or significant lobbying at the database layer including potentially a hybrid cloud database.
+
+- Walmart was not successful in getting the business to accept two disjoint namespaces, implying a requirement for a unified namespace across environments.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or would need significant lobbying at the database layer including a hybrid cloud database.
+
+- Jeff Denworth warned that Walmart's GCS integration requirement could put Alluxio back in a leading position for the account and advised VAST to be careful.
 ## Topics
 
 - Hybrid lakehouse architecture (GCP → two on-prem sites)

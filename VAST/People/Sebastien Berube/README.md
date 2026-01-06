@@ -4,7 +4,7 @@ title: Sebastien Berube
 created: '2026-01-05'
 last_contact: '2025-12-18'
 email: berube.sebastien@gmail.com
-company: Amazon Web Services
+company: Amazon Web Services (AWS)
 role: Employee @ Amazon Web Services (AWS)
 tags:
 - type/people
@@ -44,8 +44,16 @@ not done
 - Sebastien Berube exploring potential job change opportunities in 2026
 
 - Scheduling an in-person coffee meeting in Boulder County, Colorado
+
+- Warm introduction between Jason Vallery (VAST Data) and Sebastien Berube (AWS) for potential new opportunities
+
+- Sebastien Berube potential job change in 2026 (no defined timeline or catalyst)
+
+- In-person coffee meeting in Boulder County, Colorado
 ## Key Decisions
 
 - Jason Vallery and Sebastien Berube will meet in person for coffee on Wednesday, January 7, 2026 at 8:00am in Lafayette, Colorado (location specified in Sebastien Berube's calendar invite).
 
 - Jason Vallery and Sebastien Berube agreed to meet for coffee on 2026-01-07 at 8:00am in Lafayette, Colorado (location details sent via calendar invite).
+
+- Jason Vallery and Sebastien Berube agreed to meet for coffee on January 7, 2026 at 8:00am in Lafayette, Colorado (location to be confirmed from Sebastien's calendar invite).

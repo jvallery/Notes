@@ -31,6 +31,8 @@ not done
 ## Recent Context
 
 - 2025-12-22: Slice (no-reply@sliceglobal.com) invited Jason Vallery to join Slice, an equity management platform,...
+
+- 2025-12-22: Slice (no-reply@sliceglobal.com) invited Jason Vallery to join Slice, an equity management platform ...
 ## Key Facts
 
 - Slice is an equity management platform used to view and manage equity grants and additional securities.
@@ -39,4 +41,8 @@ not done
 - Slice equity management platform account invitation
 
 - VAST Data equity grants access and management
+
+- Equity management platform access (Slice)
+
+- VAST Data equity grants and securities administration
 ## Key Decisions

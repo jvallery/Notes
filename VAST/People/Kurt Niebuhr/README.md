@@ -28,6 +28,8 @@ role: Global pre-sales lead for AI Infrastructure (under Zia)
 - Kurt Niebuhr is involved in a neo-cloud partnership pipeline (example partner: sakura.net) and is positioned to keep Jason Vallery updated on where VAST Data can integrate or add value.
 
 - Kurt Niebuhr was included as a recipient for the VAST slides and access following the Microsoft GBB AKS AI Roadshow session.
+
+- Kurt Niebuhr (Microsoft) was included as a recipient on the follow-up thread for the Microsoft GBB AKS AI Roadshow and the request for slides/code and Global Namespace on Azure demo planning.
 ## Recent Context
 
 - 2025-10-27: Jason Vallery and Kurt Niebuhr aligned on a go-to-market path to bring VAST Data’s high-density, low...
@@ -48,6 +50,9 @@ role: Global pre-sales lead for AI Infrastructure (under Zia)
 
 - 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 - 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share VAST slides/code and plan Global Namespace on Azure demo
+
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow follow-up, slides/code request and Global Namespace on Azure demo
 ## Open Tasks
 ```tasks
 path includes Kurt Niebuhr

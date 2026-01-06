@@ -49,6 +49,14 @@ phone: +1-512-535-8234
 - John Mao's OpenAI contact is ex-Instagram/Facebook and ex-Twilio, where he ran infrastructure/platform engineering teams, and he believes OpenAI is less 'not invented here' than those companies.
 
 - Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and could be used for press interviews while Renen Hallak is meeting flash vendors.
+
+- John Mao's OpenAI friend previously worked at Instagram/Facebook and Twilio, leading infrastructure/platform engineering teams, and characterized OpenAI as less "Not Invented Here" (N.I.H.) than those companies.
+
+- John Mao stated that Ben Ries reports to John Mao's friend at OpenAI, and that John Mao's friend reports to Venkat (implied Venkat Venkataramani).
+
+- John Mao gave his OpenAI friend a high-level pitch on what VAST is doing with the VAST Database, and the friend was intrigued.
+
+- Kirstin Bordner stated John Mao is planning to be in Las Vegas for CES and can be used for press interviews because Renen Hallak will be tied up meeting flash vendors.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
@@ -64,6 +72,10 @@ phone: +1-512-535-8234
 - 2025-12-21: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 - 2025-12-12: John Mao shared details from a catch-up with a close friend who leads OpenAI's Online Data Infrastru...
 - 2025-12-21: Mentioned in: CES planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, press strategy, and Microsoft Jay Parikh meeting
+- 2025-12-12: John Mao shared details from a catch-up with his close friend who recently joined OpenAI to lead the...
+- 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination, embargo timing, and Microsoft Jay Parikh meeting request
 ## Open Tasks
 ```tasks
 path includes John Mao
@@ -91,8 +103,16 @@ not done
 - OpenAI Research training data system DAQ (Data Acquisition) and its scale characteristics
 
 - OpenAI Data Platform team for Spark/Databricks workloads
+
+- OpenAI organizational structure: Applications vs Scaling vs Research
+
+- OpenAI Applications online data platforms: Rockset, Snowflake, Azure CosmosDB, Azure Blob persistence
+
+- OpenAI internal Research data platform: DAQ (Data Acquisition) and its scale characteristics
 ## Key Decisions
 
 - John Mao will keep the OpenAI relationship engineering-centered and will open a dialogue that brings in VAST engineering during his planned San Francisco visit early in the new year.
 
 - John Mao intends to keep the relationship with his OpenAI friend engineering-centered and will open a dialogue that brings in VAST Data engineering when he visits in San Francisco early in the new year.
+
+- John Mao intends to keep the relationship with his OpenAI friend engineering-centered and to open a dialogue that brings in VAST engineering rather than positioning it as a sales-led relationship.

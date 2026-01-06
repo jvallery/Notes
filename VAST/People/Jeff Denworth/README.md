@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-23'
+last_contact: '2026-01-01'
 created: '2026-01-05'
 tags:
 - type/people
@@ -326,6 +326,56 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated that VAST should consider taking the whole Microsoft deal down in one shot with partial delivery milestones due to constrained inventory through 2026.
 
 - Jeff Denworth requested more active communication and suggested moving to daily updates for the Microsoft Azure MAI deal execution starting 2026-01-01.
+
+- Jeff Denworth believes Alluxio may be back in the driver seat for Walmart due to the GCS integration requirement and warned VAST to be careful.
+
+- Jeff Denworth stated that VAST Data is quickly selling out of inventory and that hardware lead times are increasing significantly, creating supply chain risk for any near-term large deployment.
+
+- Jeff Denworth stated that VAST Data has nothing reserved for Microsoft MAI and that if Microsoft wants to deploy in April 2026, May 2026, or June 2026, VAST needs a plan immediately.
+
+- Jeff Denworth stated that supply chain constraints are expected through 2026 and recommended taking the whole Microsoft deal down in one transaction with partial delivery milestones.
+
+- Marianne Budnik said Jeff Denworth is driving the talk track for the NVIDIA CES press conference presentation to ensure it is strong.
+
+- Jeff Denworth instructed Jason Vallery to track the Leidos Federal Cloud PO to understand customer expectations, user experience, cloud considerations, and business development angles.
+
+- Jeff Denworth stated that RFE 0482 is "super complex" and asked Mordechai Blaunstein to take ownership and involve additional parties as needed.
+
+- Jeff Denworth requested that the team understand the MFN clause and MFN price with CoreWeave to support Microsoft negotiations.
+
+- Jeff Denworth directed that VAST refine a total cost of ownership (TCO) model in parallel, including power consumption and the opportunity cost value of lower power to Microsoft.
+
+- Jeff Denworth stated the team needs the Microsoft workback plan and supporting analysis 'buttoned up for Davos' if VAST is competing with Microsoft's storage team.
+
+- Jeff Denworth stated that the Azure Marketplace SKU change request is due Friday (date not specified in the email).
+
+- Jeff Denworth stated that RFE 0482 is "super complex" and asked Mordechai Blaunstein to lead investigation and bring in relevant parties.
+
+- Jeff Denworth stated that in FY24 VAST Data captured $256M of gross bookings and that this established VAST Data as a $9B company.
+
+- Jeff Denworth reported that as of 2026-01-01 VAST Data has $300M of gross bookings on the books in the first two months of the current quarter.
+
+- Jeff Denworth stated VAST Data typically closes the bulk of quarterly bookings in the third and final month of the quarter.
+
+- Jeff Denworth stated that in the prior year, 80% of VAST Data Q4 bookings landed in the final month.
+
+- Jeff Denworth asked PM management to analyze Walmart's restated requirements and determine what should be included in the VAST product plan, working with Mikey and team.
+
+- Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" to distill and make explicit the crawl-walk-run progression in the Azure + VAST integration proposal.
+
+- Jeff Denworth stated that VAST Data is quickly selling out of supply, lead times are skyrocketing, and there is nothing reserved for Microsoft for the MAI effort, so any April to June 2026 deployment requires an immediate plan.
+
+- Jeff Denworth asked whether Microsoft MAI expects to use VAST Data's supply chain for the MAI deployment and emphasized he does not care about internal politics if a deployment timeline is targeted.
+
+- Jeff Denworth stated supply chain is a complete disaster for the upcoming year and asked how VAST would source a 2 EB requirement for Microsoft MAI, when it needs to be ordered, and who VAST would order it from.
+
+- Jeff Denworth stated that Sagar took a job at Nscale and asked for an end-of-week status summary and analysis of working capital and opportunity cost if Microsoft is buying 100 EB.
+
+- Jeff Denworth is an escalation contact for concerns or conflicts with VAST Forward VAST spokesperson assignments (contact Jeff Denworth and Kirstin Bordner directly, do not reply-all).
+
+- Jeff Denworth stated he is rapidly losing confidence that VAST will close a Q1 deal with Microsoft AI Infrastructure (MAI) unless VAST becomes more aggressive and executes faster.
+
+- Jeff Denworth suggested moving to daily updates because he believes the team is not communicating actively enough while Azure continues selling.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -481,6 +531,24 @@ last_enriched: '2026-01-05'
 - 2026-01-01: Jeff Denworth shared a Q4 bookings update stating VAST Data has $300M in gross bookings in the first...
 - 2025-12-23: VAST Forward: VAST spokesperson selection and required prep schedule (Jan 6 kickoff, Feb 25-26 live)
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
+
+- 2025-12-23: Jeff Denworth relayed that Walmart re-stated requirements after an internal meeting: they need a lon...
+- 2025-12-21: Jeff Denworth escalated that VAST is selling out of inventory, lead times are increasing, and nothin...
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, press strategy, and Microsoft Jay Parikh meeting
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos DoD Cloud
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-22: Jeff Denworth assigned Jason Vallery an action item in the Google Doc "VAST and Azure Integration.do...
+- 2025-12-23: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace - SKU change request deadline, GDC RFP deck update, MAI unified cache pricing follow-up
+- 2025-12-21: CES 2026 NVIDIA coordination, embargo timing, and Microsoft Jay Parikh meeting request
+- 2025-12-01: Mentioned in: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
+- 2026-01-01: Mentioned in: Jeff Denworth update: Q4 bookings to date exceed FY24 total
+- 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting, emphasizing a lo...
+- 2025-12-21: Jeff Denworth escalated that VAST is selling out of supply, lead times are increasing, and nothing i...
+- 2026-01-01: Jeff Denworth shared a company-wide update that VAST Data recorded $256M in gross bookings in all of...
+- 2025-12-23: Mentioned in: VAST Forward: selected as VAST breakout spokesperson, required prep cadence and key dates
+- 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -770,6 +838,48 @@ not done
 - Quarter-end close pattern, majority of bookings in final month
 
 - Company-wide recognition for bookings momentum
+
+- Walmart hybrid data platform requirements (single namespace, hybrid architecture)
+
+- Google Cloud Storage (GCS) integration requirement for Walmart
+
+- Walmart on-prem-only big data POC planned for 2025
+
+- Competitive risk: Alluxio positioning at Walmart
+
+- VAST product planning implications from Walmart re-stated requirements
+
+- Microsoft MAI storage decision process and internal politics (Mustafa as final decision maker, stakeholder alignment beyond Kushal Datta)
+
+- Supply chain constraints, inventory reservation, and lead time risk for large MAI deployments
+
+- Target deployment window for MAI storage readiness (May 2026 to June 2026) and GPU delivery timing (February 2026)
+
+- PoC placement strategy for Anson (Qi) requiring 1,000 to 2,000 GPUs, including MAI/Vipin environment, Nscale, or CoreWeave
+
+- Competitive positioning versus Azure Blob and Microsoft internal dynamics (Vamshi and Azure Blob team)
+
+- Defining a clear crawl-walk-run phased plan for Azure integration
+
+- Competitive risk: Alluxio potentially regaining advantage at Walmart
+
+- Product planning implications for VAST hybrid and GCS integration capabilities
+
+- Crawl-walk-run phased plan clarity in product/integration documentation
+
+- Google Docs action item assignment workflow
+
+- Microsoft AI Infrastructure (MAI) storage decision process and internal politics
+
+- MAI deployment timeline (February 2026 GPU drop, May to June 2026 solution readiness)
+
+- VAST PoC placement into a 1,000 to 2,000 GPU environment (MAI/Vipin, Nscale, CoreWeave)
+
+- Competitive positioning versus Azure Blob and messaging sensitivity with Azure Blob leadership
+
+- Quarterly bookings seasonality and end-of-quarter close concentration
+
+- Company-wide recognition and year-end momentum
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.
@@ -873,3 +983,7 @@ not done
 - Track the Leidos Federal Cloud PO (FOpp-4197) as a key cloud customer signal to capture customer expectations, user experience, cloud product implications, and business development angles.
 
 - Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to improve alignment beyond Kushal Datta.
+
+- Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders (Majid Mohammed, Yunchao Gong, and Karén Simonyan) to reduce reliance on Kushal Datta as the primary conduit.
+
+- Lior Genzel will take the lead on obtaining introductions to key MAI stakeholders (Majid Mohammed, Yunchao Gong, and Karén Simonyan) to reduce reliance on Kushal Datta as the sole conduit to the final decision maker (Mustafa).

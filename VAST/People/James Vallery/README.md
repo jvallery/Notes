@@ -108,6 +108,32 @@ expertise:
 - Jason Vallery (VAST Data) proposed a meeting time of Monday, 2025-12-15 at 10:00am PT to connect with Vinita Ananth (Nebius).
 
 - Lior Genzel stated Jason Vallery would take the lead on answering Google's question about whether the SSDs in the GDC Storage RFP proposal are Self-Encrypting Drives (SEDs).
+
+- Jason Vallery organized a 1:1 sync with Mordechai Blaunstein scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery reported that multiple Azure contacts said the final MAI storage decision is Mustafa's and that Kushal Datta cannot be trusted as a source of truth for decision influence.
+
+- Jason Vallery stated he has no existing relationship with Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's manager), or Karén Simonyan (Yunchao Gong's manager, described as chief scientist and a direct report to Mustafa) and that Lior Genzel will lead getting introductions.
+
+- Lior Genzel (VAST Data) stated that Jason Vallery will take the lead on answering whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component in the Google GDC Storage RFP proposal.
+
+- Mohamad Al Jazaery (Microsoft) requested that Jason Vallery share the slides and code that VAST presented to the Microsoft GBB team for the AKS AI Roadshow session.
+
+- Tiffany Stonehill (VAST Data) stated she will coordinate with Jason Vallery to send the slides and access to Mohamad Al Jazaery and Kurt Niebuhr.
+
+- James Vallery cannot see 2nd-degree LinkedIn connections for companies and asked me to check whether I know anyone at the companies where he applied.
+
+- Jason Vallery reported hearing from multiple Azure contacts that the final MAI storage decision is Mustafa's and that Kushal Datta cannot be trusted.
+
+- Jason Vallery identified MAI stakeholders VAST needs relationships with: Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's boss), and Karén Simonyan (Yunchao Gong's boss, described as 'chief scientist' and a direct report of Mustafa).
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan.
+
+- Jason Vallery previously noted (Nov 4, 2025) that his schedule became very busy due to a new job and frequent travel through the end of 2025, and he would attend the men's group if he was in town.
+
+- Jason Vallery was asked by Ray Coetzee to chime in on whether VAST should entertain Microsoft's request for an Azure VoC instance for GPU performance testing.
+
+- Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on 2025-12-29 or 2025-12-30.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -137,6 +163,18 @@ expertise:
 - 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom, Jan 2 2026)
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up questions and request to meet Jason Vallery
+
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom) on Jan 2, 2026
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partners, and scheduling
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2026-01-01: James Vallery emailed a list of LinkedIn job postings he applied to and asked me to check whether I ...
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
+- 2026-01-04: Mentioned in: David Ellis: Jan 6 men's group final '2084' discussion and Wapos dinner quorum check
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and scheduling
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+- 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
 ## Open Tasks
 ```tasks
 path includes James Vallery
@@ -162,3 +200,5 @@ not done
 - Networking and referrals for job applications
 
 - Identifying 2nd-degree connections at target companies (Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, Prologis)
+
+- Using personal networks and 2nd-degree connections for referrals

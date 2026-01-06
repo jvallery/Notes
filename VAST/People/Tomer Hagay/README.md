@@ -100,6 +100,18 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - Tomer Hagay stated that VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using the x-amz-server-side-encryption-customer-* headers starting in VAST software version 5.4, and referenced the 5.4 release notes.
 
 - Tomer Hagay stated that if the Google requirement for SEDs is driven by FIPS 140-3 data-at-rest encryption to protect against drive removal, VAST software encryption using FIPS-compatible algorithms should meet the requirement.
+
+- Tomer Hagay stated VAST prefers software-based encryption (potentially FIPS certified) rather than being restricted by self-encrypting drive (SED) hardware capabilities or availability.
+
+- Tomer Hagay stated VAST encryption keys are managed at the tenant level or path level, where a "path" can be any protocol path including S3 buckets and NFS exports, using encryption groups.
+
+- Tomer Hagay stated an encryption group can be assigned to a path to support having a unique encryption key for that path.
+
+- Tomer Hagay stated VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) via x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4, and referenced the 5.4 release notes.
+
+- Tomer Hagay asked for clarification on the origin of the self-encrypting drive (SED) requirement, and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption for drive removal scenarios, VAST software using FIPS-compatible encryption algorithms should meet the requirement.
+
+- On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and granted edit access.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -159,6 +171,11 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped uplink access
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped Uplink access
+- 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-01: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
 - 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
 ## Open Tasks
 ```tasks

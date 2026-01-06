@@ -3,7 +3,7 @@ type: people
 email: lior.genzel@vastdata.com
 company: VAST Data
 title: Lior Genzel
-last_contact: '2025-12-27'
+last_contact: '2026-01-04'
 created: '2026-01-05'
 tags:
 - type/people
@@ -356,6 +356,86 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated that VAST will decline the request for an Azure VoC instance for Microsoft GPU performance testing because VAST on Azure is not close to being ready for that usage.
 
 - Lior Genzel asked Ray Coetzee to suggest a follow-up call with the Microsoft/Azure requestors and said Karl Vietmeier is optional because Lior plans to block the request.
+
+- Lior Genzel (VAST Data) introduced Jason Vallery (VAST Data VP of Product Management for Cloud) to Sushant Rewaskar (Microsoft) and suggested a quick intro call to enable technical collaboration.
+
+- Lior Genzel (VAST Data) stated he was in town at Microsoft during the week of December 8, 2025 with Jason Vallery for meetings Monday through Wednesday, and possibly Thursday morning.
+
+- Lior Genzel reported that MAI's initial GPU delivery shifted to February 2026 and that MAI needs a storage solution ready for a May 2026 to June 2026 timeframe, with January no longer a hard date.
+
+- Lior Genzel reported that Kushal Datta said MAI will decide on the storage deployment and that Kushal Datta told Maneesh Sah that Azure Blob does not make sense versus VAST for MAI requirements.
+
+- Lior Genzel reported that Vamshi (leader of Azure Blob) emphasized Microsoft's decision is internal and expressed frustration with VAST's aggressive approach in highlighting Azure Blob deficiencies.
+
+- Lior Genzel stated that Anson (Qi) requested moving a VAST proof of concept into either the MAI and Vipin environment or other clusters such as Nscale or CoreWeave because their lab cluster lacks 1,000 to 2,000 GPUs needed for scale performance testing.
+
+- Greg Castellucci stated this is the first Cloud PO in the US Federal sector and it was completed with guidance from Lior Genzel and Tiffany Stonehill.
+
+- Tiffany Stonehill stated that if there are questions on processing the order, she or Lior Genzel are happy to help.
+
+- Lior Genzel stated that Trevor Cooper-Chadwick is the lead Microsoft technical evaluator testing VAST for the UK Met engagement and that Microsoft is currently in an engineering-level proof of concept, not yet a customer.
+
+- Lior Genzel (VAST Data) stated that the proposed recurring pricing for the Google GDC Storage RFP includes hardware pricing and includes SSDs, and that VAST Data does not sell HDDs.
+
+- Lior Genzel (VAST Data) stated that the hardware pricing is valid for the proposal time and noted a global SSD shortage with expected higher SSD prices into 2026.
+
+- Lior Genzel (VAST Data) stated VAST can work with Google to certify a Google-preferred hardware partner for BYOH because the project has sufficiently large business upside.
+
+- Lior Genzel (VAST Data) stated VAST already has Cisco, Dell, HPE, and SuperMicro certified as eBox partners for its offering.
+
+- Lior Genzel (VAST Data) stated Arrow and Avnet are certified as ODM partners manufacturing VAST C-Box and D-Box solutions.
+
+- Lior Genzel (VAST Data) stated that Jason Vallery will take the lead on answering whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component in the Google GDC Storage RFP proposal.
+
+- Lior Genzel stated VAST will decline Microsoft's request for an Azure VoC instance for GPU performance testing because VAST Azure is not close to being ready.
+
+- Lior Genzel asked Ray Coetzee to schedule a follow-up call with the Microsoft/Azure requestors so Lior can communicate the refusal directly.
+
+- Tiffany Stonehill (VAST Data) deferred questions about showcasing VAST Global Namespace on Microsoft Azure to Lior Genzel because he has the most recent engineering updates.
+
+- Lior Genzel (lior.genzel@vastdata.com) requested access in Google Docs to a document titled "VAST and Azure Integration.docx" on 2025-12-22.
+
+- Lior Genzel requested that Jonsi Stefansson and Jason Vallery attend a Microsoft Teams call on Tuesday, 2026-01-06, to discuss a strategy for leveraging a Renen Hallak meeting with Nick Parker (described as "#3 at Microsoft") to create a sequence of events that escalates Microsoft procurement and partnership processes.
+
+- Lior Genzel stated that Trevor Cooper-Chadwick is the lead Microsoft technical contact who tests VAST for the UK Met engagement.
+
+- Lior Genzel committed to contact Trevor Cooper-Chadwick to understand his objectives for requesting VAST Customer Learning Portal access because Microsoft is in an engineering-level PoC and not a customer yet.
+
+- Lior Genzel introduced Jason Vallery (VP, Product Management for Cloud at VAST Data) to Sushant Rewaskar (Microsoft) to enable technical collaboration after an Ignite follow-up thread.
+
+- Lior Genzel stated he was in town with VAST's VP of Product Management for Cloud and had Microsoft meetings scheduled in Seattle with an afternoon flight back to the Bay Area, which constrained in-person meeting availability.
+
+- Lior Genzel stated he will check whether Microsoft can source their own 800 Gigabit switches for the MAI Nebius New Jersey deployment; the same supply chain concern applies to NAND.
+
+- Lior Genzel committed to share all Microsoft MAI opportunity details in an organized way within a few hours (email thread dated 2026-01-05).
+
+- Lior Genzel (VAST Data) recommended a demo narrative focused on how VAST on-premises customers can use VAST Global Namespace to burst into Microsoft Azure.
+
+- Lior Genzel organized and is the meeting host for a 30-minute Zoom 1:1 with Jason Vallery scheduled for Monday, January 5, 2026 from 11:30am to 12:00pm Mountain Time (Denver).
+
+- Lior Genzel is the meeting organizer and host for the internal sync titled "Google RFP: Internal Sync" scheduled for Monday, 2026-01-05 11:00am-11:30am Mountain Time (Denver).
+
+- Tiffany Stonehill and Lior Genzel provided guidance to Greg Castellucci on processing the order and offered to help with questions related to the order submission.
+
+- Lior Genzel is the organizer of the internal VAST Data meeting titled "Google RFP: Internal Sync" scheduled for Monday, January 5, 2026 from 11:00am to 11:30am Mountain Time (Denver).
+
+- Lior Genzel provided guidance (with Tiffany Stonehill) to Greg Castellucci on processing the first US Federal sector Cloud PO for Leidos Federal.
+
+- Jason Vallery stated that Lior Genzel will take the lead on obtaining introductions to key MAI stakeholders (Majid Mohammed, Yunchao Gong, and Karén Simonyan).
+
+- Lior Genzel reported that Anson (Qi) requested moving a VAST PoC into either the MAI/Vipin environment or other large GPU clusters (Nscale or CoreWeave) because their current lab cluster lacks 1,000 to 2,000 GPUs needed for performance scale testing.
+
+- Lior Genzel said he messaged Alon Horev to strategize options for the most strategic environment for Anson (Qi)'s VAST PoC and described an opportunity to align Kushal Datta's MAI plans with Qi's PoC plans.
+
+- Lior Genzel reported that Sagar, who stepped into Nidhi's role after she left, resigned and will likely join Nscale, and that the team planned to speak with Sagar for advice on navigating Microsoft internal politics.
+
+- Lior Genzel (VAST Data) stated that VAST's proposed recurring pricing for the Google GDC Storage RFP includes hardware pricing and includes SSDs, and that VAST does not sell HDDs.
+
+- Lior Genzel (VAST Data) stated VAST can work with Google to certify a Google-preferred hardware partner for a BYOH model because the project has sufficiently large business upside.
+
+- Lior Genzel asked Ray Coetzee to schedule a follow-up call with the Microsoft team who made the Azure VoC request and said Karl Vietmeier is optional on that call.
+
+- Jeff Denworth asked Jonsi Stefansson and Lior Genzel to get much smarter on Microsoft’s supply chain position, and noted there was no update yet as of 2025-12-27.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -548,6 +628,33 @@ role: Lior Genzel @ VAST Data
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up questions and request to meet Jason Vallery
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 - 2025-12-27: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
+
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro request between Jason Vallery and Sushant Rewaskar + architecture docs
+- 2025-12-08: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson for Seattle meeting
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos DoD Cloud
+- 2025-12-16: Mentioned in: Microsoft prospect requested VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partners, and scheduling
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-22: On 2025-12-22, Lior Genzel requested access via Google Docs to the document "VAST and Azure Integrat...
+- 2025-12-22: On 2025-12-22, Lior Genzel requested access via Google Docs to a document titled "VAST and Azure Int...
+- 2026-01-05: Mentioned in: Microsoft PRD sync, plan escalation path using Renen Hallak meeting with Nick Parker
+- 2025-12-16: Mentioned in: Microsoft prospect request for VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
+- 2026-01-05: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2026-01-05: Weekly Status: Azure Marketplace - SKU change request deadline, GDC RFP deck update, MAI unified cache pricing follow-up
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro between Jason Vallery and Sushant Rewaskar + architecture docs request
+- 2026-01-04: Microsoft-VAST Weekly GTM Meeting reschedule due to Karl Rautenstrauch family medical appointment
+- 2026-01-05: Mentioned in: Microsoft MAI Nebius NJ training deployment, first hall 58 x 58 and procurement decision by end of January 2026
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow follow-up, slides/code request and Global Namespace on Azure demo
+- 2026-01-05: Lior Genzel sent a Google Calendar invitation for a 30-minute 1:1 Zoom meeting with Jason Vallery on...
+- 2025-12-08: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matt Thomson for Seattle meeting
+- 2026-01-05: Mentioned in: Calendar update: Google RFP internal sync (Zoom details changed)
+- 2026-01-04: Microsoft-VAST Weekly GTM Meeting reschedule (week of 2026-01-05)
+- 2026-01-05: Mentioned in: Calendar invite: Google RFP internal sync (Jan 5, 2026 11:00-11:30am MT)
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and scheduling
+- 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
 ## Open Tasks
 ```tasks
 path includes Lior Genzel
@@ -641,6 +748,10 @@ not done
 - VAST Data integration with Microsoft Azure (document: VAST and Azure Integration.docx)
 
 - 1:1 meeting scheduling (Jason Vallery and Lior Genzel)
+
+- Google Drive share request
+
+- Zoom meeting logistics (join link, meeting ID, passcode, dial-in)
 ## Key Decisions
 
 - Proceed with initiating VAST Data's formal interview process for Jason Vallery.

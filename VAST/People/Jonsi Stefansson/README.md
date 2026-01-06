@@ -12,7 +12,7 @@ aliases:
 - Jonsi Stefanson
 tags:
 - type/people
-role: GM of Cloud
+role: GM of Cloud @ VAST Data
 ---
 
 # Jonsi Stefansson
@@ -60,6 +60,18 @@ role: GM of Cloud
 - Jonsi Stefansson stated he met with Microsoft contacts named Aung and Maneesh, and they expect VAST to deliver an integration proposal with Azure Blob.
 
 - Jonsi Stefansson stated he emailed Microsoft contacts to understand Microsoft supply chain status and platform needs, but received out-of-office replies indicating they return on 2026-01-05.
+
+- Jonsi Stefansson was asked by Lior Genzel to attend the Microsoft Teams meeting "Sync with Microsoft on PRD" on Tuesday, 2026-01-06.
+
+- Jonsi Stefansson requested a full hardware and software cost split for CoreWeave to present to Microsoft, including (1) VAST software on Azure Storage bare metal with Microsoft hardware and software-only $/TB/month, and (2) VAST software on VAST ODM hardware with the hardware/software split.
+
+- Jeff Denworth asked Jonsi Stefansson and Lior Genzel to get much smarter on Microsoft’s supply chain position, and noted there was no update yet as of 2025-12-27.
+
+- Jonsi Stefansson reported he met with Microsoft contacts Aung and Maneesh Sah, and they expect an integration proposal from VAST for Azure Blob integration.
+
+- Jonsi Stefansson stated he emailed multiple Microsoft contacts to understand Microsoft supply chain status and platform needs, and received out-of-office replies indicating returns on 2026-01-05.
+
+- Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on 2025-12-29 or 2025-12-30.
 ## Recent Context
 
 - 2025-10-28: GCP Marketplace MVP launch readiness, private offers via Tackle, fixed capacity pricing and Polaris entitlements
@@ -89,6 +101,13 @@ role: GM of Cloud
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 - 2025-12-17: On 2025-12-17, Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer t...
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
+
+- 2025-12-17: Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2026-01-05: Mentioned in: Microsoft PRD sync, plan escalation path using Renen Hallak meeting with Nick Parker
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2025-12-17: On 2025-12-17, Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer t...
+- 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
 ## Open Tasks
 ```tasks
 path includes Jonsi Stefansson
@@ -104,3 +123,5 @@ not done
 - Google Slides document collaboration (edit access)
 
 - GCP customer-to-sales-to-customer flow
+
+- Google Slides collaboration and editing access

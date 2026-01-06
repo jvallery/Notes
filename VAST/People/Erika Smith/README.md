@@ -23,6 +23,8 @@ tags:
 - Erika Smith stated that taking public stances on some matters could create issues with IHDF's tax-exempt status and could disenfranchise donors and the community, and recommended discussing the impact in an executive session at the end of board meetings.
 
 - Erika Smith co-created an initial SWOT document draft for the potential acquisition of a former church in Longmont with Perla Delgado.
+
+- Erika Smith co-created the initial SWOT document related to the potential Longmont former church acquisition, and Perla Delgado will share the start of that SWOT document.
 ## Recent Context
 
 - 2025-12-10: Erika Smith sent a confidential recap of an IHDF executive session that Jason Vallery missed. Key po...

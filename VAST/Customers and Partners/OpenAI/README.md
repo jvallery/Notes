@@ -37,6 +37,9 @@ not done
 
 - 2025-12-12: Mentioned in: John Mao update on OpenAI org, data platforms (Rockset, Snowflake, DAQ) and intro path via his friend
 - 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI covering the week ending Friday...
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and intro path via his friend
+- 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI covering the week ending Friday...
 ## Key Facts
 
 - VAST plans a touch base meeting on Tuesday with the OpenAI team to align on POC next steps, OpenAI resource availability, and the POC start date.
@@ -94,6 +97,26 @@ not done
 - VAST is working on additional education for the Nvidia team that works with OpenAI.
 
 - OpenAI's first hardware device is rumored to be an audio-based device with new GPT models, and manufacturing order reportedly moved to Foxconn (rumor noted in the email).
+
+- OpenAI is organized into three major teams: Applications (ChatGPT and online data), Scaling (between Applications and Research, unclear scope), and Research (data scientists, reporting up to Jakob Pachoki).
+
+- Rockset (OpenAI Applications) was described as a SQL-based "vector database" whose persisted data platform contains the entire history of ChatGPT conversations, persisted to Azure Blob.
+
+- OpenAI Applications also heavily leverages Azure CosmosDB for conversation persistence (per Jason Vallery).
+
+- OpenAI Research data is referred to internally as "offline" data and is used for training GPT models on large frontier supercomputing clusters in Oracle Cloud Infrastructure (OCI).
+
+- OpenAI Research uses an in-house system called DAQ (Data Acquisition) for the research data platform (per Jason Vallery).
+
+- There is another OpenAI "big data" team called "Data Platform" where Spark and Databricks workloads run, led by Emma Tang (per Jason Vallery).
+
+- There are discussions inside OpenAI about integrating or merging more of the Applications datasets with the Research datasets.
+
+- VAST plans a touch base meeting during the week of 2026-01-05 with the OpenAI team to align on POC next steps, OpenAI resource availability, and the POC start date.
+
+- Softbank completed funding of a $40B investment in OpenAI prior to the end-of-year deadline (as reported in internal OpenAI news section of the update).
+
+- OpenAI's first hardware device is rumored to be an audio-based device with new GPT models, and manufacturing order reportedly moved to Foxconn (as reported in internal OpenAI news section of the update).
 ## Topics
 
 - OpenAI POC planning: next steps, resource availability, and start date
@@ -119,4 +142,10 @@ not done
 - OpenAI funding and hardware device rumors (internal news roundup)
 
 - Mutual connection lead actioning and tracking via shared Google Sheet
+
+- Nvidia enablement and specialist follow-up meeting scheduling for OpenAI support team
+
+- OpenAI pursuit lead tracking and mutual connection outreach process
+
+- OpenAI market news: Softbank investment funding, rumored OpenAI hardware device, potential Pinterest acquisition speculation, 2026 outlook articles
 ## Key Decisions

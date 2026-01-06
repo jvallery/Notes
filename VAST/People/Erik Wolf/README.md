@@ -49,6 +49,16 @@ tags:
 - Erik Wolf stated that Jason Vallery already had a chunk of the analysis done and that they put it into the latest spreadsheet model to gut-check the numbers.
 
 - Erik Wolf accepted a Zoom meeting invitation from Jason Vallery titled "Erik/Jason - Sync on MAI pricing" scheduled for Monday, 2026-01-05 2:00pm-3:00pm Mountain Time (Denver).
+
+- Erik Wolf stated that VAST only locked in a software pricing model with CoreWeave (not a full hardware plus software split).
+
+- Erik Wolf provided a CoreWeave-related price point of $3.60 per TB per month in the Microsoft workback plan thread.
+
+- Erik Wolf stated that the list price discount (before a recent price hike) was about 94.9% in the context of the Microsoft workback plan pricing discussion.
+
+- Erik Wolf indicated the financial analysis model will allow adjusting multiple variables ('all the knobs') and can be designed to evaluate two scenarios referenced as #1 and #2 in the thread.
+
+- Erik Wolf accepted a scheduled 1:1 Zoom meeting invitation from Jason Vallery to sync on Microsoft AI Infrastructure (MAI) pricing on Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver).
 ## Recent Context
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
@@ -59,6 +69,9 @@ tags:
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison and TCO model refinement
 - 2026-01-05: Erik Wolf accepted a calendar invitation from Jason Vallery for a 1-hour Zoom meeting to sync on Mic...
+
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2026-01-05: Erik Wolf accepted a calendar invitation from Jason Vallery for a 1:1 Zoom meeting to sync on Micros...
 ## Open Tasks
 
 ```tasks
@@ -77,4 +90,6 @@ not done
 - Microsoft AI Infrastructure (MAI) pricing alignment between Jason Vallery and Erik Wolf
 
 - Zoom meeting logistics for MAI pricing sync
+
+- Internal VAST Data pricing alignment discussion
 ## Key Decisions
