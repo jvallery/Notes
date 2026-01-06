@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Reply to Isabella Lista (AlphaSights) with the best phone number to reach Jason Vallery or confirm a scheduled 30-minute time via Calendly for the urgent expert discussion. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Open and review the shared document "CoreWeave-Vast Automation Project - V2 .docx" and confirm whether any feedback or edits are needed for the CoreWeave-VAST automation project. 🔼 #task #proposed #auto
 - [?] Open and review the shared Google Docs document "CoreWeave-Vast Automation Project - V2 .docx" to understand scope, requirements, and any requested feedback. 🔼 #task #proposed #auto
 - [?] Begin search process to hire a new Head of Revenue Operations (RevOps) leader for VAST Data. @TBD 🔼 #task #proposed #auto

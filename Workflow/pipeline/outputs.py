@@ -195,17 +195,17 @@ class OutputGenerator:
         to_field = f"{sender} <{sender_email}>" if sender_email else sender
         
         content = f"""---
-	type: draft-reply
-	status: pending
-	created: "{datetime.now().isoformat()}"
-	urgency: "{suggested.reply_urgency}"
-	to: "{to_field}"
-	subject: "Re: {extraction.title}"
-	source_file: "{extraction.source_file}"
-	ai_model: "{model_config.get('model', '')}"
-	ai_temperature: {float(model_config.get('temperature', 0.7))}
-	prompt_file: "{prompt_ref}"
-	---
+type: draft-reply
+status: pending
+created: "{datetime.now().isoformat()}"
+urgency: "{suggested.reply_urgency}"
+to: "{to_field}"
+subject: "Re: {extraction.title}"
+source_file: "{extraction.source_file}"
+ai_model: "{model_config.get('model', '')}"
+ai_temperature: {float(model_config.get('temperature', 0.7))}
+prompt_file: "{prompt_ref}"
+---
 
 # Draft Reply to {sender}
 
