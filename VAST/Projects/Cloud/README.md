@@ -132,6 +132,8 @@ not done
 - 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU instances bec...
 
 - 2025-12-01: Karl Vietmeier flagged growing market interest in VAST support for Google Distributed Cloud (GDC) an...
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -296,6 +298,8 @@ not done
 - The document text claims integrating with Azure Blob allows customers to keep the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set, as a hedge against flash component price volatility.
 
 - When GDC or Azure Local opportunities involve hardware, VAST on-prem teams tend to take ownership, which can create confusion over accountability and reduce Cloud Product Management visibility into progress and outcomes.
+
+- VAST Azure readiness is a gating factor for supporting Microsoft requests for Azure VoC performance testing against Azure GPU instances.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

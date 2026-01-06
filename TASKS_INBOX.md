@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Join the internal discussion if needed and align with Lior Genzel and Ray Coetzee on the response to Microsoft's request for an Azure VoC instance for GPU performance testing. 🔼 #task #proposed #auto
+- [?] Suggest and schedule a follow-up call with the Microsoft team who requested an Azure VoC instance for GPU performance testing, so Lior Genzel can communicate that VAST will not provide the Azure VoC. @Ray Coetzee ⏫ #task #proposed #auto
 - [?] Send a calendar invite for the Nebius and VAST connection meeting on Monday, 2025-12-15 at 10:00am PT to Vinita Ananth (vinitaananth.ai@nebius.com). 📅 2025-12-11 ⏫ #task #proposed #auto
 - [?] Evaluate initial feasibility of acquiring the former church in Longmont and report back to the IHDF board. @TBD 🔼 #task #proposed #auto
 - [?] Share the initial SWOT document for the potential acquisition of the former church in Longmont (co-created with Erika Smith) with relevant IHDF board members. @Perla Delgado 🔼 #task #proposed #auto

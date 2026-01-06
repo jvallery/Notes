@@ -506,6 +506,10 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated that VAST will decline Microsoft's request for an Azure VoC instance because VAST Azure is not close to being ready for this type of performance testing.
 
 - Jeff Denworth asked Lior Genzel to get much smarter on where Microsoft sits supply chain wise for the Microsoft MAI deal.
+
+- Lior Genzel stated that VAST Azure is not close to being ready for Microsoft's requested Azure VoC performance testing scenario.
+
+- Lior Genzel intends to block Microsoft's request for an Azure VoC instance and communicate the refusal directly on a follow-up call.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -754,6 +758,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 
 - 2025-12-08: Oracle OCI Alloy and Dedicated Regions intro, meeting availability in Seattle
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 ## Open Tasks
 ```tasks
 path includes Lior Genzel

@@ -5,7 +5,7 @@ account_type: customer
 status: Active
 industry: Technology
 my_role: ''
-last_contact: '2025-12-27'
+last_contact: '2025-12-11'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -462,6 +462,10 @@ not done
 - Jeff Denworth asserted Microsoft must order hardware early to ensure GPUs are utilized quickly, and therefore must decide on storage software early because software choice impacts hardware purchase decisions.
 
 - Adem Sefa (Managing Director, Strategic Partnerships) is affiliated with Microsoft.
+
+- Microsoft has a physical VAST Proof of Concept (PoC) system installed in Microsoft's lab in Redmond and Microsoft is actively testing it.
+
+- Microsoft's Redmond lab currently does not have GPU nodes available, which prompted Microsoft to request an Azure VoC instance to run performance testing against Azure GPU virtual machines.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -803,6 +807,12 @@ not done
 - HDD availability concerns for April MAI delivery
 
 - On-site engagement strategy in Redmond to accelerate commercial closure
+
+- Request for Azure VoC instance to test performance with Azure GPU virtual machines
+
+- VAST Azure product readiness for GPU performance testing scenarios
+
+- Follow-up call with Microsoft requestors to communicate refusal
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
@@ -898,3 +908,5 @@ not done
 - Karl Rautenstrauch tentatively rescheduled the Weekly VAST GTM Meeting to Tuesday (exact date and time not specified in the email) pending VAST confirmation if Wednesday or Thursday is better.
 
 - Assume the CoreWeave testing for Microsoft MAI is largely a cosmetic validation exercise and proceed aggressively with commercial and supply chain actions in parallel.
+
+- VAST will not provide an Azure VoC instance to Microsoft for performance testing against Azure GPU instances because VAST Azure is not ready for this use case.
