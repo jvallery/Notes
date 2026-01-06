@@ -109,6 +109,10 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Karl Vietmeier is seeing growing interest from the field in whether VAST Data supports Google Distributed Cloud (GDC) and Azure Local.
 
 - Karl Vietmeier believes Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities should be managed through Cloud Product Management because Cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier was asked by Ray Coetzee to define the expected performance profile of an Azure VoC deployment.
+
+- Karl Vietmeier was told by Lior Genzel that Karl is optional on the follow-up call with Microsoft regarding the Azure VoC request.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -146,6 +150,8 @@ role: Cloud Solutions Architect - VAST on Cloud
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
 
 - 2025-12-11: Microsoft request for Azure VoC instance for GPU performance testing (declined)
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
 ## Open Tasks
 ```tasks
 path includes Karl Vietmeier

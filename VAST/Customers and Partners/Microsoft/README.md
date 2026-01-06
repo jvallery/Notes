@@ -494,6 +494,8 @@ not done
 - Microsoft Azure Local is being asked about as a potential deployment/support target for VAST Data.
 
 - Microsoft's Redmond lab currently does not have GPU nodes available, prompting Microsoft to request an Azure VoC instance to test performance with Azure GPU instances.
+
+- Microsoft requested an Azure VoC instance to run performance testing against Azure GPU virtual machines because their on-prem lab lacks GPU nodes.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -960,3 +962,5 @@ not done
 - For the request to showcase VAST Global Namespace on Microsoft Azure, Tiffany Stonehill deferred technical ownership/updates to Lior Genzel as the most current source from engineering.
 
 - Decline Microsoft's request for an Azure VoC instance for performance testing against Azure GPU instances because VAST Azure is not ready for this use case.
+
+- VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST on Azure is not ready for this use case.

@@ -144,6 +144,8 @@ not done
 - 2025-12-01: Brian Evans alerted the PM team about RFE 0482 for NVIDIA DGX Cloud, requesting unified visibility a...
 
 - 2025-12-01: Brian Evans alerted the PM team about RFE 0482 from NVIDIA Corporation requesting unified visibility...
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -324,6 +326,8 @@ not done
 - For Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities, ownership often shifts from cloud teams to on-prem teams once hardware is involved, which creates confusion over accountability and reduces visibility into progress and outcomes.
 
 - Jeff Denworth requested that cloud purchase orders be tracked to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- VAST on Azure is not close to being ready to support Microsoft's requested Azure VoC performance testing use case (per Lior Genzel).
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
