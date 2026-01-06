@@ -114,6 +114,10 @@ role: Technical Lead in Customer Success
 - Rick Scurfield requested internal teams across Sales, Marketing, Support, and Product to conduct account outreach to drive attendance and position VAST Forward as a way to accelerate customer roadmaps and deepen relationships with VAST Data.
 
 - Rick Scurfield requested internal teams to nominate customers for a VIP Ski Experience at SnowBasin associated with VAST Forward.
+
+- Rick Scurfield stated VAST Data is actively monitoring the global supply environment and is closely engaged with suppliers and hardware partners to manage hardware allocation and keep deals progressing.
+
+- Rick Scurfield directed teams to increase software pricing where possible, emphasizing confidence in the value delivered to customers.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience

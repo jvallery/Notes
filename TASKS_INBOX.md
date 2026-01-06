@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] For any deal larger than 15 PB, obtain Deal Desk sign-off prior to issuing a quote and confirm the quote is synced before requesting review. @TBD ⏫ #task #proposed #auto
+- [?] Ensure all late-stage opportunities have budgetary quotes synced in the quoting system so Deal Desk can review and operations can plan execution with hardware partners. @TBD ⏫ #task #proposed #auto
+- [?] When building customer configurations, prioritize using hardware currently on hand to accelerate fulfillment timelines. @TBD 🔼 #task #proposed #auto
+- [?] Keep Salesforce (SFDC) opportunities and demand signals up to date to maintain clear visibility for planning and hardware allocation. @TBD ⏫ #task #proposed #auto
+- [?] Place customer hardware orders as early as possible so they enter the allocation queue sooner, per Rick Scurfield guidance. @TBD ⏫ #task #proposed #auto
 - [?] Review the shared deck "GCP Flow from customer to sales to customer.pptx" and provide edits/comments to Jonsi Stefansson. 🔼 #task #proposed #auto
 - [?] Open Salesforce RFE 0526 (https://vastdata.my.salesforce.com/a6HV40000009q2b) and link the RFE to the correct Related Feature for Cisco. 🔼 #task #proposed #auto
 - [?] Review the VAST Data information sent by Jason Vallery and consider how Whale Iptic's platform could be integrated or aligned with VAST Data's roadmap, then follow up with ideas or proposals. @Avinash Lakshman 🔼 #task #proposed #auto
