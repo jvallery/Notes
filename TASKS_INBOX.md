@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Send a calendar invite for the Nebius and VAST connection call on Monday, 2025-12-15 at 10:00am PT to Vinita Ananth (vinitaananth.ai@nebius.com). 📅 2025-12-11 ⏫ #task #proposed #auto
 - [?] Evaluate initial feasibility of acquiring the former church in Longmont (considering upsides, downsides, and lack of an existing plan) and report back to the IHDF Board. @TBD 🔼 #task #proposed #auto
 - [?] Share the initial SWOT document for the potential acquisition of the former church in Longmont (SWOT co-created with Erika Smith). @Perla Delgado 🔼 #task #proposed #auto
 - [?] Assess IHDF staff needs related to fundraising support and report findings to the Board/fundraising committee planning group. @Perla Delgado ⏫ #task #proposed #auto

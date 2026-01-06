@@ -105,3 +105,5 @@ not done
 - Schedule the Nebius and VAST connection meeting for Monday, 2025-12-15 at 10:00am PT (confirmed by Vinita Ananth).
 
 - Schedule the Nebius and VAST connection call for Monday, 2025-12-15 at 10:00am PT (confirmed by Vinita Ananth).
+
+- Schedule the Nebius and VAST connection call for Monday, 2025-12-15 at 10:00am PT.
