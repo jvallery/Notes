@@ -42,6 +42,8 @@ not done
 - Express Scripts Pharmacy confirmed they are working on Jason Vallery's prescription order and will send another email when it ships.
 
 - Express Scripts Pharmacy sent an order confirmation stating they are working on Jason Vallery's prescription order and will send another email when it ships.
+
+- Express Scripts Pharmacy sent an order confirmation email stating they are working on Jason Vallery's prescription order and will send another email when it ships.
 ## Topics
 
 - Express Scripts prescription order confirmation
@@ -65,4 +67,8 @@ not done
 - Order shipping status notification
 
 - Lisdexamfetamine 40mg prescription order details
+
+- Standard shipping (no cost)
+
+- Prescription numbers and invoice tracking
 ## Key Decisions
