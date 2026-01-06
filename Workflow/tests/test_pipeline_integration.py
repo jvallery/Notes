@@ -85,11 +85,17 @@ def _fake_extraction_for_env(env) -> UnifiedExtraction:
         title = f"Transcript - {env.source_path.stem}"
         fact_text = "Jai shared latency targets for GPU interconnect"
         task_text = "Follow up with Jai on latency targets"
+        suggested_outputs = SuggestedOutputs(needs_reply=False)
     else:
         primary_name = "Jeff Denworth"
         title = f"Email - {env.source_path.stem}"
         fact_text = "Jeff needs Azure marketplace SKU update"
         task_text = "Send Azure marketplace SKU update"
+        suggested_outputs = SuggestedOutputs(
+            needs_reply=True,
+            reply_urgency="normal",
+            reply_context="Confirm next steps and timeline",
+        )
     
     primary = EntityRef(entity_type="person", name=primary_name, confidence=0.9)
     fact = Fact(text=fact_text, about_entity=primary, fact_type="relationship")
@@ -122,7 +128,7 @@ def _fake_extraction_for_env(env) -> UnifiedExtraction:
         questions=[],
         commitments=[],
         mentioned_entities=[mention],
-        suggested_outputs=SuggestedOutputs(needs_reply=False),
+        suggested_outputs=suggested_outputs,
         confidence=0.9,
     )
 

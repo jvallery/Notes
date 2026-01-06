@@ -5,7 +5,7 @@ account_type: partner
 status: Partner
 industry: _Unknown_
 my_role: ''
-last_contact: '2025-12-15'
+last_contact: '2025-12-17'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -375,6 +375,10 @@ not done
 - VAST support for SED workflows and key management
 
 - Encryption key granularity across S3 buckets, NFS exports, and path-based encryption groups
+
+- FIPS compliance requirements for the proposed VAST offering
+
+- BYOH (Bring Your Own Hardware) option and VAST preferred or certified hardware partners
 ## Key Decisions
 
 - Lior Genzel selected Monday 2025-12-15 at 2:00pm PT as the meeting time for the initial one-hour call to review the GDC Storage RFP proposal (based on the scheduling thread where Lior requested 'The 15th at 2 pm PT please' and David Pawlak confirmed the invite was sent).
@@ -406,3 +410,5 @@ not done
 - For Google Distributed Cloud RFP responses, position VAST as focusing on software-based encryption (potentially FIPS certifiable) rather than relying on self-encrypting drive (SED) hardware capabilities or availability.
 
 - For the Google Distributed Cloud RFP response, VAST should position software-based encryption (potentially FIPS certifiable) as the primary approach rather than committing to self-encrypting drives (SED) hardware dependence.
+
+- Meeting time preference from VAST side: Lior Genzel proposed targeting Monday (after Friday 2025-12-19) for the next discussion with Google about the GDC Storage RFP questions.

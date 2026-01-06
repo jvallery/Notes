@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Google (David Pawlak) to schedule a minimum 60-minute follow-up meeting to walk through Google's document and address open questions on the GDC Storage RFP proposal, targeting Monday 2025-12-22 if possible. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Provide Google (David Pawlak) a consolidated list of VAST Data globally certified hardware partners for BYOH, after checking with VAST partner teams (beyond Cisco, Dell, HPE, SuperMicro, Arrow, and Avnet already mentioned). @Lior Genzel 📅 2025-12-22 🔼 #task #proposed #auto
+- [?] Respond to Google (David Pawlak) with clarification on whether the proposed GDC Storage RFP solution uses Self-Encrypting Drives (SEDs) for the SSD component, and any relevant compliance details tied to SED usage. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Accept the Slice invitation and complete account setup to access VAST Data equity grants and securities in Slice. 🔼 #task #proposed #auto
 - [?] Edit "VAST and Azure Integration.docx" to distill and clearly present the crawl-walk-run phased plan in the "Azure + VAST: Integration Proposal" so it is obvious to a reader. ⏫ #task #proposed #auto
 - [?] Review and respond to Lior Genzel's Google Docs access request for "VAST and Azure Integration.docx" by granting access or replying with an alternative sharing method if the document contains restricted content. 📅 2025-12-23 🔼 #task #proposed #auto

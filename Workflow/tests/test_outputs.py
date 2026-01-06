@@ -1,5 +1,6 @@
 """Tests for the outputs module."""
 
+import json
 from datetime import datetime
 from pathlib import Path
 
@@ -155,6 +156,16 @@ def test_generate_reply_creates_draft_file(tmp_path):
     assert "status: pending" in content
     assert "Alice Example" in content
     assert "meeting time" in content
+    assert "prompt_file:" in content
+
+    prompt_path_line = next(line for line in content.splitlines() if line.startswith("prompt_file:"))
+    prompt_rel = prompt_path_line.split(":", 1)[1].strip().strip('"')
+    prompt_path = tmp_path / prompt_rel
+    assert prompt_path.exists()
+
+    payload = json.loads(prompt_path.read_text())
+    assert payload.get("operation") == "draft_reply"
+    assert payload.get("messages")
 
 
 def test_generate_calendar_creates_ics_file(tmp_path):
@@ -203,3 +214,32 @@ def test_output_generator_creates_directories(tmp_path):
     
     assert (tmp_path / "Outbox").exists()
     assert (tmp_path / "Outbox" / "_calendar").exists()
+    assert (tmp_path / "Outbox" / "_prompts").exists()
+
+
+def test_generate_reply_prompt_artifact_includes_context(tmp_path):
+    extraction = _create_extraction_with_reply_suggestion()
+    generator = OutputGenerator(tmp_path, dry_run=False, verbose=False)
+
+    class DummyContext:
+        def get_dynamic_suffix(self):
+            return "## RELEVANT ENTITY CONTEXT\n\n### Jeff Denworth\nRole: CRO"
+
+    reply_path = generator.generate_reply(
+        extraction,
+        context_bundle=DummyContext(),
+        source_content="From: Alice Example\nSubject: Weekly Sync\n\nBody goes here.",
+    )
+    assert reply_path is not None
+
+    content = reply_path.read_text()
+    prompt_path_line = next(line for line in content.splitlines() if line.startswith("prompt_file:"))
+    prompt_rel = prompt_path_line.split(":", 1)[1].strip().strip('"')
+    prompt_path = tmp_path / prompt_rel
+    payload = json.loads(prompt_path.read_text())
+
+    messages = payload.get("messages") or []
+    assert any("SOURCE EMAIL (VERBATIM)" in m.get("content", "") for m in messages)
+    assert any("Body goes here." in m.get("content", "") for m in messages)
+    assert any("RELEVANT CONTEXT FROM MY NOTES" in m.get("content", "") for m in messages)
+    assert any("Jeff Denworth" in m.get("content", "") for m in messages)
