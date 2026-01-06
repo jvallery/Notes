@@ -1,0 +1,766 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 7/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+"cache":getattr(self.extractor,"last_usage",{}),
+"run_ms":int((time.time()-run_start)*1000),
+}
+
+returnresult
+
+exceptExceptionase:
+            result.success=False
+result.errors.append(str(e))
+result.metrics={
+"timings":phase_timings,
+"cache":getattr(self.extractor,"last_usage",{}),
+}
+returnresult
+
+defprocess_all(self)->BatchResult:
+        pending:list[Path]=[]
+
+forkeyin["email","transcripts","voice","attachments"]:
+            subpath=Path(self.inbox_paths.get(key,self.default_inbox[key]))
+ifsubpath.exists():
+                pending.extend(subpath.glob("*.md"))
+
+returnself._process_paths(pending)
+
+defprocess_type(self,content_type:ContentType)->BatchResult:
+
+        type_dirs={
+ContentType.EMAIL:"email",
+ContentType.TRANSCRIPT:"transcripts",
+ContentType.VOICE:"voice",
+ContentType.DOCUMENT:"attachments",
+}
+
+subdir_key=type_dirs.get(content_type,"attachments")
+inbox_path=Path(self.inbox_paths.get(subdir_key,self.default_inbox[subdir_key]))
+
+pending=list(inbox_path.glob("*.md"))ifinbox_path.exists()else[]
+returnself._process_paths(pending)
+
+defprocess_sources(self,content_type:Optional[ContentType]=None)->BatchResult:
+        type_dirs={
+ContentType.EMAIL:"email",
+ContentType.TRANSCRIPT:"transcripts",
+ContentType.VOICE:"voice",
+ContentType.DOCUMENT:"documents",
+}
+
+pending:list[Path]=[]
+
+ifcontent_type:
+            dir_name=type_dirs.get(content_type)
+ifdir_name:
+                base=Path(self.source_paths.get(dir_name,self.default_sources[dir_name]))
+ifbase.exists():
+                    pending.extend(base.rglob("*.md"))
+else:
+            fordir_nameintype_dirs.values():
+                path=Path(self.source_paths.get(dir_name,self.default_sources[dir_name]))
+ifpath.exists():
+                    pending.extend(path.rglob("*.md"))
+
+returnself._process_paths(pending)
+
+def_is_duplicate(self,envelope:ContentEnvelope)->bool:
+
+        extraction_dir=self.vault_root/"Inbox"/"_extraction"
+ifnotextraction_dir.exists():
+            returnFalse
+
+stem=envelope.source_path.stem
+forext_fileinextraction_dir.glob(f"{stem}.*extraction.json"):
+            returnTrue
+
+returnFalse
+
+def_augment_extraction_with_headers(self,extraction,envelope:ContentEnvelope):
+        email_meta=(envelope.metadataor{}).get("email")ifenvelope.metadataelse{}
+ifnotemail_meta:
+            return
+
+header_contacts=[]
+sender_email=email_meta.get("sender_email")
+sender_name=email_meta.get("sender_name")orsender_email
+ifsender_email:
+            header_contacts.append(ContactInfo(name=sender_name,email=sender_email))
+
+forrecinemail_meta.get("recipients_detail",[])or[]:
+            name=rec.get("name")orrec.get("email")
+header_contacts.append(ContactInfo(name=name,email=rec.get("email")))
+
+existing_emails={c.email.lower()forcinextraction.contactsifc.email}
+forcontactinheader_contacts:
+            ifcontact.emailandcontact.email.lower()inexisting_emails:
+                continue
+extraction.contacts.append(contact)
+
+ifnotextraction.participantsandenvelope.participants:
+            extraction.participants=envelope.participants
+
+def_process_paths(self,paths:list[Path])->BatchResult:
+        ifself.parallel_enabledandself.max_workers>1andlen(paths)>1:
+            returnself._process_paths_parallel(paths)
+returnself._process_paths_sequential(paths)
+
+def_process_paths_parallel(self,paths:list[Path])->BatchResult:
+        batch=BatchResult()
+batch.total=len(paths)
+batch_start=time.time()
+
+timings_accum:dict[str,int]={}
+cache_calls=cache_hits=0
+cached_tokens=prompt_tokens=total_tokens=0
+
+semaphore=threading.Semaphore(self.max_workers)
+
+patch_collector=PatchCollector()
+source_files:list[Path]=[]
+
+defprocess_with_semaphore(path:Path)->ProcessingResult:
+            withsemaphore:
+                returnself.process_file(path,apply=False)
+
+withThreadPoolExecutor(max_workers=self.max_workers)asexecutor:
+            future_to_path={executor.submit(process_with_semaphore,p):pforpinpaths}
+
+forfutureinas_completed(future_to_path):
+                path=future_to_path[future]
+try:
+                    result=future.result()
+batch.results.append(result)
+
+should_apply=result.successandnotany("Skipped"instr(err)forerrinresult.errors)
+ifshould_applyandresult.plan:
+                        patch_collector.collect(result.plan)
+source_files.append(path)
+
+metrics=result.metricsor{}
+timings=metrics.get("timings")or{}
+forphase,msintimings.items():
+                        timings_accum[phase]=timings_accum.get(phase,0)+ms
+
+cache=metrics.get("cache")or{}
+ifcache:
+                        cache_calls+=1
+ifcache.get("cache_hit"):
+                            cache_hits+=1
+cached_tokens+=cache.get("cached_tokens",0)
+prompt_tokens+=cache.get("prompt_tokens",0)
+total_tokens+=cache.get("total_tokens",0)
+
+exceptExceptionase:
+                    batch.results.append(ProcessingResult(
+source_path=str(path),
+content_type="unknown",
+success=False,
+errors=[f"Parallel processing error: {e}"]
+))
+
+meeting_notes=patch_collector.get_meeting_notes()
+apply_result:Optional[ApplyResult]=None
+needs_apply=(patch_collector.has_patchesorbool(meeting_notes))andnotself.dry_runandbool(source_files)
+ifneeds_apply:
+            try:
+                merged_plan=patch_collector.merge()
+applier=TransactionalApply(self.vault_root,dry_run=False)
+primary_source=source_files[0]
+extra_sources=source_files[1:]iflen(source_files)>1elseNone
+extra_notes=meeting_notes[1:]iflen(meeting_notes)>1elseNone
+apply_result=applier.apply(
+merged_plan,
+primary_source,
+extra_meeting_notes=extra_notes,
+extra_source_paths=extra_sources,
+)
+
+forrinbatch.results:
+                    ifr.successandnotany("Skipped"instr(err)forerrinr.errors):
+                        r.apply_result=apply_result
+ifnotapply_result.success:
+                            r.success=False
+r.errors.extend(apply_result.errors)
+exceptExceptionase:
+                forrinbatch.results:
+                    ifr.successandnotany("Skipped"instr(err)forerrinr.errors):
+                        r.success=False
+r.errors.append(f"Batch merge/apply error: {e}")
+
+outputs_summary={"draft_replies":0,"calendar_invites":0,"reminders":0,"tasks_emitted":0}
+apply_ok=(apply_resultisNone)orbool(apply_result.success)
+ifself.generate_outputsandapply_ok:
+            forrinbatch.results:
+                ifnotr.successorany("Skipped"instr(err)forerrinr.errors):
+                    continue
+ifnotr.envelopeornotr.extraction:
+                    continue
+try:
+                    extraction=UnifiedExtraction.model_validate(r.extraction)
+exceptExceptionase:
+                    r.errors.append(f"Output generation skipped: invalid extraction ({e})")
+continue
+
+is_email=r.envelope.content_type.value=="email"
+suggested=extraction.suggested_outputs
+ifnot(is_emailor(suggestedandsuggested.needs_reply)):
+                    continue
+
+context=ContextBundle.load(self.vault_root,r.envelope,self.entity_index)
+outputs=self.output_generator.generate_all(
+extraction,
+context,
+r.envelope.raw_contentifr.envelopeelse"",
+force_reply=is_email,
+)
+r.outputs={
+"reply":str(outputs.get("reply"))ifoutputs.get("reply")elseNone,
+"calendar":str(outputs.get("calendar"))ifoutputs.get("calendar")elseNone,
+"reminder":str(outputs.get("reminder"))ifoutputs.get("reminder")elseNone,
+"tasks_emitted":len(outputs.get("tasks")or[]),
+}
+r.draft_reply=r.outputs.get("reply")
+ifr.outputs.get("calendar"):
+                    r.calendar_invite={"path":r.outputs.get("calendar")}
+
+ifoutputs.get("reply"):
+                    outputs_summary["draft_replies"]+=1
+ifoutputs.get("calendar"):
+                    outputs_summary["calendar_invites"]+=1
+ifoutputs.get("reminder"):
+                    outputs_summary["reminders"]+=1
+outputs_summary["tasks_emitted"]+=len(outputs.get("tasks")or[])
+
+ifself.trace_dirandr.envelope:
+                    try:
+                        stem=r.envelope.source_path.stem
+(self.trace_dir/f"{stem}.outputs.json").write_text(json.dumps(r.outputs,indent=2))
+exceptException:
+                        pass
+
+batch.success=batch.failed=batch.skipped=0
+forrinbatch.results:
+            ifr.success:
+                ifany("Skipped"instr(err)forerrinr.errors):
+                    batch.skipped+=1
+else:
+                    batch.success+=1
+else:
+                batch.failed+=1
+
+count=len(batch.results)
+phase_avg={k:int(v/count)fork,vintimings_accum.items()}ifcountelse{}
+cache_summary={
+"calls":cache_calls,
+"hits":cache_hits,
+"hit_rate":(cache_hits/cache_calls*100)ifcache_callselse0,
+"cached_tokens":cached_tokens,
+"prompt_tokens":prompt_tokens,
+"total_tokens":total_tokens,
+}
+
+batch.metrics={
+"run_ms":int((time.time()-batch_start)*1000),
+"phase_ms_avg":phase_avg,
+"cache":cache_summary,
+"parallel":{
+"workers":self.max_workers,
+"files_processed":len(paths),
+"patches_merged":patch_collector.patch_count,
+},
+"outputs":outputs_summary,
+}
+
+ifself.log_metricsandbatch.total>0:
+            try:
+                log_pipeline_stats({
+"timestamp":datetime.now().isoformat(),
+"total":batch.total,
+"success":batch.success,
+"failed":batch.failed,
+"skipped":batch.skipped,
+**batch.metrics,
+})
+exceptException:
+                pass
+
+self.entity_index.invalidate()
+returnbatch
+
+def_process_paths_sequential(self,paths:list[Path])->BatchResult:
+        batch=BatchResult()
+batch.total=len(paths)
+batch_start=time.time()
+
+timings_accum:dict[str,int]={}
+cache_calls=cache_hits=0
+cached_tokens=prompt_tokens=total_tokens=0
+
+forpathinpaths:
+            result=self.process_file(path)
+batch.results.append(result)
+
+ifresult.success:
+                ifany("Skipped"instr(err)forerrinresult.errors):
+                    batch.skipped+=1
+else:
+                    batch.success+=1
+else:
+                batch.failed+=1
+
+metrics=result.metricsor{}
+timings=metrics.get("timings")or{}
+forphase,msintimings.items():
+                timings_accum[phase]=timings_accum.get(phase,0)+ms
+
+cache=metrics.get("cache")or{}
+ifcache:
+                cache_calls+=1
+ifcache.get("cache_hit"):
+                    cache_hits+=1
+cached_tokens+=cache.get("cached_tokens",0)
+prompt_tokens+=cache.get("prompt_tokens",0)
+total_tokens+=cache.get("total_tokens",0)
+
+count=len(batch.results)
+phase_avg={k:int(v/count)fork,vintimings_accum.items()}ifcountelse{}
+cache_summary={
+"calls":cache_calls,
+"hits":cache_hits,
+"hit_rate":(cache_hits/cache_calls*100)ifcache_callselse0,
+"cached_tokens":cached_tokens,
+"prompt_tokens":prompt_tokens,
+"total_tokens":total_tokens,
+}
+
+batch.metrics={
+"run_ms":int((time.time()-batch_start)*1000),
+"phase_ms_avg":phase_avg,
+"cache":cache_summary,
+}
+
+ifself.log_metricsandbatch.total>0:
+            try:
+                log_pipeline_stats({
+"timestamp":datetime.now().isoformat(),
+"total":batch.total,
+"success":batch.success,
+"failed":batch.failed,
+"skipped":batch.skipped,
+**batch.metrics,
+})
+exceptException:
+
+                pass
+
+self.entity_index.invalidate()
+
+returnbatch
+
+def_log_extraction(self,extraction):
+        fromrich.consoleimportConsole
+console=Console()
+
+console.print(f"  Note type: {extraction.note_type}")
+console.print(f"  Summary: {extraction.summary[:80]}...")
+console.print(f"  Facts: {len(extraction.facts)}")
+console.print(f"  Tasks: {len(extraction.tasks)}")
+console.print(f"  Entities with facts: {len(extraction.get_entities_with_facts())}")
+
+def_persist_trace(self,envelope:ContentEnvelope,extraction,plan:ChangePlan,outputs:Optional[dict]=None):
+        ifnotself.trace_dir:
+            return
+
+trace_root=self.trace_dir
+trace_root.mkdir(parents=True,exist_ok=True)
+
+stem=envelope.source_path.stem
+extraction_path=trace_root/f"{stem}.extraction.json"
+changeplan_path=trace_root/f"{stem}.changeplan.json"
+outputs_path=trace_root/f"{stem}.outputs.json"
+
+try:
+            extraction_path.write_text(json.dumps(extraction.model_dump(mode="json"),indent=2))
+exceptException:
+            pass
+
+try:
+            changeplan_path.write_text(json.dumps(plan.model_dump(mode="json",exclude_none=True),indent=2))
+exceptException:
+            pass
+
+ifoutputs:
+            try:
+                outputs_path.write_text(json.dumps(outputs,indent=2))
+exceptException:
+                pass
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/normalize_entity_notes.py
+ROLE: Post-apply normalization (frontmatter normalization)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importsys
+fromdataclassesimportdataclass
+frompathlibimportPath
+fromtypingimportAny,Iterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+@dataclass(frozen=True)
+classEntityScope:
+    name:str
+base_dir:Path
+entity_key:str
+note_type:str
+
+def_ensure_list(value:Any)->list[str]:
+    ifvalueisNone:
+        return[]
+ifisinstance(value,str):
+        return[value]
+ifisinstance(value,list):
+        return[str(v)forvinvalue]
+return[]
+
+defnormalize_frontmatter_dict(
+fm:dict[str,Any],
+*,
+entity_key:str,
+entity_name:str,
+note_type:str,
+)->dict[str,Any]:
+    out=dict(fmor{})
+
+out["type"]=note_type
+out[entity_key]=entity_name
+
+forkeyin["person","project","account","rob_forum"]:
+        ifout.get(key)=="":
+            out.pop(key,None)
+
+tags=_ensure_list(out.get("tags"))
+cleaned:list[str]=[]
+fortagintags:
+        t=str(tag).strip()
+ifnott:
+            continue
+ift.endswith("/"):
+            continue
+cleaned.append(t)
+
+cleaned=[tfortincleanedifnott.startswith("type/")]
+cleaned.insert(0,f"type/{note_type}")
+
+deduped:list[str]=[]
+seen:set[str]=set()
+fortincleaned:
+        iftinseen:
+            continue
+seen.add(t)
+deduped.append(t)
+
+ifdeduped:
+        out["tags"]=deduped
+else:
+        out.pop("tags",None)
+
+returnout
+
+def_iter_entity_notes(scope:EntityScope)->Iterable[tuple[str,Path]]:
+    ifnotscope.base_dir.exists():
+        return
+forentity_dirinsorted(scope.base_dir.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldentity_dir.name,md
+
+defnormalize_entity_notes(scope:EntityScope,*,dry_run:bool=False)->tuple[int,int]:
+    changed=0
+skipped=0
+forentity_name,note_pathin_iter_entity_notes(scope):
+        text=note_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+normalized_fm=normalize_frontmatter_dict(
+fm,
+entity_key=scope.entity_key,
+entity_name=entity_name,
+note_type=scope.note_type,
+)
+updated=render_frontmatter(normalized_fm)+body
+ifupdated==text:
+            continue
+
+changed+=1
+ifnotdry_run:
+            note_path.write_text(updated)
+
+returnchanged,skipped
+
+def_scopes_from_config(vault:Path)->dict[str,EntityScope]:
+    cfg=load_config(vault_root_override=vault)
+work_paths=cfg.get("paths",{}).get("work",{})
+return{
+"people":EntityScope(
+name="people",
+base_dir=vault/work_paths.get("people","VAST/People"),
+entity_key="person",
+note_type="people",
+),
+"projects":EntityScope(
+name="projects",
+base_dir=vault/work_paths.get("projects","VAST/Projects"),
+entity_key="project",
+note_type="projects",
+),
+"customers":EntityScope(
+name="customers",
+base_dir=vault/work_paths.get("accounts","VAST/Customers and Partners"),
+entity_key="account",
+note_type="customer",
+),
+"rob":EntityScope(
+name="rob",
+base_dir=vault/work_paths.get("rob","VAST/ROB"),
+entity_key="rob_forum",
+note_type="rob",
+),
+}
+
+@click.command()
+@click.option(
+"--scope",
+"scopes",
+type=click.Choice(["people","projects","customers","rob","all"]),
+default=["all"],
+multiple=True,
+help="Which entity areas to normalize (default: all).",
+)
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(scopes:tuple[str,...],dry_run:bool)->None:
+    vault=vault_root()
+available=_scopes_from_config(vault)
+
+selected=set(scopes)
+if"all"inselected:
+        selected={"people","projects","customers","rob"}
+
+total_changed=0
+total_skipped=0
+fornamein["people","projects","customers","rob"]:
+        ifnamenotinselected:
+            continue
+changed,skipped=normalize_entity_notes(available[name],dry_run=dry_run)
+total_changed+=changed
+total_skipped+=skipped
+click.echo(f"{name}: changed={changed} skipped_invalid_frontmatter={skipped}")
+
+click.echo(f"total: changed={total_changed} skipped_invalid_frontmatter={total_skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/normalize_note_headers.py
+ROLE: Post-apply normalization (header cleanup)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importre
+importsys
+fromdataclassesimportdataclass
+frompathlibimportPath
+fromtypingimportIterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+@dataclass(frozen=True)
+classHeaderScope:
+    name:str
+base_dir:Path
+entity_key:str
+header_label:str
+
+def_iter_notes(scope:HeaderScope)->Iterable[tuple[str,Path]]:
+    ifnotscope.base_dir.exists():
+        return
+forentity_dirinsorted(scope.base_dir.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldentity_dir.name,md
+
+defnormalize_body_header(body:str,*,header_label:str,entity_name:str)->str:
+    pattern=re.compile(rf"^(\*\*{re.escape(header_label)}\*\*:\s*).*$",flags=re.MULTILINE)
+returnpattern.sub(rf"\1[[{entity_name}]]",body,count=1)
+
+defnormalize_headers(scope:HeaderScope,*,dry_run:bool=False)->tuple[int,int]:
+    changed=0
+skipped=0
+forentity_name,note_pathin_iter_notes(scope):
+        text=note_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+expected_entity=entity_name
+updated_body=normalize_body_header(body,header_label=scope.header_label,entity_name=expected_entity)
+ifupdated_body==body:
+            continue
+
+changed+=1
+ifdry_run:
+            continue
+
+note_path.write_text(render_frontmatter(fm)+updated_body)
+
+returnchanged,skipped
+
+def_scopes_from_config(vault:Path)->dict[str,HeaderScope]:
+    cfg=load_config(vault_root_override=vault)
+work_paths=cfg.get("paths",{}).get("work",{})
+return{
+"projects":HeaderScope(
+name="projects",
+base_dir=vault/work_paths.get("projects","VAST/Projects"),
+entity_key="project",
+header_label="Project",
+),
+"customers":HeaderScope(
+name="customers",
+base_dir=vault/work_paths.get("accounts","VAST/Customers and Partners"),
+entity_key="account",
+header_label="Account",
+),
+}
+
+@click.command()
+@click.option(
+"--scope",
+"scopes",
+type=click.Choice(["projects","customers","all"]),
+default=["all"],
+multiple=True,
+help="Which areas to normalize (default: all).",
+)
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(scopes:tuple[str,...],dry_run:bool)->None:
+    vault=vault_root()
+available=_scopes_from_config(vault)
+
+selected=set(scopes)
+if"all"inselected:
+        selected={"projects","customers"}
+
+total_changed=0
+total_skipped=0
+fornamein["projects","customers"]:
+        ifnamenotinselected:
+            continue
+changed,skipped=normalize_headers(available[name],dry_run=dry_run)
+total_changed+=changed
+total_skipped+=skipped
+click.echo(f"{name}: changed={changed} skipped_invalid_frontmatter={skipped}")
+
+click.echo(f"total: changed={total_changed} skipped_invalid_frontmatter={total_skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/remove_empty_entity_links.py
+ROLE: Cleanup helper (removes placeholder entity links)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importre
+importsys
+frompathlibimportPath
+fromtypingimportIterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+EMPTY_ENTITY_LINE_RE=re.compile(
+r"^\*\*(Account|Project)\*\*:\s*\[\[\]\]\s*$\n?",
+flags=re.MULTILINE,
+)
+
+defremove_empty_entity_links(body:str)->str:
+
+    updated=EMPTY_ENTITY_LINE_RE.sub("",body)
+updated=re.sub(r"\n{3,}","\n\n",updated)
+returnupdated
+
+def_iter_people_notes(people_root:Path)->Iterable[Path]:
+    ifnotpeople_root.exists():
+        return
+forentity_dirinsorted(people_root.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldmd
+
+@click.command()
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(dry_run:bool)->None:
+    vault=vault_root()
+cfg=load_config(vault_root_override=vault)
+people_root=vault/cfg.get("paths",{}).get("work",{}).get("people","VAST/People")
+
+changed=0
+skipped=0
+formdin_iter_people_notes(people_root):
+        text=md.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+updated_body=remove_empty_entity_links(body)
+ifupdated_body==body:

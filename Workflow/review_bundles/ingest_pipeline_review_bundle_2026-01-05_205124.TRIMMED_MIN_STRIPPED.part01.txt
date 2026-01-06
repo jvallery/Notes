@@ -1,0 +1,650 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 1/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED)
+Source bundle: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN.txt
+Notes: Python docstrings/comments stripped; long triple-quoted strings truncated.
+
+CONTENTS:
+001. [CLI] Workflow/scripts/ingest.py  —  Unified ingest CLI entry point (routes to pipeline, enrichment, git commit)
+002. [PIPELINE] Workflow/pipeline/__init__.py  —  Unified pipeline module
+003. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/__init__.py  —  Content adapter (parse → ContentEnvelope)
+004. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/base.py  —  Content adapter (parse → ContentEnvelope)
+005. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/document.py  —  Content adapter (parse → ContentEnvelope)
+006. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/email.py  —  Content adapter (parse → ContentEnvelope)
+007. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/transcript.py  —  Content adapter (parse → ContentEnvelope)
+008. [PIPELINE] Workflow/pipeline/apply.py  —  Unified pipeline module
+009. [PIPELINE] Workflow/pipeline/context.py  —  Unified pipeline module
+010. [PIPELINE] Workflow/pipeline/entities.py  —  Unified pipeline module
+011. [PIPELINE] Workflow/pipeline/envelope.py  —  Unified pipeline module
+012. [PIPELINE] Workflow/pipeline/extract.py  —  Unified pipeline module
+013. [PIPELINE] Workflow/pipeline/models.py  —  Unified pipeline module
+014. [PIPELINE] Workflow/pipeline/outputs.py  —  Unified pipeline module
+015. [PIPELINE] Workflow/pipeline/patch.py  —  Unified pipeline module
+016. [PIPELINE] Workflow/pipeline/pipeline.py  —  Unified pipeline module
+017. [NORMALIZE] Workflow/scripts/normalize_entity_notes.py  —  Post-apply normalization (frontmatter normalization)
+018. [NORMALIZE] Workflow/scripts/normalize_note_headers.py  —  Post-apply normalization (header cleanup)
+019. [NORMALIZE] Workflow/scripts/remove_empty_entity_links.py  —  Cleanup helper (removes placeholder entity links)
+020. [UTILS] Workflow/scripts/utils/__init__.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+021. [UTILS] Workflow/scripts/utils/ai_client.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+022. [UTILS] Workflow/scripts/utils/config.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+023. [UTILS] Workflow/scripts/utils/frontmatter.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+024. [UTILS] Workflow/scripts/utils/fs.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+025. [UTILS] Workflow/scripts/utils/logging.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+026. [UTILS] Workflow/scripts/utils/patch_primitives.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+027. [UTILS] Workflow/scripts/utils/paths.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+028. [UTILS] Workflow/scripts/utils/templates.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: CLI
+PATH: Workflow/scripts/ingest.py
+ROLE: Unified ingest CLI entry point (routes to pipeline, enrichment, git commit)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importsys
+frompathlibimportPath
+fromdatetimeimportdatetime
+
+importclick
+fromrich.consoleimportConsole
+fromrich.tableimportTable
+fromrich.panelimportPanel
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+frompipelineimportUnifiedPipeline
+frompipeline.envelopeimportContentType
+fromscripts.utils.configimportload_config
+
+console=Console()
+
+@click.command()
+@click.option("--type","content_type",type=click.Choice(["email","transcript","document","voice","all"]),default="all",help="Content type to process")
+@click.option("--file","file_path",type=click.Path(),help="Process single file")
+@click.option("--dry-run",is_flag=True,help="Preview without making changes")
+@click.option("--verbose","-v",is_flag=True,help="Show extraction details")
+@click.option("--enrich",is_flag=True,help="Trigger enrichment for new entities")
+@click.option("--draft-replies",is_flag=True,help="Generate draft email replies")
+@click.option("--draft-all-emails",is_flag=True,help="Generate drafts for all emails (including no-reply/automated)")
+@click.option("--source",is_flag=True,help="Re-process from Sources/ directory")
+@click.option("--force",is_flag=True,help="Skip duplicate detection, reprocess even if already extracted")
+@click.option("--show-cache-stats",is_flag=True,help="Print cache + timing summary after run")
+@click.option("--trace-dir",type=click.Path(),help="Persist extraction/changeplan artifacts to this directory")
+@click.option("--vault-root",type=click.Path(),help="Override vault root (defaults to repo root)")
+@click.option("--workers","-w",type=int,default=None,help="Number of parallel workers (default from config, 1=sequential)")
+@click.option("--sequential",is_flag=True,help="Force sequential processing (ignore config)")
+defmain(content_type:str,file_path:str,dry_run:bool,verbose:bool,enrich:bool,draft_replies:bool,draft_all_emails:bool,source:bool,force:bool,show_cache_stats:bool,trace_dir:str,vault_root:str,workers:int,sequential:bool):
+
+    override_root=Path(vault_root).expanduser().resolve()ifvault_rootelseNone
+try:
+        config=load_config(vault_root_override=override_root)
+exceptExceptionasexc:
+        raiseclick.ClickException(f"Config error: {exc}")
+
+vault_root_path=Path(config.get("paths",{}).get("vault_root",Path(__file__).parent.parent.parent))
+type_map={
+"email":ContentType.EMAIL,
+"transcript":ContentType.TRANSCRIPT,
+"document":ContentType.DOCUMENT,
+"voice":ContentType.VOICE,
+}
+
+effective_workers=1ifsequentialelseworkers
+
+subtitle_parts=["DRY RUN"ifdry_runelse"LIVE"]
+ifeffective_workers!=1:
+        subtitle_parts.append(f"{effective_workers or 'config'} workers")
+ifdraft_replies:
+        subtitle_parts.append("drafts→Outbox")
+ifdraft_all_emails:
+        subtitle_parts.append("all-email-drafts")
+
+console.print(Panel.fit(
+"[bold blue]Unified Ingest Pipeline[/bold blue]",
+subtitle=" | ".join(subtitle_parts)
+))
+
+pipeline=UnifiedPipeline(
+vault_root=vault_root_path,
+dry_run=dry_run,
+verbose=verbose,
+generate_outputs=draft_replies,
+draft_all_emails=draft_all_emails,
+force=force,
+trace_dir=Path(trace_dir)iftrace_direlseNone,
+show_cache_stats=show_cache_stats,
+config=config,
+max_workers=effective_workers,
+)
+
+batch=None
+single_result=None
+
+iffile_path:
+
+        target_path=Path(file_path)
+ifnottarget_path.is_absolute():
+            target_path=vault_root_path/target_path
+ifnottarget_path.exists():
+            raiseclick.ClickException(f"File not found: {target_path}")
+result=pipeline.process_file(target_path)
+_display_result(result,verbose)
+single_result=result
+
+elifsource:
+
+        selected=type_map.get(content_type)ifcontent_type!="all"elseNone
+batch=pipeline.process_sources(selected)
+_display_batch(batch,verbose)
+elifcontent_type=="all":
+
+        batch=pipeline.process_all()
+_display_batch(batch,verbose)
+else:
+
+        selected=type_map[content_type]
+batch=pipeline.process_type(selected)
+_display_batch(batch,verbose)
+
+if(show_cache_statsorverbose)andbatch:
+        _print_batch_metrics(batch)
+if(show_cache_statsorverbose)andsingle_result:
+        _print_result_metrics(single_result)
+
+ifenrichandnotdry_run:
+        _run_enrichment(vault_root_path,verbose)
+
+ifnotdry_run:
+        _git_commit(vault_root_path)
+
+def_display_result(result,verbose:bool):
+    ifresult.success:
+        console.print(f"[green]✓[/green] {result.source_path}")
+
+ifverboseandresult.extraction:
+            console.print(f"  Type: {result.content_type}")
+console.print(f"  Summary: {result.extraction.get('summary', '')[:80]}...")
+console.print(f"  Facts: {len(result.extraction.get('facts', []))}")
+console.print(f"  Tasks: {len(result.extraction.get('tasks', []))}")
+
+ifresult.apply_result:
+            console.print(f"  Created: {len(result.apply_result.files_created)}")
+console.print(f"  Modified: {len(result.apply_result.files_modified)}")
+
+ifresult.draft_reply:
+            console.print(f"  [blue]Draft reply[/blue]: {result.draft_reply}")
+ifresult.calendar_inviteandresult.calendar_invite.get("path"):
+            console.print(f"  [blue]Calendar invite[/blue]: {result.calendar_invite.get('path')}")
+ifverboseandgetattr(result,"outputs",None):
+            tasks_emitted=(result.outputsor{}).get("tasks_emitted")
+iftasks_emitted:
+                console.print(f"  Tasks emitted: {tasks_emitted}")
+else:
+        console.print(f"[red]✗[/red] {result.source_path}")
+forerrorinresult.errors:
+            console.print(f"  [red]{error}[/red]")
+
+def_display_batch(batch,verbose:bool):
+
+    table=Table(title="Processing Summary")
+table.add_column("Metric",style="cyan")
+table.add_column("Count",justify="right")
+
+table.add_row("Total",str(batch.total))
+table.add_row("Success",f"[green]{batch.success}[/green]")
+table.add_row("Failed",f"[red]{batch.failed}[/red]"ifbatch.failedelse"0")
+table.add_row("Skipped",f"[yellow]{batch.skipped}[/yellow]"ifbatch.skippedelse"0")
+
+drafts=sum(1forrinbatch.resultsifgetattr(r,"draft_reply",None))
+ifdrafts:
+        table.add_row("Draft replies",f"[blue]{drafts}[/blue]")
+
+console.print(table)
+
+ifdrafts:
+        console.print("[blue]Drafts written to: Outbox/[/blue]")
+
+ifverboseorbatch.failed>0:
+        console.print("\n[bold]Details:[/bold]")
+forresultinbatch.results:
+            _display_result(result,verbose)
+
+def_print_batch_metrics(batch):
+    metrics=getattr(batch,"metrics",{})or{}
+ifnotmetrics:
+        return
+
+console.print("\n[bold]Run Summary[/bold]")
+console.print(
+f"Duration: {metrics.get('run_ms', 0)} ms | Files: {batch.total} "
+f"(success {batch.success}, failed {batch.failed}, skipped {batch.skipped})"
+)
+
+timings=metrics.get("phase_ms_avg",{})or{}
+iftimings:
+        table=Table(title="Avg Phase Timings (ms)")
+table.add_column("Phase")
+table.add_column("ms",justify="right")
+forphase,msinsorted(timings.items()):
+            label=phase.replace("_ms","")
+table.add_row(label,str(ms))
+console.print(table)
+
+cache=metrics.get("cache",{})or{}
+ifcache.get("calls"):
+        hit_rate=cache.get("hit_rate",0)
+console.print(
+f"Cache: {cache.get('hits', 0)}/{cache.get('calls', 0)} hits "
+f"({hit_rate:.0f}%), saved {cache.get('cached_tokens', 0)} tokens "
+f"of {cache.get('prompt_tokens', 0)} prompt tokens"
+)
+
+def_print_result_metrics(result):
+    metrics=getattr(result,"metrics",{})or{}
+ifnotmetrics:
+        return
+
+console.print("\n[bold]Run Summary (single file)[/bold]")
+timings=metrics.get("timings",{})or{}
+iftimings:
+        table=Table(title="Phase Timings (ms)")
+table.add_column("Phase")
+table.add_column("ms",justify="right")
+forphase,msinsorted(timings.items()):
+            label=phase.replace("_ms","")
+table.add_row(label,str(ms))
+console.print(table)
+
+cache=metrics.get("cache",{})or{}
+ifcache:
+        hit_text="hit"ifcache.get("cache_hit")else"miss"
+console.print(
+f"Cache {hit_text}: "
+f"{cache.get('cached_tokens', 0)}/{cache.get('prompt_tokens', 0)} prompt tokens "
+f"saved, latency={cache.get('latency_ms', 0)} ms"
+)
+
+def_run_enrichment(vault_root:Path,verbose:bool):
+    console.print("\n[bold]Running enrichment...[/bold]")
+
+try:
+        fromscripts.enrich_personimportenrich_sparse_people
+
+count=enrich_sparse_people(vault_root,level=2,limit=5,verbose=verbose)
+console.print(f"  Enriched {count} people")
+exceptImportError:
+        console.print("  [yellow]Enrichment module not available[/yellow]")
+exceptExceptionase:
+        console.print(f"  [red]Enrichment failed: {e}[/red]")
+
+def_git_commit(vault_root:Path):
+    importsubprocess
+
+try:
+
+        result=subprocess.run(
+["git","status","--porcelain"],
+cwd=vault_root,
+capture_output=True,
+text=True
+)
+
+ifnotresult.stdout.strip():
+            return
+
+subprocess.run(["git","add","-A"],cwd=vault_root,check=True)
+
+timestamp=datetime.now().strftime("%Y-%m-%d %H:%M")
+message=f"[auto] Unified ingest: {timestamp}"
+
+subprocess.run(
+["git","commit","-m",message],
+cwd=vault_root,
+check=True,
+capture_output=True
+)
+
+console.print(f"\n[green]Committed changes[/green]")
+
+exceptsubprocess.CalledProcessErrorase:
+        console.print(f"[yellow]Git commit skipped: {e}[/yellow]")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/__init__.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+from.envelopeimportContentEnvelope,ContentType
+from.contextimportContextBundle
+from.entitiesimportEntityIndex
+from.extractimportUnifiedExtractor
+from.patchimportPatchGenerator
+from.applyimportTransactionalApply
+from.outputsimportOutputGenerator
+from.pipelineimportUnifiedPipeline
+
+__all__=[
+"ContentEnvelope",
+"ContentType",
+"ContextBundle",
+"EntityIndex",
+"UnifiedExtractor",
+"PatchGenerator",
+"TransactionalApply",
+"UnifiedPipeline",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/__init__.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+from.baseimportBaseAdapter,AdapterRegistry
+from.emailimportEmailAdapter
+from.transcriptimportTranscriptAdapter
+from.documentimportDocumentAdapter
+
+__all__=[
+"BaseAdapter",
+"AdapterRegistry",
+"EmailAdapter",
+"TranscriptAdapter",
+"DocumentAdapter",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/base.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+fromabcimportABC,abstractmethod
+frompathlibimportPath
+fromtypingimportOptional,Type
+importhashlib
+
+from..envelopeimportContentEnvelope,ContentType
+
+classBaseAdapter(ABC):
+
+    @property
+@abstractmethod
+defcontent_type(self)->ContentType:
+        pass
+
+@abstractmethod
+defcan_handle(self,path:Path)->bool:
+        pass
+
+@abstractmethod
+defparse(self,path:Path)->ContentEnvelope:
+        pass
+
+defcompute_hash(self,content:str)->str:
+
+        ifcontent.startswith("---"):
+            end=content.find("\n---",3)
+ifend!=-1:
+                content=content[end+4:]
+
+normalized=content.strip()[:2000]
+returnhashlib.md5(normalized.encode()).hexdigest()[:12]
+
+classAdapterRegistry:
+
+    def__init__(self):
+        self._adapters:list[BaseAdapter]=[]
+
+defregister(self,adapter:BaseAdapter)->None:
+        self._adapters.append(adapter)
+
+defget_adapter(self,path:Path)->Optional[BaseAdapter]:
+        foradapterinself._adapters:
+            ifadapter.can_handle(path):
+                returnadapter
+returnNone
+
+defparse(self,path:Path)->Optional[ContentEnvelope]:
+        adapter=self.get_adapter(path)
+ifadapter:
+            returnadapter.parse(path)
+returnNone
+
+@classmethod
+defdefault(cls)->"AdapterRegistry":
+        from.emailimportEmailAdapter
+from.transcriptimportTranscriptAdapter
+from.documentimportDocumentAdapter
+
+registry=cls()
+registry.register(EmailAdapter())
+registry.register(TranscriptAdapter())
+registry.register(DocumentAdapter())
+returnregistry
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/document.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,DocumentMetadata
+
+classDocumentAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.DOCUMENT
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file():
+            returnFalse
+
+if"Attachments"inpath.parts:
+            returnpath.suffixin[".md",".txt"]
+
+ifpath.suffix==".md":
+            returnTrue
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+title=self._extract_title(content,path.name)
+date=self._extract_date(content,path)
+author=self._extract_author(content)
+doc_type=self._infer_document_type(content,path)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.DOCUMENT,
+raw_content=content,
+date=date,
+title=title,
+participants=[author]ifauthorelse[],
+content_hash=self.compute_hash(content),
+metadata={
+"document":DocumentMetadata(
+document_type=doc_type,
+author=author,
+file_type=path.suffix[1:]ifpath.suffixelse"unknown",
+).model_dump()
+}
+)
+
+def_extract_title(self,content:str,filename:str)->str:
+
+        lines=content.split("\n")
+forlineinlines[:10]:
+            ifline.startswith("# "):
+                returnline[2:].strip()
+
+returnfilename.replace(".md","").replace("_"," ").strip()
+
+def_extract_date(self,content:str,path:Path)->str:
+
+        ifcontent.startswith("---"):
+            date_match=re.search(r"date:\s*[\"']?(\d{4}-\d{2}-\d{2})",content[:500])
+ifdate_match:
+                returndate_match.group(1)
+
+date_match=re.match(r"^(\d{4}-\d{2}-\d{2})",path.name)
+ifdate_match:
+            returndate_match.group(1)
+
+mtime=path.stat().st_mtime
+returndatetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+
+def_extract_author(self,content:str)->Optional[str]:
+
+        ifcontent.startswith("---"):
+            author_match=re.search(r"author:\s*[\"']?([^\n\"']+)",content[:500])
+ifauthor_match:
+                returnauthor_match.group(1).strip()
+
+returnNone
+
+def_infer_document_type(self,content:str,path:Path)->str:
+        content_lower=content.lower()
+
+if"proposal"incontent_loweror"proposal"inpath.name.lower():
+            return"proposal"
+if"spec"incontent_loweror"specification"incontent_lower:
+            return"specification"
+if"report"incontent_lower:
+            return"report"
+if"article"inpath.partsor"articles"inpath.parts:
+            return"article"
+
+return"general"
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/email.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,EmailMetadata
+
+classEmailAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.EMAIL
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file()orpath.suffix!=".md":
+            returnFalse
+
+if"Email"inpath.parts:
+            returnTrue
+
+ifre.match(r"^\d{4}-\d{2}-\d{2}_\d{6}_\d{4}_",path.name):
+            returnTrue
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+date=self._extract_date(content,path.name)
+subject=self._extract_subject(content)
+sender_name,sender_email=self._extract_sender(content)
+recipients_detail=self._extract_recipients(content)
+recipient_names=[r.get("name")forrinrecipients_detailifr.get("name")]
+recipient_emails=[r.get("email")forrinrecipients_detailifr.get("email")]
+is_reply=self._is_reply(subject)
+
+participants=[]
+ifsender_name:
+            participants.append(sender_name)
+participants.extend(recipient_names)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.EMAIL,
+raw_content=content,
+date=date,
+title=subject,
+participants=participants,
+content_hash=self.compute_hash(content),
+metadata={
+"email":EmailMetadata(
+sender_name=sender_name,
+sender_email=sender_email,
+recipients=recipient_names,
+recipients_emails=recipient_emails,
+recipients_detail=recipients_detail,
+subject=subject,
+is_reply=is_reply,
+).model_dump()
+}
+)
+
+def_extract_date(self,content:str,filename:str)->str:
+
+        date_match=re.search(r"##\s*(\d{4}-\d{2}-\d{2})",content)
+ifdate_match:
+            returndate_match.group(1)
+
+filename_match=re.match(r"^(\d{4}-\d{2}-\d{2})",filename)
+iffilename_match:
+            returnfilename_match.group(1)
+
+returndatetime.now().strftime("%Y-%m-%d")
+
+def_extract_subject(self,content:str)->str:
+        lines=content.split("\n")
+iflinesandlines[0].startswith("# "):
+            returnlines[0][2:].strip()
+return"Unknown Subject"
+
+def_extract_sender(self,content:str)->tuple[Optional[str],Optional[str]]:
+
+        from_match=re.search(r"(?:^|\n)\*?\*?From\*?\*?:\s*([^\n<]+?)(?:\s*<([^>]+)>)?(?:\n|$)",content)
+iffrom_match:
+            name=from_match.group(1).strip()
+
+name=re.sub(r'^\*\*\s*|\s*\*\*$','',name)
+email=from_match.group(2)iffrom_match.group(2)elseNone
+return(name,email)
+return(None,None)
+

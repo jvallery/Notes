@@ -1,0 +1,779 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 6/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+add_decisions=extraction.decisionsifextraction.decisionselseNone,
+add_context=context_entry,
+))
+
+returnpatches
+
+def_generate_fact_patches(self,entity:MentionedEntity,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+folder=self._get_entity_folder(entity,extraction)
+
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=entity.name,
+add_facts=entity.facts_about,
+add_context=f"- {extraction.date}: Mentioned in: {extraction.title}",
+))
+
+returnpatches
+
+def_generate_participant_patches(self,participant:str,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+ifparticipant.lower()in["myself","jason","jason vallery"]:
+            returnpatches
+
+normalized=self.entity_index.normalize_name(participant).lower()
+folder=self._created_folders.get(normalized)
+ifnotfolder:
+            email=self._get_email_for_participant(participant,extraction)
+folder=self.entity_index.find_person(participant,email=email)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+context_entry=f"- {extraction.date}: {extraction.title}"
+
+frontmatter={"last_contact":extraction.date}
+contact_info=self._get_contact_info_for_person(participant,extraction)
+frontmatter.update(contact_info)
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=participant,
+add_frontmatter=frontmatter,
+add_context=context_entry,
+))
+
+returnpatches
+
+def_generate_company_patches(self,entity:MentionedEntity,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+normalized=self.entity_index.normalize_name(entity.name).lower()
+folder=self._created_folders.get(normalized)
+ifnotfolder:
+            folder=self.entity_index.find_company(entity.name)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=entity.name,
+add_facts=entity.facts_about,
+add_context=f"- {extraction.date}: {extraction.title}",
+))
+
+returnpatches
+
+def_get_email_for_participant(self,name:str,extraction:UnifiedExtraction)->Optional[str]:
+        ifnotextraction.contacts:
+            returnNone
+
+normalized_target=self.entity_index.normalize_name(name).lower()
+forcontactinextraction.contacts:
+            ifnotcontact.email:
+                continue
+contact_name=contact.nameor""
+normalized_contact=self.entity_index.normalize_name(contact_name).lower()ifcontact_nameelse""
+ifcontact_nameandnormalized_contact==normalized_target:
+                returncontact.email
+if"@"inname:
+            returnname
+returnNone
+
+def_get_contact_info_for_person(self,name:str,extraction:UnifiedExtraction)->dict:
+        result={}
+ifnotextraction.contacts:
+            returnresult
+
+normalized_target=self.entity_index.normalize_name(name).lower()
+forcontactinextraction.contacts:
+            contact_name=contact.nameor""
+normalized_contact=self.entity_index.normalize_name(contact_name).lower()ifcontact_nameelse""
+ifcontact_nameandnormalized_contact==normalized_target:
+
+                ifcontact.email:
+                    result["email"]=contact.email
+ifcontact.title:
+
+                    result["role"]=contact.title
+ifcontact.company:
+                    result["company"]=contact.company
+ifcontact.phone:
+                    result["phone"]=contact.phone
+break
+returnresult
+
+def_get_entity_folder(self,entity,extraction:Optional[UnifiedExtraction]=None)->Optional[Path]:
+
+        normalized=self.entity_index.normalize_name(entity.name).lower()
+ifnormalizedinself._created_folders:
+            returnself._created_folders[normalized]
+
+email=None
+ifextractionandentity.entity_type=="person":
+            email=self._get_email_for_participant(entity.name,extraction)
+ifentity.entity_type=="person":
+            returnself.entity_index.find_person(entity.name,email=email)
+elifentity.entity_type=="company":
+            returnself.entity_index.find_company(entity.name)
+elifentity.entity_type=="project":
+            returnself.entity_index.find_project(entity.name)
+returnNone
+
+def_create_entity_folder(self,name:str,entity_type:str,extraction:UnifiedExtraction)->Optional[Path]:
+        fromscripts.utils.templatesimportsanitize_path_name
+
+safe_name=sanitize_path_name(name)
+
+ifentity_type=="person":
+            folder=self.vault_root/"VAST"/"People"/safe_name
+elifentity_type=="company":
+            folder=self.vault_root/"VAST"/"Customers and Partners"/safe_name
+elifentity_type=="project":
+            folder=self.vault_root/"VAST"/"Projects"/safe_name
+else:
+
+            folder=self.vault_root/"VAST"/"People"/safe_name
+
+folder.mkdir(parents=True,exist_ok=True)
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+
+            email=self._get_email_for_participant(name,extraction)ifentity_type=="person"elseNone
+readme_content=self._generate_readme_content(name,entity_type,email,extraction)
+readme_path.write_text(readme_content)
+
+normalized=self.entity_index.normalize_name(name).lower()
+self._created_folders[normalized]=folder
+
+returnfolder
+
+def_generate_readme_content(self,name:str,entity_type:str,email:Optional[str],extraction:UnifiedExtraction)->str:
+        fromdatetimeimportdate
+fromscripts.utils.frontmatterimportrender_frontmatter
+fromscripts.utils.templatesimportsanitize_path_name
+
+today=date.today().isoformat()
+safe_name=sanitize_path_name(name)
+
+ifentity_type=="person":
+
+            company=None
+title=None
+forcontactinextraction.contacts:
+                ifcontact.nameandcontact.name.lower()inname.lower():
+                    company=contact.company
+title=contact.title
+break
+
+fm={
+"type":"people",
+"title":name,
+"created":today,
+"last_contact":extraction.date,
+"email":emailor"",
+"company":companyor"",
+"role":titleor"",
+"tags":["type/people","needs-review"],
+}
+
+body=f"""# {name}
+
+## Key Facts
+
+## Recent Context
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+elifentity_type=="company":
+            fm={
+"type":"customer",
+"title":name,
+"account_type":"",
+"status":"",
+"industry":"_Unknown_",
+"created":today,
+"last_contact":extraction.date,
+"tags":["type/customer","needs-review"],
+}
+
+body=f"""# {name}
+
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | _Unknown_ |
+| **Industry** | _Unknown_ |
+
+## Key Contacts
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+else:
+            fm={
+"type":"projects",
+"title":name,
+"status":"active",
+"created":today,
+"last_contact":extraction.date,
+"tags":["type/projects","status/active","needs-review"],
+}
+
+body=f"""# {name}
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | active |
+| **Owner** | _Unknown_ |
+
+## Overview
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+
+def_warn_duplicate(self,name:str,entity_type:str,plan:ChangePlan):
+        similar:list[str]=[]
+ifentity_type=="person":
+            similar=self.entity_index.find_similar_people(name)
+elifentity_type=="company":
+            similar=self.entity_index.find_similar_companies(name)
+elifentity_type=="project":
+            similar=self.entity_index.find_similar_projects(name)
+
+ifsimilar:
+            plan.warnings.append(
+f"Potential duplicate for '{name}': similar to {', '.join(similar[:2])} (consider merge)"
+)
+
+def_generate_manifest_patches(self,extraction:UnifiedExtraction)->list[ManifestPatch]:
+        patches=[]
+
+ifextraction.discovered_aliases:
+            people_manifest_path="VAST/People/_MANIFEST.md"
+
+aliases_by_person:dict[str,list[str]]={}
+foralias_discoveryinextraction.discovered_aliases:
+
+                canonical=self.entity_index.normalize_name(alias_discovery.canonical_name)
+ifcanonicalnotinaliases_by_person:
+                    aliases_by_person[canonical]=[]
+aliases_by_person[canonical].append(alias_discovery.alias)
+
+forperson_name,aliasesinaliases_by_person.items():
+
+                folder=self.entity_index.find_person(person_name)
+iffolder:
+                    patches.append(ManifestPatch(
+manifest_type="people",
+manifest_path=people_manifest_path,
+person_name=person_name,
+aliases_to_add=aliases,
+))
+
+ifextraction.discovered_acronyms:
+            projects_manifest_path="VAST/Projects/_MANIFEST.md"
+
+foracronym_discoveryinextraction.discovered_acronyms:
+
+                project_name=acronym_discovery.project_name
+ifproject_name:
+                    folder=self.entity_index.find_project(project_name)
+iffolder:
+                        patches.append(ManifestPatch(
+manifest_type="projects",
+manifest_path=projects_manifest_path,
+project_name=project_name,
+acronym=acronym_discovery.acronym,
+definition=acronym_discovery.expansion,
+))
+else:
+
+                    patches.append(ManifestPatch(
+manifest_type="projects",
+manifest_path=projects_manifest_path,
+project_name=acronym_discovery.acronym,
+acronym=acronym_discovery.acronym,
+definition=acronym_discovery.expansion,
+))
+
+returnpatches
+
+classPatchCollector:
+
+    def__init__(self,dedupe_facts:bool=True,dedupe_tasks:bool=True,combine_context:bool=True):
+        self.dedupe_facts=dedupe_facts
+self.dedupe_tasks=dedupe_tasks
+self.combine_context=combine_context
+
+self._patches_by_target:dict[str,list[PatchOperation]]={}
+self._meeting_notes:list[tuple[str,dict]]=[]
+self._source_files:list[str]=[]
+self._warnings:list[str]=[]
+
+self._manifest_patches:list[ManifestPatch]=[]
+
+@property
+defhas_patches(self)->bool:
+        returnbool(self._patches_by_target)orbool(self._manifest_patches)
+
+@property
+defpatch_count(self)->int:
+        returnsum(len(patches)forpatchesinself._patches_by_target.values())+len(self._manifest_patches)
+
+defcollect(self,plan:ChangePlan):
+        self._source_files.append(plan.source_file)
+
+ifplan.meeting_note_pathandplan.meeting_note:
+            self._meeting_notes.append((plan.meeting_note_path,plan.meeting_note))
+
+forpatchinplan.patches:
+            target=patch.target_path
+iftargetnotinself._patches_by_target:
+                self._patches_by_target[target]=[]
+self._patches_by_target[target].append(patch)
+
+self._manifest_patches.extend(plan.manifest_patches)
+
+self._warnings.extend(plan.warnings)
+
+defmerge(self)->ChangePlan:
+        merged_patches:list[PatchOperation]=[]
+
+fortarget_path,patchesinself._patches_by_target.items():
+            iflen(patches)==1:
+                merged_patches.append(patches[0])
+else:
+                merged=self._merge_patches_for_target(patches)
+merged_patches.append(merged)
+
+merged_manifest_patches=self._merge_manifest_patches()
+
+plan=ChangePlan(
+source_file=", ".join(self._source_files[:3])+(f" (+{len(self._source_files) - 3} more)"iflen(self._source_files)>3else""),
+patches=merged_patches,
+manifest_patches=merged_manifest_patches,
+warnings=self._warnings,
+)
+
+ifself._meeting_notes:
+            plan.meeting_note_path=self._meeting_notes[0][0]
+plan.meeting_note=self._meeting_notes[0][1]
+
+returnplan
+
+defget_meeting_notes(self)->list[tuple[str,dict]]:
+        returnself._meeting_notes
+
+def_merge_manifest_patches(self)->list[ManifestPatch]:
+        ifnotself._manifest_patches:
+            return[]
+
+people_aliases:dict[str,set[str]]={}
+project_acronyms:dict[str,tuple[str,str]]={}
+
+forpatchinself._manifest_patches:
+            ifpatch.manifest_type=="people"andpatch.person_name:
+                key=patch.person_name
+ifkeynotinpeople_aliases:
+                    people_aliases[key]=set()
+people_aliases[key].update(patch.aliases_to_add)
+elifpatch.manifest_type=="projects"andpatch.project_name:
+                key=patch.project_name
+ifkeynotinproject_acronymsandpatch.acronym:
+                    project_acronyms[key]=(patch.acronym,patch.definitionor"")
+
+merged=[]
+
+forperson_name,aliasesinpeople_aliases.items():
+            merged.append(ManifestPatch(
+manifest_type="people",
+manifest_path="VAST/People/_MANIFEST.md",
+person_name=person_name,
+aliases_to_add=list(aliases),
+))
+
+forproject_name,(acronym,definition)inproject_acronyms.items():
+            merged.append(ManifestPatch(
+manifest_type="projects",
+manifest_path="VAST/Projects/_MANIFEST.md",
+project_name=project_name,
+acronym=acronym,
+definition=definition,
+))
+
+returnmerged
+
+def_merge_patches_for_target(self,patches:list[PatchOperation])->PatchOperation:
+        first=patches[0]
+
+merged=PatchOperation(
+operation="patch",
+target_path=first.target_path,
+target_entity=first.target_entity,
+add_frontmatter={},
+add_facts=[],
+add_topics=[],
+add_decisions=[],
+add_context="",
+add_tasks=[],
+add_wikilinks=[],
+)
+
+seen_facts:set[str]=set()
+seen_tasks:set[str]=set()
+context_parts:list[str]=[]
+
+forpatchinpatches:
+
+            ifpatch.add_frontmatter:
+                forkey,valueinpatch.add_frontmatter.items():
+
+                    merged.add_frontmatter[key]=value
+
+ifpatch.add_facts:
+                forfactinpatch.add_facts:
+                    fact_key=fact.lower().strip()ifself.dedupe_factselsefact
+iffact_keynotinseen_facts:
+                        merged.add_facts.append(fact)
+seen_facts.add(fact_key)
+
+ifpatch.add_topics:
+                fortopicinpatch.add_topics:
+                    iftopicnotinmerged.add_topics:
+                        merged.add_topics.append(topic)
+
+ifpatch.add_decisions:
+                fordecisioninpatch.add_decisions:
+                    ifdecisionnotinmerged.add_decisions:
+                        merged.add_decisions.append(decision)
+
+ifpatch.add_context:
+                ifself.combine_context:
+                    ifpatch.add_contextnotincontext_parts:
+                        context_parts.append(patch.add_context)
+else:
+                    merged.add_context=patch.add_context
+
+ifpatch.add_tasks:
+                fortaskinpatch.add_tasks:
+                    task_key=task.get("text","").lower().strip()ifself.dedupe_taskselsestr(task)
+iftask_keynotinseen_tasks:
+                        merged.add_tasks.append(task)
+seen_tasks.add(task_key)
+
+ifpatch.add_wikilinks:
+                forlinkinpatch.add_wikilinks:
+                    iflinknotinmerged.add_wikilinks:
+                        merged.add_wikilinks.append(link)
+
+ifcontext_parts:
+            merged.add_context="\n".join(context_parts)
+
+returnmerged
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/pipeline.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importsys
+importtime
+importthreading
+fromconcurrent.futuresimportThreadPoolExecutor,as_completed
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any
+fromdataclassesimportdataclass,field
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope,ContentType
+from.adaptersimportAdapterRegistry
+from.contextimportContextBundle
+from.extractimportUnifiedExtractor
+from.patchimportPatchGenerator,ChangePlan,PatchCollector
+from.applyimportTransactionalApply,ApplyResult
+from.entitiesimportEntityIndex
+from.outputsimportOutputGenerator
+from.modelsimportContactInfo,UnifiedExtraction
+fromscripts.utils.ai_clientimportlog_pipeline_stats
+fromscripts.utils.configimportload_config
+
+@dataclass
+classProcessingResult:
+
+    source_path:str
+content_type:str
+success:bool=True
+
+envelope:Optional[ContentEnvelope]=None
+extraction:Optional[dict]=None
+plan:Optional[ChangePlan]=None
+apply_result:Optional[ApplyResult]=None
+
+draft_reply:Optional[str]=None
+calendar_invite:Optional[dict]=None
+outputs:dict=field(default_factory=dict)
+
+metrics:dict=field(default_factory=dict)
+
+errors:list[str]=field(default_factory=list)
+
+def__str__(self):
+        ifself.success:
+            returnf"✓ {self.source_path}"
+else:
+            returnf"✗ {self.source_path}: {', '.join(self.errors)}"
+
+@dataclass
+classBatchResult:
+
+    total:int=0
+success:int=0
+failed:int=0
+skipped:int=0
+results:list[ProcessingResult]=field(default_factory=list)
+metrics:dict=field(default_factory=dict)
+
+def__str__(self):
+        returnf"Processed {self.total}: {self.success} success, {self.failed} failed, {self.skipped} skipped"
+
+classUnifiedPipeline:
+
+    def__init__(
+self,
+vault_root:Path,
+dry_run:bool=False,
+verbose:bool=False,
+generate_outputs:bool=True,
+draft_all_emails:bool=False,
+force:bool=False,
+trace_dir:Optional[Path]=None,
+show_cache_stats:bool=False,
+log_metrics:bool=True,
+config:Optional[dict[str,Any]]=None,
+max_workers:Optional[int]=None,
+):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+self.verbose=verbose
+self.generate_outputs=generate_outputs
+self.draft_all_emails=draft_all_emails
+self.force=force
+self.trace_dir=trace_dir
+self.show_cache_stats=show_cache_stats
+self.log_metrics=log_metrics
+self.config=configorload_config(vault_root_override=vault_root)
+
+parallel_cfg=self.config.get("parallel",{})
+self.max_workers=max_workersifmax_workersisnotNoneelseparallel_cfg.get("max_workers",1)
+self.parallel_enabled=parallel_cfg.get("enabled",False)andself.max_workers>1
+rate_limit_cfg=parallel_cfg.get("rate_limit",{})
+self.requests_per_minute=rate_limit_cfg.get("requests_per_minute",50)
+path_cfg=self.config.get("paths",{})
+self.inbox_paths={
+k:Path(v)fork,vinpath_cfg.get("inbox",{}).items()ifisinstance(v,str)
+}
+self.source_paths={
+k:Path(v)fork,vinpath_cfg.get("sources",{}).items()ifisinstance(v,str)
+}
+inbox_root=Path(self.inbox_paths.get("root",self.vault_root/"Inbox"))
+sources_root=Path(self.source_paths.get("root",self.vault_root/"Sources"))
+self.default_inbox={
+"email":inbox_root/"Email",
+"transcripts":inbox_root/"Transcripts",
+"voice":inbox_root/"Voice",
+"attachments":inbox_root/"Attachments",
+}
+self.default_sources={
+"email":sources_root/"Email",
+"transcripts":sources_root/"Transcripts",
+"documents":sources_root/"Documents",
+"voice":sources_root/"Voice",
+}
+
+self.registry=AdapterRegistry.default()
+self.entity_index=EntityIndex(vault_root,config=self.config)
+self.extractor=UnifiedExtractor(vault_root,verbose=verbose)
+self.patch_generator=PatchGenerator(vault_root,self.entity_index)
+self.output_generator=OutputGenerator(vault_root,dry_run=dry_run,verbose=verbose)
+
+self._context:Optional[ContextBundle]=None
+
+@property
+defcontext(self)->ContextBundle:
+        ifself._contextisNone:
+            self._context=ContextBundle.load(self.vault_root,config=self.config,entity_index=self.entity_index)
+returnself._context
+
+defprocess_file(self,path:Path,apply:bool=True)->ProcessingResult:
+        result=ProcessingResult(
+source_path=str(path),
+content_type="unknown"
+)
+phase_timings:dict[str,int]={}
+run_start=time.time()
+
+try:
+
+            parse_start=time.time()
+envelope=self.registry.parse(path)
+phase_timings["adapter_ms"]=int((time.time()-parse_start)*1000)
+ifnotenvelope:
+                result.success=False
+result.errors.append(f"No adapter found for {path}")
+result.metrics={"timings":phase_timings,"cache":{}}
+returnresult
+
+result.content_type=envelope.content_type.value
+result.envelope=envelope
+
+ifnotself.forceandself._is_duplicate(envelope):
+                result.success=True
+result.errors.append("Skipped: duplicate content")
+result.metrics={"timings":phase_timings,"cache":{}}
+returnresult
+
+ctx_start=time.time()
+context=ContextBundle.load(self.vault_root,envelope,self.entity_index)
+phase_timings["context_ms"]=int((time.time()-ctx_start)*1000)
+
+extract_start=time.time()
+extraction=self.extractor.extract(envelope,context)
+phase_timings["extract_ms"]=int((time.time()-extract_start)*1000)
+self._augment_extraction_with_headers(extraction,envelope)
+result.extraction=extraction.model_dump()
+
+ifself.verbose:
+                self._log_extraction(extraction)
+
+patch_start=time.time()
+plan=self.patch_generator.generate(extraction)
+phase_timings["patch_ms"]=int((time.time()-patch_start)*1000)
+result.plan=plan
+
+apply_ms=0
+ifapplyandnotself.dry_run:
+                apply_start=time.time()
+applier=TransactionalApply(self.vault_root,dry_run=False)
+apply_result=applier.apply(plan,path)
+result.apply_result=apply_result
+apply_ms=int((time.time()-apply_start)*1000)
+
+ifnotapply_result.success:
+                    result.success=False
+result.errors.extend(apply_result.errors)
+phase_timings["apply_ms"]=apply_ms
+
+outputs_ms=0
+suggested=extraction.suggested_outputs
+is_email=envelope.content_type.value=="email"
+force_reply=is_emailandself.draft_all_emails
+has_any_outputs=bool(extraction.tasks)orbool(
+suggested
+and(
+suggested.needs_reply
+orsuggested.calendar_invite
+orsuggested.follow_up_reminder
+)
+)
+should_generate_outputs=(
+apply
+andself.generate_outputs
+and(force_replyorhas_any_outputs)
+)
+ifshould_generate_outputs:
+                outputs_start=time.time()
+outputs=self.output_generator.generate_all(
+extraction,
+context,
+envelope.raw_contentifenvelopeelse"",
+force_reply=force_reply,
+)
+result.outputs={
+"reply":str(outputs.get("reply"))ifoutputs.get("reply")elseNone,
+"calendar":str(outputs.get("calendar"))ifoutputs.get("calendar")elseNone,
+"reminder":str(outputs.get("reminder"))ifoutputs.get("reminder")elseNone,
+"tasks_emitted":len(outputs.get("tasks")or[]),
+}
+result.draft_reply=result.outputs.get("reply")
+result.calendar_invite={"path":result.outputs.get("calendar")}ifresult.outputs.get("calendar")elseNone
+outputs_ms=int((time.time()-outputs_start)*1000)
+phase_timings["outputs_ms"]=outputs_ms
+
+ifself.trace_dir:
+                self._persist_trace(envelope,extraction,plan,outputs=result.outputsorNone)
+
+result.metrics={
+"timings":phase_timings,

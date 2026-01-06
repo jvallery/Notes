@@ -1,0 +1,904 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 8/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+            continue
+
+changed+=1
+ifnotdry_run:
+            md.write_text(render_frontmatter(fm)+updated_body)
+
+click.echo(f"changed={changed} skipped_invalid_frontmatter={skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/__init__.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from.configimport(
+load_config,
+get_model_config,
+get_persona,
+vault_root,
+workflow_root,
+)
+from.entitiesimport(
+list_entities,
+list_entity_folders,
+list_all_entity_names,
+match_entity,
+match_entity_any_type,
+suggest_entity_folder,
+get_entity_metadata,
+resolve_mentions,
+load_aliases,
+normalize_person_name,
+normalize_task_owner,
+)
+from.git_opsimport(
+is_git_repo,
+is_dirty,
+is_clean,
+get_status,
+get_changed_files,
+require_clean,
+add_files,
+commit,
+commit_batch,
+get_current_branch,
+get_last_commit,
+revert_last,
+stash_changes,
+pop_stash,
+GitStatus,
+CHECKED_PATHS,
+IGNORED_PATTERNS,
+)
+from.pathsimport(
+get_archive_path,
+get_extraction_path,
+get_changeplan_path,
+safe_relative_path,
+ensure_parent_exists,
+)
+from.fsimport(
+atomic_write,
+safe_read_text,
+backup_file,
+)
+from.templatesimport(
+slugify,
+sanitize_path_name,
+basename,
+strip_extension,
+get_template_env,
+get_prompts_env,
+render_note,
+render_prompt,
+ALLOWED_TEMPLATES,
+)
+from.profilesimport(
+load_profile,
+list_profiles,
+select_profile,
+get_profile_focus,
+get_profile_ignore,
+get_task_rules,
+clear_cacheasclear_profile_cache,
+)
+from.ai_clientimport(
+get_clientasget_ai_client,
+get_openai_client,
+get_loggerasget_ai_logger,
+get_daily_statsasget_ai_stats,
+log_pipeline_stats,
+AILogger,
+InstrumentedClient,
+)
+from.loggingimport(
+setup_logging,
+get_logger,
+get_log_file,
+set_context,
+clear_context,
+log_summary,
+ContextLogger,
+)
+
+__all__=[
+
+"load_config",
+"get_model_config",
+"get_persona",
+"vault_root",
+"workflow_root",
+
+"list_entities",
+"list_entity_folders",
+"list_all_entity_names",
+"match_entity",
+"match_entity_any_type",
+"suggest_entity_folder",
+"get_entity_metadata",
+"resolve_mentions",
+"load_aliases",
+"normalize_person_name",
+"normalize_task_owner",
+
+"is_git_repo",
+"is_dirty",
+"is_clean",
+"get_status",
+"get_changed_files",
+"require_clean",
+"add_files",
+"commit",
+"commit_batch",
+"get_current_branch",
+"get_last_commit",
+"revert_last",
+"stash_changes",
+"pop_stash",
+"GitStatus",
+"CHECKED_PATHS",
+"IGNORED_PATTERNS",
+
+"get_archive_path",
+"get_extraction_path",
+"get_changeplan_path",
+"safe_relative_path",
+"ensure_parent_exists",
+
+"atomic_write",
+"safe_read_text",
+"backup_file",
+
+"slugify",
+"sanitize_path_name",
+"basename",
+"strip_extension",
+"get_template_env",
+"get_prompts_env",
+"render_note",
+"render_prompt",
+"ALLOWED_TEMPLATES",
+
+"load_profile",
+"list_profiles",
+"select_profile",
+"get_profile_focus",
+"get_profile_ignore",
+"get_task_rules",
+"clear_profile_cache",
+
+"get_ai_client",
+"get_openai_client",
+"get_ai_logger",
+"get_ai_stats",
+"log_pipeline_stats",
+"AILogger",
+"InstrumentedClient",
+
+"setup_logging",
+"get_logger",
+"get_log_file",
+"set_context",
+"clear_context",
+"log_summary",
+"ContextLogger",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/ai_client.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importos
+importtime
+importhashlib
+importthreading
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any,Dict,List
+fromfunctoolsimportwraps
+fromdataclassesimportdataclass,field,asdict
+
+_local=threading.local()
+
+@dataclass
+classAIRequest:
+    id:str
+timestamp:str
+operation:str
+model:str
+messages:Optional[List[Dict]]=None
+input:Optional[str]=None
+instructions:Optional[str]=None
+tools:Optional[List[Dict]]=None
+temperature:Optional[float]=None
+max_tokens:Optional[int]=None
+response_format:Optional[str]=None
+store:bool=False
+caller:Optional[str]=None
+context:Optional[Dict]=None
+
+@dataclass
+classAIResponse:
+    request_id:str
+timestamp:str
+success:bool
+model:str
+content:Optional[str]=None
+parsed:Optional[Dict]=None
+usage:Optional[Dict]=None
+finish_reason:Optional[str]=None
+latency_ms:int=0
+error:Optional[str]=None
+
+@property
+deftokens_prompt(self)->int:
+        returnself.usage.get("prompt_tokens",0)ifself.usageelse0
+
+@property
+deftokens_completion(self)->int:
+        returnself.usage.get("completion_tokens",0)ifself.usageelse0
+
+@property
+deftokens_total(self)->int:
+        returnself.usage.get("total_tokens",0)ifself.usageelse0
+
+@dataclass
+classDailySummary:
+    date:str
+total_requests:int=0
+successful_requests:int=0
+failed_requests:int=0
+total_prompt_tokens:int=0
+total_completion_tokens:int=0
+total_tokens:int=0
+total_latency_ms:int=0
+by_model:Dict[str,Dict]=field(default_factory=dict)
+by_operation:Dict[str,int]=field(default_factory=dict)
+by_caller:Dict[str,int]=field(default_factory=dict)
+estimated_cost_usd:float=0.0
+pipeline_runs:List[Dict]=field(default_factory=list)
+
+defadd_response(self,request:AIRequest,response:AIResponse):
+        self.total_requests+=1
+ifresponse.success:
+            self.successful_requests+=1
+else:
+            self.failed_requests+=1
+
+self.total_prompt_tokens+=response.tokens_prompt
+self.total_completion_tokens+=response.tokens_completion
+self.total_tokens+=response.tokens_total
+self.total_latency_ms+=response.latency_ms
+
+model=response.modelorrequest.model
+ifmodelnotinself.by_model:
+            self.by_model[model]={
+"requests":0,
+"tokens":0,
+"latency_ms":0,
+"errors":0
+}
+self.by_model[model]["requests"]+=1
+self.by_model[model]["tokens"]+=response.tokens_total
+self.by_model[model]["latency_ms"]+=response.latency_ms
+ifnotresponse.success:
+            self.by_model[model]["errors"]+=1
+
+ifrequest.operationnotinself.by_operation:
+            self.by_operation[request.operation]=0
+self.by_operation[request.operation]+=1
+
+caller=request.calleror"unknown"
+ifcallernotinself.by_caller:
+            self.by_caller[caller]=0
+self.by_caller[caller]+=1
+
+self.estimated_cost_usd=self._estimate_cost()
+
+def_estimate_cost(self)->float:
+        cost=0.0
+pricing={
+
+"gpt-5.2":(0.003,0.012),
+"gpt-4o":(0.005,0.015),
+"gpt-4o-mini":(0.00015,0.0006),
+"gpt-4-turbo":(0.01,0.03),
+"gpt-4":(0.03,0.06),
+"gpt-3.5-turbo":(0.0005,0.0015),
+}
+formodel,statsinself.by_model.items():
+
+            formodel_key,(input_cost,output_cost)inpricing.items():
+                ifmodel_keyinmodel.lower():
+
+                    tokens=stats.get("tokens",0)
+cost+=(tokens*0.7/1000)*input_cost
+cost+=(tokens*0.3/1000)*output_cost
+break
+returnround(cost,4)
+
+defadd_pipeline_run(self,stats:Dict[str,Any]):
+        self.pipeline_runs.append(stats)
+
+classAILogger:
+
+    _instance=None
+_lock=threading.Lock()
+
+def__new__(cls):
+        ifcls._instanceisNone:
+            withcls._lock:
+                ifcls._instanceisNone:
+                    cls._instance=super().__new__(cls)
+cls._instance._initialized=False
+returncls._instance
+
+def__init__(self):
+        ifself._initialized:
+            return
+
+self.workflow_dir=Path(__file__).parent.parent.parent
+self.log_dir=self.workflow_dir/"logs"/"ai"
+self.log_dir.mkdir(parents=True,exist_ok=True)
+
+self.today=datetime.now().strftime("%Y-%m-%d")
+self.day_dir=self.log_dir/self.today
+self.day_dir.mkdir(exist_ok=True)
+
+self.requests_file=self.day_dir/"requests.jsonl"
+self.responses_file=self.day_dir/"responses.jsonl"
+self.summary_file=self.day_dir/"summary.json"
+
+self.summary=self._load_summary()
+
+self._initialized=True
+
+def_load_summary(self)->DailySummary:
+        ifself.summary_file.exists():
+            withopen(self.summary_file)asf:
+                data=json.load(f)
+returnDailySummary(**data)
+returnDailySummary(date=self.today)
+
+def_save_summary(self):
+        withopen(self.summary_file,"w")asf:
+            json.dump(asdict(self.summary),f,indent=2)
+
+latest=self.log_dir/"latest.json"
+iflatest.exists()orlatest.is_symlink():
+            latest.unlink()
+latest.symlink_to(self.summary_file)
+
+def_generate_id(self)->str:
+        timestamp=datetime.now().isoformat()
+unique=hashlib.md5(f"{timestamp}{time.time_ns()}".encode()).hexdigest()[:8]
+returnf"{self.today}_{unique}"
+
+def_check_day_rollover(self):
+        today=datetime.now().strftime("%Y-%m-%d")
+iftoday!=self.today:
+            self.today=today
+self.day_dir=self.log_dir/self.today
+self.day_dir.mkdir(exist_ok=True)
+self.requests_file=self.day_dir/"requests.jsonl"
+self.responses_file=self.day_dir/"responses.jsonl"
+self.summary_file=self.day_dir/"summary.json"
+self.summary=DailySummary(date=self.today)
+
+deflog_request(self,request:AIRequest):
+        self._check_day_rollover()
+withopen(self.requests_file,"a")asf:
+            f.write(json.dumps(asdict(request),default=str)+"\n")
+
+deflog_response(self,request:AIRequest,response:AIResponse):
+        self._check_day_rollover()
+withopen(self.responses_file,"a")asf:
+            f.write(json.dumps(asdict(response),default=str)+"\n")
+
+self.summary.add_response(request,response)
+self._save_summary()
+
+deflog_pipeline_stats(self,stats:Dict[str,Any]):
+        self._check_day_rollover()
+try:
+            self.summary.add_pipeline_run(stats)
+exceptException:
+
+            ifnothasattr(self.summary,"pipeline_runs"):
+                self.summary.pipeline_runs=[]
+self.summary.pipeline_runs.append(stats)
+self._save_summary()
+
+deflog_completion(
+self,
+client,
+model:str,
+messages:List[Dict],
+caller:Optional[str]=None,
+context:Optional[Dict]=None,
+**kwargs
+):
+        request_id=self._generate_id()
+timestamp=datetime.now().isoformat()
+
+request=AIRequest(
+id=request_id,
+timestamp=timestamp,
+operation="chat.completions.create",
+model=model,
+messages=messages,
+temperature=kwargs.get("temperature"),
+max_tokens=kwargs.get("max_tokens"),
+response_format=str(kwargs.get("response_format"))ifkwargs.get("response_format")elseNone,
+store=kwargs.get("store",False),
+caller=caller,
+context=context,
+)
+self.log_request(request)
+
+start_time=time.time()
+try:
+            response=client.chat.completions.create(
+model=model,
+messages=messages,
+**kwargs
+)
+latency_ms=int((time.time()-start_time)*1000)
+
+response_record=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=True,
+model=response.model,
+content=response.choices[0].message.contentifresponse.choiceselseNone,
+usage={
+"prompt_tokens":response.usage.prompt_tokens,
+"completion_tokens":response.usage.completion_tokens,
+"total_tokens":response.usage.total_tokens,
+}ifresponse.usageelseNone,
+finish_reason=response.choices[0].finish_reasonifresponse.choiceselseNone,
+latency_ms=latency_ms,
+)
+self.log_response(request,response_record)
+
+returnresponse
+
+exceptExceptionase:
+            latency_ms=int((time.time()-start_time)*1000)
+response_record=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=False,
+model=model,
+error=str(e),
+latency_ms=latency_ms,
+)
+self.log_response(request,response_record)
+raise
+
+def__enter__(self):
+        returnself
+
+def__exit__(self,exc_type,exc_val,exc_tb):
+        pass
+
+defget_stats(self)->Dict:
+        returnasdict(self.summary)
+
+classInstrumentedClient:
+
+    def__init__(self,client,caller:Optional[str]=None):
+        self._client=client
+self._caller=caller
+self._logger=AILogger()
+self.chat=InstrumentedChat(client.chat,self._logger,caller)
+
+self.responses=InstrumentedResponses(client.responses,self._logger,caller)ifhasattr(client,'responses')elseNone
+
+self.models=client.models
+self.files=client.filesifhasattr(client,'files')elseNone
+
+defset_caller(self,caller:str):
+        self._caller=caller
+self.chat._caller=caller
+ifself.responses:
+            self.responses._caller=caller
+
+defset_context(self,context:Dict):
+        self.chat._context=context
+
+self.chat.completions._context=context
+
+classInstrumentedChat:
+
+    def__init__(self,chat,logger:AILogger,caller:Optional[str]=None):
+        self._chat=chat
+self._logger=logger
+self._caller=caller
+self._context=None
+self.completions=InstrumentedCompletions(chat.completions,logger,caller)
+
+classInstrumentedCompletions:
+
+    def__init__(self,completions,logger:AILogger,caller:Optional[str]=None):
+        self._completions=completions
+self._logger=logger
+self._caller=caller
+self._context=None
+
+defcreate(self,**kwargs):
+        returnself._logger.log_completion(
+client=type('obj',(object,),{'chat':type('chat',(object,),{'completions':self._completions})()})(),
+model=kwargs.pop("model"),
+messages=kwargs.pop("messages"),
+caller=self._caller,
+context=self._context,
+**kwargs
+)
+
+classInstrumentedResponses:
+
+    def__init__(self,responses,logger:AILogger,caller:Optional[str]=None):
+        self._responses=responses
+self._logger=logger
+self._caller=caller
+
+defcreate(self,**kwargs):
+        importtime
+start_time=time.time()
+
+request_id=hashlib.md5(f"{time.time()}{kwargs}".encode()).hexdigest()[:12]
+request=AIRequest(
+id=request_id,
+timestamp=datetime.now().isoformat(),
+model=kwargs.get("model","unknown"),
+operation="responses.create",
+caller=self._caller,
+input=str(kwargs.get("input",""))[:500],
+instructions=kwargs.get("instructions"),
+tools=[{"type":t.get("type","unknown")}ifisinstance(t,dict)elsestr(t)fortinkwargs.get("tools",[])]ifkwargs.get("tools")elseNone
+)
+
+try:
+            result=self._responses.create(**kwargs)
+latency_ms=int((time.time()-start_time)*1000)
+
+usage_dict=None
+ifhasattr(result,'usage')andresult.usage:
+                usage_dict={
+"prompt_tokens":getattr(result.usage,'input_tokens',0),
+"completion_tokens":getattr(result.usage,'output_tokens',0),
+"total_tokens":getattr(result.usage,'input_tokens',0)+getattr(result.usage,'output_tokens',0)
+}
+
+response=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=True,
+model=kwargs.get("model","unknown"),
+usage=usage_dict,
+latency_ms=latency_ms,
+content="[responses.create result]"
+)
+
+self._logger.log_request(request)
+self._logger.log_response(request,response)
+
+returnresult
+
+exceptExceptionase:
+            latency_ms=int((time.time()-start_time)*1000)
+response=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=False,
+model=kwargs.get("model","unknown"),
+error=str(e),
+latency_ms=latency_ms
+)
+self._logger.log_request(request)
+self._logger.log_response(request,response)
+raise
+
+_client=None
+_client_lock=threading.Lock()
+
+defget_client(caller:Optional[str]=None)->InstrumentedClient:
+    global_client
+
+with_client_lock:
+        if_clientisNone:
+            fromopenaiimportOpenAI
+
+api_key=os.environ.get("OPENAI_API_KEY")
+ifnotapi_key:
+
+                workflow_dir=Path(__file__).parent.parent.parent
+env_file=workflow_dir/".env"
+ifenv_file.exists():
+                    fromdotenvimportload_dotenv
+load_dotenv(env_file)
+api_key=os.environ.get("OPENAI_API_KEY")
+
+ifnotapi_key:
+                raiseValueError(
+"OPENAI_API_KEY not set. "
+"Set it in environment or Workflow/.env"
+)
+
+raw_client=OpenAI(api_key=api_key)
+_client=InstrumentedClient(raw_client,caller)
+
+ifcaller:
+            _client.set_caller(caller)
+
+return_client
+
+defget_logger()->AILogger:
+    returnAILogger()
+
+defget_daily_stats()->Dict:
+    returnAILogger().get_stats()
+
+deflog_pipeline_stats(stats:Dict[str,Any]):
+    AILogger().log_pipeline_stats(stats)
+
+defget_cached_system_prompt(
+task:str="general",
+include_persona:bool=True,
+include_glossary:bool=True,
+additional_instructions:str=""
+)->str:
+    try:
+        fromutils.cached_promptsimportget_system_prompt
+returnget_system_prompt(
+task=task,
+include_persona=include_persona,
+include_glossary=include_glossary,
+additional_instructions=additional_instructions
+)
+exceptImportError:
+
+        returnadditional_instructionsor"You are a helpful assistant."
+
+defreset_client():
+    global_client
+_client=None
+
+defget_openai_client(caller:Optional[str]=None):
+    returnget_client(caller)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/config.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importos
+frompathlibimportPath
+fromtypingimportAny
+
+importyaml
+fromdotenvimportload_dotenv
+
+WORKFLOW_ROOT=Path(__file__).parent.parent.parent
+VAULT_ROOT=WORKFLOW_ROOT.parent
+CONFIG_PATH=WORKFLOW_ROOT/"config.yaml"
+ENV_PATH=WORKFLOW_ROOT/".env"
+
+defload_config(vault_root_override:Path|None=None)->dict[str,Any]:
+
+    load_dotenv(ENV_PATH)
+
+ifnotCONFIG_PATH.exists():
+        raiseFileNotFoundError(f"Config file not found: {CONFIG_PATH}")
+
+withopen(CONFIG_PATH,"r")asf:
+        config=yaml.safe_load(f)
+
+config=_substitute_env_vars(config)
+
+ifvault_root_override:
+        config.setdefault("paths",{})
+config["paths"]["vault_root"]=str(vault_root_override)
+
+config=_resolve_paths(config,base=vault_root_override)
+_validate_config(config)
+
+returnconfig
+
+def_substitute_env_vars(obj:Any)->Any:
+
+    ifisinstance(obj,str):
+        importre
+
+pattern=r"\$\{([^}:]+)(?::-([^}]*))?\}"
+
+defreplacer(match):
+            var_name=match.group(1)
+default=match.group(2)or""
+returnos.environ.get(var_name,default)
+
+returnre.sub(pattern,replacer,obj)
+
+elifisinstance(obj,dict):
+        return{k:_substitute_env_vars(v)fork,vinobj.items()}
+
+elifisinstance(obj,list):
+        return[_substitute_env_vars(item)foriteminobj]
+
+returnobj
+
+def_resolve_paths(config:dict,base:Path|None=None)->dict:
+
+    vault_root=Path(baseorconfig.get("paths",{}).get("vault_root",str(VAULT_ROOT)))
+
+if"paths"inconfig:
+        forsectioninconfig["paths"]:
+            ifsection=="vault_root":
+                config["paths"]["vault_root"]=str(vault_root)
+continue
+
+section_data=config["paths"][section]
+
+ifisinstance(section_data,str):
+
+                ifnotPath(section_data).is_absolute():
+                    config["paths"][section]=str(vault_root/section_data)
+
+elifisinstance(section_data,dict):
+
+                forkey,pathinsection_data.items():
+                    ifisinstance(path,str)andnotPath(path).is_absolute():
+                        config["paths"][section][key]=str(vault_root/path)
+
+returnconfig
+
+def_validate_config(config:dict)->None:
+    required_keys=[
+("paths","vault_root"),
+("paths","inbox","email"),
+("paths","inbox","transcripts"),
+("paths","inbox","voice"),
+("paths","inbox","attachments"),
+("paths","inbox","extraction"),
+("paths","inbox","archive"),
+("paths","work","people"),
+("paths","work","projects"),
+("paths","work","accounts"),
+("paths","sources","email"),
+("paths","sources","transcripts"),
+("paths","sources","documents"),
+("paths","sources","voice"),
+("models","default_provider"),
+("models","extract_email","model"),
+("models","extract_transcript","model"),
+("models","extract_voice","model"),
+]
+
+missing:list[str]=[]
+forpathinrequired_keys:
+        cursor=config
+forkeyinpath:
+            ifisinstance(cursor,dict)andkeyincursor:
+                cursor=cursor[key]
+else:
+                missing.append(".".join(path))
+break
+ifmissing:
+        raiseValueError(f"Missing required config keys: {', '.join(missing)}")
+
+defget_model_config(task:str)->dict[str,Any]:
+
+    config=load_config()
+models=config.get("models",{})
+
+task_config=models.get(task)
+
+iftask_configisNone:
+        available=[kforkinmodels.keys()ifknotin("default_provider","privacy")]
+raiseValueError(
+f"Model task '{task}' not configured in config.yaml. "
+f"Available tasks: {', '.join(sorted(available))}"
+)
+
+if"model"notintask_config:
+        raiseValueError(
+f"Model task '{task}' missing 'model' in config.yaml. "
+f"All tasks must explicitly configure the model."
+)
+
+return{
+"provider":task_config.get(
+"provider",models.get("default_provider","openai")
+),
+"model":task_config["model"],
+"temperature":task_config.get("temperature",0.0),
+"max_tokens":task_config.get("max_tokens"),
+}
+
+defget_persona(note_type:str,sub_type:str=None)->str|None:
+
+    config=load_config()
+mapping=config.get("persona_mapping",{})
+
+type_config=mapping.get(note_type)
+
+iftype_configisNone:
+        returnNone
+
+ifisinstance(type_config,str):
+        returntype_config
+
+ifisinstance(type_config,dict):
+        ifsub_typeandsub_typeintype_config:
+            returntype_config[sub_type]
+returntype_config.get("default")
+
+returnNone
+
+defvault_root()->Path:
+    returnVAULT_ROOT
+
+defworkflow_root()->Path:
+    returnWORKFLOW_ROOT
+
+if__name__=="__main__":
+
+    fromrichimportprintasrprint
+
+config=load_config()
+rprint("[bold]Configuration loaded:[/bold]")
+rprint(config)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/frontmatter.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from__future__importannotations
+
+importyaml
+fromtypingimportAny
+
+defparse_frontmatter(content:str)->tuple[dict|None,str]:
+    ifnotcontent.startswith("---"):
+        returnNone,content
+
+lines=content.split("\n")
+end_index=None
+fori,lineinenumerate(lines[1:],start=1):
+        ifline.strip()=="---":
+            end_index=i
+break
+
+ifend_indexisNone:
+

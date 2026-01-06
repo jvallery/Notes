@@ -1,0 +1,768 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 4/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+ifisinstance(value,list):
+                            canonical=str(key)
+self._aliases[canonical.lower()]=canonical
+foraliasinvalue:
+                                ifnotalias:
+                                    continue
+self._aliases[str(alias).lower()]=canonical
+elifisinstance(value,str):
+
+                            alias=str(key)
+canonical=str(value)
+self._aliases[canonical.lower()]=canonical
+self._aliases[alias.lower()]=canonical
+return
+
+forkey,valueindata.items():
+                ifnotkey:
+                    continue
+canonical=str(key)
+self._aliases[canonical.lower()]=canonical
+ifisinstance(value,list):
+                    foraliasinvalue:
+                        ifnotalias:
+                            continue
+self._aliases[str(alias).lower()]=canonical
+elifisinstance(value,str):
+                    self._aliases[str(key).lower()]=str(value)
+exceptException:
+            pass
+
+_entity_index:Optional[EntityIndex]=None
+
+defget_entity_index(vault_root:Optional[Path]=None,config:Optional[dict[str,Any]]=None)->EntityIndex:
+    global_entity_index
+
+if_entity_indexisNone:
+        ifvault_rootisNone:
+
+            fromscripts.utilsimportvault_rootasget_vault_root
+vault_root=get_vault_root()
+_entity_index=EntityIndex(vault_root,config=config)
+
+return_entity_index
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/envelope.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+fromenumimportEnum
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any
+frompydanticimportBaseModel,Field,ConfigDict
+
+classContentType(str,Enum):
+    EMAIL="email"
+TRANSCRIPT="transcript"
+DOCUMENT="document"
+VOICE="voice"
+SMS="sms"
+
+classContentEnvelope(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+source_path:Path
+content_type:ContentType
+
+raw_content:str
+
+date:str
+title:str
+participants:list[str]=Field(default_factory=list)
+
+metadata:dict[str,Any]=Field(default_factory=dict)
+
+created_at:datetime=Field(default_factory=datetime.now)
+content_hash:Optional[str]=None
+
+def__str__(self)->str:
+        returnf"{self.content_type.value}: {self.source_path.name}"
+
+classEmailMetadata(BaseModel):
+
+    sender_name:Optional[str]=None
+sender_email:Optional[str]=None
+recipients:list[str]=Field(default_factory=list)
+recipients_emails:list[str]=Field(default_factory=list)
+recipients_detail:list[dict]=Field(default_factory=list)
+cc:list[str]=Field(default_factory=list)
+subject:str=""
+thread_id:Optional[str]=None
+in_reply_to:Optional[str]=None
+is_reply:bool=False
+
+classTranscriptMetadata(BaseModel):
+
+    speakers:list[str]=Field(default_factory=list)
+duration_estimate:Optional[str]=None
+source_app:str="MacWhisper"
+has_diarization:bool=True
+
+classDocumentMetadata(BaseModel):
+
+    document_type:str="general"
+author:Optional[str]=None
+source_url:Optional[str]=None
+file_type:str="markdown"
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/extract.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importre
+importsys
+importtime
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope,ContentType
+from.contextimportContextBundle
+from.modelsimport(
+UnifiedExtraction,ContactInfo,Fact,TaskItem,
+MentionedEntity,EntityRef,SuggestedOutputs
+)
+fromscripts.utilsimportget_logger,get_model_config
+
+classUnifiedExtractor:
+
+    def__init__(self,vault_root:Path,verbose:bool=False):
+        self.vault_root=vault_root
+self.verbose=verbose
+self._client=None
+self._context:Optional[ContextBundle]=None
+self.logger=get_logger("unified_extractor")
+self.last_usage:dict={}
+
+@property
+defclient(self):
+        ifself._clientisNone:
+            fromscripts.utils.ai_clientimportget_openai_client
+self._client=get_openai_client("unified_extractor")
+returnself._client
+
+defextract(self,envelope:ContentEnvelope,context:Optional[ContextBundle]=None)->UnifiedExtraction:
+
+        ifcontextisNone:
+            context=ContextBundle.load(self.vault_root,envelope)
+
+self.last_usage={}
+
+system_prompt=self._build_system_prompt(envelope,context)
+user_prompt=self._build_user_prompt(envelope)
+
+ifself.verbose:
+            _,prefix_hash=context.get_cacheable_prefix()
+self.logger.info(f"System prompt length={len(system_prompt)} chars, cacheable prefix hash={prefix_hash}")
+
+task_key=f"extract_{envelope.content_type.value}"
+model_config=get_model_config(task_key)
+
+call_start=time.time()
+try:
+            withself.logger.context(phase="extract",file=str(envelope.source_path)):
+                response=self.client.chat.completions.create(
+model=model_config["model"],
+messages=[
+{"role":"system","content":system_prompt},
+{"role":"user","content":user_prompt},
+],
+temperature=model_config.get("temperature",0.0),
+
+)
+
+latency_ms=int((time.time()-call_start)*1000)
+self.last_usage=self._capture_usage(response,model_config["model"],latency_ms)
+
+ifself.verboseandself.last_usage:
+                prompt_tokens=self.last_usage.get("prompt_tokens",0)
+cached_tokens=self.last_usage.get("cached_tokens",0)
+ifself.last_usage.get("cache_hit"):
+                    cache_pct=(cached_tokens/prompt_tokens*100)ifprompt_tokens>0else0
+self.logger.info(f"Cache HIT: {cached_tokens}/{prompt_tokens} tokens ({cache_pct:.0f}%)")
+elifprompt_tokens:
+                    self.logger.info(f"Cache miss: {prompt_tokens} prompt tokens")
+
+result=response.choices[0].message.content.strip()
+
+ifresult.startswith("```"):
+                result=re.sub(r'^```\w*\n?','',result)
+result=re.sub(r'\n?```$','',result)
+
+data=json.loads(result)
+
+returnself._build_extraction(envelope,data)
+
+exceptjson.JSONDecodeErrorase:
+            returnself._build_minimal_extraction(envelope,f"JSON parse error: {e}")
+exceptExceptionase:
+            self.logger.error("Extraction failed",exc_info=True)
+raiseRuntimeError(f"Extraction failed: {e}")
+
+def_capture_usage(self,response,model:str,latency_ms:int)->dict:
+        usage=getattr(response,"usage",None)
+prompt_tokens=self._get_usage_value(usage,"prompt_tokens")
+completion_tokens=self._get_usage_value(usage,"completion_tokens")
+total_tokens=self._get_usage_value(usage,"total_tokens")
+cached_tokens=self._get_usage_value(usage,"cached_tokens")
+
+ifnotcached_tokensandusageisnotNone:
+            details=getattr(usage,"prompt_tokens_details",None)
+ifisinstance(details,dict):
+                cached_tokens=details.get("cached_tokens",0)or0
+elifdetailsisnotNone:
+                cached_tokens=getattr(details,"cached_tokens",0)or0
+
+iftotal_tokens==0:
+            total_tokens=(prompt_tokensor0)+(completion_tokensor0)
+
+cache_hit=cached_tokens>0
+
+return{
+"model":model,
+"prompt_tokens":prompt_tokensor0,
+"completion_tokens":completion_tokensor0,
+"total_tokens":total_tokensor0,
+"cached_tokens":cached_tokensor0,
+"cache_hit":cache_hit,
+"cache_savings_tokens":cached_tokensor0,
+"latency_ms":latency_ms,
+}
+
+def_get_usage_value(self,usage,key:str)->int:
+        ifusageisNone:
+            return0
+ifisinstance(usage,dict):
+            returnusage.get(key,0)or0
+returngetattr(usage,key,0)or0
+
+def_build_system_prompt(self,envelope:ContentEnvelope,context:ContextBundle)->str:
+
+        context_section=context.get_extraction_context(compact=True,verbose=self.verbose)
+
+type_guidance=self._get_type_guidance(envelope.content_type)
+
+instructions=f"""<OMITTED 6241 chars>\nYou are extracting structured knowledge from content for a personal knowledge management system.
+
+{context_section}
+
+## CONTENT TYPE
+This is a {envelope.content_type.value}. {type_guidance}
+
+## EXTRAC\n...\nture"}}
+
+   This helps us build our glossary over time. Only capture NEW aliases/acronyms not
+   already in the glossary provided above.
+
+Return ONLY valid JSON, no markdown fences or explanation."""
+
+returninstructions
+
+def_get_type_guidance(self,content_type:ContentType)->str:
+
+        guidance={
+ContentType.EMAIL:"""
+Pay special attention to:
+- Sender and recipient information (extract all contact details)
+- Whether a response is needed (direct questions, requests)
+- Urgency signals (deadline mentions, "urgent", "ASAP")
+- Commitments made by sender or requested from me
+- Any scheduling/calendar mentions for calendar_invite suggestion""",
+
+ContentType.TRANSCRIPT:"""
+This is a meeting transcript with speaker labels.
+Pay special attention to:
+- **PARTICIPANT COUNT**: How many distinct speakers/people are in this meeting?
+  - 2 people (1:1) → note_type: "people", primary_entity is the OTHER person
+  - Multiple VAST employees → note_type: "projects"
+  - External customer/partner present → note_type: "customer"
+- Identify all participants from speaker labels and mentions
+- Capture action items with clear owners
+- Note decisions made during the meeting
+- Extract facts learned about people, companies, or projects
+- Summarize the main discussion points as topics""",
+
+ContentType.DOCUMENT:"""
+This is a document or article.
+Pay special attention to:
+- Key information and facts
+- Relevant entities mentioned
+- Any action items or recommendations
+- The main topics covered""",
+
+ContentType.VOICE:"""
+This is a voice memo transcription.
+Pay special attention to:
+- Tasks and reminders mentioned
+- Ideas or thoughts to capture
+- References to people or projects
+- Follow-up items""",
+}
+
+returnguidance.get(content_type,"Extract all relevant information.")
+
+def_build_user_prompt(self,envelope:ContentEnvelope)->str:
+
+        content=envelope.raw_content
+iflen(content)>12000:
+            content=content[:12000]+"\n\n[... content truncated ...]"
+
+returnf"""Extract knowledge from this {envelope.content_type.value}:
+
+Date: {envelope.date}
+Title: {envelope.title}
+Participants: {', '.join(envelope.participants) if envelope.participants else 'Unknown'}
+
+---
+
+{content}"""
+
+def_build_extraction(self,envelope:ContentEnvelope,data:dict)->UnifiedExtraction:
+
+        primary_entity=None
+ifdata.get("primary_entity"):
+            pe=data["primary_entity"]
+primary_entity=EntityRef(
+entity_type=pe.get("entity_type","person"),
+name=pe.get("name",""),
+confidence=pe.get("confidence",0.8)
+)
+
+contacts=[]
+
+forcindata.get("contacts",[]):
+            contacts.append(ContactInfo(**c))
+
+forcindata.get("contacts_mentioned",[]):
+            contacts.append(ContactInfo(**c))
+
+ifdata.get("sender"):
+            sender=data["sender"]
+ifisinstance(sender,dict)andsender.get("name"):
+                contacts.append(ContactInfo(**sender))
+
+facts=[]
+forfindata.get("facts",[]):
+            about=None
+iff.get("about_entity"):
+                about=EntityRef(**f["about_entity"])
+facts.append(Fact(
+text=f.get("text",""),
+about_entity=about,
+fact_type=f.get("fact_type","general"),
+confidence=f.get("confidence",0.8)
+))
+
+tasks=[]
+fortindata.get("tasks",[]):
+            tasks.append(TaskItem(**t))
+
+mentioned=[]
+formindata.get("mentioned_entities",[]):
+            mentioned.append(MentionedEntity(
+entity_type=m.get("entity_type","person"),
+name=m.get("name",""),
+role=m.get("role"),
+facts_about=m.get("facts_about",[]),
+confidence=m.get("confidence",0.8)
+))
+
+suggested=SuggestedOutputs()
+ifdata.get("suggested_outputs"):
+            so=data["suggested_outputs"]
+suggested=SuggestedOutputs(
+needs_reply=so.get("needs_reply",False),
+reply_urgency=so.get("reply_urgency","normal"),
+reply_context=so.get("reply_context"),
+)
+
+allowed_note_types={"customer","people","projects","rob","journal","partners","travel"}
+note_type=data.get("note_type","people")
+ifnote_typenotinallowed_note_types:
+            note_type="people"
+
+participants_raw=data.get("participants")
+participants:list[str]=[]
+ifisinstance(participants_raw,list):
+            participants=[str(p).strip()forpinparticipants_rawifstr(p).strip()]
+elifisinstance(participants_raw,str):
+
+            participants=[p.strip()forpinre.split(r"[;,]",participants_raw)ifp.strip()]
+
+ifnotparticipants:
+            participants=[p.strip()forpin(envelope.participantsor[])ifstr(p).strip()]
+
+ifnotparticipantsandprimary_entityandprimary_entity.entity_type=="person"andprimary_entity.name:
+            participants=[primary_entity.name]
+
+ifnotparticipants:
+            participants=["Jason Vallery"]
+
+mentions={
+"people":participants,
+"projects":[e["name"]foreindata.get("mentioned_entities",[])ife.get("entity_type")=="project"],
+"accounts":[e["name"]foreindata.get("mentioned_entities",[])ife.get("entity_type")=="company"],
+}
+
+returnUnifiedExtraction(
+source_file=str(envelope.source_path),
+content_type=envelope.content_type.value,
+processed_at=datetime.now(),
+note_type=note_type,
+primary_entity=primary_entity,
+date=envelope.date,
+title=data.get("title",envelope.title),
+summary=data.get("summary",""),
+participants=participants,
+contacts=contacts,
+facts=facts,
+decisions=data.get("decisions",[]),
+topics=data.get("topics",[]),
+tasks=tasks,
+questions=data.get("questions",[]),
+commitments=data.get("commitments",[]),
+mentioned_entities=mentioned,
+mentions=mentions,
+email_requires_response=data.get("email_requires_response",False),
+email_urgency=data.get("email_urgency","medium"),
+email_type=data.get("email_type","other"),
+suggested_outputs=suggested,
+confidence=data.get("confidence",0.8)
+)
+
+def_build_minimal_extraction(self,envelope:ContentEnvelope,error:str)->UnifiedExtraction:
+        returnUnifiedExtraction(
+source_file=str(envelope.source_path),
+content_type=envelope.content_type.value,
+processed_at=datetime.now(),
+note_type="people",
+date=envelope.date,
+title=envelope.title,
+summary=f"Extraction failed: {error}",
+participants=envelope.participants,
+confidence=0.0
+)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/models.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+fromdatetimeimportdatetime
+fromtypingimportOptional,Literal,Any
+frompydanticimportBaseModel,Field,ConfigDict
+
+classEntityRef(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+entity_type:Literal["person","company","project"]
+name:str
+confidence:float=0.8
+
+classContactInfo(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+name:str
+email:Optional[str]=None
+phone:Optional[str]=None
+title:Optional[str]=None
+company:Optional[str]=None
+linkedin:Optional[str]=None
+
+classFact(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+about_entity:Optional[EntityRef]=None
+fact_type:str="general"
+confidence:float=0.8
+
+classTaskItem(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+owner:Optional[str]=None
+due:Optional[str]=None
+priority:str="medium"
+
+related_person:Optional[str]=None
+related_project:Optional[str]=None
+related_customer:Optional[str]=None
+
+classMentionedEntity(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+entity_type:Literal["person","company","project"]
+name:str
+role:Optional[str]=None
+facts_about:list[str]=Field(default_factory=list)
+confidence:float=0.8
+
+classDiscoveredAlias(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+alias:str
+canonical_name:str
+confidence:float=0.8
+
+classDiscoveredAcronym(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+acronym:str
+expansion:str
+project_name:Optional[str]=None
+confidence:float=0.8
+
+classCalendarSuggestion(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+title:str
+proposed_date:Optional[str]=None
+proposed_time:Optional[str]=None
+duration_minutes:int=30
+attendees:list[str]=Field(default_factory=list)
+description:Optional[str]=None
+
+classReminderSuggestion(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+remind_date:str
+related_entity:Optional[str]=None
+
+classSuggestedOutputs(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+needs_reply:bool=False
+reply_urgency:str="normal"
+reply_context:Optional[str]=None
+
+calendar_invite:Optional[CalendarSuggestion]=None
+follow_up_reminder:Optional[ReminderSuggestion]=None
+
+classUnifiedExtraction(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+version:str="2.0"
+source_file:str
+content_type:str
+processed_at:datetime
+
+note_type:Literal["customer","people","projects","rob","journal","partners","travel"]
+primary_entity:Optional[EntityRef]=None
+
+date:str
+title:str
+summary:str
+
+participants:list[str]=Field(default_factory=list)
+contacts:list[ContactInfo]=Field(default_factory=list)
+
+facts:list[Fact]=Field(default_factory=list)
+decisions:list[str]=Field(default_factory=list)
+topics:list[str]=Field(default_factory=list)
+
+tasks:list[TaskItem]=Field(default_factory=list)
+questions:list[str]=Field(default_factory=list)
+commitments:list[str]=Field(default_factory=list)
+
+mentioned_entities:list[MentionedEntity]=Field(default_factory=list)
+
+discovered_aliases:list[DiscoveredAlias]=Field(default_factory=list)
+discovered_acronyms:list[DiscoveredAcronym]=Field(default_factory=list)
+
+mentions:dict[str,list[str]]=Field(
+default_factory=lambda:{"people":[],"projects":[],"accounts":[]}
+)
+
+email_requires_response:bool=False
+email_urgency:str="medium"
+email_type:str="other"
+
+suggested_outputs:SuggestedOutputs=Field(default_factory=SuggestedOutputs)
+
+confidence:float=0.8
+
+defget_entities_with_facts(self)->list[MentionedEntity]:
+        return[eforeinself.mentioned_entitiesife.facts_about]
+
+defget_all_mentioned_people(self)->list[str]:
+        people=set(self.participants)
+
+forcontactinself.contacts:
+            ifcontact.name:
+                people.add(contact.name)
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="person":
+                people.add(entity.name)
+
+people.update(self.mentions.get("people",[]))
+
+returnlist(people)
+
+defget_all_mentioned_companies(self)->list[str]:
+        companies=set()
+
+forcontactinself.contacts:
+            ifcontact.company:
+                companies.add(contact.company)
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="company":
+                companies.add(entity.name)
+
+companies.update(self.mentions.get("accounts",[]))
+
+returnlist(companies)
+
+defget_all_mentioned_projects(self)->list[str]:
+        projects=set()
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="project":
+                projects.add(entity.name)
+
+projects.update(self.mentions.get("projects",[]))
+
+returnlist(projects)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/outputs.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importsys
+importre
+importyaml
+fromdatetimeimportdatetime,timedelta
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.modelsimportUnifiedExtraction,SuggestedOutputs,CalendarSuggestion
+fromscripts.utilsimportget_model_config,workflow_root
+
+def_load_persona()->dict:
+    persona_path=workflow_root()/"profiles"/"jason_persona.yaml"
+ifpersona_path.exists():
+        withopen(persona_path)asf:
+            returnyaml.safe_load(f)
+return{}
+
+classOutputGenerator:
+
+    def__init__(self,vault_root:Path,dry_run:bool=False,verbose:bool=False):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+self.verbose=verbose
+
+self.outbox_dir=vault_root/"Outbox"
+self.replies_dir=self.outbox_dir
+self.calendar_dir=self.outbox_dir/"_calendar"
+self.prompts_dir=self.outbox_dir/"_prompts"
+
+ifnotdry_run:
+            self.outbox_dir.mkdir(parents=True,exist_ok=True)
+self.calendar_dir.mkdir(parents=True,exist_ok=True)
+self.prompts_dir.mkdir(parents=True,exist_ok=True)
+
+def_as_vault_relative(self,path:Path)->str:
+        try:
+            returnstr(path.relative_to(self.vault_root))
+exceptException:
+            returnstr(path)
+
+defgenerate_all(
+self,
+extraction:UnifiedExtraction,
+context_bundle:Optional[object]=None,
+source_content:str="",
+force_reply:bool=False
+)->dict:
+        outputs={
+"reply":None,
+"calendar":None,
+"reminder":None,
+"tasks":[],
+}
+
+suggested=extraction.suggested_outputs
+
+ifsuggested.needs_replyorforce_reply:
+            outputs["reply"]=self.generate_reply(extraction,context_bundle,source_content)
+
+ifsuggested.calendar_invite:
+            outputs["calendar"]=self.generate_calendar_invite(extraction)
+
+ifsuggested.follow_up_reminder:
+            outputs["reminder"]=self.generate_reminder(extraction)
+
+ifextraction.tasks:
+            outputs["tasks"]=self.emit_tasks(extraction)
+
+returnoutputs
+
+defgenerate_reply(
+self,
+extraction:UnifiedExtraction,
+context_bundle:Optional[object]=None,
+source_content:str=""
+)->Optional[Path]:
+        suggested=extraction.suggested_outputs
+
+sender="Unknown"
+sender_email=""
+ifextraction.contacts:
+            first_contact=extraction.contacts[0]
+sender=first_contact.nameiffirst_contact.nameelse"Unknown"
+sender_email=first_contact.emailor""
+elifextraction.participants:
+
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+ifsender=="Unknown"andextraction.participants:
+                sender=extraction.participants[0]
+

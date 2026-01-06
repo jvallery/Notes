@@ -1,0 +1,749 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 2/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+def_extract_recipients(self,content:str)->list[dict]:
+        recipients:list[dict]=[]
+
+to_match=re.search(r"(?:^|\n)\*?\*?To\*?\*?:\s*([^\n]+)",content)
+ifto_match:
+            to_line=to_match.group(1)
+
+forpartinto_line.split(","):
+                name=None
+email=None
+name_match=re.match(r"([^<]+?)(?:\s*<([^>]+)>)?$",part.strip())
+ifname_match:
+                    name=name_match.group(1).strip()
+email=name_match.group(2).strip()ifname_match.group(2)elseNone
+
+name=re.sub(r'^\*\*\s*|\s*\*\*$','',name)
+ifnameoremail:
+                    recipients.append({"name":name,"email":email})
+
+returnrecipients
+
+def_is_reply(self,subject:str)->bool:
+        returnsubject.lower().startswith(("re:","re[","fwd:","fw:"))
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/transcript.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,TranscriptMetadata
+
+classTranscriptAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.TRANSCRIPT
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file()orpath.suffix!=".md":
+            returnFalse
+
+if"Transcripts"inpath.parts:
+            returnTrue
+
+ifre.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}[\s:]\d{2}",path.name):
+            returnTrue
+
+try:
+            content=path.read_text()[:1000]
+ifre.search(r"(?:Speaker \d+:|^\[[^\]]+\]:)",content,re.MULTILINE):
+                returnTrue
+exceptException:
+            pass
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+date=self._extract_date_from_filename(path.name)
+title=self._extract_title_from_filename(path.name)
+speakers=self._extract_speakers(content)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.TRANSCRIPT,
+raw_content=content,
+date=date,
+title=title,
+participants=speakers,
+content_hash=self.compute_hash(content),
+metadata={
+"transcript":TranscriptMetadata(
+speakers=speakers,
+source_app="MacWhisper",
+has_diarization=len(speakers)>0,
+).model_dump()
+}
+)
+
+def_extract_date_from_filename(self,filename:str)->str:
+
+        date_match=re.match(r"^(\d{4}-\d{2}-\d{2})",filename)
+ifdate_match:
+            returndate_match.group(1)
+returndatetime.now().strftime("%Y-%m-%d")
+
+def_extract_title_from_filename(self,filename:str)->str:
+
+        title=re.sub(r"^\d{4}-\d{2}-\d{2}\s*\d*:?\d*\s*-?\s*","",filename)
+title=title.replace(".md","").strip()
+
+title=re.sub(r"\s+"," ",title)
+
+returntitleiftitleelse"Meeting"
+
+def_extract_speakers(self,content:str)->list[str]:
+        speakers=set()
+speaker_map:dict[str,str]={}
+
+lines=content.split("\n")
+
+forlineinlines[:20]:
+            mapping_match=re.match(r"^(Speaker \d+):\s*(.+)$",line.strip())
+ifmapping_match:
+                speaker_label=mapping_match.group(1)
+speaker_value=mapping_match.group(2).strip()
+
+words=speaker_value.split()
+is_name=(
+len(speaker_value)<50
+and2<=len(words)<=5
+andnotany(punctinspeaker_valueforpunctin'.!?')
+andnotspeaker_value.lower().startswith(('i ',"i'",'we ','you ','the ','a '))
+)
+ifis_name:
+                    speaker_map[speaker_label]=speaker_value
+
+formatchinre.finditer(r"(Speaker \d+):",content):
+            label=match.group(1)
+
+iflabelinspeaker_map:
+                speakers.add(speaker_map[label])
+else:
+                speakers.add(label)
+
+formatchinre.finditer(r"\[([^\]]+)\]:",content):
+            name=match.group(1).strip()
+ifnameandlen(name)<50:
+                speakers.add(name)
+
+formatchinre.finditer(r"\*\*([^*]+)\*\*:",content):
+            name=match.group(1).strip()
+ifnameandlen(name)<50:
+                speakers.add(name)
+
+returnlist(speakers)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/apply.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importshutil
+importsys
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.patchimportChangePlan,PatchOperation,ManifestPatch
+
+classApplyResult:
+
+    def__init__(self):
+        self.success=True
+self.files_created:list[str]=[]
+self.files_modified:list[str]=[]
+self.files_archived:list[str]=[]
+self.errors:list[str]=[]
+
+def__str__(self):
+        ifself.success:
+            returnf"Applied: {len(self.files_created)} created, {len(self.files_modified)} modified"
+else:
+            returnf"Failed: {', '.join(self.errors)}"
+
+classTransactionalApply:
+
+    def__init__(self,vault_root:Path,dry_run:bool=False):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+
+self.backup_dir=vault_root/".workflow_backups"/datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+self._backed_up:dict[Path,Path]={}
+self._created:list[Path]=[]
+
+defapply(
+self,
+plan:ChangePlan,
+source_path:Optional[Path]=None,
+extra_meeting_notes:Optional[list[tuple[str,dict]]]=None,
+extra_source_paths:Optional[list[Path]]=None,
+)->ApplyResult:
+        result=ApplyResult()
+
+ifself.dry_run:
+            returnself._dry_run_apply(plan,result,extra_meeting_notes=extra_meeting_notes,extra_source_paths=extra_source_paths)
+
+try:
+
+            ifplan.meeting_note_pathandplan.meeting_note:
+                self._create_meeting_note(plan.meeting_note_path,plan.meeting_note,result)
+ifextra_meeting_notes:
+                fornote_path,note_contextinextra_meeting_notes:
+                    ifnote_pathandnote_context:
+                        self._create_meeting_note(note_path,note_context,result)
+
+forpatchinplan.patches:
+                self._apply_patch(patch,result)
+
+formanifest_patchinplan.manifest_patches:
+                self._apply_manifest_patch(manifest_patch,result)
+
+self._post_apply_normalize(result)
+
+sources_to_archive:list[Path]=[]
+ifsource_path:
+                sources_to_archive.append(source_path)
+ifextra_source_paths:
+                sources_to_archive.extend(extra_source_paths)
+forsrcinsources_to_archive:
+                ifsrcandsrc.exists():
+                    self._archive_source(src,result)
+
+ifself.backup_dir.exists():
+                shutil.rmtree(self.backup_dir)
+
+returnresult
+
+exceptExceptionase:
+            result.success=False
+result.errors.append(str(e))
+self._rollback()
+returnresult
+
+def_dry_run_apply(
+self,
+plan:ChangePlan,
+result:ApplyResult,
+extra_meeting_notes:Optional[list[tuple[str,dict]]]=None,
+extra_source_paths:Optional[list[Path]]=None,
+)->ApplyResult:
+
+        ifplan.meeting_note_path:
+            result.files_created.append(plan.meeting_note_path)
+ifextra_meeting_notes:
+            fornote_path,_ctxinextra_meeting_notes:
+                ifnote_path:
+                    result.files_created.append(note_path)
+
+forpatchinplan.patches:
+            result.files_modified.append(patch.target_path)
+
+formanifest_patchinplan.manifest_patches:
+            result.files_modified.append(manifest_patch.manifest_path)
+
+sources_to_archive:list[Path]=[]
+ifextra_source_paths:
+            sources_to_archive.extend(extra_source_paths)
+forsrcinsources_to_archive:
+            ifsrc:
+                result.files_archived.append(str(src))
+
+returnresult
+
+def_create_meeting_note(self,note_path_rel:str,note_context:dict,result:ApplyResult):
+        fromjinja2importEnvironment,FileSystemLoader
+importre
+importos
+
+note_path=self.vault_root/note_path_rel
+
+ifnote_path.exists():
+            return
+
+note_path.parent.mkdir(parents=True,exist_ok=True)
+
+templates_dir=self.vault_root/"Workflow"/"templates"
+env=Environment(loader=FileSystemLoader(str(templates_dir)))
+
+defslugify(text):
+            ifnottext:
+                return""
+text=text.lower()
+text=re.sub(r'[^\w\s-]','',text)
+text=re.sub(r'[\s_]+','-',text)
+returntext.strip('-')
+
+defstrip_extension(path):
+            ifnotpath:
+                return""
+returnos.path.splitext(str(path))[0]
+
+defbasename(path):
+            ifnotpath:
+                return""
+returnos.path.basename(str(path))
+
+env.filters['slugify']=slugify
+env.filters['strip_extension']=strip_extension
+env.filters['basename']=basename
+
+note_type=note_context.get("type","people")
+template_name=f"{note_type}.md.j2"
+
+try:
+            template=env.get_template(template_name)
+exceptException:
+            template=env.get_template("people.md.j2")
+
+content=template.render(**note_context)
+
+note_path.write_text(content)
+self._created.append(note_path)
+result.files_created.append(note_path_rel)
+
+def_apply_patch(self,patch:PatchOperation,result:ApplyResult):
+        target=self.vault_root/patch.target_path
+
+ifnottarget.exists():
+            return
+
+self._backup(target)
+
+content=target.read_text()
+
+fromscripts.utils.patch_primitivesimport(
+upsert_frontmatter,
+append_under_heading,
+ensure_wikilinks
+)
+
+ifpatch.add_frontmatter:
+            fm_patches=[{"key":k,"value":v}fork,vinpatch.add_frontmatter.items()]
+content=upsert_frontmatter(content,fm_patches)
+
+ifpatch.add_facts:
+            forfactinpatch.add_facts:
+                iffactnotincontent:
+                    content=append_under_heading(content,"## Key Facts",f"- {fact}")
+
+ifpatch.add_topics:
+            fortopicinpatch.add_topics:
+                iftopicnotincontent:
+                    content=append_under_heading(content,"## Topics",f"- {topic}")
+
+ifpatch.add_decisions:
+            fordecisioninpatch.add_decisions:
+                ifdecisionnotincontent:
+                    content=append_under_heading(content,"## Key Decisions",f"- {decision}")
+
+ifpatch.add_context:
+            ifpatch.add_contextnotincontent:
+                content=append_under_heading(content,"## Recent Context",patch.add_context)
+
+ifpatch.add_wikilinks:
+            content=ensure_wikilinks(content,patch.add_wikilinks)
+
+self._atomic_write(target,content)
+result.files_modified.append(patch.target_path)
+
+def_apply_manifest_patch(self,patch:ManifestPatch,result:ApplyResult):
+        target=self.vault_root/patch.manifest_path
+
+ifnottarget.exists():
+            return
+
+self._backup(target)
+
+content=target.read_text()
+lines=content.split("\n")
+
+ifpatch.manifest_type=="people"andpatch.person_name:
+
+            lines=self._update_people_manifest_row(lines,patch.person_name,patch.aliases_to_add)
+elifpatch.manifest_type=="projects"andpatch.project_name:
+
+            lines=self._update_projects_manifest_row(lines,patch.project_name,patch.acronym,patch.definition)
+
+new_content="\n".join(lines)
+self._atomic_write(target,new_content)
+result.files_modified.append(patch.manifest_path)
+
+def_update_people_manifest_row(self,lines:list[str],person_name:str,aliases_to_add:list[str])->list[str]:
+
+        header_idx=None
+alias_col_idx=None
+
+fori,lineinenumerate(lines):
+            ifline.strip().startswith("|")and"Name"inlineand"Role"inline:
+                header_idx=i
+cols=[c.strip()forcinline.split("|")]
+forj,colinenumerate(cols):
+                    if"Alias"incol:
+                        alias_col_idx=j
+break
+break
+
+ifheader_idxisNoneoralias_col_idxisNone:
+            returnlines
+
+person_name_lower=person_name.lower()
+foriinrange(header_idx+2,len(lines)):
+            line=lines[i]
+ifnotline.strip().startswith("|"):
+                continue
+
+cols=line.split("|")
+iflen(cols)<=alias_col_idx:
+                continue
+
+name_col=cols[1].strip()iflen(cols)>1else""
+ifname_col.lower()==person_name_lowerorperson_name_lowerinname_col.lower():
+
+                current_aliases=cols[alias_col_idx].strip()ifalias_col_idx<len(cols)else""
+
+parts=[a.strip()forainre.split(r"[;,]",current_aliasesor"")ifa.strip()]
+existing=set(parts)
+
+existing.update(aliases_to_add)
+
+new_aliases="; ".join(sorted(existing))
+cols[alias_col_idx]=f" {new_aliases} "
+
+lines[i]="|".join(cols)
+break
+
+returnlines
+
+def_update_projects_manifest_row(self,lines:list[str],project_name:str,acronym:str,definition:str)->list[str]:
+
+        header_idx=None
+acronym_col_idx=None
+definition_col_idx=None
+
+fori,lineinenumerate(lines):
+            ifline.strip().startswith("|")and"Name"inline:
+                header_idx=i
+cols=[c.strip()forcinline.split("|")]
+forj,colinenumerate(cols):
+                    if"Acronym"incol:
+                        acronym_col_idx=j
+if"Definition"incol:
+                        definition_col_idx=j
+break
+
+ifheader_idxisNone:
+            returnlines
+
+project_name_lower=project_name.lower()
+foriinrange(header_idx+2,len(lines)):
+            line=lines[i]
+ifnotline.strip().startswith("|"):
+                continue
+
+cols=line.split("|")
+iflen(cols)<2:
+                continue
+
+name_col=cols[1].strip()iflen(cols)>1else""
+ifname_col.lower()==project_name_lowerorproject_name_lowerinname_col.lower():
+
+                ifacronym_col_idxandacronym_col_idx<len(cols):
+                    current=cols[acronym_col_idx].strip()
+ifnotcurrentorcurrent=="-":
+                        cols[acronym_col_idx]=f" {acronym} "
+
+ifdefinition_col_idxanddefinition_col_idx<len(cols):
+                    current=cols[definition_col_idx].strip()
+ifnotcurrentorcurrent=="-":
+                        cols[definition_col_idx]=f" {definition} "
+
+lines[i]="|".join(cols)
+returnlines
+
+returnlines
+
+def_post_apply_normalize(self,result:ApplyResult)->None:
+        fromscripts.normalize_entity_notesimportnormalize_frontmatter_dict
+fromscripts.normalize_note_headersimportnormalize_body_header
+fromscripts.utils.frontmatterimportparse_frontmatter,render_frontmatter
+
+created_files=set(self._created)
+touched={*(result.files_createdor[]),*(result.files_modifiedor[])}
+
+forrel_strinsorted(touched):
+            ifnotrel_str:
+                continue
+rel_path=Path(rel_str)
+ifrel_path.suffix.lower()!=".md":
+                continue
+ifrel_path.name=="README.md":
+                continue
+ifrel_path.name.startswith("_")orrel_path.name.endswith("_MANIFEST.md"):
+                continue
+
+scope=self._infer_entity_note_scope(rel_path)
+ifnotscope:
+                continue
+
+entity_name,entity_key,note_type,header_label=scope
+abs_path=self.vault_root/rel_path
+ifnotabs_path.exists():
+                continue
+
+text=abs_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+                fm={}
+body=text
+
+existing_type=str(fm.get("type")or"").strip().strip('"').strip("'").lower()
+ifnote_type=="customer"andexisting_type=="partners":
+
+                continue
+
+normalized_fm=normalize_frontmatter_dict(
+fm,
+entity_key=entity_key,
+entity_name=entity_name,
+note_type=note_type,
+)
+updated_body=body
+ifheader_label:
+                updated_body=normalize_body_header(
+updated_body,
+header_label=header_label,
+entity_name=entity_name,
+)
+
+updated=render_frontmatter(normalized_fm)+updated_body
+ifupdated==text:
+                continue
+
+ifabs_pathnotincreated_filesandabs_pathnotinself._backed_up:
+                self._backup(abs_path)
+
+self._atomic_write(abs_path,updated)
+ifrel_strnotinresult.files_modifiedandrel_strnotinresult.files_created:
+                result.files_modified.append(rel_str)
+
+def_infer_entity_note_scope(
+self,rel_path:Path
+)->Optional[tuple[str,str,str,Optional[str]]]:
+        parts=rel_path.parts
+iflen(parts)<4:
+            returnNone
+
+ifparts[0]=="VAST"andparts[1]=="People":
+            returnparts[2],"person","people",None
+ifparts[0]=="Personal"andparts[1]=="People":
+            returnparts[2],"person","people",None
+
+ifparts[0]=="VAST"andparts[1]=="Projects":
+            returnparts[2],"project","projects","Project"
+ifparts[0]=="Personal"andparts[1]=="Projects":
+            returnparts[2],"project","projects","Project"
+
+ifparts[0]=="VAST"andparts[1]=="Customers and Partners":
+            returnparts[2],"account","customer","Account"
+
+ifparts[0]=="VAST"andparts[1]=="ROB":
+            returnparts[2],"rob_forum","rob","Forum"
+
+returnNone
+
+def_archive_source(self,source_path:Path,result:ApplyResult):
+        from.envelopeimportContentType
+
+try:
+            relative=source_path.relative_to(self.vault_root)
+exceptValueError:
+            relative=None
+
+ifrelativeand"Sources"inrelative.parts:
+            result.files_archived.append(str(relative))
+return
+
+year=datetime.now().strftime("%Y")
+
+if"Email"insource_path.parts:
+            archive_dir=self.vault_root/"Sources"/"Email"/year
+elif"Transcripts"insource_path.parts:
+            archive_dir=self.vault_root/"Sources"/"Transcripts"/year
+else:
+            archive_dir=self.vault_root/"Sources"/"Documents"/year
+
+archive_dir.mkdir(parents=True,exist_ok=True)
+archive_path=archive_dir/source_path.name
+
+shutil.move(str(source_path),str(archive_path))
+result.files_archived.append(str(archive_path.relative_to(self.vault_root)))
+
+def_backup(self,path:Path):
+        ifpathinself._backed_up:
+            return
+
+self.backup_dir.mkdir(parents=True,exist_ok=True)
+try:
+            rel=path.relative_to(self.vault_root)
+exceptValueError:
+            rel=Path(path.name)
+backup_path=self.backup_dir/rel
+backup_path.parent.mkdir(parents=True,exist_ok=True)
+shutil.copy2(path,backup_path)
+self._backed_up[path]=backup_path
+
+def_atomic_write(self,path:Path,content:str):
+        temp_path=path.with_suffix(path.suffix+".tmp")
+temp_path.write_text(content)
+temp_path.rename(path)
+
+def_rollback(self):
+
+        fororiginal,backupinself._backed_up.items():
+            ifbackup.exists():
+                shutil.copy2(backup,original)
+
+forcreatedinself._created:
+            ifcreated.exists():
+                created.unlink()
+
+ifself.backup_dir.exists():
+            shutil.rmtree(self.backup_dir)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/context.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+importhashlib
+frompathlibimportPath
+fromtypingimportOptional,Tuple,Any
+fromfunctoolsimportlru_cache
+frompydanticimportBaseModel,Field,ConfigDict
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope
+from.entitiesimportEntityIndex
+fromscripts.utils.configimportload_config
+
+try:
+    fromscripts.utils.cached_promptsimport(
+get_persona_contextas_cached_persona_context,
+get_glossary_contextas_cached_glossary_context,
+)
+exceptException:
+    _cached_persona_context=None
+_cached_glossary_context=None
+
+classContextBundle(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+persona:str=""
+people_manifest:str=""
+company_manifest:str=""
+project_manifest:str=""
+project_list:list[str]=Field(default_factory=list)
+glossary:dict[str,str]=Field(default_factory=dict)
+aliases:dict[str,str]=Field(default_factory=dict)
+
+relevant_readmes:dict[str,str]=Field(default_factory=dict)
+
+@classmethod
+defload(cls,vault_root:Path,envelope:Optional[ContentEnvelope]=None,entity_index:Optional[EntityIndex]=None,config:Optional[dict[str,Any]]=None)->"ContextBundle":
+        bundle=cls()
+cfg=configorload_config(vault_root_override=vault_root)
+paths_cfg=cfg.get("paths",{})
+work_paths=paths_cfg.get("work",{})
+personal_paths=paths_cfg.get("personal",{})
+resources_paths=paths_cfg.get("resources",{})
+
+people_manifest_path=Path(work_paths.get("people",vault_root/"VAST"/"People"))/"_MANIFEST.md"
+company_manifest_path=Path(work_paths.get("accounts",vault_root/"VAST"/"Customers and Partners"))/"_MANIFEST.md"
+project_manifest_path=Path(work_paths.get("projects",vault_root/"VAST"/"Projects"))/"_MANIFEST.md"
+project_paths=[
+Path(work_paths.get("projects",vault_root/"VAST"/"Projects")),
+Path(personal_paths.get("projects",vault_root/"Personal"/"Projects")),
+]
+
+index=entity_indexorEntityIndex(vault_root,config=cfg)
+
+bundle.persona=_load_persona(vault_root,resources_paths)
+bundle.people_manifest=_load_manifest(people_manifest_path)
+bundle.company_manifest=_load_manifest(company_manifest_path)
+bundle.project_manifest=_load_manifest(project_manifest_path)
+bundle.project_list=_list_projects(project_paths)
+
+bundle.glossary=_load_glossary(vault_root,resources_paths)
+project_acronyms=_extract_acronyms_from_manifest(bundle.project_manifest)
+bundle.glossary.update(project_acronyms)
+
+bundle.aliases=_load_aliases(vault_root,resources_paths)
+manifest_aliases=_extract_aliases_from_manifest(bundle.people_manifest)
+bundle.aliases.update(manifest_aliases)
+
+ifenvelope:
+            mentioned=set(_quick_entity_scan(envelope.raw_content,bundle))
+mentioned.update(envelope.participantsor[])
+mentioned.update(_extract_candidate_names(envelope.raw_content))
+
+normalized_candidates={index.normalize_name(name)fornameinmentionedifname}
+enriched:set[str]=set()
+fornameinnormalized_candidates:
+
+                folder=index.find_person(name)orindex.find_company(name)orindex.find_project(name)
+iffolder:
+                    enriched.add(folder.name)
+continue
+
+fuzzy_person=index.search_person(name,limit=1)
+iffuzzy_person:
+                    enriched.add(fuzzy_person[0].name)
+continue
+fuzzy_company=index.search_company(name,limit=1)
+iffuzzy_company:
+                    enriched.add(fuzzy_company[0].name)
+continue
+fuzzy_project=index.search_project(name,limit=1)
+iffuzzy_project:
+                    enriched.add(fuzzy_project[0].name)
+
+enriched.update(normalized_candidates)
+bundle.relevant_readmes=_load_entity_readmes(list(enriched)[:12],vault_root,index)
+
+returnbundle
+
+defget_cacheable_prefix(self)->Tuple[str,str]:
+        sections=[]
+
+persona_text=None
+if_cached_persona_context:

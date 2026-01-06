@@ -1,0 +1,755 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 5/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+today=datetime.now().strftime("%Y-%m-%d")
+subject_slug=re.sub(r"[^\w\s-]","",extraction.titleor"email")
+subject_slug=re.sub(r"\s+","-",subject_slug).strip("-")[:40]or"email"
+
+filename=f"{today}_Reply-To_{subject_slug}.md"
+output_path=self.replies_dir/filename
+
+counter=1
+whileoutput_path.exists():
+            filename=f"{today}_Reply-To_{subject_slug}_{counter}.md"
+output_path=self.replies_dir/filename
+counter+=1
+
+prompt_path=self.prompts_dir/f"{output_path.stem}.prompt.json"
+prompt_ref=self._as_vault_relative(prompt_path)
+model_config=get_model_config("draft_responses")
+
+draft_body=self._build_reply_body(
+extraction,
+suggested.reply_contextor"",
+source_content,
+prompt_path=prompt_path,
+draft_path=output_path,
+context_bundle=context_bundle,
+)
+
+to_field=f"{sender} <{sender_email}>"ifsender_emailelsesender
+
+content=f"""---
+type: draft-reply
+status: pending
+created: "{datetime.now().isoformat()}"
+urgency: "{suggested.reply_urgency}"
+to: "{to_field}"
+subject: "Re: {extraction.title}"
+source_file: "{extraction.source_file}"
+ai_model: "{model_config.get('model', '')}"
+ai_temperature: {float(model_config.get('temperature', 0.7))}
+prompt_file: "{prompt_ref}"
+---
+
+# Draft Reply to {sender}
+
+**Regarding**: {extraction.title}
+**Urgency**: {suggested.reply_urgency}
+
+---
+
+## Key Points to Address
+
+{suggested.reply_context or "No specific points identified"}
+
+---
+
+## Draft Response
+
+{draft_body}
+
+---
+
+## Original Summary
+
+{extraction.summary}
+
+---
+
+*This draft was auto-generated. Edit and send via your email client.*
+"""
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would generate reply: {output_path}")
+returnoutput_path
+
+output_path.write_text(content)
+
+ifself.verbose:
+            print(f"  Generated draft reply: {output_path.name}")
+
+returnoutput_path
+
+def_build_reply_body(
+self,
+extraction:UnifiedExtraction,
+reply_context:str,
+source_content:str="",
+*,
+prompt_path:Optional[Path]=None,
+draft_path:Optional[Path]=None,
+context_bundle:Optional[object]=None,
+)->str:
+        ifself.dry_run:
+            returnself._build_template_reply(extraction,reply_context)
+
+try:
+            returnself._generate_llm_reply(
+extraction,
+reply_context,
+source_content,
+prompt_path=prompt_path,
+draft_path=draft_path,
+context_bundle=context_bundle,
+)
+exceptExceptionase:
+            ifself.verbose:
+                print(f"  [WARN] LLM reply generation failed: {e}, using template fallback")
+returnself._build_template_reply(extraction,reply_context)
+
+def_generate_llm_reply(
+self,
+extraction:UnifiedExtraction,
+reply_context:str,
+source_content:str="",
+*,
+prompt_path:Optional[Path]=None,
+draft_path:Optional[Path]=None,
+context_bundle:Optional[object]=None,
+)->str:
+        fromscripts.utils.ai_clientimportget_openai_client
+
+model_config=get_model_config("draft_responses")
+persona=_load_persona()
+
+identity=persona.get("identity",{})
+style=persona.get("style",{})
+
+sender="Unknown"
+ifextraction.contacts:
+            sender=extraction.contacts[0].nameor"Unknown"
+elifextraction.participants:
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+first_name=sender.split()[0]ifsender!="Unknown"else"there"
+
+questions=extraction.questionsifhasattr(extraction,'questions')else[]
+commitments=extraction.commitmentsifhasattr(extraction,'commitments')else[]
+
+vault_context=""
+ifcontext_bundleandhasattr(context_bundle,"get_dynamic_suffix"):
+            try:
+                vault_context=context_bundle.get_dynamic_suffix()or""
+exceptException:
+                vault_context=""
+
+raw_excerpt=(source_contentor"").strip()
+max_chars=8000
+iflen(raw_excerpt)>max_chars:
+            raw_excerpt=raw_excerpt[:max_chars].rstrip()+"\n\n[...TRUNCATED...]"
+
+system_prompt=f"""<OMITTED 1252 chars>\nYou are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
+
+## COMMUNICATION STYLE
+- Direct but Empathetic\n...\nonable assumption and answer
+2. Acknowledge you'll need to check and get back to them with a specific timeframe
+
+Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
+
+user_prompt=f"""Write a reply to {sender} about: {extraction.title}
+
+## SOURCE EMAIL (VERBATIM)
+{raw_excerpt or "[No source content provided]"}
+
+## EMAIL SUMMARY
+{extraction.summary}
+
+## KEY POINTS TO ADDRESS
+{reply_context or "No specific points identified"}
+
+## QUESTIONS ASKED
+{json.dumps(questions) if questions else "None"}
+
+## COMMITMENTS MADE
+{json.dumps(commitments) if commitments else "None"}
+
+## CONTEXT
+- Recipient first name: {first_name}
+- Urgency: {extraction.suggested_outputs.reply_urgency if extraction.suggested_outputs else "normal"}
+
+## RELEVANT CONTEXT FROM MY NOTES (PRIVATE - DO NOT QUOTE VERBATIM)
+{vault_context or "None"}
+
+Write the complete email body now (greeting through signature):"""
+
+messages=[
+{"role":"system","content":system_prompt},
+{"role":"user","content":user_prompt},
+]
+
+ifprompt_pathandnotself.dry_run:
+            try:
+                prompt_payload={
+"created":datetime.now().isoformat(),
+"operation":"draft_reply",
+"model":model_config.get("model",""),
+"temperature":model_config.get("temperature",0.7),
+"source_file":extraction.source_file,
+"draft_path":str(draft_path)ifdraft_pathelseNone,
+"messages":messages,
+}
+prompt_path.write_text(json.dumps(prompt_payload,indent=2))
+exceptExceptionasexc:
+                ifself.verbose:
+                    print(f"  [WARN] Failed to write prompt artifact: {exc}")
+
+client=get_openai_client("pipeline.outputs.generate_reply")
+ifdraft_path:
+            client.set_context(
+{
+"source_file":extraction.source_file,
+"draft_path":str(draft_path),
+"prompt_path":str(prompt_path)ifprompt_pathelseNone,
+}
+)
+
+response=client.chat.completions.create(
+model=model_config["model"],
+messages=messages,
+temperature=model_config.get("temperature",0.7),
+)
+
+returnresponse.choices[0].message.content.strip()
+
+def_build_template_reply(self,extraction:UnifiedExtraction,reply_context:str)->str:
+        questions=extraction.questionsifhasattr(extraction,'questions')else[]
+commitments=extraction.commitmentsifhasattr(extraction,'commitments')else[]
+
+body_parts=[]
+
+sender="there"
+ifextraction.contacts:
+            sender=extraction.contacts[0].nameor"there"
+elifextraction.participants:
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+first_name=sender.split()[0]ifsender!="there"else"there"
+body_parts.append(f"Hi {first_name},")
+body_parts.append("")
+
+ifreply_context:
+            body_parts.append("Thank you for your email. Here's my response:")
+body_parts.append("")
+forpointinreply_context.split(". "):
+                ifpoint.strip():
+                    body_parts.append(f"- {point.strip()}")
+body_parts.append("")
+
+ifquestions:
+            body_parts.append("To answer your questions:")
+forqinquestions[:3]:
+                body_parts.append(f"- {q}: [TODO: Add answer]")
+body_parts.append("")
+
+ifcommitments:
+            body_parts.append("I'll follow up on:")
+forcincommitments[:3]:
+                body_parts.append(f"- {c}")
+body_parts.append("")
+
+body_parts.append("Let me know if you have any questions.")
+body_parts.append("")
+body_parts.append("Best,")
+body_parts.append("Jason")
+
+return"\n".join(body_parts)
+
+defgenerate_calendar_invite(self,extraction:UnifiedExtraction)->Optional[Path]:
+        cal_suggest=extraction.suggested_outputs.calendar_invite
+
+ifnotcal_suggest:
+            returnNone
+
+date_str=datetime.now().strftime("%Y-%m-%d_%H%M%S")
+safe_title="".join(cifc.isalnum()orcin"- "else"_"forcincal_suggest.title)[:30]
+filename=f"{date_str}_mtg_{safe_title}.ics"
+
+output_path=self.calendar_dir/filename
+
+try:
+            ifcal_suggest.proposed_date:
+                start_date=datetime.strptime(cal_suggest.proposed_date,"%Y-%m-%d")
+
+start_dt=start_date.replace(hour=10,minute=0)
+else:
+
+                start_dt=datetime.now().replace(hour=10,minute=0,second=0,microsecond=0)+timedelta(days=1)
+exceptValueError:
+            start_dt=datetime.now().replace(hour=10,minute=0,second=0,microsecond=0)+timedelta(days=1)
+
+duration=cal_suggest.duration_minutesor30
+end_dt=start_dt+timedelta(minutes=duration)
+
+dtstart=start_dt.strftime("%Y%m%dT%H%M%S")
+dtend=end_dt.strftime("%Y%m%dT%H%M%S")
+dtstamp=datetime.now().strftime("%Y%m%dT%H%M%SZ")
+uid=f"{date_str}-{extraction.source_file.replace('/', '-')}"
+
+attendees=cal_suggest.attendeesor[]
+attendee_lines="\n".join(
+f"ATTENDEE;ROLE=REQ-PARTICIPANT:mailto:{a}@example.com"
+forainattendeesifa
+)
+
+ics_content=f"""BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VAST Notes Pipeline//Calendar Generator//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:{uid}
+DTSTAMP:{dtstamp}
+DTSTART:{dtstart}
+DTEND:{dtend}
+SUMMARY:{cal_suggest.title}
+DESCRIPTION:Auto-generated from email/meeting notes.\\nSource: {extraction.source_file}
+{attendee_lines}
+STATUS:TENTATIVE
+END:VEVENT
+END:VCALENDAR
+"""
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would generate calendar: {output_path}")
+returnoutput_path
+
+output_path.write_text(ics_content)
+
+ifself.verbose:
+            print(f"  Generated calendar invite: {output_path.name}")
+
+returnoutput_path
+
+defgenerate_reminder(self,extraction:UnifiedExtraction)->Optional[Path]:
+        reminder=extraction.suggested_outputs.follow_up_reminder
+
+ifnotreminder:
+            returnNone
+
+tasks_inbox=self.vault_root/"TASKS_INBOX.md"
+
+reminder_text=reminder.text
+remind_date=reminder.remind_dateor(datetime.now()+timedelta(days=3)).strftime("%Y-%m-%d")
+
+task_line=f"- [?] {reminder_text} 📅 {remind_date} #task #proposed #auto\n"
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would add reminder: {task_line.strip()}")
+returntasks_inbox
+
+self._append_task_to_inbox(task_line)
+
+ifself.verbose:
+            print(f"  Added reminder to TASKS_INBOX.md")
+
+returntasks_inbox
+
+defemit_tasks(self,extraction:UnifiedExtraction)->list[str]:
+        ifnotextraction.tasks:
+            return[]
+
+priority_emoji={
+"highest":"🔺",
+"high":"⏫",
+"medium":"🔼",
+"low":"🔽",
+"lowest":"⏬",
+}
+
+task_lines=[]
+
+fortaskinextraction.tasks:
+
+            parts=[f"- [?] {task.text}"]
+
+iftask.ownerandtask.owner.lower()notin["myself","me","i"]:
+                parts.append(f"@{task.owner}")
+
+iftask.due:
+                parts.append(f"📅 {task.due}")
+
+priority=task.priority.lower()iftask.priorityelse"medium"
+ifpriorityinpriority_emoji:
+                parts.append(priority_emoji[priority])
+
+parts.append("#task #proposed #auto")
+
+task_line=" ".join(parts)+"\n"
+task_lines.append(task_line)
+
+ifnotself.dry_run:
+                self._append_task_to_inbox(task_line)
+elifself.verbose:
+                print(f"  [DRY RUN] Would emit task: {task_line.strip()}")
+
+ifself.verboseandnotself.dry_run:
+            print(f"  Emitted {len(task_lines)} tasks to TASKS_INBOX.md")
+
+returntask_lines
+
+def_append_task_to_inbox(self,task_line:str):
+        tasks_inbox=self.vault_root/"TASKS_INBOX.md"
+
+iftasks_inbox.exists():
+            existing=tasks_inbox.read_text()
+
+if"## Inbox"inexisting:
+                existing=existing.replace("## Inbox\n",f"## Inbox\n{task_line}")
+else:
+                existing+=f"\n{task_line}"
+tasks_inbox.write_text(existing)
+else:
+            tasks_inbox.write_text(f"# Tasks Inbox\n\n## Inbox\n{task_line}")
+
+defgenerate_outputs_from_extraction(
+extraction:UnifiedExtraction,
+vault_root:Path,
+dry_run:bool=False,
+verbose:bool=False,
+)->dict:
+    generator=OutputGenerator(vault_root,dry_run=dry_run,verbose=verbose)
+returngenerator.generate_all(extraction)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/patch.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+frompydanticimportBaseModel,Field
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.modelsimportUnifiedExtraction,MentionedEntity
+from.entitiesimportEntityIndex
+
+classPatchOperation(BaseModel):
+
+    operation:str
+target_path:str
+target_entity:str
+
+template:Optional[str]=None
+template_context:Optional[dict]=None
+
+add_frontmatter:Optional[dict]=None
+add_facts:Optional[list[str]]=None
+add_topics:Optional[list[str]]=None
+add_decisions:Optional[list[str]]=None
+add_context:Optional[str]=None
+add_tasks:Optional[list[dict]]=None
+
+add_wikilinks:Optional[list[str]]=None
+
+classManifestPatch(BaseModel):
+
+    manifest_type:str
+manifest_path:str
+
+person_name:Optional[str]=None
+aliases_to_add:list[str]=Field(default_factory=list)
+
+project_name:Optional[str]=None
+acronym:Optional[str]=None
+definition:Optional[str]=None
+
+classChangePlan(BaseModel):
+
+    version:str="2.0"
+source_file:str
+extraction_file:Optional[str]=None
+created_at:datetime=Field(default_factory=datetime.now)
+
+meeting_note_path:Optional[str]=None
+meeting_note:Optional[dict]=None
+
+patches:list[PatchOperation]=Field(default_factory=list)
+
+manifest_patches:list[ManifestPatch]=Field(default_factory=list)
+
+entities_to_create:list[dict]=Field(default_factory=list)
+
+warnings:list[str]=Field(default_factory=list)
+
+defvalidate_plan(self)->list[str]:
+        issues=[]
+
+ifnotself.source_file:
+            issues.append("source_file is required")
+
+ifself.meeting_note_path:
+            if".."inself.meeting_note_path:
+                issues.append(f"meeting_note_path contains invalid path traversal: {self.meeting_note_path}")
+ifnotself.meeting_note:
+                issues.append("meeting_note_path is set but meeting_note context is missing")
+
+patch_targets=set()
+fori,patchinenumerate(self.patches):
+
+            ifpatch.target_pathinpatch_targets:
+                issues.append(f"Duplicate patch target: {patch.target_path}")
+patch_targets.add(patch.target_path)
+
+ifpatch.operationnotin("create","patch","link"):
+                issues.append(f"Patch {i}: Invalid operation '{patch.operation}'")
+
+if".."inpatch.target_path:
+                issues.append(f"Patch {i}: target_path contains invalid path traversal")
+
+ifpatch.operation=="patch":
+                has_changes=any([
+patch.add_frontmatter,
+patch.add_facts,
+patch.add_topics,
+patch.add_decisions,
+patch.add_context,
+patch.add_tasks,
+])
+ifnothas_changes:
+                    issues.append(f"Patch {i}: patch operation has no changes for {patch.target_entity}")
+
+returnissues
+
+defis_valid(self)->bool:
+        returnlen(self.validate_plan())==0
+
+classPatchGenerator:
+
+    SKIP_COMPANIES={
+"vast data","vast","microsoft","google","amazon","aws",
+"openai","anthropic","nvidia"
+}
+
+def__init__(self,vault_root:Path,entity_index:Optional[EntityIndex]=None):
+        self.vault_root=vault_root
+self.entity_index=entity_indexorEntityIndex(vault_root)
+
+self._created_folders:dict[str,Path]={}
+
+defgenerate(self,extraction:UnifiedExtraction)->ChangePlan:
+
+        self._created_folders={}
+
+plan=ChangePlan(source_file=extraction.source_file)
+
+patched_paths:set[str]=set()
+
+processed_entities:dict[str,str]={}
+
+note_path,note_context=self._generate_meeting_note(extraction)
+ifnote_path:
+            plan.meeting_note_path=note_path
+plan.meeting_note=note_context
+
+ifextraction.primary_entity:
+            normalized=self.entity_index.normalize_name(extraction.primary_entity.name)
+ifnormalized!=extraction.primary_entity.name:
+                plan.warnings.append(f"Resolved alias: '{extraction.primary_entity.name}' → '{normalized}'")
+processed_entities[normalized.lower()]=extraction.primary_entity.name
+self._warn_duplicate(extraction.primary_entity.name,extraction.primary_entity.entity_type,plan)
+
+patches=self._generate_primary_patches(extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forentityinextraction.get_entities_with_facts():
+            normalized=self.entity_index.normalize_name(entity.name)
+norm_lower=normalized.lower()
+
+ifnorm_lowerinprocessed_entitiesandprocessed_entities[norm_lower]!=entity.name:
+                plan.warnings.append(
+f"Potential duplicate: '{entity.name}' may be same as '{processed_entities[norm_lower]}' (consider merge)"
+)
+continue
+
+ifnormalized!=entity.name:
+                plan.warnings.append(f"Resolved alias: '{entity.name}' → '{normalized}'")
+processed_entities[norm_lower]=entity.name
+self._warn_duplicate(entity.name,entity.entity_type,plan)
+
+patches=self._generate_fact_patches(entity,extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forparticipantinextraction.participants:
+            normalized=self.entity_index.normalize_name(participant)
+norm_lower=normalized.lower()
+
+ifnorm_lowerinprocessed_entities:
+                continue
+
+processed_entities[norm_lower]=participant
+
+patches=self._generate_participant_patches(participant,extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forentityinextraction.mentioned_entities:
+            ifentity.entity_type=="company"andentity.facts_about:
+                company_lower=entity.name.lower()
+ifcompany_lowernotinself.SKIP_COMPANIES:
+                    patches=self._generate_company_patches(entity,extraction)
+forpatchinpatches:
+                        ifpatch.target_pathnotinpatched_paths:
+                            plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+manifest_patches=self._generate_manifest_patches(extraction)
+plan.manifest_patches.extend(manifest_patches)
+
+returnplan
+
+def_generate_meeting_note(self,extraction:UnifiedExtraction)->tuple[Optional[str],Optional[dict]]:
+
+        folder:Optional[Path]=None
+entity_name:Optional[str]=None
+entity_type:Optional[str]=None
+
+note_type=(extraction.note_typeor"people").lower()
+desired_entity_type={
+"people":"person",
+"customer":"company",
+"partners":"company",
+"projects":"project",
+}.get(note_type)
+
+candidate=None
+ifextraction.primary_entityand(
+desired_entity_typeisNoneorextraction.primary_entity.entity_type==desired_entity_type
+):
+            candidate=extraction.primary_entity
+elifdesired_entity_typein("company","project"):
+            best=None
+foreinextraction.mentioned_entitiesor[]:
+                ife.entity_type!=desired_entity_type:
+                    continue
+ifbestisNoneor(e.confidenceor0)>(best.confidenceor0):
+                    best=e
+candidate=best
+elifdesired_entity_type=="person"andextraction.participants:
+
+            forparticipantinextraction.participants:
+                ifparticipant.lower()in["myself","jason","jason vallery"]:
+                    continue
+email=self._get_email_for_participant(participant,extraction)
+folder=self.entity_index.find_person(participant,email=email)
+entity_name=participant
+entity_type="person"
+break
+
+ifnotfolderandcandidate:
+            folder=self._get_entity_folder(candidate,extraction)
+entity_name=candidate.name
+entity_type=candidate.entity_type
+
+ifnotfolderandextraction.primary_entity:
+
+            folder=self._get_entity_folder(extraction.primary_entity,extraction)
+entity_name=entity_nameorextraction.primary_entity.name
+entity_type=entity_typeorextraction.primary_entity.entity_type
+
+ifnotfolderandentity_name:
+
+            folder=self._create_entity_folder(entity_name,entity_type,extraction)
+
+ifnotfolder:
+            returnNone,None
+
+fromscripts.utils.templatesimportsanitize_path_name
+safe_title=sanitize_path_name(extraction.title)
+
+note_path=f"{folder.relative_to(self.vault_root)}/{extraction.date} - {safe_title}.md"
+
+template_type=note_type
+ifdesired_entity_typeisnotNoneandentity_type:
+            ifentity_type=="person":
+                template_type="people"
+elifentity_type=="project":
+                template_type="projects"
+elifentity_type=="company":
+                template_type=note_typeifnote_typein("customer","partners")else"customer"
+
+context={
+"title":extraction.title,
+"date":extraction.date,
+"type":template_type,
+
+"source":extraction.content_type,
+
+"person":entity_nameifentity_type=="person"else"",
+"account":entity_nameifentity_type=="company"else"",
+"project":entity_nameifentity_type=="project"else"",
+"participants":extraction.participants,
+"summary":extraction.summary,
+"topics":extraction.topics,
+"decisions":extraction.decisions,
+"tasks":[t.model_dump()fortinextraction.tasks],
+"facts":[f.textforfinextraction.facts],
+"source_ref":extraction.source_file,
+}
+
+returnnote_path,context
+
+def_generate_primary_patches(self,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+ifnotextraction.primary_entity:
+            returnpatches
+
+folder=self._get_entity_folder(extraction.primary_entity,extraction)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+context_entry=f"- {extraction.date}: {extraction.summary[:100]}..."
+
+facts=[f.textforfinextraction.facts
+iff.about_entityandf.about_entity.name==extraction.primary_entity.name]
+
+frontmatter={"last_contact":extraction.date}
+ifextraction.primary_entity.entity_type=="person":
+            contact_info=self._get_contact_info_for_person(extraction.primary_entity.name,extraction)
+frontmatter.update(contact_info)
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=extraction.primary_entity.name,
+add_frontmatter=frontmatter,
+add_facts=factsiffactselseNone,
+add_topics=extraction.topics[:5]ifextraction.topicselseNone,

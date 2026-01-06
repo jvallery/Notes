@@ -1,0 +1,6711 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED)
+Source bundle: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN.txt
+Notes: Python docstrings/comments stripped; long triple-quoted strings truncated.
+
+CONTENTS:
+001. [CLI] Workflow/scripts/ingest.py  —  Unified ingest CLI entry point (routes to pipeline, enrichment, git commit)
+002. [PIPELINE] Workflow/pipeline/__init__.py  —  Unified pipeline module
+003. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/__init__.py  —  Content adapter (parse → ContentEnvelope)
+004. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/base.py  —  Content adapter (parse → ContentEnvelope)
+005. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/document.py  —  Content adapter (parse → ContentEnvelope)
+006. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/email.py  —  Content adapter (parse → ContentEnvelope)
+007. [PIPELINE/ADAPTER] Workflow/pipeline/adapters/transcript.py  —  Content adapter (parse → ContentEnvelope)
+008. [PIPELINE] Workflow/pipeline/apply.py  —  Unified pipeline module
+009. [PIPELINE] Workflow/pipeline/context.py  —  Unified pipeline module
+010. [PIPELINE] Workflow/pipeline/entities.py  —  Unified pipeline module
+011. [PIPELINE] Workflow/pipeline/envelope.py  —  Unified pipeline module
+012. [PIPELINE] Workflow/pipeline/extract.py  —  Unified pipeline module
+013. [PIPELINE] Workflow/pipeline/models.py  —  Unified pipeline module
+014. [PIPELINE] Workflow/pipeline/outputs.py  —  Unified pipeline module
+015. [PIPELINE] Workflow/pipeline/patch.py  —  Unified pipeline module
+016. [PIPELINE] Workflow/pipeline/pipeline.py  —  Unified pipeline module
+017. [NORMALIZE] Workflow/scripts/normalize_entity_notes.py  —  Post-apply normalization (frontmatter normalization)
+018. [NORMALIZE] Workflow/scripts/normalize_note_headers.py  —  Post-apply normalization (header cleanup)
+019. [NORMALIZE] Workflow/scripts/remove_empty_entity_links.py  —  Cleanup helper (removes placeholder entity links)
+020. [UTILS] Workflow/scripts/utils/__init__.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+021. [UTILS] Workflow/scripts/utils/ai_client.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+022. [UTILS] Workflow/scripts/utils/config.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+023. [UTILS] Workflow/scripts/utils/frontmatter.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+024. [UTILS] Workflow/scripts/utils/fs.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+025. [UTILS] Workflow/scripts/utils/logging.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+026. [UTILS] Workflow/scripts/utils/patch_primitives.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+027. [UTILS] Workflow/scripts/utils/paths.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+028. [UTILS] Workflow/scripts/utils/templates.py  —  Shared utilities (config, AI client, templates, logging, git ops)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: CLI
+PATH: Workflow/scripts/ingest.py
+ROLE: Unified ingest CLI entry point (routes to pipeline, enrichment, git commit)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importsys
+frompathlibimportPath
+fromdatetimeimportdatetime
+
+importclick
+fromrich.consoleimportConsole
+fromrich.tableimportTable
+fromrich.panelimportPanel
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+frompipelineimportUnifiedPipeline
+frompipeline.envelopeimportContentType
+fromscripts.utils.configimportload_config
+
+console=Console()
+
+@click.command()
+@click.option("--type","content_type",type=click.Choice(["email","transcript","document","voice","all"]),default="all",help="Content type to process")
+@click.option("--file","file_path",type=click.Path(),help="Process single file")
+@click.option("--dry-run",is_flag=True,help="Preview without making changes")
+@click.option("--verbose","-v",is_flag=True,help="Show extraction details")
+@click.option("--enrich",is_flag=True,help="Trigger enrichment for new entities")
+@click.option("--draft-replies",is_flag=True,help="Generate draft email replies")
+@click.option("--draft-all-emails",is_flag=True,help="Generate drafts for all emails (including no-reply/automated)")
+@click.option("--source",is_flag=True,help="Re-process from Sources/ directory")
+@click.option("--force",is_flag=True,help="Skip duplicate detection, reprocess even if already extracted")
+@click.option("--show-cache-stats",is_flag=True,help="Print cache + timing summary after run")
+@click.option("--trace-dir",type=click.Path(),help="Persist extraction/changeplan artifacts to this directory")
+@click.option("--vault-root",type=click.Path(),help="Override vault root (defaults to repo root)")
+@click.option("--workers","-w",type=int,default=None,help="Number of parallel workers (default from config, 1=sequential)")
+@click.option("--sequential",is_flag=True,help="Force sequential processing (ignore config)")
+defmain(content_type:str,file_path:str,dry_run:bool,verbose:bool,enrich:bool,draft_replies:bool,draft_all_emails:bool,source:bool,force:bool,show_cache_stats:bool,trace_dir:str,vault_root:str,workers:int,sequential:bool):
+
+    override_root=Path(vault_root).expanduser().resolve()ifvault_rootelseNone
+try:
+        config=load_config(vault_root_override=override_root)
+exceptExceptionasexc:
+        raiseclick.ClickException(f"Config error: {exc}")
+
+vault_root_path=Path(config.get("paths",{}).get("vault_root",Path(__file__).parent.parent.parent))
+type_map={
+"email":ContentType.EMAIL,
+"transcript":ContentType.TRANSCRIPT,
+"document":ContentType.DOCUMENT,
+"voice":ContentType.VOICE,
+}
+
+effective_workers=1ifsequentialelseworkers
+
+subtitle_parts=["DRY RUN"ifdry_runelse"LIVE"]
+ifeffective_workers!=1:
+        subtitle_parts.append(f"{effective_workers or 'config'} workers")
+ifdraft_replies:
+        subtitle_parts.append("drafts→Outbox")
+ifdraft_all_emails:
+        subtitle_parts.append("all-email-drafts")
+
+console.print(Panel.fit(
+"[bold blue]Unified Ingest Pipeline[/bold blue]",
+subtitle=" | ".join(subtitle_parts)
+))
+
+pipeline=UnifiedPipeline(
+vault_root=vault_root_path,
+dry_run=dry_run,
+verbose=verbose,
+generate_outputs=draft_replies,
+draft_all_emails=draft_all_emails,
+force=force,
+trace_dir=Path(trace_dir)iftrace_direlseNone,
+show_cache_stats=show_cache_stats,
+config=config,
+max_workers=effective_workers,
+)
+
+batch=None
+single_result=None
+
+iffile_path:
+
+        target_path=Path(file_path)
+ifnottarget_path.is_absolute():
+            target_path=vault_root_path/target_path
+ifnottarget_path.exists():
+            raiseclick.ClickException(f"File not found: {target_path}")
+result=pipeline.process_file(target_path)
+_display_result(result,verbose)
+single_result=result
+
+elifsource:
+
+        selected=type_map.get(content_type)ifcontent_type!="all"elseNone
+batch=pipeline.process_sources(selected)
+_display_batch(batch,verbose)
+elifcontent_type=="all":
+
+        batch=pipeline.process_all()
+_display_batch(batch,verbose)
+else:
+
+        selected=type_map[content_type]
+batch=pipeline.process_type(selected)
+_display_batch(batch,verbose)
+
+if(show_cache_statsorverbose)andbatch:
+        _print_batch_metrics(batch)
+if(show_cache_statsorverbose)andsingle_result:
+        _print_result_metrics(single_result)
+
+ifenrichandnotdry_run:
+        _run_enrichment(vault_root_path,verbose)
+
+ifnotdry_run:
+        _git_commit(vault_root_path)
+
+def_display_result(result,verbose:bool):
+    ifresult.success:
+        console.print(f"[green]✓[/green] {result.source_path}")
+
+ifverboseandresult.extraction:
+            console.print(f"  Type: {result.content_type}")
+console.print(f"  Summary: {result.extraction.get('summary', '')[:80]}...")
+console.print(f"  Facts: {len(result.extraction.get('facts', []))}")
+console.print(f"  Tasks: {len(result.extraction.get('tasks', []))}")
+
+ifresult.apply_result:
+            console.print(f"  Created: {len(result.apply_result.files_created)}")
+console.print(f"  Modified: {len(result.apply_result.files_modified)}")
+
+ifresult.draft_reply:
+            console.print(f"  [blue]Draft reply[/blue]: {result.draft_reply}")
+ifresult.calendar_inviteandresult.calendar_invite.get("path"):
+            console.print(f"  [blue]Calendar invite[/blue]: {result.calendar_invite.get('path')}")
+ifverboseandgetattr(result,"outputs",None):
+            tasks_emitted=(result.outputsor{}).get("tasks_emitted")
+iftasks_emitted:
+                console.print(f"  Tasks emitted: {tasks_emitted}")
+else:
+        console.print(f"[red]✗[/red] {result.source_path}")
+forerrorinresult.errors:
+            console.print(f"  [red]{error}[/red]")
+
+def_display_batch(batch,verbose:bool):
+
+    table=Table(title="Processing Summary")
+table.add_column("Metric",style="cyan")
+table.add_column("Count",justify="right")
+
+table.add_row("Total",str(batch.total))
+table.add_row("Success",f"[green]{batch.success}[/green]")
+table.add_row("Failed",f"[red]{batch.failed}[/red]"ifbatch.failedelse"0")
+table.add_row("Skipped",f"[yellow]{batch.skipped}[/yellow]"ifbatch.skippedelse"0")
+
+drafts=sum(1forrinbatch.resultsifgetattr(r,"draft_reply",None))
+ifdrafts:
+        table.add_row("Draft replies",f"[blue]{drafts}[/blue]")
+
+console.print(table)
+
+ifdrafts:
+        console.print("[blue]Drafts written to: Outbox/[/blue]")
+
+ifverboseorbatch.failed>0:
+        console.print("\n[bold]Details:[/bold]")
+forresultinbatch.results:
+            _display_result(result,verbose)
+
+def_print_batch_metrics(batch):
+    metrics=getattr(batch,"metrics",{})or{}
+ifnotmetrics:
+        return
+
+console.print("\n[bold]Run Summary[/bold]")
+console.print(
+f"Duration: {metrics.get('run_ms', 0)} ms | Files: {batch.total} "
+f"(success {batch.success}, failed {batch.failed}, skipped {batch.skipped})"
+)
+
+timings=metrics.get("phase_ms_avg",{})or{}
+iftimings:
+        table=Table(title="Avg Phase Timings (ms)")
+table.add_column("Phase")
+table.add_column("ms",justify="right")
+forphase,msinsorted(timings.items()):
+            label=phase.replace("_ms","")
+table.add_row(label,str(ms))
+console.print(table)
+
+cache=metrics.get("cache",{})or{}
+ifcache.get("calls"):
+        hit_rate=cache.get("hit_rate",0)
+console.print(
+f"Cache: {cache.get('hits', 0)}/{cache.get('calls', 0)} hits "
+f"({hit_rate:.0f}%), saved {cache.get('cached_tokens', 0)} tokens "
+f"of {cache.get('prompt_tokens', 0)} prompt tokens"
+)
+
+def_print_result_metrics(result):
+    metrics=getattr(result,"metrics",{})or{}
+ifnotmetrics:
+        return
+
+console.print("\n[bold]Run Summary (single file)[/bold]")
+timings=metrics.get("timings",{})or{}
+iftimings:
+        table=Table(title="Phase Timings (ms)")
+table.add_column("Phase")
+table.add_column("ms",justify="right")
+forphase,msinsorted(timings.items()):
+            label=phase.replace("_ms","")
+table.add_row(label,str(ms))
+console.print(table)
+
+cache=metrics.get("cache",{})or{}
+ifcache:
+        hit_text="hit"ifcache.get("cache_hit")else"miss"
+console.print(
+f"Cache {hit_text}: "
+f"{cache.get('cached_tokens', 0)}/{cache.get('prompt_tokens', 0)} prompt tokens "
+f"saved, latency={cache.get('latency_ms', 0)} ms"
+)
+
+def_run_enrichment(vault_root:Path,verbose:bool):
+    console.print("\n[bold]Running enrichment...[/bold]")
+
+try:
+        fromscripts.enrich_personimportenrich_sparse_people
+
+count=enrich_sparse_people(vault_root,level=2,limit=5,verbose=verbose)
+console.print(f"  Enriched {count} people")
+exceptImportError:
+        console.print("  [yellow]Enrichment module not available[/yellow]")
+exceptExceptionase:
+        console.print(f"  [red]Enrichment failed: {e}[/red]")
+
+def_git_commit(vault_root:Path):
+    importsubprocess
+
+try:
+
+        result=subprocess.run(
+["git","status","--porcelain"],
+cwd=vault_root,
+capture_output=True,
+text=True
+)
+
+ifnotresult.stdout.strip():
+            return
+
+subprocess.run(["git","add","-A"],cwd=vault_root,check=True)
+
+timestamp=datetime.now().strftime("%Y-%m-%d %H:%M")
+message=f"[auto] Unified ingest: {timestamp}"
+
+subprocess.run(
+["git","commit","-m",message],
+cwd=vault_root,
+check=True,
+capture_output=True
+)
+
+console.print(f"\n[green]Committed changes[/green]")
+
+exceptsubprocess.CalledProcessErrorase:
+        console.print(f"[yellow]Git commit skipped: {e}[/yellow]")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/__init__.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+from.envelopeimportContentEnvelope,ContentType
+from.contextimportContextBundle
+from.entitiesimportEntityIndex
+from.extractimportUnifiedExtractor
+from.patchimportPatchGenerator
+from.applyimportTransactionalApply
+from.outputsimportOutputGenerator
+from.pipelineimportUnifiedPipeline
+
+__all__=[
+"ContentEnvelope",
+"ContentType",
+"ContextBundle",
+"EntityIndex",
+"UnifiedExtractor",
+"PatchGenerator",
+"TransactionalApply",
+"UnifiedPipeline",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/__init__.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+from.baseimportBaseAdapter,AdapterRegistry
+from.emailimportEmailAdapter
+from.transcriptimportTranscriptAdapter
+from.documentimportDocumentAdapter
+
+__all__=[
+"BaseAdapter",
+"AdapterRegistry",
+"EmailAdapter",
+"TranscriptAdapter",
+"DocumentAdapter",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/base.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+fromabcimportABC,abstractmethod
+frompathlibimportPath
+fromtypingimportOptional,Type
+importhashlib
+
+from..envelopeimportContentEnvelope,ContentType
+
+classBaseAdapter(ABC):
+
+    @property
+@abstractmethod
+defcontent_type(self)->ContentType:
+        pass
+
+@abstractmethod
+defcan_handle(self,path:Path)->bool:
+        pass
+
+@abstractmethod
+defparse(self,path:Path)->ContentEnvelope:
+        pass
+
+defcompute_hash(self,content:str)->str:
+
+        ifcontent.startswith("---"):
+            end=content.find("\n---",3)
+ifend!=-1:
+                content=content[end+4:]
+
+normalized=content.strip()[:2000]
+returnhashlib.md5(normalized.encode()).hexdigest()[:12]
+
+classAdapterRegistry:
+
+    def__init__(self):
+        self._adapters:list[BaseAdapter]=[]
+
+defregister(self,adapter:BaseAdapter)->None:
+        self._adapters.append(adapter)
+
+defget_adapter(self,path:Path)->Optional[BaseAdapter]:
+        foradapterinself._adapters:
+            ifadapter.can_handle(path):
+                returnadapter
+returnNone
+
+defparse(self,path:Path)->Optional[ContentEnvelope]:
+        adapter=self.get_adapter(path)
+ifadapter:
+            returnadapter.parse(path)
+returnNone
+
+@classmethod
+defdefault(cls)->"AdapterRegistry":
+        from.emailimportEmailAdapter
+from.transcriptimportTranscriptAdapter
+from.documentimportDocumentAdapter
+
+registry=cls()
+registry.register(EmailAdapter())
+registry.register(TranscriptAdapter())
+registry.register(DocumentAdapter())
+returnregistry
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/document.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,DocumentMetadata
+
+classDocumentAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.DOCUMENT
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file():
+            returnFalse
+
+if"Attachments"inpath.parts:
+            returnpath.suffixin[".md",".txt"]
+
+ifpath.suffix==".md":
+            returnTrue
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+title=self._extract_title(content,path.name)
+date=self._extract_date(content,path)
+author=self._extract_author(content)
+doc_type=self._infer_document_type(content,path)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.DOCUMENT,
+raw_content=content,
+date=date,
+title=title,
+participants=[author]ifauthorelse[],
+content_hash=self.compute_hash(content),
+metadata={
+"document":DocumentMetadata(
+document_type=doc_type,
+author=author,
+file_type=path.suffix[1:]ifpath.suffixelse"unknown",
+).model_dump()
+}
+)
+
+def_extract_title(self,content:str,filename:str)->str:
+
+        lines=content.split("\n")
+forlineinlines[:10]:
+            ifline.startswith("# "):
+                returnline[2:].strip()
+
+returnfilename.replace(".md","").replace("_"," ").strip()
+
+def_extract_date(self,content:str,path:Path)->str:
+
+        ifcontent.startswith("---"):
+            date_match=re.search(r"date:\s*[\"']?(\d{4}-\d{2}-\d{2})",content[:500])
+ifdate_match:
+                returndate_match.group(1)
+
+date_match=re.match(r"^(\d{4}-\d{2}-\d{2})",path.name)
+ifdate_match:
+            returndate_match.group(1)
+
+mtime=path.stat().st_mtime
+returndatetime.fromtimestamp(mtime).strftime("%Y-%m-%d")
+
+def_extract_author(self,content:str)->Optional[str]:
+
+        ifcontent.startswith("---"):
+            author_match=re.search(r"author:\s*[\"']?([^\n\"']+)",content[:500])
+ifauthor_match:
+                returnauthor_match.group(1).strip()
+
+returnNone
+
+def_infer_document_type(self,content:str,path:Path)->str:
+        content_lower=content.lower()
+
+if"proposal"incontent_loweror"proposal"inpath.name.lower():
+            return"proposal"
+if"spec"incontent_loweror"specification"incontent_lower:
+            return"specification"
+if"report"incontent_lower:
+            return"report"
+if"article"inpath.partsor"articles"inpath.parts:
+            return"article"
+
+return"general"
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/email.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,EmailMetadata
+
+classEmailAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.EMAIL
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file()orpath.suffix!=".md":
+            returnFalse
+
+if"Email"inpath.parts:
+            returnTrue
+
+ifre.match(r"^\d{4}-\d{2}-\d{2}_\d{6}_\d{4}_",path.name):
+            returnTrue
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+date=self._extract_date(content,path.name)
+subject=self._extract_subject(content)
+sender_name,sender_email=self._extract_sender(content)
+recipients_detail=self._extract_recipients(content)
+recipient_names=[r.get("name")forrinrecipients_detailifr.get("name")]
+recipient_emails=[r.get("email")forrinrecipients_detailifr.get("email")]
+is_reply=self._is_reply(subject)
+
+participants=[]
+ifsender_name:
+            participants.append(sender_name)
+participants.extend(recipient_names)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.EMAIL,
+raw_content=content,
+date=date,
+title=subject,
+participants=participants,
+content_hash=self.compute_hash(content),
+metadata={
+"email":EmailMetadata(
+sender_name=sender_name,
+sender_email=sender_email,
+recipients=recipient_names,
+recipients_emails=recipient_emails,
+recipients_detail=recipients_detail,
+subject=subject,
+is_reply=is_reply,
+).model_dump()
+}
+)
+
+def_extract_date(self,content:str,filename:str)->str:
+
+        date_match=re.search(r"##\s*(\d{4}-\d{2}-\d{2})",content)
+ifdate_match:
+            returndate_match.group(1)
+
+filename_match=re.match(r"^(\d{4}-\d{2}-\d{2})",filename)
+iffilename_match:
+            returnfilename_match.group(1)
+
+returndatetime.now().strftime("%Y-%m-%d")
+
+def_extract_subject(self,content:str)->str:
+        lines=content.split("\n")
+iflinesandlines[0].startswith("# "):
+            returnlines[0][2:].strip()
+return"Unknown Subject"
+
+def_extract_sender(self,content:str)->tuple[Optional[str],Optional[str]]:
+
+        from_match=re.search(r"(?:^|\n)\*?\*?From\*?\*?:\s*([^\n<]+?)(?:\s*<([^>]+)>)?(?:\n|$)",content)
+iffrom_match:
+            name=from_match.group(1).strip()
+
+name=re.sub(r'^\*\*\s*|\s*\*\*$','',name)
+email=from_match.group(2)iffrom_match.group(2)elseNone
+return(name,email)
+return(None,None)
+
+def_extract_recipients(self,content:str)->list[dict]:
+        recipients:list[dict]=[]
+
+to_match=re.search(r"(?:^|\n)\*?\*?To\*?\*?:\s*([^\n]+)",content)
+ifto_match:
+            to_line=to_match.group(1)
+
+forpartinto_line.split(","):
+                name=None
+email=None
+name_match=re.match(r"([^<]+?)(?:\s*<([^>]+)>)?$",part.strip())
+ifname_match:
+                    name=name_match.group(1).strip()
+email=name_match.group(2).strip()ifname_match.group(2)elseNone
+
+name=re.sub(r'^\*\*\s*|\s*\*\*$','',name)
+ifnameoremail:
+                    recipients.append({"name":name,"email":email})
+
+returnrecipients
+
+def_is_reply(self,subject:str)->bool:
+        returnsubject.lower().startswith(("re:","re[","fwd:","fw:"))
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE/ADAPTER
+PATH: Workflow/pipeline/adapters/transcript.py
+ROLE: Content adapter (parse → ContentEnvelope)
+========================================================================================================================
+
+
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+
+from.baseimportBaseAdapter
+from..envelopeimportContentEnvelope,ContentType,TranscriptMetadata
+
+classTranscriptAdapter(BaseAdapter):
+
+    @property
+defcontent_type(self)->ContentType:
+        returnContentType.TRANSCRIPT
+
+defcan_handle(self,path:Path)->bool:
+        ifnotpath.is_file()orpath.suffix!=".md":
+            returnFalse
+
+if"Transcripts"inpath.parts:
+            returnTrue
+
+ifre.match(r"^\d{4}-\d{2}-\d{2}\s+\d{2}[\s:]\d{2}",path.name):
+            returnTrue
+
+try:
+            content=path.read_text()[:1000]
+ifre.search(r"(?:Speaker \d+:|^\[[^\]]+\]:)",content,re.MULTILINE):
+                returnTrue
+exceptException:
+            pass
+
+returnFalse
+
+defparse(self,path:Path)->ContentEnvelope:
+        content=path.read_text()
+
+date=self._extract_date_from_filename(path.name)
+title=self._extract_title_from_filename(path.name)
+speakers=self._extract_speakers(content)
+
+returnContentEnvelope(
+source_path=path,
+content_type=ContentType.TRANSCRIPT,
+raw_content=content,
+date=date,
+title=title,
+participants=speakers,
+content_hash=self.compute_hash(content),
+metadata={
+"transcript":TranscriptMetadata(
+speakers=speakers,
+source_app="MacWhisper",
+has_diarization=len(speakers)>0,
+).model_dump()
+}
+)
+
+def_extract_date_from_filename(self,filename:str)->str:
+
+        date_match=re.match(r"^(\d{4}-\d{2}-\d{2})",filename)
+ifdate_match:
+            returndate_match.group(1)
+returndatetime.now().strftime("%Y-%m-%d")
+
+def_extract_title_from_filename(self,filename:str)->str:
+
+        title=re.sub(r"^\d{4}-\d{2}-\d{2}\s*\d*:?\d*\s*-?\s*","",filename)
+title=title.replace(".md","").strip()
+
+title=re.sub(r"\s+"," ",title)
+
+returntitleiftitleelse"Meeting"
+
+def_extract_speakers(self,content:str)->list[str]:
+        speakers=set()
+speaker_map:dict[str,str]={}
+
+lines=content.split("\n")
+
+forlineinlines[:20]:
+            mapping_match=re.match(r"^(Speaker \d+):\s*(.+)$",line.strip())
+ifmapping_match:
+                speaker_label=mapping_match.group(1)
+speaker_value=mapping_match.group(2).strip()
+
+words=speaker_value.split()
+is_name=(
+len(speaker_value)<50
+and2<=len(words)<=5
+andnotany(punctinspeaker_valueforpunctin'.!?')
+andnotspeaker_value.lower().startswith(('i ',"i'",'we ','you ','the ','a '))
+)
+ifis_name:
+                    speaker_map[speaker_label]=speaker_value
+
+formatchinre.finditer(r"(Speaker \d+):",content):
+            label=match.group(1)
+
+iflabelinspeaker_map:
+                speakers.add(speaker_map[label])
+else:
+                speakers.add(label)
+
+formatchinre.finditer(r"\[([^\]]+)\]:",content):
+            name=match.group(1).strip()
+ifnameandlen(name)<50:
+                speakers.add(name)
+
+formatchinre.finditer(r"\*\*([^*]+)\*\*:",content):
+            name=match.group(1).strip()
+ifnameandlen(name)<50:
+                speakers.add(name)
+
+returnlist(speakers)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/apply.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importshutil
+importsys
+importre
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.patchimportChangePlan,PatchOperation,ManifestPatch
+
+classApplyResult:
+
+    def__init__(self):
+        self.success=True
+self.files_created:list[str]=[]
+self.files_modified:list[str]=[]
+self.files_archived:list[str]=[]
+self.errors:list[str]=[]
+
+def__str__(self):
+        ifself.success:
+            returnf"Applied: {len(self.files_created)} created, {len(self.files_modified)} modified"
+else:
+            returnf"Failed: {', '.join(self.errors)}"
+
+classTransactionalApply:
+
+    def__init__(self,vault_root:Path,dry_run:bool=False):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+
+self.backup_dir=vault_root/".workflow_backups"/datetime.now().strftime("%Y%m%d_%H%M%S_%f")
+self._backed_up:dict[Path,Path]={}
+self._created:list[Path]=[]
+
+defapply(
+self,
+plan:ChangePlan,
+source_path:Optional[Path]=None,
+extra_meeting_notes:Optional[list[tuple[str,dict]]]=None,
+extra_source_paths:Optional[list[Path]]=None,
+)->ApplyResult:
+        result=ApplyResult()
+
+ifself.dry_run:
+            returnself._dry_run_apply(plan,result,extra_meeting_notes=extra_meeting_notes,extra_source_paths=extra_source_paths)
+
+try:
+
+            ifplan.meeting_note_pathandplan.meeting_note:
+                self._create_meeting_note(plan.meeting_note_path,plan.meeting_note,result)
+ifextra_meeting_notes:
+                fornote_path,note_contextinextra_meeting_notes:
+                    ifnote_pathandnote_context:
+                        self._create_meeting_note(note_path,note_context,result)
+
+forpatchinplan.patches:
+                self._apply_patch(patch,result)
+
+formanifest_patchinplan.manifest_patches:
+                self._apply_manifest_patch(manifest_patch,result)
+
+self._post_apply_normalize(result)
+
+sources_to_archive:list[Path]=[]
+ifsource_path:
+                sources_to_archive.append(source_path)
+ifextra_source_paths:
+                sources_to_archive.extend(extra_source_paths)
+forsrcinsources_to_archive:
+                ifsrcandsrc.exists():
+                    self._archive_source(src,result)
+
+ifself.backup_dir.exists():
+                shutil.rmtree(self.backup_dir)
+
+returnresult
+
+exceptExceptionase:
+            result.success=False
+result.errors.append(str(e))
+self._rollback()
+returnresult
+
+def_dry_run_apply(
+self,
+plan:ChangePlan,
+result:ApplyResult,
+extra_meeting_notes:Optional[list[tuple[str,dict]]]=None,
+extra_source_paths:Optional[list[Path]]=None,
+)->ApplyResult:
+
+        ifplan.meeting_note_path:
+            result.files_created.append(plan.meeting_note_path)
+ifextra_meeting_notes:
+            fornote_path,_ctxinextra_meeting_notes:
+                ifnote_path:
+                    result.files_created.append(note_path)
+
+forpatchinplan.patches:
+            result.files_modified.append(patch.target_path)
+
+formanifest_patchinplan.manifest_patches:
+            result.files_modified.append(manifest_patch.manifest_path)
+
+sources_to_archive:list[Path]=[]
+ifextra_source_paths:
+            sources_to_archive.extend(extra_source_paths)
+forsrcinsources_to_archive:
+            ifsrc:
+                result.files_archived.append(str(src))
+
+returnresult
+
+def_create_meeting_note(self,note_path_rel:str,note_context:dict,result:ApplyResult):
+        fromjinja2importEnvironment,FileSystemLoader
+importre
+importos
+
+note_path=self.vault_root/note_path_rel
+
+ifnote_path.exists():
+            return
+
+note_path.parent.mkdir(parents=True,exist_ok=True)
+
+templates_dir=self.vault_root/"Workflow"/"templates"
+env=Environment(loader=FileSystemLoader(str(templates_dir)))
+
+defslugify(text):
+            ifnottext:
+                return""
+text=text.lower()
+text=re.sub(r'[^\w\s-]','',text)
+text=re.sub(r'[\s_]+','-',text)
+returntext.strip('-')
+
+defstrip_extension(path):
+            ifnotpath:
+                return""
+returnos.path.splitext(str(path))[0]
+
+defbasename(path):
+            ifnotpath:
+                return""
+returnos.path.basename(str(path))
+
+env.filters['slugify']=slugify
+env.filters['strip_extension']=strip_extension
+env.filters['basename']=basename
+
+note_type=note_context.get("type","people")
+template_name=f"{note_type}.md.j2"
+
+try:
+            template=env.get_template(template_name)
+exceptException:
+            template=env.get_template("people.md.j2")
+
+content=template.render(**note_context)
+
+note_path.write_text(content)
+self._created.append(note_path)
+result.files_created.append(note_path_rel)
+
+def_apply_patch(self,patch:PatchOperation,result:ApplyResult):
+        target=self.vault_root/patch.target_path
+
+ifnottarget.exists():
+            return
+
+self._backup(target)
+
+content=target.read_text()
+
+fromscripts.utils.patch_primitivesimport(
+upsert_frontmatter,
+append_under_heading,
+ensure_wikilinks
+)
+
+ifpatch.add_frontmatter:
+            fm_patches=[{"key":k,"value":v}fork,vinpatch.add_frontmatter.items()]
+content=upsert_frontmatter(content,fm_patches)
+
+ifpatch.add_facts:
+            forfactinpatch.add_facts:
+                iffactnotincontent:
+                    content=append_under_heading(content,"## Key Facts",f"- {fact}")
+
+ifpatch.add_topics:
+            fortopicinpatch.add_topics:
+                iftopicnotincontent:
+                    content=append_under_heading(content,"## Topics",f"- {topic}")
+
+ifpatch.add_decisions:
+            fordecisioninpatch.add_decisions:
+                ifdecisionnotincontent:
+                    content=append_under_heading(content,"## Key Decisions",f"- {decision}")
+
+ifpatch.add_context:
+            ifpatch.add_contextnotincontent:
+                content=append_under_heading(content,"## Recent Context",patch.add_context)
+
+ifpatch.add_wikilinks:
+            content=ensure_wikilinks(content,patch.add_wikilinks)
+
+self._atomic_write(target,content)
+result.files_modified.append(patch.target_path)
+
+def_apply_manifest_patch(self,patch:ManifestPatch,result:ApplyResult):
+        target=self.vault_root/patch.manifest_path
+
+ifnottarget.exists():
+            return
+
+self._backup(target)
+
+content=target.read_text()
+lines=content.split("\n")
+
+ifpatch.manifest_type=="people"andpatch.person_name:
+
+            lines=self._update_people_manifest_row(lines,patch.person_name,patch.aliases_to_add)
+elifpatch.manifest_type=="projects"andpatch.project_name:
+
+            lines=self._update_projects_manifest_row(lines,patch.project_name,patch.acronym,patch.definition)
+
+new_content="\n".join(lines)
+self._atomic_write(target,new_content)
+result.files_modified.append(patch.manifest_path)
+
+def_update_people_manifest_row(self,lines:list[str],person_name:str,aliases_to_add:list[str])->list[str]:
+
+        header_idx=None
+alias_col_idx=None
+
+fori,lineinenumerate(lines):
+            ifline.strip().startswith("|")and"Name"inlineand"Role"inline:
+                header_idx=i
+cols=[c.strip()forcinline.split("|")]
+forj,colinenumerate(cols):
+                    if"Alias"incol:
+                        alias_col_idx=j
+break
+break
+
+ifheader_idxisNoneoralias_col_idxisNone:
+            returnlines
+
+person_name_lower=person_name.lower()
+foriinrange(header_idx+2,len(lines)):
+            line=lines[i]
+ifnotline.strip().startswith("|"):
+                continue
+
+cols=line.split("|")
+iflen(cols)<=alias_col_idx:
+                continue
+
+name_col=cols[1].strip()iflen(cols)>1else""
+ifname_col.lower()==person_name_lowerorperson_name_lowerinname_col.lower():
+
+                current_aliases=cols[alias_col_idx].strip()ifalias_col_idx<len(cols)else""
+
+parts=[a.strip()forainre.split(r"[;,]",current_aliasesor"")ifa.strip()]
+existing=set(parts)
+
+existing.update(aliases_to_add)
+
+new_aliases="; ".join(sorted(existing))
+cols[alias_col_idx]=f" {new_aliases} "
+
+lines[i]="|".join(cols)
+break
+
+returnlines
+
+def_update_projects_manifest_row(self,lines:list[str],project_name:str,acronym:str,definition:str)->list[str]:
+
+        header_idx=None
+acronym_col_idx=None
+definition_col_idx=None
+
+fori,lineinenumerate(lines):
+            ifline.strip().startswith("|")and"Name"inline:
+                header_idx=i
+cols=[c.strip()forcinline.split("|")]
+forj,colinenumerate(cols):
+                    if"Acronym"incol:
+                        acronym_col_idx=j
+if"Definition"incol:
+                        definition_col_idx=j
+break
+
+ifheader_idxisNone:
+            returnlines
+
+project_name_lower=project_name.lower()
+foriinrange(header_idx+2,len(lines)):
+            line=lines[i]
+ifnotline.strip().startswith("|"):
+                continue
+
+cols=line.split("|")
+iflen(cols)<2:
+                continue
+
+name_col=cols[1].strip()iflen(cols)>1else""
+ifname_col.lower()==project_name_lowerorproject_name_lowerinname_col.lower():
+
+                ifacronym_col_idxandacronym_col_idx<len(cols):
+                    current=cols[acronym_col_idx].strip()
+ifnotcurrentorcurrent=="-":
+                        cols[acronym_col_idx]=f" {acronym} "
+
+ifdefinition_col_idxanddefinition_col_idx<len(cols):
+                    current=cols[definition_col_idx].strip()
+ifnotcurrentorcurrent=="-":
+                        cols[definition_col_idx]=f" {definition} "
+
+lines[i]="|".join(cols)
+returnlines
+
+returnlines
+
+def_post_apply_normalize(self,result:ApplyResult)->None:
+        fromscripts.normalize_entity_notesimportnormalize_frontmatter_dict
+fromscripts.normalize_note_headersimportnormalize_body_header
+fromscripts.utils.frontmatterimportparse_frontmatter,render_frontmatter
+
+created_files=set(self._created)
+touched={*(result.files_createdor[]),*(result.files_modifiedor[])}
+
+forrel_strinsorted(touched):
+            ifnotrel_str:
+                continue
+rel_path=Path(rel_str)
+ifrel_path.suffix.lower()!=".md":
+                continue
+ifrel_path.name=="README.md":
+                continue
+ifrel_path.name.startswith("_")orrel_path.name.endswith("_MANIFEST.md"):
+                continue
+
+scope=self._infer_entity_note_scope(rel_path)
+ifnotscope:
+                continue
+
+entity_name,entity_key,note_type,header_label=scope
+abs_path=self.vault_root/rel_path
+ifnotabs_path.exists():
+                continue
+
+text=abs_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+                fm={}
+body=text
+
+existing_type=str(fm.get("type")or"").strip().strip('"').strip("'").lower()
+ifnote_type=="customer"andexisting_type=="partners":
+
+                continue
+
+normalized_fm=normalize_frontmatter_dict(
+fm,
+entity_key=entity_key,
+entity_name=entity_name,
+note_type=note_type,
+)
+updated_body=body
+ifheader_label:
+                updated_body=normalize_body_header(
+updated_body,
+header_label=header_label,
+entity_name=entity_name,
+)
+
+updated=render_frontmatter(normalized_fm)+updated_body
+ifupdated==text:
+                continue
+
+ifabs_pathnotincreated_filesandabs_pathnotinself._backed_up:
+                self._backup(abs_path)
+
+self._atomic_write(abs_path,updated)
+ifrel_strnotinresult.files_modifiedandrel_strnotinresult.files_created:
+                result.files_modified.append(rel_str)
+
+def_infer_entity_note_scope(
+self,rel_path:Path
+)->Optional[tuple[str,str,str,Optional[str]]]:
+        parts=rel_path.parts
+iflen(parts)<4:
+            returnNone
+
+ifparts[0]=="VAST"andparts[1]=="People":
+            returnparts[2],"person","people",None
+ifparts[0]=="Personal"andparts[1]=="People":
+            returnparts[2],"person","people",None
+
+ifparts[0]=="VAST"andparts[1]=="Projects":
+            returnparts[2],"project","projects","Project"
+ifparts[0]=="Personal"andparts[1]=="Projects":
+            returnparts[2],"project","projects","Project"
+
+ifparts[0]=="VAST"andparts[1]=="Customers and Partners":
+            returnparts[2],"account","customer","Account"
+
+ifparts[0]=="VAST"andparts[1]=="ROB":
+            returnparts[2],"rob_forum","rob","Forum"
+
+returnNone
+
+def_archive_source(self,source_path:Path,result:ApplyResult):
+        from.envelopeimportContentType
+
+try:
+            relative=source_path.relative_to(self.vault_root)
+exceptValueError:
+            relative=None
+
+ifrelativeand"Sources"inrelative.parts:
+            result.files_archived.append(str(relative))
+return
+
+year=datetime.now().strftime("%Y")
+
+if"Email"insource_path.parts:
+            archive_dir=self.vault_root/"Sources"/"Email"/year
+elif"Transcripts"insource_path.parts:
+            archive_dir=self.vault_root/"Sources"/"Transcripts"/year
+else:
+            archive_dir=self.vault_root/"Sources"/"Documents"/year
+
+archive_dir.mkdir(parents=True,exist_ok=True)
+archive_path=archive_dir/source_path.name
+
+shutil.move(str(source_path),str(archive_path))
+result.files_archived.append(str(archive_path.relative_to(self.vault_root)))
+
+def_backup(self,path:Path):
+        ifpathinself._backed_up:
+            return
+
+self.backup_dir.mkdir(parents=True,exist_ok=True)
+try:
+            rel=path.relative_to(self.vault_root)
+exceptValueError:
+            rel=Path(path.name)
+backup_path=self.backup_dir/rel
+backup_path.parent.mkdir(parents=True,exist_ok=True)
+shutil.copy2(path,backup_path)
+self._backed_up[path]=backup_path
+
+def_atomic_write(self,path:Path,content:str):
+        temp_path=path.with_suffix(path.suffix+".tmp")
+temp_path.write_text(content)
+temp_path.rename(path)
+
+def_rollback(self):
+
+        fororiginal,backupinself._backed_up.items():
+            ifbackup.exists():
+                shutil.copy2(backup,original)
+
+forcreatedinself._created:
+            ifcreated.exists():
+                created.unlink()
+
+ifself.backup_dir.exists():
+            shutil.rmtree(self.backup_dir)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/context.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+importhashlib
+frompathlibimportPath
+fromtypingimportOptional,Tuple,Any
+fromfunctoolsimportlru_cache
+frompydanticimportBaseModel,Field,ConfigDict
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope
+from.entitiesimportEntityIndex
+fromscripts.utils.configimportload_config
+
+try:
+    fromscripts.utils.cached_promptsimport(
+get_persona_contextas_cached_persona_context,
+get_glossary_contextas_cached_glossary_context,
+)
+exceptException:
+    _cached_persona_context=None
+_cached_glossary_context=None
+
+classContextBundle(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+persona:str=""
+people_manifest:str=""
+company_manifest:str=""
+project_manifest:str=""
+project_list:list[str]=Field(default_factory=list)
+glossary:dict[str,str]=Field(default_factory=dict)
+aliases:dict[str,str]=Field(default_factory=dict)
+
+relevant_readmes:dict[str,str]=Field(default_factory=dict)
+
+@classmethod
+defload(cls,vault_root:Path,envelope:Optional[ContentEnvelope]=None,entity_index:Optional[EntityIndex]=None,config:Optional[dict[str,Any]]=None)->"ContextBundle":
+        bundle=cls()
+cfg=configorload_config(vault_root_override=vault_root)
+paths_cfg=cfg.get("paths",{})
+work_paths=paths_cfg.get("work",{})
+personal_paths=paths_cfg.get("personal",{})
+resources_paths=paths_cfg.get("resources",{})
+
+people_manifest_path=Path(work_paths.get("people",vault_root/"VAST"/"People"))/"_MANIFEST.md"
+company_manifest_path=Path(work_paths.get("accounts",vault_root/"VAST"/"Customers and Partners"))/"_MANIFEST.md"
+project_manifest_path=Path(work_paths.get("projects",vault_root/"VAST"/"Projects"))/"_MANIFEST.md"
+project_paths=[
+Path(work_paths.get("projects",vault_root/"VAST"/"Projects")),
+Path(personal_paths.get("projects",vault_root/"Personal"/"Projects")),
+]
+
+index=entity_indexorEntityIndex(vault_root,config=cfg)
+
+bundle.persona=_load_persona(vault_root,resources_paths)
+bundle.people_manifest=_load_manifest(people_manifest_path)
+bundle.company_manifest=_load_manifest(company_manifest_path)
+bundle.project_manifest=_load_manifest(project_manifest_path)
+bundle.project_list=_list_projects(project_paths)
+
+bundle.glossary=_load_glossary(vault_root,resources_paths)
+project_acronyms=_extract_acronyms_from_manifest(bundle.project_manifest)
+bundle.glossary.update(project_acronyms)
+
+bundle.aliases=_load_aliases(vault_root,resources_paths)
+manifest_aliases=_extract_aliases_from_manifest(bundle.people_manifest)
+bundle.aliases.update(manifest_aliases)
+
+ifenvelope:
+            mentioned=set(_quick_entity_scan(envelope.raw_content,bundle))
+mentioned.update(envelope.participantsor[])
+mentioned.update(_extract_candidate_names(envelope.raw_content))
+
+normalized_candidates={index.normalize_name(name)fornameinmentionedifname}
+enriched:set[str]=set()
+fornameinnormalized_candidates:
+
+                folder=index.find_person(name)orindex.find_company(name)orindex.find_project(name)
+iffolder:
+                    enriched.add(folder.name)
+continue
+
+fuzzy_person=index.search_person(name,limit=1)
+iffuzzy_person:
+                    enriched.add(fuzzy_person[0].name)
+continue
+fuzzy_company=index.search_company(name,limit=1)
+iffuzzy_company:
+                    enriched.add(fuzzy_company[0].name)
+continue
+fuzzy_project=index.search_project(name,limit=1)
+iffuzzy_project:
+                    enriched.add(fuzzy_project[0].name)
+
+enriched.update(normalized_candidates)
+bundle.relevant_readmes=_load_entity_readmes(list(enriched)[:12],vault_root,index)
+
+returnbundle
+
+defget_cacheable_prefix(self)->Tuple[str,str]:
+        sections=[]
+
+persona_text=None
+if_cached_persona_context:
+            persona_text=_cached_persona_context(include_full=True)
+elifself.persona:
+            persona_text=self.persona
+ifpersona_text:
+            sections.append(f"## PERSONA\n{persona_text}")
+
+glossary=None
+if_cached_glossary_context:
+            glossary=_cached_glossary_context(compact=True)
+else:
+            glossary=self._format_compact_glossary()
+ifglossary:
+            sections.append(f"## ENTITY GLOSSARY\n{glossary}")
+
+ifself.aliases:
+            alias_section="## NAME ALIASES\n"
+alias_items=[f"- {k} → {v}"fork,vinlist(self.aliases.items())]
+alias_section+="\n".join(alias_items)
+sections.append(alias_section)
+
+ifself.glossary:
+            terms_section="## TERMS & ACRONYMS\n"
+terms_items=[f"- **{k}**: {v}"fork,vinlist(self.glossary.items())]
+terms_section+="\n".join(terms_items)
+sections.append(terms_section)
+
+prefix="\n\n".join(sections)
+
+prefix_hash=hashlib.md5(prefix.encode()).hexdigest()[:8]
+
+returnprefix,prefix_hash
+
+defget_dynamic_suffix(self)->str:
+        ifnotself.relevant_readmes:
+            return""
+
+lines=["## RELEVANT ENTITY CONTEXT"]
+forname,summaryinself.relevant_readmes.items():
+            lines.append(f"\n### {name}\n{summary}")
+
+return"\n".join(lines)
+
+defget_extraction_context(self,compact:bool=True,verbose:bool=False)->str:
+
+        prefix,prefix_hash=self.get_cacheable_prefix()
+suffix=self.get_dynamic_suffix()
+
+ifverbose:
+            prefix_tokens=len(prefix)//4
+suffix_tokens=len(suffix)//4
+print(f"  Context: prefix={prefix_tokens} tokens (hash:{prefix_hash}), suffix={suffix_tokens} tokens")
+ifprefix_tokens>=1024:
+                print("  ✓ Prefix eligible for caching (>= 1024 tokens)")
+else:
+                print("  ⚠ Prefix too short for caching (< 1024 tokens)")
+
+ifsuffix:
+            returnf"{prefix}\n\n{suffix}"
+returnprefix
+
+def_format_compact_glossary(self)->str:
+        lines=[]
+
+ifself.people_manifest:
+            lines.append("**Known People:**")
+
+people_info=self._extract_people_with_relationships(self.people_manifest)
+ifpeople_info:
+
+                formatted=[
+f"{name} ({rel})"ifrelelsename
+forname,relinpeople_info[:80]
+]
+lines.append(", ".join(formatted))
+lines.append("")
+
+ifself.company_manifest:
+            lines.append("**Known Companies:**")
+company_info=self._extract_companies_with_roles(self.company_manifest)
+ifcompany_info:
+                formatted=[
+f"{name} [{role}]"ifroleelsename
+forname,roleincompany_info[:40]
+]
+lines.append(", ".join(formatted))
+lines.append("")
+
+ifself.project_list:
+            lines.append("**Known Projects:**")
+lines.append(", ".join(self.project_list[:50]))
+lines.append("")
+
+ifself.aliases:
+            lines.append("**Name Aliases:**")
+alias_items=[f"{k} → {v}"fork,vinlist(self.aliases.items())[:30]]
+lines.append(", ".join(alias_items))
+
+return"\n".join(lines)
+
+def_extract_people_with_relationships(self,manifest:str)->list[tuple[str,str]]:
+        importre
+results=[]
+
+lines=manifest.split('\n')
+header_idx=-1
+rel_col_idx=-1
+
+fori,lineinenumerate(lines):
+            if'| Name |'inline:
+
+                headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                    if'My Relationship'inh:
+                        rel_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+
+            formatchinre.finditer(r"\|\s*([^|\[]+)\s*\|",manifest):
+                name=match.group(1).strip()
+ifnameandnamenotin["Name","---",""]:
+                    results.append((name,""))
+returnresults[:80]
+
+forlineinlines[header_idx+2:]:
+            ifnotline.strip()ornotline.startswith('|'):
+                continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+                continue
+
+name=cols[1].strip()
+rel=""
+ifrel_col_idx>0andrel_col_idx<len(cols):
+                rel=cols[rel_col_idx].strip()
+
+ifnameandnamenotin["Name","---"]:
+                results.append((name,rel))
+
+returnresults
+
+def_extract_companies_with_roles(self,manifest:str)->list[tuple[str,str]]:
+        importre
+results=[]
+
+lines=manifest.split('\n')
+header_idx=-1
+role_col_idx=-1
+stage_col_idx=-1
+type_col_idx=-1
+
+fori,lineinenumerate(lines):
+            if'| Name |'inline:
+                headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                    if'My Role'inh:
+                        role_col_idx=j
+if'Stage'inh:
+                        stage_col_idx=j
+if'Type'inh:
+                        type_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+            returnresults
+
+forlineinlines[header_idx+2:]:
+            ifnotline.strip()ornotline.startswith('|'):
+                continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+                continue
+
+name=cols[1].strip()
+role=""
+stage=""
+account_type=""
+ifrole_col_idx>0androle_col_idx<len(cols):
+                role=cols[role_col_idx].strip()
+ifstage_col_idx>0andstage_col_idx<len(cols):
+                stage=cols[stage_col_idx].strip()
+iftype_col_idx>0andtype_col_idx<len(cols):
+                account_type=cols[type_col_idx].strip()
+
+display_role=roleorstageoraccount_type
+
+ifnameandnamenotin["Name","---"]:
+                results.append((name,display_role))
+
+returnresults
+
+def_format_full_glossary(self)->str:
+        returnself.people_manifest+"\n"+self.company_manifest
+
+def_extract_names_from_manifest(self,manifest:str)->list[str]:
+        importre
+names=[]
+
+formatchinre.finditer(r"\|\s*\[\[([^\]|]+)",manifest):
+            name=match.group(1).strip()
+ifnameandnamenotin["Name","---"]:
+                names.append(name)
+
+returnnames
+
+def_load_persona(vault_root:Path,resources_paths:dict)->str:
+    prompts_root=Path(resources_paths.get("prompts",vault_root/"Workflow"/"prompts"))
+persona_path=prompts_root/"persona.md"
+ifpersona_path.exists():
+        returnpersona_path.read_text()
+return""
+
+def_load_manifest(manifest_path:Path)->str:
+    ifmanifest_path.exists():
+        returnmanifest_path.read_text()
+return""
+
+def_list_projects(project_paths:list[Path])->list[str]:
+    names:list[str]=[]
+forprojects_dirinproject_paths:
+        ifnotprojects_dir.exists():
+            continue
+names.extend(
+folder.nameforfolderinprojects_dir.iterdir()
+iffolder.is_dir()andnotfolder.name.startswith("_")
+)
+returnnames
+
+def_load_glossary(vault_root:Path,resources_paths:dict)->dict[str,str]:
+    glossary_root=Path(resources_paths.get("entities",vault_root/"Workflow"/"entities"))
+glossary_path=glossary_root/"glossary.yaml"
+ifnotglossary_path.exists():
+        return{}
+
+try:
+        importyaml
+returnyaml.safe_load(glossary_path.read_text())or{}
+exceptException:
+        return{}
+
+@lru_cache(maxsize=1)
+def_load_aliases_cached(aliases_path:str)->dict[str,str]:
+    path=Path(aliases_path)
+ifnotpath.exists():
+        return{}
+
+try:
+        importyaml
+data=yaml.safe_load(path.read_text())or{}
+
+aliases={}
+forcanonical,variantsindata.items():
+            aliases[canonical.lower()]=canonical
+ifisinstance(variants,list):
+                forvariantinvariants:
+                    aliases[variant.lower()]=canonical
+elifisinstance(variants,str):
+                aliases[variants.lower()]=canonical
+
+returnaliases
+exceptException:
+        return{}
+
+def_load_aliases(vault_root:Path,resources_paths:dict)->dict[str,str]:
+    aliases_root=Path(resources_paths.get("entities",vault_root/"Workflow"/"entities"))
+aliases_path=aliases_root/"aliases.yaml"
+return_load_aliases_cached(str(aliases_path))
+
+def_extract_aliases_from_manifest(manifest:str)->dict[str,str]:
+    importre
+aliases={}
+
+lines=manifest.split('\n')
+header_idx=-1
+alias_col_idx=-1
+
+fori,lineinenumerate(lines):
+        if'| Name |'inline:
+            headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                ifh=='Aliases':
+                    alias_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0oralias_col_idx<0:
+        returnaliases
+
+forlineinlines[header_idx+2:]:
+        ifnotline.strip()ornotline.startswith('|'):
+            continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<alias_col_idx+1:
+            continue
+
+name=cols[1].strip()
+alias_str=cols[alias_col_idx].strip()ifalias_col_idx<len(cols)else""
+
+ifnameandalias_strandnamenotin["Name","---"]:
+
+            foraliasinalias_str.split(';'):
+                alias=alias.strip()
+ifaliasandalias.lower()!=name.lower():
+                    aliases[alias.lower()]=name
+
+returnaliases
+
+def_extract_acronyms_from_manifest(manifest:str)->dict[str,str]:
+    acronyms={}
+
+lines=manifest.split('\n')
+header_idx=-1
+acronym_col_idx=-1
+definition_col_idx=-1
+
+fori,lineinenumerate(lines):
+        if'| Name |'inline:
+            headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                ifh=='Acronym':
+                    acronym_col_idx=j
+ifh=='Definition':
+                    definition_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+        returnacronyms
+
+forlineinlines[header_idx+2:]:
+        ifnotline.strip()ornotline.startswith('|'):
+            continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+            continue
+
+name=cols[1].strip()
+acronym=cols[acronym_col_idx].strip()ifacronym_col_idx>0andacronym_col_idx<len(cols)else""
+definition=cols[definition_col_idx].strip()ifdefinition_col_idx>0anddefinition_col_idx<len(cols)else""
+
+ifacronymandnamenotin["Name","---"]:
+
+            foracrinacronym.split(';'):
+                acr=acr.strip()
+ifacr:
+                    acronyms[acr]={
+"full_name":name,
+"definition":definition
+}
+
+returnacronyms
+
+def_extract_candidate_names(content:str)->list[str]:
+    importre
+ifnotcontent:
+        return[]
+
+candidates=re.findall(r"\b[A-Z][a-zA-Z\.]+ [A-Z][a-zA-Z\.]+\b",content)
+
+seen=set()
+ordered=[]
+forcincandidates:
+        ifcnotinseen:
+            seen.add(c)
+ordered.append(c)
+returnordered[:10]
+
+def_quick_entity_scan(content:str,context:"ContextBundle")->list[str]:
+    importre
+mentioned=[]
+content_lower=content.lower()
+
+people_names=context._extract_names_from_manifest(context.people_manifest)
+fornameinpeople_names:
+        canonical=context.aliases.get(name.lower(),name)
+ifname.lower()incontent_lowerorcanonical.lower()incontent_lower:
+            mentioned.append(canonical)
+
+company_names=context._extract_names_from_manifest(context.company_manifest)
+fornameincompany_names:
+        canonical=context.aliases.get(name.lower(),name)
+ifname.lower()incontent_lowerorcanonical.lower()incontent_lower:
+            mentioned.append(canonical)
+
+forprojectincontext.project_list:
+        ifproject.lower()incontent_lower:
+            mentioned.append(project)
+
+returnmentioned[:20]
+
+def_load_entity_readmes(entities:list[str],vault_root:Path,entity_index:Optional[EntityIndex]=None)->dict[str,str]:
+    readmes={}
+
+forentityinentities:
+        readme=_find_entity_readme(entity,vault_root,entity_index)
+ifreadme:
+            summary=_summarize_readme(readme)
+ifsummary:
+                readmes[readme.parent.name]=summary
+
+returnreadmes
+
+def_find_entity_readme(entity:str,vault_root:Path,entity_index:Optional[EntityIndex]=None)->Optional[Path]:
+    ifentity_index:
+        folder=(
+entity_index.find_person(entity)
+orentity_index.find_company(entity)
+orentity_index.find_project(entity)
+)
+ifnotfolder:
+            forsearchin(
+entity_index.search_person,
+entity_index.search_company,
+entity_index.search_project,
+):
+                hits=search(entity,limit=1)
+ifhits:
+                    folder=hits[0]
+break
+iffolder:
+            readme_path=folder/"README.md"
+ifreadme_path.exists():
+                returnreadme_path
+
+people_path=vault_root/"VAST"/"People"/entity/"README.md"
+ifpeople_path.exists():
+        returnpeople_path
+
+customers_path=vault_root/"VAST"/"Customers and Partners"/entity/"README.md"
+ifcustomers_path.exists():
+        returncustomers_path
+
+projects_path=vault_root/"VAST"/"Projects"/entity/"README.md"
+ifprojects_path.exists():
+        returnprojects_path
+
+returnNone
+
+def_summarize_readme(readme_path:Path)->str:
+    try:
+        content=readme_path.read_text()
+
+summary_parts=[]
+
+importre
+
+role_match=re.search(r"Role.*?:\s*(.+)",content)
+ifrole_match:
+            summary_parts.append(f"Role: {role_match.group(1).strip()}")
+
+company_match=re.search(r"Company.*?:\s*(.+)",content)
+ifcompany_match:
+            summary_parts.append(f"Company: {company_match.group(1).strip()}")
+
+facts_match=re.search(r"## Key Facts\s*\n((?:- .+\n?)+)",content)
+iffacts_match:
+            facts=facts_match.group(1).strip().split("\n")[:3]
+summary_parts.append("Key Facts: "+"; ".join(f.strip("- ")forfinfacts))
+
+return"\n".join(summary_parts)ifsummary_partselse""
+
+exceptException:
+        return""
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/entities.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+fromdifflibimportget_close_matches
+frompathlibimportPath
+fromtypingimportOptional,Tuple,Any
+fromfunctoolsimportlru_cache
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+fromscripts.utils.configimportload_config
+
+classEntityIndex:
+
+    def__init__(self,vault_root:Path,config:Optional[dict[str,Any]]=None):
+        self.vault_root=vault_root
+self.config=configorload_config(vault_root_override=vault_root)
+paths=self.config.get("paths",{})
+work_paths=paths.get("work",{})
+personal_paths=paths.get("personal",{})
+resources=paths.get("resources",{})
+entities_root=resources.get("entities",self.vault_root/"Workflow"/"entities")
+
+self.people_dirs=[
+Path(work_paths.get("people",self.vault_root/"VAST"/"People")),
+Path(personal_paths.get("people",self.vault_root/"Personal"/"People")),
+]
+self.customer_dirs=[
+Path(work_paths.get("accounts",self.vault_root/"VAST"/"Customers and Partners")),
+]
+self.project_dirs=[
+Path(work_paths.get("projects",self.vault_root/"VAST"/"Projects")),
+Path(personal_paths.get("projects",self.vault_root/"Personal"/"Projects")),
+]
+self.alias_path=Path(entities_root)/"aliases.yaml"
+self._email_index:Optional[dict[str,Path]]=None
+self._name_index:Optional[dict[str,Path]]=None
+self._company_index:Optional[dict[str,Path]]=None
+self._project_index:Optional[dict[str,Path]]=None
+self._aliases:Optional[dict[str,str]]=None
+self._search_cache:dict[tuple[str,str],list[Path]]={}
+
+deffind_person(self,name:str,email:Optional[str]=None)->Optional[Path]:
+        self._ensure_indices()
+
+ifemail:
+            email_lower=email.strip().lower()
+ifemail_lowerinself._email_index:
+                returnself._email_index[email_lower]
+
+normalized=self.normalize_name(name)
+
+name_lower=normalized.lower()
+ifname_lowerinself._name_index:
+            returnself._name_index[name_lower]
+
+name_parts=name_lower.split()
+iflen(name_parts)>=2:
+            forfolder_name,folder_pathinself._name_index.items():
+                folder_parts=folder_name.split()
+iflen(folder_parts)>=2:
+                    first_initial=name_parts[0].strip(".")
+ifname_parts[0]==folder_parts[0]andname_parts[-1]==folder_parts[-1]:
+                        returnfolder_path
+iffirst_initialandfirst_initial[0]==folder_parts[0][0]andname_parts[-1]==folder_parts[-1]:
+                        returnfolder_path
+
+fuzzy=self.search_person(name,limit=1,cutoff=0.82)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+deffind_company(self,company:str)->Optional[Path]:
+        self._ensure_indices()
+
+company_lower=company.lower().strip()
+
+ifcompany_lowerinself._company_index:
+            returnself._company_index[company_lower]
+
+forfolder_name,folder_pathinself._company_index.items():
+            ifcompany_lowerinfolder_nameorfolder_nameincompany_lower:
+                returnfolder_path
+
+fuzzy=self.search_company(company,limit=1,cutoff=0.78)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+deffind_project(self,project:str)->Optional[Path]:
+        self._ensure_indices()
+
+project_lower=project.lower().strip()
+
+ifproject_lowerinself._project_index:
+            returnself._project_index[project_lower]
+
+forfolder_name,folder_pathinself._project_index.items():
+            ifproject_lowerinfolder_nameorfolder_nameinproject_lower:
+                returnfolder_path
+
+fuzzy=self.search_project(project,limit=1)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+defsearch_person(self,name:str,limit:int=3,cutoff:float=0.72)->list[Path]:
+        self._ensure_indices()
+normalized=self.normalize_name(name)
+cache_key=("person",normalized.lower())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+ifnormalized.lower()inself._name_index:
+            match=[self._name_index[normalized.lower()]]
+self._search_cache[cache_key]=match
+returnmatch
+
+matches=self._fuzzy_match(normalized,list(self._name_index.keys()),limit,cutoff)
+paths=[self._name_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+defsearch_company(self,company:str,limit:int=3,cutoff:float=0.7)->list[Path]:
+        self._ensure_indices()
+cache_key=("company",company.lower().strip())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+matches=self._fuzzy_match(company,list(self._company_index.keys()),limit,cutoff)
+paths=[self._company_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+defsearch_project(self,project:str,limit:int=3,cutoff:float=0.65)->list[Path]:
+        self._ensure_indices()
+cache_key=("project",project.lower().strip())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+matches=self._fuzzy_match(project,list(self._project_index.keys()),limit,cutoff)
+paths=[self._project_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+deffind_similar_people(self,name:str,limit:int=2,cutoff:float=0.82)->list[str]:
+        self._ensure_indices()
+normalized=self.normalize_name(name).lower()
+matches=[
+mforminself._fuzzy_match(normalized,list(self._name_index.keys()),limit+1,cutoff)
+ifm!=normalized
+]
+return[self._name_index[m].nameforminmatches[:limit]]
+
+deffind_similar_companies(self,name:str,limit:int=2,cutoff:float=0.8)->list[str]:
+        self._ensure_indices()
+name_lower=name.lower().strip()
+matches=[
+mforminself._fuzzy_match(name_lower,list(self._company_index.keys()),limit+1,cutoff)
+ifm!=name_lower
+]
+return[self._company_index[m].nameforminmatches[:limit]]
+
+deffind_similar_projects(self,name:str,limit:int=2,cutoff:float=0.8)->list[str]:
+        self._ensure_indices()
+name_lower=name.lower().strip()
+matches=[
+mforminself._fuzzy_match(name_lower,list(self._project_index.keys()),limit+1,cutoff)
+ifm!=name_lower
+]
+return[self._project_index[m].nameforminmatches[:limit]]
+
+defnormalize_name(self,name:str)->str:
+        self._ensure_aliases()
+
+name_lower=name.lower().strip()
+returnself._aliases.get(name_lower,name)
+
+deflist_people(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._name_index.keys())
+
+deflist_companies(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._company_index.keys())
+
+deflist_projects(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._project_index.keys())
+
+definvalidate(self):
+        self._email_index=None
+self._name_index=None
+self._company_index=None
+self._project_index=None
+self._search_cache={}
+
+def_fuzzy_match(self,query:str,choices:list[str],limit:int,cutoff:float)->list[str]:
+        ifnotqueryornotchoices:
+            return[]
+normalized=" ".join(query.lower().replace("."," ").split())
+choice_map={" ".join(c.split()):cforcinchoices}
+matches=get_close_matches(normalized,list(choice_map.keys()),n=limit,cutoff=cutoff)
+return[choice_map[m]forminmatches]
+
+def_ensure_indices(self):
+        ifself._email_indexisNone:
+            self._build_person_index()
+ifself._company_indexisNone:
+            self._build_company_index()
+ifself._project_indexisNone:
+            self._build_project_index()
+
+def_ensure_aliases(self):
+        ifself._aliasesisNone:
+            self._load_aliases()
+
+def_build_person_index(self):
+        fromscripts.utils.frontmatterimportparse_frontmatter
+
+self._email_index={}
+self._name_index={}
+
+forpeople_dirinself.people_dirs:
+            ifnotpeople_dir.exists():
+                continue
+
+forfolderinpeople_dir.iterdir():
+                ifnotfolder.is_dir()orfolder.name.startswith("_"):
+                    continue
+
+readme=folder/"README.md"
+ifnotreadme.exists():
+                    continue
+
+self._name_index[folder.name.lower()]=folder
+
+try:
+                    content=readme.read_text()
+fm,_=parse_frontmatter(content)
+iffmandfm.get("email"):
+                        email=fm["email"].strip().lower()
+ifemailandemail!="''":
+                            self._email_index[email]=folder
+exceptException:
+                    pass
+
+def_build_company_index(self):
+        self._company_index={}
+
+forcustomers_dirinself.customer_dirs:
+            ifnotcustomers_dir.exists():
+                continue
+forfolderincustomers_dir.iterdir():
+                iffolder.is_dir()andnotfolder.name.startswith("_"):
+                    self._company_index[folder.name.lower()]=folder
+
+def_build_project_index(self):
+        self._project_index={}
+
+forprojects_dirinself.project_dirs:
+            ifnotprojects_dir.exists():
+                continue
+forfolderinprojects_dir.iterdir():
+                iffolder.is_dir()andnotfolder.name.startswith("_"):
+                    self._project_index[folder.name.lower()]=folder
+
+def_load_aliases(self):
+        importyaml
+
+self._aliases={}
+aliases_path=self.alias_path
+
+ifnotaliases_path.exists():
+            return
+
+try:
+            data=yaml.safe_load(aliases_path.read_text())or{}
+
+categories=["people","accounts","projects","rob","rob_forums"]
+ifany(isinstance(data.get(cat),dict)forcatincategories):
+                forcategoryincategories:
+                    cat_aliases=data.get(category)
+ifnotisinstance(cat_aliases,dict):
+                        continue
+forkey,valueincat_aliases.items():
+                        ifnotkey:
+                            continue
+ifisinstance(value,list):
+                            canonical=str(key)
+self._aliases[canonical.lower()]=canonical
+foraliasinvalue:
+                                ifnotalias:
+                                    continue
+self._aliases[str(alias).lower()]=canonical
+elifisinstance(value,str):
+
+                            alias=str(key)
+canonical=str(value)
+self._aliases[canonical.lower()]=canonical
+self._aliases[alias.lower()]=canonical
+return
+
+forkey,valueindata.items():
+                ifnotkey:
+                    continue
+canonical=str(key)
+self._aliases[canonical.lower()]=canonical
+ifisinstance(value,list):
+                    foraliasinvalue:
+                        ifnotalias:
+                            continue
+self._aliases[str(alias).lower()]=canonical
+elifisinstance(value,str):
+                    self._aliases[str(key).lower()]=str(value)
+exceptException:
+            pass
+
+_entity_index:Optional[EntityIndex]=None
+
+defget_entity_index(vault_root:Optional[Path]=None,config:Optional[dict[str,Any]]=None)->EntityIndex:
+    global_entity_index
+
+if_entity_indexisNone:
+        ifvault_rootisNone:
+
+            fromscripts.utilsimportvault_rootasget_vault_root
+vault_root=get_vault_root()
+_entity_index=EntityIndex(vault_root,config=config)
+
+return_entity_index
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/envelope.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+fromenumimportEnum
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any
+frompydanticimportBaseModel,Field,ConfigDict
+
+classContentType(str,Enum):
+    EMAIL="email"
+TRANSCRIPT="transcript"
+DOCUMENT="document"
+VOICE="voice"
+SMS="sms"
+
+classContentEnvelope(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+source_path:Path
+content_type:ContentType
+
+raw_content:str
+
+date:str
+title:str
+participants:list[str]=Field(default_factory=list)
+
+metadata:dict[str,Any]=Field(default_factory=dict)
+
+created_at:datetime=Field(default_factory=datetime.now)
+content_hash:Optional[str]=None
+
+def__str__(self)->str:
+        returnf"{self.content_type.value}: {self.source_path.name}"
+
+classEmailMetadata(BaseModel):
+
+    sender_name:Optional[str]=None
+sender_email:Optional[str]=None
+recipients:list[str]=Field(default_factory=list)
+recipients_emails:list[str]=Field(default_factory=list)
+recipients_detail:list[dict]=Field(default_factory=list)
+cc:list[str]=Field(default_factory=list)
+subject:str=""
+thread_id:Optional[str]=None
+in_reply_to:Optional[str]=None
+is_reply:bool=False
+
+classTranscriptMetadata(BaseModel):
+
+    speakers:list[str]=Field(default_factory=list)
+duration_estimate:Optional[str]=None
+source_app:str="MacWhisper"
+has_diarization:bool=True
+
+classDocumentMetadata(BaseModel):
+
+    document_type:str="general"
+author:Optional[str]=None
+source_url:Optional[str]=None
+file_type:str="markdown"
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/extract.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importre
+importsys
+importtime
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope,ContentType
+from.contextimportContextBundle
+from.modelsimport(
+UnifiedExtraction,ContactInfo,Fact,TaskItem,
+MentionedEntity,EntityRef,SuggestedOutputs
+)
+fromscripts.utilsimportget_logger,get_model_config
+
+classUnifiedExtractor:
+
+    def__init__(self,vault_root:Path,verbose:bool=False):
+        self.vault_root=vault_root
+self.verbose=verbose
+self._client=None
+self._context:Optional[ContextBundle]=None
+self.logger=get_logger("unified_extractor")
+self.last_usage:dict={}
+
+@property
+defclient(self):
+        ifself._clientisNone:
+            fromscripts.utils.ai_clientimportget_openai_client
+self._client=get_openai_client("unified_extractor")
+returnself._client
+
+defextract(self,envelope:ContentEnvelope,context:Optional[ContextBundle]=None)->UnifiedExtraction:
+
+        ifcontextisNone:
+            context=ContextBundle.load(self.vault_root,envelope)
+
+self.last_usage={}
+
+system_prompt=self._build_system_prompt(envelope,context)
+user_prompt=self._build_user_prompt(envelope)
+
+ifself.verbose:
+            _,prefix_hash=context.get_cacheable_prefix()
+self.logger.info(f"System prompt length={len(system_prompt)} chars, cacheable prefix hash={prefix_hash}")
+
+task_key=f"extract_{envelope.content_type.value}"
+model_config=get_model_config(task_key)
+
+call_start=time.time()
+try:
+            withself.logger.context(phase="extract",file=str(envelope.source_path)):
+                response=self.client.chat.completions.create(
+model=model_config["model"],
+messages=[
+{"role":"system","content":system_prompt},
+{"role":"user","content":user_prompt},
+],
+temperature=model_config.get("temperature",0.0),
+
+)
+
+latency_ms=int((time.time()-call_start)*1000)
+self.last_usage=self._capture_usage(response,model_config["model"],latency_ms)
+
+ifself.verboseandself.last_usage:
+                prompt_tokens=self.last_usage.get("prompt_tokens",0)
+cached_tokens=self.last_usage.get("cached_tokens",0)
+ifself.last_usage.get("cache_hit"):
+                    cache_pct=(cached_tokens/prompt_tokens*100)ifprompt_tokens>0else0
+self.logger.info(f"Cache HIT: {cached_tokens}/{prompt_tokens} tokens ({cache_pct:.0f}%)")
+elifprompt_tokens:
+                    self.logger.info(f"Cache miss: {prompt_tokens} prompt tokens")
+
+result=response.choices[0].message.content.strip()
+
+ifresult.startswith("```"):
+                result=re.sub(r'^```\w*\n?','',result)
+result=re.sub(r'\n?```$','',result)
+
+data=json.loads(result)
+
+returnself._build_extraction(envelope,data)
+
+exceptjson.JSONDecodeErrorase:
+            returnself._build_minimal_extraction(envelope,f"JSON parse error: {e}")
+exceptExceptionase:
+            self.logger.error("Extraction failed",exc_info=True)
+raiseRuntimeError(f"Extraction failed: {e}")
+
+def_capture_usage(self,response,model:str,latency_ms:int)->dict:
+        usage=getattr(response,"usage",None)
+prompt_tokens=self._get_usage_value(usage,"prompt_tokens")
+completion_tokens=self._get_usage_value(usage,"completion_tokens")
+total_tokens=self._get_usage_value(usage,"total_tokens")
+cached_tokens=self._get_usage_value(usage,"cached_tokens")
+
+ifnotcached_tokensandusageisnotNone:
+            details=getattr(usage,"prompt_tokens_details",None)
+ifisinstance(details,dict):
+                cached_tokens=details.get("cached_tokens",0)or0
+elifdetailsisnotNone:
+                cached_tokens=getattr(details,"cached_tokens",0)or0
+
+iftotal_tokens==0:
+            total_tokens=(prompt_tokensor0)+(completion_tokensor0)
+
+cache_hit=cached_tokens>0
+
+return{
+"model":model,
+"prompt_tokens":prompt_tokensor0,
+"completion_tokens":completion_tokensor0,
+"total_tokens":total_tokensor0,
+"cached_tokens":cached_tokensor0,
+"cache_hit":cache_hit,
+"cache_savings_tokens":cached_tokensor0,
+"latency_ms":latency_ms,
+}
+
+def_get_usage_value(self,usage,key:str)->int:
+        ifusageisNone:
+            return0
+ifisinstance(usage,dict):
+            returnusage.get(key,0)or0
+returngetattr(usage,key,0)or0
+
+def_build_system_prompt(self,envelope:ContentEnvelope,context:ContextBundle)->str:
+
+        context_section=context.get_extraction_context(compact=True,verbose=self.verbose)
+
+type_guidance=self._get_type_guidance(envelope.content_type)
+
+instructions=f"""<OMITTED 6241 chars>\nYou are extracting structured knowledge from content for a personal knowledge management system.
+
+{context_section}
+
+## CONTENT TYPE
+This is a {envelope.content_type.value}. {type_guidance}
+
+## EXTRAC\n...\nture"}}
+
+   This helps us build our glossary over time. Only capture NEW aliases/acronyms not
+   already in the glossary provided above.
+
+Return ONLY valid JSON, no markdown fences or explanation."""
+
+returninstructions
+
+def_get_type_guidance(self,content_type:ContentType)->str:
+
+        guidance={
+ContentType.EMAIL:"""
+Pay special attention to:
+- Sender and recipient information (extract all contact details)
+- Whether a response is needed (direct questions, requests)
+- Urgency signals (deadline mentions, "urgent", "ASAP")
+- Commitments made by sender or requested from me
+- Any scheduling/calendar mentions for calendar_invite suggestion""",
+
+ContentType.TRANSCRIPT:"""
+This is a meeting transcript with speaker labels.
+Pay special attention to:
+- **PARTICIPANT COUNT**: How many distinct speakers/people are in this meeting?
+  - 2 people (1:1) → note_type: "people", primary_entity is the OTHER person
+  - Multiple VAST employees → note_type: "projects"
+  - External customer/partner present → note_type: "customer"
+- Identify all participants from speaker labels and mentions
+- Capture action items with clear owners
+- Note decisions made during the meeting
+- Extract facts learned about people, companies, or projects
+- Summarize the main discussion points as topics""",
+
+ContentType.DOCUMENT:"""
+This is a document or article.
+Pay special attention to:
+- Key information and facts
+- Relevant entities mentioned
+- Any action items or recommendations
+- The main topics covered""",
+
+ContentType.VOICE:"""
+This is a voice memo transcription.
+Pay special attention to:
+- Tasks and reminders mentioned
+- Ideas or thoughts to capture
+- References to people or projects
+- Follow-up items""",
+}
+
+returnguidance.get(content_type,"Extract all relevant information.")
+
+def_build_user_prompt(self,envelope:ContentEnvelope)->str:
+
+        content=envelope.raw_content
+iflen(content)>12000:
+            content=content[:12000]+"\n\n[... content truncated ...]"
+
+returnf"""Extract knowledge from this {envelope.content_type.value}:
+
+Date: {envelope.date}
+Title: {envelope.title}
+Participants: {', '.join(envelope.participants) if envelope.participants else 'Unknown'}
+
+---
+
+{content}"""
+
+def_build_extraction(self,envelope:ContentEnvelope,data:dict)->UnifiedExtraction:
+
+        primary_entity=None
+ifdata.get("primary_entity"):
+            pe=data["primary_entity"]
+primary_entity=EntityRef(
+entity_type=pe.get("entity_type","person"),
+name=pe.get("name",""),
+confidence=pe.get("confidence",0.8)
+)
+
+contacts=[]
+
+forcindata.get("contacts",[]):
+            contacts.append(ContactInfo(**c))
+
+forcindata.get("contacts_mentioned",[]):
+            contacts.append(ContactInfo(**c))
+
+ifdata.get("sender"):
+            sender=data["sender"]
+ifisinstance(sender,dict)andsender.get("name"):
+                contacts.append(ContactInfo(**sender))
+
+facts=[]
+forfindata.get("facts",[]):
+            about=None
+iff.get("about_entity"):
+                about=EntityRef(**f["about_entity"])
+facts.append(Fact(
+text=f.get("text",""),
+about_entity=about,
+fact_type=f.get("fact_type","general"),
+confidence=f.get("confidence",0.8)
+))
+
+tasks=[]
+fortindata.get("tasks",[]):
+            tasks.append(TaskItem(**t))
+
+mentioned=[]
+formindata.get("mentioned_entities",[]):
+            mentioned.append(MentionedEntity(
+entity_type=m.get("entity_type","person"),
+name=m.get("name",""),
+role=m.get("role"),
+facts_about=m.get("facts_about",[]),
+confidence=m.get("confidence",0.8)
+))
+
+suggested=SuggestedOutputs()
+ifdata.get("suggested_outputs"):
+            so=data["suggested_outputs"]
+suggested=SuggestedOutputs(
+needs_reply=so.get("needs_reply",False),
+reply_urgency=so.get("reply_urgency","normal"),
+reply_context=so.get("reply_context"),
+)
+
+allowed_note_types={"customer","people","projects","rob","journal","partners","travel"}
+note_type=data.get("note_type","people")
+ifnote_typenotinallowed_note_types:
+            note_type="people"
+
+participants_raw=data.get("participants")
+participants:list[str]=[]
+ifisinstance(participants_raw,list):
+            participants=[str(p).strip()forpinparticipants_rawifstr(p).strip()]
+elifisinstance(participants_raw,str):
+
+            participants=[p.strip()forpinre.split(r"[;,]",participants_raw)ifp.strip()]
+
+ifnotparticipants:
+            participants=[p.strip()forpin(envelope.participantsor[])ifstr(p).strip()]
+
+ifnotparticipantsandprimary_entityandprimary_entity.entity_type=="person"andprimary_entity.name:
+            participants=[primary_entity.name]
+
+ifnotparticipants:
+            participants=["Jason Vallery"]
+
+mentions={
+"people":participants,
+"projects":[e["name"]foreindata.get("mentioned_entities",[])ife.get("entity_type")=="project"],
+"accounts":[e["name"]foreindata.get("mentioned_entities",[])ife.get("entity_type")=="company"],
+}
+
+returnUnifiedExtraction(
+source_file=str(envelope.source_path),
+content_type=envelope.content_type.value,
+processed_at=datetime.now(),
+note_type=note_type,
+primary_entity=primary_entity,
+date=envelope.date,
+title=data.get("title",envelope.title),
+summary=data.get("summary",""),
+participants=participants,
+contacts=contacts,
+facts=facts,
+decisions=data.get("decisions",[]),
+topics=data.get("topics",[]),
+tasks=tasks,
+questions=data.get("questions",[]),
+commitments=data.get("commitments",[]),
+mentioned_entities=mentioned,
+mentions=mentions,
+email_requires_response=data.get("email_requires_response",False),
+email_urgency=data.get("email_urgency","medium"),
+email_type=data.get("email_type","other"),
+suggested_outputs=suggested,
+confidence=data.get("confidence",0.8)
+)
+
+def_build_minimal_extraction(self,envelope:ContentEnvelope,error:str)->UnifiedExtraction:
+        returnUnifiedExtraction(
+source_file=str(envelope.source_path),
+content_type=envelope.content_type.value,
+processed_at=datetime.now(),
+note_type="people",
+date=envelope.date,
+title=envelope.title,
+summary=f"Extraction failed: {error}",
+participants=envelope.participants,
+confidence=0.0
+)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/models.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+fromdatetimeimportdatetime
+fromtypingimportOptional,Literal,Any
+frompydanticimportBaseModel,Field,ConfigDict
+
+classEntityRef(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+entity_type:Literal["person","company","project"]
+name:str
+confidence:float=0.8
+
+classContactInfo(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+name:str
+email:Optional[str]=None
+phone:Optional[str]=None
+title:Optional[str]=None
+company:Optional[str]=None
+linkedin:Optional[str]=None
+
+classFact(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+about_entity:Optional[EntityRef]=None
+fact_type:str="general"
+confidence:float=0.8
+
+classTaskItem(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+owner:Optional[str]=None
+due:Optional[str]=None
+priority:str="medium"
+
+related_person:Optional[str]=None
+related_project:Optional[str]=None
+related_customer:Optional[str]=None
+
+classMentionedEntity(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+entity_type:Literal["person","company","project"]
+name:str
+role:Optional[str]=None
+facts_about:list[str]=Field(default_factory=list)
+confidence:float=0.8
+
+classDiscoveredAlias(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+alias:str
+canonical_name:str
+confidence:float=0.8
+
+classDiscoveredAcronym(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+acronym:str
+expansion:str
+project_name:Optional[str]=None
+confidence:float=0.8
+
+classCalendarSuggestion(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+title:str
+proposed_date:Optional[str]=None
+proposed_time:Optional[str]=None
+duration_minutes:int=30
+attendees:list[str]=Field(default_factory=list)
+description:Optional[str]=None
+
+classReminderSuggestion(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+text:str
+remind_date:str
+related_entity:Optional[str]=None
+
+classSuggestedOutputs(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+needs_reply:bool=False
+reply_urgency:str="normal"
+reply_context:Optional[str]=None
+
+calendar_invite:Optional[CalendarSuggestion]=None
+follow_up_reminder:Optional[ReminderSuggestion]=None
+
+classUnifiedExtraction(BaseModel):
+
+    model_config=ConfigDict(extra="ignore")
+
+version:str="2.0"
+source_file:str
+content_type:str
+processed_at:datetime
+
+note_type:Literal["customer","people","projects","rob","journal","partners","travel"]
+primary_entity:Optional[EntityRef]=None
+
+date:str
+title:str
+summary:str
+
+participants:list[str]=Field(default_factory=list)
+contacts:list[ContactInfo]=Field(default_factory=list)
+
+facts:list[Fact]=Field(default_factory=list)
+decisions:list[str]=Field(default_factory=list)
+topics:list[str]=Field(default_factory=list)
+
+tasks:list[TaskItem]=Field(default_factory=list)
+questions:list[str]=Field(default_factory=list)
+commitments:list[str]=Field(default_factory=list)
+
+mentioned_entities:list[MentionedEntity]=Field(default_factory=list)
+
+discovered_aliases:list[DiscoveredAlias]=Field(default_factory=list)
+discovered_acronyms:list[DiscoveredAcronym]=Field(default_factory=list)
+
+mentions:dict[str,list[str]]=Field(
+default_factory=lambda:{"people":[],"projects":[],"accounts":[]}
+)
+
+email_requires_response:bool=False
+email_urgency:str="medium"
+email_type:str="other"
+
+suggested_outputs:SuggestedOutputs=Field(default_factory=SuggestedOutputs)
+
+confidence:float=0.8
+
+defget_entities_with_facts(self)->list[MentionedEntity]:
+        return[eforeinself.mentioned_entitiesife.facts_about]
+
+defget_all_mentioned_people(self)->list[str]:
+        people=set(self.participants)
+
+forcontactinself.contacts:
+            ifcontact.name:
+                people.add(contact.name)
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="person":
+                people.add(entity.name)
+
+people.update(self.mentions.get("people",[]))
+
+returnlist(people)
+
+defget_all_mentioned_companies(self)->list[str]:
+        companies=set()
+
+forcontactinself.contacts:
+            ifcontact.company:
+                companies.add(contact.company)
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="company":
+                companies.add(entity.name)
+
+companies.update(self.mentions.get("accounts",[]))
+
+returnlist(companies)
+
+defget_all_mentioned_projects(self)->list[str]:
+        projects=set()
+
+forentityinself.mentioned_entities:
+            ifentity.entity_type=="project":
+                projects.add(entity.name)
+
+projects.update(self.mentions.get("projects",[]))
+
+returnlist(projects)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/outputs.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importsys
+importre
+importyaml
+fromdatetimeimportdatetime,timedelta
+frompathlibimportPath
+fromtypingimportOptional
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.modelsimportUnifiedExtraction,SuggestedOutputs,CalendarSuggestion
+fromscripts.utilsimportget_model_config,workflow_root
+
+def_load_persona()->dict:
+    persona_path=workflow_root()/"profiles"/"jason_persona.yaml"
+ifpersona_path.exists():
+        withopen(persona_path)asf:
+            returnyaml.safe_load(f)
+return{}
+
+classOutputGenerator:
+
+    def__init__(self,vault_root:Path,dry_run:bool=False,verbose:bool=False):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+self.verbose=verbose
+
+self.outbox_dir=vault_root/"Outbox"
+self.replies_dir=self.outbox_dir
+self.calendar_dir=self.outbox_dir/"_calendar"
+self.prompts_dir=self.outbox_dir/"_prompts"
+
+ifnotdry_run:
+            self.outbox_dir.mkdir(parents=True,exist_ok=True)
+self.calendar_dir.mkdir(parents=True,exist_ok=True)
+self.prompts_dir.mkdir(parents=True,exist_ok=True)
+
+def_as_vault_relative(self,path:Path)->str:
+        try:
+            returnstr(path.relative_to(self.vault_root))
+exceptException:
+            returnstr(path)
+
+defgenerate_all(
+self,
+extraction:UnifiedExtraction,
+context_bundle:Optional[object]=None,
+source_content:str="",
+force_reply:bool=False
+)->dict:
+        outputs={
+"reply":None,
+"calendar":None,
+"reminder":None,
+"tasks":[],
+}
+
+suggested=extraction.suggested_outputs
+
+ifsuggested.needs_replyorforce_reply:
+            outputs["reply"]=self.generate_reply(extraction,context_bundle,source_content)
+
+ifsuggested.calendar_invite:
+            outputs["calendar"]=self.generate_calendar_invite(extraction)
+
+ifsuggested.follow_up_reminder:
+            outputs["reminder"]=self.generate_reminder(extraction)
+
+ifextraction.tasks:
+            outputs["tasks"]=self.emit_tasks(extraction)
+
+returnoutputs
+
+defgenerate_reply(
+self,
+extraction:UnifiedExtraction,
+context_bundle:Optional[object]=None,
+source_content:str=""
+)->Optional[Path]:
+        suggested=extraction.suggested_outputs
+
+sender="Unknown"
+sender_email=""
+ifextraction.contacts:
+            first_contact=extraction.contacts[0]
+sender=first_contact.nameiffirst_contact.nameelse"Unknown"
+sender_email=first_contact.emailor""
+elifextraction.participants:
+
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+ifsender=="Unknown"andextraction.participants:
+                sender=extraction.participants[0]
+
+today=datetime.now().strftime("%Y-%m-%d")
+subject_slug=re.sub(r"[^\w\s-]","",extraction.titleor"email")
+subject_slug=re.sub(r"\s+","-",subject_slug).strip("-")[:40]or"email"
+
+filename=f"{today}_Reply-To_{subject_slug}.md"
+output_path=self.replies_dir/filename
+
+counter=1
+whileoutput_path.exists():
+            filename=f"{today}_Reply-To_{subject_slug}_{counter}.md"
+output_path=self.replies_dir/filename
+counter+=1
+
+prompt_path=self.prompts_dir/f"{output_path.stem}.prompt.json"
+prompt_ref=self._as_vault_relative(prompt_path)
+model_config=get_model_config("draft_responses")
+
+draft_body=self._build_reply_body(
+extraction,
+suggested.reply_contextor"",
+source_content,
+prompt_path=prompt_path,
+draft_path=output_path,
+context_bundle=context_bundle,
+)
+
+to_field=f"{sender} <{sender_email}>"ifsender_emailelsesender
+
+content=f"""---
+type: draft-reply
+status: pending
+created: "{datetime.now().isoformat()}"
+urgency: "{suggested.reply_urgency}"
+to: "{to_field}"
+subject: "Re: {extraction.title}"
+source_file: "{extraction.source_file}"
+ai_model: "{model_config.get('model', '')}"
+ai_temperature: {float(model_config.get('temperature', 0.7))}
+prompt_file: "{prompt_ref}"
+---
+
+# Draft Reply to {sender}
+
+**Regarding**: {extraction.title}
+**Urgency**: {suggested.reply_urgency}
+
+---
+
+## Key Points to Address
+
+{suggested.reply_context or "No specific points identified"}
+
+---
+
+## Draft Response
+
+{draft_body}
+
+---
+
+## Original Summary
+
+{extraction.summary}
+
+---
+
+*This draft was auto-generated. Edit and send via your email client.*
+"""
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would generate reply: {output_path}")
+returnoutput_path
+
+output_path.write_text(content)
+
+ifself.verbose:
+            print(f"  Generated draft reply: {output_path.name}")
+
+returnoutput_path
+
+def_build_reply_body(
+self,
+extraction:UnifiedExtraction,
+reply_context:str,
+source_content:str="",
+*,
+prompt_path:Optional[Path]=None,
+draft_path:Optional[Path]=None,
+context_bundle:Optional[object]=None,
+)->str:
+        ifself.dry_run:
+            returnself._build_template_reply(extraction,reply_context)
+
+try:
+            returnself._generate_llm_reply(
+extraction,
+reply_context,
+source_content,
+prompt_path=prompt_path,
+draft_path=draft_path,
+context_bundle=context_bundle,
+)
+exceptExceptionase:
+            ifself.verbose:
+                print(f"  [WARN] LLM reply generation failed: {e}, using template fallback")
+returnself._build_template_reply(extraction,reply_context)
+
+def_generate_llm_reply(
+self,
+extraction:UnifiedExtraction,
+reply_context:str,
+source_content:str="",
+*,
+prompt_path:Optional[Path]=None,
+draft_path:Optional[Path]=None,
+context_bundle:Optional[object]=None,
+)->str:
+        fromscripts.utils.ai_clientimportget_openai_client
+
+model_config=get_model_config("draft_responses")
+persona=_load_persona()
+
+identity=persona.get("identity",{})
+style=persona.get("style",{})
+
+sender="Unknown"
+ifextraction.contacts:
+            sender=extraction.contacts[0].nameor"Unknown"
+elifextraction.participants:
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+first_name=sender.split()[0]ifsender!="Unknown"else"there"
+
+questions=extraction.questionsifhasattr(extraction,'questions')else[]
+commitments=extraction.commitmentsifhasattr(extraction,'commitments')else[]
+
+vault_context=""
+ifcontext_bundleandhasattr(context_bundle,"get_dynamic_suffix"):
+            try:
+                vault_context=context_bundle.get_dynamic_suffix()or""
+exceptException:
+                vault_context=""
+
+raw_excerpt=(source_contentor"").strip()
+max_chars=8000
+iflen(raw_excerpt)>max_chars:
+            raw_excerpt=raw_excerpt[:max_chars].rstrip()+"\n\n[...TRUNCATED...]"
+
+system_prompt=f"""<OMITTED 1252 chars>\nYou are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
+
+## COMMUNICATION STYLE
+- Direct but Empathetic\n...\nonable assumption and answer
+2. Acknowledge you'll need to check and get back to them with a specific timeframe
+
+Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
+
+user_prompt=f"""Write a reply to {sender} about: {extraction.title}
+
+## SOURCE EMAIL (VERBATIM)
+{raw_excerpt or "[No source content provided]"}
+
+## EMAIL SUMMARY
+{extraction.summary}
+
+## KEY POINTS TO ADDRESS
+{reply_context or "No specific points identified"}
+
+## QUESTIONS ASKED
+{json.dumps(questions) if questions else "None"}
+
+## COMMITMENTS MADE
+{json.dumps(commitments) if commitments else "None"}
+
+## CONTEXT
+- Recipient first name: {first_name}
+- Urgency: {extraction.suggested_outputs.reply_urgency if extraction.suggested_outputs else "normal"}
+
+## RELEVANT CONTEXT FROM MY NOTES (PRIVATE - DO NOT QUOTE VERBATIM)
+{vault_context or "None"}
+
+Write the complete email body now (greeting through signature):"""
+
+messages=[
+{"role":"system","content":system_prompt},
+{"role":"user","content":user_prompt},
+]
+
+ifprompt_pathandnotself.dry_run:
+            try:
+                prompt_payload={
+"created":datetime.now().isoformat(),
+"operation":"draft_reply",
+"model":model_config.get("model",""),
+"temperature":model_config.get("temperature",0.7),
+"source_file":extraction.source_file,
+"draft_path":str(draft_path)ifdraft_pathelseNone,
+"messages":messages,
+}
+prompt_path.write_text(json.dumps(prompt_payload,indent=2))
+exceptExceptionasexc:
+                ifself.verbose:
+                    print(f"  [WARN] Failed to write prompt artifact: {exc}")
+
+client=get_openai_client("pipeline.outputs.generate_reply")
+ifdraft_path:
+            client.set_context(
+{
+"source_file":extraction.source_file,
+"draft_path":str(draft_path),
+"prompt_path":str(prompt_path)ifprompt_pathelseNone,
+}
+)
+
+response=client.chat.completions.create(
+model=model_config["model"],
+messages=messages,
+temperature=model_config.get("temperature",0.7),
+)
+
+returnresponse.choices[0].message.content.strip()
+
+def_build_template_reply(self,extraction:UnifiedExtraction,reply_context:str)->str:
+        questions=extraction.questionsifhasattr(extraction,'questions')else[]
+commitments=extraction.commitmentsifhasattr(extraction,'commitments')else[]
+
+body_parts=[]
+
+sender="there"
+ifextraction.contacts:
+            sender=extraction.contacts[0].nameor"there"
+elifextraction.participants:
+            forpinextraction.participants:
+                ifp.lower()notin("myself","jason vallery","jason"):
+                    sender=p
+break
+first_name=sender.split()[0]ifsender!="there"else"there"
+body_parts.append(f"Hi {first_name},")
+body_parts.append("")
+
+ifreply_context:
+            body_parts.append("Thank you for your email. Here's my response:")
+body_parts.append("")
+forpointinreply_context.split(". "):
+                ifpoint.strip():
+                    body_parts.append(f"- {point.strip()}")
+body_parts.append("")
+
+ifquestions:
+            body_parts.append("To answer your questions:")
+forqinquestions[:3]:
+                body_parts.append(f"- {q}: [TODO: Add answer]")
+body_parts.append("")
+
+ifcommitments:
+            body_parts.append("I'll follow up on:")
+forcincommitments[:3]:
+                body_parts.append(f"- {c}")
+body_parts.append("")
+
+body_parts.append("Let me know if you have any questions.")
+body_parts.append("")
+body_parts.append("Best,")
+body_parts.append("Jason")
+
+return"\n".join(body_parts)
+
+defgenerate_calendar_invite(self,extraction:UnifiedExtraction)->Optional[Path]:
+        cal_suggest=extraction.suggested_outputs.calendar_invite
+
+ifnotcal_suggest:
+            returnNone
+
+date_str=datetime.now().strftime("%Y-%m-%d_%H%M%S")
+safe_title="".join(cifc.isalnum()orcin"- "else"_"forcincal_suggest.title)[:30]
+filename=f"{date_str}_mtg_{safe_title}.ics"
+
+output_path=self.calendar_dir/filename
+
+try:
+            ifcal_suggest.proposed_date:
+                start_date=datetime.strptime(cal_suggest.proposed_date,"%Y-%m-%d")
+
+start_dt=start_date.replace(hour=10,minute=0)
+else:
+
+                start_dt=datetime.now().replace(hour=10,minute=0,second=0,microsecond=0)+timedelta(days=1)
+exceptValueError:
+            start_dt=datetime.now().replace(hour=10,minute=0,second=0,microsecond=0)+timedelta(days=1)
+
+duration=cal_suggest.duration_minutesor30
+end_dt=start_dt+timedelta(minutes=duration)
+
+dtstart=start_dt.strftime("%Y%m%dT%H%M%S")
+dtend=end_dt.strftime("%Y%m%dT%H%M%S")
+dtstamp=datetime.now().strftime("%Y%m%dT%H%M%SZ")
+uid=f"{date_str}-{extraction.source_file.replace('/', '-')}"
+
+attendees=cal_suggest.attendeesor[]
+attendee_lines="\n".join(
+f"ATTENDEE;ROLE=REQ-PARTICIPANT:mailto:{a}@example.com"
+forainattendeesifa
+)
+
+ics_content=f"""BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//VAST Notes Pipeline//Calendar Generator//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:{uid}
+DTSTAMP:{dtstamp}
+DTSTART:{dtstart}
+DTEND:{dtend}
+SUMMARY:{cal_suggest.title}
+DESCRIPTION:Auto-generated from email/meeting notes.\\nSource: {extraction.source_file}
+{attendee_lines}
+STATUS:TENTATIVE
+END:VEVENT
+END:VCALENDAR
+"""
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would generate calendar: {output_path}")
+returnoutput_path
+
+output_path.write_text(ics_content)
+
+ifself.verbose:
+            print(f"  Generated calendar invite: {output_path.name}")
+
+returnoutput_path
+
+defgenerate_reminder(self,extraction:UnifiedExtraction)->Optional[Path]:
+        reminder=extraction.suggested_outputs.follow_up_reminder
+
+ifnotreminder:
+            returnNone
+
+tasks_inbox=self.vault_root/"TASKS_INBOX.md"
+
+reminder_text=reminder.text
+remind_date=reminder.remind_dateor(datetime.now()+timedelta(days=3)).strftime("%Y-%m-%d")
+
+task_line=f"- [?] {reminder_text} 📅 {remind_date} #task #proposed #auto\n"
+
+ifself.dry_run:
+            ifself.verbose:
+                print(f"  [DRY RUN] Would add reminder: {task_line.strip()}")
+returntasks_inbox
+
+self._append_task_to_inbox(task_line)
+
+ifself.verbose:
+            print(f"  Added reminder to TASKS_INBOX.md")
+
+returntasks_inbox
+
+defemit_tasks(self,extraction:UnifiedExtraction)->list[str]:
+        ifnotextraction.tasks:
+            return[]
+
+priority_emoji={
+"highest":"🔺",
+"high":"⏫",
+"medium":"🔼",
+"low":"🔽",
+"lowest":"⏬",
+}
+
+task_lines=[]
+
+fortaskinextraction.tasks:
+
+            parts=[f"- [?] {task.text}"]
+
+iftask.ownerandtask.owner.lower()notin["myself","me","i"]:
+                parts.append(f"@{task.owner}")
+
+iftask.due:
+                parts.append(f"📅 {task.due}")
+
+priority=task.priority.lower()iftask.priorityelse"medium"
+ifpriorityinpriority_emoji:
+                parts.append(priority_emoji[priority])
+
+parts.append("#task #proposed #auto")
+
+task_line=" ".join(parts)+"\n"
+task_lines.append(task_line)
+
+ifnotself.dry_run:
+                self._append_task_to_inbox(task_line)
+elifself.verbose:
+                print(f"  [DRY RUN] Would emit task: {task_line.strip()}")
+
+ifself.verboseandnotself.dry_run:
+            print(f"  Emitted {len(task_lines)} tasks to TASKS_INBOX.md")
+
+returntask_lines
+
+def_append_task_to_inbox(self,task_line:str):
+        tasks_inbox=self.vault_root/"TASKS_INBOX.md"
+
+iftasks_inbox.exists():
+            existing=tasks_inbox.read_text()
+
+if"## Inbox"inexisting:
+                existing=existing.replace("## Inbox\n",f"## Inbox\n{task_line}")
+else:
+                existing+=f"\n{task_line}"
+tasks_inbox.write_text(existing)
+else:
+            tasks_inbox.write_text(f"# Tasks Inbox\n\n## Inbox\n{task_line}")
+
+defgenerate_outputs_from_extraction(
+extraction:UnifiedExtraction,
+vault_root:Path,
+dry_run:bool=False,
+verbose:bool=False,
+)->dict:
+    generator=OutputGenerator(vault_root,dry_run=dry_run,verbose=verbose)
+returngenerator.generate_all(extraction)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/patch.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional
+frompydanticimportBaseModel,Field
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.modelsimportUnifiedExtraction,MentionedEntity
+from.entitiesimportEntityIndex
+
+classPatchOperation(BaseModel):
+
+    operation:str
+target_path:str
+target_entity:str
+
+template:Optional[str]=None
+template_context:Optional[dict]=None
+
+add_frontmatter:Optional[dict]=None
+add_facts:Optional[list[str]]=None
+add_topics:Optional[list[str]]=None
+add_decisions:Optional[list[str]]=None
+add_context:Optional[str]=None
+add_tasks:Optional[list[dict]]=None
+
+add_wikilinks:Optional[list[str]]=None
+
+classManifestPatch(BaseModel):
+
+    manifest_type:str
+manifest_path:str
+
+person_name:Optional[str]=None
+aliases_to_add:list[str]=Field(default_factory=list)
+
+project_name:Optional[str]=None
+acronym:Optional[str]=None
+definition:Optional[str]=None
+
+classChangePlan(BaseModel):
+
+    version:str="2.0"
+source_file:str
+extraction_file:Optional[str]=None
+created_at:datetime=Field(default_factory=datetime.now)
+
+meeting_note_path:Optional[str]=None
+meeting_note:Optional[dict]=None
+
+patches:list[PatchOperation]=Field(default_factory=list)
+
+manifest_patches:list[ManifestPatch]=Field(default_factory=list)
+
+entities_to_create:list[dict]=Field(default_factory=list)
+
+warnings:list[str]=Field(default_factory=list)
+
+defvalidate_plan(self)->list[str]:
+        issues=[]
+
+ifnotself.source_file:
+            issues.append("source_file is required")
+
+ifself.meeting_note_path:
+            if".."inself.meeting_note_path:
+                issues.append(f"meeting_note_path contains invalid path traversal: {self.meeting_note_path}")
+ifnotself.meeting_note:
+                issues.append("meeting_note_path is set but meeting_note context is missing")
+
+patch_targets=set()
+fori,patchinenumerate(self.patches):
+
+            ifpatch.target_pathinpatch_targets:
+                issues.append(f"Duplicate patch target: {patch.target_path}")
+patch_targets.add(patch.target_path)
+
+ifpatch.operationnotin("create","patch","link"):
+                issues.append(f"Patch {i}: Invalid operation '{patch.operation}'")
+
+if".."inpatch.target_path:
+                issues.append(f"Patch {i}: target_path contains invalid path traversal")
+
+ifpatch.operation=="patch":
+                has_changes=any([
+patch.add_frontmatter,
+patch.add_facts,
+patch.add_topics,
+patch.add_decisions,
+patch.add_context,
+patch.add_tasks,
+])
+ifnothas_changes:
+                    issues.append(f"Patch {i}: patch operation has no changes for {patch.target_entity}")
+
+returnissues
+
+defis_valid(self)->bool:
+        returnlen(self.validate_plan())==0
+
+classPatchGenerator:
+
+    SKIP_COMPANIES={
+"vast data","vast","microsoft","google","amazon","aws",
+"openai","anthropic","nvidia"
+}
+
+def__init__(self,vault_root:Path,entity_index:Optional[EntityIndex]=None):
+        self.vault_root=vault_root
+self.entity_index=entity_indexorEntityIndex(vault_root)
+
+self._created_folders:dict[str,Path]={}
+
+defgenerate(self,extraction:UnifiedExtraction)->ChangePlan:
+
+        self._created_folders={}
+
+plan=ChangePlan(source_file=extraction.source_file)
+
+patched_paths:set[str]=set()
+
+processed_entities:dict[str,str]={}
+
+note_path,note_context=self._generate_meeting_note(extraction)
+ifnote_path:
+            plan.meeting_note_path=note_path
+plan.meeting_note=note_context
+
+ifextraction.primary_entity:
+            normalized=self.entity_index.normalize_name(extraction.primary_entity.name)
+ifnormalized!=extraction.primary_entity.name:
+                plan.warnings.append(f"Resolved alias: '{extraction.primary_entity.name}' → '{normalized}'")
+processed_entities[normalized.lower()]=extraction.primary_entity.name
+self._warn_duplicate(extraction.primary_entity.name,extraction.primary_entity.entity_type,plan)
+
+patches=self._generate_primary_patches(extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forentityinextraction.get_entities_with_facts():
+            normalized=self.entity_index.normalize_name(entity.name)
+norm_lower=normalized.lower()
+
+ifnorm_lowerinprocessed_entitiesandprocessed_entities[norm_lower]!=entity.name:
+                plan.warnings.append(
+f"Potential duplicate: '{entity.name}' may be same as '{processed_entities[norm_lower]}' (consider merge)"
+)
+continue
+
+ifnormalized!=entity.name:
+                plan.warnings.append(f"Resolved alias: '{entity.name}' → '{normalized}'")
+processed_entities[norm_lower]=entity.name
+self._warn_duplicate(entity.name,entity.entity_type,plan)
+
+patches=self._generate_fact_patches(entity,extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forparticipantinextraction.participants:
+            normalized=self.entity_index.normalize_name(participant)
+norm_lower=normalized.lower()
+
+ifnorm_lowerinprocessed_entities:
+                continue
+
+processed_entities[norm_lower]=participant
+
+patches=self._generate_participant_patches(participant,extraction)
+forpatchinpatches:
+                ifpatch.target_pathnotinpatched_paths:
+                    plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+forentityinextraction.mentioned_entities:
+            ifentity.entity_type=="company"andentity.facts_about:
+                company_lower=entity.name.lower()
+ifcompany_lowernotinself.SKIP_COMPANIES:
+                    patches=self._generate_company_patches(entity,extraction)
+forpatchinpatches:
+                        ifpatch.target_pathnotinpatched_paths:
+                            plan.patches.append(patch)
+patched_paths.add(patch.target_path)
+
+manifest_patches=self._generate_manifest_patches(extraction)
+plan.manifest_patches.extend(manifest_patches)
+
+returnplan
+
+def_generate_meeting_note(self,extraction:UnifiedExtraction)->tuple[Optional[str],Optional[dict]]:
+
+        folder:Optional[Path]=None
+entity_name:Optional[str]=None
+entity_type:Optional[str]=None
+
+note_type=(extraction.note_typeor"people").lower()
+desired_entity_type={
+"people":"person",
+"customer":"company",
+"partners":"company",
+"projects":"project",
+}.get(note_type)
+
+candidate=None
+ifextraction.primary_entityand(
+desired_entity_typeisNoneorextraction.primary_entity.entity_type==desired_entity_type
+):
+            candidate=extraction.primary_entity
+elifdesired_entity_typein("company","project"):
+            best=None
+foreinextraction.mentioned_entitiesor[]:
+                ife.entity_type!=desired_entity_type:
+                    continue
+ifbestisNoneor(e.confidenceor0)>(best.confidenceor0):
+                    best=e
+candidate=best
+elifdesired_entity_type=="person"andextraction.participants:
+
+            forparticipantinextraction.participants:
+                ifparticipant.lower()in["myself","jason","jason vallery"]:
+                    continue
+email=self._get_email_for_participant(participant,extraction)
+folder=self.entity_index.find_person(participant,email=email)
+entity_name=participant
+entity_type="person"
+break
+
+ifnotfolderandcandidate:
+            folder=self._get_entity_folder(candidate,extraction)
+entity_name=candidate.name
+entity_type=candidate.entity_type
+
+ifnotfolderandextraction.primary_entity:
+
+            folder=self._get_entity_folder(extraction.primary_entity,extraction)
+entity_name=entity_nameorextraction.primary_entity.name
+entity_type=entity_typeorextraction.primary_entity.entity_type
+
+ifnotfolderandentity_name:
+
+            folder=self._create_entity_folder(entity_name,entity_type,extraction)
+
+ifnotfolder:
+            returnNone,None
+
+fromscripts.utils.templatesimportsanitize_path_name
+safe_title=sanitize_path_name(extraction.title)
+
+note_path=f"{folder.relative_to(self.vault_root)}/{extraction.date} - {safe_title}.md"
+
+template_type=note_type
+ifdesired_entity_typeisnotNoneandentity_type:
+            ifentity_type=="person":
+                template_type="people"
+elifentity_type=="project":
+                template_type="projects"
+elifentity_type=="company":
+                template_type=note_typeifnote_typein("customer","partners")else"customer"
+
+context={
+"title":extraction.title,
+"date":extraction.date,
+"type":template_type,
+
+"source":extraction.content_type,
+
+"person":entity_nameifentity_type=="person"else"",
+"account":entity_nameifentity_type=="company"else"",
+"project":entity_nameifentity_type=="project"else"",
+"participants":extraction.participants,
+"summary":extraction.summary,
+"topics":extraction.topics,
+"decisions":extraction.decisions,
+"tasks":[t.model_dump()fortinextraction.tasks],
+"facts":[f.textforfinextraction.facts],
+"source_ref":extraction.source_file,
+}
+
+returnnote_path,context
+
+def_generate_primary_patches(self,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+ifnotextraction.primary_entity:
+            returnpatches
+
+folder=self._get_entity_folder(extraction.primary_entity,extraction)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+context_entry=f"- {extraction.date}: {extraction.summary[:100]}..."
+
+facts=[f.textforfinextraction.facts
+iff.about_entityandf.about_entity.name==extraction.primary_entity.name]
+
+frontmatter={"last_contact":extraction.date}
+ifextraction.primary_entity.entity_type=="person":
+            contact_info=self._get_contact_info_for_person(extraction.primary_entity.name,extraction)
+frontmatter.update(contact_info)
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=extraction.primary_entity.name,
+add_frontmatter=frontmatter,
+add_facts=factsiffactselseNone,
+add_topics=extraction.topics[:5]ifextraction.topicselseNone,
+add_decisions=extraction.decisionsifextraction.decisionselseNone,
+add_context=context_entry,
+))
+
+returnpatches
+
+def_generate_fact_patches(self,entity:MentionedEntity,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+folder=self._get_entity_folder(entity,extraction)
+
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=entity.name,
+add_facts=entity.facts_about,
+add_context=f"- {extraction.date}: Mentioned in: {extraction.title}",
+))
+
+returnpatches
+
+def_generate_participant_patches(self,participant:str,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+ifparticipant.lower()in["myself","jason","jason vallery"]:
+            returnpatches
+
+normalized=self.entity_index.normalize_name(participant).lower()
+folder=self._created_folders.get(normalized)
+ifnotfolder:
+            email=self._get_email_for_participant(participant,extraction)
+folder=self.entity_index.find_person(participant,email=email)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+context_entry=f"- {extraction.date}: {extraction.title}"
+
+frontmatter={"last_contact":extraction.date}
+contact_info=self._get_contact_info_for_person(participant,extraction)
+frontmatter.update(contact_info)
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=participant,
+add_frontmatter=frontmatter,
+add_context=context_entry,
+))
+
+returnpatches
+
+def_generate_company_patches(self,entity:MentionedEntity,extraction:UnifiedExtraction)->list[PatchOperation]:
+        patches=[]
+
+normalized=self.entity_index.normalize_name(entity.name).lower()
+folder=self._created_folders.get(normalized)
+ifnotfolder:
+            folder=self.entity_index.find_company(entity.name)
+ifnotfolder:
+            returnpatches
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+            returnpatches
+
+patches.append(PatchOperation(
+operation="patch",
+target_path=str(readme_path.relative_to(self.vault_root)),
+target_entity=entity.name,
+add_facts=entity.facts_about,
+add_context=f"- {extraction.date}: {extraction.title}",
+))
+
+returnpatches
+
+def_get_email_for_participant(self,name:str,extraction:UnifiedExtraction)->Optional[str]:
+        ifnotextraction.contacts:
+            returnNone
+
+normalized_target=self.entity_index.normalize_name(name).lower()
+forcontactinextraction.contacts:
+            ifnotcontact.email:
+                continue
+contact_name=contact.nameor""
+normalized_contact=self.entity_index.normalize_name(contact_name).lower()ifcontact_nameelse""
+ifcontact_nameandnormalized_contact==normalized_target:
+                returncontact.email
+if"@"inname:
+            returnname
+returnNone
+
+def_get_contact_info_for_person(self,name:str,extraction:UnifiedExtraction)->dict:
+        result={}
+ifnotextraction.contacts:
+            returnresult
+
+normalized_target=self.entity_index.normalize_name(name).lower()
+forcontactinextraction.contacts:
+            contact_name=contact.nameor""
+normalized_contact=self.entity_index.normalize_name(contact_name).lower()ifcontact_nameelse""
+ifcontact_nameandnormalized_contact==normalized_target:
+
+                ifcontact.email:
+                    result["email"]=contact.email
+ifcontact.title:
+
+                    result["role"]=contact.title
+ifcontact.company:
+                    result["company"]=contact.company
+ifcontact.phone:
+                    result["phone"]=contact.phone
+break
+returnresult
+
+def_get_entity_folder(self,entity,extraction:Optional[UnifiedExtraction]=None)->Optional[Path]:
+
+        normalized=self.entity_index.normalize_name(entity.name).lower()
+ifnormalizedinself._created_folders:
+            returnself._created_folders[normalized]
+
+email=None
+ifextractionandentity.entity_type=="person":
+            email=self._get_email_for_participant(entity.name,extraction)
+ifentity.entity_type=="person":
+            returnself.entity_index.find_person(entity.name,email=email)
+elifentity.entity_type=="company":
+            returnself.entity_index.find_company(entity.name)
+elifentity.entity_type=="project":
+            returnself.entity_index.find_project(entity.name)
+returnNone
+
+def_create_entity_folder(self,name:str,entity_type:str,extraction:UnifiedExtraction)->Optional[Path]:
+        fromscripts.utils.templatesimportsanitize_path_name
+
+safe_name=sanitize_path_name(name)
+
+ifentity_type=="person":
+            folder=self.vault_root/"VAST"/"People"/safe_name
+elifentity_type=="company":
+            folder=self.vault_root/"VAST"/"Customers and Partners"/safe_name
+elifentity_type=="project":
+            folder=self.vault_root/"VAST"/"Projects"/safe_name
+else:
+
+            folder=self.vault_root/"VAST"/"People"/safe_name
+
+folder.mkdir(parents=True,exist_ok=True)
+
+readme_path=folder/"README.md"
+ifnotreadme_path.exists():
+
+            email=self._get_email_for_participant(name,extraction)ifentity_type=="person"elseNone
+readme_content=self._generate_readme_content(name,entity_type,email,extraction)
+readme_path.write_text(readme_content)
+
+normalized=self.entity_index.normalize_name(name).lower()
+self._created_folders[normalized]=folder
+
+returnfolder
+
+def_generate_readme_content(self,name:str,entity_type:str,email:Optional[str],extraction:UnifiedExtraction)->str:
+        fromdatetimeimportdate
+fromscripts.utils.frontmatterimportrender_frontmatter
+fromscripts.utils.templatesimportsanitize_path_name
+
+today=date.today().isoformat()
+safe_name=sanitize_path_name(name)
+
+ifentity_type=="person":
+
+            company=None
+title=None
+forcontactinextraction.contacts:
+                ifcontact.nameandcontact.name.lower()inname.lower():
+                    company=contact.company
+title=contact.title
+break
+
+fm={
+"type":"people",
+"title":name,
+"created":today,
+"last_contact":extraction.date,
+"email":emailor"",
+"company":companyor"",
+"role":titleor"",
+"tags":["type/people","needs-review"],
+}
+
+body=f"""# {name}
+
+## Key Facts
+
+## Recent Context
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+elifentity_type=="company":
+            fm={
+"type":"customer",
+"title":name,
+"account_type":"",
+"status":"",
+"industry":"_Unknown_",
+"created":today,
+"last_contact":extraction.date,
+"tags":["type/customer","needs-review"],
+}
+
+body=f"""# {name}
+
+## Account Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | _Unknown_ |
+| **Industry** | _Unknown_ |
+
+## Key Contacts
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+else:
+            fm={
+"type":"projects",
+"title":name,
+"status":"active",
+"created":today,
+"last_contact":extraction.date,
+"tags":["type/projects","status/active","needs-review"],
+}
+
+body=f"""# {name}
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | active |
+| **Owner** | _Unknown_ |
+
+## Overview
+
+## Open Tasks
+
+```tasks
+path includes {safe_name}
+not done
+```
+
+## Recent Context
+
+## Key Facts
+
+## Topics
+
+## Key Decisions
+"""
+returnrender_frontmatter(fm)+body
+
+def_warn_duplicate(self,name:str,entity_type:str,plan:ChangePlan):
+        similar:list[str]=[]
+ifentity_type=="person":
+            similar=self.entity_index.find_similar_people(name)
+elifentity_type=="company":
+            similar=self.entity_index.find_similar_companies(name)
+elifentity_type=="project":
+            similar=self.entity_index.find_similar_projects(name)
+
+ifsimilar:
+            plan.warnings.append(
+f"Potential duplicate for '{name}': similar to {', '.join(similar[:2])} (consider merge)"
+)
+
+def_generate_manifest_patches(self,extraction:UnifiedExtraction)->list[ManifestPatch]:
+        patches=[]
+
+ifextraction.discovered_aliases:
+            people_manifest_path="VAST/People/_MANIFEST.md"
+
+aliases_by_person:dict[str,list[str]]={}
+foralias_discoveryinextraction.discovered_aliases:
+
+                canonical=self.entity_index.normalize_name(alias_discovery.canonical_name)
+ifcanonicalnotinaliases_by_person:
+                    aliases_by_person[canonical]=[]
+aliases_by_person[canonical].append(alias_discovery.alias)
+
+forperson_name,aliasesinaliases_by_person.items():
+
+                folder=self.entity_index.find_person(person_name)
+iffolder:
+                    patches.append(ManifestPatch(
+manifest_type="people",
+manifest_path=people_manifest_path,
+person_name=person_name,
+aliases_to_add=aliases,
+))
+
+ifextraction.discovered_acronyms:
+            projects_manifest_path="VAST/Projects/_MANIFEST.md"
+
+foracronym_discoveryinextraction.discovered_acronyms:
+
+                project_name=acronym_discovery.project_name
+ifproject_name:
+                    folder=self.entity_index.find_project(project_name)
+iffolder:
+                        patches.append(ManifestPatch(
+manifest_type="projects",
+manifest_path=projects_manifest_path,
+project_name=project_name,
+acronym=acronym_discovery.acronym,
+definition=acronym_discovery.expansion,
+))
+else:
+
+                    patches.append(ManifestPatch(
+manifest_type="projects",
+manifest_path=projects_manifest_path,
+project_name=acronym_discovery.acronym,
+acronym=acronym_discovery.acronym,
+definition=acronym_discovery.expansion,
+))
+
+returnpatches
+
+classPatchCollector:
+
+    def__init__(self,dedupe_facts:bool=True,dedupe_tasks:bool=True,combine_context:bool=True):
+        self.dedupe_facts=dedupe_facts
+self.dedupe_tasks=dedupe_tasks
+self.combine_context=combine_context
+
+self._patches_by_target:dict[str,list[PatchOperation]]={}
+self._meeting_notes:list[tuple[str,dict]]=[]
+self._source_files:list[str]=[]
+self._warnings:list[str]=[]
+
+self._manifest_patches:list[ManifestPatch]=[]
+
+@property
+defhas_patches(self)->bool:
+        returnbool(self._patches_by_target)orbool(self._manifest_patches)
+
+@property
+defpatch_count(self)->int:
+        returnsum(len(patches)forpatchesinself._patches_by_target.values())+len(self._manifest_patches)
+
+defcollect(self,plan:ChangePlan):
+        self._source_files.append(plan.source_file)
+
+ifplan.meeting_note_pathandplan.meeting_note:
+            self._meeting_notes.append((plan.meeting_note_path,plan.meeting_note))
+
+forpatchinplan.patches:
+            target=patch.target_path
+iftargetnotinself._patches_by_target:
+                self._patches_by_target[target]=[]
+self._patches_by_target[target].append(patch)
+
+self._manifest_patches.extend(plan.manifest_patches)
+
+self._warnings.extend(plan.warnings)
+
+defmerge(self)->ChangePlan:
+        merged_patches:list[PatchOperation]=[]
+
+fortarget_path,patchesinself._patches_by_target.items():
+            iflen(patches)==1:
+                merged_patches.append(patches[0])
+else:
+                merged=self._merge_patches_for_target(patches)
+merged_patches.append(merged)
+
+merged_manifest_patches=self._merge_manifest_patches()
+
+plan=ChangePlan(
+source_file=", ".join(self._source_files[:3])+(f" (+{len(self._source_files) - 3} more)"iflen(self._source_files)>3else""),
+patches=merged_patches,
+manifest_patches=merged_manifest_patches,
+warnings=self._warnings,
+)
+
+ifself._meeting_notes:
+            plan.meeting_note_path=self._meeting_notes[0][0]
+plan.meeting_note=self._meeting_notes[0][1]
+
+returnplan
+
+defget_meeting_notes(self)->list[tuple[str,dict]]:
+        returnself._meeting_notes
+
+def_merge_manifest_patches(self)->list[ManifestPatch]:
+        ifnotself._manifest_patches:
+            return[]
+
+people_aliases:dict[str,set[str]]={}
+project_acronyms:dict[str,tuple[str,str]]={}
+
+forpatchinself._manifest_patches:
+            ifpatch.manifest_type=="people"andpatch.person_name:
+                key=patch.person_name
+ifkeynotinpeople_aliases:
+                    people_aliases[key]=set()
+people_aliases[key].update(patch.aliases_to_add)
+elifpatch.manifest_type=="projects"andpatch.project_name:
+                key=patch.project_name
+ifkeynotinproject_acronymsandpatch.acronym:
+                    project_acronyms[key]=(patch.acronym,patch.definitionor"")
+
+merged=[]
+
+forperson_name,aliasesinpeople_aliases.items():
+            merged.append(ManifestPatch(
+manifest_type="people",
+manifest_path="VAST/People/_MANIFEST.md",
+person_name=person_name,
+aliases_to_add=list(aliases),
+))
+
+forproject_name,(acronym,definition)inproject_acronyms.items():
+            merged.append(ManifestPatch(
+manifest_type="projects",
+manifest_path="VAST/Projects/_MANIFEST.md",
+project_name=project_name,
+acronym=acronym,
+definition=definition,
+))
+
+returnmerged
+
+def_merge_patches_for_target(self,patches:list[PatchOperation])->PatchOperation:
+        first=patches[0]
+
+merged=PatchOperation(
+operation="patch",
+target_path=first.target_path,
+target_entity=first.target_entity,
+add_frontmatter={},
+add_facts=[],
+add_topics=[],
+add_decisions=[],
+add_context="",
+add_tasks=[],
+add_wikilinks=[],
+)
+
+seen_facts:set[str]=set()
+seen_tasks:set[str]=set()
+context_parts:list[str]=[]
+
+forpatchinpatches:
+
+            ifpatch.add_frontmatter:
+                forkey,valueinpatch.add_frontmatter.items():
+
+                    merged.add_frontmatter[key]=value
+
+ifpatch.add_facts:
+                forfactinpatch.add_facts:
+                    fact_key=fact.lower().strip()ifself.dedupe_factselsefact
+iffact_keynotinseen_facts:
+                        merged.add_facts.append(fact)
+seen_facts.add(fact_key)
+
+ifpatch.add_topics:
+                fortopicinpatch.add_topics:
+                    iftopicnotinmerged.add_topics:
+                        merged.add_topics.append(topic)
+
+ifpatch.add_decisions:
+                fordecisioninpatch.add_decisions:
+                    ifdecisionnotinmerged.add_decisions:
+                        merged.add_decisions.append(decision)
+
+ifpatch.add_context:
+                ifself.combine_context:
+                    ifpatch.add_contextnotincontext_parts:
+                        context_parts.append(patch.add_context)
+else:
+                    merged.add_context=patch.add_context
+
+ifpatch.add_tasks:
+                fortaskinpatch.add_tasks:
+                    task_key=task.get("text","").lower().strip()ifself.dedupe_taskselsestr(task)
+iftask_keynotinseen_tasks:
+                        merged.add_tasks.append(task)
+seen_tasks.add(task_key)
+
+ifpatch.add_wikilinks:
+                forlinkinpatch.add_wikilinks:
+                    iflinknotinmerged.add_wikilinks:
+                        merged.add_wikilinks.append(link)
+
+ifcontext_parts:
+            merged.add_context="\n".join(context_parts)
+
+returnmerged
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/pipeline.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importjson
+importsys
+importtime
+importthreading
+fromconcurrent.futuresimportThreadPoolExecutor,as_completed
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any
+fromdataclassesimportdataclass,field
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+
+from.envelopeimportContentEnvelope,ContentType
+from.adaptersimportAdapterRegistry
+from.contextimportContextBundle
+from.extractimportUnifiedExtractor
+from.patchimportPatchGenerator,ChangePlan,PatchCollector
+from.applyimportTransactionalApply,ApplyResult
+from.entitiesimportEntityIndex
+from.outputsimportOutputGenerator
+from.modelsimportContactInfo,UnifiedExtraction
+fromscripts.utils.ai_clientimportlog_pipeline_stats
+fromscripts.utils.configimportload_config
+
+@dataclass
+classProcessingResult:
+
+    source_path:str
+content_type:str
+success:bool=True
+
+envelope:Optional[ContentEnvelope]=None
+extraction:Optional[dict]=None
+plan:Optional[ChangePlan]=None
+apply_result:Optional[ApplyResult]=None
+
+draft_reply:Optional[str]=None
+calendar_invite:Optional[dict]=None
+outputs:dict=field(default_factory=dict)
+
+metrics:dict=field(default_factory=dict)
+
+errors:list[str]=field(default_factory=list)
+
+def__str__(self):
+        ifself.success:
+            returnf"✓ {self.source_path}"
+else:
+            returnf"✗ {self.source_path}: {', '.join(self.errors)}"
+
+@dataclass
+classBatchResult:
+
+    total:int=0
+success:int=0
+failed:int=0
+skipped:int=0
+results:list[ProcessingResult]=field(default_factory=list)
+metrics:dict=field(default_factory=dict)
+
+def__str__(self):
+        returnf"Processed {self.total}: {self.success} success, {self.failed} failed, {self.skipped} skipped"
+
+classUnifiedPipeline:
+
+    def__init__(
+self,
+vault_root:Path,
+dry_run:bool=False,
+verbose:bool=False,
+generate_outputs:bool=True,
+draft_all_emails:bool=False,
+force:bool=False,
+trace_dir:Optional[Path]=None,
+show_cache_stats:bool=False,
+log_metrics:bool=True,
+config:Optional[dict[str,Any]]=None,
+max_workers:Optional[int]=None,
+):
+        self.vault_root=vault_root
+self.dry_run=dry_run
+self.verbose=verbose
+self.generate_outputs=generate_outputs
+self.draft_all_emails=draft_all_emails
+self.force=force
+self.trace_dir=trace_dir
+self.show_cache_stats=show_cache_stats
+self.log_metrics=log_metrics
+self.config=configorload_config(vault_root_override=vault_root)
+
+parallel_cfg=self.config.get("parallel",{})
+self.max_workers=max_workersifmax_workersisnotNoneelseparallel_cfg.get("max_workers",1)
+self.parallel_enabled=parallel_cfg.get("enabled",False)andself.max_workers>1
+rate_limit_cfg=parallel_cfg.get("rate_limit",{})
+self.requests_per_minute=rate_limit_cfg.get("requests_per_minute",50)
+path_cfg=self.config.get("paths",{})
+self.inbox_paths={
+k:Path(v)fork,vinpath_cfg.get("inbox",{}).items()ifisinstance(v,str)
+}
+self.source_paths={
+k:Path(v)fork,vinpath_cfg.get("sources",{}).items()ifisinstance(v,str)
+}
+inbox_root=Path(self.inbox_paths.get("root",self.vault_root/"Inbox"))
+sources_root=Path(self.source_paths.get("root",self.vault_root/"Sources"))
+self.default_inbox={
+"email":inbox_root/"Email",
+"transcripts":inbox_root/"Transcripts",
+"voice":inbox_root/"Voice",
+"attachments":inbox_root/"Attachments",
+}
+self.default_sources={
+"email":sources_root/"Email",
+"transcripts":sources_root/"Transcripts",
+"documents":sources_root/"Documents",
+"voice":sources_root/"Voice",
+}
+
+self.registry=AdapterRegistry.default()
+self.entity_index=EntityIndex(vault_root,config=self.config)
+self.extractor=UnifiedExtractor(vault_root,verbose=verbose)
+self.patch_generator=PatchGenerator(vault_root,self.entity_index)
+self.output_generator=OutputGenerator(vault_root,dry_run=dry_run,verbose=verbose)
+
+self._context:Optional[ContextBundle]=None
+
+@property
+defcontext(self)->ContextBundle:
+        ifself._contextisNone:
+            self._context=ContextBundle.load(self.vault_root,config=self.config,entity_index=self.entity_index)
+returnself._context
+
+defprocess_file(self,path:Path,apply:bool=True)->ProcessingResult:
+        result=ProcessingResult(
+source_path=str(path),
+content_type="unknown"
+)
+phase_timings:dict[str,int]={}
+run_start=time.time()
+
+try:
+
+            parse_start=time.time()
+envelope=self.registry.parse(path)
+phase_timings["adapter_ms"]=int((time.time()-parse_start)*1000)
+ifnotenvelope:
+                result.success=False
+result.errors.append(f"No adapter found for {path}")
+result.metrics={"timings":phase_timings,"cache":{}}
+returnresult
+
+result.content_type=envelope.content_type.value
+result.envelope=envelope
+
+ifnotself.forceandself._is_duplicate(envelope):
+                result.success=True
+result.errors.append("Skipped: duplicate content")
+result.metrics={"timings":phase_timings,"cache":{}}
+returnresult
+
+ctx_start=time.time()
+context=ContextBundle.load(self.vault_root,envelope,self.entity_index)
+phase_timings["context_ms"]=int((time.time()-ctx_start)*1000)
+
+extract_start=time.time()
+extraction=self.extractor.extract(envelope,context)
+phase_timings["extract_ms"]=int((time.time()-extract_start)*1000)
+self._augment_extraction_with_headers(extraction,envelope)
+result.extraction=extraction.model_dump()
+
+ifself.verbose:
+                self._log_extraction(extraction)
+
+patch_start=time.time()
+plan=self.patch_generator.generate(extraction)
+phase_timings["patch_ms"]=int((time.time()-patch_start)*1000)
+result.plan=plan
+
+apply_ms=0
+ifapplyandnotself.dry_run:
+                apply_start=time.time()
+applier=TransactionalApply(self.vault_root,dry_run=False)
+apply_result=applier.apply(plan,path)
+result.apply_result=apply_result
+apply_ms=int((time.time()-apply_start)*1000)
+
+ifnotapply_result.success:
+                    result.success=False
+result.errors.extend(apply_result.errors)
+phase_timings["apply_ms"]=apply_ms
+
+outputs_ms=0
+suggested=extraction.suggested_outputs
+is_email=envelope.content_type.value=="email"
+force_reply=is_emailandself.draft_all_emails
+has_any_outputs=bool(extraction.tasks)orbool(
+suggested
+and(
+suggested.needs_reply
+orsuggested.calendar_invite
+orsuggested.follow_up_reminder
+)
+)
+should_generate_outputs=(
+apply
+andself.generate_outputs
+and(force_replyorhas_any_outputs)
+)
+ifshould_generate_outputs:
+                outputs_start=time.time()
+outputs=self.output_generator.generate_all(
+extraction,
+context,
+envelope.raw_contentifenvelopeelse"",
+force_reply=force_reply,
+)
+result.outputs={
+"reply":str(outputs.get("reply"))ifoutputs.get("reply")elseNone,
+"calendar":str(outputs.get("calendar"))ifoutputs.get("calendar")elseNone,
+"reminder":str(outputs.get("reminder"))ifoutputs.get("reminder")elseNone,
+"tasks_emitted":len(outputs.get("tasks")or[]),
+}
+result.draft_reply=result.outputs.get("reply")
+result.calendar_invite={"path":result.outputs.get("calendar")}ifresult.outputs.get("calendar")elseNone
+outputs_ms=int((time.time()-outputs_start)*1000)
+phase_timings["outputs_ms"]=outputs_ms
+
+ifself.trace_dir:
+                self._persist_trace(envelope,extraction,plan,outputs=result.outputsorNone)
+
+result.metrics={
+"timings":phase_timings,
+"cache":getattr(self.extractor,"last_usage",{}),
+"run_ms":int((time.time()-run_start)*1000),
+}
+
+returnresult
+
+exceptExceptionase:
+            result.success=False
+result.errors.append(str(e))
+result.metrics={
+"timings":phase_timings,
+"cache":getattr(self.extractor,"last_usage",{}),
+}
+returnresult
+
+defprocess_all(self)->BatchResult:
+        pending:list[Path]=[]
+
+forkeyin["email","transcripts","voice","attachments"]:
+            subpath=Path(self.inbox_paths.get(key,self.default_inbox[key]))
+ifsubpath.exists():
+                pending.extend(subpath.glob("*.md"))
+
+returnself._process_paths(pending)
+
+defprocess_type(self,content_type:ContentType)->BatchResult:
+
+        type_dirs={
+ContentType.EMAIL:"email",
+ContentType.TRANSCRIPT:"transcripts",
+ContentType.VOICE:"voice",
+ContentType.DOCUMENT:"attachments",
+}
+
+subdir_key=type_dirs.get(content_type,"attachments")
+inbox_path=Path(self.inbox_paths.get(subdir_key,self.default_inbox[subdir_key]))
+
+pending=list(inbox_path.glob("*.md"))ifinbox_path.exists()else[]
+returnself._process_paths(pending)
+
+defprocess_sources(self,content_type:Optional[ContentType]=None)->BatchResult:
+        type_dirs={
+ContentType.EMAIL:"email",
+ContentType.TRANSCRIPT:"transcripts",
+ContentType.VOICE:"voice",
+ContentType.DOCUMENT:"documents",
+}
+
+pending:list[Path]=[]
+
+ifcontent_type:
+            dir_name=type_dirs.get(content_type)
+ifdir_name:
+                base=Path(self.source_paths.get(dir_name,self.default_sources[dir_name]))
+ifbase.exists():
+                    pending.extend(base.rglob("*.md"))
+else:
+            fordir_nameintype_dirs.values():
+                path=Path(self.source_paths.get(dir_name,self.default_sources[dir_name]))
+ifpath.exists():
+                    pending.extend(path.rglob("*.md"))
+
+returnself._process_paths(pending)
+
+def_is_duplicate(self,envelope:ContentEnvelope)->bool:
+
+        extraction_dir=self.vault_root/"Inbox"/"_extraction"
+ifnotextraction_dir.exists():
+            returnFalse
+
+stem=envelope.source_path.stem
+forext_fileinextraction_dir.glob(f"{stem}.*extraction.json"):
+            returnTrue
+
+returnFalse
+
+def_augment_extraction_with_headers(self,extraction,envelope:ContentEnvelope):
+        email_meta=(envelope.metadataor{}).get("email")ifenvelope.metadataelse{}
+ifnotemail_meta:
+            return
+
+header_contacts=[]
+sender_email=email_meta.get("sender_email")
+sender_name=email_meta.get("sender_name")orsender_email
+ifsender_email:
+            header_contacts.append(ContactInfo(name=sender_name,email=sender_email))
+
+forrecinemail_meta.get("recipients_detail",[])or[]:
+            name=rec.get("name")orrec.get("email")
+header_contacts.append(ContactInfo(name=name,email=rec.get("email")))
+
+existing_emails={c.email.lower()forcinextraction.contactsifc.email}
+forcontactinheader_contacts:
+            ifcontact.emailandcontact.email.lower()inexisting_emails:
+                continue
+extraction.contacts.append(contact)
+
+ifnotextraction.participantsandenvelope.participants:
+            extraction.participants=envelope.participants
+
+def_process_paths(self,paths:list[Path])->BatchResult:
+        ifself.parallel_enabledandself.max_workers>1andlen(paths)>1:
+            returnself._process_paths_parallel(paths)
+returnself._process_paths_sequential(paths)
+
+def_process_paths_parallel(self,paths:list[Path])->BatchResult:
+        batch=BatchResult()
+batch.total=len(paths)
+batch_start=time.time()
+
+timings_accum:dict[str,int]={}
+cache_calls=cache_hits=0
+cached_tokens=prompt_tokens=total_tokens=0
+
+semaphore=threading.Semaphore(self.max_workers)
+
+patch_collector=PatchCollector()
+source_files:list[Path]=[]
+
+defprocess_with_semaphore(path:Path)->ProcessingResult:
+            withsemaphore:
+                returnself.process_file(path,apply=False)
+
+withThreadPoolExecutor(max_workers=self.max_workers)asexecutor:
+            future_to_path={executor.submit(process_with_semaphore,p):pforpinpaths}
+
+forfutureinas_completed(future_to_path):
+                path=future_to_path[future]
+try:
+                    result=future.result()
+batch.results.append(result)
+
+should_apply=result.successandnotany("Skipped"instr(err)forerrinresult.errors)
+ifshould_applyandresult.plan:
+                        patch_collector.collect(result.plan)
+source_files.append(path)
+
+metrics=result.metricsor{}
+timings=metrics.get("timings")or{}
+forphase,msintimings.items():
+                        timings_accum[phase]=timings_accum.get(phase,0)+ms
+
+cache=metrics.get("cache")or{}
+ifcache:
+                        cache_calls+=1
+ifcache.get("cache_hit"):
+                            cache_hits+=1
+cached_tokens+=cache.get("cached_tokens",0)
+prompt_tokens+=cache.get("prompt_tokens",0)
+total_tokens+=cache.get("total_tokens",0)
+
+exceptExceptionase:
+                    batch.results.append(ProcessingResult(
+source_path=str(path),
+content_type="unknown",
+success=False,
+errors=[f"Parallel processing error: {e}"]
+))
+
+meeting_notes=patch_collector.get_meeting_notes()
+apply_result:Optional[ApplyResult]=None
+needs_apply=(patch_collector.has_patchesorbool(meeting_notes))andnotself.dry_runandbool(source_files)
+ifneeds_apply:
+            try:
+                merged_plan=patch_collector.merge()
+applier=TransactionalApply(self.vault_root,dry_run=False)
+primary_source=source_files[0]
+extra_sources=source_files[1:]iflen(source_files)>1elseNone
+extra_notes=meeting_notes[1:]iflen(meeting_notes)>1elseNone
+apply_result=applier.apply(
+merged_plan,
+primary_source,
+extra_meeting_notes=extra_notes,
+extra_source_paths=extra_sources,
+)
+
+forrinbatch.results:
+                    ifr.successandnotany("Skipped"instr(err)forerrinr.errors):
+                        r.apply_result=apply_result
+ifnotapply_result.success:
+                            r.success=False
+r.errors.extend(apply_result.errors)
+exceptExceptionase:
+                forrinbatch.results:
+                    ifr.successandnotany("Skipped"instr(err)forerrinr.errors):
+                        r.success=False
+r.errors.append(f"Batch merge/apply error: {e}")
+
+outputs_summary={"draft_replies":0,"calendar_invites":0,"reminders":0,"tasks_emitted":0}
+apply_ok=(apply_resultisNone)orbool(apply_result.success)
+ifself.generate_outputsandapply_ok:
+            forrinbatch.results:
+                ifnotr.successorany("Skipped"instr(err)forerrinr.errors):
+                    continue
+ifnotr.envelopeornotr.extraction:
+                    continue
+try:
+                    extraction=UnifiedExtraction.model_validate(r.extraction)
+exceptExceptionase:
+                    r.errors.append(f"Output generation skipped: invalid extraction ({e})")
+continue
+
+is_email=r.envelope.content_type.value=="email"
+suggested=extraction.suggested_outputs
+ifnot(is_emailor(suggestedandsuggested.needs_reply)):
+                    continue
+
+context=ContextBundle.load(self.vault_root,r.envelope,self.entity_index)
+outputs=self.output_generator.generate_all(
+extraction,
+context,
+r.envelope.raw_contentifr.envelopeelse"",
+force_reply=is_email,
+)
+r.outputs={
+"reply":str(outputs.get("reply"))ifoutputs.get("reply")elseNone,
+"calendar":str(outputs.get("calendar"))ifoutputs.get("calendar")elseNone,
+"reminder":str(outputs.get("reminder"))ifoutputs.get("reminder")elseNone,
+"tasks_emitted":len(outputs.get("tasks")or[]),
+}
+r.draft_reply=r.outputs.get("reply")
+ifr.outputs.get("calendar"):
+                    r.calendar_invite={"path":r.outputs.get("calendar")}
+
+ifoutputs.get("reply"):
+                    outputs_summary["draft_replies"]+=1
+ifoutputs.get("calendar"):
+                    outputs_summary["calendar_invites"]+=1
+ifoutputs.get("reminder"):
+                    outputs_summary["reminders"]+=1
+outputs_summary["tasks_emitted"]+=len(outputs.get("tasks")or[])
+
+ifself.trace_dirandr.envelope:
+                    try:
+                        stem=r.envelope.source_path.stem
+(self.trace_dir/f"{stem}.outputs.json").write_text(json.dumps(r.outputs,indent=2))
+exceptException:
+                        pass
+
+batch.success=batch.failed=batch.skipped=0
+forrinbatch.results:
+            ifr.success:
+                ifany("Skipped"instr(err)forerrinr.errors):
+                    batch.skipped+=1
+else:
+                    batch.success+=1
+else:
+                batch.failed+=1
+
+count=len(batch.results)
+phase_avg={k:int(v/count)fork,vintimings_accum.items()}ifcountelse{}
+cache_summary={
+"calls":cache_calls,
+"hits":cache_hits,
+"hit_rate":(cache_hits/cache_calls*100)ifcache_callselse0,
+"cached_tokens":cached_tokens,
+"prompt_tokens":prompt_tokens,
+"total_tokens":total_tokens,
+}
+
+batch.metrics={
+"run_ms":int((time.time()-batch_start)*1000),
+"phase_ms_avg":phase_avg,
+"cache":cache_summary,
+"parallel":{
+"workers":self.max_workers,
+"files_processed":len(paths),
+"patches_merged":patch_collector.patch_count,
+},
+"outputs":outputs_summary,
+}
+
+ifself.log_metricsandbatch.total>0:
+            try:
+                log_pipeline_stats({
+"timestamp":datetime.now().isoformat(),
+"total":batch.total,
+"success":batch.success,
+"failed":batch.failed,
+"skipped":batch.skipped,
+**batch.metrics,
+})
+exceptException:
+                pass
+
+self.entity_index.invalidate()
+returnbatch
+
+def_process_paths_sequential(self,paths:list[Path])->BatchResult:
+        batch=BatchResult()
+batch.total=len(paths)
+batch_start=time.time()
+
+timings_accum:dict[str,int]={}
+cache_calls=cache_hits=0
+cached_tokens=prompt_tokens=total_tokens=0
+
+forpathinpaths:
+            result=self.process_file(path)
+batch.results.append(result)
+
+ifresult.success:
+                ifany("Skipped"instr(err)forerrinresult.errors):
+                    batch.skipped+=1
+else:
+                    batch.success+=1
+else:
+                batch.failed+=1
+
+metrics=result.metricsor{}
+timings=metrics.get("timings")or{}
+forphase,msintimings.items():
+                timings_accum[phase]=timings_accum.get(phase,0)+ms
+
+cache=metrics.get("cache")or{}
+ifcache:
+                cache_calls+=1
+ifcache.get("cache_hit"):
+                    cache_hits+=1
+cached_tokens+=cache.get("cached_tokens",0)
+prompt_tokens+=cache.get("prompt_tokens",0)
+total_tokens+=cache.get("total_tokens",0)
+
+count=len(batch.results)
+phase_avg={k:int(v/count)fork,vintimings_accum.items()}ifcountelse{}
+cache_summary={
+"calls":cache_calls,
+"hits":cache_hits,
+"hit_rate":(cache_hits/cache_calls*100)ifcache_callselse0,
+"cached_tokens":cached_tokens,
+"prompt_tokens":prompt_tokens,
+"total_tokens":total_tokens,
+}
+
+batch.metrics={
+"run_ms":int((time.time()-batch_start)*1000),
+"phase_ms_avg":phase_avg,
+"cache":cache_summary,
+}
+
+ifself.log_metricsandbatch.total>0:
+            try:
+                log_pipeline_stats({
+"timestamp":datetime.now().isoformat(),
+"total":batch.total,
+"success":batch.success,
+"failed":batch.failed,
+"skipped":batch.skipped,
+**batch.metrics,
+})
+exceptException:
+
+                pass
+
+self.entity_index.invalidate()
+
+returnbatch
+
+def_log_extraction(self,extraction):
+        fromrich.consoleimportConsole
+console=Console()
+
+console.print(f"  Note type: {extraction.note_type}")
+console.print(f"  Summary: {extraction.summary[:80]}...")
+console.print(f"  Facts: {len(extraction.facts)}")
+console.print(f"  Tasks: {len(extraction.tasks)}")
+console.print(f"  Entities with facts: {len(extraction.get_entities_with_facts())}")
+
+def_persist_trace(self,envelope:ContentEnvelope,extraction,plan:ChangePlan,outputs:Optional[dict]=None):
+        ifnotself.trace_dir:
+            return
+
+trace_root=self.trace_dir
+trace_root.mkdir(parents=True,exist_ok=True)
+
+stem=envelope.source_path.stem
+extraction_path=trace_root/f"{stem}.extraction.json"
+changeplan_path=trace_root/f"{stem}.changeplan.json"
+outputs_path=trace_root/f"{stem}.outputs.json"
+
+try:
+            extraction_path.write_text(json.dumps(extraction.model_dump(mode="json"),indent=2))
+exceptException:
+            pass
+
+try:
+            changeplan_path.write_text(json.dumps(plan.model_dump(mode="json",exclude_none=True),indent=2))
+exceptException:
+            pass
+
+ifoutputs:
+            try:
+                outputs_path.write_text(json.dumps(outputs,indent=2))
+exceptException:
+                pass
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/normalize_entity_notes.py
+ROLE: Post-apply normalization (frontmatter normalization)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importsys
+fromdataclassesimportdataclass
+frompathlibimportPath
+fromtypingimportAny,Iterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+@dataclass(frozen=True)
+classEntityScope:
+    name:str
+base_dir:Path
+entity_key:str
+note_type:str
+
+def_ensure_list(value:Any)->list[str]:
+    ifvalueisNone:
+        return[]
+ifisinstance(value,str):
+        return[value]
+ifisinstance(value,list):
+        return[str(v)forvinvalue]
+return[]
+
+defnormalize_frontmatter_dict(
+fm:dict[str,Any],
+*,
+entity_key:str,
+entity_name:str,
+note_type:str,
+)->dict[str,Any]:
+    out=dict(fmor{})
+
+out["type"]=note_type
+out[entity_key]=entity_name
+
+forkeyin["person","project","account","rob_forum"]:
+        ifout.get(key)=="":
+            out.pop(key,None)
+
+tags=_ensure_list(out.get("tags"))
+cleaned:list[str]=[]
+fortagintags:
+        t=str(tag).strip()
+ifnott:
+            continue
+ift.endswith("/"):
+            continue
+cleaned.append(t)
+
+cleaned=[tfortincleanedifnott.startswith("type/")]
+cleaned.insert(0,f"type/{note_type}")
+
+deduped:list[str]=[]
+seen:set[str]=set()
+fortincleaned:
+        iftinseen:
+            continue
+seen.add(t)
+deduped.append(t)
+
+ifdeduped:
+        out["tags"]=deduped
+else:
+        out.pop("tags",None)
+
+returnout
+
+def_iter_entity_notes(scope:EntityScope)->Iterable[tuple[str,Path]]:
+    ifnotscope.base_dir.exists():
+        return
+forentity_dirinsorted(scope.base_dir.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldentity_dir.name,md
+
+defnormalize_entity_notes(scope:EntityScope,*,dry_run:bool=False)->tuple[int,int]:
+    changed=0
+skipped=0
+forentity_name,note_pathin_iter_entity_notes(scope):
+        text=note_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+normalized_fm=normalize_frontmatter_dict(
+fm,
+entity_key=scope.entity_key,
+entity_name=entity_name,
+note_type=scope.note_type,
+)
+updated=render_frontmatter(normalized_fm)+body
+ifupdated==text:
+            continue
+
+changed+=1
+ifnotdry_run:
+            note_path.write_text(updated)
+
+returnchanged,skipped
+
+def_scopes_from_config(vault:Path)->dict[str,EntityScope]:
+    cfg=load_config(vault_root_override=vault)
+work_paths=cfg.get("paths",{}).get("work",{})
+return{
+"people":EntityScope(
+name="people",
+base_dir=vault/work_paths.get("people","VAST/People"),
+entity_key="person",
+note_type="people",
+),
+"projects":EntityScope(
+name="projects",
+base_dir=vault/work_paths.get("projects","VAST/Projects"),
+entity_key="project",
+note_type="projects",
+),
+"customers":EntityScope(
+name="customers",
+base_dir=vault/work_paths.get("accounts","VAST/Customers and Partners"),
+entity_key="account",
+note_type="customer",
+),
+"rob":EntityScope(
+name="rob",
+base_dir=vault/work_paths.get("rob","VAST/ROB"),
+entity_key="rob_forum",
+note_type="rob",
+),
+}
+
+@click.command()
+@click.option(
+"--scope",
+"scopes",
+type=click.Choice(["people","projects","customers","rob","all"]),
+default=["all"],
+multiple=True,
+help="Which entity areas to normalize (default: all).",
+)
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(scopes:tuple[str,...],dry_run:bool)->None:
+    vault=vault_root()
+available=_scopes_from_config(vault)
+
+selected=set(scopes)
+if"all"inselected:
+        selected={"people","projects","customers","rob"}
+
+total_changed=0
+total_skipped=0
+fornamein["people","projects","customers","rob"]:
+        ifnamenotinselected:
+            continue
+changed,skipped=normalize_entity_notes(available[name],dry_run=dry_run)
+total_changed+=changed
+total_skipped+=skipped
+click.echo(f"{name}: changed={changed} skipped_invalid_frontmatter={skipped}")
+
+click.echo(f"total: changed={total_changed} skipped_invalid_frontmatter={total_skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/normalize_note_headers.py
+ROLE: Post-apply normalization (header cleanup)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importre
+importsys
+fromdataclassesimportdataclass
+frompathlibimportPath
+fromtypingimportIterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+@dataclass(frozen=True)
+classHeaderScope:
+    name:str
+base_dir:Path
+entity_key:str
+header_label:str
+
+def_iter_notes(scope:HeaderScope)->Iterable[tuple[str,Path]]:
+    ifnotscope.base_dir.exists():
+        return
+forentity_dirinsorted(scope.base_dir.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldentity_dir.name,md
+
+defnormalize_body_header(body:str,*,header_label:str,entity_name:str)->str:
+    pattern=re.compile(rf"^(\*\*{re.escape(header_label)}\*\*:\s*).*$",flags=re.MULTILINE)
+returnpattern.sub(rf"\1[[{entity_name}]]",body,count=1)
+
+defnormalize_headers(scope:HeaderScope,*,dry_run:bool=False)->tuple[int,int]:
+    changed=0
+skipped=0
+forentity_name,note_pathin_iter_notes(scope):
+        text=note_path.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+expected_entity=entity_name
+updated_body=normalize_body_header(body,header_label=scope.header_label,entity_name=expected_entity)
+ifupdated_body==body:
+            continue
+
+changed+=1
+ifdry_run:
+            continue
+
+note_path.write_text(render_frontmatter(fm)+updated_body)
+
+returnchanged,skipped
+
+def_scopes_from_config(vault:Path)->dict[str,HeaderScope]:
+    cfg=load_config(vault_root_override=vault)
+work_paths=cfg.get("paths",{}).get("work",{})
+return{
+"projects":HeaderScope(
+name="projects",
+base_dir=vault/work_paths.get("projects","VAST/Projects"),
+entity_key="project",
+header_label="Project",
+),
+"customers":HeaderScope(
+name="customers",
+base_dir=vault/work_paths.get("accounts","VAST/Customers and Partners"),
+entity_key="account",
+header_label="Account",
+),
+}
+
+@click.command()
+@click.option(
+"--scope",
+"scopes",
+type=click.Choice(["projects","customers","all"]),
+default=["all"],
+multiple=True,
+help="Which areas to normalize (default: all).",
+)
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(scopes:tuple[str,...],dry_run:bool)->None:
+    vault=vault_root()
+available=_scopes_from_config(vault)
+
+selected=set(scopes)
+if"all"inselected:
+        selected={"projects","customers"}
+
+total_changed=0
+total_skipped=0
+fornamein["projects","customers"]:
+        ifnamenotinselected:
+            continue
+changed,skipped=normalize_headers(available[name],dry_run=dry_run)
+total_changed+=changed
+total_skipped+=skipped
+click.echo(f"{name}: changed={changed} skipped_invalid_frontmatter={skipped}")
+
+click.echo(f"total: changed={total_changed} skipped_invalid_frontmatter={total_skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: NORMALIZE
+PATH: Workflow/scripts/remove_empty_entity_links.py
+ROLE: Cleanup helper (removes placeholder entity links)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importre
+importsys
+frompathlibimportPath
+fromtypingimportIterable
+
+importclick
+
+sys.path.insert(0,str(Path(__file__).parent))
+fromutilsimportload_config,vault_root
+fromutils.frontmatterimportparse_frontmatter,render_frontmatter
+
+EMPTY_ENTITY_LINE_RE=re.compile(
+r"^\*\*(Account|Project)\*\*:\s*\[\[\]\]\s*$\n?",
+flags=re.MULTILINE,
+)
+
+defremove_empty_entity_links(body:str)->str:
+
+    updated=EMPTY_ENTITY_LINE_RE.sub("",body)
+updated=re.sub(r"\n{3,}","\n\n",updated)
+returnupdated
+
+def_iter_people_notes(people_root:Path)->Iterable[Path]:
+    ifnotpeople_root.exists():
+        return
+forentity_dirinsorted(people_root.iterdir()):
+        ifnotentity_dir.is_dir()orentity_dir.name.startswith(("_",".")):
+            continue
+formdinsorted(entity_dir.glob("*.md")):
+            ifmd.name=="README.md"ormd.name.startswith("_"):
+                continue
+yieldmd
+
+@click.command()
+@click.option("--dry-run",is_flag=True,help="Report changes without writing files.")
+defmain(dry_run:bool)->None:
+    vault=vault_root()
+cfg=load_config(vault_root_override=vault)
+people_root=vault/cfg.get("paths",{}).get("work",{}).get("people","VAST/People")
+
+changed=0
+skipped=0
+formdin_iter_people_notes(people_root):
+        text=md.read_text(errors="ignore")
+fm,body=parse_frontmatter(text)
+iffmisNone:
+            skipped+=1
+continue
+
+updated_body=remove_empty_entity_links(body)
+ifupdated_body==body:
+            continue
+
+changed+=1
+ifnotdry_run:
+            md.write_text(render_frontmatter(fm)+updated_body)
+
+click.echo(f"changed={changed} skipped_invalid_frontmatter={skipped}")
+
+if__name__=="__main__":
+    main()
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/__init__.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from.configimport(
+load_config,
+get_model_config,
+get_persona,
+vault_root,
+workflow_root,
+)
+from.entitiesimport(
+list_entities,
+list_entity_folders,
+list_all_entity_names,
+match_entity,
+match_entity_any_type,
+suggest_entity_folder,
+get_entity_metadata,
+resolve_mentions,
+load_aliases,
+normalize_person_name,
+normalize_task_owner,
+)
+from.git_opsimport(
+is_git_repo,
+is_dirty,
+is_clean,
+get_status,
+get_changed_files,
+require_clean,
+add_files,
+commit,
+commit_batch,
+get_current_branch,
+get_last_commit,
+revert_last,
+stash_changes,
+pop_stash,
+GitStatus,
+CHECKED_PATHS,
+IGNORED_PATTERNS,
+)
+from.pathsimport(
+get_archive_path,
+get_extraction_path,
+get_changeplan_path,
+safe_relative_path,
+ensure_parent_exists,
+)
+from.fsimport(
+atomic_write,
+safe_read_text,
+backup_file,
+)
+from.templatesimport(
+slugify,
+sanitize_path_name,
+basename,
+strip_extension,
+get_template_env,
+get_prompts_env,
+render_note,
+render_prompt,
+ALLOWED_TEMPLATES,
+)
+from.profilesimport(
+load_profile,
+list_profiles,
+select_profile,
+get_profile_focus,
+get_profile_ignore,
+get_task_rules,
+clear_cacheasclear_profile_cache,
+)
+from.ai_clientimport(
+get_clientasget_ai_client,
+get_openai_client,
+get_loggerasget_ai_logger,
+get_daily_statsasget_ai_stats,
+log_pipeline_stats,
+AILogger,
+InstrumentedClient,
+)
+from.loggingimport(
+setup_logging,
+get_logger,
+get_log_file,
+set_context,
+clear_context,
+log_summary,
+ContextLogger,
+)
+
+__all__=[
+
+"load_config",
+"get_model_config",
+"get_persona",
+"vault_root",
+"workflow_root",
+
+"list_entities",
+"list_entity_folders",
+"list_all_entity_names",
+"match_entity",
+"match_entity_any_type",
+"suggest_entity_folder",
+"get_entity_metadata",
+"resolve_mentions",
+"load_aliases",
+"normalize_person_name",
+"normalize_task_owner",
+
+"is_git_repo",
+"is_dirty",
+"is_clean",
+"get_status",
+"get_changed_files",
+"require_clean",
+"add_files",
+"commit",
+"commit_batch",
+"get_current_branch",
+"get_last_commit",
+"revert_last",
+"stash_changes",
+"pop_stash",
+"GitStatus",
+"CHECKED_PATHS",
+"IGNORED_PATTERNS",
+
+"get_archive_path",
+"get_extraction_path",
+"get_changeplan_path",
+"safe_relative_path",
+"ensure_parent_exists",
+
+"atomic_write",
+"safe_read_text",
+"backup_file",
+
+"slugify",
+"sanitize_path_name",
+"basename",
+"strip_extension",
+"get_template_env",
+"get_prompts_env",
+"render_note",
+"render_prompt",
+"ALLOWED_TEMPLATES",
+
+"load_profile",
+"list_profiles",
+"select_profile",
+"get_profile_focus",
+"get_profile_ignore",
+"get_task_rules",
+"clear_profile_cache",
+
+"get_ai_client",
+"get_openai_client",
+"get_ai_logger",
+"get_ai_stats",
+"log_pipeline_stats",
+"AILogger",
+"InstrumentedClient",
+
+"setup_logging",
+"get_logger",
+"get_log_file",
+"set_context",
+"clear_context",
+"log_summary",
+"ContextLogger",
+]
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/ai_client.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importos
+importtime
+importhashlib
+importthreading
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Any,Dict,List
+fromfunctoolsimportwraps
+fromdataclassesimportdataclass,field,asdict
+
+_local=threading.local()
+
+@dataclass
+classAIRequest:
+    id:str
+timestamp:str
+operation:str
+model:str
+messages:Optional[List[Dict]]=None
+input:Optional[str]=None
+instructions:Optional[str]=None
+tools:Optional[List[Dict]]=None
+temperature:Optional[float]=None
+max_tokens:Optional[int]=None
+response_format:Optional[str]=None
+store:bool=False
+caller:Optional[str]=None
+context:Optional[Dict]=None
+
+@dataclass
+classAIResponse:
+    request_id:str
+timestamp:str
+success:bool
+model:str
+content:Optional[str]=None
+parsed:Optional[Dict]=None
+usage:Optional[Dict]=None
+finish_reason:Optional[str]=None
+latency_ms:int=0
+error:Optional[str]=None
+
+@property
+deftokens_prompt(self)->int:
+        returnself.usage.get("prompt_tokens",0)ifself.usageelse0
+
+@property
+deftokens_completion(self)->int:
+        returnself.usage.get("completion_tokens",0)ifself.usageelse0
+
+@property
+deftokens_total(self)->int:
+        returnself.usage.get("total_tokens",0)ifself.usageelse0
+
+@dataclass
+classDailySummary:
+    date:str
+total_requests:int=0
+successful_requests:int=0
+failed_requests:int=0
+total_prompt_tokens:int=0
+total_completion_tokens:int=0
+total_tokens:int=0
+total_latency_ms:int=0
+by_model:Dict[str,Dict]=field(default_factory=dict)
+by_operation:Dict[str,int]=field(default_factory=dict)
+by_caller:Dict[str,int]=field(default_factory=dict)
+estimated_cost_usd:float=0.0
+pipeline_runs:List[Dict]=field(default_factory=list)
+
+defadd_response(self,request:AIRequest,response:AIResponse):
+        self.total_requests+=1
+ifresponse.success:
+            self.successful_requests+=1
+else:
+            self.failed_requests+=1
+
+self.total_prompt_tokens+=response.tokens_prompt
+self.total_completion_tokens+=response.tokens_completion
+self.total_tokens+=response.tokens_total
+self.total_latency_ms+=response.latency_ms
+
+model=response.modelorrequest.model
+ifmodelnotinself.by_model:
+            self.by_model[model]={
+"requests":0,
+"tokens":0,
+"latency_ms":0,
+"errors":0
+}
+self.by_model[model]["requests"]+=1
+self.by_model[model]["tokens"]+=response.tokens_total
+self.by_model[model]["latency_ms"]+=response.latency_ms
+ifnotresponse.success:
+            self.by_model[model]["errors"]+=1
+
+ifrequest.operationnotinself.by_operation:
+            self.by_operation[request.operation]=0
+self.by_operation[request.operation]+=1
+
+caller=request.calleror"unknown"
+ifcallernotinself.by_caller:
+            self.by_caller[caller]=0
+self.by_caller[caller]+=1
+
+self.estimated_cost_usd=self._estimate_cost()
+
+def_estimate_cost(self)->float:
+        cost=0.0
+pricing={
+
+"gpt-5.2":(0.003,0.012),
+"gpt-4o":(0.005,0.015),
+"gpt-4o-mini":(0.00015,0.0006),
+"gpt-4-turbo":(0.01,0.03),
+"gpt-4":(0.03,0.06),
+"gpt-3.5-turbo":(0.0005,0.0015),
+}
+formodel,statsinself.by_model.items():
+
+            formodel_key,(input_cost,output_cost)inpricing.items():
+                ifmodel_keyinmodel.lower():
+
+                    tokens=stats.get("tokens",0)
+cost+=(tokens*0.7/1000)*input_cost
+cost+=(tokens*0.3/1000)*output_cost
+break
+returnround(cost,4)
+
+defadd_pipeline_run(self,stats:Dict[str,Any]):
+        self.pipeline_runs.append(stats)
+
+classAILogger:
+
+    _instance=None
+_lock=threading.Lock()
+
+def__new__(cls):
+        ifcls._instanceisNone:
+            withcls._lock:
+                ifcls._instanceisNone:
+                    cls._instance=super().__new__(cls)
+cls._instance._initialized=False
+returncls._instance
+
+def__init__(self):
+        ifself._initialized:
+            return
+
+self.workflow_dir=Path(__file__).parent.parent.parent
+self.log_dir=self.workflow_dir/"logs"/"ai"
+self.log_dir.mkdir(parents=True,exist_ok=True)
+
+self.today=datetime.now().strftime("%Y-%m-%d")
+self.day_dir=self.log_dir/self.today
+self.day_dir.mkdir(exist_ok=True)
+
+self.requests_file=self.day_dir/"requests.jsonl"
+self.responses_file=self.day_dir/"responses.jsonl"
+self.summary_file=self.day_dir/"summary.json"
+
+self.summary=self._load_summary()
+
+self._initialized=True
+
+def_load_summary(self)->DailySummary:
+        ifself.summary_file.exists():
+            withopen(self.summary_file)asf:
+                data=json.load(f)
+returnDailySummary(**data)
+returnDailySummary(date=self.today)
+
+def_save_summary(self):
+        withopen(self.summary_file,"w")asf:
+            json.dump(asdict(self.summary),f,indent=2)
+
+latest=self.log_dir/"latest.json"
+iflatest.exists()orlatest.is_symlink():
+            latest.unlink()
+latest.symlink_to(self.summary_file)
+
+def_generate_id(self)->str:
+        timestamp=datetime.now().isoformat()
+unique=hashlib.md5(f"{timestamp}{time.time_ns()}".encode()).hexdigest()[:8]
+returnf"{self.today}_{unique}"
+
+def_check_day_rollover(self):
+        today=datetime.now().strftime("%Y-%m-%d")
+iftoday!=self.today:
+            self.today=today
+self.day_dir=self.log_dir/self.today
+self.day_dir.mkdir(exist_ok=True)
+self.requests_file=self.day_dir/"requests.jsonl"
+self.responses_file=self.day_dir/"responses.jsonl"
+self.summary_file=self.day_dir/"summary.json"
+self.summary=DailySummary(date=self.today)
+
+deflog_request(self,request:AIRequest):
+        self._check_day_rollover()
+withopen(self.requests_file,"a")asf:
+            f.write(json.dumps(asdict(request),default=str)+"\n")
+
+deflog_response(self,request:AIRequest,response:AIResponse):
+        self._check_day_rollover()
+withopen(self.responses_file,"a")asf:
+            f.write(json.dumps(asdict(response),default=str)+"\n")
+
+self.summary.add_response(request,response)
+self._save_summary()
+
+deflog_pipeline_stats(self,stats:Dict[str,Any]):
+        self._check_day_rollover()
+try:
+            self.summary.add_pipeline_run(stats)
+exceptException:
+
+            ifnothasattr(self.summary,"pipeline_runs"):
+                self.summary.pipeline_runs=[]
+self.summary.pipeline_runs.append(stats)
+self._save_summary()
+
+deflog_completion(
+self,
+client,
+model:str,
+messages:List[Dict],
+caller:Optional[str]=None,
+context:Optional[Dict]=None,
+**kwargs
+):
+        request_id=self._generate_id()
+timestamp=datetime.now().isoformat()
+
+request=AIRequest(
+id=request_id,
+timestamp=timestamp,
+operation="chat.completions.create",
+model=model,
+messages=messages,
+temperature=kwargs.get("temperature"),
+max_tokens=kwargs.get("max_tokens"),
+response_format=str(kwargs.get("response_format"))ifkwargs.get("response_format")elseNone,
+store=kwargs.get("store",False),
+caller=caller,
+context=context,
+)
+self.log_request(request)
+
+start_time=time.time()
+try:
+            response=client.chat.completions.create(
+model=model,
+messages=messages,
+**kwargs
+)
+latency_ms=int((time.time()-start_time)*1000)
+
+response_record=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=True,
+model=response.model,
+content=response.choices[0].message.contentifresponse.choiceselseNone,
+usage={
+"prompt_tokens":response.usage.prompt_tokens,
+"completion_tokens":response.usage.completion_tokens,
+"total_tokens":response.usage.total_tokens,
+}ifresponse.usageelseNone,
+finish_reason=response.choices[0].finish_reasonifresponse.choiceselseNone,
+latency_ms=latency_ms,
+)
+self.log_response(request,response_record)
+
+returnresponse
+
+exceptExceptionase:
+            latency_ms=int((time.time()-start_time)*1000)
+response_record=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=False,
+model=model,
+error=str(e),
+latency_ms=latency_ms,
+)
+self.log_response(request,response_record)
+raise
+
+def__enter__(self):
+        returnself
+
+def__exit__(self,exc_type,exc_val,exc_tb):
+        pass
+
+defget_stats(self)->Dict:
+        returnasdict(self.summary)
+
+classInstrumentedClient:
+
+    def__init__(self,client,caller:Optional[str]=None):
+        self._client=client
+self._caller=caller
+self._logger=AILogger()
+self.chat=InstrumentedChat(client.chat,self._logger,caller)
+
+self.responses=InstrumentedResponses(client.responses,self._logger,caller)ifhasattr(client,'responses')elseNone
+
+self.models=client.models
+self.files=client.filesifhasattr(client,'files')elseNone
+
+defset_caller(self,caller:str):
+        self._caller=caller
+self.chat._caller=caller
+ifself.responses:
+            self.responses._caller=caller
+
+defset_context(self,context:Dict):
+        self.chat._context=context
+
+self.chat.completions._context=context
+
+classInstrumentedChat:
+
+    def__init__(self,chat,logger:AILogger,caller:Optional[str]=None):
+        self._chat=chat
+self._logger=logger
+self._caller=caller
+self._context=None
+self.completions=InstrumentedCompletions(chat.completions,logger,caller)
+
+classInstrumentedCompletions:
+
+    def__init__(self,completions,logger:AILogger,caller:Optional[str]=None):
+        self._completions=completions
+self._logger=logger
+self._caller=caller
+self._context=None
+
+defcreate(self,**kwargs):
+        returnself._logger.log_completion(
+client=type('obj',(object,),{'chat':type('chat',(object,),{'completions':self._completions})()})(),
+model=kwargs.pop("model"),
+messages=kwargs.pop("messages"),
+caller=self._caller,
+context=self._context,
+**kwargs
+)
+
+classInstrumentedResponses:
+
+    def__init__(self,responses,logger:AILogger,caller:Optional[str]=None):
+        self._responses=responses
+self._logger=logger
+self._caller=caller
+
+defcreate(self,**kwargs):
+        importtime
+start_time=time.time()
+
+request_id=hashlib.md5(f"{time.time()}{kwargs}".encode()).hexdigest()[:12]
+request=AIRequest(
+id=request_id,
+timestamp=datetime.now().isoformat(),
+model=kwargs.get("model","unknown"),
+operation="responses.create",
+caller=self._caller,
+input=str(kwargs.get("input",""))[:500],
+instructions=kwargs.get("instructions"),
+tools=[{"type":t.get("type","unknown")}ifisinstance(t,dict)elsestr(t)fortinkwargs.get("tools",[])]ifkwargs.get("tools")elseNone
+)
+
+try:
+            result=self._responses.create(**kwargs)
+latency_ms=int((time.time()-start_time)*1000)
+
+usage_dict=None
+ifhasattr(result,'usage')andresult.usage:
+                usage_dict={
+"prompt_tokens":getattr(result.usage,'input_tokens',0),
+"completion_tokens":getattr(result.usage,'output_tokens',0),
+"total_tokens":getattr(result.usage,'input_tokens',0)+getattr(result.usage,'output_tokens',0)
+}
+
+response=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=True,
+model=kwargs.get("model","unknown"),
+usage=usage_dict,
+latency_ms=latency_ms,
+content="[responses.create result]"
+)
+
+self._logger.log_request(request)
+self._logger.log_response(request,response)
+
+returnresult
+
+exceptExceptionase:
+            latency_ms=int((time.time()-start_time)*1000)
+response=AIResponse(
+request_id=request_id,
+timestamp=datetime.now().isoformat(),
+success=False,
+model=kwargs.get("model","unknown"),
+error=str(e),
+latency_ms=latency_ms
+)
+self._logger.log_request(request)
+self._logger.log_response(request,response)
+raise
+
+_client=None
+_client_lock=threading.Lock()
+
+defget_client(caller:Optional[str]=None)->InstrumentedClient:
+    global_client
+
+with_client_lock:
+        if_clientisNone:
+            fromopenaiimportOpenAI
+
+api_key=os.environ.get("OPENAI_API_KEY")
+ifnotapi_key:
+
+                workflow_dir=Path(__file__).parent.parent.parent
+env_file=workflow_dir/".env"
+ifenv_file.exists():
+                    fromdotenvimportload_dotenv
+load_dotenv(env_file)
+api_key=os.environ.get("OPENAI_API_KEY")
+
+ifnotapi_key:
+                raiseValueError(
+"OPENAI_API_KEY not set. "
+"Set it in environment or Workflow/.env"
+)
+
+raw_client=OpenAI(api_key=api_key)
+_client=InstrumentedClient(raw_client,caller)
+
+ifcaller:
+            _client.set_caller(caller)
+
+return_client
+
+defget_logger()->AILogger:
+    returnAILogger()
+
+defget_daily_stats()->Dict:
+    returnAILogger().get_stats()
+
+deflog_pipeline_stats(stats:Dict[str,Any]):
+    AILogger().log_pipeline_stats(stats)
+
+defget_cached_system_prompt(
+task:str="general",
+include_persona:bool=True,
+include_glossary:bool=True,
+additional_instructions:str=""
+)->str:
+    try:
+        fromutils.cached_promptsimportget_system_prompt
+returnget_system_prompt(
+task=task,
+include_persona=include_persona,
+include_glossary=include_glossary,
+additional_instructions=additional_instructions
+)
+exceptImportError:
+
+        returnadditional_instructionsor"You are a helpful assistant."
+
+defreset_client():
+    global_client
+_client=None
+
+defget_openai_client(caller:Optional[str]=None):
+    returnget_client(caller)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/config.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+from__future__importannotations
+
+importos
+frompathlibimportPath
+fromtypingimportAny
+
+importyaml
+fromdotenvimportload_dotenv
+
+WORKFLOW_ROOT=Path(__file__).parent.parent.parent
+VAULT_ROOT=WORKFLOW_ROOT.parent
+CONFIG_PATH=WORKFLOW_ROOT/"config.yaml"
+ENV_PATH=WORKFLOW_ROOT/".env"
+
+defload_config(vault_root_override:Path|None=None)->dict[str,Any]:
+
+    load_dotenv(ENV_PATH)
+
+ifnotCONFIG_PATH.exists():
+        raiseFileNotFoundError(f"Config file not found: {CONFIG_PATH}")
+
+withopen(CONFIG_PATH,"r")asf:
+        config=yaml.safe_load(f)
+
+config=_substitute_env_vars(config)
+
+ifvault_root_override:
+        config.setdefault("paths",{})
+config["paths"]["vault_root"]=str(vault_root_override)
+
+config=_resolve_paths(config,base=vault_root_override)
+_validate_config(config)
+
+returnconfig
+
+def_substitute_env_vars(obj:Any)->Any:
+
+    ifisinstance(obj,str):
+        importre
+
+pattern=r"\$\{([^}:]+)(?::-([^}]*))?\}"
+
+defreplacer(match):
+            var_name=match.group(1)
+default=match.group(2)or""
+returnos.environ.get(var_name,default)
+
+returnre.sub(pattern,replacer,obj)
+
+elifisinstance(obj,dict):
+        return{k:_substitute_env_vars(v)fork,vinobj.items()}
+
+elifisinstance(obj,list):
+        return[_substitute_env_vars(item)foriteminobj]
+
+returnobj
+
+def_resolve_paths(config:dict,base:Path|None=None)->dict:
+
+    vault_root=Path(baseorconfig.get("paths",{}).get("vault_root",str(VAULT_ROOT)))
+
+if"paths"inconfig:
+        forsectioninconfig["paths"]:
+            ifsection=="vault_root":
+                config["paths"]["vault_root"]=str(vault_root)
+continue
+
+section_data=config["paths"][section]
+
+ifisinstance(section_data,str):
+
+                ifnotPath(section_data).is_absolute():
+                    config["paths"][section]=str(vault_root/section_data)
+
+elifisinstance(section_data,dict):
+
+                forkey,pathinsection_data.items():
+                    ifisinstance(path,str)andnotPath(path).is_absolute():
+                        config["paths"][section][key]=str(vault_root/path)
+
+returnconfig
+
+def_validate_config(config:dict)->None:
+    required_keys=[
+("paths","vault_root"),
+("paths","inbox","email"),
+("paths","inbox","transcripts"),
+("paths","inbox","voice"),
+("paths","inbox","attachments"),
+("paths","inbox","extraction"),
+("paths","inbox","archive"),
+("paths","work","people"),
+("paths","work","projects"),
+("paths","work","accounts"),
+("paths","sources","email"),
+("paths","sources","transcripts"),
+("paths","sources","documents"),
+("paths","sources","voice"),
+("models","default_provider"),
+("models","extract_email","model"),
+("models","extract_transcript","model"),
+("models","extract_voice","model"),
+]
+
+missing:list[str]=[]
+forpathinrequired_keys:
+        cursor=config
+forkeyinpath:
+            ifisinstance(cursor,dict)andkeyincursor:
+                cursor=cursor[key]
+else:
+                missing.append(".".join(path))
+break
+ifmissing:
+        raiseValueError(f"Missing required config keys: {', '.join(missing)}")
+
+defget_model_config(task:str)->dict[str,Any]:
+
+    config=load_config()
+models=config.get("models",{})
+
+task_config=models.get(task)
+
+iftask_configisNone:
+        available=[kforkinmodels.keys()ifknotin("default_provider","privacy")]
+raiseValueError(
+f"Model task '{task}' not configured in config.yaml. "
+f"Available tasks: {', '.join(sorted(available))}"
+)
+
+if"model"notintask_config:
+        raiseValueError(
+f"Model task '{task}' missing 'model' in config.yaml. "
+f"All tasks must explicitly configure the model."
+)
+
+return{
+"provider":task_config.get(
+"provider",models.get("default_provider","openai")
+),
+"model":task_config["model"],
+"temperature":task_config.get("temperature",0.0),
+"max_tokens":task_config.get("max_tokens"),
+}
+
+defget_persona(note_type:str,sub_type:str=None)->str|None:
+
+    config=load_config()
+mapping=config.get("persona_mapping",{})
+
+type_config=mapping.get(note_type)
+
+iftype_configisNone:
+        returnNone
+
+ifisinstance(type_config,str):
+        returntype_config
+
+ifisinstance(type_config,dict):
+        ifsub_typeandsub_typeintype_config:
+            returntype_config[sub_type]
+returntype_config.get("default")
+
+returnNone
+
+defvault_root()->Path:
+    returnVAULT_ROOT
+
+defworkflow_root()->Path:
+    returnWORKFLOW_ROOT
+
+if__name__=="__main__":
+
+    fromrichimportprintasrprint
+
+config=load_config()
+rprint("[bold]Configuration loaded:[/bold]")
+rprint(config)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/frontmatter.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from__future__importannotations
+
+importyaml
+fromtypingimportAny
+
+defparse_frontmatter(content:str)->tuple[dict|None,str]:
+    ifnotcontent.startswith("---"):
+        returnNone,content
+
+lines=content.split("\n")
+end_index=None
+fori,lineinenumerate(lines[1:],start=1):
+        ifline.strip()=="---":
+            end_index=i
+break
+
+ifend_indexisNone:
+
+        returnNone,content
+
+fm_text="\n".join(lines[1:end_index])
+body="\n".join(lines[end_index+1:])
+
+ifnotfm_text.strip():
+        return{},body
+
+try:
+        fm=yaml.safe_load(fm_text)
+iffmisNone:
+            fm={}
+ifnotisinstance(fm,dict):
+
+            fm={}
+exceptyaml.YAMLError:
+
+        return{},body
+
+returnfm,body
+
+defrender_frontmatter(fm:dict)->str:
+    ifnotfm:
+        return"---\n---\n"
+
+yaml_content=yaml.dump(
+fm,
+default_flow_style=False,
+allow_unicode=True,
+sort_keys=False,
+width=1000,
+)
+returnf"---\n{yaml_content}---\n"
+
+defupdate_frontmatter(content:str,updates:dict[str,Any])->str:
+    fm,body=parse_frontmatter(content)
+
+iffmisNone:
+        fm={}
+
+forkey,valueinupdates.items():
+        ifvalueisNone:
+            fm.pop(key,None)
+else:
+            fm[key]=value
+
+returnrender_frontmatter(fm)+body
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/fs.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+frompathlibimportPath
+importtempfile
+importos
+importshutil
+
+defatomic_write(path:Path,content:str,encoding:str="utf-8")->None:
+    path.parent.mkdir(parents=True,exist_ok=True)
+
+fd,temp_path=tempfile.mkstemp(dir=path.parent,suffix=".tmp")
+try:
+        withos.fdopen(fd,'w',encoding=encoding)asf:
+            f.write(content)
+
+os.replace(temp_path,path)
+except:
+
+        try:
+            os.unlink(temp_path)
+exceptOSError:
+            pass
+raise
+
+defsafe_read_text(path:Path,encoding:str="utf-8")->str:
+    try:
+        returnpath.read_text(encoding=encoding)
+exceptUnicodeDecodeError:
+
+        returnpath.read_text(encoding="latin-1")
+
+defbackup_file(source:Path,backup_dir:Path)->Path:
+
+    backup_path=backup_dir/source.name
+backup_path.parent.mkdir(parents=True,exist_ok=True)
+
+shutil.copy2(source,backup_path)
+returnbackup_path
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/logging.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importlogging
+importos
+importsys
+importthreading
+fromcontextlibimportcontextmanager
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Dict,Any
+
+_context=threading.local()
+
+classContextFilter(logging.Filter):
+
+    deffilter(self,record):
+
+        ctx=getattr(_context,'data',{})
+forkey,valueinctx.items():
+            setattr(record,key,value)
+
+ifnothasattr(record,'phase'):
+            record.phase=''
+ifnothasattr(record,'file'):
+            record.file=''
+ifnothasattr(record,'entity'):
+            record.entity=''
+
+returnTrue
+
+classColoredFormatter(logging.Formatter):
+
+    COLORS={
+'DEBUG':'\033[36m',
+'INFO':'\033[32m',
+'WARNING':'\033[33m',
+'ERROR':'\033[31m',
+'CRITICAL':'\033[35m',
+}
+RESET='\033[0m'
+
+defformat(self,record):
+
+        levelname=record.levelname
+iflevelnameinself.COLORS:
+            record.levelname=f"{self.COLORS[levelname]}{levelname:8}{self.RESET}"
+else:
+            record.levelname=f"{levelname:8}"
+
+ctx_parts=[]
+ifgetattr(record,'phase',''):
+            ctx_parts.append(f"[{record.phase}]")
+ifgetattr(record,'file',''):
+            ctx_parts.append(f"({record.file})")
+
+record.context_str=' '.join(ctx_parts)
+ifrecord.context_str:
+            record.context_str=f" {record.context_str}"
+
+returnsuper().format(record)
+
+classJSONFormatter(logging.Formatter):
+
+    defformat(self,record):
+        log_data={
+'timestamp':datetime.fromtimestamp(record.created).isoformat(),
+'level':record.levelname,
+'logger':record.name,
+'message':record.getMessage(),
+}
+
+forfieldin['phase','file','entity']:
+            ifhasattr(record,field)andgetattr(record,field):
+                log_data[field]=getattr(record,field)
+
+ifrecord.exc_info:
+            log_data['exception']=self.formatException(record.exc_info)
+
+returnjson.dumps(log_data)
+
+classContextLogger(logging.LoggerAdapter):
+
+    def__init__(self,logger,extra=None):
+        super().__init__(logger,extraor{})
+
+@contextmanager
+defcontext(self,**kwargs):
+
+        old_context=getattr(_context,'data',{}).copy()
+
+ifnothasattr(_context,'data'):
+            _context.data={}
+_context.data.update(kwargs)
+
+try:
+            yield
+finally:
+
+            _context.data=old_context
+
+defprocess(self,msg,kwargs):
+
+        extra=kwargs.get('extra',{})
+extra.update(self.extra)
+kwargs['extra']=extra
+returnmsg,kwargs
+
+_loggers:Dict[str,ContextLogger]={}
+_configured=False
+_log_file:Optional[Path]=None
+
+defsetup_logging(
+verbose:bool=False,
+log_file:Optional[str]=None,
+json_output:bool=False,
+log_dir:Optional[Path]=None,
+)->Path:
+    global_configured,_log_file
+
+iflog_dirisNone:
+        workflow_dir=Path(__file__).parent.parent.parent
+log_dir=workflow_dir/"logs"
+log_dir.mkdir(parents=True,exist_ok=True)
+
+iflog_fileisNone:
+        timestamp=datetime.now().strftime("%Y-%m-%d_%H%M%S")
+log_file=f"{timestamp}_run.log"
+
+_log_file=log_dir/log_file
+
+root=logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+root.handlers.clear()
+
+context_filter=ContextFilter()
+
+console=logging.StreamHandler(sys.stdout)
+console.setLevel(logging.DEBUGifverboseelselogging.INFO)
+console.addFilter(context_filter)
+
+console_format="%(levelname)s%(context_str)s %(message)s"
+console.setFormatter(ColoredFormatter(console_format))
+root.addHandler(console)
+
+file_handler=logging.FileHandler(_log_file)
+file_handler.setLevel(logging.DEBUG)
+file_handler.addFilter(context_filter)
+
+ifjson_output:
+        file_handler.setFormatter(JSONFormatter())
+else:
+        file_format="%(asctime)s %(levelname)-8s [%(name)s]%(context_str)s %(message)s"
+file_handler.setFormatter(logging.Formatter(file_format,datefmt="%Y-%m-%d %H:%M:%S"))
+
+root.addHandler(file_handler)
+
+_configured=True
+
+logger=get_logger("logging")
+logger.info(f"Log file: {_log_file}")
+
+return_log_file
+
+defget_logger(name:str)->ContextLogger:
+    ifnamenotin_loggers:
+        logger=logging.getLogger(name)
+_loggers[name]=ContextLogger(logger)
+
+return_loggers[name]
+
+defget_log_file()->Optional[Path]:
+    return_log_file
+
+defset_context(**kwargs):
+    ifnothasattr(_context,'data'):
+        _context.data={}
+_context.data.update(kwargs)
+
+defclear_context():
+    _context.data={}
+
+deflog_summary(stats:Dict[str,Any],title:str="Summary"):
+    logger=get_logger("summary")
+
+logger.info(f"{'='*50}")
+logger.info(f" {title}")
+logger.info(f"{'='*50}")
+
+max_key_len=max(len(str(k))forkinstats.keys())ifstatselse10
+
+forkey,valueinstats.items():
+        logger.info(f"  {key:<{max_key_len}} : {value}")
+
+logger.info(f"{'='*50}")
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/patch_primitives.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+frompathlibimportPath
+importsys
+
+_script_dir=Path(__file__).parent
+_workflow_dir=_script_dir.parent.parent
+ifstr(_workflow_dir)notinsys.path:
+    sys.path.insert(0,str(_workflow_dir))
+
+fromscripts.utils.frontmatterimportparse_frontmatter,render_frontmatter
+
+defupsert_frontmatter(content:str,patches:list)->str:
+    fm,body=parse_frontmatter(content)
+
+iffmisNone:
+        fm={}
+
+forpatchinpatches:
+
+        ifhasattr(patch,'key'):
+            key,value=patch.key,patch.value
+else:
+            key,value=patch['key'],patch['value']
+
+ifvalueisNone:
+            fm.pop(key,None)
+else:
+            fm[key]=value
+
+returnrender_frontmatter(fm)+body
+
+defappend_under_heading(content:str,heading:str,text:str)->str:
+    lines=content.split("\n")
+heading_prefix=heading.split()[0]
+heading_text=heading[len(heading_prefix):].strip()
+
+target_line=None
+fori,lineinenumerate(lines):
+        stripped=line.strip()
+
+ifstripped.startswith(heading_prefix+" "):
+            line_text=stripped[len(heading_prefix):].strip()
+ifline_text.lower()==heading_text.lower():
+                target_line=i
+break
+
+iftarget_lineisNone:
+
+        ifnotcontent.endswith("\n"):
+            content+="\n"
+content+=f"\n{heading}\n\n{text.rstrip()}\n"
+returncontent
+
+heading_level=len(heading_prefix)
+end_line=len(lines)
+
+foriinrange(target_line+1,len(lines)):
+        stripped=lines[i].strip()
+ifstripped.startswith("#"):
+
+            current_level=0
+forcharinstripped:
+                ifchar=="#":
+                    current_level+=1
+else:
+                    break
+ifcurrent_level<=heading_level:
+                end_line=i
+break
+
+insert_text=text.rstrip()
+
+last_content_line=target_line
+foriinrange(end_line-1,target_line,-1):
+        iflines[i].strip():
+            last_content_line=i
+break
+
+new_lines=lines[:last_content_line+1]
+ifnew_lines[-1].strip():
+        new_lines.append("")
+new_lines.append(insert_text)
+new_lines.extend(lines[end_line:])
+
+return"\n".join(new_lines)
+
+defensure_wikilinks(content:str,links:list[str])->str:
+    content_lower=content.lower()
+missing_links=[]
+
+forlinkinlinks:
+
+        ifnotlink.startswith("[["):
+            link=f"[[{link}]]"
+ifnotlink.endswith("]]"):
+            link=f"{link}]]"
+
+iflink.lower()notincontent_lower:
+            missing_links.append(link)
+
+ifnotmissing_links:
+        returncontent
+
+related_content="\n".join(f"- {link}"forlinkinmissing_links)
+
+if"## related"incontent_lower:
+        returnappend_under_heading(content,"## Related",related_content)
+else:
+
+        ifnotcontent.endswith("\n"):
+            content+="\n"
+content+=f"\n## Related\n\n{related_content}\n"
+returncontent
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/paths.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from__future__importannotations
+
+frompathlibimportPath
+fromdatetimeimportdate
+
+defget_archive_path(vault_root:Path,original_file:Path,archive_date:date|None=None)->Path:
+    ifarchive_dateisNone:
+        archive_date=date.today()
+returnvault_root/"Inbox"/"_archive"/archive_date.isoformat()/original_file.name
+
+defget_extraction_path(vault_root:Path,source_file:Path)->Path:
+    returnvault_root/"Inbox"/"_extraction"/f"{source_file.stem}.extraction.json"
+
+defget_changeplan_path(vault_root:Path,source_file:Path)->Path:
+    returnvault_root/"Inbox"/"_extraction"/f"{source_file.stem}.changeplan.json"
+
+defsafe_relative_path(vault_root:Path,path:Path|str)->Path:
+    ifisinstance(path,str):
+        path=Path(path)
+
+ifnotpath.is_absolute():
+        path=vault_root/path
+
+resolved=path.resolve()
+vault_resolved=vault_root.resolve()
+
+try:
+        resolved.relative_to(vault_resolved)
+exceptValueError:
+        raiseValueError(f"Path {path} is outside vault root {vault_root}")
+
+returnresolved.relative_to(vault_resolved)
+
+defensure_parent_exists(path:Path)->None:
+    path.parent.mkdir(parents=True,exist_ok=True)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/templates.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importre
+frompathlibimportPath
+
+fromjinja2importEnvironment,FileSystemLoader,StrictUndefined
+
+from.configimportload_config,workflow_root
+
+defslugify(text:str)->str:
+
+    slug=text.lower()
+
+slug=slug.replace(" ","-")
+
+slug=re.sub(r"[^a-z0-9-]","",slug)
+
+slug=re.sub(r"-+","-",slug)
+returnslug.strip("-")
+
+defsanitize_path_name(name:str)->str:
+    ifnotname:
+        returnname
+
+result=re.sub(r'[/\\:]','-',name)
+
+result=result.replace('&','and')
+
+result=re.sub(r'["\'\(\)\[\]]','',result)
+
+result=re.sub(r'-+','-',result)
+result=re.sub(r'\s+',' ',result)
+
+result=result.strip('- ')
+
+returnresult
+
+defbasename(path:str)->str:
+    returnPath(path).name
+
+defstrip_extension(path:str)->str:
+    returnPath(path).stem
+
+defget_template_env()->Environment:
+    config=load_config()
+template_dir=config.get("paths",{}).get("templates","")
+
+ifnottemplate_dir:
+        template_dir=workflow_root()/"templates"
+else:
+        template_dir=Path(template_dir)
+
+env=Environment(
+loader=FileSystemLoader(str(template_dir)),
+undefined=StrictUndefined,
+trim_blocks=True,
+lstrip_blocks=True,
+)
+
+env.filters["slugify"]=slugify
+env.filters["basename"]=basename
+env.filters["strip_extension"]=strip_extension
+env.filters["tojson"]=lambdav,**kw:json.dumps(v,ensure_ascii=False,**kw)
+
+returnenv
+
+defget_prompts_env()->Environment:
+    prompts_dir=workflow_root()/"prompts"
+
+env=Environment(
+loader=FileSystemLoader(str(prompts_dir)),
+undefined=StrictUndefined,
+trim_blocks=True,
+lstrip_blocks=True,
+)
+
+env.filters["slugify"]=slugify
+env.filters["basename"]=basename
+env.filters["strip_extension"]=strip_extension
+env.filters["tojson"]=lambdav,**kw:json.dumps(v,ensure_ascii=False,indent=2,**kw)
+
+returnenv
+
+ALLOWED_TEMPLATES={
+"people.md.j2",
+"customer.md.j2",
+"projects.md.j2",
+"rob.md.j2",
+"journal.md.j2",
+"partners.md.j2",
+"readme-migration.md.j2",
+}
+
+defrender_note(template_name:str,context:dict)->str:
+    iftemplate_namenotinALLOWED_TEMPLATES:
+        raiseValueError(f"Template not allowed: {template_name}")
+
+env=get_template_env()
+template=env.get_template(template_name)
+returntemplate.render(**context)
+
+defrender_prompt(template_name:str,context:dict)->str:
+    env=get_prompts_env()
+template=env.get_template(template_name)
+returntemplate.render(**context)
+
+if__name__=="__main__":
+
+    print("Template Engine Tests")
+print("="*40)
+
+tests=[
+("Jeff Denworth","jeff-denworth"),
+("AI Pipelines Collateral","ai-pipelines-collateral"),
+("Test 123!@#","test-123"),
+("  Multiple   Spaces  ","multiple-spaces"),
+]
+
+forinput_text,expectedintests:
+        result=slugify(input_text)
+status="✓"ifresult==expectedelse"✗"
+print(f"{status} slugify('{input_text}') = '{result}'")
+
+assertbasename("/path/to/file.md")=="file.md"
+print("✓ basename works")
+
+env=get_template_env()
+print(f"✓ Template environment created")
+print(f"  Template dir: {env.loader.searchpath}")
+

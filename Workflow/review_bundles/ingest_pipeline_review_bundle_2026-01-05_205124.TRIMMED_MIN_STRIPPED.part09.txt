@@ -1,0 +1,609 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 9/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+        returnNone,content
+
+fm_text="\n".join(lines[1:end_index])
+body="\n".join(lines[end_index+1:])
+
+ifnotfm_text.strip():
+        return{},body
+
+try:
+        fm=yaml.safe_load(fm_text)
+iffmisNone:
+            fm={}
+ifnotisinstance(fm,dict):
+
+            fm={}
+exceptyaml.YAMLError:
+
+        return{},body
+
+returnfm,body
+
+defrender_frontmatter(fm:dict)->str:
+    ifnotfm:
+        return"---\n---\n"
+
+yaml_content=yaml.dump(
+fm,
+default_flow_style=False,
+allow_unicode=True,
+sort_keys=False,
+width=1000,
+)
+returnf"---\n{yaml_content}---\n"
+
+defupdate_frontmatter(content:str,updates:dict[str,Any])->str:
+    fm,body=parse_frontmatter(content)
+
+iffmisNone:
+        fm={}
+
+forkey,valueinupdates.items():
+        ifvalueisNone:
+            fm.pop(key,None)
+else:
+            fm[key]=value
+
+returnrender_frontmatter(fm)+body
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/fs.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+frompathlibimportPath
+importtempfile
+importos
+importshutil
+
+defatomic_write(path:Path,content:str,encoding:str="utf-8")->None:
+    path.parent.mkdir(parents=True,exist_ok=True)
+
+fd,temp_path=tempfile.mkstemp(dir=path.parent,suffix=".tmp")
+try:
+        withos.fdopen(fd,'w',encoding=encoding)asf:
+            f.write(content)
+
+os.replace(temp_path,path)
+except:
+
+        try:
+            os.unlink(temp_path)
+exceptOSError:
+            pass
+raise
+
+defsafe_read_text(path:Path,encoding:str="utf-8")->str:
+    try:
+        returnpath.read_text(encoding=encoding)
+exceptUnicodeDecodeError:
+
+        returnpath.read_text(encoding="latin-1")
+
+defbackup_file(source:Path,backup_dir:Path)->Path:
+
+    backup_path=backup_dir/source.name
+backup_path.parent.mkdir(parents=True,exist_ok=True)
+
+shutil.copy2(source,backup_path)
+returnbackup_path
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/logging.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importlogging
+importos
+importsys
+importthreading
+fromcontextlibimportcontextmanager
+fromdatetimeimportdatetime
+frompathlibimportPath
+fromtypingimportOptional,Dict,Any
+
+_context=threading.local()
+
+classContextFilter(logging.Filter):
+
+    deffilter(self,record):
+
+        ctx=getattr(_context,'data',{})
+forkey,valueinctx.items():
+            setattr(record,key,value)
+
+ifnothasattr(record,'phase'):
+            record.phase=''
+ifnothasattr(record,'file'):
+            record.file=''
+ifnothasattr(record,'entity'):
+            record.entity=''
+
+returnTrue
+
+classColoredFormatter(logging.Formatter):
+
+    COLORS={
+'DEBUG':'\033[36m',
+'INFO':'\033[32m',
+'WARNING':'\033[33m',
+'ERROR':'\033[31m',
+'CRITICAL':'\033[35m',
+}
+RESET='\033[0m'
+
+defformat(self,record):
+
+        levelname=record.levelname
+iflevelnameinself.COLORS:
+            record.levelname=f"{self.COLORS[levelname]}{levelname:8}{self.RESET}"
+else:
+            record.levelname=f"{levelname:8}"
+
+ctx_parts=[]
+ifgetattr(record,'phase',''):
+            ctx_parts.append(f"[{record.phase}]")
+ifgetattr(record,'file',''):
+            ctx_parts.append(f"({record.file})")
+
+record.context_str=' '.join(ctx_parts)
+ifrecord.context_str:
+            record.context_str=f" {record.context_str}"
+
+returnsuper().format(record)
+
+classJSONFormatter(logging.Formatter):
+
+    defformat(self,record):
+        log_data={
+'timestamp':datetime.fromtimestamp(record.created).isoformat(),
+'level':record.levelname,
+'logger':record.name,
+'message':record.getMessage(),
+}
+
+forfieldin['phase','file','entity']:
+            ifhasattr(record,field)andgetattr(record,field):
+                log_data[field]=getattr(record,field)
+
+ifrecord.exc_info:
+            log_data['exception']=self.formatException(record.exc_info)
+
+returnjson.dumps(log_data)
+
+classContextLogger(logging.LoggerAdapter):
+
+    def__init__(self,logger,extra=None):
+        super().__init__(logger,extraor{})
+
+@contextmanager
+defcontext(self,**kwargs):
+
+        old_context=getattr(_context,'data',{}).copy()
+
+ifnothasattr(_context,'data'):
+            _context.data={}
+_context.data.update(kwargs)
+
+try:
+            yield
+finally:
+
+            _context.data=old_context
+
+defprocess(self,msg,kwargs):
+
+        extra=kwargs.get('extra',{})
+extra.update(self.extra)
+kwargs['extra']=extra
+returnmsg,kwargs
+
+_loggers:Dict[str,ContextLogger]={}
+_configured=False
+_log_file:Optional[Path]=None
+
+defsetup_logging(
+verbose:bool=False,
+log_file:Optional[str]=None,
+json_output:bool=False,
+log_dir:Optional[Path]=None,
+)->Path:
+    global_configured,_log_file
+
+iflog_dirisNone:
+        workflow_dir=Path(__file__).parent.parent.parent
+log_dir=workflow_dir/"logs"
+log_dir.mkdir(parents=True,exist_ok=True)
+
+iflog_fileisNone:
+        timestamp=datetime.now().strftime("%Y-%m-%d_%H%M%S")
+log_file=f"{timestamp}_run.log"
+
+_log_file=log_dir/log_file
+
+root=logging.getLogger()
+root.setLevel(logging.DEBUG)
+
+root.handlers.clear()
+
+context_filter=ContextFilter()
+
+console=logging.StreamHandler(sys.stdout)
+console.setLevel(logging.DEBUGifverboseelselogging.INFO)
+console.addFilter(context_filter)
+
+console_format="%(levelname)s%(context_str)s %(message)s"
+console.setFormatter(ColoredFormatter(console_format))
+root.addHandler(console)
+
+file_handler=logging.FileHandler(_log_file)
+file_handler.setLevel(logging.DEBUG)
+file_handler.addFilter(context_filter)
+
+ifjson_output:
+        file_handler.setFormatter(JSONFormatter())
+else:
+        file_format="%(asctime)s %(levelname)-8s [%(name)s]%(context_str)s %(message)s"
+file_handler.setFormatter(logging.Formatter(file_format,datefmt="%Y-%m-%d %H:%M:%S"))
+
+root.addHandler(file_handler)
+
+_configured=True
+
+logger=get_logger("logging")
+logger.info(f"Log file: {_log_file}")
+
+return_log_file
+
+defget_logger(name:str)->ContextLogger:
+    ifnamenotin_loggers:
+        logger=logging.getLogger(name)
+_loggers[name]=ContextLogger(logger)
+
+return_loggers[name]
+
+defget_log_file()->Optional[Path]:
+    return_log_file
+
+defset_context(**kwargs):
+    ifnothasattr(_context,'data'):
+        _context.data={}
+_context.data.update(kwargs)
+
+defclear_context():
+    _context.data={}
+
+deflog_summary(stats:Dict[str,Any],title:str="Summary"):
+    logger=get_logger("summary")
+
+logger.info(f"{'='*50}")
+logger.info(f" {title}")
+logger.info(f"{'='*50}")
+
+max_key_len=max(len(str(k))forkinstats.keys())ifstatselse10
+
+forkey,valueinstats.items():
+        logger.info(f"  {key:<{max_key_len}} : {value}")
+
+logger.info(f"{'='*50}")
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/patch_primitives.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+frompathlibimportPath
+importsys
+
+_script_dir=Path(__file__).parent
+_workflow_dir=_script_dir.parent.parent
+ifstr(_workflow_dir)notinsys.path:
+    sys.path.insert(0,str(_workflow_dir))
+
+fromscripts.utils.frontmatterimportparse_frontmatter,render_frontmatter
+
+defupsert_frontmatter(content:str,patches:list)->str:
+    fm,body=parse_frontmatter(content)
+
+iffmisNone:
+        fm={}
+
+forpatchinpatches:
+
+        ifhasattr(patch,'key'):
+            key,value=patch.key,patch.value
+else:
+            key,value=patch['key'],patch['value']
+
+ifvalueisNone:
+            fm.pop(key,None)
+else:
+            fm[key]=value
+
+returnrender_frontmatter(fm)+body
+
+defappend_under_heading(content:str,heading:str,text:str)->str:
+    lines=content.split("\n")
+heading_prefix=heading.split()[0]
+heading_text=heading[len(heading_prefix):].strip()
+
+target_line=None
+fori,lineinenumerate(lines):
+        stripped=line.strip()
+
+ifstripped.startswith(heading_prefix+" "):
+            line_text=stripped[len(heading_prefix):].strip()
+ifline_text.lower()==heading_text.lower():
+                target_line=i
+break
+
+iftarget_lineisNone:
+
+        ifnotcontent.endswith("\n"):
+            content+="\n"
+content+=f"\n{heading}\n\n{text.rstrip()}\n"
+returncontent
+
+heading_level=len(heading_prefix)
+end_line=len(lines)
+
+foriinrange(target_line+1,len(lines)):
+        stripped=lines[i].strip()
+ifstripped.startswith("#"):
+
+            current_level=0
+forcharinstripped:
+                ifchar=="#":
+                    current_level+=1
+else:
+                    break
+ifcurrent_level<=heading_level:
+                end_line=i
+break
+
+insert_text=text.rstrip()
+
+last_content_line=target_line
+foriinrange(end_line-1,target_line,-1):
+        iflines[i].strip():
+            last_content_line=i
+break
+
+new_lines=lines[:last_content_line+1]
+ifnew_lines[-1].strip():
+        new_lines.append("")
+new_lines.append(insert_text)
+new_lines.extend(lines[end_line:])
+
+return"\n".join(new_lines)
+
+defensure_wikilinks(content:str,links:list[str])->str:
+    content_lower=content.lower()
+missing_links=[]
+
+forlinkinlinks:
+
+        ifnotlink.startswith("[["):
+            link=f"[[{link}]]"
+ifnotlink.endswith("]]"):
+            link=f"{link}]]"
+
+iflink.lower()notincontent_lower:
+            missing_links.append(link)
+
+ifnotmissing_links:
+        returncontent
+
+related_content="\n".join(f"- {link}"forlinkinmissing_links)
+
+if"## related"incontent_lower:
+        returnappend_under_heading(content,"## Related",related_content)
+else:
+
+        ifnotcontent.endswith("\n"):
+            content+="\n"
+content+=f"\n## Related\n\n{related_content}\n"
+returncontent
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/paths.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+
+from__future__importannotations
+
+frompathlibimportPath
+fromdatetimeimportdate
+
+defget_archive_path(vault_root:Path,original_file:Path,archive_date:date|None=None)->Path:
+    ifarchive_dateisNone:
+        archive_date=date.today()
+returnvault_root/"Inbox"/"_archive"/archive_date.isoformat()/original_file.name
+
+defget_extraction_path(vault_root:Path,source_file:Path)->Path:
+    returnvault_root/"Inbox"/"_extraction"/f"{source_file.stem}.extraction.json"
+
+defget_changeplan_path(vault_root:Path,source_file:Path)->Path:
+    returnvault_root/"Inbox"/"_extraction"/f"{source_file.stem}.changeplan.json"
+
+defsafe_relative_path(vault_root:Path,path:Path|str)->Path:
+    ifisinstance(path,str):
+        path=Path(path)
+
+ifnotpath.is_absolute():
+        path=vault_root/path
+
+resolved=path.resolve()
+vault_resolved=vault_root.resolve()
+
+try:
+        resolved.relative_to(vault_resolved)
+exceptValueError:
+        raiseValueError(f"Path {path} is outside vault root {vault_root}")
+
+returnresolved.relative_to(vault_resolved)
+
+defensure_parent_exists(path:Path)->None:
+    path.parent.mkdir(parents=True,exist_ok=True)
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: UTILS
+PATH: Workflow/scripts/utils/templates.py
+ROLE: Shared utilities (config, AI client, templates, logging, git ops)
+========================================================================================================================
+
+#!/usr/bin/env python3
+
+importjson
+importre
+frompathlibimportPath
+
+fromjinja2importEnvironment,FileSystemLoader,StrictUndefined
+
+from.configimportload_config,workflow_root
+
+defslugify(text:str)->str:
+
+    slug=text.lower()
+
+slug=slug.replace(" ","-")
+
+slug=re.sub(r"[^a-z0-9-]","",slug)
+
+slug=re.sub(r"-+","-",slug)
+returnslug.strip("-")
+
+defsanitize_path_name(name:str)->str:
+    ifnotname:
+        returnname
+
+result=re.sub(r'[/\\:]','-',name)
+
+result=result.replace('&','and')
+
+result=re.sub(r'["\'\(\)\[\]]','',result)
+
+result=re.sub(r'-+','-',result)
+result=re.sub(r'\s+',' ',result)
+
+result=result.strip('- ')
+
+returnresult
+
+defbasename(path:str)->str:
+    returnPath(path).name
+
+defstrip_extension(path:str)->str:
+    returnPath(path).stem
+
+defget_template_env()->Environment:
+    config=load_config()
+template_dir=config.get("paths",{}).get("templates","")
+
+ifnottemplate_dir:
+        template_dir=workflow_root()/"templates"
+else:
+        template_dir=Path(template_dir)
+
+env=Environment(
+loader=FileSystemLoader(str(template_dir)),
+undefined=StrictUndefined,
+trim_blocks=True,
+lstrip_blocks=True,
+)
+
+env.filters["slugify"]=slugify
+env.filters["basename"]=basename
+env.filters["strip_extension"]=strip_extension
+env.filters["tojson"]=lambdav,**kw:json.dumps(v,ensure_ascii=False,**kw)
+
+returnenv
+
+defget_prompts_env()->Environment:
+    prompts_dir=workflow_root()/"prompts"
+
+env=Environment(
+loader=FileSystemLoader(str(prompts_dir)),
+undefined=StrictUndefined,
+trim_blocks=True,
+lstrip_blocks=True,
+)
+
+env.filters["slugify"]=slugify
+env.filters["basename"]=basename
+env.filters["strip_extension"]=strip_extension
+env.filters["tojson"]=lambdav,**kw:json.dumps(v,ensure_ascii=False,indent=2,**kw)
+
+returnenv
+
+ALLOWED_TEMPLATES={
+"people.md.j2",
+"customer.md.j2",
+"projects.md.j2",
+"rob.md.j2",
+"journal.md.j2",
+"partners.md.j2",
+"readme-migration.md.j2",
+}
+
+defrender_note(template_name:str,context:dict)->str:
+    iftemplate_namenotinALLOWED_TEMPLATES:
+        raiseValueError(f"Template not allowed: {template_name}")
+
+env=get_template_env()
+template=env.get_template(template_name)
+returntemplate.render(**context)
+
+defrender_prompt(template_name:str,context:dict)->str:
+    env=get_prompts_env()
+template=env.get_template(template_name)
+returntemplate.render(**context)
+
+if__name__=="__main__":
+
+    print("Template Engine Tests")
+print("="*40)
+
+tests=[
+("Jeff Denworth","jeff-denworth"),
+("AI Pipelines Collateral","ai-pipelines-collateral"),
+("Test 123!@#","test-123"),
+("  Multiple   Spaces  ","multiple-spaces"),
+]
+
+forinput_text,expectedintests:
+        result=slugify(input_text)
+status="✓"ifresult==expectedelse"✗"
+print(f"{status} slugify('{input_text}') = '{result}'")
+
+assertbasename("/path/to/file.md")=="file.md"
+print("✓ basename works")
+
+env=get_template_env()
+print(f"✓ Template environment created")
+print(f"  Template dir: {env.loader.searchpath}")
+

@@ -1,0 +1,767 @@
+INGESTION PIPELINE REVIEW BUNDLE (TRIMMED_MIN_STRIPPED) — PART 3/9
+Source file: Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.TRIMMED_MIN_STRIPPED.txt
+Instruction: Paste parts in order into the planning LLM, then ask for the review after the final part.
+
+            persona_text=_cached_persona_context(include_full=True)
+elifself.persona:
+            persona_text=self.persona
+ifpersona_text:
+            sections.append(f"## PERSONA\n{persona_text}")
+
+glossary=None
+if_cached_glossary_context:
+            glossary=_cached_glossary_context(compact=True)
+else:
+            glossary=self._format_compact_glossary()
+ifglossary:
+            sections.append(f"## ENTITY GLOSSARY\n{glossary}")
+
+ifself.aliases:
+            alias_section="## NAME ALIASES\n"
+alias_items=[f"- {k} → {v}"fork,vinlist(self.aliases.items())]
+alias_section+="\n".join(alias_items)
+sections.append(alias_section)
+
+ifself.glossary:
+            terms_section="## TERMS & ACRONYMS\n"
+terms_items=[f"- **{k}**: {v}"fork,vinlist(self.glossary.items())]
+terms_section+="\n".join(terms_items)
+sections.append(terms_section)
+
+prefix="\n\n".join(sections)
+
+prefix_hash=hashlib.md5(prefix.encode()).hexdigest()[:8]
+
+returnprefix,prefix_hash
+
+defget_dynamic_suffix(self)->str:
+        ifnotself.relevant_readmes:
+            return""
+
+lines=["## RELEVANT ENTITY CONTEXT"]
+forname,summaryinself.relevant_readmes.items():
+            lines.append(f"\n### {name}\n{summary}")
+
+return"\n".join(lines)
+
+defget_extraction_context(self,compact:bool=True,verbose:bool=False)->str:
+
+        prefix,prefix_hash=self.get_cacheable_prefix()
+suffix=self.get_dynamic_suffix()
+
+ifverbose:
+            prefix_tokens=len(prefix)//4
+suffix_tokens=len(suffix)//4
+print(f"  Context: prefix={prefix_tokens} tokens (hash:{prefix_hash}), suffix={suffix_tokens} tokens")
+ifprefix_tokens>=1024:
+                print("  ✓ Prefix eligible for caching (>= 1024 tokens)")
+else:
+                print("  ⚠ Prefix too short for caching (< 1024 tokens)")
+
+ifsuffix:
+            returnf"{prefix}\n\n{suffix}"
+returnprefix
+
+def_format_compact_glossary(self)->str:
+        lines=[]
+
+ifself.people_manifest:
+            lines.append("**Known People:**")
+
+people_info=self._extract_people_with_relationships(self.people_manifest)
+ifpeople_info:
+
+                formatted=[
+f"{name} ({rel})"ifrelelsename
+forname,relinpeople_info[:80]
+]
+lines.append(", ".join(formatted))
+lines.append("")
+
+ifself.company_manifest:
+            lines.append("**Known Companies:**")
+company_info=self._extract_companies_with_roles(self.company_manifest)
+ifcompany_info:
+                formatted=[
+f"{name} [{role}]"ifroleelsename
+forname,roleincompany_info[:40]
+]
+lines.append(", ".join(formatted))
+lines.append("")
+
+ifself.project_list:
+            lines.append("**Known Projects:**")
+lines.append(", ".join(self.project_list[:50]))
+lines.append("")
+
+ifself.aliases:
+            lines.append("**Name Aliases:**")
+alias_items=[f"{k} → {v}"fork,vinlist(self.aliases.items())[:30]]
+lines.append(", ".join(alias_items))
+
+return"\n".join(lines)
+
+def_extract_people_with_relationships(self,manifest:str)->list[tuple[str,str]]:
+        importre
+results=[]
+
+lines=manifest.split('\n')
+header_idx=-1
+rel_col_idx=-1
+
+fori,lineinenumerate(lines):
+            if'| Name |'inline:
+
+                headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                    if'My Relationship'inh:
+                        rel_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+
+            formatchinre.finditer(r"\|\s*([^|\[]+)\s*\|",manifest):
+                name=match.group(1).strip()
+ifnameandnamenotin["Name","---",""]:
+                    results.append((name,""))
+returnresults[:80]
+
+forlineinlines[header_idx+2:]:
+            ifnotline.strip()ornotline.startswith('|'):
+                continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+                continue
+
+name=cols[1].strip()
+rel=""
+ifrel_col_idx>0andrel_col_idx<len(cols):
+                rel=cols[rel_col_idx].strip()
+
+ifnameandnamenotin["Name","---"]:
+                results.append((name,rel))
+
+returnresults
+
+def_extract_companies_with_roles(self,manifest:str)->list[tuple[str,str]]:
+        importre
+results=[]
+
+lines=manifest.split('\n')
+header_idx=-1
+role_col_idx=-1
+stage_col_idx=-1
+type_col_idx=-1
+
+fori,lineinenumerate(lines):
+            if'| Name |'inline:
+                headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                    if'My Role'inh:
+                        role_col_idx=j
+if'Stage'inh:
+                        stage_col_idx=j
+if'Type'inh:
+                        type_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+            returnresults
+
+forlineinlines[header_idx+2:]:
+            ifnotline.strip()ornotline.startswith('|'):
+                continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+                continue
+
+name=cols[1].strip()
+role=""
+stage=""
+account_type=""
+ifrole_col_idx>0androle_col_idx<len(cols):
+                role=cols[role_col_idx].strip()
+ifstage_col_idx>0andstage_col_idx<len(cols):
+                stage=cols[stage_col_idx].strip()
+iftype_col_idx>0andtype_col_idx<len(cols):
+                account_type=cols[type_col_idx].strip()
+
+display_role=roleorstageoraccount_type
+
+ifnameandnamenotin["Name","---"]:
+                results.append((name,display_role))
+
+returnresults
+
+def_format_full_glossary(self)->str:
+        returnself.people_manifest+"\n"+self.company_manifest
+
+def_extract_names_from_manifest(self,manifest:str)->list[str]:
+        importre
+names=[]
+
+formatchinre.finditer(r"\|\s*\[\[([^\]|]+)",manifest):
+            name=match.group(1).strip()
+ifnameandnamenotin["Name","---"]:
+                names.append(name)
+
+returnnames
+
+def_load_persona(vault_root:Path,resources_paths:dict)->str:
+    prompts_root=Path(resources_paths.get("prompts",vault_root/"Workflow"/"prompts"))
+persona_path=prompts_root/"persona.md"
+ifpersona_path.exists():
+        returnpersona_path.read_text()
+return""
+
+def_load_manifest(manifest_path:Path)->str:
+    ifmanifest_path.exists():
+        returnmanifest_path.read_text()
+return""
+
+def_list_projects(project_paths:list[Path])->list[str]:
+    names:list[str]=[]
+forprojects_dirinproject_paths:
+        ifnotprojects_dir.exists():
+            continue
+names.extend(
+folder.nameforfolderinprojects_dir.iterdir()
+iffolder.is_dir()andnotfolder.name.startswith("_")
+)
+returnnames
+
+def_load_glossary(vault_root:Path,resources_paths:dict)->dict[str,str]:
+    glossary_root=Path(resources_paths.get("entities",vault_root/"Workflow"/"entities"))
+glossary_path=glossary_root/"glossary.yaml"
+ifnotglossary_path.exists():
+        return{}
+
+try:
+        importyaml
+returnyaml.safe_load(glossary_path.read_text())or{}
+exceptException:
+        return{}
+
+@lru_cache(maxsize=1)
+def_load_aliases_cached(aliases_path:str)->dict[str,str]:
+    path=Path(aliases_path)
+ifnotpath.exists():
+        return{}
+
+try:
+        importyaml
+data=yaml.safe_load(path.read_text())or{}
+
+aliases={}
+forcanonical,variantsindata.items():
+            aliases[canonical.lower()]=canonical
+ifisinstance(variants,list):
+                forvariantinvariants:
+                    aliases[variant.lower()]=canonical
+elifisinstance(variants,str):
+                aliases[variants.lower()]=canonical
+
+returnaliases
+exceptException:
+        return{}
+
+def_load_aliases(vault_root:Path,resources_paths:dict)->dict[str,str]:
+    aliases_root=Path(resources_paths.get("entities",vault_root/"Workflow"/"entities"))
+aliases_path=aliases_root/"aliases.yaml"
+return_load_aliases_cached(str(aliases_path))
+
+def_extract_aliases_from_manifest(manifest:str)->dict[str,str]:
+    importre
+aliases={}
+
+lines=manifest.split('\n')
+header_idx=-1
+alias_col_idx=-1
+
+fori,lineinenumerate(lines):
+        if'| Name |'inline:
+            headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                ifh=='Aliases':
+                    alias_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0oralias_col_idx<0:
+        returnaliases
+
+forlineinlines[header_idx+2:]:
+        ifnotline.strip()ornotline.startswith('|'):
+            continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<alias_col_idx+1:
+            continue
+
+name=cols[1].strip()
+alias_str=cols[alias_col_idx].strip()ifalias_col_idx<len(cols)else""
+
+ifnameandalias_strandnamenotin["Name","---"]:
+
+            foraliasinalias_str.split(';'):
+                alias=alias.strip()
+ifaliasandalias.lower()!=name.lower():
+                    aliases[alias.lower()]=name
+
+returnaliases
+
+def_extract_acronyms_from_manifest(manifest:str)->dict[str,str]:
+    acronyms={}
+
+lines=manifest.split('\n')
+header_idx=-1
+acronym_col_idx=-1
+definition_col_idx=-1
+
+fori,lineinenumerate(lines):
+        if'| Name |'inline:
+            headers=[h.strip()forhinline.split('|')]
+forj,hinenumerate(headers):
+                ifh=='Acronym':
+                    acronym_col_idx=j
+ifh=='Definition':
+                    definition_col_idx=j
+header_idx=i
+break
+
+ifheader_idx<0:
+        returnacronyms
+
+forlineinlines[header_idx+2:]:
+        ifnotline.strip()ornotline.startswith('|'):
+            continue
+cols=[c.strip()forcinline.split('|')]
+iflen(cols)<2:
+            continue
+
+name=cols[1].strip()
+acronym=cols[acronym_col_idx].strip()ifacronym_col_idx>0andacronym_col_idx<len(cols)else""
+definition=cols[definition_col_idx].strip()ifdefinition_col_idx>0anddefinition_col_idx<len(cols)else""
+
+ifacronymandnamenotin["Name","---"]:
+
+            foracrinacronym.split(';'):
+                acr=acr.strip()
+ifacr:
+                    acronyms[acr]={
+"full_name":name,
+"definition":definition
+}
+
+returnacronyms
+
+def_extract_candidate_names(content:str)->list[str]:
+    importre
+ifnotcontent:
+        return[]
+
+candidates=re.findall(r"\b[A-Z][a-zA-Z\.]+ [A-Z][a-zA-Z\.]+\b",content)
+
+seen=set()
+ordered=[]
+forcincandidates:
+        ifcnotinseen:
+            seen.add(c)
+ordered.append(c)
+returnordered[:10]
+
+def_quick_entity_scan(content:str,context:"ContextBundle")->list[str]:
+    importre
+mentioned=[]
+content_lower=content.lower()
+
+people_names=context._extract_names_from_manifest(context.people_manifest)
+fornameinpeople_names:
+        canonical=context.aliases.get(name.lower(),name)
+ifname.lower()incontent_lowerorcanonical.lower()incontent_lower:
+            mentioned.append(canonical)
+
+company_names=context._extract_names_from_manifest(context.company_manifest)
+fornameincompany_names:
+        canonical=context.aliases.get(name.lower(),name)
+ifname.lower()incontent_lowerorcanonical.lower()incontent_lower:
+            mentioned.append(canonical)
+
+forprojectincontext.project_list:
+        ifproject.lower()incontent_lower:
+            mentioned.append(project)
+
+returnmentioned[:20]
+
+def_load_entity_readmes(entities:list[str],vault_root:Path,entity_index:Optional[EntityIndex]=None)->dict[str,str]:
+    readmes={}
+
+forentityinentities:
+        readme=_find_entity_readme(entity,vault_root,entity_index)
+ifreadme:
+            summary=_summarize_readme(readme)
+ifsummary:
+                readmes[readme.parent.name]=summary
+
+returnreadmes
+
+def_find_entity_readme(entity:str,vault_root:Path,entity_index:Optional[EntityIndex]=None)->Optional[Path]:
+    ifentity_index:
+        folder=(
+entity_index.find_person(entity)
+orentity_index.find_company(entity)
+orentity_index.find_project(entity)
+)
+ifnotfolder:
+            forsearchin(
+entity_index.search_person,
+entity_index.search_company,
+entity_index.search_project,
+):
+                hits=search(entity,limit=1)
+ifhits:
+                    folder=hits[0]
+break
+iffolder:
+            readme_path=folder/"README.md"
+ifreadme_path.exists():
+                returnreadme_path
+
+people_path=vault_root/"VAST"/"People"/entity/"README.md"
+ifpeople_path.exists():
+        returnpeople_path
+
+customers_path=vault_root/"VAST"/"Customers and Partners"/entity/"README.md"
+ifcustomers_path.exists():
+        returncustomers_path
+
+projects_path=vault_root/"VAST"/"Projects"/entity/"README.md"
+ifprojects_path.exists():
+        returnprojects_path
+
+returnNone
+
+def_summarize_readme(readme_path:Path)->str:
+    try:
+        content=readme_path.read_text()
+
+summary_parts=[]
+
+importre
+
+role_match=re.search(r"Role.*?:\s*(.+)",content)
+ifrole_match:
+            summary_parts.append(f"Role: {role_match.group(1).strip()}")
+
+company_match=re.search(r"Company.*?:\s*(.+)",content)
+ifcompany_match:
+            summary_parts.append(f"Company: {company_match.group(1).strip()}")
+
+facts_match=re.search(r"## Key Facts\s*\n((?:- .+\n?)+)",content)
+iffacts_match:
+            facts=facts_match.group(1).strip().split("\n")[:3]
+summary_parts.append("Key Facts: "+"; ".join(f.strip("- ")forfinfacts))
+
+return"\n".join(summary_parts)ifsummary_partselse""
+
+exceptException:
+        return""
+
+========================================================================================================================
+
+========================================================================================================================
+GROUP: PIPELINE
+PATH: Workflow/pipeline/entities.py
+ROLE: Unified pipeline module
+========================================================================================================================
+
+
+importsys
+fromdifflibimportget_close_matches
+frompathlibimportPath
+fromtypingimportOptional,Tuple,Any
+fromfunctoolsimportlru_cache
+
+sys.path.insert(0,str(Path(__file__).parent.parent))
+fromscripts.utils.configimportload_config
+
+classEntityIndex:
+
+    def__init__(self,vault_root:Path,config:Optional[dict[str,Any]]=None):
+        self.vault_root=vault_root
+self.config=configorload_config(vault_root_override=vault_root)
+paths=self.config.get("paths",{})
+work_paths=paths.get("work",{})
+personal_paths=paths.get("personal",{})
+resources=paths.get("resources",{})
+entities_root=resources.get("entities",self.vault_root/"Workflow"/"entities")
+
+self.people_dirs=[
+Path(work_paths.get("people",self.vault_root/"VAST"/"People")),
+Path(personal_paths.get("people",self.vault_root/"Personal"/"People")),
+]
+self.customer_dirs=[
+Path(work_paths.get("accounts",self.vault_root/"VAST"/"Customers and Partners")),
+]
+self.project_dirs=[
+Path(work_paths.get("projects",self.vault_root/"VAST"/"Projects")),
+Path(personal_paths.get("projects",self.vault_root/"Personal"/"Projects")),
+]
+self.alias_path=Path(entities_root)/"aliases.yaml"
+self._email_index:Optional[dict[str,Path]]=None
+self._name_index:Optional[dict[str,Path]]=None
+self._company_index:Optional[dict[str,Path]]=None
+self._project_index:Optional[dict[str,Path]]=None
+self._aliases:Optional[dict[str,str]]=None
+self._search_cache:dict[tuple[str,str],list[Path]]={}
+
+deffind_person(self,name:str,email:Optional[str]=None)->Optional[Path]:
+        self._ensure_indices()
+
+ifemail:
+            email_lower=email.strip().lower()
+ifemail_lowerinself._email_index:
+                returnself._email_index[email_lower]
+
+normalized=self.normalize_name(name)
+
+name_lower=normalized.lower()
+ifname_lowerinself._name_index:
+            returnself._name_index[name_lower]
+
+name_parts=name_lower.split()
+iflen(name_parts)>=2:
+            forfolder_name,folder_pathinself._name_index.items():
+                folder_parts=folder_name.split()
+iflen(folder_parts)>=2:
+                    first_initial=name_parts[0].strip(".")
+ifname_parts[0]==folder_parts[0]andname_parts[-1]==folder_parts[-1]:
+                        returnfolder_path
+iffirst_initialandfirst_initial[0]==folder_parts[0][0]andname_parts[-1]==folder_parts[-1]:
+                        returnfolder_path
+
+fuzzy=self.search_person(name,limit=1,cutoff=0.82)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+deffind_company(self,company:str)->Optional[Path]:
+        self._ensure_indices()
+
+company_lower=company.lower().strip()
+
+ifcompany_lowerinself._company_index:
+            returnself._company_index[company_lower]
+
+forfolder_name,folder_pathinself._company_index.items():
+            ifcompany_lowerinfolder_nameorfolder_nameincompany_lower:
+                returnfolder_path
+
+fuzzy=self.search_company(company,limit=1,cutoff=0.78)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+deffind_project(self,project:str)->Optional[Path]:
+        self._ensure_indices()
+
+project_lower=project.lower().strip()
+
+ifproject_lowerinself._project_index:
+            returnself._project_index[project_lower]
+
+forfolder_name,folder_pathinself._project_index.items():
+            ifproject_lowerinfolder_nameorfolder_nameinproject_lower:
+                returnfolder_path
+
+fuzzy=self.search_project(project,limit=1)
+iffuzzy:
+            returnfuzzy[0]
+
+returnNone
+
+defsearch_person(self,name:str,limit:int=3,cutoff:float=0.72)->list[Path]:
+        self._ensure_indices()
+normalized=self.normalize_name(name)
+cache_key=("person",normalized.lower())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+ifnormalized.lower()inself._name_index:
+            match=[self._name_index[normalized.lower()]]
+self._search_cache[cache_key]=match
+returnmatch
+
+matches=self._fuzzy_match(normalized,list(self._name_index.keys()),limit,cutoff)
+paths=[self._name_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+defsearch_company(self,company:str,limit:int=3,cutoff:float=0.7)->list[Path]:
+        self._ensure_indices()
+cache_key=("company",company.lower().strip())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+matches=self._fuzzy_match(company,list(self._company_index.keys()),limit,cutoff)
+paths=[self._company_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+defsearch_project(self,project:str,limit:int=3,cutoff:float=0.65)->list[Path]:
+        self._ensure_indices()
+cache_key=("project",project.lower().strip())
+ifcache_keyinself._search_cache:
+            returnself._search_cache[cache_key]
+
+matches=self._fuzzy_match(project,list(self._project_index.keys()),limit,cutoff)
+paths=[self._project_index[m]forminmatches]
+self._search_cache[cache_key]=paths
+returnpaths
+
+deffind_similar_people(self,name:str,limit:int=2,cutoff:float=0.82)->list[str]:
+        self._ensure_indices()
+normalized=self.normalize_name(name).lower()
+matches=[
+mforminself._fuzzy_match(normalized,list(self._name_index.keys()),limit+1,cutoff)
+ifm!=normalized
+]
+return[self._name_index[m].nameforminmatches[:limit]]
+
+deffind_similar_companies(self,name:str,limit:int=2,cutoff:float=0.8)->list[str]:
+        self._ensure_indices()
+name_lower=name.lower().strip()
+matches=[
+mforminself._fuzzy_match(name_lower,list(self._company_index.keys()),limit+1,cutoff)
+ifm!=name_lower
+]
+return[self._company_index[m].nameforminmatches[:limit]]
+
+deffind_similar_projects(self,name:str,limit:int=2,cutoff:float=0.8)->list[str]:
+        self._ensure_indices()
+name_lower=name.lower().strip()
+matches=[
+mforminself._fuzzy_match(name_lower,list(self._project_index.keys()),limit+1,cutoff)
+ifm!=name_lower
+]
+return[self._project_index[m].nameforminmatches[:limit]]
+
+defnormalize_name(self,name:str)->str:
+        self._ensure_aliases()
+
+name_lower=name.lower().strip()
+returnself._aliases.get(name_lower,name)
+
+deflist_people(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._name_index.keys())
+
+deflist_companies(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._company_index.keys())
+
+deflist_projects(self)->list[str]:
+        self._ensure_indices()
+returnlist(self._project_index.keys())
+
+definvalidate(self):
+        self._email_index=None
+self._name_index=None
+self._company_index=None
+self._project_index=None
+self._search_cache={}
+
+def_fuzzy_match(self,query:str,choices:list[str],limit:int,cutoff:float)->list[str]:
+        ifnotqueryornotchoices:
+            return[]
+normalized=" ".join(query.lower().replace("."," ").split())
+choice_map={" ".join(c.split()):cforcinchoices}
+matches=get_close_matches(normalized,list(choice_map.keys()),n=limit,cutoff=cutoff)
+return[choice_map[m]forminmatches]
+
+def_ensure_indices(self):
+        ifself._email_indexisNone:
+            self._build_person_index()
+ifself._company_indexisNone:
+            self._build_company_index()
+ifself._project_indexisNone:
+            self._build_project_index()
+
+def_ensure_aliases(self):
+        ifself._aliasesisNone:
+            self._load_aliases()
+
+def_build_person_index(self):
+        fromscripts.utils.frontmatterimportparse_frontmatter
+
+self._email_index={}
+self._name_index={}
+
+forpeople_dirinself.people_dirs:
+            ifnotpeople_dir.exists():
+                continue
+
+forfolderinpeople_dir.iterdir():
+                ifnotfolder.is_dir()orfolder.name.startswith("_"):
+                    continue
+
+readme=folder/"README.md"
+ifnotreadme.exists():
+                    continue
+
+self._name_index[folder.name.lower()]=folder
+
+try:
+                    content=readme.read_text()
+fm,_=parse_frontmatter(content)
+iffmandfm.get("email"):
+                        email=fm["email"].strip().lower()
+ifemailandemail!="''":
+                            self._email_index[email]=folder
+exceptException:
+                    pass
+
+def_build_company_index(self):
+        self._company_index={}
+
+forcustomers_dirinself.customer_dirs:
+            ifnotcustomers_dir.exists():
+                continue
+forfolderincustomers_dir.iterdir():
+                iffolder.is_dir()andnotfolder.name.startswith("_"):
+                    self._company_index[folder.name.lower()]=folder
+
+def_build_project_index(self):
+        self._project_index={}
+
+forprojects_dirinself.project_dirs:
+            ifnotprojects_dir.exists():
+                continue
+forfolderinprojects_dir.iterdir():
+                iffolder.is_dir()andnotfolder.name.startswith("_"):
+                    self._project_index[folder.name.lower()]=folder
+
+def_load_aliases(self):
+        importyaml
+
+self._aliases={}
+aliases_path=self.alias_path
+
+ifnotaliases_path.exists():
+            return
+
+try:
+            data=yaml.safe_load(aliases_path.read_text())or{}
+
+categories=["people","accounts","projects","rob","rob_forums"]
+ifany(isinstance(data.get(cat),dict)forcatincategories):
+                forcategoryincategories:
+                    cat_aliases=data.get(category)
+ifnotisinstance(cat_aliases,dict):
+                        continue
+forkey,valueincat_aliases.items():
+                        ifnotkey:
+                            continue
