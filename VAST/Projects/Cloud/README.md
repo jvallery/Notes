@@ -4,7 +4,7 @@ title: Cloud
 status: active
 my_role: owner
 description: Cloud platform strategy, multi-tenancy, operability, and marketplace readiness across hyperscalers.
-last_contact: '2025-12-15'
+last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -138,6 +138,8 @@ not done
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, need analysis and product plan input
+
+- 2025-12-01: Karl Vietmeier flagged growing inbound interest in whether VAST supports Google Distributed Cloud (G...
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -312,6 +314,10 @@ not done
 - A document titled "VAST and Azure Integration.docx" is referenced in a Google Docs share request, indicating cloud integration documentation work.
 
 - Walmart requirements analysis and product plan implications are being routed through VAST product management leadership, likely impacting VAST's Cloud product strategy.
+
+- VAST Data is seeing growing interest from the market in whether VAST supports Google Distributed Cloud (GDC) and Microsoft Azure Local.
+
+- For Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities, ownership often shifts from cloud teams to on-prem teams once hardware is involved, which creates confusion over accountability and reduces visibility into progress and outcomes.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -653,6 +659,14 @@ not done
 - Technical accuracy and messaging alignment for VAST on Cloud
 
 - Project brief review for clarity and accuracy
+
+- Support posture for Microsoft Azure Local
+
+- Internal ownership and accountability model when cloud opportunities involve on-prem hardware
+
+- Cloud Product Management ownership vs on-prem team ownership for hyperscaler-adjacent offerings
+
+- Maintaining visibility into execution and outcomes for GDC/Azure Local opportunities
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.

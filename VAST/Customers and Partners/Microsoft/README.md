@@ -184,6 +184,8 @@ not done
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting scheduled for 2026-01-07 08:00 in Lafayette
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -484,6 +486,10 @@ not done
 - Microsoft MAI initial GPU drop was communicated by Kushal Datta as arriving in February 2026, with a storage solution needed for May 2026 to June 2026.
 
 - The document title "VAST and Azure Integration.docx" indicates content related to Microsoft Azure integration.
+
+- Azure Local is being discussed as an environment where VAST Data support is being requested and may be tied to hyperscaler acquisition and cloud consumption.
+
+- Microsoft Azure Local is being asked about as a potential deployment/support target for VAST Data.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

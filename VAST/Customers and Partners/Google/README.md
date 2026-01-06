@@ -130,6 +130,8 @@ not done
 - 2025-12-17: Google (GDC Storage RFP team) requested a follow-up meeting with VAST to review and clarify VAST's G...
 
 - 2025-12-17: Google (David Pawlak) requested follow-up clarifications on VAST Data's Google Distributed Cloud (GD...
+
+- 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -258,6 +260,10 @@ not done
 - Google Docs (Google Drive) sent an automated email notification that a document was shared for editing.
 
 - A one-hour call to review and clarify VAST Data's Google GDC Storage RFP proposal was scheduled for Monday, December 15, 2025 at 2:00 PM PT (selected by Lior Genzel from Google-proposed slots).
+
+- Google Distributed Cloud (GDC) is being discussed as an environment where VAST Data support is being requested and may be tied to hyperscaler acquisition and cloud consumption.
+
+- Google Distributed Cloud (GDC) is being asked about as a potential deployment/support target for VAST Data.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications
