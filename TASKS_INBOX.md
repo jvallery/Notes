@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] If not using the Feedback Form, send strategic plan feedback to Hannah (hanna@bigpictureimpact.com) and/or Andrea Ostroy (andreaostroy01@gmail.com), or request a 1:1 meeting to provide feedback. 📅 2025-12-18 🔼 #task #proposed #auto
+- [?] Complete the IHDF Draft Strategic Plan Feedback Form using the Draft Strategic Plan and submit feedback by December 18, 2025. 📅 2025-12-18 ⏫ #task #proposed #auto
 - [?] Provide feedback to Mordechai Blaunstein on whether the proposed 'Service Aware VIP Pool' approach and tentative VAST 5.6 targeting meets NVIDIA DGX Cloud timeline needs, or whether a shortcut/workaround is required. @Brian Evans 🔼 #task #proposed #auto
 - [?] Provide feedback to Mordechai Blaunstein on whether the proposed 'Service Aware VIP Pool' approach and tentative VAST 5.6 targeting meets NVIDIA DGX Cloud timeline needs, or whether a shortcut/workaround is required. @Chuck Cancilla 🔼 #task #proposed #auto
 - [?] Lead technical investigation of RFE 0482 (dual-uplink visibility and tenant-scoped visibility requirements) and involve additional VAST parties as needed; confirm whether proposed 'Service Aware VIP Pool' approach satisfies NVIDIA DGX Cloud requirements. @Mordechai Blaunstein ⏫ #task #proposed #auto

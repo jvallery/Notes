@@ -58,6 +58,8 @@ role: Executive Director
 - 2025-12-10: Mentioned in: IHDF executive session recap: public stance risk, fundraising committee, Longmont church acquisition exploration
 
 - 2025-12-10: Mentioned in: IHDF executive session recap: public stances, fundraising committee, Longmont church acquisition exploration
+
+- 2025-12-08: Mentioned in: IHDF strategic plan feedback form due Dec 18 and January board meeting preview
 ## Open Tasks
 ```tasks
 path includes Perla Delgado
