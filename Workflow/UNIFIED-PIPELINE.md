@@ -547,10 +547,10 @@ The `PatchGenerator` uses `EntityIndex` to normalize names via aliases:
 
 ```yaml
 # Workflow/entities/aliases.yaml
-Jeff Denworth:
-  - Jeff
-  - Denworth
-  - JD
+people:
+  "Jeff Denworth":
+    - "Jeff"
+    - "JD"
 ```
 
 When generating patches, if `"Jeff"` and `"Jeff Denworth"` both appear, 
@@ -563,6 +563,13 @@ The `TransactionalApply` class supports:
 - **`dry_run=True`**: Reports what would be changed without modifying files
 - **Rollback on failure**: Backs up files before modification, restores on error
 - **Atomic writes**: Uses temp files + rename to prevent partial writes
+
+### Post-Apply Normalization
+
+After a successful apply, `TransactionalApply` runs a small, idempotent normalization pass on any created/modified **entity notes** (not READMEs or manifests) to prevent common ingest artifacts:
+
+- **Frontmatter normalization**: enforce `type` + entity key + clean tags (via `scripts/normalize_entity_notes.py`)
+- **Header normalization**: rewrite `**Account**:` / `**Project**:` / `**Forum**:` lines to match the entity folder (via `scripts/normalize_note_headers.py`)
 
 ---
 

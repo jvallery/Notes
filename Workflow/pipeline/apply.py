@@ -90,6 +90,9 @@ class TransactionalApply:
             # 3. Apply manifest patches (aliases and acronyms)
             for manifest_patch in plan.manifest_patches:
                 self._apply_manifest_patch(manifest_patch, result)
+
+            # 3.5 Post-apply normalization (idempotent cleanup on touched notes)
+            self._post_apply_normalize(result)
             
             # 4. Archive source
             sources_to_archive: list[Path] = []
@@ -396,6 +399,98 @@ class TransactionalApply:
         # Project not found - could add a new row, but for now just skip
         # (would need to know all column values to add properly)
         return lines
+
+    def _post_apply_normalize(self, result: ApplyResult) -> None:
+        """Run post-import normalization helpers on notes touched by this apply."""
+        from scripts.normalize_entity_notes import normalize_frontmatter_dict
+        from scripts.normalize_note_headers import normalize_body_header
+        from scripts.utils.frontmatter import parse_frontmatter, render_frontmatter
+
+        created_files = set(self._created)
+        touched = {*(result.files_created or []), *(result.files_modified or [])}
+
+        for rel_str in sorted(touched):
+            if not rel_str:
+                continue
+            rel_path = Path(rel_str)
+            if rel_path.suffix.lower() != ".md":
+                continue
+            if rel_path.name == "README.md":
+                continue
+            if rel_path.name.startswith("_") or rel_path.name.endswith("_MANIFEST.md"):
+                continue
+
+            scope = self._infer_entity_note_scope(rel_path)
+            if not scope:
+                continue
+
+            entity_name, entity_key, note_type, header_label = scope
+            abs_path = self.vault_root / rel_path
+            if not abs_path.exists():
+                continue
+
+            text = abs_path.read_text(errors="ignore")
+            fm, body = parse_frontmatter(text)
+            if fm is None:
+                fm = {}
+                body = text
+
+            existing_type = str(fm.get("type") or "").strip().strip('"').strip("'").lower()
+            if note_type == "customer" and existing_type == "partners":
+                # Don't normalize partner notes into customer notes.
+                continue
+
+            normalized_fm = normalize_frontmatter_dict(
+                fm,
+                entity_key=entity_key,
+                entity_name=entity_name,
+                note_type=note_type,
+            )
+            updated_body = body
+            if header_label:
+                updated_body = normalize_body_header(
+                    updated_body,
+                    header_label=header_label,
+                    entity_name=entity_name,
+                )
+
+            updated = render_frontmatter(normalized_fm) + updated_body
+            if updated == text:
+                continue
+
+            # Backup existing files modified again during post-normalization.
+            if abs_path not in created_files and abs_path not in self._backed_up:
+                self._backup(abs_path)
+
+            self._atomic_write(abs_path, updated)
+            if rel_str not in result.files_modified and rel_str not in result.files_created:
+                result.files_modified.append(rel_str)
+
+    def _infer_entity_note_scope(
+        self, rel_path: Path
+    ) -> Optional[tuple[str, str, str, Optional[str]]]:
+        """Infer (entity_name, entity_key, note_type, header_label) for an entity note."""
+        parts = rel_path.parts
+        if len(parts) < 4:
+            return None
+
+        if parts[0] == "VAST" and parts[1] == "People":
+            return parts[2], "person", "people", None
+        if parts[0] == "Personal" and parts[1] == "People":
+            return parts[2], "person", "people", None
+
+        if parts[0] == "VAST" and parts[1] == "Projects":
+            return parts[2], "project", "projects", "Project"
+        if parts[0] == "Personal" and parts[1] == "Projects":
+            return parts[2], "project", "projects", "Project"
+
+        if parts[0] == "VAST" and parts[1] == "Customers and Partners":
+            return parts[2], "account", "customer", "Account"
+
+        if parts[0] == "VAST" and parts[1] == "ROB":
+            return parts[2], "rob_forum", "rob", "Forum"
+
+        return None
 
     def _archive_source(self, source_path: Path, result: ApplyResult):
         """Archive source file to Sources directory."""

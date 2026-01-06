@@ -2,12 +2,36 @@ from pathlib import Path
 
 from pipeline.apply import TransactionalApply
 from pipeline.patch import ChangePlan, PatchOperation
+from scripts.utils.frontmatter import parse_frontmatter
 
 
 def _create_minimal_template(vault_root: Path):
     templates_dir = vault_root / "Workflow" / "templates"
     templates_dir.mkdir(parents=True, exist_ok=True)
     (templates_dir / "people.md.j2").write_text("{{ title }}\n\n## Summary\n{{ summary|default('') }}\n")
+
+
+def _create_customer_template_with_placeholders(vault_root: Path):
+    templates_dir = vault_root / "Workflow" / "templates"
+    templates_dir.mkdir(parents=True, exist_ok=True)
+    (templates_dir / "customer.md.j2").write_text(
+        """---
+type: projects
+account: ""
+tags:
+  - type/projects
+  - account/
+---
+
+# {{ title }}
+
+**Account**: [[]]
+
+## Summary
+
+{{ summary|default('') }}
+"""
+    )
 
 
 def _create_readme(vault_root: Path):
@@ -168,3 +192,31 @@ def test_apply_skips_nonexistent_patch_targets(tmp_path):
     assert result.success is True
     # Should not have modified any files
     assert len(result.files_modified) == 0
+
+
+def test_post_apply_normalizes_entity_note_frontmatter_and_headers(tmp_path):
+    vault_root = tmp_path
+    _create_customer_template_with_placeholders(vault_root)
+
+    plan = ChangePlan(
+        source_file="Inbox/Email/test.md",
+        meeting_note_path="VAST/Customers and Partners/Acme/2026-01-05 - Meeting.md",
+        meeting_note={"type": "customer", "title": "Meeting", "date": "2026-01-05", "summary": "Summary"},
+    )
+
+    applier = TransactionalApply(vault_root, dry_run=False)
+    result = applier.apply(plan)
+
+    assert result.success is True
+
+    note_path = vault_root / plan.meeting_note_path
+    assert note_path.exists()
+    content = note_path.read_text()
+    fm, body = parse_frontmatter(content)
+    assert fm is not None
+    assert fm.get("type") == "customer"
+    assert fm.get("account") == "Acme"
+    assert "type/customer" in (fm.get("tags") or [])
+    assert "account/" not in (fm.get("tags") or [])
+    assert "[[]]" not in body
+    assert "**Account**: [[Acme]]" in body
