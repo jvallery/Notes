@@ -201,5 +201,5 @@ def test_output_generator_creates_directories(tmp_path):
     """Test that OutputGenerator creates required directories."""
     generator = OutputGenerator(tmp_path, dry_run=False)
     
-    assert (tmp_path / "Inbox" / "_drafts" / "replies").exists()
-    assert (tmp_path / "Inbox" / "_drafts" / "calendar").exists()
+    assert (tmp_path / "Outbox").exists()
+    assert (tmp_path / "Outbox" / "_calendar").exists()

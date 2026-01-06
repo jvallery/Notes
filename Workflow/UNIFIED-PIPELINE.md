@@ -116,11 +116,11 @@ A single ETL pipeline that:
 │  │  If email input + needs reply:                                         │  │
 │  │  • Gather related READMEs (sender, mentioned entities)                 │  │
 │  │  • Load persona + communication style                                  │  │
-│  │  • Generate draft reply → Inbox/_drafts/                               │  │
+│  │  • Generate draft reply → Outbox/                                      │  │
 │  │                                                                        │  │
 │  │  If scheduling mentioned:                                              │  │
 │  │  • Extract date/time/participants                                      │  │
-│  │  • Generate .ics draft → Inbox/_drafts/                                │  │
+│  │  • Generate .ics draft → Outbox/_calendar/                             │  │
 │  │                                                                        │  │
 │  │  If tasks extracted:                                                   │  │
 │  │  • Already embedded in meeting notes via extraction                    │  │

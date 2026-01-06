@@ -218,6 +218,38 @@ def test_pipeline_processes_all_inbox_types(monkeypatch, tmp_path):
     assert "latency targets for GPU interconnect" in jai_readme.read_text()
 
 
+def test_pipeline_parallel_mode_generates_outbox_drafts(monkeypatch, tmp_path):
+    _write_templates(tmp_path)
+    for name in ["Jeff Denworth", "Jason Vallery", "Jai Menon"]:
+        _write_readme(tmp_path, name)
+
+    email_fixture = Path(__file__).parent / "fixtures" / "email_basic.md"
+    transcript_fixture = Path(__file__).parent / "fixtures" / "transcript_basic.md"
+    inbox_email = tmp_path / "Inbox" / "Email" / email_fixture.name
+    inbox_email.parent.mkdir(parents=True, exist_ok=True)
+    inbox_email.write_text(email_fixture.read_text())
+
+    inbox_transcript = tmp_path / "Inbox" / "Transcripts" / transcript_fixture.name
+    inbox_transcript.parent.mkdir(parents=True, exist_ok=True)
+    inbox_transcript.write_text(transcript_fixture.read_text())
+
+    pipeline = UnifiedPipeline(tmp_path, dry_run=False, verbose=False, generate_outputs=True, force=True, log_metrics=False)
+    monkeypatch.setattr(
+        pipeline.extractor,
+        "extract",
+        lambda env, ctx: _fake_extraction_for_env(env),
+    )
+
+    batch = pipeline.process_all()
+
+    assert batch.total == 2
+    assert batch.success == 2
+
+    outbox = tmp_path / "Outbox"
+    assert outbox.exists()
+    assert any(outbox.glob("*_Reply-To_*.md"))
+
+
 def test_pipeline_apply_archives_source(monkeypatch, tmp_path):
     # Arrange fixtures
     _write_templates(tmp_path)

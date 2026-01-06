@@ -75,10 +75,16 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
     
     # Determine worker count: --sequential forces 1, --workers N overrides config
     effective_workers = 1 if sequential else workers
+
+    subtitle_parts = ["DRY RUN" if dry_run else "LIVE"]
+    if effective_workers != 1:
+        subtitle_parts.append(f"{effective_workers or 'config'} workers")
+    if draft_replies:
+        subtitle_parts.append("drafts→Outbox")
     
     console.print(Panel.fit(
         "[bold blue]Unified Ingest Pipeline[/bold blue]",
-        subtitle=f"{'DRY RUN' if dry_run else 'LIVE'}" + (f" | {effective_workers or 'config'} workers" if effective_workers != 1 else "")
+        subtitle=" | ".join(subtitle_parts)
     ))
     
     # Initialize pipeline
@@ -154,7 +160,13 @@ def _display_result(result, verbose: bool):
             console.print(f"  Modified: {len(result.apply_result.files_modified)}")
         
         if result.draft_reply:
-            console.print(f"  [blue]Draft reply generated[/blue]")
+            console.print(f"  [blue]Draft reply[/blue]: {result.draft_reply}")
+        if result.calendar_invite and result.calendar_invite.get("path"):
+            console.print(f"  [blue]Calendar invite[/blue]: {result.calendar_invite.get('path')}")
+        if verbose and getattr(result, "outputs", None):
+            tasks_emitted = (result.outputs or {}).get("tasks_emitted")
+            if tasks_emitted:
+                console.print(f"  Tasks emitted: {tasks_emitted}")
     else:
         console.print(f"[red]✗[/red] {result.source_path}")
         for error in result.errors:
@@ -173,8 +185,15 @@ def _display_batch(batch, verbose: bool):
     table.add_row("Success", f"[green]{batch.success}[/green]")
     table.add_row("Failed", f"[red]{batch.failed}[/red]" if batch.failed else "0")
     table.add_row("Skipped", f"[yellow]{batch.skipped}[/yellow]" if batch.skipped else "0")
+
+    drafts = sum(1 for r in batch.results if getattr(r, "draft_reply", None))
+    if drafts:
+        table.add_row("Draft replies", f"[blue]{drafts}[/blue]")
     
     console.print(table)
+
+    if drafts:
+        console.print("[blue]Drafts written to: Outbox/[/blue]")
     
     # Individual results
     if verbose or batch.failed > 0:

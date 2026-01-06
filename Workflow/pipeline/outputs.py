@@ -5,8 +5,8 @@ This module handles the output generation phase of the unified pipeline,
 producing actionable outputs from extracted knowledge.
 
 Outputs:
-- Draft email replies → Inbox/_drafts/replies/
-- Calendar invites → Inbox/_drafts/calendar/
+- Draft email replies → Outbox/
+- Calendar invites → Outbox/_calendar/
 - Task aggregations → TASKS_INBOX.md or entity README
 
 Usage:
@@ -16,6 +16,7 @@ Usage:
 """
 
 import sys
+import re
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
@@ -40,12 +41,12 @@ class OutputGenerator:
         self.verbose = verbose
         
         # Ensure output directories exist
-        self.drafts_dir = vault_root / "Inbox" / "_drafts"
-        self.replies_dir = self.drafts_dir / "replies"
-        self.calendar_dir = self.drafts_dir / "calendar"
+        self.outbox_dir = vault_root / "Outbox"
+        self.replies_dir = self.outbox_dir
+        self.calendar_dir = self.outbox_dir / "_calendar"
         
         if not dry_run:
-            self.replies_dir.mkdir(parents=True, exist_ok=True)
+            self.outbox_dir.mkdir(parents=True, exist_ok=True)
             self.calendar_dir.mkdir(parents=True, exist_ok=True)
     
     def generate_all(
@@ -141,11 +142,19 @@ class OutputGenerator:
                 sender = extraction.participants[0]
         
         # Generate filename
-        date_str = datetime.now().strftime("%Y-%m-%d_%H%M%S")
-        safe_sender = "".join(c if c.isalnum() or c in "- " else "_" for c in sender)[:30]
-        filename = f"{date_str}_reply_to_{safe_sender}.md"
-        
+        today = datetime.now().strftime("%Y-%m-%d")
+        subject_slug = re.sub(r"[^\w\s-]", "", extraction.title or "email")
+        subject_slug = re.sub(r"\s+", "-", subject_slug).strip("-")[:40] or "email"
+
+        filename = f"{today}_Reply-To_{subject_slug}.md"
         output_path = self.replies_dir / filename
+
+        # Avoid overwriting
+        counter = 1
+        while output_path.exists():
+            filename = f"{today}_Reply-To_{subject_slug}_{counter}.md"
+            output_path = self.replies_dir / filename
+            counter += 1
         
         # Build draft content
         # If we have a context bundle and source content, we could call LLM here

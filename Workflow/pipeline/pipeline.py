@@ -32,7 +32,7 @@ from .patch import PatchGenerator, ChangePlan, PatchCollector
 from .apply import TransactionalApply, ApplyResult
 from .entities import EntityIndex
 from .outputs import OutputGenerator
-from .models import ContactInfo
+from .models import ContactInfo, UnifiedExtraction
 from scripts.utils.ai_client import log_pipeline_stats
 from scripts.utils.config import load_config
 
@@ -54,6 +54,7 @@ class ProcessingResult:
     # Output suggestions
     draft_reply: Optional[str] = None
     calendar_invite: Optional[dict] = None
+    outputs: dict = field(default_factory=dict)
     
     # Metrics
     metrics: dict = field(default_factory=dict)
@@ -258,14 +259,20 @@ class UnifiedPipeline:
                     envelope.raw_content if envelope else "",
                     force_reply=is_email  # Always generate reply for emails
                 )
-                result.draft_reply = str(outputs.get("reply")) if outputs.get("reply") else None
-                result.calendar_invite = {"path": str(outputs.get("calendar"))} if outputs.get("calendar") else None
+                result.outputs = {
+                    "reply": str(outputs.get("reply")) if outputs.get("reply") else None,
+                    "calendar": str(outputs.get("calendar")) if outputs.get("calendar") else None,
+                    "reminder": str(outputs.get("reminder")) if outputs.get("reminder") else None,
+                    "tasks_emitted": len(outputs.get("tasks") or []),
+                }
+                result.draft_reply = result.outputs.get("reply")
+                result.calendar_invite = {"path": result.outputs.get("calendar")} if result.outputs.get("calendar") else None
                 outputs_ms = int((time.time() - outputs_start) * 1000)
             phase_timings["outputs_ms"] = outputs_ms
             
             # 7. Persist trace artifacts if requested
             if self.trace_dir:
-                self._persist_trace(envelope, extraction, plan)
+                self._persist_trace(envelope, extraction, plan, outputs=result.outputs or None)
             
             result.metrics = {
                 "timings": phase_timings,
@@ -462,6 +469,7 @@ class UnifiedPipeline:
         
         # Merge all patches and apply atomically (single-writer)
         meeting_notes = patch_collector.get_meeting_notes()
+        apply_result: Optional[ApplyResult] = None
         needs_apply = (patch_collector.has_patches or bool(meeting_notes)) and not self.dry_run and bool(source_files)
         if needs_apply:
             try:
@@ -489,6 +497,58 @@ class UnifiedPipeline:
                     if r.success and not any("Skipped" in str(err) for err in r.errors):
                         r.success = False
                         r.errors.append(f"Batch merge/apply error: {e}")
+
+        # Generate outputs after apply (or when no apply needed) so parallel mode matches sequential behavior.
+        outputs_summary = {"draft_replies": 0, "calendar_invites": 0, "reminders": 0, "tasks_emitted": 0}
+        apply_ok = (apply_result is None) or bool(apply_result.success)
+        if self.generate_outputs and apply_ok:
+            for r in batch.results:
+                if not r.success or any("Skipped" in str(err) for err in r.errors):
+                    continue
+                if not r.envelope or not r.extraction:
+                    continue
+                try:
+                    extraction = UnifiedExtraction.model_validate(r.extraction)
+                except Exception as e:
+                    r.errors.append(f"Output generation skipped: invalid extraction ({e})")
+                    continue
+
+                is_email = r.envelope.content_type.value == "email"
+                suggested = extraction.suggested_outputs
+                if not (is_email or (suggested and suggested.needs_reply)):
+                    continue
+
+                context = ContextBundle.load(self.vault_root, r.envelope, self.entity_index)
+                outputs = self.output_generator.generate_all(
+                    extraction,
+                    context,
+                    r.envelope.raw_content if r.envelope else "",
+                    force_reply=is_email,
+                )
+                r.outputs = {
+                    "reply": str(outputs.get("reply")) if outputs.get("reply") else None,
+                    "calendar": str(outputs.get("calendar")) if outputs.get("calendar") else None,
+                    "reminder": str(outputs.get("reminder")) if outputs.get("reminder") else None,
+                    "tasks_emitted": len(outputs.get("tasks") or []),
+                }
+                r.draft_reply = r.outputs.get("reply")
+                if r.outputs.get("calendar"):
+                    r.calendar_invite = {"path": r.outputs.get("calendar")}
+
+                if outputs.get("reply"):
+                    outputs_summary["draft_replies"] += 1
+                if outputs.get("calendar"):
+                    outputs_summary["calendar_invites"] += 1
+                if outputs.get("reminder"):
+                    outputs_summary["reminders"] += 1
+                outputs_summary["tasks_emitted"] += len(outputs.get("tasks") or [])
+
+                if self.trace_dir and r.envelope:
+                    try:
+                        stem = r.envelope.source_path.stem
+                        (self.trace_dir / f"{stem}.outputs.json").write_text(json.dumps(r.outputs, indent=2))
+                    except Exception:
+                        pass
 
         # Recompute counts after batch apply
         batch.success = batch.failed = batch.skipped = 0
@@ -520,7 +580,8 @@ class UnifiedPipeline:
                 "workers": self.max_workers,
                 "files_processed": len(paths),
                 "patches_merged": patch_collector.patch_count,
-            }
+            },
+            "outputs": outputs_summary,
         }
         
         if self.log_metrics and batch.total > 0:
@@ -623,7 +684,7 @@ class UnifiedPipeline:
         console.print(f"  Tasks: {len(extraction.tasks)}")
         console.print(f"  Entities with facts: {len(extraction.get_entities_with_facts())}")
 
-    def _persist_trace(self, envelope: ContentEnvelope, extraction, plan: ChangePlan):
+    def _persist_trace(self, envelope: ContentEnvelope, extraction, plan: ChangePlan, outputs: Optional[dict] = None):
         """Persist extraction and changeplan artifacts for audit/traceability."""
         if not self.trace_dir:
             return
@@ -634,6 +695,7 @@ class UnifiedPipeline:
         stem = envelope.source_path.stem
         extraction_path = trace_root / f"{stem}.extraction.json"
         changeplan_path = trace_root / f"{stem}.changeplan.json"
+        outputs_path = trace_root / f"{stem}.outputs.json"
         
         try:
             extraction_path.write_text(json.dumps(extraction.model_dump(mode="json"), indent=2))
@@ -644,3 +706,9 @@ class UnifiedPipeline:
             changeplan_path.write_text(json.dumps(plan.model_dump(mode="json", exclude_none=True), indent=2))
         except Exception:
             pass
+
+        if outputs:
+            try:
+                outputs_path.write_text(json.dumps(outputs, indent=2))
+            except Exception:
+                pass
