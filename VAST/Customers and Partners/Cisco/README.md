@@ -60,6 +60,8 @@ not done
 - 2025-12-17: Brian Evans alerted the PM team that RFE 0526 (Existing Feature Enhancement) for Cisco was submitted...
 - 2025-12-03: Mentioned in: Rick Scurfield requests account outreach and VIP nominations for VAST Forward (Feb 24-26)
 - 2025-12-17: Brian Evans notified the PM team that Cisco RFE 0526 (Existing Feature Enhancement) was submitted an...
+
+- 2025-12-17: Brian Evans alerted the PM team that Cisco submitted RFE 0526 (Existing Feature Enhancement) request...
 ## Key Facts
 
 - Cisco request (RFE 0526) focuses on regex-based allow/deny patterns for replication policies.
@@ -135,6 +137,12 @@ not done
 - RFE 0526 indicates an estimated additional capacity impact of 100 PB and is marked as not a deal blocker; opportunity amount is listed as 0.
 
 - Cisco is participating in VAST Forward as a partner and sponsor, investing time, brand, and resources alongside VAST Data.
+
+- Cisco requested an enhancement to support regex-style allow/deny patterns to filter files or objects by name in replication policies (examples: allow *.LIB, deny *.mp3).
+
+- Cisco operates many global sites with data replication across hundreds of replication relationships.
+
+- Cisco's value proposition for RFE 0526 is multi-geo liability protection by preventing replication of certain content (for example, copyrighted user content) using a small set of 'never replicate' patterns.
 ## Topics
 
 - Cisco replication policy enhancements
@@ -180,6 +188,10 @@ not done
 - Regex allow/deny patterns (examples: *.LIB allow, *.mp3 deny)
 
 - Enterprise multi-geo liability protection and 'never replicate' patterns
+
+- Regex-based allow/deny filtering for file/object replication
+
+- Salesforce RFE workflow: linking RFE to Related Feature
 ## Key Decisions
 
 - RFE 0526 for Cisco was approved by Brian Evans and submitted to the VAST PM team.
