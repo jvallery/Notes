@@ -156,6 +156,8 @@ expertise:
 - Jason Vallery said his schedule became very busy due to a new job and frequent travel through the end of 2025, but he would attend men's group meetings if he is in town.
 
 - Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on December 29 or December 30, 2025.
+
+- Jason Vallery led a walkthrough call with Google for the Google Distributed Cloud RFP and collected follow-up questions on FIPS/SED requirements and encryption key granularity across S3 and NFS.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -206,6 +208,8 @@ expertise:
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2026-01-04: Mentioned in: David Ellis: confirm quorum for Jan 6 men's group (2084) + Wapos dinner
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 ## Open Tasks
 ```tasks
 path includes James Vallery

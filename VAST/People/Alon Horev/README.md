@@ -77,6 +77,8 @@ tags:
 - Alon Horev advised Jason Vallery to work with Violet as the primary expert on Google Distributed Cloud RFP encryption and key management questions.
 
 - Kushal Datta requested a meeting with Alon Horev to discuss solution design for Microsoft MAI.
+
+- Alon Horev advised Jason Vallery to work with Violet (last name unknown) on Google Distributed Cloud RFP encryption and FIPS/SED questions, indicating Violet is the subject-matter expert.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)

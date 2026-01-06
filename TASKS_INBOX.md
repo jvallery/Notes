@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Provide Google the VAST documentation link for managing encryption groups and keys (tenant/path level, including S3 buckets and NFS exports) and the VAST 5.4 release notes link documenting SSE-C header support. 🔼 #task #proposed #auto
+- [?] Confirm with Google where the self-encrypting drive (SED) requirement originates (for example, FIPS 140-3 drive removal threat model) to determine whether VAST software-based encryption satisfies the requirement without SED hardware. ⏫ #task #proposed #auto
+- [?] Engage Violet (last name unknown) to validate and finalize answers for Google's RFP questions on FIPS/SED posture, encryption key granularity across S3 and NFS, and multi-tenant policy behavior for buckets, encrypted paths, and views. ⏫ #task #proposed #auto
 - [?] Review the VAST on Cloud project brief and provide feedback to ensure alignment, clarity, and accuracy ahead of the January working session. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Review the draft VAST on Cloud course and provide feedback on messaging accuracy, technical correctness, and clarity for the field; submit feedback to Terika Dilworth. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Coordinate with John Mao to identify the right VAST engineering participants to engage with John Mao's OpenAI contact after John Mao's San Francisco visit (engineering-centered engagement). 🔼 #task #proposed #auto

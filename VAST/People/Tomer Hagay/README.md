@@ -118,6 +118,10 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - Tomer Hagay asked where Google's self-encrypting drive (SED) requirement originates, and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption requirements for protection against drive removal, VAST software using the same FIPS-compatible encryption algorithms should meet that requirement.
 
 - Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" and invited Jason Vallery to edit it.
+
+- Tomer Hagay stated that VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4.
+
+- Tomer Hagay asked for clarification on the origin of Google's SED requirement and noted that VAST software encryption using FIPS-compatible algorithms should meet FIPS 140-3 data-at-rest requirements if the goal is protection against drive removal.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
