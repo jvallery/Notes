@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Identify whether anyone at VAST Data has previously evaluated Rockset in depth and summarize findings for John Mao (answering his question: "Has anyone internally looked at Rockset before?"). 🔼 #task #proposed #auto
+- [?] Send John Mao a concise list of specific questions and information requests to ask his OpenAI friend (Online Data Infrastructure lead) during the planned early New Year San Francisco visit, focusing on Rockset architecture, CosmosDB usage patterns, DAQ requirements, and dataset integration plans. 🔼 #task #proposed #auto
 - [?] Send Sushant Rewaskar (Microsoft) the VAST architecture documents that were discussed in San Francisco so he can review them offline. @TBD ⏫ #task #proposed #auto
 - [?] Propose preferred meeting times to Sushant Rewaskar (Microsoft) for an intro call/meeting to enable VAST-Microsoft technical collaboration. ⏫ #task #proposed #auto
 - [?] Send Sushant Rewaskar (Microsoft) the VAST architecture documents that were discussed in San Francisco. @TBD ⏫ #task #proposed #auto

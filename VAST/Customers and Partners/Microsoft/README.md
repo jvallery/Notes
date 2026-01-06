@@ -188,6 +188,8 @@ not done
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
 
 - 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU VMs because t...
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -496,6 +498,10 @@ not done
 - Microsoft's Redmond lab currently does not have GPU nodes available, prompting Microsoft to request an Azure VoC instance to test performance with Azure GPU instances.
 
 - Microsoft requested an Azure VoC instance to run performance testing against Azure GPU virtual machines because their on-prem lab lacks GPU nodes.
+
+- John Mao stated OpenAI Rockset persists to Azure Blob storage.
+
+- Jason Vallery stated OpenAI uses Azure Cosmos DB heavily for conversation persistence.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

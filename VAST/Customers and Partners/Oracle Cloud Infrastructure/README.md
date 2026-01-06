@@ -54,6 +54,8 @@ not done
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
 
 - 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) replied that he is traveling and suggested Jason con...
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
 ## Key Facts
 
 - Oracle was listed as a topic for an AlphaSights expert discussion request sent to Jason Vallery.
@@ -67,6 +69,8 @@ not done
 - OpenAI Research uses frontier supercomputing clusters in Oracle Cloud Infrastructure (OCI) for training workloads, per John Mao's discussion with his OpenAI friend.
 
 - OpenAI Research training clusters were described as running on large frontier supercomputing clusters in Oracle Cloud Infrastructure (per John Mao's OpenAI contact).
+
+- John Mao stated OpenAI Research uses offline data for training on frontier supercomputing clusters in Oracle Cloud Infrastructure (OCI).
 ## Topics
 
 - Intro between VAST Data and Oracle Cloud Infrastructure Alloy and Dedicated Regions product management

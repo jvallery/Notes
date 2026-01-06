@@ -45,6 +45,8 @@ not done
 - 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI, noting limited public news ove...
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
 ## Key Facts
 
 - VAST plans a touch base meeting on Tuesday with the OpenAI team to align on POC next steps, OpenAI resource availability, and the POC start date.
@@ -152,6 +154,16 @@ not done
 - Jason Vallery stated OpenAI has another big data team called "Data Platform" where Spark and Databricks workloads run, led by Emma Tang.
 
 - OpenAI Research data platform is described by Jason Vallery as an in-house system called DAQ (Data Acquisition) that drives very high throughput and PiB-scale data movement; Louis Feuvrier is the lead developer/architect for DAQ.
+
+- OpenAI is organized into three major teams: Applications (ChatGPT and online data), Scaling (between Applications and Research, not clearly a platform team), and Research (data scientists reporting up to Jakob Pachoki, focused on offline training data for frontier clusters including in OCI).
+
+- Rockset at OpenAI was described as a SQL-based "vector database" and the platform (persisted to Azure Blob) contains the entire history of ChatGPT conversations.
+
+- OpenAI's application side (ChatGPT) heavily leverages Azure Cosmos DB for conversation persistence (per Jason Vallery).
+
+- OpenAI Research uses an in-house system called DAQ (Data Acquisition) for training data, and Louis Feuvrier is the lead developer/architect for DAQ (per Jason Vallery).
+
+- John Mao stated the reporting chain: Ben Ries reports to John Mao's friend, and John Mao's friend reports to Venkat (likely Venkat Venkataramani).
 ## Topics
 
 - OpenAI POC planning: next steps, resource availability, and start date
