@@ -146,6 +146,8 @@ not done
 - 2025-12-01: Brian Evans alerted the PM team about RFE 0482 from NVIDIA Corporation requesting unified visibility...
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
+
+- 2025-12-11: Mentioned in: VAST and Microsoft Ignite follow-up, intro request and architecture docs
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -328,6 +330,8 @@ not done
 - Jeff Denworth requested that cloud purchase orders be tracked to understand customer expectations, user experience, cloud implications, and business development angles.
 
 - VAST on Azure is not close to being ready to support Microsoft's requested Azure VoC performance testing use case (per Lior Genzel).
+
+- VAST Cloud product leadership (Jason Vallery) was introduced to Microsoft to enable technical collaboration.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

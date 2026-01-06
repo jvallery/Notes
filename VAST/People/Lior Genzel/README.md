@@ -540,6 +540,10 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated VAST will decline Microsoft's request for an Azure VoC instance for GPU performance testing because VAST on Azure is not close to being ready.
 
 - Lior Genzel asked Ray Coetzee to schedule a follow-up call with the Microsoft requestors so Lior can communicate the decision directly.
+
+- Lior Genzel introduced Jason Vallery (VAST Data VP Product Management for Cloud) to Sushant Rewaskar (Microsoft) to enable technical collaboration between VAST and Microsoft.
+
+- Lior Genzel stated he was in town with Jason Vallery for meetings at Microsoft during the week of Monday, December 8, 2025 through Wednesday, December 10, 2025, with a possible Thursday morning option.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

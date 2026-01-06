@@ -857,6 +857,8 @@ not done
 - Readiness of VAST Azure for performance testing and customer evaluation
 
 - Expected performance profile for an Azure VoC instance (question to Karl Vietmeier)
+
+- Scheduling an intro call/meeting between Jason Vallery and Sushant Rewaskar
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
