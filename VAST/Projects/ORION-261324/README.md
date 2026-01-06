@@ -54,6 +54,8 @@ not done
 - Mordechai Blaunstein indicated a tentative target to support the 'Service Aware VIP Pool' capability in VAST release 5.6, but stated it is not confirmed and asked whether it meets NVIDIA's timeline or if a shortcut/workaround is needed.
 
 - ORION-261324 tracks work to define a "Service Aware VIP Pool" enabling multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI), referenced as related to RFE 0482 needs.
+
+- Mordechai Blaunstein indicated tentative targeting for support in VAST release 5.6 for the 'Service Aware VIP Pool' work, but explicitly noted it is not confirmed and asked whether the timeline meets NVIDIA needs or if a workaround is required.
 ## Topics
 
 ## Key Decisions

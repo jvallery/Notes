@@ -142,6 +142,8 @@ not done
 - 2025-12-01: Karl Vietmeier flagged growing inbound interest in whether VAST supports Google Distributed Cloud (G...
 
 - 2025-12-01: Brian Evans alerted the PM team about RFE 0482 for NVIDIA DGX Cloud, requesting unified visibility a...
+
+- 2025-12-01: Brian Evans alerted the PM team about RFE 0482 from NVIDIA Corporation requesting unified visibility...
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -677,6 +679,12 @@ not done
 - Service Aware VIP Pool proposal for multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI)
 
 - Jira ORION-261324 and internal wiki documentation for VIP pool changes
+
+- Tenant-scoped visibility for multi-tenant cluster LAX-03 (NVIDIA-only tenant data via nvidiadgxc.cloud.vastdata.com)
+
+- VAST Uplink visibility model and multi-VIP access to VMS endpoints (GUI/CLI/REST/SSH/CSI)
+
+- Proposed 'Service Aware VIP Pool' and tracking Jira ORION-261324
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
@@ -715,3 +723,5 @@ not done
 - Jeff Denworth assigned Mordechai Blaunstein to lead the technical investigation and coordination for RFE 0482.
 
 - Jeff Denworth assigned Mordechai Blaunstein to take ownership of analyzing RFE 0482 and to bring in additional parties as needed.
+
+- Jeff Denworth assigned Mordechai Blaunstein to lead the technical deep dive on RFE 0482 and to bring in additional parties as needed.

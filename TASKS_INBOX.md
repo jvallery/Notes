@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Provide feedback to Mordechai Blaunstein on whether the proposed 'Service Aware VIP Pool' approach and tentative VAST 5.6 targeting meets NVIDIA DGX Cloud timeline needs, or whether a shortcut/workaround is required. @Brian Evans 🔼 #task #proposed #auto
+- [?] Provide feedback to Mordechai Blaunstein on whether the proposed 'Service Aware VIP Pool' approach and tentative VAST 5.6 targeting meets NVIDIA DGX Cloud timeline needs, or whether a shortcut/workaround is required. @Chuck Cancilla 🔼 #task #proposed #auto
+- [?] Lead technical investigation of RFE 0482 (dual-uplink visibility and tenant-scoped visibility requirements) and involve additional VAST parties as needed; confirm whether proposed 'Service Aware VIP Pool' approach satisfies NVIDIA DGX Cloud requirements. @Mordechai Blaunstein ⏫ #task #proposed #auto
+- [?] Navigate to Salesforce RFE 0482 record (https://vastdata.my.salesforce.com/a6HV40000009AOL) and link the RFE to the correct 'Related Feature' in Salesforce. @TBD ⏫ #task #proposed #auto
 - [?] Confirm with Chuck Cancilla and Brian Evans whether the proposed "Service Aware VIP Pool" approach (ORION-261324) satisfies NVIDIA DGX Cloud requirements and whether a workaround is needed if release 5.6 timing is not acceptable. @Mordechai Blaunstein ⏫ #task #proposed #auto
 - [?] Lead technical/product analysis for RFE 0482 (dual-uplink visibility and tenant-scoped visibility for NVIDIA DGX Cloud) and pull in appropriate VAST stakeholders to define an approach. @Mordechai Blaunstein ⏫ #task #proposed #auto
 - [?] Navigate to Salesforce RFE 0482 record (https://vastdata.my.salesforce.com/a6HV40000009AOL) and link the RFE to the correct Related Feature in Salesforce. @TBD ⏫ #task #proposed #auto
