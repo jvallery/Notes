@@ -47,4 +47,8 @@ not done
 - VAST Data equity grants and securities administration
 
 - Viewing and managing equity grants and additional securities for VAST Data
+
+- Slice equity management platform access
+
+- Employee equity grants and securities administration
 ## Key Decisions
