@@ -74,6 +74,8 @@ not done
 - 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
@@ -111,6 +113,8 @@ not done
 - A deck titled "GCP Flow from customer to sales to customer" was shared internally, likely documenting a process flow related to the GCP MVP effort.
 
 - The Google Distributed Cloud RFP follow-up questions on encryption and compliance are being handled as part of VAST's Google Cloud related workstream (GCP MVP).
+
+- The Google Distributed Cloud RFP follow-up questions on encryption and compliance are relevant inputs to the VAST cloud workstream for Google (GCP/GDC context).
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement

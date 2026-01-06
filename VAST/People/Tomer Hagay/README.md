@@ -134,6 +134,18 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - Tomer Hagay stated VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using the x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4, and referenced the 5.4 release notes as documentation.
 
 - Tomer Hagay suggested that if self-encrypting drives (SEDs) are requested to meet FIPS 140-3 data-at-rest encryption requirements for protection against drive removal, VAST software encryption using FIPS-compatible algorithms should meet the same requirement.
+
+- Tomer Hagay stated that Violet (last name unknown) is the expert on encryption and related RFP questions for Google Distributed Cloud.
+
+- Tomer Hagay stated VAST does not want to be restricted by hardware capabilities or availability for self-encrypting drives (SED) and instead focuses on software-based encryption that could also be FIPS certified.
+
+- Tomer Hagay stated that VAST encryption keys are managed at the tenant level or path level using encryption groups, and that a "path" includes any protocol, including S3 buckets and NFS exports.
+
+- Tomer Hagay stated that an encryption group can be assigned to a path to support having a unique key for that path.
+
+- Tomer Hagay stated that VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using the x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4.
+
+- Tomer Hagay asked for clarification on the source of Google's self-encrypting drive (SED) requirement and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption requirements for protection against drive removal, VAST software encryption using FIPS-compatible algorithms should meet that requirement.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps

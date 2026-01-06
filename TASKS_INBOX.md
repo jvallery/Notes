@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Use and share the VAST 5.4 release notes documenting SSE-C support via x-amz-server-side-encryption-customer-* headers, and confirm any operational constraints or "gotchas" relevant to Google Distributed Cloud. 🔼 #task #proposed #auto
+- [?] Use and share the VAST support documentation for encryption groups and keys (tenant and path level, including S3 buckets and NFS exports) as the authoritative reference in the Google Distributed Cloud RFP response. 🔼 #task #proposed #auto
+- [?] Confirm with Google where the self-encrypting drive (SED) requirement originates (for example, a specific FIPS 140-3 interpretation or drive-removal threat model) to determine whether VAST software-based encryption satisfies the requirement. ⏫ #task #proposed #auto
+- [?] Engage Violet (last name unknown) to validate and finalize answers for Google Distributed Cloud RFP follow-up questions on FIPS/SED posture, encryption key granularity across S3 and NFS, and SSE-C behavior and limitations. ⏫ #task #proposed #auto
 - [?] Reference VAST 5.4 release notes to document S3 SSE-C support via x-amz-server-side-encryption-customer-* headers in the Google Distributed Cloud RFP response. 🔼 #task #proposed #auto
 - [?] Use VAST documentation on 'Managing encryption groups and keys' to support the Google Distributed Cloud RFP response regarding tenant-level and path-level encryption key granularity across S3 and NFS. 🔼 #task #proposed #auto
 - [?] Confirm the origin and rationale of Google's self-encrypting drive (SED) requirement for the Google Distributed Cloud RFP (for example, whether it is specifically tied to FIPS 140-3 drive-removal threat model) and feed that context back into the RFP response. 🔼 #task #proposed #auto

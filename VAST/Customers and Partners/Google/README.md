@@ -357,6 +357,12 @@ not done
 - Definition of 'path' spanning protocols including S3 buckets and NFS exports
 
 - S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) support via x-amz-server-side-encryption-customer-* headers
+
+- FIPS-certified QLC and self-encrypting drives (SED) requirements and validation
+
+- VAST support for SED workflows and key management
+
+- Encryption key granularity across S3 buckets, NFS exports, and path-based encryption groups
 ## Key Decisions
 
 - Lior Genzel selected Monday 2025-12-15 at 2:00pm PT as the meeting time for the initial one-hour call to review the GDC Storage RFP proposal (based on the scheduling thread where Lior requested 'The 15th at 2 pm PT please' and David Pawlak confirmed the invite was sent).
@@ -386,3 +392,5 @@ not done
 - Lior Genzel selected Monday, December 15, 2025 at 2:00 PM PT for the initial one-hour Google GDC Storage RFP clarification call.
 
 - For Google Distributed Cloud RFP responses, position VAST as focusing on software-based encryption (potentially FIPS certifiable) rather than relying on self-encrypting drive (SED) hardware capabilities or availability.
+
+- For the Google Distributed Cloud RFP response, VAST should position software-based encryption (potentially FIPS certifiable) as the primary approach rather than committing to self-encrypting drives (SED) hardware dependence.

@@ -168,6 +168,8 @@ expertise:
 - David Pawlak (Google) did not have Jason Vallery's email address and asked Lior Genzel to loop Jason into the GDC Storage RFP follow-up thread.
 
 - Jason Vallery reported that a Google Distributed Cloud RFP walkthrough call with Google generated follow-up questions about FIPS-certified QLC/SED options, software support for SEDs and key management, and documentation for encryption key granularity across S3 and NFS in a multi-tenant context.
+
+- Jason Vallery led a walkthrough call with Google for the Google Distributed Cloud RFP on 2025-12-15 and collected follow-up questions on encryption and compliance (FIPS/SED, encryption key granularity, and SSE-C).
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
