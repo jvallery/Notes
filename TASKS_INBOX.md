@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Review the Google Docs share request and grant or deny Lior Genzel access to the document "VAST and Azure Integration.docx". 🔼 #task #proposed #auto
 - [?] Draft a CES media strategy to engage journalists and insert VAST into NVIDIA launch coverage, including considering a VAST "available now" press release pointing to Asaf's demo and sending it to NVIDIA for review. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
 - [?] Create VAST content for the NVIDIA Rubin platform announcement (Kirstin Bordner noted there is currently no VAST content for Rubin). @TBD 📅 2026-01-05 🔼 #task #proposed #auto
 - [?] Approve the new BF4 blog written by Nicole and share it with Kirstin Bordner so she can draft a VAST press release aligned to the NVIDIA CME embargo lift. @Jeff Denworth 📅 2025-12-22 ⏫ #task #proposed #auto

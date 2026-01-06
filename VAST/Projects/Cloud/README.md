@@ -306,6 +306,8 @@ not done
 - A VAST on Cloud course and a project brief are being built from existing material and will be reviewed in a January working session.
 
 - VAST Data cloud team discussions include supply chain planning and deployment readiness for Microsoft MAI timelines (May to June 2026).
+
+- A document titled "VAST and Azure Integration.docx" is referenced in a Google Docs share request, indicating cloud integration documentation work.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

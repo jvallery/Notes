@@ -482,6 +482,8 @@ not done
 - Whale Iptic's multi-pod architecture was described as running across Microsoft Azure as one of the cloud providers used for redundancy.
 
 - Microsoft MAI initial GPU drop was communicated by Kushal Datta as arriving in February 2026, with a storage solution needed for May 2026 to June 2026.
+
+- The document title "VAST and Azure Integration.docx" indicates content related to Microsoft Azure integration.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
