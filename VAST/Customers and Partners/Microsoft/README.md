@@ -887,6 +887,10 @@ not done
 - Microsoft AKS AI Roadshow enablement for Global Black Belt (GBB) AI infrastructure sellers
 
 - Demo/accelerator to showcase VAST Global Namespace on Microsoft Azure
+
+- Building a demo/accelerator to showcase VAST Global Namespace on Microsoft Azure
+
+- Engineering status/updates for Global Namespace on Azure (owned by Lior Genzel)
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
@@ -998,3 +1002,5 @@ not done
 - Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in a pending approval state until Lior Genzel confirms objectives and senior exec guidance is available.
 
 - Trevor Cooper-Chadwick's VAST Customer Learning Portal access request will remain in "pending approval" status until Lior Genzel confirms objectives and the team decides whether to grant access.
+
+- Pipeline sync between Tiffany Stonehill (VAST Data) and Mohamad Al Jazaery (Microsoft) will be scheduled in January 2026 because Mohamad Al Jazaery is out for the next two weeks as of December 19, 2025.

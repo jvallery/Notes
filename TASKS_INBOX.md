@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Tiffany Stonehill and Mohamad Al Jazaery to review the current list of Azure customers Tiffany is working with and identify actions to expand the list with Microsoft sellers. @Tiffany Stonehill 📅 2026-01-31 🔼 #task #proposed #auto
+- [?] Schedule a January 2026 pipeline sync with Mohamad Al Jazaery and Kurt Niebuhr, taking into account Tiffany Stonehill's availability (Mondays and Tuesdays) and Mohamad Al Jazaery being out for two weeks after December 19, 2025. @TBD 📅 2026-01-10 🔼 #task #proposed #auto
+- [?] Provide Mohamad Al Jazaery a clear plan and owner for a demo/accelerator that showcases VAST Global Namespace on Microsoft Azure for inclusion in the Microsoft AI roadshow, aligning with Lior Genzel on latest engineering status. 📅 2026-01-16 ⏫ #task #proposed #auto
+- [?] Coordinate with Tiffany Stonehill to ensure Microsoft receives the AKS AI Roadshow presentation materials (slides, code, and any required access) and confirm receipt. 📅 2026-01-09 ⏫ #task #proposed #auto
+- [?] Send Microsoft (Mohamad Al Jazaery and Kurt Niebuhr) the slides and code presented by VAST during the AKS AI Roadshow GBB session, coordinating with Tiffany Stonehill on distribution and access. 📅 2026-01-09 ⏫ #task #proposed #auto
 - [?] Schedule a January 2026 pipeline sync with Mohamad Al Jazaery and Kurt Niebuhr to review the current Azure customer list and expansion plan with Microsoft sellers. @TBD 📅 2026-01-16 🔼 #task #proposed #auto
 - [?] Align with Lior Genzel on the current engineering status and messaging for showcasing VAST Global Namespace on Microsoft Azure, and determine whether a demo/accelerator plan exists. 📅 2026-01-16 ⏫ #task #proposed #auto
 - [?] Coordinate with Tiffany Stonehill to ensure the correct slide deck, code artifacts, and access method are packaged for Microsoft GBB follow-up. 📅 2026-01-09 ⏫ #task #proposed #auto
