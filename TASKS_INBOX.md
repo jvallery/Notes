@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Follow up with Adem Sefa to confirm what type of introduction he is requesting (recruiter, finance leadership, or general networking) for Edwin Trogler. 📅 2025-11-25 🔼 #task #proposed #auto
+- [?] Determine the correct internal VAST Data contact for FP&A Director hiring (Finance/FP&A leadership) and offer to connect Edwin Trogler if there is an appropriate open role or pipeline process. 📅 2025-11-25 🔼 #task #proposed #auto
+- [?] Reply to Edwin Trogler to acknowledge receipt of his resume and propose specific times for a quick call next week about VAST Data and potential FP&A opportunities in Colorado. 📅 2025-11-24 ⏫ #task #proposed #auto
 
 
 - [?] Example: triage the latest emails @Myself #task #proposed #inbox ⏫
