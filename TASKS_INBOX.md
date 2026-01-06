@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Consider whether to connect Edwin Trogler with VAST Data finance leadership or recruiting for FP&A Director or related FP&A roles, and make introductions if appropriate. 📅 2025-11-26 🔼 #task #proposed #auto
+- [?] Reply to Edwin Trogler to acknowledge receipt of his resume and propose times for a quick call next week to discuss VAST Data and potential FP&A opportunities in Colorado. 📅 2025-11-24 🔼 #task #proposed #auto
 - [?] Watch for the Express Scripts Pharmacy shipment confirmation email for the lisdexamfetamine 40mg order tied to invoice 08245103465. 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Brian Bearly to confirm the final date/time for the board game session and send exact logistics (address and any start/end expectations) to attendees. @Brian Bearly 📅 2025-12-24 🔼 #task #proposed #auto
 - [?] Reply to the thread with my availability and preference between Saturday 2025-12-27 at 1:00pm and Monday 2025-12-29 at 1:00pm for Brian Bearly's board game session, and ask for final confirmation and address details once set. 📅 2025-12-23 🔼 #task #proposed #auto

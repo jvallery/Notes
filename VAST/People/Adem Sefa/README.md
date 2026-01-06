@@ -96,3 +96,5 @@ not done
 - Candidate referral (Edwin Trogler) for VAST Data finance roles
 
 - Scheduling a call to discuss VAST Data and FP&A opportunities in Colorado
+
+- Scheduling a quick introductory call with Edwin Trogler
