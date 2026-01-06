@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-21'
+last_contact: '2025-12-22'
 created: '2026-01-05'
 tags:
 - type/people
