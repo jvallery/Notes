@@ -39,9 +39,13 @@ def parse_frontmatter(content: str) -> tuple[dict | None, str]:
         fm = yaml.safe_load(fm_text)
         if fm is None:
             fm = {}
+        if not isinstance(fm, dict):
+            # Frontmatter must be a mapping; treat anything else as empty.
+            fm = {}
     except yaml.YAMLError:
-        # Invalid YAML, return as-is
-        return None, content
+        # Invalid YAML frontmatter. Return empty frontmatter but preserve the body
+        # so callers can repair/re-render without duplicating the broken block.
+        return {}, body
 
     return fm, body
 

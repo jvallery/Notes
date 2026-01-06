@@ -75,6 +75,7 @@ class VaultAuditor:
     
     def run_all_checks(self):
         """Run all audit checks."""
+        self._check_readme_frontmatter_integrity()
         self._check_readme_dataview_blocks()
         self._check_missing_last_updated()
         self._check_missing_readmes()
@@ -85,6 +86,69 @@ class VaultAuditor:
         self._check_empty_participants()
         self._check_invalid_tags()
         self._check_unsafe_folder_names()
+
+    def _check_readme_frontmatter_integrity(self):
+        """Ensure READMEs start with exactly one valid YAML frontmatter block."""
+        for readme in self._all_readmes():
+            content = readme.read_text(errors="ignore")
+            rel = str(readme.relative_to(self.vault))
+
+            if not content.startswith("---"):
+                self.add_finding(
+                    "warning",
+                    "frontmatter",
+                    rel,
+                    "README missing YAML frontmatter at start",
+                    "Add a YAML frontmatter block at the top of the file",
+                )
+                continue
+
+            lines = content.split("\n")
+            end_index = None
+            for i, line in enumerate(lines[1:], start=1):
+                if line.strip() == "---":
+                    end_index = i
+                    break
+
+            if end_index is None:
+                self.add_finding(
+                    "critical",
+                    "frontmatter",
+                    rel,
+                    "README frontmatter missing closing '---'",
+                    "Fix the YAML frontmatter block (add closing delimiter)",
+                )
+                continue
+
+            fm_text = "\n".join(lines[1:end_index])
+            try:
+                fm = yaml.safe_load(fm_text) or {}
+                if not isinstance(fm, dict):
+                    raise yaml.YAMLError("Frontmatter must be a mapping")
+            except yaml.YAMLError as e:
+                self.add_finding(
+                    "critical",
+                    "frontmatter",
+                    rel,
+                    f"Invalid YAML frontmatter: {e}",
+                    "Fix YAML quoting/escaping so frontmatter parses cleanly",
+                )
+                continue
+
+            remainder = "\n".join(lines[end_index + 1 :])
+            first_nonempty = None
+            for line in remainder.split("\n"):
+                if line.strip():
+                    first_nonempty = line.strip()
+                    break
+            if first_nonempty == "---":
+                self.add_finding(
+                    "warning",
+                    "frontmatter",
+                    rel,
+                    "README contains multiple YAML frontmatter blocks",
+                    "Remove the duplicated frontmatter block so only one remains at the top",
+                )
     
     def _check_readme_dataview_blocks(self):
         """Check for blank FROM "" in README dataview blocks."""

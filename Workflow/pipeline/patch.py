@@ -586,8 +586,11 @@ class PatchGenerator:
     def _generate_readme_content(self, name: str, entity_type: str, email: Optional[str], extraction: UnifiedExtraction) -> str:
         """Generate initial README.md content for a new entity."""
         from datetime import date
+        from scripts.utils.frontmatter import render_frontmatter
+        from scripts.utils.templates import sanitize_path_name
         
         today = date.today().isoformat()
+        safe_name = sanitize_path_name(name)
         
         if entity_type == "person":
             # Try to get company from contacts
@@ -599,20 +602,18 @@ class PatchGenerator:
                     title = contact.title
                     break
             
-            return f"""---
-type: people
-title: "{name}"
-created: "{today}"
-last_contact: "{extraction.date}"
-email: "{email or ''}"
-company: "{company or ''}"
-role: "{title or ''}"
-tags:
-  - type/people
-  - needs-review
----
+            fm = {
+                "type": "people",
+                "title": name,
+                "created": today,
+                "last_contact": extraction.date,
+                "email": email or "",
+                "company": company or "",
+                "role": title or "",
+                "tags": ["type/people", "needs-review"],
+            }
 
-# {name}
+            body = f"""# {name}
 
 ## Key Facts
 
@@ -621,7 +622,7 @@ tags:
 ## Open Tasks
 
 ```tasks
-path includes {name}
+path includes {safe_name}
 not done
 ```
 
@@ -629,21 +630,20 @@ not done
 
 ## Key Decisions
 """
+            return render_frontmatter(fm) + body
         elif entity_type == "company":
-            return f"""---
-type: customer
-title: "{name}"
-account_type: ""
-status: ""
-industry: _Unknown_
-created: "{today}"
-last_contact: "{extraction.date}"
-tags:
-  - type/customer
-  - needs-review
----
+            fm = {
+                "type": "customer",
+                "title": name,
+                "account_type": "",
+                "status": "",
+                "industry": "_Unknown_",
+                "created": today,
+                "last_contact": extraction.date,
+                "tags": ["type/customer", "needs-review"],
+            }
 
-# {name}
+            body = f"""# {name}
 
 ## Account Status
 
@@ -657,7 +657,7 @@ tags:
 ## Open Tasks
 
 ```tasks
-path includes {name}
+path includes {safe_name}
 not done
 ```
 
@@ -669,20 +669,18 @@ not done
 
 ## Key Decisions
 """
+            return render_frontmatter(fm) + body
         else:
-            return f"""---
-type: projects
-title: "{name}"
-status: active
-created: "{today}"
-last_contact: "{extraction.date}"
-tags:
-  - type/projects
-  - status/active
-  - needs-review
----
+            fm = {
+                "type": "projects",
+                "title": name,
+                "status": "active",
+                "created": today,
+                "last_contact": extraction.date,
+                "tags": ["type/projects", "status/active", "needs-review"],
+            }
 
-# {name}
+            body = f"""# {name}
 
 ## Status
 
@@ -696,7 +694,7 @@ tags:
 ## Open Tasks
 
 ```tasks
-path includes {name}
+path includes {safe_name}
 not done
 ```
 
@@ -708,6 +706,7 @@ not done
 
 ## Key Decisions
 """
+            return render_frontmatter(fm) + body
 
     def _warn_duplicate(self, name: str, entity_type: str, plan: ChangePlan):
         """Warn when a similar entity already exists (merge guidance)."""
