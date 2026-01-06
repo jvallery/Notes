@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin, per Rick Scurfield's request. 🔼 #task #proposed #auto
+- [?] Encourage assigned customer accounts to plan for onsite certification, hands-on labs, and meetings with VAST Data product and leadership teams during VAST Forward (February 24-26, 2026 implied). 🔼 #task #proposed #auto
+- [?] For each assigned customer account, highlight the most relevant VAST Forward customer and partner speakers (e.g., Pixar, Lowe’s, NHL, Leidos, Aquatic, T-Mobile; Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, Starfish) to increase likelihood of attendance. 🔼 #task #proposed #auto
+- [?] Share the VAST Forward agenda directly with assigned customer accounts to drive attendance for VAST Forward (February 24-26, 2026 implied). ⏫ #task #proposed #auto
 - [?] Provide guidance to Karl Vietmeier on how aggressively Cloud Product Management should assert ownership and how much control Jason Vallery wants to maintain over Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities. ⏫ #task #proposed #auto
 - [?] Reply to Edwin Trogler to propose specific times for a quick call next week to discuss VAST Data and potential FP&A opportunities in Colorado. 🔼 #task #proposed #auto
 - [?] Review Edwin Trogler's resume when received and determine appropriate internal VAST Data contacts for FP&A Director or finance leadership introductions. 🔼 #task #proposed #auto

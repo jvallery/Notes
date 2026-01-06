@@ -148,6 +148,12 @@ not done
 - VAST Forward will include onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams.
 
 - VAST Forward includes a VIP Ski Experience at SnowBasin for select guests, and Rick Scurfield requested customer nominations for this experience.
+
+- Rick Scurfield stated that leaders from Pixar, Lowe’s, NHL, Leidos, Aquatic, and T-Mobile will be on stage at VAST Forward to discuss how they use VAST Data in real AI pipelines and production outcomes.
+
+- Rick Scurfield promoted onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams as key value for attendees at VAST Forward.
+
+- Rick Scurfield requested nominations of customers for a VIP Ski Experience at SnowBasin associated with VAST Forward.
 ## Topics
 
 - VAST Forward conference positioning as customer and partner proof point
@@ -227,6 +233,8 @@ not done
 - Required preparation cadence for VAST spokespeople/SMEs (intro call, internal prep, customer prep, dry run, live delivery)
 
 - Customer speakers and partner sponsorship participation at VAST Forward
+
+- VAST Forward conference positioning and customer value proposition
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.

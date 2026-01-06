@@ -125,6 +125,8 @@ not done
 - The Leidos Federal FOpp-4197 deal is described by Greg Castellucci as a software-only cloud deployment in a Leidos GovCloud instance and is stated to be the first Cloud PO in the US Federal sector.
 
 - Leaders from Leidos are expected to speak at VAST Forward about how Leidos is using VAST Data to transform its environment with real AI pipelines and production outcomes.
+
+- Rick Scurfield stated that leaders from Leidos will be on stage at VAST Forward to discuss how they use VAST Data.
 ## Topics
 
 - Leidos Federal opportunity FOpp-4197 order submission and OrderAdmin processing

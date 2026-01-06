@@ -110,6 +110,8 @@ role: Technical Lead in Customer Success
 - Rick Scurfield sent a GTM organization update to All GTM and All Customer Success (CS) distribution lists via BCC.
 
 - Rick Scurfield asked VAST Data teams across Sales, Marketing, Support, and Product to drive customer attendance by direct outreach and positioning VAST Forward as a way to accelerate customer roadmaps and deepen relationships with VAST Data.
+
+- Rick Scurfield requested internal teams across Sales, Marketing, Support, and Product to conduct account outreach to drive attendance and position VAST Forward as a way to accelerate customer roadmaps and deepen relationships with VAST Data.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience
