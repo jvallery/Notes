@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Review the VAST Data information sent by Jason Vallery and consider how Whale Iptic's platform could be integrated or aligned with VAST Data's roadmap, then follow up with ideas or proposals. @Avinash Lakshman 🔼 #task #proposed #auto
+- [?] Send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities relevant to integrating VAST storage with GPU infrastructure and/or distributed ledger based secure agent execution. ⏫ #task #proposed #auto
 - [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in 'pending approval' status until Lior Genzel confirms whether access should be granted. @Kristin Thompson 🔼 #task #proposed #auto
 - [?] Contact Trevor Cooper-Chadwick (Microsoft, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access during the UK Met engineering-level PoC, then advise Kristin Thompson whether to approve access. @Lior Genzel ⏫ #task #proposed #auto
 - [?] Provide Google the VAST documentation link for managing encryption groups and keys (tenant/path level, including S3 buckets and NFS exports) and the VAST 5.4 release notes link documenting SSE-C header support. 🔼 #task #proposed #auto

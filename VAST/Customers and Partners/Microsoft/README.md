@@ -474,6 +474,8 @@ not done
 - Azure CosmosDB is described by Jason Vallery as heavily used by OpenAI Applications for conversation persistence.
 
 - The Microsoft engagement referenced is an engineering-level proof of concept (PoC) and Microsoft is not yet a VAST customer for this effort.
+
+- Whale Iptic's multi-pod architecture was described as running across Microsoft Azure as one of the cloud providers used for redundancy.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

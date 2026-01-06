@@ -55,6 +55,10 @@ tags:
 - Avinash Lakshman described a distributed ledger system designed to provide data sovereignty and fault tolerance across cloud regions using custom Byzantine Fault Tolerant (BFT) consensus algorithms.
 
 - Avinash Lakshman demonstrated a secure and auditable interaction model using digital signatures and identity-based wallets in the browser, positioning it as providing more auditability and visibility than traditional TLS-only approaches.
+
+- Avinash Lakshman demonstrated secure and auditable interactions using digital signatures and identity-based wallets in the browser, positioning this as providing stronger auditability and visibility than traditional TLS-only approaches.
+
+- Avinash Lakshman requested access to public information on VAST Data's current development status for relevant capabilities, and Jason Vallery agreed to provide this via email.
 ## Recent Context
 
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
@@ -132,3 +136,5 @@ not done
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities for evaluation.
 
 - Avinash Lakshman will review VAST Data information and consider potential integration or alignment with Whale Iptic's platform, then potentially follow up with ideas or proposals.
+
+- Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities to support evaluation of alignment or integration with Whale Iptic.

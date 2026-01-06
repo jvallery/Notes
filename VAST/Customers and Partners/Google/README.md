@@ -248,6 +248,8 @@ not done
 - A meeting titled "Google RFP: Internal Sync" indicates active internal coordination at VAST Data related to a Google RFP.
 
 - The presentation share notification was sent via Google Slides from the address drive-shares-dm-noreply@google.com.
+
+- Whale Iptic's multi-pod architecture was described as running across Google Cloud Platform (GCP) as one of the cloud providers used for redundancy.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications
