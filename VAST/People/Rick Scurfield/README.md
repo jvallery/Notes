@@ -108,6 +108,8 @@ role: Technical Lead in Customer Success
 - Rick Scurfield told Regina (unknown last name) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in the March 2026 timeframe for the Microsoft opportunity, and that it should be placed on the soft backlog until it firms up.
 
 - Rick Scurfield sent a GTM organization update to All GTM and All Customer Success (CS) distribution lists via BCC.
+
+- Rick Scurfield asked VAST Data teams across Sales, Marketing, Support, and Product to drive customer attendance by direct outreach and positioning VAST Forward as a way to accelerate customer roadmaps and deepen relationships with VAST Data.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience

@@ -123,6 +123,8 @@ not done
 - Leidos Federal opportunity FOpp-4197 (Opp Name: "Leidos DoD Cloud") has an Opp Amount/TCV of $96,808.14 and a Close Date of 2025-12-26, and was submitted to VAST Order Admin for review/booking.
 
 - The Leidos Federal FOpp-4197 deal is described by Greg Castellucci as a software-only cloud deployment in a Leidos GovCloud instance and is stated to be the first Cloud PO in the US Federal sector.
+
+- Leaders from Leidos are expected to speak at VAST Forward about how Leidos is using VAST Data to transform its environment with real AI pipelines and production outcomes.
 ## Topics
 
 - Leidos Federal opportunity FOpp-4197 order submission and OrderAdmin processing

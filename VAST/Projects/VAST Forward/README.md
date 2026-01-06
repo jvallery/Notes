@@ -3,7 +3,7 @@ type: projects
 title: VAST Forward
 status: active
 created: '2026-01-05'
-last_contact: '2025-12-23'
+last_contact: '2025-12-03'
 tags:
 - type/projects
 - status/active
@@ -51,6 +51,8 @@ not done
 - 2025-12-23: Kirstin Bordner announced that recipients have been selected as VAST spokespeople to lead VAST Forwa...
 - 2025-12-03: Rick Scurfield emphasized the strategic importance of VAST Forward (February 24-26) as a major custo...
 - 2025-12-23: Kirstin Bordner announced that VAST Forward is two months away and that recipients of the email have...
+
+- 2025-12-03: Rick Scurfield emphasized the strategic importance of VAST Forward (February 24-26, 2026) and highli...
 ## Key Facts
 
 - VAST Forward is scheduled for February 24-26 (year implied as 2026 based on email date 2025-12-03).
@@ -136,6 +138,16 @@ not done
 - Rick Scurfield requested customer nominations for the VAST Forward VIP Ski Experience at SnowBasin.
 
 - Recipients of Kirstin Bordner's 2025-12-23 email were selected to serve as VAST spokespeople for VAST Forward breakout sessions, responsible for leading the session, framing the narrative, and guiding the conversation alongside customers.
+
+- VAST Forward is scheduled for February 24-26, 2026 and is described as VAST Data's first global conference.
+
+- Leaders from Pixar, Lowe's, NHL, Leidos, Aquatic, and T-Mobile are expected to speak at VAST Forward about using VAST Data for real AI pipelines and production outcomes.
+
+- Partners including Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, Starfish (and others) are participating in VAST Forward and providing sponsorship that Rick Scurfield framed as validation of VAST Data's category leadership.
+
+- VAST Forward will include onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams.
+
+- VAST Forward includes a VIP Ski Experience at SnowBasin for select guests, and Rick Scurfield requested customer nominations for this experience.
 ## Topics
 
 - VAST Forward conference positioning as customer and partner proof point
@@ -213,6 +225,8 @@ not done
 - VAST Forward 2026 breakout session program status (customer-led and VAST technical sessions)
 
 - Required preparation cadence for VAST spokespeople/SMEs (intro call, internal prep, customer prep, dry run, live delivery)
+
+- Customer speakers and partner sponsorship participation at VAST Forward
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.

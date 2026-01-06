@@ -133,6 +133,8 @@ not done
 - Cisco's stated value proposition for RFE 0526 is enterprise multi-geo liability protection by preventing replication of copyrighted content via basic 'never replicate' patterns.
 
 - RFE 0526 indicates an estimated additional capacity impact of 100 PB and is marked as not a deal blocker; opportunity amount is listed as 0.
+
+- Cisco is participating in VAST Forward as a partner and sponsor, investing time, brand, and resources alongside VAST Data.
 ## Topics
 
 - Cisco replication policy enhancements
