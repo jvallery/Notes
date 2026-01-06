@@ -25,6 +25,10 @@ tags:
 - Sebastien Berube has been working at Amazon Web Services (AWS) for a while.
 
 - Sebastien Berube said that in 2026 he is very likely to look at making a job change, but he does not have a specific timeline or catalyst.
+
+- Sebastien Berube is very likely to look at making a job change in 2026 but does not have a specific timeline or catalyst.
+
+- Sebastien Berube sent Jason Vallery a calendar invite for a coffee meeting on January 7, 2026 at 8:00am in Lafayette, Colorado (location included in invite).
 ## Recent Context
 
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery to explore potential future opportun...
@@ -32,6 +36,8 @@ tags:
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to discuss potential new...
 
 - 2025-12-18: Peter Imming introduced Jason Vallery to Sebastien Berube (AWS) to discuss potential new opportuniti...
+
+- 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery to discuss potential new opportuniti...
 ## Open Tasks
 
 ```tasks
@@ -77,3 +83,5 @@ not done
 - Jason Vallery and Sebastien Berube agreed to meet for coffee on 2026-01-07 at 08:00 in Lafayette, Colorado (location details sent via calendar invite).
 
 - Jason Vallery and Sebastien Berube agreed to meet for coffee, with Jason proposing Thursday, 2026-01-07 at 8:00am in Lafayette, Colorado, and Sebastien Berube sending a calendar invite with a location.
+
+- Jason Vallery and Sebastien Berube agreed to meet for coffee on January 7, 2026 at 8:00am in Lafayette, Colorado (pending confirmation that the invite works).
