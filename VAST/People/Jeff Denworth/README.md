@@ -470,6 +470,8 @@ last_enriched: '2026-01-05'
 - Kirstin Bordner requested Jeff Denworth approve the new BF4 blog written by Nicole and share it so she can draft a press release.
 
 - Marianne Budnik stated Jeff Denworth is driving the talk track for the NVIDIA press conference presentation to ensure it is strong.
+
+- Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" to distill and make clear the crawl-walk-run progression in the "Azure + VAST: Integration Proposal" section because it is not obvious to readers.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -1066,6 +1068,8 @@ not done
 - Stakeholder mapping and relationship building with Majid Mohammed, Yunchao Gong, and Karén Simonyan
 
 - PoC placement for Anson (Qi) requiring 1,000 to 2,000 GPUs, potential environments MAI, Vipin, Nscale, CoreWeave
+
+- Crawl-walk-run phased plan articulation for Azure integration
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

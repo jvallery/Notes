@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Edit "VAST and Azure Integration.docx" to distill and clearly present the crawl-walk-run phased plan in the "Azure + VAST: Integration Proposal" so it is obvious to a reader. ⏫ #task #proposed #auto
 - [?] Review and respond to Lior Genzel's Google Docs access request for "VAST and Azure Integration.docx" by granting access or replying with an alternative sharing method if the document contains restricted content. 📅 2025-12-23 🔼 #task #proposed #auto
 - [?] Use John Mao for press interviews at CES to support VAST presence in the NVIDIA CES news cycle while Renen Hallak is meeting flash vendors. @John Mao 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Create or identify VAST content to support the NVIDIA Rubin platform press release, since the team currently has no supporting asset for Rubin. @TBD 📅 2026-01-05 🔼 #task #proposed #auto
