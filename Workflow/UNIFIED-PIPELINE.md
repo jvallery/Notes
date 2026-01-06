@@ -466,6 +466,9 @@ python scripts/ingest.py --file Inbox/Email/example.md
 # With outputs + enrichment
 python scripts/ingest.py --all --draft-replies --enrich
 
+# Draft every email (including no-reply/automated)
+python scripts/ingest.py --all --draft-replies --draft-all-emails
+
 # Re-process archived sources (after prompt/schema change)
 python scripts/ingest.py --source --type email --force --trace-dir ./logs/ai/traces
 

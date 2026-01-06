@@ -12,6 +12,7 @@ Usage:
     python ingest.py --verbose                    # Show extraction details
     python ingest.py --enrich                     # Trigger enrichment for new entities
     python ingest.py --draft-replies              # Generate draft email replies
+    python ingest.py --draft-replies --draft-all-emails  # Draft every email (including no-reply/automated)
     python ingest.py --trace-dir /tmp/traces      # Save extraction/changeplan artifacts
     python ingest.py --all --show-cache-stats     # Print cache + timing summary
     python ingest.py --workers 5                  # Use 5 parallel workers
