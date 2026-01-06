@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Propose specific times for a quick introductory call with Edwin Trogler next week to discuss VAST Data and potential FP&A opportunities. 🔼 #task #proposed #auto
+- [?] Review Edwin Trogler's resume and determine appropriate VAST Data FP&A/Finance contacts for an introduction regarding potential FP&A Director opportunities in Colorado. 🔼 #task #proposed #auto
 - [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin, per Rick Scurfield's request. 🔼 #task #proposed #auto
 - [?] Encourage assigned customer accounts to plan for onsite certification, hands-on labs, and meetings with VAST Data product and leadership teams during VAST Forward (February 24-26, 2026 implied). 🔼 #task #proposed #auto
 - [?] For each assigned customer account, highlight the most relevant VAST Forward customer and partner speakers (e.g., Pixar, Lowe’s, NHL, Leidos, Aquatic, T-Mobile; Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, Starfish) to increase likelihood of attendance. 🔼 #task #proposed #auto

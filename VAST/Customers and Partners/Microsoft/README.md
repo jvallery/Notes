@@ -460,6 +460,8 @@ not done
 - Jeff Denworth reported Microsoft is also constrained by supply chain but has a large allocation across Azure.
 
 - Jeff Denworth asserted Microsoft must order hardware early to ensure GPUs are utilized quickly, and therefore must decide on storage software early because software choice impacts hardware purchase decisions.
+
+- Adem Sefa (Managing Director, Strategic Partnerships) is affiliated with Microsoft.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

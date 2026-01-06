@@ -39,6 +39,8 @@ role: Managing Director - Strategic Partnerships
 
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery and requested h...
+
+- 2025-11-20: Adem Sefa (Microsoft) introduced Edwin Trogler (his brother-in-law) to Jason Vallery and requested h...
 ## Open Tasks
 ```tasks
 path includes Adem Sefa
@@ -86,3 +88,7 @@ not done
 - Candidate referral for FP&A Director role
 
 - Introductions and networking for finance leadership hiring at VAST Data
+
+- Introduction request for FP&A Director role candidate (Edwin Trogler)
+
+- Scheduling a quick introductory call next week

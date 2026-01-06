@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Outbox/README.md",
+                "file": "Outbox/2026-01-05_Reply-To_Ownership-and-support-model-for-Google-D.md",
                 "mode": "source",
                 "source": false,
                 "backlinks": true,
@@ -28,7 +28,7 @@
                 }
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "2026-01-05_Reply-To_Ownership-and-support-model-for-Google-D"
             }
           }
         ]
@@ -195,6 +195,10 @@
   },
   "active": "d53b413e5fffdcfe",
   "lastOpenFiles": [
+    "Outbox/README.md",
+    "Workflow/scripts/batch_drafts.sh",
+    "Outbox/2026-01-05_Reply-To_Rick-Scurfield-internal-outreach-push-fo.md",
+    "VAST/Projects/VAST Forward/2025-12-03 - Rick Scurfield internal outreach push for VAST Forward Feb 24-26.md",
     "Outbox/2026-01-05_Reply-To_Ownership-and-support-model-for-Google-D.md",
     "VAST/Projects/Cloud/2025-12-01 - Ownership and support model for Google Distributed Cloud GDC and Azure Local opportunities.md",
     "Outbox/2026-01-05_Reply-To_Adem-Sefa-introduces-Edwin-Trogler-for-p.md",
@@ -219,9 +223,6 @@
     "VAST/Customers and Partners/Microsoft/2026-01-05 - Operations- Microsoft MAI Nebius NJ first hall 58 x 58 and procurement decision by end of January 2026.md",
     "VAST/Projects/Cloud/2026-01-01 - Zoom invite- Urgent internal training on KV Cache storage and NVIDIA Context Memory Extension CME.md",
     "VAST/People/Avinash Lakshman/2025-12-17 - 1-1 with Avinash Lakshman, Whale Iptic secure distributed compute platform and potential VAST integration.md",
-    "VAST/Projects/ORION-261324/2025-12-01 - RFE 0482 NVIDIA DGX Cloud- dual-uplink and tenant-scoped visibility via VAST Uplink.md",
-    "VAST/Customers and Partners/Microsoft/2025-12-11 - VAST and Microsoft Ignite follow-up, intro request and architecture docs.md",
-    "VAST/Projects/Cloud/2026-01-02 - Comments on VAST and Azure Integration.docx Azure Blob tiering and flash supply-chain messaging.md",
     "VAST/People/kodeON via Paddle.com",
     "VAST/Projects/BetterDisplay",
     "VAST/Projects/Pricing Changes and Supply Chain Update",
@@ -230,7 +231,6 @@
     "VAST/Projects/CES NAND allocation support Las Vegas",
     "VAST/Customers and Partners/NVIDIA Corporation",
     "VAST/Customers and Partners/AlphaSights",
-    "VAST/Customers and Partners/Express Scripts Pharmacy",
     "DRAFT/Azure Integration/_scratch/azure-storage-azcopy/readme-command-prompt.png",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
