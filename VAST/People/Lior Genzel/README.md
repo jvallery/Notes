@@ -590,6 +590,18 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated Arrow and Avnet are certified as ODM partners manufacturing VAST C-Box and D-Box solutions.
 
 - Lior Genzel indicated Jason Vallery would take the lead on answering whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component.
+
+- Lior Genzel stated that VAST Data's proposed recurring pricing for the Google GDC Storage RFP includes hardware pricing and includes SSDs, and that VAST does not sell HDDs.
+
+- Lior Genzel stated that the hardware pricing is valid for the proposal time and noted a global SSD shortage with expected higher SSD prices into 2026.
+
+- Lior Genzel stated VAST Data can work with Google to certify a Google-preferred hardware partner for BYOH because the project has sufficiently large business upside.
+
+- Lior Genzel said he was mostly off on Friday 2025-12-19 and suggested targeting Monday for the follow-up meeting with Google.
+
+- Lior Genzel stated VAST Data has Cisco, Dell, HPE, and SuperMicro certified as eBox partners for its offering.
+
+- Lior Genzel stated Arrow and Avnet are certified as ODM partners manufacturing VAST Data C-Box and D-Box solutions.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

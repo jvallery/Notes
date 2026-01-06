@@ -152,6 +152,8 @@ not done
 - 2025-12-17: Mentioned in: 1:1 discussion with Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
 
 - 2025-12-22: Mentioned in: Jeff Denworth assigns action item: clarify crawl-walk-run in Azure + VAST integration proposal
+
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, PM to re-analyze
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -344,6 +346,8 @@ not done
 - The discussion included potential integration of VAST Data cloud storage capabilities with GPU infrastructure and distributed ledger technology for secure, verifiable agent execution across multiple cloud providers.
 
 - The Azure + VAST integration proposal work is part of VAST Data's Cloud scope and planning.
+
+- Walmart requirements analysis is expected to influence VAST cloud and hybrid product planning.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

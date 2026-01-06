@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-22'
+last_contact: '2025-12-23'
 created: '2026-01-05'
 tags:
 - type/people
@@ -472,6 +472,8 @@ last_enriched: '2026-01-05'
 - Marianne Budnik stated Jeff Denworth is driving the talk track for the NVIDIA press conference presentation to ensure it is strong.
 
 - Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" to distill and make clear the crawl-walk-run progression in the "Azure + VAST: Integration Proposal" section because it is not obvious to readers.
+
+- Jeff Denworth asked VAST Product Management leadership to analyze Walmart's re-stated requirements and decide what should be incorporated into the VAST product plan, coordinating with Mikey and team.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -683,6 +685,8 @@ last_enriched: '2026-01-05'
 - 2025-12-21: Jeff Denworth raised a critical concern that VAST is selling out of inventory, lead times are increa...
 
 - 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
+
+- 2025-12-23: Jeff Denworth shared that Walmart re-stated requirements after an internal meeting, emphasizing a lo...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -1070,6 +1074,8 @@ not done
 - PoC placement for Anson (Qi) requiring 1,000 to 2,000 GPUs, potential environments MAI, Vipin, Nscale, CoreWeave
 
 - Crawl-walk-run phased plan articulation for Azure integration
+
+- Competitive risk: Alluxio potentially leading Walmart solution
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

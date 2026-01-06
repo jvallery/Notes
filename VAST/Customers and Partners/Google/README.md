@@ -138,6 +138,8 @@ not done
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 
 - 2025-12-19: Mentioned in: Google Docs invite to edit: CoreWeave-Vast Automation Project - V2
+
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, PM to re-analyze
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -379,6 +381,8 @@ not done
 - FIPS compliance requirements for the proposed VAST offering
 
 - BYOH (Bring Your Own Hardware) option and VAST preferred or certified hardware partners
+
+- BYOH (Bring Your Own Hardware) model and preferred or certified hardware partners
 ## Key Decisions
 
 - Lior Genzel selected Monday 2025-12-15 at 2:00pm PT as the meeting time for the initial one-hour call to review the GDC Storage RFP proposal (based on the scheduling thread where Lior requested 'The 15th at 2 pm PT please' and David Pawlak confirmed the invite was sent).
@@ -412,3 +416,5 @@ not done
 - For the Google Distributed Cloud RFP response, VAST should position software-based encryption (potentially FIPS certifiable) as the primary approach rather than committing to self-encrypting drives (SED) hardware dependence.
 
 - Meeting time preference from VAST side: Lior Genzel proposed targeting Monday (after Friday 2025-12-19) for the next discussion with Google about the GDC Storage RFP questions.
+
+- Meeting time for the Google GDC Storage RFP follow-up was not finalized; Lior Genzel proposed Monday due to limited availability on Friday 2025-12-19, while David Pawlak requested Friday with Jason Vallery.

@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Google (David Pawlak) to schedule a minimum one-hour follow-up meeting to review questions and walk through Google's document related to the GDC Storage RFP proposal. 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Confirm and send Google (David Pawlak) the full list of VAST Data globally certified hardware partners for BYOH, beyond Cisco, Dell, HPE, and SuperMicro. @Lior Genzel 📅 2025-12-23 🔼 #task #proposed #auto
+- [?] Provide Google (David Pawlak) a clear explanation of how VAST Data's proposed GDC Storage RFP offering meets FIPS compliance requirements, addressing Kamal Vyas's question. @TBD 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Reply to Google (David Pawlak) with clarification on whether the proposed GDC Storage RFP solution uses Self-Encrypting Drives (SEDs) for the SSD component. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Coordinate with Google (David Pawlak) to schedule a minimum 60-minute follow-up meeting to walk through Google's document and address open questions on the GDC Storage RFP proposal, targeting Monday 2025-12-22 if possible. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
 - [?] Provide Google (David Pawlak) a consolidated list of VAST Data globally certified hardware partners for BYOH, after checking with VAST partner teams (beyond Cisco, Dell, HPE, SuperMicro, Arrow, and Avnet already mentioned). @Lior Genzel 📅 2025-12-22 🔼 #task #proposed #auto
 - [?] Respond to Google (David Pawlak) with clarification on whether the proposed GDC Storage RFP solution uses Self-Encrypting Drives (SEDs) for the SSD component, and any relevant compliance details tied to SED usage. 📅 2025-12-19 ⏫ #task #proposed #auto
