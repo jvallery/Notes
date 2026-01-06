@@ -323,13 +323,100 @@ Multiple cleanup passes were required after import (frontmatter normalization, h
 
 The following items address critical bugs, edge cases, and architectural issues identified in a comprehensive code review of the ingestion pipeline.
 
+## Definition of Done
+
+The ingestion system meets requirements when:
+
+- `--dry-run` causes **zero filesystem changes** inside the vault (except optional `--trace-dir`).
+- Planning (`PatchGenerator.generate`) is **pure**: no writes, no mkdir, no side effects.
+- Apply is **transactional**: on failure, **all file edits + entity creations + source moves** roll back cleanly.
+- Parallel mode is **deterministic** and behavior-equivalent to sequential mode for:
+  - output generation gating (`draft_all_emails`, tasks emission),
+  - apply behavior (single merged apply),
+  - stats/logging (no corruption).
+- VOICE is either fully supported end-to-end or removed cleanly (no half-support).
+- `discovered_aliases`, `discovered_acronyms`, and nested `suggested_outputs` are actually parsed and used.
+- Duplicate detection works reliably (preferably using `content_hash`), and artifacts exist to support it.
+
+## Milestone Sequence
+
+Items are grouped into milestones with dependencies. Complete milestones in order:
+
+| Milestone | Items | Gate |
+|-----------|-------|------|
+| M0: Test Harness | 6 | Tests run (some may fail) |
+| M1: Pure Planning | 7 | PatchGenerator has no side effects |
+| M2: Entity Creation Transactional | 7 (part 2) | Entity folders rollback on failure |
+| M3: Source Moves Transactional | 8, 9 | Sources restored on failure |
+| M4: Output Unification | 11, 26, 27 | Sequential/parallel parity |
+| M5: VOICE Support | 12 | Voice files processed correctly |
+| M6: Extractor Fields | 13, 20 | Aliases/acronyms flow through |
+| M7: ContextBundle | 17, 18, 19 | Deterministic, type-safe |
+| M8: Thread Safety | 10, 33 | Parallel mode stable |
+| M9: Duplicate Detection | 28 | Content-hash based dedup works |
+| M10: Cleanup | 14-16, 21-25, 29-32 | No regressions |
+
 ---
 
-## 6) PatchGenerator writes to disk during planning (breaks dry-run and transactionality)
+## 6) Create test harness for pipeline validation (DO THIS FIRST)
+
+**Goal:** Establish pytest infrastructure with LLM stubs so all subsequent fixes can be validated.
+
+**Status: NOT STARTED**
+
+**Milestone:** M0 - Safety Net (prerequisite for all other work)
+
+**Discovery:**
+Code review identified that no automated tests exist for critical pipeline behaviors. Without tests, fixes risk introducing regressions and validation is manual/error-prone.
+
+**Impact:** Critical - All subsequent work depends on having tests to validate changes.
+
+**Effort:** 4–6 hours
+
+**Tasks**
+- [ ] Create `Workflow/tests/` directory with pytest structure.
+- [ ] Add test fixtures in `tests/fixtures/`:
+  - Minimal vault structure (`Inbox/Email/`, `Inbox/Transcripts/`, `Inbox/Voice/`, `Inbox/Attachments/`)
+  - Manifest stubs (`VAST/People/_MANIFEST.md`, `VAST/Projects/_MANIFEST.md`, `VAST/Customers and Partners/_MANIFEST.md`)
+  - Minimal templates (`Workflow/templates/people.md.j2`, etc.)
+- [ ] Create minimal config dict for tests (no reliance on global `config.yaml`).
+- [ ] Stub all LLM calls to return deterministic extraction JSON:
+  - Monkeypatch `pipeline.extract.UnifiedExtractor.client`
+  - Monkeypatch `scripts.utils.ai_client.get_openai_client`
+  - Monkeypatch `get_model_config` calls
+- [ ] Add initial test files (can be expected-fail stubs):
+  - `test_dry_run_no_writes.py`
+  - `test_patch_generator_pure.py`
+  - `test_apply_rollback.py`
+  - `test_parallel_parity.py`
+- [ ] Write first guardrail test: `dry-run causes no writes`:
+  - Snapshot filesystem before pipeline run
+  - Run `UnifiedPipeline(dry_run=True).process_file(sample_email)`
+  - Assert no new files/dirs created in vault
+
+**Success Criteria**
+- `pytest Workflow/tests/` runs without import errors.
+- At least one failing test demonstrates "dry-run writes" or "planning writes" (expected failure).
+- LLM calls are fully stubbed; no network requests during tests.
+
+**Validation:**
+```bash
+cd ~/Documents/Notes/Workflow && source .venv/bin/activate
+pytest -q tests/
+# Confirm failures are about filesystem changes, not imports
+```
+
+---
+
+## 7) PatchGenerator writes to disk during planning (breaks dry-run and transactionality)
 
 **Goal:** Make PatchGenerator pure (no disk writes) so planning phase is side-effect-free.
 
 **Status: NOT STARTED**
+
+**Milestone:** M1 + M2 - Pure Planning + Transactional Entity Creation
+
+**Depends on:** Item 6 (test harness)
 
 **Discovery:**
 Code review identified `PatchGenerator._create_entity_folder()` calls `folder.mkdir()` and `readme_path.write_text()` during plan generation, violating the reasoning/execution separation principle.
@@ -339,9 +426,23 @@ Code review identified `PatchGenerator._create_entity_folder()` calls `folder.mk
 **Effort:** 4–6 hours
 
 **Tasks**
-- [ ] Refactor `_create_entity_folder()` to return a planned creation operation instead of performing disk writes.
-- [ ] Add `entities_to_create` operations to ChangePlan that TransactionalApply can execute.
-- [ ] Track created entity folders in TransactionalApply so rollback can remove them.
+- [ ] **Part 1 (M1): Make PatchGenerator pure**
+  - Remove all `mkdir()` and `write_text()` calls from `_create_entity_folder()`.
+  - Compute folder path, README content, and metadata without writing.
+  - Record in `ChangePlan.entities_to_create` with schema:
+    ```python
+    {"entity_type": "person", "entity_name": "Jane Doe", 
+     "folder_rel": "VAST/People/Jane Doe", 
+     "readme_rel": "VAST/People/Jane Doe/README.md",
+     "readme_content": "..."}
+    ```
+  - Update `_created_folders` dict to track computed (not written) folders.
+  - Do not rely on EntityIndex finding newly-created folders during planning.
+- [ ] **Part 2 (M2): Execute entity creations in TransactionalApply**
+  - In `apply()`, iterate `plan.entities_to_create` before applying patches.
+  - Create folders + README.md **if missing** (idempotent).
+  - Track in `self._created_files` and `self._created_dirs` for rollback.
+  - Rollback: delete created files, then remove created dirs **only if empty**.
 - [ ] Add test: `--dry-run` must not create any files or directories.
 - [ ] Add test: failed apply must rollback all created entity folders.
 
@@ -350,13 +451,23 @@ Code review identified `PatchGenerator._create_entity_folder()` calls `folder.mk
 - Running `ingest.py --dry-run` creates no files or directories.
 - A failed `TransactionalApply.apply()` removes all entity folders created during that run.
 
+**Validation:**
+```bash
+pytest -q Workflow/tests/test_patch_generator_pure.py
+pytest -q Workflow/tests/test_dry_run_no_writes.py
+```
+
 ---
 
-## 7) Transaction rollback does not undo source archiving/moves
+## 8) Transaction rollback does not undo source archiving/moves
 
 **Goal:** Make source archiving fully transactional (undo on failure).
 
 **Status: NOT STARTED**
+
+**Milestone:** M3 - Source Moves Transactional
+
+**Depends on:** Item 7 (pure planning)
 
 **Discovery:**
 Code review of `TransactionalApply._archive_source()` shows sources are moved with `shutil.move()` after patching. If exception occurs after moving, `_rollback()` restores modified files but does NOT move sources back.
@@ -366,22 +477,31 @@ Code review of `TransactionalApply._archive_source()` shows sources are moved wi
 **Effort:** 3–4 hours
 
 **Tasks**
-- [ ] Track source moves in a `_moved_sources: dict[Path, Path]` (original → archive destination).
-- [ ] In `_rollback()`, move sources back to original locations.
-- [ ] Alternative: use copy + delete-only-on-success pattern.
+- [ ] Track source moves in `self._moves: list[tuple[Path, Path]]` (src → dest).
+- [ ] Append to `_moves` after each successful move.
+- [ ] In `_rollback()`, reverse iterate `_moves` and move dest back to src.
+- [ ] Handle rollback collisions safely (if src exists, move to `*.rollback_conflict`).
 - [ ] Add test: failed apply after source archiving restores sources to Inbox.
 
 **Success Criteria**
 - On apply failure, all sources are restored to their original Inbox locations.
 - No sources are lost on pipeline failure.
 
+**Validation:**
+```bash
+# Test that forces exception after _archive_source, asserts source restored
+pytest -q Workflow/tests/test_apply_rollback.py::test_source_move_rollback
+```
+
 ---
 
-## 8) Source archiving collision risk (possible overwrite)
+## 9) Source archiving collision risk (possible overwrite)
 
 **Goal:** Prevent source archiving from overwriting existing files with same name.
 
 **Status: NOT STARTED**
+
+**Milestone:** M3 - Source Moves Transactional
 
 **Discovery:**
 `TransactionalApply._archive_source()` uses `archive_path = archive_dir/source_path.name`. If two sources share the same filename (common for email exports), the second can overwrite the first or fail on Windows.
@@ -401,11 +521,15 @@ Code review of `TransactionalApply._archive_source()` shows sources are moved wi
 
 ---
 
-## 9) Parallel execution is not thread-safe (shared mutable state)
+## 10) Parallel execution is not thread-safe (shared mutable state)
 
 **Goal:** Make parallel mode thread-safe by eliminating data races on shared state.
 
 **Status: NOT STARTED**
+
+**Milestone:** M8 - Thread Safety
+
+**Depends on:** Items 6, 7, 8 (test harness and transactional apply)
 
 **Discovery:**
 Code review identified `_process_paths_parallel()` calls `self.process_file()` concurrently, but shared instances have mutable state:
@@ -424,18 +548,27 @@ Code review identified `_process_paths_parallel()` calls `self.process_file()` c
 - [ ] Remove or guard `InstrumentedClient.set_context()` usage in parallel mode.
 - [ ] Ensure AI logging JSONL writes are atomic (use file locking or separate log files per thread).
 - [ ] Add integration test: parallel processing of 10+ files produces consistent results.
+- [ ] Add stress test: run `_process_paths_parallel` on ~10 stub files 10x and confirm consistent output.
 
 **Success Criteria**
 - Parallel mode produces identical results to sequential mode for the same inputs.
 - No data races or shared state corruption under concurrent load.
 
+**Validation:**
+```bash
+# Run parallel parity test multiple times to confirm consistency
+for i in {1..10}; do pytest -q Workflow/tests/test_parallel_parity.py; done
+```
+
 ---
 
-## 10) Parallel mode behavior differs from sequential mode (output generation)
+## 11) Parallel mode behavior differs from sequential mode (output generation)
 
 **Goal:** Unify sequential and parallel output generation logic.
 
 **Status: NOT STARTED**
+
+**Milestone:** M4 - Output Unification
 
 **Discovery:**
 Code review found:
@@ -447,22 +580,33 @@ Code review found:
 **Effort:** 2–3 hours
 
 **Tasks**
-- [ ] Extract output gating logic into shared helper function.
-- [ ] Apply identical predicate in both sequential and parallel code paths.
-- [ ] Add test: parallel mode with `draft_all_emails=False` should NOT generate drafts for automated/no-reply emails.
+- [ ] Create centralized helper `_should_generate_outputs(envelope, extraction, apply_ok)`:
+  - Respects `self.generate_outputs`
+  - Respects `self.draft_all_emails` exactly
+  - Generates outputs for tasks/calendar/reminders even for non-email content
+- [ ] Replace `force_reply=is_email` with `force_reply = is_email and self.draft_all_emails` in parallel mode.
+- [ ] Remove condition that skips non-email task output.
+- [ ] Add test: 2 emails + 1 transcript in parallel, verify exactly one reply draft (unless `draft_all_emails=True`).
 - [ ] Add test: transcript with tasks emits tasks in both modes.
 
 **Success Criteria**
 - `--draft-all-emails` flag behavior is identical in sequential and parallel modes.
 - All content types with tasks emit tasks in both modes.
 
+**Validation:**
+```bash
+pytest -q Workflow/tests/test_parallel_output_gating_parity.py
+```
+
 ---
 
-## 11) VOICE content type not supported end-to-end
+## 12) VOICE content type not supported end-to-end
 
 **Goal:** Complete VOICE content type support or remove it.
 
 **Status: NOT STARTED**
+
+**Milestone:** M5 - VOICE Support
 
 **Discovery:**
 - `ContentType.VOICE` exists in `envelope.py`
@@ -486,11 +630,15 @@ Code review found:
 
 ---
 
-## 12) Manifest patch flow dead (extractor discards discovered_aliases/acronyms)
+## 13) Manifest patch flow dead (extractor discards discovered_aliases/acronyms)
 
 **Goal:** Make discovered aliases/acronyms flow through to manifest patches.
 
 **Status: NOT STARTED**
+
+**Milestone:** M6 - Extractor Fields
+
+**Depends on:** Item 6 (test harness)
 
 **Discovery:**
 - `models.py` defines `discovered_aliases`, `discovered_acronyms` in UnifiedExtraction
@@ -511,13 +659,20 @@ Code review found:
 - New aliases discovered by LLM are patched into `_MANIFEST.md`.
 - Acronym discoveries are added to project manifest.
 
+**Validation:**
+```bash
+pytest -q Workflow/tests/test_manifest_patches.py
+```
+
 ---
 
-## 13) Git commit behavior is risky (commits on any non-dry-run regardless of failures)
+## 14) Git commit behavior is risky (commits on any non-dry-run regardless of failures)
 
 **Goal:** Only git commit when batch has zero failures.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `ingest.py` → `_git_commit()` runs on any non-dry-run, even with failures. `git add -A` stages all files at vault root, potentially including unrelated changes (logs, caches, partial artifacts).
@@ -538,11 +693,13 @@ Code review found:
 
 ---
 
-## 14) EmailAdapter recipient parsing can crash on empty parts
+## 15) EmailAdapter recipient parsing can crash on empty parts
 
 **Goal:** Make recipient parsing robust to malformed headers.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 If To line includes trailing comma or double commas, `part.strip()` becomes empty, `name_match` is None, then `re.sub(..., name)` throws because `name` is None.
@@ -561,11 +718,13 @@ If To line includes trailing comma or double commas, `part.strip()` becomes empt
 
 ---
 
-## 15) TranscriptAdapter can emit bogus "Speaker 1" entities
+## 16) TranscriptAdapter can emit bogus "Speaker 1" entities
 
 **Goal:** Prevent generic speaker labels from being treated as people.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `speakers` can include literal labels like "Speaker 1" when mapping isn't found. These flow into participants, potentially causing folder creation for "Speaker 1".
@@ -584,11 +743,13 @@ If To line includes trailing comma or double commas, `part.strip()` becomes empt
 
 ---
 
-## 16) ContextBundle nondeterministic dynamic suffix (hurts caching)
+## 17) ContextBundle nondeterministic dynamic suffix (hurts caching)
 
 **Goal:** Make context bundle deterministic for cache stability.
 
 **Status: NOT STARTED**
+
+**Milestone:** M7 - ContextBundle
 
 **Discovery:**
 `enriched` is a `set`; `list(enriched)[:12]` is nondeterministic because set iteration order varies. This affects "relevant readmes" selection, breaking cache stability.
@@ -606,11 +767,13 @@ If To line includes trailing comma or double commas, `part.strip()` becomes empt
 
 ---
 
-## 17) ContextBundle glossary typing inconsistency
+## 18) ContextBundle glossary typing inconsistency
 
 **Goal:** Fix glossary type to match actual data structure.
 
 **Status: NOT STARTED**
+
+**Milestone:** M7 - ContextBundle
 
 **Discovery:**
 `bundle.glossary` is declared `dict[str, str]` but `_extract_acronyms_from_manifest()` inserts dict values like `{"full_name": name, "definition": definition}`. Type mismatch can cause runtime errors.
@@ -630,11 +793,13 @@ If To line includes trailing comma or double commas, `part.strip()` becomes empt
 
 ---
 
-## 18) Quick entity scan uses substring matching (false positives)
+## 19) Quick entity scan uses substring matching (false positives)
 
 **Goal:** Improve entity detection to avoid false positives with short names.
 
 **Status: NOT STARTED**
+
+**Milestone:** M7 - ContextBundle
 
 **Discovery:**
 `if name.lower() in content_lower` matches "Ann" in "annual", "Dan" in "danger", etc. This pulls irrelevant READMEs into context, increasing token use and confusing extraction.
@@ -654,11 +819,13 @@ If To line includes trailing comma or double commas, `part.strip()` becomes empt
 
 ---
 
-## 19) Extraction JSON parse error treated as success
+## 20) Extraction JSON parse error treated as success
 
 **Goal:** Treat JSON parse failure as pipeline failure.
 
 **Status: NOT STARTED**
+
+**Milestone:** M6 - Extractor Fields
 
 **Discovery:**
 On JSON parse error, `_build_minimal_extraction()` returns a minimal extraction with confidence 0. Downstream patch generation may still create meeting notes and archive sources.
@@ -679,11 +846,13 @@ On JSON parse error, `_build_minimal_extraction()` returns a minimal extraction 
 
 ---
 
-## 20) ChangePlan.validate_plan() doesn't consider add_wikilinks
+## 21) ChangePlan.validate_plan() doesn't consider add_wikilinks
 
 **Goal:** Fix validation to recognize wikilink-only patches as valid.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 Validation can flag a patch as "has no changes" even if it only adds wikilinks, because `add_wikilinks` is not checked in the "has_changes" condition.
@@ -701,11 +870,13 @@ Validation can flag a patch as "has no changes" even if it only adds wikilinks, 
 
 ---
 
-## 21) dry-run doesn't report primary source archiving
+## 22) dry-run doesn't report primary source archiving
 
 **Goal:** Make dry-run report complete list of files that would be archived.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `_dry_run_apply()` collects `extra_source_paths` but not `source_path`. Dry-run output lies about what will be archived.
@@ -723,11 +894,13 @@ Validation can flag a patch as "has no changes" even if it only adds wikilinks, 
 
 ---
 
-## 22) TransactionalApply._atomic_write() weaker than existing utility
+## 23) TransactionalApply._atomic_write() weaker than existing utility
 
 **Goal:** Use the robust atomic write from `scripts/utils/fs.py`.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `_atomic_write()` uses deterministic temp filename (`file.md.tmp`), not unique temp file. Rename semantics can fail on Windows when overwriting. `scripts/utils/fs.py` already has a robust implementation.
@@ -747,11 +920,13 @@ Validation can flag a patch as "has no changes" even if it only adds wikilinks, 
 
 ---
 
-## 23) Patch application silently skips missing target files
+## 24) Patch application silently skips missing target files
 
 **Goal:** Log warning when patch target file doesn't exist.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `_apply_patch()` returns early if target doesn't exist. This can hide real issues (e.g., plan refers to file that should have been created but wasn't).
@@ -770,11 +945,13 @@ Validation can flag a patch as "has no changes" even if it only adds wikilinks, 
 
 ---
 
-## 24) OutputGenerator calendar invite formatting invalid
+## 25) OutputGenerator calendar invite formatting invalid
 
 **Goal:** Generate valid ICS calendar invites.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 Calendar generation uses `mailto:{a}@example.com` where `{a}` is a human name (not email). ICS formatting typically needs CRLF and proper escaping.
@@ -794,11 +971,13 @@ Calendar generation uses `mailto:{a}@example.com` where `{a}` is a human name (n
 
 ---
 
-## 25) OutputGenerator dry_run still creates directories
+## 26) OutputGenerator dry_run still creates directories
 
 **Goal:** Prevent directory creation in dry-run mode.
 
 **Status: NOT STARTED**
+
+**Milestone:** M4 - Output Unification
 
 **Discovery:**
 `OutputGenerator.__init__()` creates `Outbox/`, `_calendar/`, `_prompts/` directories even when `dry_run=True` (the `if not dry_run:` guard may not cover all paths).
@@ -816,11 +995,13 @@ Calendar generation uses `mailto:{a}@example.com` where `{a}` is a human name (n
 
 ---
 
-## 26) Tasks inbox writing not safe for parallelism
+## 27) Tasks inbox writing not safe for parallelism
 
 **Goal:** Make TASKS_INBOX.md writes atomic and safe for parallel execution.
 
 **Status: NOT STARTED**
+
+**Milestone:** M4 - Output Unification
 
 **Discovery:**
 Multiple tasks are appended by repeated read/replace/write cycles without locking. Parallel runs or concurrent edits can interleave and lose updates.
@@ -839,11 +1020,13 @@ Multiple tasks are appended by repeated read/replace/write cycles without lockin
 
 ---
 
-## 27) Duplicate detection probably doesn't work
+## 28) Duplicate detection probably doesn't work
 
 **Goal:** Fix or remove duplicate detection.
 
 **Status: NOT STARTED**
+
+**Milestone:** M9 - Duplicate Detection
 
 **Discovery:**
 `_is_duplicate()` looks for artifacts in `Inbox/_extraction`, but pipeline doesn't write extraction artifacts there (only optional `trace_dir`). Also keys by stem, not content hash.
@@ -864,11 +1047,13 @@ Multiple tasks are appended by repeated read/replace/write cycles without lockin
 
 ---
 
-## 28) Rate limiting config is unused
+## 29) Rate limiting config is unused
 
 **Goal:** Implement rate limiting for parallel API calls.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 `requests_per_minute` is read from config but never used. Parallel mode blasts requests without throttling.
@@ -889,11 +1074,13 @@ Multiple tasks are appended by repeated read/replace/write cycles without lockin
 
 ---
 
-## 29) Config paths vs hard-coded paths inconsistency
+## 30) Config paths vs hard-coded paths inconsistency
 
 **Goal:** Respect config paths throughout pipeline.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 Some components use config paths, others hard-code:
@@ -918,11 +1105,13 @@ Some components use config paths, others hard-code:
 
 ---
 
-## 30) sys.path manipulation in multiple modules
+## 31) sys.path manipulation in multiple modules
 
 **Goal:** Clean up import graph and eliminate sys.path hacks.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 Many modules do `sys.path.insert(...)` to reach `scripts.*`. This causes confusing import graphs, duplicate module loads, and `isinstance` failures.
@@ -944,11 +1133,13 @@ Many modules do `sys.path.insert(...)` to reach `scripts.*`. This causes confusi
 
 ---
 
-## 31) Utility functions duplicated across modules
+## 32) Utility functions duplicated across modules
 
 **Goal:** Consolidate utility functions to single source of truth.
 
 **Status: NOT STARTED**
+
+**Milestone:** M10 - Cleanup
 
 **Discovery:**
 - `slugify/basename/strip_extension` redefined in `TransactionalApply._create_meeting_note()` but exist in `scripts/utils/templates.py`
@@ -971,11 +1162,15 @@ Many modules do `sys.path.insert(...)` to reach `scripts.*`. This causes confusi
 
 ---
 
-## 32) Config validation mismatch (extract_voice required, extract_document not)
+## 33) Config validation mismatch (extract_voice required, extract_document not)
 
 **Goal:** Align config validation with actual pipeline requirements.
 
 **Status: NOT STARTED**
+
+**Milestone:** M8 - Thread Safety
+
+**Discovery:**
 
 **Discovery:**
 `_validate_config()` requires `extract_voice` but not `extract_document`. Yet DocumentAdapter exists and processes documents.
