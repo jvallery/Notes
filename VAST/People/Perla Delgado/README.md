@@ -40,6 +40,8 @@ role: Executive Director
 - Perla Delgado will share the start of a SWOT document for the potential acquisition of a former church in Longmont.
 
 - Perla Delgado will share the start of a SWOT document for the potential Longmont former church acquisition that Erika Smith co-created.
+
+- Perla Delgado's office phone number is 303-444-3636 and her mobile phone number is 512-318-0449.
 ## Recent Context
 
 - 2025-12-08: Mentioned in: [[2025-12-08 - IHDF board- provide feedback on draft strategic plan by 2025-12-18; January board meeting preview]]

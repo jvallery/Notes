@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Complete the IHDF Draft Strategic Plan Feedback Form and submit feedback to I Have A Dream Foundation of Boulder County (IHDF) by 2025-12-18. 📅 2025-12-18 ⏫ #task #proposed #auto
 - [?] Confirm with Chuck Cancilla and Brian Evans whether the proposed 'Service Aware VIP Pool' approach (ORION-261324) satisfies NVIDIA DGX Cloud requirements and whether a VAST 5.6 target (not confirmed) meets the customer timeline or if a workaround is required. @Mordechai Blaunstein ⏫ #task #proposed #auto
 - [?] Lead technical investigation for RFE 0482 (dual-uplink visibility and tenant-scoped visibility via VAST Uplink) and bring in required parties across VAST engineering/product as needed. @Mordechai Blaunstein ⏫ #task #proposed #auto
 - [?] Navigate to Salesforce RFE record https://vastdata.my.salesforce.com/a6HV40000009AOL and link RFE 0482 to the correct 'Related Feature' in Salesforce. @TBD ⏫ #task #proposed #auto
