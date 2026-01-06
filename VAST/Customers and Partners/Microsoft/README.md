@@ -813,6 +813,8 @@ not done
 - VAST Azure product readiness for GPU performance testing scenarios
 
 - Follow-up call with Microsoft requestors to communicate refusal
+
+- VAST Data and Microsoft technical collaboration following Microsoft Ignite
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.

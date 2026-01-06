@@ -760,6 +760,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-08: Oracle OCI Alloy and Dedicated Regions intro, meeting availability in Seattle
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
+
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro requested with Jason Vallery; architecture docs requested
 ## Open Tasks
 ```tasks
 path includes Lior Genzel
