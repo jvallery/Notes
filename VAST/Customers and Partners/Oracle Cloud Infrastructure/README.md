@@ -120,6 +120,10 @@ not done
 - Introduction between VAST Data (Jason Vallery) and Oracle Cloud Infrastructure (Christian Linacre, Matthew Thomson)
 
 - Oracle Alloy and Dedicated Regions (DRCC/Alloy) product management discussion
+
+- Introduction between VAST Data and Oracle Cloud Infrastructure (OCI) leadership for Alloy and Dedicated Regions
+
+- Oracle Dedicated Regions Cloud@Customer (DRCC) and Oracle Alloy product management discussion
 ## Key Decisions
 
 - Christian Linacre will connect Jason Vallery and Matthew Thomson so they can meet while Jason is in Seattle.
