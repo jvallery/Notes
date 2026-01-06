@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Monitor for the Express Scripts Pharmacy shipment confirmation email for the lisdexamfetamine 40mg order tied to invoice 08245103465. 📅 2026-01-06 🔽 #task #proposed #auto
 - [?] Confirm the final date and time for the board game session at Brian Bearly's home and share the exact address and logistics with attendees once decided. @Brian Bearly 📅 2025-12-24 🔼 #task #proposed #auto
 - [?] Reply to the group with Jason Vallery's availability and preference for either Saturday 2025-12-27 at 1:00pm or Monday 2025-12-29 at 1:00pm for Brian Bearly's board game session. 📅 2025-12-23 🔼 #task #proposed #auto
 - [?] Watch for the Express Scripts Pharmacy shipment confirmation email for the lisdexamfetamine 40mg prescription order (invoice 08245103465). 🔽 #task #proposed #auto

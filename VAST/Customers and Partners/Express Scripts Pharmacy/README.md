@@ -35,6 +35,8 @@ not done
 - 2025-12-29: Express Scripts Pharmacy confirmed receipt of Jason Vallery's prescription order for lisdexamfetamin...
 
 - 2025-12-29: Express Scripts Pharmacy confirmed receipt of an order for Jason and stated they are working on it a...
+
+- 2025-12-29: Express Scripts Pharmacy confirmed receipt of Jason Vallery's prescription order and stated they are...
 ## Key Facts
 
 - Express Scripts Pharmacy sent an order confirmation email stating they are working on Jason's prescription order and will send another email when it ships.
@@ -73,4 +75,8 @@ not done
 - Standard shipping (no cost)
 
 - Prescription numbers and invoice tracking
+
+- Shipping preference (standard, no cost)
+
+- Order status notification (email when shipped)
 ## Key Decisions
