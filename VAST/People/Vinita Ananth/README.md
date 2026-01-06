@@ -49,6 +49,8 @@ tags:
 
 - 2025-12-10: Mentioned in: Nebius and VAST connection scheduled for Monday 2025-12-15 at 10:00am PT
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduling with Vinita Ananth
+
+- 2025-12-10: Mentioned in: Nebius and VAST intro call scheduling confirmation (12/15 10am PT)
 ## Open Tasks
 ```tasks
 path includes Vinita Ananth
