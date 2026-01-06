@@ -33,6 +33,8 @@ not done
 - 2026-01-05: An opportunity for NATO named 'HPE - AI Rammstein' with $500,000 ACV was updated by Chris Bisson to ...
 
 - 2026-01-05: Chris Bisson updated the Salesforce opportunity 'HPE - AI Rammstein' under account NATO to stage 14 ...
+
+- 2026-01-05: A Salesforce loss alert reports that Chris Bisson updated the NATO opportunity "HPE - AI Rammstein" ...
 ## Key Facts
 
 - NATO is a prospect account in Belgium with website https://www.nato.int.
@@ -56,6 +58,14 @@ not done
 - Closed lost primary driver for the NATO opportunity 'HPE - AI Rammstein' was 'Loss - No Response / Went Dark'; secondary driver was 'Loss - Not Qualified (too small, bad fit, etc)'; reason detail was 'Not real'.
 
 - The NATO account in Salesforce is a Prospect with website https://www.nato.int and billing country Belgium; the account owner is Chris Bisson.
+
+- The NATO opportunity "HPE - AI Rammstein" was a Land opportunity with ACV $500,000.00 and partner account Hewlett-Packard Enterprise (HPE).
+
+- The NATO opportunity close date was 2026-01-05 with close date push count 3; prior close date was 2026-01-30.
+
+- The closed-lost primary driver for the NATO opportunity was "Loss - No Response / Went Dark" and the secondary driver was "Loss - Not Qualified (too small, bad fit, etc)" with reason detail "Not real".
+
+- The NATO account in Salesforce is a Prospect with website https://www.nato.int and billing country Belgium.
 ## Topics
 
 - Salesforce loss alert for NATO opportunity
@@ -67,8 +77,16 @@ not done
 - Opportunity qualification and end-user validation with partner HPE
 
 - Closed-lost drivers: no response/went dark and not qualified
+
+- Partner-led opportunity with Hewlett-Packard Enterprise (HPE)
+
+- Loss reasons: no response/went dark and not qualified
+
+- AI solution area opportunity qualification
 ## Key Decisions
 
 - The NATO opportunity 'HPE - AI Rammstein' was moved to stage 14 Closed No Decision and categorized as Lost on 2026-01-05.
 
 - The Salesforce opportunity 'HPE - AI Rammstein' for account NATO was moved to stage 14 Closed No Decision and forecast category Lost with close date 2026-01-05.
+
+- The Salesforce opportunity "HPE - AI Rammstein" for NATO was marked as Stage 14 Closed No Decision (Lost) on 2026-01-05.

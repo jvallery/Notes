@@ -59,6 +59,22 @@ tags:
 - Rick Scurfield instructed teams to place orders as early as possible, keep Salesforce (SFDC) up to date for demand visibility, and build configurations using hardware on hand to accelerate fulfillment.
 
 - Rick Scurfield told Regina (last name unknown) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in the March 2026 timeframe for the Microsoft opportunity, and that it was not yet on the Hard/Soft Backlog list.
+
+- Rick Scurfield was included on the Microsoft workback plan email thread for visibility on pricing and modeling discussions.
+
+- Rick Scurfield requested that VAST internal teams (Sales, Marketing, Support, Product) proactively share the VAST Forward agenda with their customer accounts and position the event as a way to accelerate customer roadmaps and deepen relationships with VAST Data.
+
+- Rick Scurfield asked internal teams to nominate customers for a VIP Ski Experience at SnowBasin associated with VAST Forward.
+
+- Rick Scurfield directed teams to increase software pricing where possible, emphasizing confidence in VAST Data's value to customers.
+
+- Rick Scurfield instructed teams to place orders as early as possible to enter the allocation queue sooner, keep Salesforce (SFDC) up to date for demand visibility, and build configurations with hardware on hand to accelerate fulfillment.
+
+- Rick Scurfield told Regina (last name unknown) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in the March 2026 timeframe for the Microsoft opportunity, and that it should be tracked on the Soft Backlog until it firms up.
+
+- Rick Scurfield noted that Lior Genzel mentioned trying to source hardware from Dell for the Microsoft opportunity, but Rick was unsure that would be possible based on recent information.
+
+- Rick Scurfield sent a GTM organization update email about a Revenue Operations leadership change and stated that GTM priorities remain unchanged and the RevOps team is well supported during the transition.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience
@@ -92,6 +108,17 @@ tags:
 - 2026-01-05: Mentioned in: Operations planning for Microsoft MAI 58 x 58 first-hall deployment at Nebius NJ (Opp-17629)
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2025-12-27: Red flare escalation: Azure MAI deal risk, supply chain constraints, and January execution plan
+
+- 2025-12-03: Mentioned in: Rick Scurfield internal outreach request for VAST Forward (Feb 24-26, 2026)
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition (Cristina Hasson departure, Stacy Wynn interim lead)
+- 2025-12-17: Mentioned in: Rick Scurfield: New quote policy, monthly price books, and hardware allocation guidance
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison and TCO model refinement
+- 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26, 2026)
+- 2025-12-17: Mentioned in: Rick Scurfield: Quote policy changes and hardware allocation guidance (effective through 2025-12-31 and monthly price books)
+- 2026-01-05: Mentioned in: Operations planning for Microsoft MAI Nebius NJ first hall 58 x 58 (Opp-17629)
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-27: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
 ## Open Tasks
 ```tasks
 path includes Rick Scurfield

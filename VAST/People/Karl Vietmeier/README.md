@@ -65,6 +65,14 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Karl Vietmeier was asked by Ray Coetzee to define the expected performance profile for an Azure VoC instance.
 
 - Karl Vietmeier was told by Lior Genzel that he is optional on the follow-up call with Microsoft/Azure regarding the Azure VoC request.
+
+- Karl Vietmeier observes that GDC and Azure Local opportunities often start as cloud opportunities but shift to on-prem teams once hardware is involved, creating confusion over accountability and reducing visibility into progress and outcomes.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through cloud product management because cloud PM has the strongest hyperscaler relationships and these solutions will be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier was asked by Ray Coetzee to define the expected performance profile of a VAST Azure VoC instance.
+
+- Lior Genzel said Karl Vietmeier is optional on the follow-up call with Microsoft/Azure because Lior plans to block the Azure VoC request.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -80,6 +88,10 @@ role: Cloud Solutions Architect - VAST on Cloud
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST declines due to readiness
 - 2025-12-01: Karl Vietmeier flagged growing inbound interest in support for Google Distributed Cloud (GDC) and Az...
+- 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST declines
 - 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 ## Open Tasks
@@ -125,6 +137,16 @@ not done
 - Maintaining hyperscaler alignment and cloud consumption linkage for hybrid/on-prem cloud-adjacent offers
 
 - Cloud product management governance for hyperscaler-tied offerings and cloud consumption alignment
+
+- Cross-team handoff issues between cloud product management and on-prem/hardware teams
+
+- Hyperscaler-aligned acquisition and cloud consumption linkage for hybrid/on-prem cloud offerings
+
+- Cross-team handoff friction between cloud and on-prem teams when hardware is involved
+
+- How to maintain visibility into execution, progress, and outcomes for hybrid/on-prem cloud-adjacent opportunities
+
+- Role of cloud product management in hyperscaler-tied acquisition and cloud consumption motions
 ## Key Decisions
 
 - P0 priority for VAST cloud viability is enabling capacity scaling independent of performance via object/S3 offload (cloud economics requirement).

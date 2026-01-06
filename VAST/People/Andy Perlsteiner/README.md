@@ -34,6 +34,10 @@ role: Field CTO
 - Andy Perlsteiner is leading Hands-on Labs for VAST Forward (as of 2025-12-23 program update).
 
 - Andy Perlsteiner is leading Hands-on Labs for VAST Forward.
+
+- Andy Perlsteiner is leading hands-on labs for VAST Forward.
+
+- Andy Perlsteiner is leading Hands-on Labs sessions for VAST Forward (as of 2025-12-23 program plan).
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -53,6 +57,9 @@ role: Field CTO
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
+- 2025-12-23: Mentioned in: VAST Forward: VAST spokesperson selection and required prep schedule (Jan 6 kickoff, Feb 25-26 live)
 ## Open Tasks
 ```tasks
 path includes Andy Perlsteiner

@@ -33,6 +33,8 @@ not done
 ## Key Facts
 
 - Renen Hallak planned to attend CES in Las Vegas to help VAST Data Operations secure NAND allocation amid flash shortages.
+
+- Renen Hallak stated he will attend CES in Las Vegas to help VAST Data Operations secure NAND allocation amid flash shortages.
 ## Topics
 
 ## Key Decisions

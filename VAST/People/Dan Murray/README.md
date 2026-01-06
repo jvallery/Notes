@@ -47,6 +47,8 @@ expertise:
 - Dan Murray is listed as the host for the RMAIIG "AI for Good" event on January 20, 2026.
 
 - Dan Murray is listed as the host of the Rocky Mountain AI Interest Group (RMAIIG) in-person event "AI for Good (New location for January!)" on Tuesday, January 20, 2026 from 6:00 PM to 8:00 PM MT in Boulder, Colorado.
+
+- Dan Murray is listed as the host for the RMAIIG event 'AI for Good (New location for January!)' on January 20, 2026.
 ## Recent Context
 
 - 2026-01-04: Mentioned in: Meetup event scheduled: RMAIIG 'AI for Good' (new January location in Boulder)

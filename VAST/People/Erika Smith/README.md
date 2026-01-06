@@ -19,6 +19,10 @@ tags:
 - Perla (last name unknown) will share the start of a SWOT document co-created with Erika Smith regarding the potential Longmont former church acquisition.
 
 - Erika Smith stated that taking public stances on some matters could create issues with IHDF tax-exempt status and could disenfranchise donors and the community, and recommended discussing the impact in an executive session at the end of board meetings.
+
+- Erika Smith stated that taking public stances on some matters could create issues with IHDF's tax-exempt status and could disenfranchise donors and the community, and recommended discussing the impact in an executive session at the end of board meetings.
+
+- Erika Smith co-created an initial SWOT document draft for the potential acquisition of a former church in Longmont with Perla Delgado.
 ## Recent Context
 
 - 2025-12-10: Erika Smith sent a confidential recap of an IHDF executive session that Jason Vallery missed. Key po...
@@ -26,6 +30,8 @@ tags:
 - 2025-12-10: Mentioned in: IHDF exec session recap (confidential): public stance, fundraising committee, Longmont church acquisition exploration
 
 - 2025-12-10: Erika Smith emailed a confidential recap of an IHDF executive session that Jason Vallery missed. Key...
+
+- 2025-12-10: Mentioned in: IHDF executive session recap: public stance risk, fundraising committee, Longmont church acquisition exploration
 ## Open Tasks
 ```tasks
 path includes Erika Smith

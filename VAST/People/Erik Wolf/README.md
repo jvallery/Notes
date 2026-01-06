@@ -37,6 +37,18 @@ tags:
 - Erik Wolf stated that Jason Vallery already had a chunk of the financial analysis done and they incorporated it into the latest spreadsheet model to gut-check the results.
 
 - A Zoom meeting titled "Erik/Jason - Sync on MAI pricing" is scheduled for Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver), organized by Jason Vallery, and accepted by Erik Wolf.
+
+- Erik Wolf provided a pricing input of $3.60 per TB per month in the context of the Microsoft workback plan discussion.
+
+- Erik Wolf stated that before a recent price hike, the list price discount referenced in the thread was about 94.9%.
+
+- Erik Wolf stated that VAST Data only locked in a software pricing model with CoreWeave (no full hardware plus software split locked in).
+
+- Erik Wolf stated he started a financial analysis with Jason Vallery and that they would have adjustable parameters to evaluate two scenarios (referred to as #1 and #2 in the email) and design the model accordingly.
+
+- Erik Wolf stated that Jason Vallery already had a chunk of the analysis done and that they put it into the latest spreadsheet model to gut-check the numbers.
+
+- Erik Wolf accepted a Zoom meeting invitation from Jason Vallery titled "Erik/Jason - Sync on MAI pricing" scheduled for Monday, 2026-01-05 2:00pm-3:00pm Mountain Time (Denver).
 ## Recent Context
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
@@ -44,6 +56,9 @@ tags:
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
 - 2026-01-05: Erik Wolf accepted a Zoom meeting invitation from Jason Vallery to sync on Microsoft AI Infrastructu...
+
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison and TCO model refinement
+- 2026-01-05: Erik Wolf accepted a calendar invitation from Jason Vallery for a 1-hour Zoom meeting to sync on Mic...
 ## Open Tasks
 
 ```tasks
@@ -58,4 +73,8 @@ not done
 - Internal 1:1 sync between Jason Vallery and Erik Wolf
 
 - Internal pricing alignment discussion
+
+- Microsoft AI Infrastructure (MAI) pricing alignment between Jason Vallery and Erik Wolf
+
+- Zoom meeting logistics for MAI pricing sync
 ## Key Decisions

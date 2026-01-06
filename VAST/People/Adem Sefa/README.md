@@ -25,6 +25,8 @@ role: Managing Director - Strategic Partnerships
 - Adem Sefa requested that Jason Vallery provide introductions for his brother-in-law Edwin Trogler related to an FP&A Director role.
 
 - Adem Sefa is Managing Director - Strategic Partnerships at Microsoft.
+
+- Adem Sefa stated that Edwin Trogler is his brother-in-law.
 ## Recent Context
 
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery for potential F...
@@ -72,3 +74,7 @@ not done
 - Scheduling a quick introductory call
 
 - Introduction and networking for FP&A Director role
+
+- Introduction and networking support for FP&A Director role
+
+- Scheduling a call between Jason Vallery and Edwin Trogler

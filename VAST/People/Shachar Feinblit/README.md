@@ -43,6 +43,9 @@ tags:
 
 - 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan (Microsoft MAI)
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 ## Open Tasks
 ```tasks
 path includes Shachar Feinblit

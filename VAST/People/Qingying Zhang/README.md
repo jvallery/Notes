@@ -23,6 +23,9 @@ role: Corporate Vice President, Azure (leads AKS and cloud-native services; focu
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 ## Open Tasks
 ```tasks
 path includes Qingying Zhang

@@ -96,6 +96,34 @@ not done
 - 2025-11-20: Mentioned in: Adem Sefa introduces Edwin Trogler for potential FP&A Director opportunities at VAST
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 - 2025-12-27: Jeff Denworth escalated concern that VAST is losing the Azure MAI Q1 deal due to slow execution and ...
+
+- 2025-12-11: Lior Genzel introduced Jason Vallery to Sushant Rewaskar (Microsoft) to enable technical collaborati...
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-29: Mentioned in: Express Scripts Pharmacy order confirmation for lisdexamfetamine (standard shipping, Visa ending 2389)
+- 2025-12-16: Kristin Thompson asked Tiffany Stonehill to verify whether Microsoft prospect Trevor Cooper-Chadwick...
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube via Peter Imming, coffee meeting set for 2026-01-07
+- 2025-12-11: Ray Coetzee reported that Microsoft is testing a physical VAST PoC system in Microsoft's Redmond lab...
+- 2025-12-19: After VAST presented VAST + AKS to Microsoft Global Black Belt (GBB) AI infrastructure sellers, Micr...
+- 2025-12-17: Mentioned in: 1:1 discussion with Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
+- 2025-12-12: Mentioned in: John Mao update on OpenAI org, data platforms (Rockset, Snowflake, DAQ) and intro path via his friend
+- 2025-12-22: Mentioned in: Lior Genzel requested access to Google Doc: VAST and Azure Integration.docx
+- 2026-01-05: Lior Genzel asked Jonsi Stefansson and Jason Vallery to attend a Microsoft Teams call scheduled for ...
+- 2025-12-16: Kristin Thompson asked Tiffany Stonehill to approve VAST Customer Learning Portal access for Microso...
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison and TCO model refinement
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request due Friday
+- 2026-01-05: Lea Rozen (Microsoft) sent a Microsoft Teams meeting invite titled "Sync with Microsoft on PRD vast ...
+- 2026-01-05: Mentioned in: Erik Wolf accepted invite: Sync on Microsoft AI Infrastructure (MAI) pricing
+- 2025-12-11: Lior Genzel introduced Jason Vallery to Microsoft contact Sushant Rewaskar to enable technical colla...
+- 2026-01-04: Karl Rautenstrauch (Microsoft Azure Storage) requested moving the Weekly VAST GTM Meeting from Monda...
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+- 2026-01-05: Mentioned in: Operations planning for Microsoft MAI Nebius NJ first hall 58 x 58 (Opp-17629)
+- 2025-12-01: Mentioned in: Karl Vietmeier asks for guidance on ownership of GDC and Azure Local opportunities
+- 2025-12-19: After VAST presented VAST + AKS to Microsoft Global Black Belt (GBB) AI infrastructure sellers on Tu...
+- 2026-01-05: Mentioned in: Canceled: Weekly VAST GTM Meeting due to Karl Rautenstrauch family emergency
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2026-01-04: Karl Rautenstrauch (Microsoft) sent the agenda and Microsoft Teams join details for a weekly VAST GT...
+- 2025-12-27: Jeff Denworth escalated concern that VAST is losing probability of closing a Q1 deal with Microsoft ...
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -220,6 +248,68 @@ not done
 - Jeff Denworth reported Microsoft is considering HDDs for the first April delivery for MAI scale-up, and that HDD supply is also constrained.
 
 - Jeff Denworth asserted Microsoft must order hardware early to utilize GPUs quickly, and therefore must decide on storage software early because software choice materially impacts the hardware purchase.
+
+- Jay Parikh is EVP for CoreAI at Microsoft and is participating in Roland's CES keynote on January 6, 2026; VAST wants to meet him while in Las Vegas.
+
+- Lior Genzel reported that Microsoft MAI's initial GPU delivery is expected in February 2026 and that MAI needs a storage solution ready for a May to June 2026 timeframe, with January no longer a hard date.
+
+- Lior Genzel reported that Vamshi (Azure Blob product lead, last name not provided) communicated that Microsoft's decision is internal and expressed frustration with VAST's aggressive approach in highlighting Azure Blob deficiencies.
+
+- The Express Scripts Pharmacy email references Microsoft Benefits access via aka.ms/benefits and provides a Microsoft Benefits support phone number (1.800.676.1411) for questions.
+
+- Lior Genzel stated that Microsoft is in an engineering-level proof of concept (PoC) for the UK Met engagement and is not yet a VAST customer.
+
+- Peter Imming and Jason Vallery previously worked together at Microsoft in a manager-report relationship (Peter managed Jason).
+
+- Microsoft requested an Azure VoC instance to run performance testing against Azure GPU instances because their on-prem lab lacks GPU nodes.
+
+- On Tuesday, December 9, 2025 from 8:00 AM to 9:00 AM, VAST Data presented VAST + AKS to Microsoft Global Black Belt (GBB) AI infrastructure sellers as part of the AKS AI Roadshow.
+
+- Whale Iptic demonstrated a multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce disruption risk from a single cloud provider outage.
+
+- Azure Blob Storage and Azure Cosmos DB were referenced as key components used by OpenAI for persistence in Applications workloads.
+
+- The requested document title indicates it contains information about VAST Data integration with Microsoft Azure.
+
+- VAST is preparing Microsoft-facing pricing and TCO materials, anticipating Microsoft will request extensive competitive and cost breakdown information, potentially including comparisons to CoreWeave.
+
+- A meeting between Jason Vallery and Erik Wolf is explicitly focused on Microsoft AI Infrastructure (MAI) pricing.
+
+- Whale Iptic described a multi-pod architecture running across Azure as part of a multi-cloud reliability strategy.
+
+- The MAI Nebius New Jersey deployment is designed to be installed in phases, with the first phase requiring hardware for one hall and a 58 x 58 configuration.
+
+- Latest update as of 2026-01-05 is that Microsoft expects to install the first hall for the MAI Nebius New Jersey deployment in the May/June 2026 timeframe, then move aggressively to the other 13 halls before the end of 2026.
+
+- VAST triggered urgency with Microsoft MAI due to severe supply chain constraints and is running a parallel evaluation of whether the deployment can be done on Microsoft hardware (Azure Blob or Azure Compute) or using Microsoft NAND supply chain.
+
+- Plan is to ask Microsoft for a software purchase order that covers the full scope of the MAI Nebius New Jersey project, not just the first hall hardware.
+
+- Azure Local is being discussed as a deployment environment where VAST Data support is being requested and may be acquired through hyperscaler channels tied to cloud consumption.
+
+- Microsoft Global Black Belt (GBB) AI infrastructure sellers hosted a Microsoft Teams session where VAST Data presented 'VAST + AKS' on Tuesday, December 9, 2025 from 8:00 AM to 9:00 AM.
+
+- A Microsoft contact (Karl Rautenstrauch) canceled the Weekly VAST GTM Meeting on 2026-01-05 due to a family medical situation.
+
+- Microsoft MAI timeline shifted such that January is no longer a hard date; initial GPU drop is expected in February 2026 and a storage solution is needed for May to June 2026.
+
+- Microsoft MAI storage deployment decision is internal to Microsoft, with final decision attributed to Mustafa per Azure stakeholder feedback relayed by Jason Vallery.
+
+- The weekly VAST GTM meeting agenda includes: pipeline review, deal timelines, Microsoft engagement status, risks and escalations, requirements to close, promotional efforts and required assets prior to launch, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and later transactions.
+
+- The meeting is planned for 30 minutes with the option to increase to 60 minutes as needed.
+
+- Microsoft has a physical VAST proof-of-concept system installed in Microsoft's lab in Redmond and is actively testing it.
+
+- Microsoft requested an Azure VoC instance to run performance testing using Azure GPU virtual machines because their Redmond lab lacks GPU nodes.
+
+- Jeff Denworth stated Microsoft Azure MAI needs 2 exabytes of storage capacity on the floor within the year 2025, creating urgency for early hardware and software decisions due to supply chain constraints.
+
+- Jeff Denworth stated Microsoft has a large hardware allocation across Azure but is still in a difficult supply chain position for the Azure MAI buildout.
+
+- Jeff Denworth stated Microsoft is considering HDDs for the first April 2026 delivery for Azure MAI scale-up, and that HDD supply is also constrained.
+
+- Jonsi Stefansson stated VAST plans to set up an engineering workshop in Redmond, Washington in January 2026 related to Microsoft Azure MAI integration work.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -381,6 +471,66 @@ not done
 - Azure Blob integration proposal expected by Microsoft
 
 - Engineering workshop planning in Redmond (January 2026)
+
+- VAST Data and Microsoft technical collaboration follow up after Ignite
+
+- Microsoft Teams follow-up meeting option if in-person meeting is not possible
+
+- Microsoft prospect validation and boundary setting for customer materials
+
+- Readiness of VAST on Azure for performance testing and customer evaluation
+
+- Follow-up call planning with Microsoft requestors
+
+- Pipeline review and Azure customer list expansion with Microsoft sellers
+
+- Microsoft procurement escalation strategy using executive meeting (Renen Hallak with Nick Parker)
+
+- Partnership process escalation with Microsoft
+
+- PRD sync with Microsoft (context not specified beyond meeting title)
+
+- UK Met engineering proof of concept with Microsoft technical lead Trevor Cooper-Chadwick
+
+- VAST Data and Microsoft technical collaboration follow-up after Ignite
+
+- Rescheduling Weekly VAST GTM Meeting from Monday, January 5, 2026
+
+- Weekly GTM cadence for Microsoft and VAST coordination
+
+- Azure Marketplace onboarding blockers and transaction readiness
+
+- Pipeline review and deal timeline alignment
+
+- Promotional efforts and collateral/assets required prior to launch
+
+- Sharing VAST presentation slides and code from the roadshow session
+
+- Building a Global Namespace on Azure demo/accelerator for the AI roadshow
+
+- Rescheduling Weekly VAST GTM Meeting from Monday, January 5, 2026 to another weekday (Tuesday, Wednesday, or Thursday)
+
+- Weekly VAST GTM Meeting agenda: pipeline review, deal timelines, Microsoft engagement status, risks/escalations/requirements to close, promotional alignment and launch assets, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and transactions
+
+- Weekly VAST GTM meeting cadence and agenda
+
+- Pipeline review and deal timelines for VAST and Microsoft GTM
+
+- Microsoft engagement status and escalation path
+
+- Launch promotional efforts and collateral/asset requirements
+
+- Follow-up call with Microsoft/Azure requestors to communicate decision
+
+- Microsoft Azure MAI Q1 deal risk and urgency
+
+- 2 exabytes storage requirement for Microsoft Azure MAI
+
+- Global supply chain constraints and sourcing risk (Arrow, Avnet)
+
+- HDD vs alternative storage media considerations for April 2026 delivery
+
+- CoreWeave testing status and its relevance to Microsoft decisioning
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
@@ -418,3 +568,15 @@ not done
 - Jeff Denworth directed the team to treat CoreWeave testing as largely cosmetic and to prioritize immediate commercial and supply chain execution with Microsoft MAI.
 
 - Jeff Denworth proposed moving to daily updates to improve communication and execution velocity on the Microsoft MAI deal.
+
+- Trevor Cooper-Chadwick's VAST Customer Learning Portal access request will remain pending approval until Lior Genzel confirms objectives and provides guidance.
+
+- VAST will not provide an Azure VoC instance to Microsoft for performance testing against Azure GPU instances because VAST on Azure is not ready for this use case.
+
+- Kristin Thompson will keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in 'pending approval' status until Lior Genzel confirms Trevor's objectives and whether access should be granted.
+
+- Karl Rautenstrauch tentatively rescheduled the Weekly VAST GTM Meeting to Tuesday (week of January 5, 2026) pending confirmation from the VAST team if Wednesday or Thursday is better.
+
+- VAST Data will pursue a Global Namespace on Azure demo concept centered on enabling VAST on-premises customers to burst into Microsoft Azure using VAST Global Namespace (recommended by Lior Genzel).
+
+- Jeff Denworth proposed an execution plan for the Microsoft Azure MAI deal with explicit January 2026 milestones (Redmond presence early January, supply chain/build conversations by second week, executive alignment by third week, paperwork last week) and stated missing milestones implies zero probability of closing.

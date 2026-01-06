@@ -32,6 +32,8 @@ tags:
 - 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat trends and governance
 
 - 2025-12-28: Mentioned in: AlphaSights outreach: urgent paid consult on corporate insider threat trends
+
+- 2025-12-28: Mentioned in: AlphaSights request: paid consultation on corporate insider threat (urgent)
 ## Open Tasks
 ```tasks
 path includes Olivia Bao

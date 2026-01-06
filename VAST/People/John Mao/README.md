@@ -43,6 +43,12 @@ phone: +1-512-535-8234
 - John Mao clarified that Ben Ries reports to John Mao's OpenAI contact, and the contact reports to Venkat (last name not provided in the email thread).
 
 - John Mao is planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
+
+- John Mao has a very close personal friend who recently joined OpenAI to lead the Online Data Infrastructure engineering team within the Applications organization (online data).
+
+- John Mao's OpenAI contact is ex-Instagram/Facebook and ex-Twilio, where he ran infrastructure/platform engineering teams, and he believes OpenAI is less 'not invented here' than those companies.
+
+- Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and could be used for press interviews while Renen Hallak is meeting flash vendors.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
@@ -54,6 +60,10 @@ phone: +1-512-535-8234
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
 - 2025-12-12: John Mao shared details from a catch-up with a close friend at OpenAI who leads the Online Data Infr...
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live plan, press strategy, and request to arrange Jay Parikh meeting
+
+- 2025-12-21: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+- 2025-12-12: John Mao shared details from a catch-up with a close friend who leads OpenAI's Online Data Infrastru...
+- 2025-12-21: Mentioned in: CES planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
 ## Open Tasks
 ```tasks
 path includes John Mao
@@ -72,6 +82,17 @@ not done
 
 - OpenAI Research offline data and training infrastructure in OCI
 
+- OpenAI organizational structure (Applications, Scaling, Research) and data ownership (online vs offline data)
+
+- OpenAI Applications data platforms: Rockset (local SSD + Azure Blob persistence), Snowflake, and Azure Cosmos DB
+
+- Rockset technical lineage and architecture (RocksDB persistence, FoundationDB KV semantics) as ChatGPT persistent memory
+
+- OpenAI Research training data system DAQ (Data Acquisition) and its scale characteristics
+
+- OpenAI Data Platform team for Spark/Databricks workloads
 ## Key Decisions
 
 - John Mao will keep the OpenAI relationship engineering-centered and will open a dialogue that brings in VAST engineering during his planned San Francisco visit early in the new year.
+
+- John Mao intends to keep the relationship with his OpenAI friend engineering-centered and will open a dialogue that brings in VAST Data engineering when he visits in San Francisco early in the new year.

@@ -76,6 +76,27 @@ not done
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements, GCS integration, and Alluxio risk
 - 2025-12-19: Mentioned in: Mordechai Blaunstein shared Google Doc: CoreWeave-Vast Automation Project - V2
 - 2025-12-17: Google (David Pawlak) requested a 1-hour meeting to review and clarify VAST Data's GDC Storage RFP p...
+
+- 2025-12-23: Mentioned in: Walmart restates hybrid requirements, rejects disjoint namespaces, GCS integration required
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+- 2025-12-17: Google (David Pawlak) requested follow-up clarifications on VAST's GDC Storage RFP proposal, specifi...
+- 2025-12-19: Mentioned in: Mordechai Blaunstein shared Google Doc for CoreWeave-VAST Automation Project (V2)
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-17: Mentioned in: 1:1 discussion with Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
+- 2025-12-22: Mentioned in: Lior Genzel requested access to Google Doc: VAST and Azure Integration.docx
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request due Friday
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+- 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
+- 2025-12-01: Mentioned in: Karl Vietmeier asks for guidance on ownership of GDC and Azure Local opportunities
+- 2026-01-05: Mentioned in: TLS support for VAST Block protocol requested for Google GDC RFP, deferred from 5.6
+- 2026-01-05: Mentioned in: Google RFP internal sync, updated Zoom conferencing (Mon Jan 5, 2026 11:00-11:30am MT)
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements restated, GCS integration required, Alluxio risk
+- 2026-01-05: Mentioned in: Calendar invite: Google RFP internal sync (Jan 5, 2026 11:00-11:30am MT)
+- 2025-12-22: Mentioned in: Jeff Denworth assigned action item: clarify crawl-walk-run in Azure + VAST integration proposal
+- 2026-01-02: Mentioned in: Google Docs comments on 'VAST and Azure Integration.docx' (Azure Blob tiering and DRR messaging)
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom, Jan 2 2026)
+- 2025-12-19: Mentioned in: Mordechai Blaunstein shared Google Doc: CoreWeave-Vast Automation Project - V2
+- 2025-12-17: Google (David Pawlak) requested follow-up clarification on VAST Data's GDC Storage RFP proposal, spe...
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -124,6 +145,40 @@ not done
 - Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with.
 
 - The document share notification was sent via Google Docs/Google Drive from drive-shares-dm-noreply@google.com.
+
+- The presentation share notification was sent via Google Slides (Google LLC) from drive-shares-dm-noreply@google.com.
+
+- Google Docs sent an automated email notification from drive-shares-dm-noreply@google.com about a document share invitation.
+
+- Google asked VAST follow-up RFP questions after an RFP walkthrough call, focused on FIPS/SED requirements and encryption key granularity across S3 and NFS for Google Distributed Cloud.
+
+- Whale Iptic demonstrated a multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce disruption risk from a single cloud provider outage.
+
+- Google Docs sent an automated share request email from drive-shares-dm-noreply@google.com regarding access to a document.
+
+- Jeff Denworth requested an updated deck to support a Google Distributed Cloud (GDC) RFP.
+
+- Whale Iptic described a multi-pod architecture running across GCP as part of a multi-cloud reliability strategy.
+
+- Google Slides sent an automated share notification from drive-shares-dm-noreply@google.com for a presentation shared by a VAST Data user.
+
+- Google Distributed Cloud (GDC) is being discussed as a deployment environment where VAST Data support is being requested and may be acquired through hyperscaler channels tied to cloud consumption.
+
+- Google Distributed Cloud (GDC) is Google's on-premises offering.
+
+- A Google Distributed Cloud (GDC) RFP requires TLS support for the VAST Block protocol as a must-have requirement.
+
+- An internal sync meeting is being held at VAST Data to coordinate work related to a Google RFP.
+
+- VAST Data scheduled an internal sync meeting titled "Google RFP: Internal Sync" to coordinate work related to a Google RFP.
+
+- Google Docs sent an automated notification email (comments-noreply@docs.google.com) indicating an action item was assigned in a Google document.
+
+- Google Docs sent an automated notification email about new comments on the document 'VAST and Azure Integration.docx'; the email cannot be replied to.
+
+- The meeting invitation and RSVP notification were sent via Google Calendar.
+
+- Google Slides sent an automated notification email from drive-shares-dm-noreply@google.com indicating a presentation share.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications
@@ -163,6 +218,16 @@ not done
 - Self-Encrypting Drives (SEDs) usage for SSDs in the proposed solution
 
 - BYOH (Bring Your Own Hardware) option and VAST Data preferred or certified hardware partners
+
+- FIPS compliance approach for VAST proposed offering
+
+- BYOH (Bring Your Own Hardware) partner certification and preferred hardware partner list
+
+- FIPS compliance for VAST Data proposed offering
+
+- Recurring pricing scope, inclusion of SSD hardware, and whether SSDs are Self-Encrypting Drives (SEDs)
+
+- Scheduling a follow-up meeting to review a Google document and provide offline work items
 ## Key Decisions
 
 - Lior Genzel selected Monday 2025-12-15 at 2:00pm PT as the meeting time for the initial one-hour call to review the GDC Storage RFP proposal (based on the scheduling thread where Lior requested 'The 15th at 2 pm PT please' and David Pawlak confirmed the invite was sent).
@@ -172,3 +237,7 @@ not done
 - Route Google Distributed Cloud RFP encryption and key management questions to Violet (VAST contact, last name unknown) as the subject matter expert.
 
 - VAST Data selected Monday, December 15, 2025 at 2:00pm PT as the target time for the 1-hour Google GDC Storage RFP review call (as requested by David Pawlak), and David Pawlak indicated he sent the invite.
+
+- Lior Genzel proposed targeting Monday (instead of Friday) for the next Google follow-up meeting because he was mostly off on Friday, 2025-12-19.
+
+- Lior Genzel selected Tuesday 2025-12-15 at 2:00pm PT as the time for the initial one-hour Google GDC Storage RFP review call (as requested by David Pawlak).

@@ -28,6 +28,10 @@ phone: 407.810.5017
 - Stacy Wynn will serve as interim leader of the Revenue Operations (RevOps) team at VAST Data while the company searches for a new RevOps leader.
 
 - Stacy Wynn will step in as interim leader of the Revenue Operations (RevOps) team at VAST Data while the company searches for a new RevOps leader.
+
+- Stacy Wynn will serve as interim leader of the VAST Data Revenue Operations (RevOps) team while VAST searches for a new RevOps leader.
+
+- Stacy Wynn is a point of contact for helping VAST Data teams navigate pricing changes and supply chain updates and their impact on active deals.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared
@@ -42,6 +46,10 @@ phone: 407.810.5017
 - 2025-12-23: Mentioned in: Stacy Wynn shares recording and FAQ for VAST pricing changes and supply chain update
 - 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition (Cristina Hasson departure, Stacy Wynn interim lead)
 - 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared
+
+- 2025-12-23: Mentioned in: Stacy Wynn shares recording and FAQ for VAST pricing changes and supply chain update
+- 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition (Cristina Hasson departure, Stacy Wynn interim lead)
+- 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared by Stacy Wynn
 ## Open Tasks
 ```tasks
 path includes Stacy Wynn

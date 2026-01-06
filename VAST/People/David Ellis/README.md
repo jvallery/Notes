@@ -15,7 +15,7 @@ expertise:
 relationship: colleague
 enrichment_level: 3
 last_enriched: '2026-01-05'
-role: Appellate Court Justice
+role: Appellate Court Justice @ Illinois Appellate Court, First District
 bio: David Ellis is a judge and an Edgar Award–winning author of ten novels of crime fiction, as well as eight bestselling books co-authored with James Patterson. He was sworn in as the youngest-serving Justice of the Illinois Appellate Court for the First District in December 2014.
 location: Chicago, Illinois, USA
 previous_roles:
@@ -77,6 +77,26 @@ education:
 - David Ellis proposed starting the TMIMITW group on either 2026-01-27 or 2026-02-03, noting Brandon will be out for a bit but the group can start anyway.
 
 - David Ellis suggested a reduced invite list for TMIMITW: Trent, Brandon, Brian, and two people referred to as "the Mikes".
+
+- David Ellis said he was in for Brian Bearly's board game session the week after Christmas 2025.
+
+- David Ellis said Monday (2025-12-29) was better for him than Saturday (2025-12-27) for the board game session time options proposed by Brian Bearly.
+
+- David Ellis planned a final mens group discussion about the book "2084" followed by dinner at Wapos on Tuesday, 2026-01-06 at 6:30pm, contingent on having a quorum.
+
+- David Ellis stated he would take a hiatus from the mens book club early 2026 and reassess what to do going forward, with no future plans after the January 2026 meetup for now.
+
+- David Ellis plans to retire the existing "book club" format and start a smaller group called TMIMITW (The Most Interesting Men In The World) focused on book discussions plus occasional activities like escape rooms and dinners.
+
+- David Ellis proposed TMIMITW meet roughly monthly with flexibility, and also do a quarterly dinner or beers.
+
+- David Ellis proposed starting the TMIMITW group either Tuesday, 2026-01-27 or Tuesday, 2026-02-03, noting that Brandon will be out for a bit but the group can start anyway.
+
+- David Ellis suggested the book "The Immortal Mind" as a possible first read for the new TMIMITW group.
+
+- David Ellis received the book "Fashionable Nonsense: Postmodern Intellectuals' Abuse of Science" as a Christmas gift and said it looks interesting as a possible TMIMITW read.
+
+- David Ellis described the reduced TMIMITW invite list as including Trent, Brandon, Brian, and two people referred to as "the Mikes."
 ## Recent Context
 
 - 2026-01-04: David Ellis is trying to confirm attendance for the final mens group chat about the book '2084' and ...
@@ -92,6 +112,10 @@ education:
 - 2025-12-18: Mentioned in: Scheduling board game session (Nemesis) week after Christmas
 - 2026-01-04: David Ellis asked the mens group to confirm attendance for the final discussion of the book '2084' f...
 - 2025-12-31: David Ellis shared a draft plan to retire the existing book club and start a smaller group called TM...
+
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) for week after Christmas 2025
+- 2026-01-04: David Ellis asked the mens group to confirm attendance for the final discussion of the book "2084" f...
+- 2025-12-31: David Ellis drafted a plan to retire the existing book club and start a smaller group called TMIMITW...
 ## Open Tasks
 ```tasks
 path includes David Ellis
@@ -151,6 +175,22 @@ not done
 - Reduced invite list candidates: Trent, Brandon, Brian, and the Mikes
 
 - Book suggestions: "The Immortal Mind" and "Fashionable Nonsense"
+
+- Final discussion of the book "2084" (referred to as the AI book in the thread)
+
+- Dinner at Wapos as the meetup location
+
+- Potential next book options including "Consider Phlebas" (Culture series) and "The Immortal Mind"
+
+- David Ellis taking a hiatus from the book club after the January meetup
+
+- Transition from existing book club to TMIMITW (The Most Interesting Men In The World) group
+
+- Meeting cadence for TMIMITW (monthly, flexible) and quarterly social events (dinner or beers)
+
+- Proposed TMIMITW start dates: Tuesday, 2026-01-27 or Tuesday, 2026-02-03
+
+- Reduced invite list composition (Trent, Brandon, Brian, Mike N, Mike W) and whether to include Nathan
 ## Key Decisions
 
 - Tentative plan to meet Tuesday, 2026-01-06 at 6:30pm at Wapos for dinner and the final discussion of the book '2084', pending enough attendees to form a quorum.
@@ -162,3 +202,7 @@ not done
 - Tentative plan to meet on Tuesday, 2026-01-06 for dinner at Wapos and a final discussion of the book "2084", pending quorum confirmation.
 
 - Plan to meet on Tuesday, 2026-01-06 for Wapos dinner and the final discussion of the book '2084', contingent on having enough attendees for a quorum.
+
+- Tentative plan to meet Tuesday, 2026-01-06 for Wapos dinner and the final discussion of the book "2084", pending quorum confirmation.
+
+- David Ellis decided to retire the existing book club and replace it with a smaller group called TMIMITW (The Most Interesting Men In The World).

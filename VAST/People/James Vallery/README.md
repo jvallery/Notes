@@ -86,6 +86,28 @@ expertise:
 - Jason Vallery previously noted (Nov 4, 2025) that his schedule became very busy due to a new job and frequent travel through the end of 2025, and he would attend mens group meetings if he is in town.
 
 - Lior Genzel (VAST Data) indicated Jason Vallery (VAST Data) would take the lead on answering whether the solution uses Self-Encrypting Drives (SEDs) for the SSD component.
+
+- Jason Vallery organized a Zoom meeting titled 'Mordi/Jason - Sync' scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery reported hearing from multiple Azure contacts that the final decision for the MAI storage direction is Mustafa's decision.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted in the MAI decision process.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's manager), or Karén Simonyan (Yunchao Gong's manager, described as 'chief scientist' and a direct report to Mustafa).
+
+- James Vallery cannot see 2nd-degree LinkedIn connections for companies and asked the recipient to check whether they know anyone at the companies he applied to.
+
+- Jason Vallery organized a Zoom meeting titled "Erik/Jason - Sync on MAI pricing" scheduled for Monday, 2026-01-05 2:00pm-3:00pm Mountain Time (Denver).
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that the final decision for the MAI storage choice is Mustafa's.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan and that VAST needs to establish communication and trust with them for MAI alignment beyond Kushal Datta.
+
+- Jason Vallery is the organizer of the Zoom meeting titled "Mordi/Jason - Sync" scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery (VAST Data) proposed a meeting time of Monday, 2025-12-15 at 10:00am PT to connect with Vinita Ananth (Nebius).
+
+- Lior Genzel stated Jason Vallery would take the lead on answering Google's question about whether the SSDs in the GDC Storage RFP proposal are Self-Encrypting Drives (SEDs).
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -106,6 +128,15 @@ expertise:
 - 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom) on Friday, January 2, 2026
 - 2026-01-04: Mentioned in: Mens group: confirm quorum for Jan 6 '2084' final discussion and Wapos dinner
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing/HW, BYOH partner list, and meeting request
+
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2026-01-01: On 2026-01-01, James Vallery emailed a list of LinkedIn job postings he applied to and asked the rec...
+- 2026-01-05: Mentioned in: Erik Wolf accepted invite: Sync on Microsoft AI Infrastructure (MAI) pricing
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom, Jan 2 2026)
+- 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up questions and request to meet Jason Vallery
 ## Open Tasks
 ```tasks
 path includes James Vallery
@@ -129,3 +160,5 @@ not done
 - Using LinkedIn to identify 2nd-degree connections at target companies
 
 - Networking and referrals for job applications
+
+- Identifying 2nd-degree connections at target companies (Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, Prologis)

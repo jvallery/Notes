@@ -46,6 +46,9 @@ not done
 
 - 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting: they need a long...
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements, GCS integration, and Alluxio risk
+
+- 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting: they need a long...
+- 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements restated, GCS integration required, Alluxio risk
 ## Key Facts
 
 - Walmart’s enterprise analytics system-of-record is GCP (BigQuery + GCS); their operational systems are Azure.
@@ -77,6 +80,14 @@ not done
 - Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, limited to workloads that can run exclusively on premises.
 
 - Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or they would need significant lobbying at the database layer including potentially adopting a hybrid cloud database.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or alternatively would require significant lobbying at the database layer including a hybrid cloud database approach.
+
+- Walmart was not successful in getting the business to accept two disjoint namespaces, implying any acceptable solution must present a unified namespace across environments.
+
+- Walmart plans to start an internal big data proof of concept (POC) sometime in 2026, limited to workloads that can run exclusively on premises.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or alternatively would need significant database-layer lobbying including a hybrid cloud database approach.
 ## Topics
 
 - Hybrid lakehouse architecture (GCP → two on-prem sites)
@@ -92,3 +103,13 @@ not done
 - Competitive risk from Alluxio for hybrid namespace and data access
 
 - VAST product plan implications for Walmart total estate takeover
+
+- Walmart hybrid data platform requirements and unified namespace expectations
+
+- Walmart on-prem-only big data POC planned for 2025
+
+- Requirement for Google Cloud Storage (GCS) integration and implications for VAST roadmap
+
+- Competitive risk from Alluxio in Walmart account
+
+- Product planning: mapping Walmart requirements into VAST product plan for full estate takeover

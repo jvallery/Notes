@@ -3,7 +3,7 @@ type: people
 email: kniebuhr@microsoft.com
 company: Microsoft
 title: Kurt Niebuhr
-last_contact: '2025-12-21'
+last_contact: '2025-12-19'
 created: '2026-01-05'
 tags:
 - type/people
@@ -45,6 +45,9 @@ role: Global pre-sales lead for AI Infrastructure (under Zia)
 - 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 - 2025-12-19: Microsoft GBB AKS AI Roadshow follow-up, request for slides/code and Global Namespace on Azure demo
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share VAST slides/code and plan Global Namespace on Azure demo
 ## Open Tasks
 ```tasks
 path includes Kurt Niebuhr

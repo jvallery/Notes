@@ -31,9 +31,16 @@ not done
 ## Recent Context
 
 - 2025-12-28: Olivia Bao (AlphaSights) emailed Jason Vallery on 2025-12-28 requesting a paid consultation about co...
+
+- 2025-12-19: Isabella Lista (AlphaSights) requested an urgent expert discussion with Jason Vallery covering Oracl...
+- 2025-12-28: Olivia Bao (AlphaSights) emailed Jason Vallery requesting a paid consultation about corporate inside...
 ## Key Facts
 
 - AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including trends, internal risk governance teams, future direction, and an industry macro view.
+
+- AlphaSights requested an urgent discussion with Jason Vallery focused on Oracle, AWS, Salesforce, and Microsoft.
+
+- AlphaSights provided a Google Calendar booking link for scheduling a short briefing: https://calendar.app.google/31vJT5sNBPwkGy849.
 ## Topics
 
 - AlphaSights paid expert consultation
@@ -43,4 +50,22 @@ not done
 - Internal risk governance teams and operating model
 
 - Industry macro view and future direction for insider threat
+
+- AlphaSights expert discussion request
+
+- Oracle competitive/market discussion
+
+- AWS competitive/market discussion
+
+- Salesforce competitive/market discussion
+
+- Microsoft competitive/market discussion
+
+- Paid expert consultation
+
+- Internal risk governance team structures
+
+- Future direction of insider threat programs
+
+- Industry macro view for insider threat
 ## Key Decisions

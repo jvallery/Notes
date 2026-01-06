@@ -35,6 +35,12 @@ last_enriched: '2026-01-05'
 - Louis Feuvrier's LinkedIn headline/role is shown as "Learning" in the LinkedIn notification email.
 
 - Louis Feuvrier was described as the lead developer/architect for OpenAI's DAQ (Data Acquisition) system (per Jason Vallery).
+
+- Louis Feuvrier is listed on LinkedIn as being in the San Francisco Bay Area.
+
+- Louis Feuvrier's LinkedIn profile headline/role is shown as "Learning" in the LinkedIn notification email.
+
+- Louis Feuvrier was described as the lead developer/architect for OpenAI's in-house Research data system called DAQ (Data Acquisition).
 ## Recent Context
 
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
@@ -43,6 +49,9 @@ last_enriched: '2026-01-05'
 
 - 2025-12-26: LinkedIn notification email indicates Louis Feuvrier accepted Jason Vallery's connection invitation ...
 - 2025-12-12: Mentioned in: John Mao update on OpenAI org, data platforms (Rockset, Snowflake) and planned SF visit
+
+- 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation on 2025-12-...
+- 2025-12-12: Mentioned in: John Mao update on OpenAI org, data platforms (Rockset, Snowflake, DAQ) and intro path via his friend
 ## Open Tasks
 ```tasks
 path includes Louis Feuvrier
@@ -58,3 +67,5 @@ not done
 - Potential outreach to new LinkedIn connection
 
 - Starting a LinkedIn message thread with Louis Feuvrier
+
+- Outreach to new LinkedIn connection

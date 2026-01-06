@@ -52,6 +52,13 @@ not done
 - 2026-01-05: Itzik Reich asked Noa Cohen whether TLS support for VAST Block protocol would ship in VAST release 5...
 - 2026-01-05: Lior Genzel sent an updated Google Calendar invitation for an internal sync related to the Google RF...
 - 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
+
+- 2025-12-17: On 2025-12-17, Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer t...
+- 2025-12-15: Jason Vallery asked Alon Horev and Tomer Hagay for help answering Google Distributed Cloud RFP follo...
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request due Friday
+- 2025-12-17: On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sal...
+- 2026-01-05: Lior Genzel sent an updated Google Calendar invitation for an internal sync related to the Google RF...
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
@@ -71,6 +78,12 @@ not done
 - The "Google RFP: Internal Sync" calendar event was updated to change conferencing details to a Zoom meeting (Meeting ID 97840966503, passcode 557890).
 
 - A deck titled "GCP Flow from customer to sales to customer" was shared, likely related to the GCP MVP workstream.
+
+- Jeff Denworth requested an updated deck to support a Google Distributed Cloud (GDC) RFP.
+
+- The "Google RFP: Internal Sync" calendar event was updated to change conferencing details to a Zoom meeting (ID 97840966503, passcode 557890) with US and Israel dial-in options.
+
+- A presentation titled "GCP Flow from customer to sales to customer.pptx" appears to document a process flow related to GCP go-to-market/customer engagement.
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement
@@ -98,6 +111,22 @@ not done
 - Updated Zoom conferencing details for internal sync
 
 - VAST internal sync meeting scheduling
+
+- GCP MVP enablement materials
+
+- Google Distributed Cloud (GDC) RFP follow-up questions for VAST as a potential NetApp replacement
+
+- FIPS-certified data-at-rest encryption posture and whether self-encrypting drives (SEDs) are required
+
+- VAST software-based encryption vs hardware-based SED encryption
+
+- Encryption key granularity using VAST encryption groups at tenant and path levels across S3 buckets and NFS exports
+
+- S3 SSE-C support via x-amz-server-side-encryption-customer-* headers and version dependency (VAST 5.4)
+
+- Google Slides collaboration on internal deck
 ## Key Decisions
 
 - Transaction path is marketplace-based private offers (no BYOL) for the MVP.
+
+- Route Google Distributed Cloud RFP encryption and key management questions to Violet (last name unknown) as the subject matter expert.

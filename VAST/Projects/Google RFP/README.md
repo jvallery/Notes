@@ -1,0 +1,40 @@
+---
+type: projects
+title: Google RFP
+status: active
+created: '2026-01-05'
+last_contact: '2026-01-05'
+tags:
+- type/projects
+- status/active
+- needs-review
+---
+# Google RFP
+
+## Status
+
+| Field | Value |
+|-------|-------|
+| **Status** | active |
+| **Owner** | _Unknown_ |
+
+## Overview
+
+## Open Tasks
+
+```tasks
+path includes Google RFP
+not done
+```
+
+## Recent Context
+
+- 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST Data sync to coordinate on the Go...
+## Key Facts
+
+## Topics
+
+- Google RFP internal coordination
+
+- Internal sync meeting scheduling
+## Key Decisions

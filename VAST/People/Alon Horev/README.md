@@ -51,6 +51,16 @@ tags:
 - Alon Horev advised Jason Vallery to work with Violet (VAST contact, last name unknown) on Google Distributed Cloud RFP encryption and key management questions.
 
 - Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST PoC at 1,000-2,000 GPU scale.
+
+- Lior Genzel reported that Kushal Datta requested a meeting with Alon Horev the following week to discuss MAI solution design.
+
+- Alon Horev stated that Violet (last name unknown) should be the primary person to work with on Google Distributed Cloud RFP encryption and key management questions.
+
+- Lior Genzel messaged Alon Horev to strategize on options for where to run Anson (Qi) proof of concept at 1,000 to 2,000 GPU scale.
+
+- Kushal Datta requested a meeting with Alon Horev to discuss MAI solution design.
+
+- Alon Horev is leading AI Model Builder sessions for VAST Forward (as of 2025-12-23 program plan).
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -102,6 +112,14 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified multi-cluster visibility, dual-uplink and tenant-scoped views
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout spokesperson, required prep cadence and key dates
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped uplink access
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCPs, dual-uplink and tenant-scoped Uplink access
+- 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
+- 2025-12-23: Mentioned in: VAST Forward: VAST spokesperson selection and required prep schedule (Jan 6 kickoff, Feb 25-26 live)
 ## Open Tasks
 ```tasks
 path includes Alon Horev

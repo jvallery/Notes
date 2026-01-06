@@ -45,6 +45,10 @@ not done
 
 - 2026-01-05: Jeff Denworth flagged three weekly status items for the Azure Marketplace workstream: an Azure Marke...
 - 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams link (Microsoft)
+
+- 2026-01-05: Jeff Denworth flagged three weekly status items for the Azure Marketplace workstream: an Azure Marke...
+- 2026-01-04: Mentioned in: Microsoft-VAST Weekly GTM Meeting reschedule due to Karl Rautenstrauch family medical appointment
+- 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams details (Microsoft)
 ## Key Facts
 
 - Marketplace offers enable procurement/transactability, but VM economics can be non-competitive at scale; longer-term paths include deeper cloud primitives and potentially CSP data-center hardware.
@@ -57,6 +61,12 @@ not done
 - Jeff Denworth stated that the Azure Marketplace SKU change request for VAST is due on Friday (2026-01-09).
 
 - The Weekly VAST GTM Meeting includes surfacing blockers to Azure Marketplace onboarding and later transactions, which aligns to Cloud Marketplace MVP execution.
+
+- Jeff Denworth stated that an Azure Marketplace SKU change request is due on Friday (specific date not provided in the email).
+
+- The Weekly VAST GTM Meeting agenda includes reviewing pipeline, deal timelines, Microsoft engagement status, risks and escalations, promotional alignment and required assets prior to launch, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and later transactions.
+
+- Azure Marketplace onboarding and transaction blockers are a standing agenda item for the weekly VAST GTM meeting, indicating active work toward Marketplace readiness.
 ## Topics
 
 - Marketplace ops: private offers, entitlement/metering, reporting exports
@@ -68,6 +78,10 @@ not done
 - Google Distributed Cloud (GDC) RFP deck update for VAST
 
 - Microsoft MAI unified cache pricing follow-up
+
+- Azure Marketplace SKU change request deadline (due Friday)
+
+- Updated deck required for Google Distributed Cloud (GDC) RFP response
 ## Key Decisions
 
 - Proceed with marketplace-based deployment and private offers to enable commit burn-down and smoother fulfillment once offers are GA/transactable.
