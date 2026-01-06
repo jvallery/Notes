@@ -446,6 +446,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth is an escalation contact for concerns or conflicts with VAST Forward spokesperson assignments (contact Jeff Denworth and Kirstin Bordner directly, do not reply-all).
 
 - Jeff Denworth instructed Jason Vallery to track cloud purchase orders like the Leidos Federal deal to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Characterized RFE 0482 as complex and delegated ownership to Mordechai Blaunstein to lead analysis and involve appropriate parties.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -649,6 +651,8 @@ last_enriched: '2026-01-05'
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
 
 - 2025-12-30: Jeff Denworth forwarded an internal OrderAdmin alert thread indicating a $96,808.14 software-only cl...
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth

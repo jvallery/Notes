@@ -60,6 +60,8 @@ not done
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 ## Key Facts
 
 - RFE 0482 is associated with NVIDIA Corporation and the opportunity 'DGX-C | Coreweave' (opportunity amount $0, close date 2025-11-02).
@@ -191,6 +193,16 @@ not done
 - NVIDIA DGX Cloud requested tenant-scoped visibility for the multi-tenant VAST cluster 'LAX-03' so that 'nvidiadgxc.cloud.vastdata.com' can access only DGX Cloud tenant metrics, workloads, configuration, and health without exposing other tenants or cluster-wide information.
 
 - NVIDIA sent VAST two additional press releases requesting VAST inclusion: the NVIDIA Rubin press release and the Open Models press release; NVIDIA is not asking VAST for a quote, only approval of VAST mentions.
+
+- RFE 0482 (Existing Feature Enhancement) was submitted to the VAST PM team for NVIDIA Corporation and approved by Brian Evans.
+
+- RFE 0482 is linked to the opportunity "DGX-C | Coreweave" with opportunity amount $0 and close date 2025-11-02.
+
+- RFE 0482 requests dual-uplink visibility for dedicated cluster LAX-02 so that both lambda.cloud.vastdata.com and nvidiadgxc.cloud.vastdata.com can receive visibility into the same cluster.
+
+- RFE 0482 requests tenant-scoped visibility for multi-tenant cluster LAX-03 so that nvidiadgxc.cloud.vastdata.com can access only DGX Cloud tenant data without exposing other tenants or cluster-wide information.
+
+- RFE 0482 states the feature is not a deal blocker and claims potential incremental value of $100,000,000 and 10,000 PB.
 ## Topics
 
 - RFE 0482 for NVIDIA DGX Cloud: unified visibility across VAST clusters deployed at multiple NCPs

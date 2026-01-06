@@ -37,6 +37,8 @@ not done
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 ## Key Facts
 
 - Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called "Service Aware VIP Pool" to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI; he referenced an internal wiki page and Jira ORION-261324.
@@ -50,6 +52,8 @@ not done
 - ORION-261324 tracks work to define a new VIP pool type called "Service Aware VIP Pool" enabling multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI) to address CSP requests similar to NVIDIA RFE 0482.
 
 - Mordechai Blaunstein indicated a tentative target to support the 'Service Aware VIP Pool' capability in VAST release 5.6, but stated it is not confirmed and asked whether it meets NVIDIA's timeline or if a shortcut/workaround is needed.
+
+- ORION-261324 tracks work to define a "Service Aware VIP Pool" enabling multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI), referenced as related to RFE 0482 needs.
 ## Topics
 
 ## Key Decisions

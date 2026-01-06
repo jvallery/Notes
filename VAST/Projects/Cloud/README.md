@@ -140,6 +140,8 @@ not done
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, need analysis and product plan input
 
 - 2025-12-01: Karl Vietmeier flagged growing inbound interest in whether VAST supports Google Distributed Cloud (G...
+
+- 2025-12-01: Brian Evans alerted the PM team about RFE 0482 for NVIDIA DGX Cloud, requesting unified visibility a...
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -669,6 +671,12 @@ not done
 - Cloud Product Management ownership vs on-prem team ownership for hyperscaler-adjacent offerings
 
 - Maintaining visibility into execution and outcomes for GDC/Azure Local opportunities
+
+- Tenant-scoped visibility for multi-tenant cluster LAX-03 via NVIDIA Uplink
+
+- Service Aware VIP Pool proposal for multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI)
+
+- Jira ORION-261324 and internal wiki documentation for VIP pool changes
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
@@ -705,3 +713,5 @@ not done
 - VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST Azure is not ready for that use case.
 
 - Jeff Denworth assigned Mordechai Blaunstein to lead the technical investigation and coordination for RFE 0482.
+
+- Jeff Denworth assigned Mordechai Blaunstein to take ownership of analyzing RFE 0482 and to bring in additional parties as needed.

@@ -194,6 +194,8 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 ## Open Tasks
 ```tasks
 path includes Tomer Hagay

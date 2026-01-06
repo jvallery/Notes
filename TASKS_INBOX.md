@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Confirm with Chuck Cancilla and Brian Evans whether the proposed "Service Aware VIP Pool" approach (ORION-261324) satisfies NVIDIA DGX Cloud requirements and whether a workaround is needed if release 5.6 timing is not acceptable. @Mordechai Blaunstein ⏫ #task #proposed #auto
+- [?] Lead technical/product analysis for RFE 0482 (dual-uplink visibility and tenant-scoped visibility for NVIDIA DGX Cloud) and pull in appropriate VAST stakeholders to define an approach. @Mordechai Blaunstein ⏫ #task #proposed #auto
+- [?] Navigate to Salesforce RFE 0482 record (https://vastdata.my.salesforce.com/a6HV40000009AOL) and link the RFE to the correct Related Feature in Salesforce. @TBD ⏫ #task #proposed #auto
 - [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin (exclusive customer experience). 📅 2026-02-10 ⏫ #task #proposed #auto
 - [?] Encourage assigned accounts attending VAST Forward to plan for onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams. 📅 2026-02-24 🔼 #task #proposed #auto
 - [?] For each assigned account, highlight the most relevant VAST Forward customer and partner speakers (for example Pixar, Lowe’s, NHL, Leidos, Aquatic, T-Mobile, Cisco, HPE) to increase registration and engagement. 📅 2026-02-24 🔼 #task #proposed #auto

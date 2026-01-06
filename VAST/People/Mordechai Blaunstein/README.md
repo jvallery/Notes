@@ -86,6 +86,10 @@ role: Mordechai Blaunstein @ VAST Data
 - Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called 'Service Aware VIP Pool' to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI, tracked in Jira ORION-261324 and an internal wiki page.
 
 - Mordechai Blaunstein accepted a calendar invitation for a 1:1 sync with Jason Vallery scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver) via Zoom.
+
+- Stated VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called "Service Aware VIP Pool" to allow multi-VIP access to VMS services (GUI/CLI/REST/SSH/CSI).
+
+- Referenced Jira ORION-261324 and an internal wiki page for the "Service Aware VIP Pool" work and noted a tentative target of VAST release 5.6 that is not confirmed.
 ## Recent Context
 
 - 2025-12-29: Mordechai Blaunstein accepted a calendar invitation for a 1-hour sync with Jason Vallery. The meetin...
@@ -130,6 +134,8 @@ role: Mordechai Blaunstein @ VAST Data
 - 2025-12-19: On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation ...
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 ## Open Tasks
 ```tasks
 path includes Mordechai Blaunstein

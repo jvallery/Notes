@@ -11,24 +11,10 @@
             "id": "d53b413e5fffdcfe",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Outbox/2026-01-05_Reply-To_Jonsi-Stefansson-shared-Google-Slides-de.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2026-01-05_Reply-To_Jonsi-Stefansson-shared-Google-Slides-de"
+              "title": "New tab"
             }
           }
         ]
@@ -195,6 +181,16 @@
   },
   "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
+    "VAST/Projects/Cloud/2025-12-01 - RFE 0482 NVIDIA DGX Cloud- dual-uplink visibility and tenant-scoped visibility via Uplink.md",
+    "Outbox/2026-01-05_Reply-To_Rick-Scurfield-internal-outreach-push-fo_1.md",
+    "Outbox/2026-01-05_Reply-To_Leidos-Federal-first-US-Fed-Cloud-PO-sub.md",
+    "Outbox/2026-01-05_Reply-To_Ownership-and-accountability-for-Google-.md",
+    "VAST/Projects/Cloud/2025-12-01 - Ownership and accountability for Google Distributed Cloud GDC and Azure Local support opportunities.md",
+    "Outbox/2026-01-05_Reply-To_Mordechai-Blaunstein-accepted-11-sync-wi.md",
+    "Outbox/2026-01-05_Reply-To_Express-Scripts-Pharmacy-order-confirmat.md",
+    "Workflow/nohup.out",
+    "Outbox/2026-01-05_Reply-To_Board-game-session-planning-week-after-C.md",
+    "VAST/People/Brian Bearly/2025-12-18 - Board game session planning, week after Christmas 2025 Nemesis - Betrayal at House on the Hill.md",
     "Outbox/2026-01-05_Reply-To_AlphaSights-request-for-paid-consultatio.md",
     "VAST/Customers and Partners/AlphaSights/2025-12-28 - AlphaSights request for paid consultation on corporate insider threat trends.md",
     "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Terika-Dilworth-requests-review-of-VAST-.md",
@@ -212,15 +208,6 @@
     "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Nebius-and-VAST-intro-call-scheduling-co.md",
     "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Mordechai-Blaunstein-shared-Google-Doc-C.md",
     "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Microsoft-requests-Azure-VoC-instance-fo.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Microsoft-prospect-requests-VAST-Custome.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Microsoft-Ignite-follow-up-intro-request.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Microsoft-AKS-AI-Roadshow-GBB-follow-up-.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Lior-Genzel-requested-access-to-Google-D.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_LinkedIn-connection-accepted-Louis-Feuvr.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Karl-Vietmeier-asks-for-guidance-on-owne.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Jonsi-Stefansson-shared-Google-Slides-de.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_John-Mao-update-OpenAI-org-data-platform.md",
-    "Outbox/_archived_template_drafts/2026-01-05_Reply-To_Jeff-Denworth-update-Walmart-hybrid-requ.md",
     "Outbox/_archived_template_drafts",
     "VAST/People/Unknown kodeON support via Paddle.com",
     "Workflow/scripts/batch_drafts.sh",
@@ -230,7 +217,6 @@
     "VAST/Projects/Pricing Changes and Supply Chain Update",
     "VAST/Projects/ORION-261324",
     "VAST/Customers and Partners/Slice Global, Inc.",
-    "VAST/Projects/CES NAND allocation support Las Vegas",
     "DRAFT/Azure Integration/_scratch/azure-storage-azcopy/readme-command-prompt.png",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",
