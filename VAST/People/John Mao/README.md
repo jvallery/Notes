@@ -73,6 +73,10 @@ phone: +1-512-535-8234
 - John Mao stated that Ben Ries reports to John Mao's OpenAI friend, and that the friend reports to Venkat (likely Venkat Venkataramani, per context in the thread).
 
 - John Mao's OpenAI friend previously worked at Instagram/Facebook and Twilio, running infrastructure/platform engineering teams, and believes OpenAI is less "not invented here" than those companies.
+
+- John Mao's OpenAI friend previously worked at Instagram/Facebook and Twilio, leading infrastructure/platform engineering teams, and stated OpenAI is less "not invented here" than those companies.
+
+- John Mao clarified that Ben Ries reports to John Mao's friend at OpenAI, and that John Mao's friend reports to Venkat.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
@@ -158,6 +162,14 @@ not done
 - Rockset architecture: local SSD persistence, RocksDB lineage, KV semantics (FoundationDB-like)
 
 - OpenAI Research data system: DAQ (Data Acquisition) and its scale characteristics
+
+- OpenAI online data platforms: Rockset, Snowflake, Azure Blob, Azure CosmosDB
+
+- OpenAI research data platform: DAQ (Data Acquisition) and ownership by Louis Feuvrier
+
+- OpenAI Data Platform team: Spark/Databricks led by Emma Tang
+
+- Potential integration of OpenAI Applications datasets with Research datasets
 ## Key Decisions
 
 - John Mao will keep the OpenAI relationship engineering-centered and will open a dialogue that brings in VAST engineering during his planned San Francisco visit early in the new year.

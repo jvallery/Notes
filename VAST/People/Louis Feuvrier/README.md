@@ -55,6 +55,8 @@ last_enriched: '2026-01-05'
 - OpenAI Research data platform is described by Jason Vallery as an in-house system called DAQ (Data Acquisition) that drives very high throughput and PiB-scale data movement; Louis Feuvrier is the lead developer/architect for DAQ.
 
 - Louis Feuvrier is the lead developer/architect for OpenAI's DAQ (Data Acquisition) system (per Jason Vallery).
+
+- Louis Feuvrier is the lead developer/architect for OpenAI's in-house research data system called DAQ (Data Acquisition).
 ## Recent Context
 
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
@@ -78,6 +80,8 @@ last_enriched: '2026-01-05'
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. No specifi...
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org structure, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
 ## Open Tasks
 ```tasks
 path includes Louis Feuvrier

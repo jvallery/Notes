@@ -4,7 +4,7 @@ title: kodeON (via Paddle.com)
 created: '2026-01-05'
 last_contact: '2025-12-14'
 email: help@paddle.com
-company: Paddle.com
+company: Paddle.com / kodeON
 role: ''
 tags:
 - type/people
@@ -17,6 +17,8 @@ tags:
 ## Recent Context
 
 - 2025-12-14: BetterDisplay purchase receipt and license key (kodeON via Paddle)
+
+- 2025-12-14: BetterDisplay purchase confirmation and license key (kodeON via Paddle)
 ## Open Tasks
 
 ```tasks
