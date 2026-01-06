@@ -190,6 +190,8 @@ not done
 - 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU VMs because t...
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
+
+- 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -506,6 +508,8 @@ not done
 - Lior Genzel stated Microsoft is at an engineering-level proof of concept (PoC) for the UK Met effort and is not yet a VAST customer.
 
 - Microsoft is in an engineering-level proof of concept with VAST for the UK Met effort and is not yet a customer.
+
+- Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

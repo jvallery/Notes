@@ -38,6 +38,8 @@ not done
 
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
 - 2026-01-04: Tesla (noreply@tesla.com) sent an automated reminder that $111.04 of Tesla Credits are set to expire...
+
+- 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
 - Tesla sent an automated reminder that $111.04 of the recipient's Tesla Credits will expire by 2026-02-04, and unused credits will be forfeited and cannot be redeemed for cash, reassigned, or reissued.
@@ -49,6 +51,8 @@ not done
 - Tesla stated the Tesla Credits amount shown ($111.04) is calculated at the time of email generation and may not reflect the current value.
 
 - Jason Vallery stated that VAST Data provides storage solutions used for training data and model distribution for large language models, and cited companies including xAI, Tesla, and CoreWeave as examples.
+
+- Jason Vallery cited Tesla as an example of a company using VAST Data storage solutions (per the meeting summary).
 ## Topics
 
 - Tesla Credits expiration

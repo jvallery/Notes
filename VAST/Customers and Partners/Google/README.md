@@ -134,6 +134,8 @@ not done
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
 
 - 2025-12-15: Internal email thread between Jason Vallery, Alon Horev, and Tomer Hagay to answer Google Distribute...
+
+- 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -266,6 +268,8 @@ not done
 - Google Distributed Cloud (GDC) is being discussed as an environment where VAST Data support is being requested and may be tied to hyperscaler acquisition and cloud consumption.
 
 - Google Distributed Cloud (GDC) is being asked about as a potential deployment/support target for VAST Data.
+
+- Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications

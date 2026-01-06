@@ -63,6 +63,12 @@ tags:
 - Jason Vallery raised a concern about whether a browser agent is necessary for Whale Iptic's security model; Avinash Lakshman stated the browser agent is minimal and focused on identity management while enabling full auditability and visibility of actions.
 
 - Avinash Lakshman requested public information on VAST Data's current development status to evaluate potential integration or alignment with Whale Iptic's platform.
+
+- Avinash Lakshman described Whale Iptic's multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce disruption risk from a single cloud provider outage.
+
+- Avinash Lakshman demonstrated a secure and auditable interaction model using digital signatures and identity-based wallets in the browser, positioning it as providing stronger auditability and visibility than traditional TLS-only approaches.
+
+- Avinash Lakshman requested access to public information on VAST Data's current development status and capabilities; Jason Vallery agreed to provide this via follow-up email.
 ## Recent Context
 
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
@@ -80,6 +86,8 @@ tags:
 
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform (Icarus agent ...
+
+- 2025-12-17: On 2025-12-17, Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform...
 ## Open Tasks
 ```tasks
 path includes Avinash Lakshman
@@ -123,6 +131,8 @@ not done
 - Whale Iptic secure distributed compute platform for AI agents and Web2 applications
 
 - Icarus conversational agent and Cerebrum SDK (trust-aware agent orchestrator)
+
+- Secure and auditable LLM management using digital signatures and identity wallets
 ## Key Decisions
 
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities.
@@ -146,3 +156,5 @@ not done
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities to support evaluation of alignment or integration with Whale Iptic.
 
 - Jason Vallery and Avinash Lakshman agreed to maintain communication and continue exploring potential integration or alignment between Whale Iptic's secure compute platform and VAST Data's storage and GPU infrastructure strategy.
+
+- Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities for Whale Iptic to evaluate potential alignment or integration.
