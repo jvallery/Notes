@@ -564,6 +564,22 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel reported that Kushal Datta said Microsoft MAI will decide on the storage deployment and that Kushal told Manish Sah that Azure Blob does not make sense versus VAST for MAI requirements.
 
 - Lior Genzel reported that Vamshi (Azure Blob product leader) said Microsoft's decision is internal and expressed frustration with VAST's aggressive approach in highlighting Azure Blob deficiencies.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan, and that Lior Genzel will take the lead on getting introductions.
+
+- Lior Genzel reported that Anson (Qi) requested moving his VAST proof of concept into either the MAI and Vipin environment or other Nscale or CoreWeave clusters because their lab cluster lacks 1,000 to 2,000 GPUs needed for performance scale testing.
+
+- Lior Genzel said he messaged Alon Horev to strategize options for the most strategic environment to run Anson (Qi)'s VAST proof of concept and suggested meshing Kushal Datta's MAI plans with Qi's proof of concept plans.
+
+- Lior Genzel stated there is no waiting time in the current plan and VAST is positioned to accelerate the MAI engagement process.
+
+- Lior Genzel reported that Kushal Datta said January is no longer a hard date, that MAI's initial GPU drop will arrive in February, and that MAI needs a storage solution ready for the May 2026 to June 2026 timeframe.
+
+- Lior Genzel reported that Kushal Datta said MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense compared to VAST for MAI requirements.
+
+- Lior Genzel reported that Vamshi (Azure Blob product leader) communicated that Microsoft's decision is internal and expressed frustration with VAST's aggressive approach in highlighting Azure Blob deficiencies.
+
+- Lior Genzel reported that Kushal Datta wanted to meet with Alon Horev the following week to discuss MAI solution design.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -824,6 +840,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing (HW/SSD), SEDs, BYOH partners, and scheduling
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Open Tasks
 ```tasks
 path includes Lior Genzel

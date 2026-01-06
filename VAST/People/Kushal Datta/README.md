@@ -78,6 +78,16 @@ role: Apollo team member (storage/training infrastructure)
 - Lior Genzel reported that Kushal Datta stated Microsoft MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense versus VAST Data for MAI requirements.
 
 - Lior Genzel reported that Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted.
+
+- Jason Vallery stated that Kushal Datta told VAST in a face-to-face meeting that he would influence Mustafa's decision and that VAST is the preferred solution, but Jason Vallery is concerned Kushal Datta may not be honest and may be 'playing' VAST.
+
+- Lior Genzel reported that Kushal Datta said January is no longer a hard date, that MAI's initial GPU drop will arrive in February, and that MAI needs a storage solution ready for the May 2026 to June 2026 timeframe.
+
+- Lior Genzel reported that Kushal Datta said MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense compared to VAST for MAI requirements.
+
+- Lior Genzel reported that Kushal Datta wanted to meet with Alon Horev the following week to discuss MAI solution design.
 ## Recent Context
 
 - 2025-10-31: Jason Vallery and Kushal Datta discussed options to deploy VAST Data for Microsoft Apollo training w...
@@ -109,6 +119,8 @@ role: Apollo team member (storage/training infrastructure)
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 
 - 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Open Tasks
 ```tasks
 path includes Kushal Datta

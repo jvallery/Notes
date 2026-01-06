@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Alon Horev and Lior Genzel to decide the most strategic environment to run Anson (Qi)'s VAST proof of concept that requires 1,000 to 2,000 GPUs, evaluating MAI and Vipin environment versus Nscale or CoreWeave clusters. @Alon Horev 📅 2025-12-19 🔼 #task #proposed #auto
+- [?] Work with Lior Genzel to secure introductions to Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to reduce reliance on Kushal Datta as the sole channel to the decision maker Mustafa. @Lior Genzel 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] Send Jeff Denworth the most recent analysis Jason Vallery has on the Microsoft MAI deal, including any assumptions around 100 EB and 2 EB sourcing implications. 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Answer Jeff Denworth's question on whether Microsoft MAI expects to use VAST Data's supply chain for the MAI storage deployment, and propose an immediate plan to address April 2026 to June 2026 deployment timing given no inventory is reserved for Microsoft. 📅 2025-12-22 ⏫ #task #proposed #auto
 - [?] Meet with Jeff Denworth on the next day (relative to 2025-12-21) to align on urgency, supply chain plan, and expectations for Microsoft MAI deployment timing. 📅 2025-12-22 ⏫ #task #proposed #auto
 - [?] Coordinate with Alon Horev to identify the most strategic environment to run Anson (Qi) VAST PoC at 1,000 to 2,000 GPU scale, evaluating Microsoft MAI/Vipin environment versus Nscale or CoreWeave clusters. @Lior Genzel 🔼 #task #proposed #auto
 - [?] Obtain introductions and establish communication with Majid Mohammed (Mustafa chief of staff), Yunchao Gong (Kushal Datta's boss), and Karén Simonyan (chief scientist reporting to Mustafa) to reduce reliance on Kushal Datta as the sole conduit. @Lior Genzel ⏫ #task #proposed #auto

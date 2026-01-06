@@ -194,6 +194,8 @@ not done
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
 
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting setup for Jan 7, 2026
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -516,6 +518,10 @@ not done
 - VAST Data presented 'VAST + AKS' to Microsoft Global Black Belt (GBB) AI infrastructure sellers during the AKS AI Roadshow session on Tuesday, December 9, 2025 from 8:00 AM to 9:00 AM via Microsoft Teams.
 
 - Microsoft MAI timeline discussed: initial GPU drop expected in February 2026 and storage solution needed for May 2026 to June 2026 timeframe (per Kushal Datta via Lior Genzel).
+
+- Microsoft MAI initial GPU drop is expected to arrive in February 2026 and MAI needs a storage solution ready for May 2026 to June 2026, per Kushal Datta as reported by Lior Genzel.
+
+- Microsoft MAI storage decision is described as being ultimately Mustafa's decision, per Jason Vallery's conversations with Azure contacts.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

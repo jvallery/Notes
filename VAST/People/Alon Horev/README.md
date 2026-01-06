@@ -87,6 +87,10 @@ tags:
 - Alon Horev advised Jason Vallery to work with a person named Violet on Google Distributed Cloud RFP encryption and key management questions, indicating Violet is the internal subject matter expert for these topics.
 
 - Alon Horev stated that Jason Vallery should work with Violet (last name unknown) on Google Distributed Cloud RFP encryption and FIPS/SED questions, indicating Violet is the subject matter expert for these topics.
+
+- Lior Genzel said he messaged Alon Horev to strategize options for the most strategic environment to run Anson (Qi)'s VAST proof of concept and suggested meshing Kushal Datta's MAI plans with Qi's proof of concept plans.
+
+- Lior Genzel reported that Kushal Datta wanted to meet with Alon Horev the following week to discuss MAI solution design.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -170,6 +174,8 @@ tags:
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Open Tasks
 ```tasks
 path includes Alon Horev

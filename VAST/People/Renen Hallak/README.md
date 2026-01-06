@@ -95,6 +95,10 @@ tags:
 - Jeff Denworth proposed that Renen Hallak be in Redmond in the third week of January 2026 to meet with Microsoft stakeholder 'Scott G' to align on the first MAI tranche and scaling plan.
 
 - Renen Hallak stated Microsoft should have their own flash allocation with NAND manufacturers and that VAST efficiencies could reduce Microsoft's NAND needs and potentially allow using Microsoft's excess allocation for other customers.
+
+- Renen Hallak asked whether Alon Horev was in Seattle during the week of December 9, 2025.
+
+- Renen Hallak stated that Microsoft should have their own flash allocation with NAND manufacturers and that VAST efficiencies could reduce Microsoft's NAND needs.
 ## Recent Context
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
@@ -147,6 +151,8 @@ tags:
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
+
+- 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Open Tasks
 ```tasks
 path includes Renen Hallak

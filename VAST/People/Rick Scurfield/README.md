@@ -197,6 +197,8 @@ role: Technical Lead in Customer Success
 - 2025-12-27: Azure MAI red flare: accelerate commercial + supply chain actions in January
 
 - 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-21: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 ## Open Tasks
 ```tasks
 path includes Rick Scurfield

@@ -456,6 +456,14 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated supply chain for the upcoming year is a complete disaster and asked how VAST would source Microsoft's stated requirement of 2 exabytes and when it must be ordered and from whom.
 
 - Jeff Denworth stated Sagar took a job at Nscale and asked for an end-of-week status summary and an analysis of working capital and opportunity cost if Microsoft is buying 100 exabytes.
+
+- Jeff Denworth stated that VAST Data is quickly selling out of inventory and lead times are skyrocketing, so there is currently nothing reserved for Microsoft MAI.
+
+- Jeff Denworth emphasized that if Microsoft MAI wants to deploy in April 2026, May 2026, or June 2026, VAST Data needs a supply and execution plan immediately due to supply chain constraints.
+
+- Jeff Denworth stated that supply chain for the upcoming year is a complete disaster and asked whether VAST knows how to source Microsoft's stated 2 EB requirement, when it needs to be ordered, and who VAST would order it from.
+
+- Jeff Denworth stated that if Microsoft is really buying 100 EB, he wants to analyze working capital and opportunity cost for VAST Data versus Microsoft.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -663,6 +671,8 @@ last_enriched: '2026-01-05'
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
 
 - 2025-12-21: Jeff Denworth asked whether Microsoft MAI expects to use VAST Data supply chain and warned that VAST...
+
+- 2025-12-21: Jeff Denworth raised a critical concern that VAST is selling out of inventory, lead times are increa...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -1038,6 +1048,16 @@ not done
 - Sourcing and ordering plan for large capacity requirements (100EB and 2EB mentioned)
 
 - Competitive positioning versus Azure Blob and external GPU cloud providers (Nscale, CoreWeave)
+
+- Microsoft MAI storage decision process and key decision maker (Mustafa)
+
+- Supply chain constraints, inventory reservation, and lead time risk for MAI deployment
+
+- MAI deployment timeline shifting to May 2026 to June 2026 with February GPU arrival
+
+- Stakeholder mapping and relationship building with Majid Mohammed, Yunchao Gong, and Karén Simonyan
+
+- PoC placement for Anson (Qi) requiring 1,000 to 2,000 GPUs, potential environments MAI, Vipin, Nscale, CoreWeave
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

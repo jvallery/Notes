@@ -106,6 +106,7 @@ class UnifiedPipeline:
         dry_run: bool = False,
         verbose: bool = False,
         generate_outputs: bool = True,
+        draft_all_emails: bool = False,
         force: bool = False,
         trace_dir: Optional[Path] = None,
         show_cache_stats: bool = False,
@@ -117,6 +118,7 @@ class UnifiedPipeline:
         self.dry_run = dry_run
         self.verbose = verbose
         self.generate_outputs = generate_outputs
+        self.draft_all_emails = draft_all_emails
         self.force = force
         self.trace_dir = trace_dir
         self.show_cache_stats = show_cache_stats
@@ -241,15 +243,24 @@ class UnifiedPipeline:
             phase_timings["apply_ms"] = apply_ms
             
             # 6. Generate outputs (if enabled)
-            # For emails, always generate drafts when --draft-replies is set.
-            # For other content types, respect suggested_outputs.needs_reply.
+            # By default, only draft replies when suggested_outputs.needs_reply is true.
+            # Use --draft-all-emails to force drafts for all emails (including automated/no-reply).
             outputs_ms = 0
             suggested = extraction.suggested_outputs
             is_email = envelope.content_type.value == "email"
+            force_reply = is_email and self.draft_all_emails
+            has_any_outputs = bool(extraction.tasks) or bool(
+                suggested
+                and (
+                    suggested.needs_reply
+                    or suggested.calendar_invite
+                    or suggested.follow_up_reminder
+                )
+            )
             should_generate_outputs = (
                 apply 
                 and self.generate_outputs 
-                and (is_email or (suggested and suggested.needs_reply))
+                and (force_reply or has_any_outputs)
             )
             if should_generate_outputs:
                 outputs_start = time.time()
@@ -257,7 +268,7 @@ class UnifiedPipeline:
                     extraction, 
                     context,
                     envelope.raw_content if envelope else "",
-                    force_reply=is_email  # Always generate reply for emails
+                    force_reply=force_reply,
                 )
                 result.outputs = {
                     "reply": str(outputs.get("reply")) if outputs.get("reply") else None,
