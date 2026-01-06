@@ -27,6 +27,8 @@ phone: +1 646-889-2580
 - Isabella Lista provided a Calendly link for scheduling: https://calendly.com/isabella-lista-alphasights/30min.
 
 - Isabella Lista provided a Calendly link for scheduling a 30-minute call: https://calendly.com/isabella-lista-alphasights/30min.
+
+- Isabella Lista is an Associate at AlphaSights and coordinates expert discussions/consultations.
 ## Recent Context
 
 - 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion on Oracle, AWS, Salesforce, Microsoft

@@ -70,6 +70,18 @@ role: Mordechai Blaunstein @ VAST Data
 - Mordechai Blaunstein stated VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called "Service Aware VIP Pool" to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI; he referenced internal wiki and Jira ORION-261324.
 
 - Mordechai Blaunstein (VAST Data) shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" with Jason Vallery and invited him to edit it on 2025-12-19.
+
+- Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called "Service Aware VIP Pool" to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI.
+
+- Mordechai Blaunstein referenced internal wiki documentation and Jira ORION-261324 for the "Service Aware VIP Pool" work, and noted a tentative target of VAST release 5.6 that is not yet confirmed.
+
+- Mordechai Blaunstein (VAST Data) invited Jason Vallery to edit a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" on 2025-12-19.
+
+- Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called "Service Aware VIP Pool" to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI; he referenced Jira ORION-261324 and an internal wiki page.
+
+- The Zoom meeting for the Jason Vallery and Mordechai Blaunstein sync uses Meeting ID 979 8237 9206 and passcode 374598.
+
+- On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" and invited Jason Vallery to edit it.
 ## Recent Context
 
 - 2025-12-29: Mordechai Blaunstein accepted a calendar invitation for a 1-hour sync with Jason Vallery. The meetin...
@@ -106,6 +118,12 @@ role: Mordechai Blaunstein @ VAST Data
 - 2025-12-01: Mentioned in: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
 - 2025-12-29: Mordechai Blaunstein accepted a Google Calendar invitation for a 1:1 sync with Jason Vallery. The me...
 - 2025-12-19: Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .d...
+
+- 2025-12-29: Mordechai Blaunstein accepted a calendar invitation for a 1:1 sync with Jason Vallery. The meeting i...
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-19: Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .d...
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-19: On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation ...
 ## Open Tasks
 ```tasks
 path includes Mordechai Blaunstein

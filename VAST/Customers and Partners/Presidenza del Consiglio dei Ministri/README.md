@@ -74,6 +74,16 @@ not done
 - Closed lost primary and secondary drivers were Loss - Price / Cost per TB, attributed to an unexpected hardware cost increase and inability for the customer purchasing department to increase budget; NetApp reportedly confirmed the order using a prior November offer with lower hardware cost likely due to available stock.
 
 - On 2025-12-12, the customer asked additional questions on encryption and EKM; the team replied with details and planned to check status the following week.
+
+- Presidenza del Consiglio dei Ministri opportunity "PCM - NDA project new cluster - E4" (type: Expand: New System) had ACV $331,107.92 and was moved to stage 13 Closed Lost to Competition with forecast category Lost and close date 2026-01-05.
+
+- The opportunity for Presidenza del Consiglio dei Ministri was lost to NetApp eSeries; primary incumbent was Pure Storage FlashBlade and primary competitor was Pure Storage FlashArray.
+
+- Closed lost primary and secondary drivers for the Presidenza del Consiglio dei Ministri opportunity were Loss - Price / Cost per TB, attributed to an unexpected hardware cost increase and purchasing department budget constraints.
+
+- Presidenza del Consiglio dei Ministri account billing location is Latium, Italy, and the account website is https://www.governo.it/en.
+
+- On 2025-12-12, the customer asked additional questions on encryption and EKM, and Roberto Dognini stated the team replied with details and would check status the following week.
 ## Topics
 
 - Salesforce loss alert for Presidenza del Consiglio dei Ministri opportunity "PCM - NDA project new cluster - E4"
@@ -95,6 +105,10 @@ not done
 - Competitive loss to NetApp eSeries versus Pure Storage offerings
 
 - Attempted order pull-in to avoid December hardware cost increase
+
+- Pricing pressure and cost per TB as primary loss driver
+
+- Hardware cost increase impact on deal economics
 ## Key Decisions
 
 - The VAST Data opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was moved to stage 13 Closed Lost to Competition (forecast category Lost) on 2026-01-05.
@@ -104,3 +118,5 @@ not done
 - Salesforce opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was moved to Stage 13 Closed Lost to Competition (forecast category Lost) on 2026-01-05.
 
 - Salesforce opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was moved to stage 13 Closed Lost to Competition with forecast category Lost on 2026-01-05.
+
+- Opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was set to stage 13 Closed Lost to Competition (forecast category Lost) on 2026-01-05.

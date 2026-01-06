@@ -32,9 +32,13 @@ not done
 - 2025-12-23: Mentioned in: Pricing changes and supply chain update, recording and FAQ shared by Stacy Wynn
 
 - 2025-12-23: Mentioned in: Pricing Changes and Supply Chain Update session recording and FAQ shared
+
+- 2025-12-23: Mentioned in: Pricing Changes and Supply Chain Update, recording and FAQ shared (passcode provided)
 ## Key Facts
 
 - A recording and FAQ were provided for the 2025-12-23 'Pricing Changes and Supply Chain Update' session, including a passcode '&U9eZF98'.
+
+- A recording and FAQ were provided for the 2025-12-23 'Pricing Changes and Supply Chain Update' session, and the recording passcode is '&U9eZF98'.
 ## Topics
 
 ## Key Decisions

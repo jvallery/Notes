@@ -31,6 +31,10 @@ tags:
 - Vinita Ananth confirmed availability for a Nebius and VAST Data connection meeting on Monday, 2025-12-15 at 10:00 AM PT.
 
 - Vinita Ananth confirmed availability for a Nebius and VAST connection meeting proposed for Monday, 2025-12-15 at 10:00am PT.
+
+- Vinita Ananth confirmed availability for a meeting with Jason Vallery on Monday, 2025-12-15 at 10:00am PT.
+
+- Vinita Ananth confirmed she is available for a Nebius and VAST connection meeting on Monday, 2025-12-15 at 10:00am PT.
 ## Recent Context
 
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
@@ -41,6 +45,9 @@ tags:
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
 
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT
+- 2025-12-10: Mentioned in: Nebius and VAST intro call scheduling with Vinita Ananth
+
+- 2025-12-10: Mentioned in: Nebius and VAST connection scheduled for Monday 2025-12-15 at 10:00am PT
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduling with Vinita Ananth
 ## Open Tasks
 ```tasks

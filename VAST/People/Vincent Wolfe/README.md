@@ -27,6 +27,8 @@ expertise:
 - Vincent Wolfe uses the nickname/signature "Vince".
 
 - Vincent Wolfe signs emails as "Vince".
+
+- Vincent Wolfe signs emails using the nickname "Vince".
 ## Recent Context
 
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday letter and wished him well for 2026. No requests, ques...
@@ -38,6 +40,8 @@ expertise:
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday greeting and shared their holiday letter. He expressed...
 
 - 2025-12-16: Vincent Wolfe sent Jason Vallery a holiday greeting and referenced an attached holiday letter. He ex...
+
+- 2025-12-16: Vincent Wolfe sent Jason Vallery a holiday letter wishing him well for 2025 and 2026. No requests or...
 ## Open Tasks
 ```tasks
 path includes Vincent Wolfe
@@ -59,3 +63,5 @@ not done
 - Personal year-end update (2025 reflection and 2026 outlook)
 
 - Personal year-end check-in (2025 reflection, 2026 outlook)
+
+- Personal update and well-wishes for 2025 and 2026

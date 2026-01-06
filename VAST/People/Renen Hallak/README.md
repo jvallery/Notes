@@ -3,7 +3,7 @@ type: people
 email: renen@vastdata.com
 company: VAST Data
 title: Renen Hallak
-last_contact: '2025-12-27'
+last_contact: '2026-01-05'
 created: '2026-01-05'
 tags:
 - type/people
@@ -79,6 +79,20 @@ tags:
 - For the prior two weeks, a significant portion of VAST Data R&D was redirected to build an auxiliary system to recover nearly 200,000 files on Crusoe's cluster, evolving from manual to semi-automatic to fully automatic recovery.
 
 - After a crisis was averted the prior week, he will travel to Las Vegas for CES to help VAST Data Operations secure NAND allocation amid flash shortages.
+
+- Renen Hallak plans to meet flash vendors during CES and stated he cannot change the dates and has no time for press interviews.
+
+- Renen Hallak stated Microsoft should have its own flash allocation with NAND manufacturers and that VAST Data efficiencies could reduce Microsoft's NAND needs and potentially allow use of Microsoft's excess allocation for other customers.
+
+- Renen Hallak reported that for the prior two weeks, a significant portion of VAST Data R&D was redirected to build an auxiliary recovery system to restore nearly 200,000 files on Crusoe's cluster, evolving from manual to semi-automatic to fully automatic recovery.
+
+- Renen Hallak stated the Crusoe recovery effort required multiple all-nighters to meet the customer's deadline and included remote debugging support that involved sending a person to a data center at 2am and flying spare cables to the site.
+
+- Renen Hallak said he is going to Las Vegas for CES the week after 2026-01-04 to help VAST Data Operations secure NAND allocation due to flash shortages and the need to build strategic relationships with major flash vendors.
+
+- Renen Hallak observed strengthened collaboration between VAST Data teams across geographies as the company hires more R&D outside Israel and more G&A in Israel, and he framed cross-cultural 'edge of chaos' dynamics as a key driver of innovation.
+
+- Jeff Denworth proposed that Renen Hallak be in Redmond in the third week of January 2026 to meet with Microsoft stakeholder 'Scott G' to align on the first MAI tranche and scaling plan.
 ## Recent Context
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
@@ -120,6 +134,13 @@ tags:
 - 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
 - 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery effort and CES NAND allocation trip
 - 2025-12-27: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
+- 2025-12-21: Mentioned in: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2026-01-05: Microsoft Teams sync on PRD, align escalation strategy tied to Renen meeting with Nick Parker
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery effort and CES NAND allocation trip
+- 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 ## Open Tasks
 ```tasks
 path includes Renen Hallak

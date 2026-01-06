@@ -52,6 +52,10 @@ role: Technical Enablement Director
 - Terika Dilworth organized an urgent internal training session for VAST AI sellers focused on the KV Cache storage opportunity and NVIDIA's Context Memory Extension (CME) announcement, timed around CES 2026.
 
 - Terika Dilworth is a Sales Enablement Manager at VAST Data and is coordinating a VAST on Cloud training course and project brief review process.
+
+- Terika Dilworth is a Sales Enablement Manager at VAST Data and is coordinating a VAST on Cloud training course and project brief review process for the field.
+
+- Terika Dilworth organized an urgent internal training session to prepare VAST AI sellers for customer conversations about NVIDIA KV Cache storage and NVIDIA Context Memory Extension (CME) announcements at CES, and VAST's collaboration with NVIDIA on inference infrastructure architecture.
 ## Recent Context
 
 - 2026-01-01: Mentioned in: Training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) for inference infrastructure
@@ -75,6 +79,11 @@ role: Technical Enablement Director
 - 2025-12-15: Mentioned in: Terika Dilworth requests review of VAST on Cloud Course and Project Brief by 2026-01-07
 - 2026-01-01: Mentioned in: Urgent internal training invite: KV Cache storage opportunity and NVIDIA Context Memory Extension (CME)
 - 2026-01-01: Mentioned in: Urgent internal training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME)
+
+- 2025-12-15: Mentioned in: Terika Dilworth requests review of VAST on Cloud course and project brief by 2026-01-07
+- 2026-01-01: Mentioned in: Zoom invite: Urgent internal training on KV Cache storage and NVIDIA Context Memory Extension (CME)
+- 2026-01-01: Mentioned in: Urgent training invite: KV Cache storage opportunity and NVIDIA Context Memory Extension (CME)
+- 2025-12-15: Mentioned in: Review request: VAST on Cloud Course and Project Brief feedback due January 7, 2026
 ## Open Tasks
 ```tasks
 path includes Terika Dilworth

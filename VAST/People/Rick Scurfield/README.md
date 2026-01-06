@@ -8,6 +8,7 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Technical Lead in Customer Success
 ---
 
 # Rick Scurfield
@@ -93,6 +94,20 @@ tags:
 - Rick Scurfield told Regina (last name unknown) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in March 2026 for the Microsoft opportunity, and that it was not visible on the Hard/Soft Backlog list at the time.
 
 - Rick Scurfield sent a GTM organization update to All GTM and All Customer Success (CS) via BCC distribution lists.
+
+- Rick Scurfield sent a GTM organization update to All GTM and All Customer Success (CS) via BCC distribution lists on 2025-12-18.
+
+- Rick Scurfield stated VAST Data is actively monitoring the global hardware supply environment and is closely engaged with suppliers and hardware partners to communicate changes in real time to help teams book deals and keep customers informed.
+
+- Rick Scurfield instructed teams to place orders as early as possible, keep Salesforce (SFDC) up to date for demand visibility, and build configurations with hardware on hand when possible to accelerate fulfillment.
+
+- Rick Scurfield instructed teams to increase VAST Data software pricing when possible, emphasizing confidence in the value delivered to customers.
+
+- Rick Scurfield communicated an updated quoting policy and operational guidance to manage a dynamic global hardware supply environment.
+
+- Rick Scurfield told Regina (unknown last name) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in the March 2026 timeframe for the Microsoft opportunity, and that it should be placed on the soft backlog until it firms up.
+
+- Rick Scurfield sent a GTM organization update to All GTM and All Customer Success (CS) distribution lists via BCC.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience
@@ -148,6 +163,18 @@ tags:
 - 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition from Cristina Hasson to interim lead Stacy Wynn
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
 - 2025-12-27: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-03: Mentioned in: VAST Forward internal outreach push and customer VIP nominations
+- 2025-12-18: Mentioned in: GTM update: RevOps leadership transition, interim lead assigned
+- 2025-12-21: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2025-12-17: Mentioned in: Rick Scurfield: New quote policy, monthly price books, and hardware allocation guidance
+- 2025-12-03: Mentioned in: Rick Scurfield requests account outreach and VIP nominations for VAST Forward (Feb 24-26)
+- 2026-01-05: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2025-12-17: Mentioned in: Rick Scurfield: New quote policy, quote expiry on 2025-12-31, and hardware allocation guidance
+- 2026-01-05: Mentioned in: Operations: Microsoft MAI Nebius NJ first hall 58 x 58 and procurement decision by end of January 2026
+- 2025-12-18: Mentioned in: GTM update: RevOps leadership transition, Cristina Hasson departing and Stacy Wynn interim lead
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-27: Azure MAI red flare: accelerate commercial + supply chain actions in January
 ## Open Tasks
 ```tasks
 path includes Rick Scurfield

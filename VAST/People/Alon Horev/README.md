@@ -69,6 +69,14 @@ tags:
 - Lior Genzel said he messaged Alon Horev to strategize options for the most strategic environment for Anson (Qi)'s VAST PoC.
 
 - Alon Horev leads AI Model Builder sessions for VAST Forward.
+
+- Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-08/2025-12-09) to discuss MAI solution design.
+
+- Lior Genzel messaged Alon Horev to strategize options for the most strategic environment to run Anson (Qi)'s VAST PoC and to potentially merge Kushal Datta's MAI plans with Qi's PoC plans into one.
+
+- Alon Horev advised Jason Vallery to work with Violet as the primary expert on Google Distributed Cloud RFP encryption and key management questions.
+
+- Kushal Datta requested a meeting with Alon Horev to discuss solution design for Microsoft MAI.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -136,6 +144,14 @@ tags:
 - 2025-12-01: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
 - 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
 - 2025-12-23: Mentioned in: VAST Forward: selected as VAST breakout spokesperson, required prep cadence and key dates
+
+- 2025-12-21: Mentioned in: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-23: Mentioned in: VAST Forward 2026: Selected as VAST breakout spokesperson, required prep cadence and key dates
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 ## Open Tasks
 ```tasks
 path includes Alon Horev

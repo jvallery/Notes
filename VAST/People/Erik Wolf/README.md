@@ -59,6 +59,12 @@ tags:
 - Erik Wolf indicated the financial analysis model will allow adjusting multiple variables ('all the knobs') and can be designed to evaluate two scenarios referenced as #1 and #2 in the thread.
 
 - Erik Wolf accepted a scheduled 1:1 Zoom meeting invitation from Jason Vallery to sync on Microsoft AI Infrastructure (MAI) pricing on Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver).
+
+- Erik Wolf provided a CoreWeave-related price point of $3.60 per TB per month in the context of the Microsoft workback plan analysis.
+
+- Erik Wolf stated that he and Jason Vallery started a financial analysis using a spreadsheet model to evaluate multiple scenarios and "gut check" assumptions for the Microsoft workback plan.
+
+- Erik Wolf accepted a scheduled 1:1 Zoom meeting with Jason Vallery to sync on Microsoft AI Infrastructure (MAI) pricing on Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver).
 ## Recent Context
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement

@@ -58,6 +58,18 @@ role: Apollo team member (storage/training infrastructure)
 - In the December 8, 2025 end-of-day update, Lior Genzel reported that Kushal Datta said MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for the May to June 2026 timeframe.
 
 - Lior Genzel reported that Kushal Datta stated MAI will decide on the storage deployment and told Manish Sah that Azure Blob does not make sense versus VAST Data for MAI requirements.
+
+- In the December 8 EoD update, Kushal Datta said MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for the May/June 2026 timeframe, with January no longer a hard date.
+
+- In the December 8 EoD update, Kushal Datta stated MAI will decide on the storage deployment and told Manish Sah that Azure Blob does not make sense versus VAST for MAI requirements.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted, and Jason is concerned Kushal may be misrepresenting VAST's preferred status to influence Mustafa.
+
+- Kushal Datta told VAST Data that MAI will decide on the storage deployment and that Azure Blob does not meet MAI requirements compared to VAST Data.
+
+- Kushal Datta requested a meeting with Alon Horev to discuss solution design for Microsoft MAI.
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that Kushal Datta cannot be trusted.
 ## Recent Context
 
 - 2025-10-31: Jason Vallery and Kushal Datta discussed options to deploy VAST Data for Microsoft Apollo training w...
@@ -82,6 +94,9 @@ role: Apollo team member (storage/training infrastructure)
 
 - 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 - 2025-12-21: Mentioned in: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
+
+- 2025-12-21: Mentioned in: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Kushal Datta

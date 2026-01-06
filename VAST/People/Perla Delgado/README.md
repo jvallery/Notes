@@ -38,6 +38,8 @@ role: Executive Director
 - Perla Delgado (Executive Director, I Have A Dream Foundation of Boulder County) needs to assess IHDF staff needs related to fundraising support.
 
 - Perla Delgado will share the start of a SWOT document for the potential acquisition of a former church in Longmont.
+
+- Perla Delgado will share the start of a SWOT document for the potential Longmont former church acquisition that Erika Smith co-created.
 ## Recent Context
 
 - 2025-12-08: Mentioned in: [[2025-12-08 - IHDF board- provide feedback on draft strategic plan by 2025-12-18; January board meeting preview]]
@@ -46,6 +48,9 @@ role: Executive Director
 - 2025-12-10: Mentioned in: IHDF executive session recap from Erika Smith (missed meeting)
 
 - 2025-12-08: Mentioned in: IHDF strategic plan feedback requested by December 18 and January board meeting preview
+- 2025-12-10: Mentioned in: IHDF executive session recap: public stance risk, fundraising committee, Longmont church acquisition exploration
+
+- 2025-12-08: Mentioned in: IHDF strategic plan feedback due Dec 18 and January board meeting preview
 - 2025-12-10: Mentioned in: IHDF executive session recap: public stance risk, fundraising committee, Longmont church acquisition exploration
 ## Open Tasks
 ```tasks

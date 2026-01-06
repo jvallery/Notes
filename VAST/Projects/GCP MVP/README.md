@@ -65,6 +65,13 @@ not done
 - 2026-01-05: Itzik Reich asked Noa Cohen whether TLS support for VAST Block protocol is still planned for VAST re...
 - 2026-01-05: Lior Genzel sent an updated Google Calendar invitation for an internal sync related to the Google RF...
 - 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+- 2025-12-15: Jason Vallery asked Alon Horev and Tomer Hagay for help answering Google Distributed Cloud RFP follo...
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request and MAI pricing follow-up
+- 2025-12-17: On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sal...
+- 2026-01-05: Itzik Reich asked Noa Cohen whether TLS support for VAST Block protocol would ship in VAST release 5...
+- 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
@@ -94,6 +101,12 @@ not done
 - The "Google RFP: Internal Sync" calendar event was updated on 2026-01-05 to change conferencing details to a Zoom meeting (Meeting ID 97840966503, passcode 557890).
 
 - A deck titled "GCP Flow from customer to sales to customer.pptx" was shared for collaboration, implying documentation of the GCP go-to-market/customer flow.
+
+- A presentation titled "GCP Flow from customer to sales to customer" was shared, implying documentation of a GCP-related process flow relevant to the GCP MVP effort.
+
+- GCP MVP work includes supporting Google Distributed Cloud (GDC) related RFP activity, including maintaining an up-to-date customer-facing deck.
+
+- A deck titled "GCP Flow from customer to sales to customer" was shared internally, likely documenting a process flow related to the GCP MVP effort.
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement
@@ -143,6 +156,24 @@ not done
 - Potential inclusion of TLS for Block in a minor VAST release after 5.6
 
 - Test timing coordination with Google (pending Maroun's proposed test schedule)
+
+- FIPS certification and FIPS 140-3 data-at-rest encryption requirements
+
+- Self-encrypting drives (SED) vs software-based encryption posture
+
+- Encryption key granularity and encryption groups (tenant-level and path-level)
+
+- Encrypted paths and unique keys per path
+
+- Internal collaboration on a Google Slides presentation for GCP go-to-market/process
+
+- VAST software release 5.6 scope and deferrals
+
+- Potential minor release after VAST 5.6 to add TLS for Block
+
+- Test timing coordination with Google (pending Maroun's proposed schedule)
+
+- Internal sync meeting scheduling
 ## Key Decisions
 
 - Transaction path is marketplace-based private offers (no BYOL) for the MVP.
@@ -150,3 +181,7 @@ not done
 - Route Google Distributed Cloud RFP encryption and key management questions to Violet (last name unknown) as the subject matter expert.
 
 - TLS support for the VAST Block protocol will not be included in VAST release 5.6 because it was deferred in favor of other protocol features requested by more customers.
+
+- For the Google Distributed Cloud RFP response, VAST should position data-at-rest encryption as software-based (potentially FIPS certified) rather than relying on self-encrypting drive (SED) hardware.
+
+- VAST TLS support for Block protocol will not be included in VAST release 5.6 because it was deferred in favor of other protocol features requested by more customers.

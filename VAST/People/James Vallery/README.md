@@ -134,6 +134,28 @@ expertise:
 - Jason Vallery was asked by Ray Coetzee to chime in on whether VAST should entertain Microsoft's request for an Azure VoC instance for GPU performance testing.
 
 - Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on 2025-12-29 or 2025-12-30.
+
+- Jason Vallery reported hearing from multiple Azure contacts that the final MAI storage decision is made by an individual named Mustafa (last name not provided).
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan and that Lior Genzel will lead getting introductions to them.
+
+- Jason Vallery was requested by Mohamad Al Jazaery (Microsoft) to share the slides and code from the VAST + AKS presentation to Microsoft GBB AI infrastructure sellers.
+
+- James Vallery does not know how to view 2nd-degree connections for a company in LinkedIn and asked Jason Vallery to check if he knows anyone at the target companies.
+
+- Jason Vallery was assigned (implicitly via team email) to drive weekly status action items for Azure Marketplace, GDC RFP deck updates, and Microsoft MAI unified cache pricing follow-up.
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that the final storage decision for the MAI project is made by a person named Mustafa (last name not provided).
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that Kushal Datta cannot be trusted, and Jason is concerned Kushal may be misrepresenting VAST Data's status as the preferred solution.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan (key Microsoft MAI stakeholders) and that Lior Genzel will lead efforts to obtain introductions.
+
+- Jason Vallery is the organizer of the scheduled Zoom meeting with Mordechai Blaunstein on Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery said his schedule became very busy due to a new job and frequent travel through the end of 2025, but he would attend men's group meetings if he is in town.
+
+- Jonsi Stefansson stated he and Jason Vallery planned to sync on the Azure Blob integration proposal on December 29 or December 30, 2025.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -175,6 +197,15 @@ expertise:
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and scheduling
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 - 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
+- 2025-12-21: Mentioned in: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2026-01-01: On 2026-01-01, James Vallery emailed a list of LinkedIn job postings he applied to and asked Jason V...
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request and MAI pricing follow-up
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2026-01-04: Mentioned in: David Ellis: confirm quorum for Jan 6 men's group (2084) + Wapos dinner
+- 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 ## Open Tasks
 ```tasks
 path includes James Vallery
@@ -202,3 +233,7 @@ not done
 - Identifying 2nd-degree connections at target companies (Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, Prologis)
 
 - Using personal networks and 2nd-degree connections for referrals
+
+- Leveraging LinkedIn 2nd-degree connections for referrals
+
+- Target companies: Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, Prologis

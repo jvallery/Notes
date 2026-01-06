@@ -46,6 +46,10 @@ not done
 - AlphaSights provided a Google Calendar booking link for scheduling a short briefing: https://calendar.app.google/31vJT5sNBPwkGy849.
 
 - AlphaSights requested an expert discussion with Jason Vallery focused on Oracle, AWS, Salesforce, and Microsoft based on Jason Vallery's experience.
+
+- AlphaSights requested an urgent expert discussion with Jason Vallery focused on Oracle, AWS, Salesforce, Microsoft, and related cloud topics.
+
+- AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including overall trends, internal risk governance teams, future direction, and an industry macro view.
 ## Topics
 
 - AlphaSights paid expert consultation
@@ -85,4 +89,10 @@ not done
 - Microsoft competitive landscape
 
 - Paid expert consultation (AlphaSights)
+
+- AlphaSights expert consultation request
+
+- Cloud providers and enterprise platforms: Oracle, AWS, Salesforce, Microsoft
+
+- Scheduling a 30-minute expert discussion via Calendly
 ## Key Decisions

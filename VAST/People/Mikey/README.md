@@ -54,6 +54,9 @@ expertise:
 
 - 2025-12-23: Mentioned in: Jeff Denworth: Walmart requirements reset, hybrid + single namespace, GCS integration risk
 - 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace and GCS integration risk
+
+- 2025-12-23: Walmart requirements update: hybrid namespace, GCS integration, Alluxio risk
+- 2025-12-23: Walmart requirements restated, hybrid namespace and GCS integration required
 ## Open Tasks
 ```tasks
 path includes Mikey

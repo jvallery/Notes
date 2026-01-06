@@ -40,6 +40,9 @@ not done
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and intro path via his friend
 - 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI covering the week ending Friday...
+
+- 2025-12-12: Mentioned in: John Mao update on OpenAI org and data platforms (Rockset, Snowflake, DAQ)
+- 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI, noting limited public news ove...
 ## Key Facts
 
 - VAST plans a touch base meeting on Tuesday with the OpenAI team to align on POC next steps, OpenAI resource availability, and the POC start date.
@@ -117,6 +120,22 @@ not done
 - Softbank completed funding of a $40B investment in OpenAI prior to the end-of-year deadline (as reported in internal OpenAI news section of the update).
 
 - OpenAI's first hardware device is rumored to be an audio-based device with new GPT models, and manufacturing order reportedly moved to Foxconn (as reported in internal OpenAI news section of the update).
+
+- OpenAI is organized into three major teams: Applications (ChatGPT and online data), Scaling (between Applications and Research, not clearly a platform team), and Research (data scientists reporting up to Jakob Pachoki, focused on offline data for training on frontier clusters including OCI).
+
+- Within OpenAI Applications, two of the largest data platforms are Rockset (uses local SSDs and persists to Azure Blob) and Snowflake (OpenAI is one of Snowflake's largest customers).
+
+- OpenAI uses Rockset as a SQL-based vector database and the Rockset platform persisted to Azure Blob contains the entire history of ChatGPT conversations.
+
+- Rockset is the company OpenAI acquired, founded by the team behind RocksDB, and the system is conceptually RocksDB for local SSD persistence plus FoundationDB providing key-value semantics, functioning as persistent 'memory' for ChatGPT (more like a persistent KV-store than a KV-cache).
+
+- OpenAI Research's in-house data platform is referred to as DAQ (Data Acquisition), and Louis Feuvrier is the lead developer/architect for DAQ.
+
+- OpenAI has another big data team called Data Platform that runs Spark and Databricks workloads, led by Emma Tang.
+
+- VAST is working on additional education for the Nvidia team that works with OpenAI, with expectation of more substantive updates in the next couple of weeks.
+
+- Softbank completed funding of a $40B investment in OpenAI prior to the end-of-year deadline (noted as internal news in the email).
 ## Topics
 
 - OpenAI POC planning: next steps, resource availability, and start date
@@ -148,4 +167,8 @@ not done
 - OpenAI pursuit lead tracking and mutual connection outreach process
 
 - OpenAI market news: Softbank investment funding, rumored OpenAI hardware device, potential Pinterest acquisition speculation, 2026 outlook articles
+
+- Lead tracking for mutual connections (shared spreadsheet)
+
+- OpenAI funding and hardware device rumors (contextual news)
 ## Key Decisions

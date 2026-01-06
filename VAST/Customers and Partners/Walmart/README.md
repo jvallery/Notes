@@ -52,6 +52,9 @@ not done
 
 - 2025-12-23: Mentioned in: Jeff Denworth: Walmart requirements reset, hybrid + single namespace, GCS integration risk
 - 2025-12-23: Mentioned in: Walmart requirements reset: hybrid namespace and GCS integration risk
+
+- 2025-12-23: Mentioned in: Walmart requirements update: hybrid namespace, GCS integration, Alluxio risk
+- 2025-12-23: Mentioned in: Walmart requirements restated, hybrid namespace and GCS integration required
 ## Key Facts
 
 - Walmart’s enterprise analytics system-of-record is GCP (BigQuery + GCS); their operational systems are Azure.
@@ -103,6 +106,16 @@ not done
 - Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or would need significant lobbying at the database layer including a hybrid cloud database.
 
 - Jeff Denworth warned that Walmart's GCS integration requirement could put Alluxio back in a leading position for the account and advised VAST to be careful.
+
+- Walmart stated they still need to build a long-term hybrid solution for their data team.
+
+- Walmart was not successful in getting the business to accept operating with two disjoint namespaces.
+
+- Walmart plans to start an internal big data proof of concept (POC) sometime in 2025, limited to workloads that can exclusively run on premises.
+
+- Walmart requires integration with Google Cloud Storage (GCS) for any solution they move forward with, or alternatively would need significant lobbying at the database layer including a hybrid cloud database.
+
+- Jeff Denworth warned that Walmart's requirements could put Alluxio back in the driver seat competitively, and VAST should be careful.
 ## Topics
 
 - Hybrid lakehouse architecture (GCP → two on-prem sites)

@@ -29,6 +29,8 @@ role: Managing Director - Strategic Partnerships
 - Adem Sefa stated that Edwin Trogler is his brother-in-law.
 
 - Adem Sefa requested that Jason Vallery provide introductions for Edwin Trogler related to an FP&A Director role at VAST Data.
+
+- Adem Sefa is the brother-in-law of Edwin Trogler.
 ## Recent Context
 
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery for potential F...

@@ -24,6 +24,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated that during the first CoreWeave deal, an individual named Leo worked out of CoreWeave offices daily as part of the close strategy, but the email did not include Leo's last name.
 
 - Jeff Denworth referenced a prior CoreWeave deal where Andy Bernstein and an individual named Leo worked out of CoreWeave offices daily, which Jeff stated has netted $1.5B in bookings so far.
+
+- Jeff Denworth referenced a prior CoreWeave deal where an individual named Leo worked out of CoreWeave offices daily as part of an on-site engagement strategy.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Parallel tracks for UK Met: Azure LSV4 test cluster (early Dec) and Microsoft-hosted bare-metal dev system
@@ -33,6 +35,8 @@ last_enriched: '2026-01-05'
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
 
 - 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 ## Open Tasks
 ```tasks
 path includes Leo

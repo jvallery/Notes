@@ -45,6 +45,8 @@ last_enriched: '2026-01-05'
 - Noa Cohen confirmed TLS support for the VAST Block protocol was planned for VAST release 5.6 but was deferred due to other protocol features requested by more customers.
 
 - Noa Cohen asked for Google's required-by date for TLS support for the VAST Block protocol to consider it for a minor release after 5.6.
+
+- TLS support for VAST Block protocol was planned for VAST software release 5.6 but was deferred due to other protocol features requested by more customers.
 ## Recent Context
 
 - 2026-01-05: Mentioned in: 1:1 setup and org mapping with Shachar Feinblit (Tel Aviv trip prep, Cloud/5.5, release planning)

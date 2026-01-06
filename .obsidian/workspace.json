@@ -193,8 +193,12 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "d53b413e5fffdcfe",
+  "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
+    "VAST/Customers and Partners/Welliptic/README.md",
+    "VAST/People/kodeON via Paddle.com/README.md",
+    "VAST/People/kodeON via Paddle.com",
+    "Inbox/_drafts/replies/2026-01-05_183355_reply_to_Karl Vietmeier.md",
     "Inbox/_drafts/replies/2026-01-05_174920_reply_to_Myself.md",
     "Outbox/README.md",
     "VAST/Customers and Partners/Microsoft/2025-12-27 - Azure MAI deal risk escalation, supply chain constraints, and January execution plan.md",
@@ -218,9 +222,6 @@
     "VAST/People/Erik Wolf/2026-01-05 - Erik Wolf accepted Zoom sync with Jason Vallery on MAI pricing Jan 5, 2026.md",
     "VAST/Projects/Cloud Marketplace MVP/2026-01-05 - Weekly Status- Azure Marketplace - SKU change request deadline, GDC RFP deck update, MAI unified cache pricing follow-up.md",
     "VAST/Customers and Partners/Microsoft/2026-01-05 - Microsoft PRD sync, plan escalation path using Renen Hallak meeting with Nick Parker.md",
-    "VAST/Projects/Cloud/2025-12-01 - Karl Vietmeier asks for guidance on ownership of GDC and Azure Local opportunities.md",
-    "VAST/Customers and Partners/Tesla/2026-01-04 - Tesla reminder- $111.04 Tesla Credits expire by 2026-02-04.md",
-    "VAST/People/John Mao/2025-12-12 - John Mao update- OpenAI org, data platforms Rockset, Snowflake, CosmosDB, DAQ and intro path via his friend.md",
     "VAST/Projects/BetterDisplay",
     "VAST/Projects/Pricing Changes and Supply Chain Update",
     "VAST/Projects/ORION-261324",
@@ -230,7 +231,6 @@
     "VAST/Customers and Partners/AlphaSights",
     "VAST/Customers and Partners/Express Scripts Pharmacy",
     "VAST/Customers and Partners/I Have A Dream Foundation of Boulder County",
-    "VAST/Projects/CoreWeave-Vast Automation Project",
     "DRAFT/Azure Integration/_scratch/azure-storage-azcopy/readme-command-prompt.png",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",

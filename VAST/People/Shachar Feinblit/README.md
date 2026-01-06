@@ -49,6 +49,9 @@ tags:
 
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan
 - 2025-12-21: Jeff Denworth escalation on MAI supply chain risk and need for immediate plan (no inventory reserved for Microsoft)
+
+- 2025-12-21: MAI and VAST supply chain risk and stakeholder alignment for May/June deployment
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Shachar Feinblit

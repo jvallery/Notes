@@ -24,6 +24,8 @@ tags:
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery to explore potential future opportun...
 
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to discuss potential new...
+
+- 2025-12-18: Peter Imming introduced Jason Vallery to Sebastien Berube (AWS) to discuss potential new opportuniti...
 ## Open Tasks
 
 ```tasks
@@ -50,6 +52,8 @@ not done
 - Sebastien Berube potential job change in 2026 (no defined timeline or catalyst)
 
 - In-person coffee meeting in Boulder County, Colorado
+
+- Sebastien Berube exploring potential job change in 2026
 ## Key Decisions
 
 - Jason Vallery and Sebastien Berube will meet in person for coffee on Wednesday, January 7, 2026 at 8:00am in Lafayette, Colorado (location specified in Sebastien Berube's calendar invite).
@@ -57,3 +61,5 @@ not done
 - Jason Vallery and Sebastien Berube agreed to meet for coffee on 2026-01-07 at 8:00am in Lafayette, Colorado (location details sent via calendar invite).
 
 - Jason Vallery and Sebastien Berube agreed to meet for coffee on January 7, 2026 at 8:00am in Lafayette, Colorado (location to be confirmed from Sebastien's calendar invite).
+
+- Jason Vallery and Sebastien Berube agreed to meet for coffee on January 7, 2026 at 8:00am in Lafayette, Colorado (location details sent via calendar invite).

@@ -48,6 +48,14 @@ not done
 - 2026-01-05: Mentioned in: Internal invite: Amplify technical deep-dive blog on smart city real-time video agents (VAST + NVIDIA Cosmos Reason 2)
 - 2026-01-01: Mentioned in: Urgent internal training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME)
 - 2026-01-04: Mentioned in: VAST and OpenAI weekly account pursuit update, POC touch base planned (week ending 2026-01-02)
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2026-01-01: Mentioned in: Zoom invite: Urgent internal training on KV Cache storage and NVIDIA Context Memory Extension (CME)
+- 2026-01-05: Mentioned in: Internal invite: Amplify technical deep-dive blog on smart city real-time video agents (VAST + NVIDIA Cosmos Reason 2)
+- 2026-01-01: Mentioned in: Urgent training invite: KV Cache storage opportunity and NVIDIA Context Memory Extension (CME)
+- 2026-01-04: Mentioned in: VAST and OpenAI weekly account pursuit update, POC touch base planned (week ending 2026-01-02)
 ## Key Facts
 
 - RFE 0482 is associated with NVIDIA Corporation and the opportunity 'DGX-C | Coreweave' (opportunity amount $0, close date 2025-11-02).
@@ -141,6 +149,36 @@ not done
 - NVIDIA announced or is announcing Context Memory Extension (CME) impacting inference infrastructure.
 
 - Lindsay (last name not provided) is working with the Nvidia team that supports OpenAI to schedule a follow-up meeting with specialist teams for additional education/enablement.
+
+- RFE 0482 is an "Existing Feature Enhancement" request associated with account NVIDIA Corporation and opportunity "DGX-C | Coreweave" in Salesforce.
+
+- RFE 0482 requests unified operational visibility across VAST clusters deployed across more than five NCPs used by NVIDIA DGX Cloud, due to inconsistent telemetry and dashboards across NCPs.
+
+- RFE 0482 component 1: allow dual-uplink visibility so both lambda.cloud.vastdata.com and nvidiadgxc.cloud.vastdata.com can access the same dedicated VAST cluster LAX-02 used exclusively by NVIDIA DGX Cloud.
+
+- RFE 0482 component 2: enable tenant-filtered visibility so nvidiadgxc.cloud.vastdata.com shows only NVIDIA DGX Cloud tenant data from multi-tenant cluster LAX-03 managed by lambda.cloud.vastdata.com, without exposing other tenants or cluster-wide information.
+
+- RFE 0482 lists "Additional $$ from RFE" as $100,000,000 and "Additional PB from RFE" as 10,000 (as entered in the RFE record).
+
+- Marianne Budnik stated NVIDIA is doing a 90-minute media-only press conference at CES and the team goal is to have VAST shown as the 'first/best/only' solution in the media briefing and amplify it online.
+
+- RFE 0482 is associated with NVIDIA Corporation and the opportunity "DGX-C | Coreweave" (opportunity amount $0, close date 2025-11-02).
+
+- NVIDIA DGX Cloud Storage Team uses VAST across more than five NCPs and manages multiple petabytes of capacity, and expects continued expansion.
+
+- RFE 0482 requests dual-uplink visibility so both lambda.cloud.vastdata.com and nvidiadgxc.cloud.vastdata.com can access the same dedicated VAST cluster LAX-02 (single-tenant DGX Cloud deployment).
+
+- RFE 0482 requests tenant-scoped visibility so nvidiadgxc.cloud.vastdata.com can see only the NVIDIA DGX Cloud tenant data inside multi-tenant cluster LAX-03, without exposing other tenants or cluster-wide information.
+
+- The RFE value proposition claims incremental value of $100,000,000 and 10,000 PB if the requested visibility capability is delivered.
+
+- The blog describes integrating NVIDIA Cosmos Reason 2 VLM and Cosmos Reason 2 NIM microservices with VAST AI OS and VAST DataStore for real-time video reasoning workflows.
+
+- NVIDIA planned major KV Cache storage announcements at CES during the week of January 5, 2026, positioning KV Cache storage as a new storage category central to inference infrastructure discussions.
+
+- The training content includes the impact of NVIDIA's Context Memory Extension (CME) announcement on inference infrastructure and customer conversations.
+
+- VAST is working on additional education for the Nvidia team that works with OpenAI, and a follow-up meeting with specialist teams is being scheduled.
 ## Topics
 
 - RFE 0482 for NVIDIA DGX Cloud: unified visibility across VAST clusters deployed at multiple NCPs

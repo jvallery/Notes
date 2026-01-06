@@ -26,6 +26,10 @@ role: Business development / model builder ecosystem focus (new hire)
 - Mohamad Al Jazaery (Microsoft) requested that Chris Carpenter share the slides and code that VAST presented to the Microsoft GBB team during the AKS AI Roadshow session.
 
 - Mohamad Al Jazaery (Microsoft) asked Chris Carpenter whether VAST has a plan for a demo/accelerator that shows VAST Global Namespace on Azure for inclusion in the Microsoft AI roadshow.
+
+- Chris Carpenter was requested by Mohamad Al Jazaery (Microsoft) to share the slides and code from the VAST + AKS presentation to Microsoft GBB AI infrastructure sellers.
+
+- Chris Carpenter was asked by Mohamad Al Jazaery (Microsoft) whether there is a plan for a demo/accelerator showcasing VAST Global Namespace on Azure for the Microsoft AI roadshow.
 ## Recent Context
 
 - 2025-09-15: Silk briefing on software-defined cloud storage for high-performance relational databases and RDMA ask on Azure L-series
@@ -50,6 +54,9 @@ role: Business development / model builder ecosystem focus (new hire)
 
 - 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 - 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow follow-up, slides/code request and Global Namespace on Azure demo
+
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-19: Microsoft AKS AI Roadshow follow-up, request for slides/code and Global Namespace on Azure demo
 ## Open Tasks
 ```tasks
 path includes Chris Carpenter

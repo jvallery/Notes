@@ -93,6 +93,10 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Karl Vietmeier observes that when GDC or Azure Local opportunities involve hardware, VAST Data on-prem teams tend to take ownership, which creates confusion over accountability and reduces visibility into progress and outcomes for cloud product management.
 
 - Karl Vietmeier believes GDC and Azure Local opportunities should be managed through VAST Data cloud product management because cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier was asked by Ray Coetzee to provide the expected performance profile for an Azure VoC instance requested by Microsoft.
+
+- Lior Genzel indicated Karl Vietmeier is optional on the follow-up call with Microsoft because Lior plans to block the Azure VoC request.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -117,6 +121,11 @@ role: Cloud Solutions Architect - VAST on Cloud
 
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 - 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
+
+- 2025-12-11: Mentioned in: Microsoft request for Azure VoC instance for GPU performance testing (declined)
+- 2025-12-01: Mentioned in: Ownership and accountability for GDC and Azure Local opportunities
+- 2025-12-01: Mentioned in: Ownership guidance needed for GDC and Azure Local support opportunities
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, Lior plans to decline
 ## Open Tasks
 ```tasks
 path includes Karl Vietmeier

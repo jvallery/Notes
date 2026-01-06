@@ -53,6 +53,9 @@ not done
 - 2026-01-05: Jeff Denworth flagged three weekly status items: an Azure Marketplace SKU change request due Friday,...
 - 2026-01-04: Mentioned in: Microsoft-VAST Weekly GTM Meeting reschedule due to Karl Rautenstrauch family medical appointment
 - 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams details (Microsoft)
+
+- 2026-01-05: Jeff Denworth flagged three weekly status items: an Azure Marketplace SKU change request due Friday,...
+- 2026-01-04: Mentioned in: Weekly VAST GTM Meeting reschedule request (move from Monday Jan 5 to Tue/Wed/Thu)
 ## Key Facts
 
 - Marketplace offers enable procurement/transactability, but VM economics can be non-competitive at scale; longer-term paths include deeper cloud primitives and potentially CSP data-center hardware.
@@ -77,6 +80,10 @@ not done
 - The Weekly VAST GTM Meeting is a Microsoft Teams meeting focused on pipeline review, deal timelines, Microsoft engagement status, risks and escalations, promotional efforts and launch assets, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and transactions.
 
 - Cloud Marketplace MVP is implicated by agenda items about marketplace onboarding blockers and later transactions.
+
+- An Azure Marketplace SKU change request for VAST Data is due on Friday following the 2026-01-04 email.
+
+- The Weekly VAST GTM Meeting agenda includes: review pipeline, deal timelines, Microsoft engagement status, identify risks/escalations/requirements to close, align on promotional efforts and required assets prior to launch, VAST plans, Microsoft plans, collateral needs, and blockers to Azure Marketplace onboarding and later transactions.
 ## Topics
 
 - Marketplace ops: private offers, entitlement/metering, reporting exports

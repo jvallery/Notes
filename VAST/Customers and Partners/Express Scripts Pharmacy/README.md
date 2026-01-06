@@ -61,4 +61,8 @@ not done
 - Shipping status notification
 
 - Express Scripts Pharmacy customer support and benefits portal access
+
+- Order shipping status notification
+
+- Lisdexamfetamine 40mg prescription order details
 ## Key Decisions

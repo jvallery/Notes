@@ -53,6 +53,9 @@ role: Global pre-sales lead for AI Infrastructure (under Zia)
 
 - 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
 - 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow follow-up, slides/code request and Global Namespace on Azure demo
+
+- 2025-12-19: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-19: Microsoft AKS AI Roadshow follow-up, request for slides/code and Global Namespace on Azure demo
 ## Open Tasks
 ```tasks
 path includes Kurt Niebuhr

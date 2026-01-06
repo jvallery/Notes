@@ -28,6 +28,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated that during the first CoreWeave deal, VAST had Andy Bernstein working out of CoreWeave offices daily as part of the close strategy.
 
 - Jeff Denworth referenced a prior CoreWeave deal where Andy Bernstein and an individual named Leo worked out of CoreWeave offices daily, which Jeff stated has netted $1.5B in bookings so far.
+
+- Jeff Denworth referenced a prior CoreWeave deal where Andy Bernstein worked out of CoreWeave offices daily as part of an on-site engagement strategy.
 ## Recent Context
 
 - 2025-10-30: Weekly SE community call: end-of-quarter push, Tech Summit logistics, UserCon registration drive, and SE Toolbox Port Mapper demo
@@ -45,6 +47,10 @@ last_enriched: '2026-01-05'
 - 2025-12-27: Mentioned in: Red flare escalation: Azure MAI deal risk, supply chain urgency, and January action plan
 
 - 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-23: Mentioned in: VAST Forward 2026: Selected as VAST breakout spokesperson, required prep cadence and key dates
+- 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
+- 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 ## Open Tasks
 ```tasks
 path includes Andy Bernstein

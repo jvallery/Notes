@@ -74,6 +74,20 @@ role: Vice President, Global Communications & Customer Marketing
 - Kirstin Bordner stated Jay Parikh (EVP for CoreAI at Microsoft) is participating in Roland's January 6, 2026 keynote and suggested meeting him while in Las Vegas.
 
 - Kirstin Bordner can be reached at kirstin.bordner@vastdata.com and kbordner@vastdata.com, and by phone at +1.208.501.3383.
+
+- Kirstin Bordner stated there are three NVIDIA CES news-cycle topics where VAST should insert itself: CME (with blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner stated she registered for NVIDIA Live and offered to register Renen Hallak as well.
+
+- Kirstin Bordner suggested using John Mao for press interviews at CES because Renen Hallak will be tied up meeting flash vendors.
+
+- Kirstin Bordner stated NVIDIA sent two additional press releases where NVIDIA would like VAST included: the NVIDIA Rubin press release and the Open Models press release; VAST is not being asked for a quote, only approval of VAST mentions.
+
+- Kirstin Bordner stated a supporting blog post for the Open Models press release is being worked on by Sagi together with Lior Cohen from NVIDIA.
+
+- Kirstin Bordner stated there are three topics to insert VAST into the NVIDIA CES news cycle: CME (blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner is Vice President, Global Communications and Customer Marketing at VAST Data and can be reached at kbordner@vastdata.com and +1.208.501.3383.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
@@ -99,6 +113,10 @@ role: Vice President, Global Communications & Customer Marketing
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination, embargo timing, and Microsoft Jay Parikh meeting request
 - 2025-12-23: Mentioned in: VAST Forward: selected as VAST breakout spokesperson, required prep cadence and key dates
+
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
+- 2025-12-23: Mentioned in: VAST Forward 2026: Selected as VAST breakout spokesperson, required prep cadence and key dates
+- 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 ## Open Tasks
 ```tasks
 path includes Kirstin Bordner

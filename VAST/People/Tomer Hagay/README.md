@@ -112,6 +112,12 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - Tomer Hagay asked for clarification on the origin of the self-encrypting drive (SED) requirement, and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption for drive removal scenarios, VAST software using FIPS-compatible encryption algorithms should meet the requirement.
 
 - On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and granted edit access.
+
+- Tomer Hagay stated that Violet is the subject matter expert for encryption and key management questions related to the Google Distributed Cloud RFP.
+
+- Tomer Hagay asked where Google's self-encrypting drive (SED) requirement originates, and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption requirements for protection against drive removal, VAST software using the same FIPS-compatible encryption algorithms should meet that requirement.
+
+- Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" and invited Jason Vallery to edit it.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -176,6 +182,11 @@ role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 - 2025-12-01: RFE 0482: NVIDIA DGX Cloud requests dual-uplink and tenant-scoped visibility across VAST clusters
+- 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): multi-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 - 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
 ## Open Tasks
 ```tasks

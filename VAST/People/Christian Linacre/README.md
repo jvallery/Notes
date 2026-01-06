@@ -40,6 +40,8 @@ role: Vice President, Alloy & Dedicated Regions
 - Christian Linacre is currently traveling as of Monday, 2025-12-08.
 
 - Christian Linacre was traveling as of Monday, 2025-12-08 and suggested meeting with Matthew Thomson instead.
+
+- Christian Linacre is Vice President, Alloy and Dedicated Regions at Oracle Cloud Infrastructure and is currently traveling as of Monday, 2025-12-08.
 ## Recent Context
 
 - 2025-12-08: Mentioned in: Oracle OCI intro: connect with Matt Thomson (DRCC/Alloy PM) for Seattle meeting
@@ -60,6 +62,10 @@ role: Vice President, Alloy & Dedicated Regions
 
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson for Seattle meeting
 - 2025-12-08: Mentioned in: Oracle OCI: Christian Linacre offers intro to Matt (DRCC/Alloy PM) in Seattle
+- 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matt Thomson for Seattle meeting
+
+- 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson for Seattle meeting
+- 2025-12-08: Mentioned in: Christian Linacre (OCI) offers intro to Matt for DRCC/Alloy product management in Seattle
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matt Thomson for Seattle meeting
 ## Open Tasks
 ```tasks

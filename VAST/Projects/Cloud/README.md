@@ -4,7 +4,7 @@ title: Cloud
 status: active
 my_role: owner
 description: Cloud platform strategy, multi-tenancy, operability, and marketplace readiness across hyperscalers.
-last_contact: '2026-01-02'
+last_contact: '2025-12-11'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -110,6 +110,26 @@ not done
 - 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos DoD Cloud
 - 2026-01-02: Google Docs notification shows two open comments from Jonsi Stefansson on the document "VAST and Azu...
 - 2025-12-27: Mentioned in: Azure MAI deal risk escalation, supply chain constraints, and January execution plan
+
+- 2025-12-15: Terika Dilworth asked the team to review and provide feedback on a draft VAST on Cloud training cour...
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro between Jason Vallery and Sushant Rewaskar + architecture docs request
+- 2025-12-21: Jeff Denworth escalated that VAST supply chain capacity is selling out quickly, lead times are risin...
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed Cloud PO submitted (FOpp-4197, $96,808.14) for Leidos GovCloud SW-only deployment
+- 2025-12-01: Brian Evans forwarded RFE 0482 for NVIDIA Corporation (DGX-C | Coreweave) requesting unified operati...
+- 2025-12-19: Mentioned in: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo
+- 2025-12-11: Mentioned in: Microsoft request for Azure VoC instance for GPU performance testing (declined)
+- 2025-12-01: Karl Vietmeier flagged growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
+- 2025-12-22: Mentioned in: Lior Genzel requested access to Google Doc: VAST and Azure Integration.docx
+- 2026-01-05: Internal VAST thread to support a Microsoft workback plan by building a financial and TCO model that...
+- 2026-01-05: Mentioned in: Microsoft Teams invite: Sync on PRD for VAST on Azure
+- 2026-01-02: Google Docs notification email from Jonsi Stefansson with two open comments on the document 'VAST an...
+- 2026-01-01: Terika Dilworth invited Jason Vallery to an urgent internal training session on KV Cache storage and...
+- 2025-12-01: Karl Vietmeier flagged growing inbound interest in VAST support for Google Distributed Cloud (GDC) a...
+- 2026-01-05: Rob Benoit forwarded an approved Documentation RFE (RFE 0538) tied to NTT DATA Japan Corporation. Th...
+- 2025-12-15: Terika Dilworth requested team review and feedback on a draft VAST on Cloud enablement course and a ...
+- 2025-12-30: Mentioned in: Leidos Federal first US Fed sector Cloud PO submitted (FOpp-4197, $96,808.14)
+- 2026-01-02: A Google Docs notification email captured two open comments from Jonsi Stefansson on the document 'V...
+- 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU instances bec...
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -240,6 +260,38 @@ not done
 - VAST Azure readiness is a blocker for providing an Azure VoC instance to Microsoft for GPU performance testing as of 2025-12-11.
 
 - The Microsoft MAI effort requires an Azure Blob integration proposal from VAST and an engineering workshop in Redmond in January 2026 to progress integration discussions.
+
+- A VAST on Cloud training course and a project brief are being built from existing material and are intended to be reviewed for messaging and technical accuracy before a January working session.
+
+- VAST Data cloud product leadership (Jason Vallery) was pulled into Microsoft follow-up to enable technical collaboration.
+
+- OrderAdmin email requested the AE review an order checklist and attach required documents in SFDC; Order Operations SLA is same-business-day booking if received before 3PM local time once documents are complete.
+
+- VAST Data presented VAST + AKS to Microsoft Global Black Belt (GBB) AI infrastructure sellers as part of the Microsoft AKS AI Roadshow context.
+
+- The Microsoft request for an Azure VoC instance relates to VAST's cloud offering readiness on Azure.
+
+- When GDC or Azure Local opportunities involve hardware, VAST on-prem teams tend to take ownership, which creates confusion over accountability and reduces visibility into progress and outcomes for cloud product management.
+
+- The document "VAST and Azure Integration.docx" appears to be related to VAST Data cloud integration work with Microsoft Azure.
+
+- The Cloud program includes work related to a PRD for "VAST on Azure" discussed with Microsoft.
+
+- The document text claims VAST 'Cold Data' can be transparently tiered to Azure Blob using either VAST native opaque formats (for maximum data reduction) or transparent open standard formats (for ecosystem accessibility).
+
+- The document argues that constrained flash supply and rising prices make an 'all-flash everything' strategy economically risky for exabyte-scale data, and that deep integration with Azure Blob lets customers keep the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set.
+
+- VAST Data is seeing growing interest from the field in whether VAST supports Google Distributed Cloud (GDC) and Azure Local.
+
+- Jeff Denworth requested that cloud purchase orders be tracked for product and business learnings (customer expectations, user experience, cloud implications, and business development angles).
+
+- A VAST on Cloud course and a project brief are being built from existing materials and are intended for field enablement; the team is asked to review for messaging and technical accuracy and to improve clarity.
+
+- A working session related to the VAST on Cloud course and project brief is planned for January 2026 (exact date not specified).
+
+- Jeff Denworth requested that Jason Vallery track cloud purchase orders to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- The document text claims integrating with Azure Blob allows customers to keep the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set, as a hedge against flash component price volatility.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -491,6 +543,80 @@ not done
 - Messaging on flash supply constraints and VAST data reduction efficiencies (DRR) as mitigation
 
 - Azure Blob integration positioning for GPU-adjacent working set vs long-tail storage
+
+- Holiday timeline management to avoid loss of momentum
+
+- Microsoft AI Infrastructure (MAI) storage decision process and internal politics
+
+- Supply chain constraints, lead times, and reservation strategy for Microsoft demand
+
+- VAST PoC scaling requirements (1,000-2,000 GPUs) and where to run performance testing
+
+- Competitive positioning versus Azure Blob and sensitivity to aggressive messaging
+
+- Potential deployment timing for MAI (GPU drop in February, solution needed May/June 2026)
+
+- Salesforce RFE workflow: linking RFE 0482 to the correct Related Feature
+
+- VAST Uplink visibility model across NCPs for NVIDIA DGX Cloud
+
+- Dual-uplink visibility for dedicated VAST clusters (LAX-02)
+
+- Tenant-scoped visibility for multi-tenant VAST clusters (LAX-03)
+
+- Support posture for Google Distributed Cloud (GDC)
+
+- Support posture for Azure Local
+
+- Internal ownership model and accountability when hardware is involved in cloud-adjacent opportunities
+
+- Cloud product management vs on-prem team ownership for hyperscaler-tied solutions
+
+- Visibility into execution progress and outcomes for GDC/Azure Local opportunities
+
+- Microsoft workback plan financial analysis and scenario modeling
+
+- CoreWeave most favored nation clause and exclusivity implications for Microsoft pricing discussions
+
+- Hardware and software cost split modeling for CoreWeave and for potential Microsoft proposals
+
+- Positioning against Microsoft internal storage team and readiness for Davos
+
+- VAST cold data tiering to Azure Blob: VAST native object format vs native Azure Blob format
+
+- Azure Blob integration positioning for GPU-adjacent working set vs long-tail dataset storage
+
+- Ownership and accountability model for Google Distributed Cloud (GDC) opportunities at VAST Data
+
+- Ownership and accountability model for Azure Local opportunities at VAST Data
+
+- Cross-team handoff and visibility issues between cloud product management and on-prem teams when hardware is involved
+
+- Hyperscaler-aligned acquisition and cloud consumption tie-in for GDC and Azure Local solutions
+
+- RFE 0538 Salesforce record linking to the correct Related Feature
+
+- VAST OS 5.3+ tenant name character restrictions (underscore not supported)
+
+- Customer deployment delays caused by undocumented naming restrictions (NTT DATA Japan Corporation)
+
+- Project brief for VAST on Cloud
+
+- Review for messaging accuracy and technical accuracy
+
+- Improving clarity of enablement materials for the field
+
+- Data format choice for Azure Blob tiering (VAST object format vs native Azure Blob format)
+
+- VAST DRR (data reduction ratio) and efficiency positioning
+
+- Microsoft Redmond lab physical VAST proof-of-concept testing status
+
+- Request for Azure VoC instance to test performance with Azure GPU instances
+
+- Readiness gap of VAST Azure for performance testing and customer evaluation
+
+- Follow-up call planning with Microsoft requestors
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
@@ -521,3 +647,7 @@ not done
 - RFE 0538 (Documentation) was submitted to the PM team and approved by Rob Benoit.
 
 - VAST AI sellers are expected to attend the KV Cache and NVIDIA CME training live or watch the recording to prepare for customer conversations.
+
+- Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to build trust beyond Kushal Datta.
+
+- VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST Azure is not ready for that use case.
