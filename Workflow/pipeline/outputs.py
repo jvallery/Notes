@@ -261,6 +261,9 @@ prompt_file: "{prompt_ref}"
         Uses the jason_persona.yaml to generate impact-driven, persona-aligned responses.
         Falls back to a simple template if LLM call fails.
         """
+        if self.dry_run:
+            return self._build_template_reply(extraction, reply_context)
+
         # Try LLM-based generation
         try:
             return self._generate_llm_reply(

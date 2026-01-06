@@ -192,6 +192,8 @@ not done
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
 
 - 2025-12-17: Mentioned in: Zoom meeting summary: Jason Vallery and Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting setup for Jan 7, 2026
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
