@@ -13,6 +13,13 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Be onsite and live as a VAST Forward breakout spokesperson during VAST Forward on February 25-26, 2026. 📅 2026-02-25 ⏫ #task #proposed #auto
+- [?] If there are concerns or conflicts with the assigned VAST Forward spokesperson role, contact Jeff Denworth and Kirstin Bordner directly (do not reply-all). 📅 2026-01-06 ⏫ #task #proposed #auto
+- [?] Review and start from the VAST Forward session template that Kirstin Bordner will send to VAST spokespeople/SMEs ahead of the January 6, 2026 intro call. 📅 2026-01-06 🔼 #task #proposed #auto
+- [?] Participate in the final dry run for the assigned VAST Forward breakout session (date not specified in the email). 📅 2026-02-24 🔼 #task #proposed #auto
+- [?] Complete a minimum of two customer prep sessions for the assigned VAST Forward breakout session (possibly more, depending on customer needs). 📅 2026-02-24 ⏫ #task #proposed #auto
+- [?] Schedule and complete an internal 1:1 prep call for VAST Forward breakout spokesperson preparation during the week of January 6, 2026 (scheduling in progress). 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] Attend the VAST Forward spokesperson intro call on January 6, 2026 at 11:00am ET. 📅 2026-01-06 ⏫ #task #proposed #auto
 - [?] Send an initial LinkedIn message to Louis Feuvrier to start the conversation after the connection acceptance. 🔽 #task #proposed #auto
 - [?] If there are any concerns or conflicts with the VAST Forward spokesperson assignment, contact Jeff Denworth and Kirstin Bordner directly (do not reply-all). 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Review the VAST Forward session template that Kirstin Bordner will send to all VAST spokespeople/SMEs ahead of the 2026-01-06 intro call. 📅 2026-01-06 🔼 #task #proposed #auto

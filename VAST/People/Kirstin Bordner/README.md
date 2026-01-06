@@ -112,6 +112,8 @@ role: Vice President, Global Communications & Customer Marketing
 - Kirstin Bordner stated Jay Parikh (EVP for CoreAI at Microsoft) is participating in Roland's January 6, 2026 keynote and suggested VAST try to meet him in Las Vegas.
 
 - Kirstin Bordner requested that anyone with concerns or conflicts about their VAST Forward spokesperson assignment contact Jeff Denworth and Kirstin Bordner directly and not reply-all.
+
+- Kirstin Bordner is Vice President, Global Communications and Customer Marketing at VAST Data and is coordinating VAST spokesperson assignments for VAST Forward.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule

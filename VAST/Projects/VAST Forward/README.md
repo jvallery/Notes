@@ -285,6 +285,8 @@ not done
 - Process for raising conflicts with VAST Forward spokesperson assignments (contact Jeff Denworth and Kirstin Bordner directly, do not reply-all)
 
 - Session template distribution for VAST Forward spokespeople/SMEs
+
+- Session template distribution prior to the January 6 intro call
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.

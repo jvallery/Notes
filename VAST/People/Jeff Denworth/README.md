@@ -691,6 +691,8 @@ last_enriched: '2026-01-05'
 - 2025-12-23: Jeff Denworth shared that Walmart re-stated requirements after an internal meeting, emphasizing a lo...
 
 - 2025-12-23: VAST Forward 2026 speaker selection and required prep cadence
+
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout spokesperson, required prep cadence and key dates
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
