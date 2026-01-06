@@ -162,6 +162,10 @@ expertise:
 - Jason Vallery reported hearing from multiple Azure stakeholders that the final Microsoft MAI storage decision is made by a person named Mustafa (last name not provided in the email).
 
 - Jason Vallery stated he has no existing relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan (Microsoft MAI stakeholders) and that Lior Genzel will lead efforts to get introductions.
+
+- Lior Genzel indicated Jason Vallery will take the lead on answering whether the proposed SSDs are Self-Encrypting Drives (SEDs) for the Google GDC Storage RFP proposal.
+
+- David Pawlak (Google) did not have Jason Vallery's email address and asked Lior Genzel to loop Jason into the GDC Storage RFP follow-up thread.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -216,6 +220,8 @@ expertise:
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing (HW/SSD), SEDs, BYOH partners, and scheduling
 ## Open Tasks
 ```tasks
 path includes James Vallery

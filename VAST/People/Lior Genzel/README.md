@@ -524,6 +524,16 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel reported that Vamshi (Azure Blob product leader, last name not provided) communicated that Microsoft's decision is internal and expressed frustration with VAST Data's aggressive approach in highlighting Azure Blob deficiencies.
 
 - Lior Genzel reported that Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
+
+- Lior Genzel stated that the proposed VAST Data solution for the Google GDC Storage RFP includes hardware pricing and includes SSDs, and that VAST does not sell HDDs.
+
+- Lior Genzel stated that the hardware pricing in the Google GDC Storage RFP proposal is valid for the proposal time and noted a global SSD shortage with expected higher SSD prices into 2026.
+
+- Lior Genzel stated that VAST Data can work with Google to certify a Google-preferred hardware partner for BYOH because the GDC Storage RFP project represents sufficiently large business upside.
+
+- Lior Genzel stated that VAST Data has Cisco, Dell, HPE, and Supermicro certified as eBox partners for VAST offerings.
+
+- Lior Genzel committed to check with VAST Data partner organization for the full list of globally certified hardware partners and share it with Google.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -780,6 +790,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-16: Mentioned in: Microsoft prospect requests VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing (HW/SSD), SEDs, BYOH partners, and scheduling
 ## Open Tasks
 ```tasks
 path includes Lior Genzel

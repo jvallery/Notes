@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate scheduling with Google (David Pawlak) for an additional one-hour meeting to walk through a Google-provided document, with Google requesting Friday (December 19, 2025) specifically with Jason Vallery if possible, otherwise target Monday. 📅 2025-12-19 ⏫ #task #proposed #auto
+- [?] Check with VAST Data partner organization for the full list of globally certified hardware partners and share the list with Google for BYOH planning in the Google GDC Storage RFP. @Lior Genzel 🔼 #task #proposed #auto
+- [?] Confirm to Google (David Pawlak) that recurring pricing in the Google GDC Storage RFP proposal includes hardware and SSDs, and explicitly state that VAST Data does not sell HDDs. @TBD 🔼 #task #proposed #auto
+- [?] Provide Google (David Pawlak) a clear written explanation of how VAST Data's proposed offering meets FIPS compliance requirements raised by Kamal Vyas for the Google GDC Storage RFP. @TBD ⏫ #task #proposed #auto
+- [?] Respond to Google (David Pawlak) with clarification on whether the SSDs in the proposed Google GDC Storage RFP solution are Self-Encrypting Drives (SEDs). ⏫ #task #proposed #auto
 - [?] Decide whether to accept the Slice invitation and complete Slice account setup using the invitation link to access and manage VAST Data equity grants and securities. 🔼 #task #proposed #auto
 - [?] Edit "VAST and Azure Integration.docx" to clearly distill and communicate the crawl-walk-run phased plan for the Azure + VAST integration proposal so it is obvious to a first-time reader. ⏫ #task #proposed #auto
 - [?] Review the Google Docs share request and grant or deny Lior Genzel access to the document "VAST and Azure Integration.docx". 🔼 #task #proposed #auto

@@ -169,9 +169,8 @@ class OutputGenerator:
             counter += 1
         
         # Build draft content
-        # If we have a context bundle and source content, we could call LLM here
-        # For now, use the reply_context from extraction as a starting point
-        draft_body = self._build_reply_body(extraction, suggested.reply_context or "")
+        # Use LLM with persona for high-quality replies
+        draft_body = self._build_reply_body(extraction, suggested.reply_context or "", source_content)
         
         # Include email if available
         to_field = f"{sender} <{sender_email}>" if sender_email else sender
@@ -226,25 +225,112 @@ source_file: "{extraction.source_file}"
         
         return output_path
     
-    def _build_reply_body(self, extraction: UnifiedExtraction, reply_context: str) -> str:
-        """Build the draft reply body.
+    def _build_reply_body(self, extraction: UnifiedExtraction, reply_context: str, source_content: str = "") -> str:
+        """Build the draft reply body using LLM with persona.
         
-        This is a simple version that provides a template.
-        A more advanced version would call the LLM with persona + context.
+        Uses the jason_persona.yaml to generate impact-driven, persona-aligned responses.
+        Falls back to a simple template if LLM call fails.
         """
-        # Extract questions/requests from the extraction
+        # Try LLM-based generation
+        try:
+            return self._generate_llm_reply(extraction, reply_context, source_content)
+        except Exception as e:
+            if self.verbose:
+                print(f"  [WARN] LLM reply generation failed: {e}, using template fallback")
+            return self._build_template_reply(extraction, reply_context)
+    
+    def _generate_llm_reply(self, extraction: UnifiedExtraction, reply_context: str, source_content: str = "") -> str:
+        """Generate reply body using LLM with persona."""
+        from openai import OpenAI
+        
+        client = OpenAI()
+        model_config = get_model_config("draft_responses")
+        persona = _load_persona()
+        
+        # Build persona context
+        identity = persona.get("identity", {})
+        style = persona.get("style", {})
+        
+        # Determine sender
+        sender = "Unknown"
+        if extraction.contacts:
+            sender = extraction.contacts[0].name or "Unknown"
+        elif extraction.participants:
+            for p in extraction.participants:
+                if p.lower() not in ("myself", "jason vallery", "jason"):
+                    sender = p
+                    break
+        first_name = sender.split()[0] if sender != "Unknown" else "there"
+        
+        # Build questions and commitments
+        questions = extraction.questions if hasattr(extraction, 'questions') else []
+        commitments = extraction.commitments if hasattr(extraction, 'commitments') else []
+        
+        system_prompt = f"""You are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
+
+## COMMUNICATION STYLE
+- Direct but Empathetic: Respect their time while acknowledging their effort
+- Bias for Action: Use active voice with specific next steps  
+- Confident & Expert: No hedging on technical facts
+- BLUF: Bottom Line Up Front - the answer goes in the first 2 sentences
+
+## FORMATTING RULES
+- Short paragraphs (1-2 sentences)
+- Use specific dates/times, not "soon" or "when you can"
+- Professional warmth without emojis
+- Keep response to 2-4 paragraphs total
+
+## YOUR TASK
+Write a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].
+If you don't have enough information to answer something, either:
+1. Make a reasonable assumption and answer
+2. Acknowledge you'll need to check and get back to them with a specific timeframe
+
+Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
+
+        user_prompt = f"""Write a reply to {sender} about: {extraction.title}
+
+## EMAIL SUMMARY
+{extraction.summary}
+
+## KEY POINTS TO ADDRESS
+{reply_context or "No specific points identified"}
+
+## QUESTIONS ASKED
+{json.dumps(questions) if questions else "None"}
+
+## COMMITMENTS MADE
+{json.dumps(commitments) if commitments else "None"}
+
+## CONTEXT
+- Recipient first name: {first_name}
+- Urgency: {extraction.suggested_outputs.reply_urgency if extraction.suggested_outputs else "normal"}
+
+Write the complete email body now (greeting through signature):"""
+
+        response = client.chat.completions.create(
+            model=model_config["model"],
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": user_prompt},
+            ],
+            temperature=model_config.get("temperature", 0.7),
+        )
+        
+        return response.choices[0].message.content.strip()
+    
+    def _build_template_reply(self, extraction: UnifiedExtraction, reply_context: str) -> str:
+        """Build a simple template-based reply (fallback)."""
         questions = extraction.questions if hasattr(extraction, 'questions') else []
         commitments = extraction.commitments if hasattr(extraction, 'commitments') else []
         
         body_parts = []
         
         # Determine the sender's first name
-        # For emails, use the first contact (the sender)
         sender = "there"
         if extraction.contacts:
             sender = extraction.contacts[0].name or "there"
         elif extraction.participants:
-            # Skip self
             for p in extraction.participants:
                 if p.lower() not in ("myself", "jason vallery", "jason"):
                     sender = p
@@ -253,32 +339,26 @@ source_file: "{extraction.source_file}"
         body_parts.append(f"Hi {first_name},")
         body_parts.append("")
         
-        # Address key points
         if reply_context:
             body_parts.append("Thank you for your email. Here's my response:")
             body_parts.append("")
-            
-            # Convert reply_context to bullet points if not already
             for point in reply_context.split(". "):
                 if point.strip():
                     body_parts.append(f"- {point.strip()}")
             body_parts.append("")
         
-        # Address questions
         if questions:
             body_parts.append("To answer your questions:")
             for q in questions[:3]:
                 body_parts.append(f"- {q}: [TODO: Add answer]")
             body_parts.append("")
         
-        # Note any commitments
         if commitments:
             body_parts.append("I'll follow up on:")
             for c in commitments[:3]:
                 body_parts.append(f"- {c}")
             body_parts.append("")
         
-        # Closer
         body_parts.append("Let me know if you have any questions.")
         body_parts.append("")
         body_parts.append("Best,")

@@ -5,7 +5,7 @@ account_type: partner
 status: Partner
 industry: _Unknown_
 my_role: ''
-last_contact: '2025-12-15'
+last_contact: '2025-12-17'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -128,6 +128,8 @@ not done
 - 2026-01-05: Mentioned in: Calendar invite: Google RFP internal sync (Jan 5, 2026 11:00-11:30am MT)
 - 2025-12-19: Mentioned in: Mordechai Blaunstein shared Google Doc: CoreWeave-VAST Automation Project - V2
 - 2025-12-17: Google (GDC Storage RFP team) requested a follow-up meeting with VAST to review and clarify VAST's G...
+
+- 2025-12-17: Google (David Pawlak) requested follow-up clarifications on VAST Data's Google Distributed Cloud (GD...
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -254,6 +256,8 @@ not done
 - Google Slides was used to share and request edit access for the presentation "GCP Flow from customer to sales to customer.pptx".
 
 - Google Docs (Google Drive) sent an automated email notification that a document was shared for editing.
+
+- A one-hour call to review and clarify VAST Data's Google GDC Storage RFP proposal was scheduled for Monday, December 15, 2025 at 2:00 PM PT (selected by Lior Genzel from Google-proposed slots).
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications
@@ -362,3 +366,5 @@ not done
 - VAST selected Monday 2025-12-15 at 2:00pm PT for the initial one-hour Google GDC Storage RFP review call (as requested by David Pawlak).
 
 - For the Google Distributed Cloud RFP response, position VAST as focusing on software-based encryption (potentially FIPS certified) rather than committing to self-encrypting drive (SED) hardware options.
+
+- Lior Genzel selected Monday, December 15, 2025 at 2:00 PM PT for the initial one-hour Google GDC Storage RFP clarification call.
