@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Review the draft VAST on Cloud Project Brief and provide suggestions to improve clarity for the field and ensure alignment. 📅 2026-01-07 ⏫ #task #proposed #auto
+- [?] Review the draft VAST on Cloud Cloud Course and provide feedback on messaging accuracy and technical correctness. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] John Mao to fly to San Francisco early in the new year to visit his OpenAI friend and open an engineering-centered dialogue, with the goal of bringing in VAST Data engineering. @John Mao 🔼 #task #proposed #auto
 - [?] Send John Mao a list of specific information requests/questions for his OpenAI friend (Online Data Infrastructure lead) to answer, focused on OpenAI online data architecture, Rockset usage, and any planned merge of Applications and Research datasets. 🔼 #task #proposed #auto
 - [?] Store the BetterDisplay Pro license key (F01DF371-69F5C31C-AEA33E9C-D615FB85-8B873E99) in a secure password manager and note it is for BetterDisplay activation. 📅 2025-12-17 🔼 #task #proposed #auto

@@ -4,7 +4,7 @@ title: Cloud
 status: active
 my_role: owner
 description: Cloud platform strategy, multi-tenancy, operability, and marketplace readiness across hyperscalers.
-last_contact: '2025-12-01'
+last_contact: '2025-12-15'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -332,6 +332,8 @@ not done
 - VAST on Azure is not close to being ready to support Microsoft's requested Azure VoC performance testing use case (per Lior Genzel).
 
 - VAST Cloud product leadership (Jason Vallery) was introduced to Microsoft to enable technical collaboration.
+
+- A draft 'VAST on Cloud' Cloud Course and a Project Brief have been started using existing material and are being reviewed for messaging and technical accuracy before a January working session.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -693,6 +695,10 @@ not done
 - VAST Uplink visibility model and multi-VIP access to VMS endpoints (GUI/CLI/REST/SSH/CSI)
 
 - Proposed 'Service Aware VIP Pool' and tracking Jira ORION-261324
+
+- Project Brief review for alignment, clarity, and accuracy
+
+- Sales enablement messaging and technical accuracy for field readiness
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
