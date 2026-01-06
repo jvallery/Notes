@@ -13,6 +13,13 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Draft a CES media strategy to engage journalists and insert VAST into NVIDIA launch coverage, including considering a VAST "available now" press release pointing to Asaf's demo and sending it to NVIDIA for review. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Create VAST content for the NVIDIA Rubin platform announcement (Kirstin Bordner noted there is currently no VAST content for Rubin). @TBD 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Approve the new BF4 blog written by Nicole and share it with Kirstin Bordner so she can draft a VAST press release aligned to the NVIDIA CME embargo lift. @Jeff Denworth 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Approve the VAST mentions in NVIDIA press releases (NVIDIA CME press release, NVIDIA Rubin press release, and Open Models press release) since NVIDIA is requesting approval rather than a quote. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Schedule a review meeting with Renen Hallak and Gilad on Monday, December 29, 2025, including at least one person from the California team working on Jensen's press conference presentation, to review CES/NVIDIA press conference content. @Marianne Budnik 📅 2025-12-29 ⏫ #task #proposed #auto
+- [?] Register Renen Hallak for NVIDIA Live at CES (January 5, 2026 at 1:00pm PT at the Fontainebleau) if he decides to attend. @Kirstin Bordner 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Arrange a meeting with Microsoft EVP for CoreAI Jay Parikh while the VAST team is in Las Vegas for CES (coordinate with the Microsoft team). @TBD 📅 2026-01-05 ⏫ #task #proposed #auto
 - [?] Coordinate with Alon Horev to evaluate options for Anson (Qi)'s PoC environment and to potentially merge Kushal Datta's MAI plans with Qi's PoC plans. @Lior Genzel 📅 2025-12-19 🔼 #task #proposed #auto
 - [?] Identify the most strategic environment to run Anson (Qi)'s VAST PoC for 1,000 to 2,000 GPU scale testing, choosing between Microsoft MAI/Vipin environment and third-party clusters (Nscale or CoreWeave). @Lior Genzel 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Obtain introductions and establish communication with Microsoft MAI stakeholders Majid Mohammed (Mustafa chief of staff), Yunchao Gong (Kushal Datta's manager), and Karén Simonyan (chief scientist reporting to Mustafa). @Lior Genzel 📅 2026-01-10 ⏫ #task #proposed #auto

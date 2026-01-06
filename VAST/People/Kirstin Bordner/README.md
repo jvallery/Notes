@@ -88,6 +88,12 @@ role: Vice President, Global Communications & Customer Marketing
 - Kirstin Bordner stated there are three topics to insert VAST into the NVIDIA CES news cycle: CME (blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
 
 - Kirstin Bordner is Vice President, Global Communications and Customer Marketing at VAST Data and can be reached at kbordner@vastdata.com and +1.208.501.3383.
+
+- Kirstin Bordner recommended Renen Hallak arrive in Las Vegas on January 5, 2026 (instead of January 6, 2026) to attend NVIDIA Live, without rearranging flash vendor meetings.
+
+- Kirstin Bordner added John Mao because he is planning to be in Las Vegas and can be used for press interviews while Renen Hallak is meeting flash vendors.
+
+- Kirstin Bordner identified three NVIDIA CES news-cycle topics for VAST insertion: CME (blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
 ## Recent Context
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
@@ -117,6 +123,8 @@ role: Vice President, Global Communications & Customer Marketing
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
 - 2025-12-23: Mentioned in: VAST Forward 2026: Selected as VAST breakout spokesperson, required prep cadence and key dates
 - 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
+
+- 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 ## Open Tasks
 ```tasks
 path includes Kirstin Bordner

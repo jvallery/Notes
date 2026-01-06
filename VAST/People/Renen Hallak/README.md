@@ -143,6 +143,8 @@ tags:
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 ## Open Tasks
 ```tasks
 path includes Renen Hallak

@@ -3,7 +3,7 @@ type: people
 email: john@vastdata.com
 company: VAST Data
 title: John Mao
-last_contact: '2025-12-12'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -95,6 +95,8 @@ phone: +1-512-535-8234
 - 2025-12-12: John Mao shared details from a catch-up with a close friend at OpenAI who leads the Online Data Infr...
 
 - 2025-12-12: John Mao shared details from a catch-up with a close personal friend who recently joined OpenAI to l...
+
+- 2025-12-21: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 ## Open Tasks
 ```tasks
 path includes John Mao

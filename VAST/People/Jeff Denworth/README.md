@@ -635,6 +635,8 @@ last_enriched: '2026-01-05'
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 
 - 2025-12-21: Jeff Denworth raised urgent concerns about whether Microsoft MAI expects to use VAST's supply chain,...
+
+- 2025-12-21: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
