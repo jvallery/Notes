@@ -70,3 +70,5 @@ not done
 - Scheduling a call next week
 
 - Scheduling a quick introductory call
+
+- Introduction and networking for FP&A Director role

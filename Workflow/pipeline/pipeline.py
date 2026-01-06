@@ -239,10 +239,18 @@ class UnifiedPipeline:
                     result.errors.extend(apply_result.errors)
             phase_timings["apply_ms"] = apply_ms
             
-            # 6. Generate outputs (if enabled and extraction suggests needs_reply)
+            # 6. Generate outputs (if enabled)
+            # For emails, always generate drafts when --draft-replies is set.
+            # For other content types, respect suggested_outputs.needs_reply.
             outputs_ms = 0
             suggested = extraction.suggested_outputs
-            if apply and self.generate_outputs and suggested and suggested.needs_reply:
+            is_email = envelope.content_type.value == "email"
+            should_generate_outputs = (
+                apply 
+                and self.generate_outputs 
+                and (is_email or (suggested and suggested.needs_reply))
+            )
+            if should_generate_outputs:
                 outputs_start = time.time()
                 outputs = self.output_generator.generate_all(
                     extraction, 
