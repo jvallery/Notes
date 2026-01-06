@@ -301,7 +301,7 @@ Facts/tasks for Akanksha Mehrotra were mistakenly attributed in Kanchan Mehrotra
 
 **Goal:** Make post-import cleanup automatic and idempotent as part of the ingest flow.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 17:12)
 
 **Discovery:**
 Multiple cleanup passes were required after import (frontmatter normalization, header placeholders cleanup).
