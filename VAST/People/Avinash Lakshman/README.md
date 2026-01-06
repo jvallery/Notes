@@ -59,6 +59,10 @@ tags:
 - Avinash Lakshman demonstrated secure and auditable interactions using digital signatures and identity-based wallets in the browser, positioning this as providing stronger auditability and visibility than traditional TLS-only approaches.
 
 - Avinash Lakshman requested access to public information on VAST Data's current development status for relevant capabilities, and Jason Vallery agreed to provide this via email.
+
+- Jason Vallery raised a concern about whether a browser agent is necessary for Whale Iptic's security model; Avinash Lakshman stated the browser agent is minimal and focused on identity management while enabling full auditability and visibility of actions.
+
+- Avinash Lakshman requested public information on VAST Data's current development status to evaluate potential integration or alignment with Whale Iptic's platform.
 ## Recent Context
 
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
@@ -117,6 +121,8 @@ not done
 - Secure and auditable LLM management using digital signatures and identity-based wallets
 
 - Whale Iptic secure distributed compute platform for AI agents and Web2 applications
+
+- Icarus conversational agent and Cerebrum SDK (trust-aware agent orchestrator)
 ## Key Decisions
 
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities.
@@ -138,3 +144,5 @@ not done
 - Avinash Lakshman will review VAST Data information and consider potential integration or alignment with Whale Iptic's platform, then potentially follow up with ideas or proposals.
 
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities to support evaluation of alignment or integration with Whale Iptic.
+
+- Jason Vallery and Avinash Lakshman agreed to maintain communication and continue exploring potential integration or alignment between Whale Iptic's secure compute platform and VAST Data's storage and GPU infrastructure strategy.

@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Review the VAST Data information sent by Jason Vallery and consider how Whale Iptic's platform could be integrated or aligned with VAST Data's roadmap, then follow up with ideas or proposals. @Avinash Lakshman 🔼 #task #proposed #auto
+- [?] Send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities so Whale Iptic can evaluate integration/alignment. ⏫ #task #proposed #auto
 - [?] Provide a decision on whether Microsoft prospect Trevor Cooper-Chadwick should be granted access to the VAST Customer Learning Portal customer materials, based on Lior Genzel's findings and senior executive guidance. 🔼 #task #proposed #auto
 - [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in "pending approval" status until Lior Genzel provides guidance on whether access should be granted. @Kristin Thompson 🔼 #task #proposed #auto
 - [?] Reach out to Trevor Cooper-Chadwick (Microsoft, Principal Consultant, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access, given Microsoft is in an engineering-level PoC (UK Met) and not yet a customer. @Lior Genzel ⏫ #task #proposed #auto

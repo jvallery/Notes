@@ -148,6 +148,8 @@ not done
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing; VAST plans to decline
 
 - 2025-12-11: Mentioned in: VAST and Microsoft Ignite follow-up, intro request and architecture docs
+
+- 2025-12-17: Mentioned in: 1:1 discussion with Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -336,6 +338,8 @@ not done
 - A draft 'VAST on Cloud' Cloud Course and a Project Brief have been started using existing material and are being reviewed for messaging and technical accuracy before a January working session.
 
 - A VAST on Cloud training course and a project brief are being assembled from existing materials and will be reviewed for messaging and technical accuracy before a January working session.
+
+- The discussion included potential integration of VAST Data cloud storage capabilities with GPU infrastructure and distributed ledger technology for secure, verifiable agent execution across multiple cloud providers.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

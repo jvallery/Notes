@@ -31,11 +31,19 @@ not done
 ## Recent Context
 
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
+
+- 2025-12-17: Mentioned in: 1:1 discussion with Avinash Lakshman on Whale Iptic secure compute platform and potential VAST integration
 ## Key Facts
 
 - Whale Iptic's platform includes Icarus, a conversational agent intended to interact with enterprise-grade systems, and Cerebrum, an SDK for a trust-aware agent orchestrator with fine-grained authorization control and auditability.
 
 - Whale Iptic demonstrated a multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce the risk of service disruption from a single cloud provider outage.
+
+- Whale Iptic has two main offerings: Icarus (a conversational agent that can interact with enterprise-grade systems) and Cerebrum (an SDK for a trust-aware agent orchestrator with fine-grained authorization control and auditability).
+
+- Whale Iptic demonstrated a multi-pod architecture running across AWS, Google Cloud Platform (GCP), and Microsoft Azure to reduce disruption risk from a single cloud provider outage.
+
+- Whale Iptic uses a distributed ledger system to provide data sovereignty and fault tolerance across cloud regions using custom Byzantine Fault Tolerant (BFT) consensus algorithms.
 ## Topics
 
 - Whale Iptic secure compute platform for AI agents and Web2 applications
