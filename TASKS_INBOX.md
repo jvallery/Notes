@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Review the VAST on Cloud project brief and provide feedback to ensure alignment, clarity, and accuracy ahead of the January working session. 📅 2026-01-07 ⏫ #task #proposed #auto
+- [?] Review the draft VAST on Cloud course and provide feedback on messaging accuracy, technical correctness, and clarity for the field; submit feedback to Terika Dilworth. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Coordinate with John Mao to identify the right VAST engineering participants to engage with John Mao's OpenAI contact after John Mao's San Francisco visit (engineering-centered engagement). 🔼 #task #proposed #auto
 - [?] Send John Mao a prioritized list of information requests to ask his OpenAI contact (for example: current Rockset architecture details, CosmosDB usage patterns, DAQ storage requirements, and plans/timeline for merging Applications and Research datasets). 🔼 #task #proposed #auto
 - [?] Send Sushant Rewaskar (Microsoft) the VAST architecture documents that were discussed in San Francisco (confirm which specific documents are appropriate to share externally). @Lior Genzel 📅 2025-12-12 ⏫ #task #proposed #auto

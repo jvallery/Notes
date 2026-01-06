@@ -4,7 +4,7 @@ title: Cloud
 status: active
 my_role: owner
 description: Cloud platform strategy, multi-tenancy, operability, and marketplace readiness across hyperscalers.
-last_contact: '2025-12-01'
+last_contact: '2025-12-15'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -300,6 +300,8 @@ not done
 - When GDC or Azure Local opportunities involve hardware, VAST on-prem teams tend to take ownership, which can create confusion over accountability and reduce Cloud Product Management visibility into progress and outcomes.
 
 - VAST Azure readiness is a gating factor for supporting Microsoft requests for Azure VoC performance testing against Azure GPU instances.
+
+- A VAST on Cloud course and a project brief are being built from existing material and will be reviewed in a January working session.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -637,6 +639,10 @@ not done
 - Tenant-scoped visibility for multi-tenant cluster LAX-03 (DGX Cloud tenant only)
 
 - Jira ORION-261324 and internal wiki documentation for Service Aware VIP Pool
+
+- Technical accuracy and messaging alignment for VAST on Cloud
+
+- Project brief review for clarity and accuracy
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.

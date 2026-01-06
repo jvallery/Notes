@@ -56,6 +56,8 @@ role: Technical Enablement Director
 - Terika Dilworth is a Sales Enablement Manager at VAST Data and is coordinating a VAST on Cloud training course and project brief review process for the field.
 
 - Terika Dilworth organized an urgent internal training session to prepare VAST AI sellers for customer conversations about NVIDIA KV Cache storage and NVIDIA Context Memory Extension (CME) announcements at CES, and VAST's collaboration with NVIDIA on inference infrastructure architecture.
+
+- Terika Dilworth is a Sales Enablement Manager at VAST Data and is driving creation of a VAST on Cloud course and project brief for field enablement.
 ## Recent Context
 
 - 2026-01-01: Mentioned in: Training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) for inference infrastructure
