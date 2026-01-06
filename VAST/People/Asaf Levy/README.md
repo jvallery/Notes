@@ -43,6 +43,8 @@ last_enriched: '2026-01-05'
 - VAST is working with Asaf Levy and NVIDIA's Israel team on slides and animation for NVIDIA CES materials; a potential VAST press release may point to Asaf Levy's demo.
 
 - Marianne Budnik stated VAST is working with Asaf Levy and NVIDIA team members in Israel, including Idan (last name unknown) and Ranen Carmel (NVIDIA Creative Director based in Tel Aviv), on slides and animation for CES content.
+
+- Marianne Budnik said VAST is working with Asaf and the NVIDIA team in Israel on slides and animation for CES content, and a VAST press release may point to Asaf's demo.
 ## Recent Context
 
 - 2025-10-20: Mentioned in: 1:1 with Yogev Vankin: Multi-cloud global namespace, object-store tiering, GPU-adjacent cache, and metadata persistence

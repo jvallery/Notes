@@ -25,11 +25,15 @@ last_enriched: '2026-01-05'
 - Peter Imming previously managed Jason Vallery at Microsoft.
 
 - Peter Imming shared Sebastien Berube's cell phone number with Jason Vallery (number not included in the email).
+
+- Peter Imming shared Sebastien Berube's cell phone number with Jason Vallery (cell number not included in the email).
 ## Recent Context
 
 - 2025-12-18: Mentioned in: Intro: Peter Imming connects Jason Vallery with Sebastien Berube (AWS) for coffee meeting
 
 - 2025-12-18: Peter Imming introduced Sebastien Berube (AWS) to Jason Vallery (VAST Data) to explore potential new...
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) via Peter Imming, coffee set for Jan 7, 2026
 ## Open Tasks
 ```tasks
 path includes Peter Imming

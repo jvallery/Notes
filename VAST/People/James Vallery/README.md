@@ -13,8 +13,7 @@ enrichment_level: 3
 last_enriched: '2026-01-05'
 role: Senior Director of Product Management
 linkedin: https://www.linkedin.com/in/jvallery
-bio: Experienced product management leader with a background in cloud storage and
-  AI infrastructure.
+bio: Experienced product management leader with a background in cloud storage and AI infrastructure.
 location: Longmont, CO, USA
 previous_roles:
 - title: Principal Program Manager
@@ -65,6 +64,28 @@ expertise:
 - Jason Vallery stated he has no current relationship with Majid Mohammed (Mustafa's chief of staff at Microsoft), Yunchao Gong (Kushal Datta's manager at Microsoft), or Karén Simonyan (Yunchao Gong's manager and Microsoft MAI chief scientist).
 
 - Lior Genzel (VAST Data) indicated Jason Vallery (VAST Data) would take the lead on answering whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component.
+
+- Jason Vallery is the organizer of a 1:1 sync with Mordechai Blaunstein scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery stated that VAST currently lacks relationships with key MAI stakeholders Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's manager), and Karén Simonyan (Yunchao Gong's manager, chief scientist, direct report to Mustafa), and that Lior Genzel will lead getting introductions.
+
+- James Vallery applied via LinkedIn to job postings at Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, and Prologis.
+
+- James Vallery cannot figure out how to view 2nd-degree LinkedIn connections for a company and asked me to check whether I know anyone at the companies where he applied.
+
+- Jason Vallery organized a Zoom meeting titled "Erik/Jason - Sync on MAI pricing" scheduled for Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver).
+
+- Jason Vallery is VAST Data's VP of Product Management for Cloud and was added to the email thread to enable technical collaboration with Microsoft.
+
+- Jason Vallery reported hearing from multiple Azure contacts that the final MAI storage decision is Mustafa's.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted and may be misrepresenting his influence over Mustafa's decision.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan and that Lior Genzel will lead efforts to get introductions.
+
+- Jason Vallery previously noted (Nov 4, 2025) that his schedule became very busy due to a new job and frequent travel through the end of 2025, and he would attend mens group meetings if he is in town.
+
+- Lior Genzel (VAST Data) indicated Jason Vallery (VAST Data) would take the lead on answering whether the solution uses Self-Encrypting Drives (SEDs) for the SSD component.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -75,6 +96,16 @@ expertise:
 - 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom, Jan 2, 2026)
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and meeting request
+
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Jan 2, 2026)
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan (Microsoft MAI)
+- 2026-01-01: James Vallery emailed a list of LinkedIn job postings he applied to and asked me to check whether I ...
+- 2026-01-05: Mentioned in: Erik Wolf accepted: Sync with Jason Vallery on MAI pricing (Zoom, Jan 5 2026)
+- 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro between Jason Vallery and Sushant Rewaskar + request for VAST architecture docs
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom) on Friday, January 2, 2026
+- 2026-01-04: Mentioned in: Mens group: confirm quorum for Jan 6 '2084' final discussion and Wapos dinner
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing/HW, BYOH partner list, and meeting request
 ## Open Tasks
 ```tasks
 path includes James Vallery
@@ -92,3 +123,9 @@ not done
 - Checking personal network connections at target companies
 
 - LinkedIn job postings James Vallery applied to
+
+- James Vallery job search and applications
+
+- Using LinkedIn to identify 2nd-degree connections at target companies
+
+- Networking and referrals for job applications

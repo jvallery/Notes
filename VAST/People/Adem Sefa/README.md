@@ -23,6 +23,8 @@ role: Managing Director - Strategic Partnerships
 - Jay Parikh is EVP for CoreAI at Microsoft and is participating in Roland's January 6, 2026 CES keynote session; VAST wants to meet him while in Las Vegas.
 
 - Adem Sefa requested that Jason Vallery provide introductions for his brother-in-law Edwin Trogler related to an FP&A Director role.
+
+- Adem Sefa is Managing Director - Strategic Partnerships at Microsoft.
 ## Recent Context
 
 - 2025-11-20: Adem Sefa (Microsoft) introduced his brother-in-law, Edwin Trogler, to Jason Vallery for potential F...
@@ -64,3 +66,7 @@ not done
 - Potential FP&A opportunities in Colorado
 
 - Scheduling a call with Edwin Trogler
+
+- Scheduling a call next week
+
+- Scheduling a quick introductory call

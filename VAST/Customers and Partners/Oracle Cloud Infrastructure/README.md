@@ -31,8 +31,16 @@ not done
 ## Recent Context
 
 - 2025-12-08: Christian Linacre (VP, Alloy and Dedicated Regions at Oracle Cloud Infrastructure) introduced Jason ...
+
+- 2025-12-19: Mentioned in: AlphaSights urgent expert discussion request (Oracle, AWS, Salesforce, Microsoft)
+- 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) introduced Jason Vallery to Matthew Thomson, who run...
+- 2025-12-08: Christian Linacre (Oracle Cloud Infrastructure) replied that he is currently traveling and suggested...
+- 2025-12-12: Mentioned in: John Mao update on OpenAI org, data platforms (Rockset, Snowflake) and planned SF visit
 ## Key Facts
 
+- Oracle was listed as a topic for an AlphaSights expert discussion request sent to Jason Vallery.
+
+- OpenAI Research uses Oracle Cloud Infrastructure (OCI) for large frontier supercomputing clusters used for training (per John Mao's OpenAI contact).
 ## Topics
 
 - Intro between VAST Data and Oracle Cloud Infrastructure Alloy and Dedicated Regions product management
@@ -40,4 +48,16 @@ not done
 - Scheduling an in-person meeting in Seattle while Jason Vallery is in town
 
 - Oracle DRCC/Alloy product management contact handoff from Christian Linacre to Matthew Thomson
+
+- Intro between VAST Data and Oracle Cloud Infrastructure Alloy and Dedicated Regions leadership
+
+- Scheduling an in-person meeting in Seattle with Oracle product management for DRCC/Alloy
+
+- Oracle Cloud Infrastructure Alloy and Dedicated Regions relationship building with VAST Data
+
+- Potential in-person meeting in Seattle with Oracle DRCC/Alloy product management
+
+- Scheduling an in-person meeting in Seattle with Oracle DRCC/Alloy product management
 ## Key Decisions
+
+- Christian Linacre will connect Jason Vallery and Matthew Thomson so they can meet while Jason is in Seattle.

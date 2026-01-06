@@ -25,6 +25,14 @@ tags:
 - Terika Dilworth organized an urgent internal training session to prepare VAST AI sellers for customer conversations about KV Cache storage and NVIDIA's Context Memory Extension (CME) announcement tied to CES.
 
 - Terika Dilworth is driving a VAST on Cloud training course and a project brief built from existing materials, and is requesting team review for alignment, clarity, and technical accuracy.
+
+- Terika Dilworth is a Sales Enablement Manager at VAST Data and is coordinating a VAST on Cloud enablement course and project brief review process.
+
+- Terika Dilworth organized an urgent internal training session titled "Understanding the KV Cache Opportunity" to prepare VAST AI sellers for customer conversations about NVIDIA KV Cache storage and NVIDIA Context Memory Extension (CME) announcements at CES.
+
+- Terika Dilworth organized an urgent internal training session to prepare VAST AI sellers for customer conversations about KV Cache storage and NVIDIA Context Memory Extension (CME) announcements expected at CES.
+
+- Terika Dilworth is driving creation of a 'VAST on Cloud' enablement course and a project brief, assembled from existing materials, and is requesting team review for alignment, clarity, and technical accuracy.
 ## Recent Context
 
 - 2026-01-01: Mentioned in: Training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) for inference infrastructure
@@ -35,6 +43,10 @@ tags:
 
 - 2026-01-01: Mentioned in: Zoom training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME) ahead of CES
 - 2025-12-15: Mentioned in: Terika Dilworth requests review of VAST on Cloud course and project brief by January 7, 2026
+
+- 2025-12-15: Mentioned in: Terika Dilworth requests review of VAST on Cloud course and project brief by 2026-01-07
+- 2026-01-01: Mentioned in: Urgent internal training: KV Cache storage opportunity and NVIDIA Context Memory Extension (CME)
+- 2026-01-01: Mentioned in: Urgent internal training invite: KV Cache opportunity and NVIDIA Context Memory Extension (CME)
 ## Open Tasks
 ```tasks
 path includes Terika Dilworth

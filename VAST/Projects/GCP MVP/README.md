@@ -44,6 +44,14 @@ not done
 - 2025-12-17: On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sal...
 - 2026-01-05: Lior Genzel sent an updated Google Calendar invitation for an internal sync related to the Google RF...
 - 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
+
+- 2025-12-17: Mentioned in: Jonsi Stefansson shared Google Slides deck: GCP Flow from customer to sales to customer
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: FIPS, pricing incl. SSD HW, SEDs, BYOH partners, and scheduling
+- 2026-01-05: Mentioned in: Weekly Status: Azure Marketplace, SKU change request deadline and follow-ups
+- 2025-12-17: On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sal...
+- 2026-01-05: Itzik Reich asked Noa Cohen whether TLS support for VAST Block protocol would ship in VAST release 5...
+- 2026-01-05: Lior Genzel sent an updated Google Calendar invitation for an internal sync related to the Google RF...
+- 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
@@ -53,6 +61,16 @@ not done
 - TPU testing and benchmark methodology reviews can drive next-step engagement with Google stakeholders.
 
 - The "Google RFP: Internal Sync" calendar event was updated to use Zoom conferencing (Zoom meeting ID 97840966503, passcode 557890).
+
+- A deck titled "GCP Flow from customer to sales to customer" was shared, likely related to defining or documenting the GCP MVP customer and sales process flow.
+
+- The Google GDC Storage RFP engagement is part of VAST Data's broader Google Cloud Platform (GCP) workstream and requires coordination on compliance, hardware, and partner certification.
+
+- Jeff Denworth requested an updated deck for the Google Distributed Cloud (GDC) RFP.
+
+- The "Google RFP: Internal Sync" calendar event was updated to change conferencing details to a Zoom meeting (Meeting ID 97840966503, passcode 557890).
+
+- A deck titled "GCP Flow from customer to sales to customer" was shared, likely related to the GCP MVP workstream.
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement
@@ -68,6 +86,18 @@ not done
 - Updated conferencing details (Zoom) for internal sync
 
 - Internal coordination for Google RFP response
+
+- Google Slides document collaboration
+
+- Transport Layer Security (TLS) support for VAST Block protocol
+
+- VAST release planning for TLS for Block (planned for 5.6, deferred, possible minor after 5.6)
+
+- Google Distributed Cloud (GDC) RFP requirements and test timing
+
+- Updated Zoom conferencing details for internal sync
+
+- VAST internal sync meeting scheduling
 ## Key Decisions
 
 - Transaction path is marketplace-based private offers (no BYOL) for the MVP.

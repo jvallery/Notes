@@ -45,6 +45,12 @@ tags:
 - Alon Horev is leading AI Model Builder sessions for VAST Forward.
 
 - Lior Genzel stated he messaged Alon Horev to strategize options for the best environment to run Anson (Qi)'s VAST proof of concept and to potentially merge Kushal Datta's MAI plan with Qi's proof of concept plan.
+
+- Included as a recipient on the RFE 0482 email thread.
+
+- Alon Horev advised Jason Vallery to work with Violet (VAST contact, last name unknown) on Google Distributed Cloud RFP encryption and key management questions.
+
+- Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST PoC at 1,000-2,000 GPU scale.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -88,6 +94,14 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence and key dates
+
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan (Microsoft MAI)
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-23: Mentioned in: VAST Forward: selected as VAST spokesperson for breakout session, required prep cadence
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified multi-cluster visibility, dual-uplink and tenant-scoped views
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout spokesperson, required prep cadence and key dates
 ## Open Tasks
 ```tasks
 path includes Alon Horev

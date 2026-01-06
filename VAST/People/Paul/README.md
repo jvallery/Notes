@@ -1,6 +1,6 @@
 ---
 type: people
-email: ''
+email: paul.libenson@vastdata.com
 company: VAST Data
 title: Paul
 last_contact: '2025-12-01'
@@ -19,6 +19,8 @@ tags:
 - Paul is a newer VAST employee (approximately month four) and raised a customer scenario about moving workloads off GCP back to an on-prem data center, potentially using VAST on Cloud for hybrid or migration use cases.
 
 - Paul is a new VAST Data employee (month four) and is working a customer exploring moving workloads off Google Cloud Platform (GCP) back to an on-premises data center, potentially using VAST on Cloud for hybrid or migration scenarios.
+
+- Included as a recipient on the RFE 0482 email thread (email address paul.libenson@vastdata.com).
 ## Recent Context
 
 - 2025-11-06: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -38,6 +40,9 @@ tags:
 - 2025-11-14: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified multi-cluster visibility, dual-uplink and tenant-scoped views
 ## Open Tasks
 ```tasks
 path includes Paul

@@ -25,10 +25,25 @@ tags:
 - Erik Wolf stated that Jason Vallery already had a chunk of the analysis done and they incorporated it into the latest spreadsheet model to gut-check assumptions.
 
 - Erik Wolf accepted a scheduled 1:1 Zoom meeting invitation from Jason Vallery titled "Erik/Jason - Sync on MAI pricing" for Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver).
+
+- Erik Wolf provided a pricing datapoint of $3.60 per TB per month in the context of the Microsoft workback plan discussion.
+
+- Erik Wolf stated that before a recent price hike, the list price discount being discussed was about 94.9%.
+
+- Erik Wolf stated that VAST Data only locked in a software pricing model with CoreWeave, not a full hardware plus software split.
+
+- Erik Wolf stated he started a financial analysis with Jason Vallery and that they are using a spreadsheet model with adjustable parameters to evaluate multiple scenarios.
+
+- Erik Wolf stated that Jason Vallery already had a chunk of the financial analysis done and they incorporated it into the latest spreadsheet model to gut-check the results.
+
+- A Zoom meeting titled "Erik/Jason - Sync on MAI pricing" is scheduled for Monday, January 5, 2026 from 2:00pm to 3:00pm Mountain Time (Denver), organized by Jason Vallery, and accepted by Erik Wolf.
 ## Recent Context
 
 - 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
 - 2026-01-05: Erik Wolf accepted Jason Vallery's calendar invitation for a 1:1 Zoom meeting to sync on Microsoft A...
+
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2026-01-05: Erik Wolf accepted a Zoom meeting invitation from Jason Vallery to sync on Microsoft AI Infrastructu...
 ## Open Tasks
 
 ```tasks
@@ -41,4 +56,6 @@ not done
 - Microsoft AI Infrastructure (MAI) pricing
 
 - Internal 1:1 sync between Jason Vallery and Erik Wolf
+
+- Internal pricing alignment discussion
 ## Key Decisions

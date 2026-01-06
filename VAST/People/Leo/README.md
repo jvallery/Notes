@@ -18,9 +18,13 @@ last_enriched: '2026-01-05'
 ## Key Facts
 
 - Leo reached out to Anand to pursue a Microsoft-hosted VAST hardware deployment in Anand’s data center as a plan B that could become plan A for production success, with UK Met Office as first priority by timeline.
+
+- Jeff Denworth referenced that an individual named Leo worked daily from CoreWeave offices during the first CoreWeave deal to accelerate execution, but the email did not include Leo's last name.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: Parallel tracks for UK Met: Azure LSV4 test cluster (early Dec) and Microsoft-hosted bare-metal dev system
+
+- 2025-12-27: Mentioned in: Red flare escalation: Azure MAI deal risk, supply chain constraints, and January execution plan
 ## Open Tasks
 ```tasks
 path includes Leo

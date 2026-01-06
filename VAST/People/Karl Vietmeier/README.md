@@ -47,6 +47,24 @@ role: Cloud Solutions Architect - VAST on Cloud
 - Karl Vietmeier was asked by Ray Coetzee to provide the expected performance profile for an Azure VoC instance for Microsoft testing.
 
 - Lior Genzel told Karl Vietmeier that Karl is optional on the follow-up call with Microsoft Azure because Lior plans to block the request.
+
+- Karl Vietmeier was asked to provide the expected performance profile for an Azure VoC deployment.
+
+- Karl Vietmeier was told by Lior Genzel that Karl is optional on the follow-up call with Microsoft Azure because Lior plans to block the request.
+
+- Karl Vietmeier is seeing growing interest from the field in whether VAST Data supports Google Distributed Cloud (GDC) and Azure Local, and these often start as cloud opportunities.
+
+- Karl Vietmeier observes that when GDC or Azure Local opportunities involve hardware, VAST Data on-prem teams tend to take ownership, which creates confusion over accountability and reduces visibility into progress and outcomes.
+
+- Karl Vietmeier believes GDC and Azure Local opportunities should be managed through Cloud Product Management because Cloud PM has the strongest hyperscaler relationships and these solutions are expected to be acquired through hyperscalers and tied to cloud consumption.
+
+- Karl Vietmeier is seeing growing market interest in whether VAST Data supports Google Distributed Cloud (GDC) and Azure Local.
+
+- Karl Vietmeier observes that GDC and Azure Local opportunities often start as cloud opportunities but shift to on-prem team ownership once hardware is involved, creating confusion over accountability and reducing visibility into progress and outcomes.
+
+- Karl Vietmeier was asked by Ray Coetzee to define the expected performance profile for an Azure VoC instance.
+
+- Karl Vietmeier was told by Lior Genzel that he is optional on the follow-up call with Microsoft/Azure regarding the Azure VoC request.
 ## Recent Context
 
 - 2025-10-28: Google GCP networking: VIP failover options and RDMA constraints for Z4M
@@ -57,6 +75,11 @@ role: Cloud Solutions Architect - VAST on Cloud
 
 - 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
 
+- 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
+
+- 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST declines due to readiness
+- 2025-12-01: Karl Vietmeier flagged growing inbound interest in support for Google Distributed Cloud (GDC) and Az...
 - 2025-12-01: Karl Vietmeier reports growing interest in whether VAST supports Google Distributed Cloud (GDC) and ...
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, VAST plans to decline
 ## Open Tasks
@@ -96,6 +119,12 @@ not done
 - Alignment of GDC and Azure Local motions with hyperscaler acquisition paths and cloud consumption
 
 - Cloud product management governance for hyperscaler-tied solutions and cloud consumption motions
+
+- Cloud Product Management vs on-prem team ownership when hardware is involved
+
+- Maintaining hyperscaler alignment and cloud consumption linkage for hybrid/on-prem cloud-adjacent offers
+
+- Cloud product management governance for hyperscaler-tied offerings and cloud consumption alignment
 ## Key Decisions
 
 - P0 priority for VAST cloud viability is enabling capacity scaling independent of performance via object/S3 offload (cloud economics requirement).

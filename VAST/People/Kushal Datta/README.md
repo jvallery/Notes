@@ -32,6 +32,16 @@ role: Apollo team member (storage/training infrastructure)
 - Lior Genzel reported Kushal Datta stated Microsoft MAI will decide on the storage deployment and told Manish Sah that Azure Blob does not make sense compared to VAST for MAI requirements.
 
 - Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted and may be misrepresenting his influence over Mustafa's final decision.
+
+- Lior Genzel reported that Microsoft MAI contact Kushal Datta said the initial GPU drop will arrive in February 2026 and MAI needs a storage solution ready for a May to June 2026 timeframe, and that January 2026 is no longer a hard date.
+
+- Lior Genzel reported that Kushal Datta said MAI will decide on the storage deployment and told Manish Sah that Azure Blob does not make sense versus VAST for MAI requirements.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted and may be misrepresenting his influence over Mustafa's decision.
+
+- Lior Genzel reported that Kushal Datta said MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for May 2026 to June 2026 timeframe.
+
+- Lior Genzel reported that Kushal Datta said MAI will decide on the storage deployment and told Maneesh Sah that Azure Blob does not make sense versus VAST for MAI requirements.
 ## Recent Context
 
 - 2025-10-31: Jason Vallery and Kushal Datta discussed options to deploy VAST Data for Microsoft Apollo training w...
@@ -47,6 +57,9 @@ role: Apollo team member (storage/training infrastructure)
 - 2026-01-05: Mentioned in: SC25 meeting scheduling and completed outreach (Nidhi, Kurt Niebuhr, Kushal Datta, Vipin Sachdeva)
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan (Microsoft MAI)
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Kushal Datta

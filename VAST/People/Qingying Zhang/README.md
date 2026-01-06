@@ -21,6 +21,8 @@ role: Corporate Vice President, Azure (leads AKS and cloud-native services; focu
 - 2025-10-31: Mentioned in: Microsoft Apollo aligned on two-track evaluation for VAST AI cloud storage (Azure lab software validation + VAST loaner hardware POC)
 
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Qingying Zhang

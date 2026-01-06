@@ -3,7 +3,7 @@ type: people
 email: ''
 company: Microsoft (Apollo team (storage side))
 title: Jai Menon
-last_contact: '2025-09-03'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -101,6 +101,8 @@ role: Founder/CEO
 - 2025-09-15: Mentioned in: Silk briefing on software-defined cloud storage for high-performance database workloads and Azure RDMA ask
 
 - 2025-09-03: Jason Vallery and Jai Menon reconnected after Jason’s sabbatical and aligned Jason’s initial focus o...
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Jai Menon

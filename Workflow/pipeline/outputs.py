@@ -122,8 +122,21 @@ class OutputGenerator:
             return None
         
         # Determine recipient from extraction
-        # For emails, participants[0] is typically the sender
-        sender = extraction.participants[0] if extraction.participants else "Unknown"
+        # For emails, the sender is in contacts[0] (not participants which includes "Myself")
+        sender = "Unknown"
+        sender_email = ""
+        if extraction.contacts:
+            first_contact = extraction.contacts[0]
+            sender = first_contact.name if first_contact.name else "Unknown"
+            sender_email = first_contact.email or ""
+        elif extraction.participants:
+            # Fallback to first non-self participant
+            for p in extraction.participants:
+                if p.lower() not in ("myself", "jason vallery", "jason"):
+                    sender = p
+                    break
+            if sender == "Unknown" and extraction.participants:
+                sender = extraction.participants[0]
         
         # Generate filename
         date_str = datetime.now().strftime("%Y-%m-%d_%H%M%S")
@@ -137,12 +150,15 @@ class OutputGenerator:
         # For now, use the reply_context from extraction as a starting point
         draft_body = self._build_reply_body(extraction, suggested.reply_context or "")
         
+        # Include email if available
+        to_field = f"{sender} <{sender_email}>" if sender_email else sender
+        
         content = f"""---
 type: draft-reply
 status: pending
 created: "{datetime.now().isoformat()}"
 urgency: "{suggested.reply_urgency}"
-to: "{sender}"
+to: "{to_field}"
 subject: "Re: {extraction.title}"
 source_file: "{extraction.source_file}"
 ---
@@ -199,9 +215,18 @@ source_file: "{extraction.source_file}"
         
         body_parts = []
         
-        # Opener
-        sender = extraction.participants[0] if extraction.participants else "there"
-        first_name = sender.split()[0] if sender != "Unknown" else "there"
+        # Determine the sender's first name
+        # For emails, use the first contact (the sender)
+        sender = "there"
+        if extraction.contacts:
+            sender = extraction.contacts[0].name or "there"
+        elif extraction.participants:
+            # Skip self
+            for p in extraction.participants:
+                if p.lower() not in ("myself", "jason vallery", "jason"):
+                    sender = p
+                    break
+        first_name = sender.split()[0] if sender != "there" else "there"
         body_parts.append(f"Hi {first_name},")
         body_parts.append("")
         

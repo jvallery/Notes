@@ -31,6 +31,8 @@ not done
 ## Recent Context
 
 - 2026-01-05: Roberto Dognini updated the VAST Data opportunity "PCM - NDA project new cluster - E4" for Presidenz...
+
+- 2026-01-05: Roberto Dognini updated the VAST opportunity "PCM - NDA project new cluster - E4" for Presidenza del...
 ## Key Facts
 
 - Presidenza del Consiglio dei Ministri is a VAST Data customer account located in Latium, Italy, with website https://www.governo.it/en.
@@ -42,6 +44,16 @@ not done
 - Closed lost primary and secondary drivers for the opportunity "PCM - NDA project new cluster - E4" were Loss - Price / Cost per TB, attributed to an unexpected hardware cost increase and the customer purchasing department not being able to increase budget; NetApp reportedly confirmed the order using a prior November offer with lower hardware cost, likely due to existing stock.
 
 - On 2025-12-12, the customer asked additional questions on encryption and EKM for the opportunity "PCM - NDA project new cluster - E4" and Roberto Dognini replied with details and planned to check status the following week.
+
+- The opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri (Italy, Latium) was updated to stage 13 Closed Lost to Competition with ACV $331,107.92 and forecast category Lost, close date 2026-01-05.
+
+- Partner account for the opportunity "PCM - NDA project new cluster - E4" was E4 Computer Engineering.
+
+- The deal was lost to NetApp eSeries; primary incumbent was Pure Storage Flashblade and primary competitor was Pure Storage FlashArray.
+
+- Closed lost primary and secondary drivers were Loss - Price / Cost per TB, attributed to an unexpected hardware cost increase and inability for the customer purchasing department to increase budget; NetApp reportedly confirmed the order using a prior November offer with lower hardware cost likely based on available stock.
+
+- On 2025-12-12, the customer asked additional questions on encryption and EKM; VAST replied with details and planned to check status the following week.
 ## Topics
 
 - Salesforce loss alert for Presidenza del Consiglio dei Ministri opportunity "PCM - NDA project new cluster - E4"
@@ -53,6 +65,12 @@ not done
 - Customer questions on encryption and EKM
 
 - Partner involvement: E4 Computer Engineering
+
+- Pricing pressure and hardware cost increase impact on deal outcome
+
+- Attempted pull-in of order to avoid December hardware cost increase
 ## Key Decisions
 
 - The VAST Data opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was moved to stage 13 Closed Lost to Competition (forecast category Lost) on 2026-01-05.
+
+- Opportunity "PCM - NDA project new cluster - E4" for Presidenza del Consiglio dei Ministri was moved to stage 13 Closed Lost to Competition and forecast category Lost on 2026-01-05.

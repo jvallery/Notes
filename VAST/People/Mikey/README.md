@@ -3,7 +3,7 @@ type: people
 email: ''
 company: Point72
 title: Mikey
-last_contact: '2025-11-14'
+last_contact: '2025-12-23'
 created: '2026-01-05'
 tags:
 - type/people
@@ -13,8 +13,7 @@ enrichment_level: 3
 last_enriched: '2026-01-05'
 role: Client Solutions Engineer
 linkedin: https://linkedin.com/in/mioblmcghlstin
-bio: Mikey Mcghee is a Client Solutions Engineer at Point72, a financial services
-  firm.
+bio: Mikey Mcghee is a Client Solutions Engineer at Point72, a financial services firm.
 location: London, England, United Kingdom
 expertise:
 - Engineering
@@ -41,6 +40,8 @@ expertise:
 - 2025-11-14: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
 
 - 2025-12-23: Mentioned in: Walmart restates hybrid requirements, rejects disjoint namespaces, GCS integration required
+
+- 2025-12-23: Walmart restated hybrid requirements, disjoint namespace rejected, Alluxio risk
 ## Open Tasks
 ```tasks
 path includes Mikey

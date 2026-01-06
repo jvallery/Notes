@@ -42,6 +42,9 @@ not done
 - 2025-10-29: [[2025-10-29 - VAST on Cloud positioning and GTM alignment, MVP architecture, marketplace plan, and hyperscaler constraints]]
 
 - 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams link (Microsoft-led invite)
+
+- 2026-01-05: Jeff Denworth flagged three weekly status items for the Azure Marketplace workstream: an Azure Marke...
+- 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams link (Microsoft)
 ## Key Facts
 
 - Marketplace offers enable procurement/transactability, but VM economics can be non-competitive at scale; longer-term paths include deeper cloud primitives and potentially CSP data-center hardware.
@@ -50,12 +53,21 @@ not done
 - GA acceptance criteria include operational “spin up/spin down” behavior and clear support/DR expectations for an MVP.
 
 - The Weekly VAST GTM Meeting agenda includes surfacing blockers to Azure Marketplace onboarding and later transactions, plus aligning promotional assets prior to launch.
+
+- Jeff Denworth stated that the Azure Marketplace SKU change request for VAST is due on Friday (2026-01-09).
+
+- The Weekly VAST GTM Meeting includes surfacing blockers to Azure Marketplace onboarding and later transactions, which aligns to Cloud Marketplace MVP execution.
 ## Topics
 
 - Marketplace ops: private offers, entitlement/metering, reporting exports
 - Offer packaging: user stories, GTM collateral, competitive comparisons
 - Azure specifics: SKU changes, procurement constraints, marketplace limitations
 
+- Azure Marketplace SKU change request process and deadline (due 2026-01-09)
+
+- Google Distributed Cloud (GDC) RFP deck update for VAST
+
+- Microsoft MAI unified cache pricing follow-up
 ## Key Decisions
 
 - Proceed with marketplace-based deployment and private offers to enable commit burn-down and smoother fulfillment once offers are GA/transactable.

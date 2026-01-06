@@ -48,6 +48,8 @@ last_enriched: '2026-01-05'
 - 2025-11-06: Jason Vallery and Kanchan Mehrotra aligned on a pragmatic approach to accelerate VAST adoption insid...
 
 - 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate plan (no Microsoft inventory reserved)
 ## Open Tasks
 ```tasks
 path includes Kanchan Mehrotra

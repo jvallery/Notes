@@ -8,6 +8,7 @@ created: '2026-01-05'
 tags:
 - type/people
 - needs-review
+role: Corporate Finance leader (FP&A, planning, IR, corp dev)
 ---
 
 # Tomer Hagay
@@ -77,6 +78,20 @@ tags:
 - Tomer Hagay suggested that if self-encrypting drives (SEDs) are requested to meet FIPS 140-3 data-at-rest requirements for protection against drive removal, VAST Data software encryption using FIPS-compatible algorithms should meet the same requirement.
 
 - On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and invited him to edit it.
+
+- Included as a recipient on the RFE 0482 email thread.
+
+- Tomer Hagay stated VAST does not want to be restricted by hardware capabilities or availability for encryption and therefore focuses on software-based encryption that could also be FIPS certified, rather than depending on self-encrypting drives (SEDs).
+
+- Tomer Hagay stated VAST encryption keys are managed at the tenant level or path level, where a "path" can be any protocol endpoint including S3 buckets and NFS exports, using encryption groups.
+
+- Tomer Hagay stated an encryption group can be assigned to a path to support having a unique key for that path (unique key per encrypted path).
+
+- Tomer Hagay stated VAST supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using x-amz-server-side-encryption-customer-* headers starting from VAST software version 5.4, and referenced the 5.4 release notes.
+
+- Tomer Hagay asked for clarification on the origin of the self-encrypting drive (SED) requirement and noted that if SEDs are used to meet FIPS 140-3 data-at-rest encryption requirements (for example, protection against drive removal), VAST software using the same FIPS-compatible encryption algorithms should meet the requirement.
+
+- Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and granted edit access.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -126,6 +141,11 @@ tags:
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified multi-cluster visibility, dual-uplink and tenant-scoped views
 - 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
 ## Open Tasks
 ```tasks
