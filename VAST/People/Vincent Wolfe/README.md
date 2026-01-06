@@ -29,6 +29,8 @@ expertise:
 - Vincent Wolfe signs emails as "Vince".
 
 - Vincent Wolfe signs emails using the nickname "Vince".
+
+- Vincent Wolfe sent Jason Vallery a holiday letter and a Christmas greeting on 2025-12-16.
 ## Recent Context
 
 - 2025-12-16: Vincent Wolfe emailed Jason Vallery a holiday letter and wished him well for 2026. No requests, ques...
@@ -65,3 +67,5 @@ not done
 - Personal year-end check-in (2025 reflection, 2026 outlook)
 
 - Personal update and well-wishes for 2025 and 2026
+
+- Personal update (2025 reflection and 2026 outlook)
