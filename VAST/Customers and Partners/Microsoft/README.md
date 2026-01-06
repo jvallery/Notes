@@ -5,7 +5,7 @@ account_type: customer
 status: Active
 industry: Technology
 my_role: ''
-last_contact: '2025-12-16'
+last_contact: '2025-12-19'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -512,6 +512,8 @@ not done
 - Microsoft is in an engineering-level proof of concept with VAST for the UK Met effort and is not yet a customer.
 
 - Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
+
+- VAST Data presented 'VAST + AKS' to Microsoft Global Black Belt (GBB) AI infrastructure sellers during the AKS AI Roadshow session on Tuesday, December 9, 2025 from 8:00 AM to 9:00 AM via Microsoft Teams.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -881,6 +883,10 @@ not done
 - Microsoft prospect engagement and engineering-level PoC (UK Met)
 
 - Internal approval workflow for training materials access
+
+- Microsoft AKS AI Roadshow enablement for Global Black Belt (GBB) AI infrastructure sellers
+
+- Demo/accelerator to showcase VAST Global Namespace on Microsoft Azure
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.

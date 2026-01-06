@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Schedule a January 2026 pipeline sync with Mohamad Al Jazaery and Kurt Niebuhr to review the current Azure customer list and expansion plan with Microsoft sellers. @TBD 📅 2026-01-16 🔼 #task #proposed #auto
+- [?] Align with Lior Genzel on the current engineering status and messaging for showcasing VAST Global Namespace on Microsoft Azure, and determine whether a demo/accelerator plan exists. 📅 2026-01-16 ⏫ #task #proposed #auto
+- [?] Coordinate with Tiffany Stonehill to ensure the correct slide deck, code artifacts, and access method are packaged for Microsoft GBB follow-up. 📅 2026-01-09 ⏫ #task #proposed #auto
+- [?] Send Microsoft (Mohamad Al Jazaery and Kurt Niebuhr) the slides and code from the VAST + AKS presentation, including any required access instructions. 📅 2026-01-09 ⏫ #task #proposed #auto
 - [?] Confirm the January 7, 2026 8:00am Lafayette coffee meeting works and accept the calendar invite from Sebastien Berube. 📅 2026-01-07 🔼 #task #proposed #auto
 - [?] Confirm whether the calendar invite for Thursday, 2026-01-07 at 8:00am in Lafayette, Colorado works, and reply to Sebastien Berube if changes are needed. 📅 2025-12-22 🔼 #task #proposed #auto
 - [?] Reply to Isabella Lista (AlphaSights) with a phone number to reach Jason Vallery or schedule a 30-minute time slot via https://calendly.com/isabella-lista-alphasights/30min, per her request to respond on 2025-12-19. 📅 2025-12-19 ⏫ #task #proposed #auto

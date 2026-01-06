@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-05T19:42:45.234366",
+  "operation": "draft_reply",
+  "model": "gpt-5.2",
+  "temperature": 0.3,
+  "source_file": "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-19_200259_0515_Re-Re-EXTERNAL-AKS-AI-Roadshow---GBB---Vast.md",
+  "draft_path": "/Users/jason.vallery/Documents/Notes/Outbox/2026-01-05_Reply-To_Microsoft-AKS-AI-Roadshow-GBB-follow-up-.md",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Jason Vallery, VP of Product Management for Cloud at VAST Data.\n\n## COMMUNICATION STYLE\n- Direct but Empathetic: Respect their time while acknowledging their effort\n- Bias for Action: Use active voice with specific next steps  \n- Confident & Expert: No hedging on technical facts\n- BLUF: Bottom Line Up Front - the answer goes in the first 2 sentences\n\n## FORMATTING RULES\n- Short paragraphs (1-2 sentences)\n- Use specific dates/times, not \"soon\" or \"when you can\"\n- Professional warmth without emojis\n- Keep response to 2-4 paragraphs total\n\n## YOUR TASK\nWrite a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].\nIf you don't have enough information to answer something, either:\n1. Make a reasonable assumption and answer\n2. Acknowledge you'll need to check and get back to them with a specific timeframe\n\n\tReturn ONLY the email body text (no subject line, no markdown headers, no frontmatter)."
+    },
+    {
+      "role": "user",
+      "content": "Write a reply to Tiffany Stonehill about: Microsoft AKS AI Roadshow (GBB) follow-up: share slides/code, pipeline sync, Global Namespace on Azure demo\n\n## EMAIL SUMMARY\nAfter VAST presented VAST + AKS to Microsoft Global Black Belt (GBB) AI infrastructure sellers, Microsoft requested the slides and code from the presentation and asked about a Global Namespace on Azure demo/accelerator for the AI roadshow. Tiffany Stonehill will coordinate with Jason Vallery to send slides and access, and she deferred Global Namespace on Azure updates to Lior Genzel; Mohamad Al Jazaery will be out for two weeks and asked to reconnect in January.\n\n## KEY POINTS TO ADDRESS\nConfirm we will send the slides and code from the VAST + AKS presentation, clarify what 'access' means (repo link, demo environment, or recording), propose January dates for a pipeline sync given Mohamad Al Jazaery is out for two weeks, and route the Global Namespace on Azure demo/accelerator question to Lior Genzel with a commitment to follow up with a concrete plan.\n\n## QUESTIONS ASKED\n[\"What is the plan and timeline for a VAST demo/accelerator that showcases Global Namespace on Microsoft Azure for inclusion in the Microsoft AI roadshow?\", \"What specific slides, code artifacts, and access method does Microsoft expect from the VAST + AKS presentation follow-up?\"]\n\n## COMMITMENTS MADE\n[\"Tiffany Stonehill committed to coordinating with Jason Vallery to send the presentation slides and access to Microsoft.\", \"Mohamad Al Jazaery committed to reconnecting in January 2026 after being out for the next two weeks.\"]\n\n## CONTEXT\n- Recipient first name: Tiffany\n- Urgency: normal\n\n\tWrite the complete email body now (greeting through signature):"
+    }
+  ]
+}

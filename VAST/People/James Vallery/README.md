@@ -170,6 +170,10 @@ expertise:
 - Jason Vallery reported that a Google Distributed Cloud RFP walkthrough call with Google generated follow-up questions about FIPS-certified QLC/SED options, software support for SEDs and key management, and documentation for encryption key granularity across S3 and NFS in a multi-tenant context.
 
 - Jason Vallery led a walkthrough call with Google for the Google Distributed Cloud RFP on 2025-12-15 and collected follow-up questions on encryption and compliance (FIPS/SED, encryption key granularity, and SSE-C).
+
+- Mohamad Al Jazaery requested that Jason Vallery share the slides and code that VAST presented to the Microsoft GBB team for the AKS AI Roadshow.
+
+- Tiffany Stonehill stated she will coordinate with Jason Vallery to send the presentation slides and access to Microsoft contacts after the AKS AI Roadshow session.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...

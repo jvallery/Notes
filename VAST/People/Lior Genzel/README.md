@@ -554,6 +554,8 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access.
 
 - Lior Genzel described Trevor Cooper-Chadwick as the lead Microsoft technical contact who tests VAST for the UK Met effort.
+
+- Tiffany Stonehill deferred questions about showcasing VAST Global Namespace on Microsoft Azure to Lior Genzel because he has the most recent engineering updates.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
