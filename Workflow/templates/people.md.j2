@@ -8,7 +8,9 @@ source: "{{ source | default('transcript') }}"
 source_ref: "{{ source_ref | default('') }}"
 tags:
   - "type/people"
+{% if person %}
   - "person/{{ person | slugify }}"
+{% endif %}
   - "generated"
 {% if extra_tags %}
 {% for tag in extra_tags %}
@@ -50,6 +52,8 @@ tags:
 {% endfor %}
 {% endif %}
 
+{% if source_ref %}
 ---
 
 *Source: [[{{ source_ref | basename | strip_extension }}]]*
+{% endif %}

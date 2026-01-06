@@ -321,12 +321,23 @@ class PatchGenerator:
         safe_title = sanitize_path_name(extraction.title)
         
         note_path = f"{folder.relative_to(self.vault_root)}/{extraction.date} - {safe_title}.md"
+
+        # Select template type. Use the extracted note_type only when it matches the resolved
+        # entity folder; otherwise prefer a type that won't emit placeholder headers/tags.
+        template_type = note_type
+        if desired_entity_type is not None and entity_type:
+            if entity_type == "person":
+                template_type = "people"
+            elif entity_type == "project":
+                template_type = "projects"
+            elif entity_type == "company":
+                template_type = note_type if note_type in ("customer", "partners") else "customer"
         
         # Build context for template
         context = {
             "title": extraction.title,
             "date": extraction.date,
-            "type": extraction.note_type,
+            "type": template_type,
             # Template expects `source` for correct defaulting.
             "source": extraction.content_type,
             # Entity key fields expected by templates (people/customer/projects).

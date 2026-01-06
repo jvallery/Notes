@@ -266,3 +266,40 @@ def test_patch_generator_detects_duplicate_entities(tmp_path):
     # Should have a warning about potential duplicate
     assert any("duplicate" in w.lower() for w in plan.warnings)
     assert any("merge" in w.lower() for w in plan.warnings)
+
+
+def test_meeting_note_template_type_matches_resolved_entity_folder(tmp_path):
+    """When the extracted note_type doesn't match the resolved folder, use a safe template type."""
+    person_dir = tmp_path / "VAST" / "People" / "Alice Example"
+    person_dir.mkdir(parents=True, exist_ok=True)
+    (person_dir / "README.md").write_text("# README\n\n## Recent Context\n")
+
+    entity_index = EntityIndex(tmp_path)
+    gen = PatchGenerator(tmp_path, entity_index)
+
+    # A "customer" note with only a person entity should be filed under the person and
+    # rendered with the people template (not customer), avoiding placeholder account links.
+    extraction = UnifiedExtraction(
+        source_file=str(tmp_path / "Inbox" / "Email" / "test.md"),
+        content_type="email",
+        processed_at=datetime.now(),
+        note_type="customer",
+        primary_entity=EntityRef(entity_type="person", name="Alice Example", confidence=0.9),
+        date="2026-01-05",
+        title="Test Email",
+        summary="Summary",
+        participants=["Alice Example"],
+        facts=[],
+        decisions=[],
+        topics=[],
+        tasks=[],
+        questions=[],
+        commitments=[],
+        mentioned_entities=[],
+        confidence=0.9,
+    )
+
+    plan = gen.generate(extraction)
+
+    assert plan.meeting_note is not None
+    assert plan.meeting_note["type"] == "people"

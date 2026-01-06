@@ -8,7 +8,9 @@ source: "{{ source | default('transcript') }}"
 source_ref: "{{ source_ref | default('') }}"
 tags:
   - "type/customer"
+{% if account %}
   - "account/{{ account | slugify }}"
+{% endif %}
   - "generated"
 {% if extra_tags %}
 {% for tag in extra_tags %}
@@ -20,7 +22,9 @@ tags:
 # {{ title }}
 
 **Date**: {{ date }}
+{% if account %}
 **Account**: [[{{ account }}]]
+{% endif %}
 **Attendees**: {{ participants | join(", ") }}
 
 ## Summary
@@ -51,6 +55,8 @@ tags:
 {% endfor %}
 {% endif %}
 
+{% if source_ref %}
 ---
 
 *Source: [[{{ source_ref | basename | strip_extension }}]]*
+{% endif %}
