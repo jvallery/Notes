@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Mikey and relevant team members to validate Walmart requirements, competitive positioning versus Alluxio, and define a path to full estate takeover at Walmart. ⏫ #task #proposed #auto
+- [?] Analyze Walmart's re-stated hybrid requirements (unified namespace, GCS integration, on-prem-only POC constraints) and propose what changes should be incorporated into the VAST product plan. ⏫ #task #proposed #auto
 - [?] Coordinate with Google (David Pawlak) to schedule a minimum one-hour follow-up meeting to review questions and walk through Google's document related to the GDC Storage RFP proposal. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Confirm and send Google (David Pawlak) the full list of VAST Data globally certified hardware partners for BYOH, beyond Cisco, Dell, HPE, and SuperMicro. @Lior Genzel 📅 2025-12-23 🔼 #task #proposed #auto
 - [?] Provide Google (David Pawlak) a clear explanation of how VAST Data's proposed GDC Storage RFP offering meets FIPS compliance requirements, addressing Kamal Vyas's question. @TBD 📅 2025-12-19 ⏫ #task #proposed #auto
