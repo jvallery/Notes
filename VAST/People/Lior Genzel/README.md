@@ -556,6 +556,14 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel described Trevor Cooper-Chadwick as the lead Microsoft technical contact who tests VAST for the UK Met effort.
 
 - Tiffany Stonehill deferred questions about showcasing VAST Global Namespace on Microsoft Azure to Lior Genzel because he has the most recent engineering updates.
+
+- Lior Genzel reported that Anson (Qi) requested moving a VAST proof of concept into either the Microsoft MAI/Vipin environment or other large GPU clusters (Nscale or CoreWeave) because Microsoft labs lack 1,000 to 2,000 GPUs needed for performance scale testing.
+
+- Lior Genzel reported that Kushal Datta said Microsoft MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for a May 2026 to June 2026 timeframe, and that January 2026 is no longer a hard date.
+
+- Lior Genzel reported that Kushal Datta said Microsoft MAI will decide on the storage deployment and that Kushal told Manish Sah that Azure Blob does not make sense versus VAST for MAI requirements.
+
+- Lior Genzel reported that Vamshi (Azure Blob product leader) said Microsoft's decision is internal and expressed frustration with VAST's aggressive approach in highlighting Azure Blob deficiencies.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Meet with Jeff Denworth on the next day (relative to 2025-12-21) to align on urgency, supply chain plan, and expectations for Microsoft MAI deployment timing. 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Coordinate with Alon Horev to identify the most strategic environment to run Anson (Qi) VAST PoC at 1,000 to 2,000 GPU scale, evaluating Microsoft MAI/Vipin environment versus Nscale or CoreWeave clusters. @Lior Genzel 🔼 #task #proposed #auto
+- [?] Obtain introductions and establish communication with Majid Mohammed (Mustafa chief of staff), Yunchao Gong (Kushal Datta's boss), and Karén Simonyan (chief scientist reporting to Mustafa) to reduce reliance on Kushal Datta as the sole conduit. @Lior Genzel ⏫ #task #proposed #auto
+- [?] Work with VAST Operations to confirm whether any inventory or flash allocation is reserved or trackable for Microsoft MAI requirements, and determine feasibility to deliver within the April 2026 to June 2026 window given constrained supply chain. ⏫ #task #proposed #auto
+- [?] Send Jeff Denworth the most recent analysis requested in the thread (context: MAI deal status and/or capacity and supply chain implications). ⏫ #task #proposed #auto
 - [?] Tiffany Stonehill and Mohamad Al Jazaery to review the current list of Azure customers Tiffany is working with and identify actions to expand the list with Microsoft sellers. @Tiffany Stonehill 📅 2026-01-31 🔼 #task #proposed #auto
 - [?] Schedule a January 2026 pipeline sync with Mohamad Al Jazaery and Kurt Niebuhr, taking into account Tiffany Stonehill's availability (Mondays and Tuesdays) and Mohamad Al Jazaery being out for two weeks after December 19, 2025. @TBD 📅 2026-01-10 🔼 #task #proposed #auto
 - [?] Provide Mohamad Al Jazaery a clear plan and owner for a demo/accelerator that showcases VAST Global Namespace on Microsoft Azure for inclusion in the Microsoft AI roadshow, aligning with Lior Genzel on latest engineering status. 📅 2026-01-16 ⏫ #task #proposed #auto

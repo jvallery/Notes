@@ -174,6 +174,10 @@ expertise:
 - Mohamad Al Jazaery requested that Jason Vallery share the slides and code that VAST presented to the Microsoft GBB team for the AKS AI Roadshow.
 
 - Tiffany Stonehill stated she will coordinate with Jason Vallery to send the presentation slides and access to Microsoft contacts after the AKS AI Roadshow session.
+
+- Jason Vallery reported hearing from multiple Azure stakeholders that the final decision for Microsoft MAI storage is Mustafa's and that Kushal Datta cannot be trusted.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's boss), or Karén Simonyan (Yunchao Gong's boss and chief scientist reporting to Mustafa), and that Lior Genzel will lead getting introductions.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...

@@ -3,7 +3,7 @@ type: people
 email: jonsi@vastdata.com
 company: VAST Data
 title: Jonsi Stefansson
-last_contact: '2025-12-17'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 phone_iceland: '+3546987478'
 phone_us: '+14079510436'

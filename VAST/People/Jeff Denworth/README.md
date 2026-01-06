@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-30'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -448,6 +448,14 @@ last_enriched: '2026-01-05'
 - Jeff Denworth instructed Jason Vallery to track cloud purchase orders like the Leidos Federal deal to understand customer expectations, user experience, cloud implications, and business development angles.
 
 - Characterized RFE 0482 as complex and delegated ownership to Mordechai Blaunstein to lead analysis and involve appropriate parties.
+
+- Jeff Denworth stated VAST Data is quickly selling out of inventory and lead times are skyrocketing, creating supply chain risk for any Microsoft MAI deployment that relies on VAST sourcing.
+
+- Jeff Denworth stated that nothing is reserved for Microsoft MAI and that if Microsoft wants to deploy in April 2026, May 2026, or June 2026, VAST needs a plan immediately.
+
+- Jeff Denworth stated supply chain for the upcoming year is a complete disaster and asked how VAST would source Microsoft's stated requirement of 2 exabytes and when it must be ordered and from whom.
+
+- Jeff Denworth stated Sagar took a job at Nscale and asked for an end-of-week status summary and an analysis of working capital and opportunity cost if Microsoft is buying 100 exabytes.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -653,6 +661,8 @@ last_enriched: '2026-01-05'
 - 2025-12-30: Jeff Denworth forwarded an internal OrderAdmin alert thread indicating a $96,808.14 software-only cl...
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
+
+- 2025-12-21: Jeff Denworth asked whether Microsoft MAI expects to use VAST Data supply chain and warned that VAST...
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -1022,6 +1032,12 @@ not done
 - OrderAdmin process requirements and document checklist in Salesforce for FOpp-4197
 
 - Tracking cloud POs for customer expectations, user experience, cloud product implications, and business development learnings
+
+- Microsoft MAI storage decision process and internal politics (Mustafa as final decision maker)
+
+- Sourcing and ordering plan for large capacity requirements (100EB and 2EB mentioned)
+
+- Competitive positioning versus Azure Blob and external GPU cloud providers (Nscale, CoreWeave)
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

@@ -3,7 +3,7 @@ type: people
 email: alon@vastdata.com
 company: VAST Data
 title: Alon Horev
-last_contact: '2025-12-01'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people

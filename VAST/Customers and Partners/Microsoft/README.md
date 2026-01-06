@@ -514,6 +514,8 @@ not done
 - Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
 
 - VAST Data presented 'VAST + AKS' to Microsoft Global Black Belt (GBB) AI infrastructure sellers during the AKS AI Roadshow session on Tuesday, December 9, 2025 from 8:00 AM to 9:00 AM via Microsoft Teams.
+
+- Microsoft MAI timeline discussed: initial GPU drop expected in February 2026 and storage solution needed for May 2026 to June 2026 timeframe (per Kushal Datta via Lior Genzel).
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

@@ -93,6 +93,8 @@ tags:
 - Renen Hallak observed strengthened collaboration between VAST Data teams across geographies as the company hires more R&D outside Israel and more G&A in Israel, and he framed cross-cultural 'edge of chaos' dynamics as a key driver of innovation.
 
 - Jeff Denworth proposed that Renen Hallak be in Redmond in the third week of January 2026 to meet with Microsoft stakeholder 'Scott G' to align on the first MAI tranche and scaling plan.
+
+- Renen Hallak stated Microsoft should have their own flash allocation with NAND manufacturers and that VAST efficiencies could reduce Microsoft's NAND needs and potentially allow using Microsoft's excess allocation for other customers.
 ## Recent Context
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting

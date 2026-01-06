@@ -3,7 +3,7 @@ type: people
 email: ''
 company: Microsoft
 title: Kushal Datta
-last_contact: '2025-10-28'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -107,6 +107,8 @@ role: Apollo team member (storage/training infrastructure)
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate plan (no Microsoft inventory reserved)
 
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
+
+- 2025-12-21: Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan
 ## Open Tasks
 ```tasks
 path includes Kushal Datta
