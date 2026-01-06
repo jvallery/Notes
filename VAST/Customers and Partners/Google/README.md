@@ -5,7 +5,7 @@ account_type: partner
 status: Partner
 industry: _Unknown_
 my_role: ''
-last_contact: '2025-12-17'
+last_contact: '2025-12-15'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -132,6 +132,8 @@ not done
 - 2025-12-17: Google (David Pawlak) requested follow-up clarifications on VAST Data's Google Distributed Cloud (GD...
 
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
+
+- 2025-12-15: Internal email thread between Jason Vallery, Alon Horev, and Tomer Hagay to answer Google Distribute...
 ## Key Facts
 
 - Google Distributed Cloud (GDC) is a GCP-like experience deployed into private/hybrid data centers, including an air-gapped variant.
@@ -347,6 +349,14 @@ not done
 - Encryption key granularity across S3 buckets, NFS exports, and tenant/path constructs
 
 - Customer Managed Keys via encryption groups and unique keys per encrypted path
+
+- FIPS 140-3 data-at-rest encryption requirements and self-encrypting drives (SEDs)
+
+- VAST encryption groups and key granularity at tenant and path levels
+
+- Definition of 'path' spanning protocols including S3 buckets and NFS exports
+
+- S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) support via x-amz-server-side-encryption-customer-* headers
 ## Key Decisions
 
 - Lior Genzel selected Monday 2025-12-15 at 2:00pm PT as the meeting time for the initial one-hour call to review the GDC Storage RFP proposal (based on the scheduling thread where Lior requested 'The 15th at 2 pm PT please' and David Pawlak confirmed the invite was sent).
@@ -374,3 +384,5 @@ not done
 - For the Google Distributed Cloud RFP response, position VAST as focusing on software-based encryption (potentially FIPS certified) rather than committing to self-encrypting drive (SED) hardware options.
 
 - Lior Genzel selected Monday, December 15, 2025 at 2:00 PM PT for the initial one-hour Google GDC Storage RFP clarification call.
+
+- For Google Distributed Cloud RFP responses, position VAST as focusing on software-based encryption (potentially FIPS certifiable) rather than relying on self-encrypting drive (SED) hardware capabilities or availability.

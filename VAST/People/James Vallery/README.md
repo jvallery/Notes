@@ -166,6 +166,8 @@ expertise:
 - Lior Genzel indicated Jason Vallery will take the lead on answering whether the proposed SSDs are Self-Encrypting Drives (SEDs) for the Google GDC Storage RFP proposal.
 
 - David Pawlak (Google) did not have Jason Vallery's email address and asked Lior Genzel to loop Jason into the GDC Storage RFP follow-up thread.
+
+- Jason Vallery reported that a Google Distributed Cloud RFP walkthrough call with Google generated follow-up questions about FIPS-certified QLC/SED options, software support for SEDs and key management, and documentation for encryption key granularity across S3 and NFS in a multi-tenant context.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -222,6 +224,8 @@ expertise:
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 
 - 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing (HW/SSD), SEDs, BYOH partners, and scheduling
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 ## Open Tasks
 ```tasks
 path includes James Vallery

@@ -72,6 +72,8 @@ not done
 - 2025-12-17: On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sal...
 - 2026-01-05: Itzik Reich asked Noa Cohen whether TLS support for VAST Block protocol would ship in VAST release 5...
 - 2026-01-05: Lior Genzel sent a Google Calendar invitation for an internal VAST sync titled "Google RFP: Internal...
+
+- 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
@@ -107,6 +109,8 @@ not done
 - GCP MVP work includes supporting Google Distributed Cloud (GDC) related RFP activity, including maintaining an up-to-date customer-facing deck.
 
 - A deck titled "GCP Flow from customer to sales to customer" was shared internally, likely documenting a process flow related to the GCP MVP effort.
+
+- The Google Distributed Cloud RFP follow-up questions on encryption and compliance are being handled as part of VAST's Google Cloud related workstream (GCP MVP).
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement

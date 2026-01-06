@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Reference VAST 5.4 release notes to document S3 SSE-C support via x-amz-server-side-encryption-customer-* headers in the Google Distributed Cloud RFP response. 🔼 #task #proposed #auto
+- [?] Use VAST documentation on 'Managing encryption groups and keys' to support the Google Distributed Cloud RFP response regarding tenant-level and path-level encryption key granularity across S3 and NFS. 🔼 #task #proposed #auto
+- [?] Confirm the origin and rationale of Google's self-encrypting drive (SED) requirement for the Google Distributed Cloud RFP (for example, whether it is specifically tied to FIPS 140-3 drive-removal threat model) and feed that context back into the RFP response. 🔼 #task #proposed #auto
+- [?] Engage Violet (internal SME) to validate and finalize answers for Google Distributed Cloud RFP follow-up questions on encryption key granularity, customer-managed keys, encrypted paths, and SSE-C behavior/gotchas. ⏫ #task #proposed #auto
 - [?] Review the draft VAST on Cloud project brief and provide feedback to ensure alignment, clarity, and accuracy before the January working session. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Review the draft VAST on Cloud training course and provide feedback on messaging and technical accuracy, including suggestions to improve clarity for the field. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Store BetterDisplay Pro license key (F01DF371-69F5C31C-AEA33E9C-D615FB85-8B873E99) in a secure password manager or license vault for future reinstallation. 📅 2025-12-17 🔼 #task #proposed #auto

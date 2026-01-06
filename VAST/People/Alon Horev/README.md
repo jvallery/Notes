@@ -83,6 +83,8 @@ tags:
 - Lior Genzel messaged Alon Horev to strategize options for where to run Anson (Qi)'s VAST PoC and to potentially merge MAI and PoC plans.
 
 - Kushal Datta requested a meeting with Alon Horev the following week (relative to 2025-12-09) to discuss Microsoft MAI solution design.
+
+- Alon Horev advised Jason Vallery to work with a person named Violet on Google Distributed Cloud RFP encryption and key management questions, indicating Violet is the internal subject matter expert for these topics.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
