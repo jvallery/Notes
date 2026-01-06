@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] For any deal larger than 15 PB, obtain Deal Desk sign-off prior to issuing a quote and ensure the quote is synced before submission. @TBD ⏫ #task #proposed #auto
+- [?] Ensure all late-stage opportunity budgetary quotes are synced so they are eligible for review and execution visibility. @TBD ⏫ #task #proposed #auto
+- [?] When building customer configurations, prioritize using hardware currently on hand to accelerate fulfillment. @TBD 🔼 #task #proposed #auto
+- [?] Keep Salesforce (SFDC) opportunities and demand signals up to date to maintain visibility into hardware demand. @TBD ⏫ #task #proposed #auto
+- [?] Place customer hardware orders as early as possible to enter the allocation queue sooner. @TBD ⏫ #task #proposed #auto
 - [?] For late-stage opportunities, ensure all budgetary quotes are synced in SFDC to enable accurate planning and execution with hardware partners. @TBD ⏫ #task #proposed #auto
 - [?] For any VAST Data deal larger than 15 PB, obtain Deal Desk sign-off prior to quoting and ensure the quote is synced so it is eligible for review. @TBD ⏫ #task #proposed #auto
 - [?] When building customer configurations, prioritize using hardware currently on hand to accelerate order fulfillment. @TBD 🔼 #task #proposed #auto
