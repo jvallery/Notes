@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in 'pending approval' status until Lior Genzel confirms whether access should be granted. @Kristin Thompson 🔼 #task #proposed #auto
+- [?] Contact Trevor Cooper-Chadwick (Microsoft, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access during the UK Met engineering-level PoC, then advise Kristin Thompson whether to approve access. @Lior Genzel ⏫ #task #proposed #auto
 - [?] Provide Google the VAST documentation link for managing encryption groups and keys (tenant/path level, including S3 buckets and NFS exports) and the VAST 5.4 release notes link documenting SSE-C header support. 🔼 #task #proposed #auto
 - [?] Confirm with Google where the self-encrypting drive (SED) requirement originates (for example, FIPS 140-3 drive removal threat model) to determine whether VAST software-based encryption satisfies the requirement without SED hardware. ⏫ #task #proposed #auto
 - [?] Engage Violet (last name unknown) to validate and finalize answers for Google's RFP questions on FIPS/SED posture, encryption key granularity across S3 and NFS, and multi-tenant policy behavior for buckets, encrypted paths, and views. ⏫ #task #proposed #auto

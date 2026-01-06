@@ -5,7 +5,7 @@ account_type: customer
 status: Active
 industry: Technology
 my_role: ''
-last_contact: '2025-12-11'
+last_contact: '2025-12-16'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -472,6 +472,8 @@ not done
 - Azure Blob is described as the persistence layer for OpenAI's Rockset-based Applications data platform (per John Mao's OpenAI contact).
 
 - Azure CosmosDB is described by Jason Vallery as heavily used by OpenAI Applications for conversation persistence.
+
+- The Microsoft engagement referenced is an engineering-level proof of concept (PoC) and Microsoft is not yet a VAST customer for this effort.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -918,3 +920,5 @@ not done
 - Assume the CoreWeave testing for Microsoft MAI is largely a cosmetic validation exercise and proceed aggressively with commercial and supply chain actions in parallel.
 
 - VAST will not provide an Azure VoC instance to Microsoft for performance testing against Azure GPU instances because VAST Azure is not ready for this use case.
+
+- Kristin Thompson will keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in 'pending approval' until Lior Genzel provides an update after contacting Trevor.

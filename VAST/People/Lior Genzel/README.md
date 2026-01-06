@@ -510,6 +510,8 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated that VAST Azure is not close to being ready for Microsoft's requested Azure VoC performance testing scenario.
 
 - Lior Genzel intends to block Microsoft's request for an Azure VoC instance and communicate the refusal directly on a follow-up call.
+
+- Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access during an engineering-level PoC.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
@@ -762,6 +764,8 @@ role: Lior Genzel @ VAST Data
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 
 - 2025-12-11: Mentioned in: Microsoft Ignite follow-up: intro requested with Jason Vallery; architecture docs requested
+
+- 2025-12-16: Mentioned in: Microsoft prospect requests VAST Customer Learning Portal access (Trevor Cooper-Chadwick)
 ## Open Tasks
 ```tasks
 path includes Lior Genzel
