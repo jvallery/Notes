@@ -512,6 +512,8 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel intends to block Microsoft's request for an Azure VoC instance and communicate the refusal directly on a follow-up call.
 
 - Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access during an engineering-level PoC.
+
+- Tiffany Stonehill indicated Lior Genzel has the most recent engineering updates for showcasing VAST Global Namespace on Microsoft Azure.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

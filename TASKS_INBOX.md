@@ -13,6 +13,10 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Respond to Microsoft on whether there is a plan to build a demo/accelerator that showcases VAST Global Namespace on Microsoft Azure for inclusion in the AKS AI Roadshow, aligning with Lior Genzel for engineering status. @Chris Carpenter 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] Provide Mohamad Al Jazaery a proposed time in January 2026 to sync on the current Microsoft Azure pipeline and customer list expansion with VAST and Microsoft sellers. @TBD 📅 2026-01-06 🔼 #task #proposed #auto
+- [?] Coordinate with Tiffany Stonehill to ensure the AKS AI Roadshow slides and any required access are packaged and delivered to Microsoft contacts (Mohamad Al Jazaery and Kurt Niebuhr). 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] Send Microsoft (Mohamad Al Jazaery and Kurt Niebuhr) the slides and code/access artifacts that VAST presented in the AKS AI Roadshow GBB session. 📅 2026-01-10 ⏫ #task #proposed #auto
 - [?] Confirm acceptance of Sebastien Berube's calendar invite for the 2026-01-07 08:00 coffee meeting in Lafayette, Colorado and verify the exact location in the invite. 📅 2026-01-07 🔼 #task #proposed #auto
 - [?] Reply to Isabella Lista (AlphaSights) with a phone number to reach Jason Vallery or schedule a 30-minute call via https://calendly.com/isabella-lista-alphasights/30min. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Open and review the Google Docs document "CoreWeave-Vast Automation Project - V2 .docx" that Mordechai Blaunstein shared, and provide edits or comments as needed. 🔼 #task #proposed #auto
