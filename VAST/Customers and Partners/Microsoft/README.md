@@ -180,6 +180,8 @@ not done
 - 2025-12-27: Jeff Denworth escalated risk to a Q1 Microsoft AI Infrastructure (MAI) deal due to slow progress, su...
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting scheduled for 2026-01-07 08:00 in Lafayette
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.

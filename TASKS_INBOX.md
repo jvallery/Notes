@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Confirm acceptance of Sebastien Berube's calendar invite for the 2026-01-07 08:00 coffee meeting in Lafayette, Colorado and verify the exact location in the invite. 📅 2026-01-07 🔼 #task #proposed #auto
 - [?] Reply to Isabella Lista (AlphaSights) with a phone number to reach Jason Vallery or schedule a 30-minute call via https://calendly.com/isabella-lista-alphasights/30min. 📅 2025-12-19 ⏫ #task #proposed #auto
 - [?] Open and review the Google Docs document "CoreWeave-Vast Automation Project - V2 .docx" that Mordechai Blaunstein shared, and provide edits or comments as needed. 🔼 #task #proposed #auto
 - [?] For any deal larger than 15 PB, obtain Deal Desk sign-off prior to issuing a quote and confirm the quote is synced before requesting review. @TBD ⏫ #task #proposed #auto

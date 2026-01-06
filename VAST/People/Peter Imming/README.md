@@ -44,6 +44,8 @@ last_enriched: '2026-01-05'
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube via Peter Imming, coffee meeting set for Jan 7 in Lafayette
 
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube via Peter Imming, coffee meeting set for Jan 7, 2026
+
+- 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting scheduled for 2026-01-07 08:00 in Lafayette
 ## Open Tasks
 ```tasks
 path includes Peter Imming
