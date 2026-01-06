@@ -78,6 +78,8 @@ tags:
 - 2025-12-17: Mentioned in: Cisco RFE 0526: Regex-based allow/deny patterns for replication policies
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
+
+- 2025-12-17: Mentioned in: Cisco RFE 0526 submitted and approved, PM action needed to link to related feature
 ## Open Tasks
 ```tasks
 path includes Brian Evans

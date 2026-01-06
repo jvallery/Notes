@@ -145,6 +145,12 @@ not done
 - Cisco operates many global sites with data replication across hundreds of replication relationships.
 
 - Cisco's value proposition for RFE 0526 is multi-geo liability protection by preventing replication of certain content (for example, copyrighted user content) using a small set of 'never replicate' patterns.
+
+- Cisco manages many global sites with data replication and hundreds of replication relationships.
+
+- Cisco requested the ability to use regex patterns in replication policies to allow or deny files or objects by name (examples: allow *.LIB, deny *.mp3).
+
+- Cisco's value proposition for RFE 0526 is enterprise multi-geo liability protection by preventing replication of copyrighted content using a small set of 'never replicate' patterns.
 ## Topics
 
 - Cisco replication policy enhancements
@@ -194,6 +200,12 @@ not done
 - Regex-based allow/deny filtering for file/object replication
 
 - Salesforce RFE workflow: linking RFE to Related Feature
+
+- Salesforce RFE workflow for PM team (linking RFE to Related Feature)
+
+- Replication policy enhancements for file/object name filtering using regex allow/deny patterns
+
+- Enterprise multi-geo liability protection use case for replication exclusions
 ## Key Decisions
 
 - RFE 0526 for Cisco was approved by Brian Evans and submitted to the VAST PM team.
@@ -205,3 +217,5 @@ not done
 - RFE 0526 for Cisco was submitted to the PM team and approved by Brian Evans.
 
 - RFE 0526 (Cisco) was submitted to the PM team and approved by Brian Evans.
+
+- RFE 0526 (Cisco, Existing Feature Enhancement) was approved by Brian Evans.

@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Open Cisco RFE 0526 in Salesforce (https://vastdata.my.salesforce.com/a6HV40000009q2b) and link the RFE to the correct Related Feature record. @TBD ⏫ #task #proposed #auto
 - [?] Review the VAST Data public capability information from Jason Vallery and propose ideas or a concrete integration/alignment approach between Whale Iptic's platform and VAST Data's roadmap. @Avinash Lakshman 🔼 #task #proposed #auto
 - [?] Send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities so Whale Iptic can evaluate potential integration/alignment. ⏫ #task #proposed #auto
 - [?] Review the VAST Data information sent by Jason Vallery and consider how Whale Iptic's platform could be integrated or aligned with VAST Data's roadmap, then follow up with ideas or proposals. @Avinash Lakshman 🔼 #task #proposed #auto
