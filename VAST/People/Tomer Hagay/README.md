@@ -75,6 +75,8 @@ tags:
 - Tomer Hagay stated that VAST Data supports S3 Server-Side Encryption with Customer-Provided Keys (SSE-C) using the x-amz-server-side-encryption-customer-* headers starting from VAST cluster software version 5.4, and referenced the 5.4 release notes as documentation.
 
 - Tomer Hagay suggested that if self-encrypting drives (SEDs) are requested to meet FIPS 140-3 data-at-rest requirements for protection against drive removal, VAST Data software encryption using FIPS-compatible algorithms should meet the same requirement.
+
+- On 2025-12-17, Tomer Hagay shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" with Jason Vallery and invited him to edit it.
 ## Recent Context
 
 - 2025-10-29: Mentioned in: 1:1 with Eyal Traitel, VAST release planning (major/minor, hotfix/service packs) and multi-tenancy gaps
@@ -122,6 +124,9 @@ tags:
 - 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): unified visibility across NCP VAST clusters via dual-uplink and tenant-scoped views
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-17: Mentioned in: Tomer Hagay shared Google Slides deck: GCP Flow from customer to sales to customer
 ## Open Tasks
 ```tasks
 path includes Tomer Hagay

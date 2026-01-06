@@ -3,7 +3,7 @@ type: people
 email: jeff@vastdata.com
 company: VAST Data
 title: Jeff Denworth
-last_contact: '2025-12-27'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -11,8 +11,7 @@ tags:
 phone: 856-383-8849
 role: Co-founder & CMO
 linkedin: https://www.linkedin.com/in/jeff-denworth-123456789/
-bio: Jeff Denworth is the Co-founder and Chief Marketing Officer at VAST Data, bringing
-  over two decades of experience in big data, HPC, and cloud storage technologies.
+bio: Jeff Denworth is the Co-founder and Chief Marketing Officer at VAST Data, bringing over two decades of experience in big data, HPC, and cloud storage technologies.
 location: New York, NY, United States
 previous_roles:
 - title: SVP Marketing
@@ -193,6 +192,34 @@ last_enriched: '2026-01-05'
 - Jeff Denworth instructed Jason Vallery to track Cloud purchase orders to understand customer expectations, user experience, cloud implications, and business development angles.
 
 - Jeff Denworth stated he is rapidly losing confidence that VAST Data can close a Q1 deal with Microsoft AI Infrastructure (MAI) unless VAST becomes more aggressive and executes a January plan.
+
+- Jeff Denworth requested an understanding of the MFN clause and MFN price with CoreWeave to support Microsoft negotiations.
+
+- Jeff Denworth asked the team to refine a total cost of ownership (TCO) model beyond COGS, including power and the opportunity cost value of lower power consumption to Microsoft.
+
+- Jeff Denworth indicated urgency to have the Microsoft competitive and TCO story 'buttoned up' for Davos, contingent on Lior Genzel's claim that VAST may be competing with Microsoft's storage team.
+
+- Marianne Budnik stated Jeff Denworth is driving the talk track for the NVIDIA CES press conference presentation to make it as strong as possible.
+
+- Jeff Denworth communicated that VAST Data had $300M of gross bookings on the books in the first two months of Q4, exceeding the full FY24 gross bookings total of $256M.
+
+- Jeff Denworth stated that VAST Data typically closes the bulk of the quarter in the third and final month and that last year 80% of Q4 bookings landed in the final month.
+
+- Jeff Denworth assessed RFE 0482 as 'super complex' and asked Mordechai Blaunstein to lead investigation and involve appropriate parties.
+
+- Jeff Denworth asked VAST Product Management management to analyze Walmart's restated requirements and determine what should be incorporated into the VAST product plan, working with Mikey and team.
+
+- Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" to distill and clarify the "crawl, walk, run" progression in the Azure + VAST integration proposal because it is not obvious to readers.
+
+- Jeff Denworth instructed Jason Vallery to track the Leidos Federal cloud PO to understand customer expectations, user experience, cloud implications, and business development angles.
+
+- Jeff Denworth stated VAST Data is quickly selling out of inventory, lead times are skyrocketing, and there is currently nothing reserved for Microsoft for the MAI effort.
+
+- Jeff Denworth emphasized that if Microsoft MAI wants to deploy in April 2026, May 2026, or June 2026, VAST Data needs a plan immediately due to supply-chain constraints.
+
+- Jeff Denworth stated supply chain for storage is a disaster for the upcoming year and asked whether VAST knows how to source Microsoft's stated 2 exabytes requirement, when it must be ordered, and which supplier VAST would order from.
+
+- Jeff Denworth is the escalation contact (along with Kirstin Bordner) for concerns or conflicts with VAST Forward spokesperson assignments.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -300,6 +327,16 @@ last_enriched: '2026-01-05'
 - 2025-12-30: An OrderAdmin alert thread confirms a $96,808.14 deal (FOpp-4197, "Leidos DoD Cloud") for Leidos Fed...
 
 - 2025-12-27: Jeff Denworth escalated concern that VAST is losing the chance of a Q1 deal with Microsoft AI Infras...
+
+- 2026-01-05: Mentioned in: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+- 2026-01-01: Mentioned in: Jeff Denworth: Q4 bookings to date exceed FY24 total
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-23: Jeff Denworth relayed that Walmart restated requirements after an internal meeting: they need a long...
+- 2025-12-22: Jeff Denworth assigned Jason Vallery an action item in a Google Doc titled "VAST and Azure Integrati...
+- 2025-12-30: An OrderAdmin alert thread confirms a $96,808.14 VAST Data software-only cloud deployment order for ...
+- 2025-12-21: Jeff Denworth asked whether Microsoft MAI expects to use VAST's supply chain and warned VAST is sell...
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence and key dates
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth
@@ -453,6 +490,36 @@ not done
 - Microsoft considering HDDs for April MAI scale-up delivery and HDD supply constraints
 
 - CoreWeave testing status for MAI-related validation
+
+- Walmart hybrid data platform requirements and unified namespace needs
+
+- Integration requirements with Google Cloud Storage (GCS) for Walmart
+
+- Competitive risk from Alluxio in the Walmart account
+
+- VAST product plan implications from Walmart restated requirements
+
+- Strategy for full estate adoption at Walmart
+
+- Clarifying phased delivery plan (crawl-walk-run) for Azure integration
+
+- Leidos Federal first US Federal sector Cloud PO (software-only) in Leidos GovCloud
+
+- Connecting cloud deployment to on-prem for resilient government demo ("Golden Dome")
+
+- OrderAdmin processing and documentation checklist in SFDC for FOpp-4197
+
+- Win drivers: strategic relationship and superior architecture scalability; hybrid cloud positioning for defense and civilian sectors
+
+- Microsoft MAI storage decision process and internal stakeholders (Mustafa, Majid Mohammed, Yunchao Gong, Karén Simonyan)
+
+- Supply-chain constraints, inventory sell-out risk, and lack of reserved capacity for Microsoft
+
+- MAI deployment timing shift to May-June 2026 and February 2026 GPU arrival
+
+- VAST proof of concept placement for Anson (Qi) requiring 1,000 to 2,000 GPUs, potential environments include MAI/Vipin, Nscale, or CoreWeave
+
+- Competitive positioning versus Azure Blob and Microsoft internal politics
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.
@@ -536,3 +603,7 @@ not done
 - Jeff Denworth proposed operating assumption that CoreWeave testing for the Microsoft MAI deal is largely cosmetic and should not be treated as the gating factor for commercial execution.
 
 - Jeff Denworth proposed that either Lior Genzel or Jonsi Stefansson should be physically in Redmond immediately at the start of the new year to begin commercial discussions with Microsoft MAI.
+
+- Jason Vallery will track the Leidos Federal cloud PO (FOpp-4197) to capture customer expectations, user experience learnings, cloud product implications, and business development angles.
+
+- Lior Genzel will lead efforts to obtain introductions to key Microsoft MAI stakeholders (Majid Mohammed, Yunchao Gong, Karén Simonyan) to build trust beyond Kushal Datta.

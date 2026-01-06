@@ -26,6 +26,12 @@ role: Apollo team member (storage/training infrastructure)
 - Jason Vallery stated that Kushal Dada owns the relationship between Microsoft AI and Azure and contacted Jason Vallery after Jason left Microsoft to ask what a VAST-based approach would look like.
 
 - Kushal Datta and Vipin Sachdeva were targeted SC25 meeting/outreach items and were marked complete on 2025-10-28.
+
+- In a December 8, 2025 end-of-day update, Lior Genzel reported Kushal Datta said Microsoft MAI's initial GPU drop will arrive in February 2026 and they need a storage solution ready for May 2026 to June 2026 timeframe.
+
+- Lior Genzel reported Kushal Datta stated Microsoft MAI will decide on the storage deployment and told Manish Sah that Azure Blob does not make sense compared to VAST for MAI requirements.
+
+- Jason Vallery reported hearing from multiple Azure contacts that Kushal Datta cannot be trusted and may be misrepresenting his influence over Mustafa's final decision.
 ## Recent Context
 
 - 2025-10-31: Jason Vallery and Kushal Datta discussed options to deploy VAST Data for Microsoft Apollo training w...
@@ -39,6 +45,8 @@ role: Apollo team member (storage/training infrastructure)
 - 2025-10-28: Cloud BU leadership aligns on dual-track GTM: GCP Marketplace MVP launch plus hyperscaler-scale MAI storyline
 
 - 2026-01-05: Mentioned in: SC25 meeting scheduling and completed outreach (Nidhi, Kurt Niebuhr, Kushal Datta, Vipin Sachdeva)
+
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 ## Open Tasks
 ```tasks
 path includes Kushal Datta

@@ -26,6 +26,8 @@ role: VP Business Development
 - Kirstin Bordner stated John Mao is planning to be in Las Vegas for CES and can be used for press interviews if Renen Hallak is tied up with flash vendor meetings.
 
 - John Mao stated he will fly to San Francisco in early 2026 to visit his OpenAI contact and open a dialogue to bring in VAST engineering, and requested keeping the relationship engineering-centered.
+
+- Kirstin Bordner added John Mao because he is planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure

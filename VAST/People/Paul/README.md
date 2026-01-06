@@ -3,7 +3,7 @@ type: people
 email: ''
 company: VAST Data
 title: Paul
-last_contact: '2025-11-14'
+last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/people
@@ -36,6 +36,8 @@ tags:
 - 2025-10-29: Mentioned in: VAST on Cloud positioning and GTM alignment, MVP architecture, marketplace plan, and hyperscaler constraints
 
 - 2025-11-14: Walmart big data DR requirements gating architecture session; plan Mingming expectations call
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 ## Open Tasks
 ```tasks
 path includes Paul

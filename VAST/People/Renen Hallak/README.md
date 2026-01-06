@@ -27,6 +27,12 @@ tags:
 - Renen Hallak stated he will travel to Las Vegas during the week of 2026-01-05 to help the VAST Data Operations team secure NAND allocation at CES due to flash supply shortages.
 
 - Renen Hallak emphasized VAST Data's commitment to never losing customer data and highlighted pride in the team's response to the Crusoe recovery effort.
+
+- The Microsoft PRD sync aims to leverage Renen Hallak's meeting with Nick Parker to create a sequence of events that escalates Microsoft procurement and partnership processes for VAST Data.
+
+- Renen Hallak plans to meet flash vendors during CES and stated he cannot change the dates for those meetings.
+
+- Renen Hallak stated Microsoft should have its own flash allocation with NAND manufacturers and that VAST efficiencies could reduce Microsoft's NAND needs and potentially allow VAST to use Microsoft's excess allocation for other customers.
 ## Recent Context
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
@@ -40,6 +46,10 @@ tags:
 - 2026-01-04: Mentioned in: Renen Hallak update: Crusoe file recovery automation and CES NAND allocation outreach
 
 - 2025-12-27: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
+
+- 2026-01-05: Mentioned in: Microsoft PRD sync to plan procurement and partnership escalation using Renen Hallak meeting with Nick Parker
+- 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 ## Open Tasks
 ```tasks
 path includes Renen Hallak

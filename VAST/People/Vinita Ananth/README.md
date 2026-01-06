@@ -19,6 +19,8 @@ tags:
 - Vinita Ananth is affiliated with Nebius and uses the email address vinitaananth.ai@nebius.com.
 
 - Vinita Ananth confirmed that Monday, 2025-12-15 at 10:00am PT works for a Nebius and VAST Data connection meeting.
+
+- Vinita Ananth confirmed availability for a call on Monday, 2025-12-15 at 10:00 AM PT with Jason Vallery (VAST Data).
 ## Recent Context
 
 - 2025-12-10: Mentioned in: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT

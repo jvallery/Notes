@@ -43,6 +43,8 @@ tags:
 - Alon Horev stated that Violet should be the primary VAST Data contact for questions about encryption key granularity and related encryption matters for the Google Distributed Cloud RFP.
 
 - Alon Horev is leading AI Model Builder sessions for VAST Forward.
+
+- Lior Genzel stated he messaged Alon Horev to strategize options for the best environment to run Anson (Qi)'s VAST proof of concept and to potentially merge Kushal Datta's MAI plan with Qi's proof of concept plan.
 ## Recent Context
 
 - 2025-11-14: Mentioned in: Google Distributed Cloud RFP debrief and federal coordination (air-gapped focus)
@@ -82,6 +84,10 @@ tags:
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions and required prep schedule
+
+- 2025-12-01: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
+- 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence and key dates
 ## Open Tasks
 ```tasks
 path includes Alon Horev

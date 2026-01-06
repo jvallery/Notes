@@ -33,6 +33,8 @@ role: Vice President, Alloy & Dedicated Regions
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matt (DRCC/Alloy PM) in Seattle
 
 - 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson (DRCC/Alloy PM) for Seattle meeting
+
+- 2025-12-08: Mentioned in: Oracle OCI intro: Christian Linacre connects Jason Vallery with Matthew Thomson for Seattle meeting
 ## Open Tasks
 ```tasks
 path includes Christian Linacre

@@ -49,11 +49,32 @@ expertise:
 - James Vallery applied to a job posting at Prologis via LinkedIn (job ID 4332935864).
 
 - James Vallery cannot figure out how to view 2nd-degree LinkedIn connections for a company and asked me to check whether I know anyone at the companies he applied to.
+
+- Jason Vallery described VAST Data's vision to move up the value stack by combining VAST's storage platform with an AI agent engine, targeting enterprises with data lakes in hyperscalers and GPUs spread across multiple neoclouds.
+
+- Jason Vallery stated VAST Data provides storage solutions used for training data and model distribution for large language models, and mentioned customers including xAI, Tesla, and CoreWeave (as stated in the AI-generated meeting summary).
+
+- Jason Vallery raised a concern about whether Whale Iptic's security model requires a browser agent, and Avinash Lakshman responded that the browser agent is minimal and focused on identity management while enabling auditability and visibility of actions.
+
+- Jason Vallery and Avinash Lakshman discussed integrating GPU infrastructure with distributed ledger technology to enable secure, verifiable, and observable agent execution in a global state scenario.
+
+- Jason Vallery is the organizer of the 1:1 sync with Mordechai Blaunstein scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver).
+
+- Jason Vallery reported hearing from multiple Azure contacts that the final MAI storage decision is made by a person named Mustafa (Microsoft), and that Kushal Datta cannot be trusted.
+
+- Jason Vallery stated he has no current relationship with Majid Mohammed (Mustafa's chief of staff at Microsoft), Yunchao Gong (Kushal Datta's manager at Microsoft), or Karén Simonyan (Yunchao Gong's manager and Microsoft MAI chief scientist).
+
+- Lior Genzel (VAST Data) indicated Jason Vallery (VAST Data) would take the lead on answering whether the proposed solution uses Self-Encrypting Drives (SEDs) for the SSD component.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
 
 - 2026-01-01: On 2026-01-01, James Vallery emailed a list of LinkedIn job postings he applied to and asked me to c...
+
+- 2025-12-17: Mentioned in: 1:1 with Avinash Lakshman, Whale Iptic secure compute platform and potential VAST integration
+- 2025-12-29: Mentioned in: Mordechai Blaunstein accepted 1:1 sync with Jason Vallery (Zoom, Jan 2, 2026)
+- 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
+- 2025-12-17: Mentioned in: Google GDC Storage RFP follow-up: compliance, pricing, BYOH partner list, and meeting request
 ## Open Tasks
 ```tasks
 path includes James Vallery

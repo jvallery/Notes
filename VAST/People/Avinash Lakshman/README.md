@@ -25,6 +25,12 @@ tags:
 - Avinash Lakshman demonstrated a secure LLM management platform that hosts MCP servers and manages LLMs via cloud provider services, using digital signatures and identity-based wallets in the browser for auditable interactions.
 
 - Avinash Lakshman requested public information on VAST Data's current development status and capabilities to evaluate potential integration or alignment with Whale Iptic's platform.
+
+- Avinash Lakshman presented Whale Iptic's platform as a globally distributed, cryptographically secure compute platform with virtual sandbox environments for AI agents and Web2 applications.
+
+- Avinash Lakshman described Whale Iptic's two main offerings as Icarus (a virtual conversational agent that can interact with enterprise-grade systems) and Cerebrum (an SDK for a trust-aware agent orchestrator with fine-grained authorization control and auditability).
+
+- Avinash Lakshman stated Whale Iptic uses a multi-pod architecture across AWS, Google Cloud Platform, and Microsoft Azure to reduce the risk of service disruption from a single cloud provider outage.
 ## Recent Context
 
 - 2025-12-17: Avinash Lakshman presented Whale Iptic's globally distributed secure compute platform for AI agents ...
@@ -48,8 +54,13 @@ not done
 
 - Distributed ledger for data sovereignty and fault tolerance using custom BFT consensus
 
+- Multi-cloud multi-pod architecture across AWS, GCP, and Azure for reliability
+
+- Secure and auditable LLM management using digital signatures and identity-based browser wallets
 ## Key Decisions
 
 - Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities.
 
 - Avinash Lakshman will review the VAST Data information and consider integration or alignment with Whale Iptic's platform, then potentially follow up with ideas or proposals.
+
+- Jason Vallery will send Avinash Lakshman a follow-up email with public links and information about VAST Data's current and upcoming capabilities so Avinash can evaluate potential integration or alignment.

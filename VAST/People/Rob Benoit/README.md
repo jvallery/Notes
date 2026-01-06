@@ -37,6 +37,8 @@ last_enriched: '2026-01-05'
 - Rob Benoit has a systems administration and networking background, including Cisco and Unix engineering roles at financial services companies (including Goldman Sachs), before moving into storage and then NetApp.
 
 - Rob Benoit partnered with Yancey (last name not provided) at NetApp on go-to-market for NetApp cloud business, including marketplace offerings and first-party hyperscaler services such as Azure NetApp Files and AWS FSx for ONTAP.
+
+- Rob Benoit approved Salesforce RFE 0538, a Documentation RFE associated with NTT DATA Japan Corporation, and requested the PM team link the RFE to the correct Related Feature in Salesforce.
 ## Recent Context
 
 - 2025-10-27: Mentioned in: 1:1 with Jeff Denworth: cloud pipeline synthesis, pricing/consumption debate, and event planning (Tel Aviv, Tech Summit, Supercomputing)
@@ -44,6 +46,8 @@ last_enriched: '2026-01-05'
 - 2026-01-05: Jason Vallery tracked and completed an action item to coordinate with Rob Benoit on Tech Summit cont...
 
 - 2025-10-31: Jason Vallery and Rob Benoit aligned on a VAST-in-cloud approach that uses object storage for capaci...
+
+- 2026-01-05: Mentioned in: RFE 0538: Update VAST OS 5.3+ documentation to state tenant name underscore restriction (NTT DATA Japan Corporation)
 ## Open Tasks
 ```tasks
 path includes Rob Benoit

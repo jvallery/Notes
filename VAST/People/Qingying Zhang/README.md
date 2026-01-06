@@ -3,7 +3,7 @@ type: people
 email: ''
 company: Microsoft
 title: Qingying Zhang
-last_contact: '2025-10-31'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -19,6 +19,8 @@ role: Corporate Vice President, Azure (leads AKS and cloud-native services; focu
 ## Recent Context
 
 - 2025-10-31: Mentioned in: Microsoft Apollo aligned on two-track evaluation for VAST AI cloud storage (Azure lab software validation + VAST loaner hardware POC)
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 ## Open Tasks
 ```tasks
 path includes Qingying Zhang

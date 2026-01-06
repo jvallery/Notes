@@ -3,7 +3,7 @@ type: people
 email: rick.scurfield@vastdata.com
 company: VAST Data
 title: Rick Scurfield
-last_contact: '2025-12-27'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -31,6 +31,16 @@ tags:
 - Rick Scurfield communicated a GTM organization update to All GTM and All Customer Success (CS) distribution lists via BCC on 2025-12-18.
 
 - Rick Scurfield instructed the team to place hardware orders as early as possible to enter the allocation queue sooner, keep SFDC up to date for demand visibility, and build configurations with hardware on hand when possible to accelerate fulfillment.
+
+- Rick Scurfield requested account outreach and customer nominations to drive attendance and engagement for VAST Forward.
+
+- Rick Scurfield told Regina (last name unknown) that Lior Genzel mentioned a possible need to ship a 57 x 57 configuration in March 2026 and that it was not on the Hard/Soft Backlog list at the time.
+
+- Rick Scurfield noted uncertainty about sourcing hardware from Dell for the Microsoft opportunity based on recent information.
+
+- Rick Scurfield communicated an updated VAST Data quote policy and hardware allocation guidance on 2025-12-17.
+
+- Rick Scurfield stated VAST Data will continue proactive, real-time communications as global supply conditions evolve.
 ## Recent Context
 
 - 2025-12-03: Mentioned in: VAST Forward internal push: drive customer outreach and nominations for VIP Ski Experience
@@ -46,6 +56,13 @@ tags:
 - 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition, interim lead assigned
 
 - 2025-12-27: Jeff Denworth escalates Azure MAI deal risk and pushes January execution plan
+
+- 2025-12-03: Mentioned in: Rick Scurfield internal outreach push for VAST Forward (Feb 24-26) attendance and VIP Ski nominations
+- 2026-01-05: Microsoft workback plan, CoreWeave MFN comparison, and TCO model refinement
+- 2026-01-05: Mentioned in: Microsoft MAI Nebius NJ data center phased deployment, first hall 58 x 58, decision needed by end of January 2026
+- 2025-12-17: Mentioned in: Rick Scurfield: New quote policy, monthly price books, and hardware allocation guidance
+- 2025-12-18: Mentioned in: GTM org update: RevOps leadership transition from Cristina Hasson to interim lead Stacy Wynn
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 ## Open Tasks
 ```tasks
 path includes Rick Scurfield

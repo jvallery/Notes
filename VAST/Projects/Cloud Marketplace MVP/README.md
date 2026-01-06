@@ -41,6 +41,7 @@ not done
 - 2026-01-05: [[2026-01-05 - Cloud Marketplace MVP - GA acceptance criteria, GTM package, and competitive comparisons]]
 - 2025-10-29: [[2025-10-29 - VAST on Cloud positioning and GTM alignment, MVP architecture, marketplace plan, and hyperscaler constraints]]
 
+- 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams link (Microsoft-led invite)
 ## Key Facts
 
 - Marketplace offers enable procurement/transactability, but VM economics can be non-competitive at scale; longer-term paths include deeper cloud primitives and potentially CSP data-center hardware.
@@ -48,6 +49,7 @@ not done
 - Azure Marketplace SKU update/change request has near-term deadlines (tracked in weekly status updates).
 - GA acceptance criteria include operational “spin up/spin down” behavior and clear support/DR expectations for an MVP.
 
+- The Weekly VAST GTM Meeting agenda includes surfacing blockers to Azure Marketplace onboarding and later transactions, plus aligning promotional assets prior to launch.
 ## Topics
 
 - Marketplace ops: private offers, entitlement/metering, reporting exports

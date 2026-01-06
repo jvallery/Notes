@@ -3,7 +3,7 @@ type: people
 email: ''
 company: Microsoft
 title: Kanchan Mehrotra
-last_contact: '2025-11-06'
+last_contact: '2025-12-21'
 created: '2026-01-05'
 tags:
 - type/people
@@ -46,6 +46,8 @@ last_enriched: '2026-01-05'
 - 2026-01-05: The transcript contains a single completed action item for Jason Vallery to follow up with Kanchan M...
 
 - 2025-11-06: Jason Vallery and Kanchan Mehrotra aligned on a pragmatic approach to accelerate VAST adoption insid...
+
+- 2025-12-21: Jeff Denworth flags MAI supply-chain risk and need for immediate Microsoft capacity plan
 ## Open Tasks
 ```tasks
 path includes Kanchan Mehrotra
