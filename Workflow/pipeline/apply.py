@@ -530,7 +530,12 @@ class TransactionalApply:
             return
         
         self.backup_dir.mkdir(parents=True, exist_ok=True)
-        backup_path = self.backup_dir / path.name
+        try:
+            rel = path.relative_to(self.vault_root)
+        except ValueError:
+            rel = Path(path.name)
+        backup_path = self.backup_dir / rel
+        backup_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(path, backup_path)
         self._backed_up[path] = backup_path
     

@@ -220,3 +220,26 @@ def test_post_apply_normalizes_entity_note_frontmatter_and_headers(tmp_path):
     assert "account/" not in (fm.get("tags") or [])
     assert "[[]]" not in body
     assert "**Account**: [[Acme]]" in body
+
+
+def test_backup_paths_do_not_collide_for_same_filenames(tmp_path):
+    vault_root = tmp_path
+    applier = TransactionalApply(vault_root, dry_run=False)
+
+    readme_a = vault_root / "VAST" / "People" / "Alice Example" / "README.md"
+    readme_a.parent.mkdir(parents=True, exist_ok=True)
+    readme_a.write_text("alice")
+
+    readme_b = vault_root / "VAST" / "People" / "Bob Example" / "README.md"
+    readme_b.parent.mkdir(parents=True, exist_ok=True)
+    readme_b.write_text("bob")
+
+    applier._backup(readme_a)
+    applier._backup(readme_b)
+
+    backup_a = applier._backed_up[readme_a]
+    backup_b = applier._backed_up[readme_b]
+
+    assert backup_a != backup_b
+    assert backup_a.read_text() == "alice"
+    assert backup_b.read_text() == "bob"
