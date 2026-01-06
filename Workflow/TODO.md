@@ -258,7 +258,7 @@ Dozens of notes were created with `**Account**: [[]]` / `**Project**: [[]]` even
 
 **Goal:** Ensure entity `README.md` files always have a single valid YAML frontmatter block and safe quoting.
 
-**Status: NOT STARTED**
+**Status: IN PROGRESS** (@codex-20260105, started: 2026-01-05 17:03)
 
 **Discovery:**
 At least one People README contained two YAML frontmatter blocks and invalid quoting in fields (breaking manifest scan expectations).
