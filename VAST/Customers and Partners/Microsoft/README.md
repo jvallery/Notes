@@ -5,7 +5,7 @@ account_type: customer
 status: Active
 industry: Technology
 my_role: ''
-last_contact: '2025-12-11'
+last_contact: '2025-12-16'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -502,6 +502,8 @@ not done
 - John Mao stated OpenAI Rockset persists to Azure Blob storage.
 
 - Jason Vallery stated OpenAI uses Azure Cosmos DB heavily for conversation persistence.
+
+- Lior Genzel stated Microsoft is at an engineering-level proof of concept (PoC) for the UK Met effort and is not yet a VAST customer.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -867,6 +869,10 @@ not done
 - Scheduling an intro call/meeting between Jason Vallery and Sushant Rewaskar
 
 - VAST Data and Microsoft technical collaboration follow-up from Ignite
+
+- Microsoft prospect engagement and engineering-level PoC (UK Met)
+
+- Internal approval workflow for training materials access
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
@@ -974,3 +980,5 @@ not done
 - Decline Microsoft's request for an Azure VoC instance for performance testing against Azure GPU instances because VAST Azure is not ready for this use case.
 
 - VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST on Azure is not ready for this use case.
+
+- Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request in a pending approval state until Lior Genzel confirms objectives and senior exec guidance is available.

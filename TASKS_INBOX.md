@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Provide a decision on whether to approve VAST Customer Learning Portal access for Microsoft prospect Trevor Cooper-Chadwick after Lior Genzel confirms objectives and senior exec alignment is reached. 🔼 #task #proposed #auto
+- [?] Keep Trevor Cooper-Chadwick's VAST Customer Learning Portal access request marked as "pending approval" until Lior Genzel provides guidance after speaking with Trevor. @Kristin Thompson 🔼 #task #proposed #auto
+- [?] Reach out to Trevor Cooper-Chadwick (Microsoft Principal Consultant, trcooper@microsoft.com) to understand his objectives for requesting VAST Customer Learning Portal access given Microsoft is in an engineering-level PoC (UK Met) and not yet a customer. @Lior Genzel ⏫ #task #proposed #auto
 - [?] Use and share the VAST 5.4 release notes documenting SSE-C support via x-amz-server-side-encryption-customer-* headers, and confirm any operational constraints or "gotchas" relevant to Google Distributed Cloud. 🔼 #task #proposed #auto
 - [?] Use and share the VAST support documentation for encryption groups and keys (tenant and path level, including S3 buckets and NFS exports) as the authoritative reference in the Google Distributed Cloud RFP response. 🔼 #task #proposed #auto
 - [?] Confirm with Google where the self-encrypting drive (SED) requirement originates (for example, a specific FIPS 140-3 interpretation or drive-removal threat model) to determine whether VAST software-based encryption satisfies the requirement. ⏫ #task #proposed #auto

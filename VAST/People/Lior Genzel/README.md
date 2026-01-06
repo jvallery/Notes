@@ -548,6 +548,10 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel introduced Jason Vallery (VP of Product Management for Cloud at VAST Data) to Sushant Rewaskar at Microsoft to enable technical collaboration after an Ignite follow-up thread.
 
 - Lior Genzel stated he was in Seattle with VAST's VP of Product Management for Cloud for Microsoft meetings on Monday, December 8 through Wednesday, December 10, 2025, with a possible Thursday morning option, and had an afternoon flight back to the Bay Area.
+
+- Lior Genzel stated Microsoft is at an engineering-level proof of concept (PoC) for the UK Met effort and is not yet a VAST customer.
+
+- Lior Genzel committed to reach out to Trevor Cooper-Chadwick to learn his objectives for requesting VAST Customer Learning Portal access.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot
