@@ -44,6 +44,8 @@ not done
 - Express Scripts Pharmacy sent an order confirmation stating they are working on Jason Vallery's prescription order and will send another email when it ships.
 
 - Express Scripts Pharmacy sent an order confirmation email stating they are working on Jason Vallery's prescription order and will send another email when it ships.
+
+- The Express Scripts Pharmacy order includes lisdexamfetamine capsules 40mg with prescription numbers 253633519965, 253633520065, and 253633520365, all associated to invoice number 08245103465.
 ## Topics
 
 - Express Scripts prescription order confirmation
