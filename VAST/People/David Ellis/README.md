@@ -129,6 +129,12 @@ education:
 - David Ellis suggested starting the new TMIMITW group on either 2026-01-27 or 2026-02-03, noting that Brandon will be out for a bit but the group can start anyway.
 
 - David Ellis proposed a reduced invite list for TMIMITW: Trent, Brandon, Brian, and 'the Mikes'.
+
+- David Ellis confirmed he was in for Brian Bearly's board game session the week after Christmas 2025.
+
+- David Ellis nominated the game Betrayal at House on the Hill (referred to as 'the haunting on the house on the hill') as an additional game option for the board game session.
+
+- David Ellis stated Monday 2025-12-29 at 1:00pm is better for him than Saturday 2025-12-27 at 1:00pm for the board game session.
 ## Recent Context
 
 - 2026-01-04: David Ellis is trying to confirm attendance for the final mens group chat about the book '2084' and ...
@@ -156,6 +162,8 @@ education:
 - 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's house (week after Christmas 2025)
 - 2026-01-04: David Ellis asked the men's group to confirm attendance for the final discussion of the book "2084" ...
 - 2025-12-31: David Ellis drafted a message proposing to retire the existing book club and start a smaller group c...
+
+- 2025-12-18: Mentioned in: Board game session planning, week after Christmas 2025 (Nemesis / Betrayal at House on the Hill)
 ## Open Tasks
 ```tasks
 path includes David Ellis
