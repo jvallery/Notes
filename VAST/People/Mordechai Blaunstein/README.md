@@ -82,6 +82,8 @@ role: Mordechai Blaunstein @ VAST Data
 - The Zoom meeting for the Jason Vallery and Mordechai Blaunstein sync uses Meeting ID 979 8237 9206 and passcode 374598.
 
 - On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" and invited Jason Vallery to edit it.
+
+- Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called 'Service Aware VIP Pool' to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI, tracked in Jira ORION-261324 and an internal wiki page.
 ## Recent Context
 
 - 2025-12-29: Mordechai Blaunstein accepted a calendar invitation for a 1-hour sync with Jason Vallery. The meetin...
@@ -124,6 +126,8 @@ role: Mordechai Blaunstein @ VAST Data
 - 2025-12-19: Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .d...
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink and tenant-scoped visibility via VAST Uplink
 - 2025-12-19: On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation ...
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 ## Open Tasks
 ```tasks
 path includes Mordechai Blaunstein

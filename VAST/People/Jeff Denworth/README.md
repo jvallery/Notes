@@ -428,6 +428,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth requested more active communication and suggested moving to daily updates on the Microsoft MAI effort.
 
 - Jeff Denworth referenced a prior CoreWeave deal where Andy Bernstein and an individual named Leo worked out of CoreWeave offices daily, which Jeff credits with generating $1.5B in bookings so far.
+
+- Jeff Denworth stated that RFE 0482 is 'super complex' and asked Mordechai Blaunstein to lead the investigation and involve the appropriate parties.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -619,6 +621,8 @@ last_enriched: '2026-01-05'
 - 2026-01-01: Jeff Denworth shared company-wide context on VAST Data bookings performance, noting $300M in gross b...
 - 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 - 2025-12-27: Mentioned in: Azure MAI red flare: accelerate commercial + supply chain actions in January
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth

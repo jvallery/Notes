@@ -56,6 +56,8 @@ not done
 - 2026-01-05: Mentioned in: Internal invite: Amplify technical deep-dive blog on smart city real-time video agents (VAST + NVIDIA Cosmos Reason 2)
 - 2026-01-01: Mentioned in: Urgent training invite: KV Cache storage opportunity and NVIDIA Context Memory Extension (CME)
 - 2026-01-04: Mentioned in: VAST and OpenAI weekly account pursuit update, POC touch base planned (week ending 2026-01-02)
+
+- 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via VAST Uplink
 ## Key Facts
 
 - RFE 0482 is associated with NVIDIA Corporation and the opportunity 'DGX-C | Coreweave' (opportunity amount $0, close date 2025-11-02).
@@ -179,6 +181,12 @@ not done
 - The training content includes the impact of NVIDIA's Context Memory Extension (CME) announcement on inference infrastructure and customer conversations.
 
 - VAST is working on additional education for the Nvidia team that works with OpenAI, and a follow-up meeting with specialist teams is being scheduled.
+
+- RFE 0482 was submitted by Sales Engineer Chuck Cancilla and categorized as 'HPC & AI - Other/Many' for NVIDIA DGX Cloud operational visibility across VAST clusters deployed at more than five NCPs.
+
+- NVIDIA DGX Cloud Storage Team requested dual-uplink visibility so that the dedicated VAST cluster 'LAX-02' can be visible via both uplinks 'lambda.cloud.vastdata.com' and 'nvidiadgxc.cloud.vastdata.com'.
+
+- NVIDIA DGX Cloud requested tenant-scoped visibility for the multi-tenant VAST cluster 'LAX-03' so that 'nvidiadgxc.cloud.vastdata.com' can access only DGX Cloud tenant metrics, workloads, configuration, and health without exposing other tenants or cluster-wide information.
 ## Topics
 
 - RFE 0482 for NVIDIA DGX Cloud: unified visibility across VAST clusters deployed at multiple NCPs

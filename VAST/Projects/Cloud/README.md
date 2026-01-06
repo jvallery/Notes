@@ -629,6 +629,10 @@ not done
 - Internal ownership and accountability model for hybrid/on-prem hardware-involved cloud opportunities
 
 - Cloud Product Management vs on-prem team ownership for hyperscaler-tied solutions
+
+- Tenant-scoped visibility for multi-tenant cluster LAX-03 (DGX Cloud tenant only)
+
+- Jira ORION-261324 and internal wiki documentation for Service Aware VIP Pool
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
@@ -663,3 +667,5 @@ not done
 - Lior Genzel will take the lead on obtaining introductions to key Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to build trust beyond Kushal Datta.
 
 - VAST will not provide an Azure VoC instance to Microsoft for GPU performance testing because VAST Azure is not ready for that use case.
+
+- Jeff Denworth assigned Mordechai Blaunstein to lead the technical investigation and coordination for RFE 0482.
