@@ -59,6 +59,10 @@ last_enriched: '2026-01-05'
 - Louis Feuvrier is the lead developer/architect for OpenAI's in-house research data system called DAQ (Data Acquisition).
 
 - Louis Feuvrier is listed on LinkedIn with the descriptor/title 'Learning' (exact employer not provided in the email).
+
+- Louis Feuvrier is located in the San Francisco Bay Area (per LinkedIn notification email dated 2025-12-26).
+
+- Louis Feuvrier's LinkedIn headline/role is shown as "Learning" (per LinkedIn notification email dated 2025-12-26).
 ## Recent Context
 
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
@@ -109,3 +113,5 @@ not done
 - Potential introductory outreach to new connection
 
 - Potential outreach to new connection
+
+- Potential outreach message to Louis Feuvrier
