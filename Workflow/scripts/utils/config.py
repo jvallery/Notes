@@ -152,7 +152,7 @@ def get_model_config(task: str) -> dict[str, Any]:
             "provider", models.get("default_provider", "openai")
         ),
         "model": task_config.get("model", "gpt-5.2"),  # Default to GPT-5.2
-        "fallback": task_config.get("fallback", "gpt-4o"),
+        "fallback": task_config.get("fallback", "gpt-5.2"),
         "temperature": task_config.get("temperature", 0.0),
         "max_tokens": task_config.get("max_tokens"),  # None = let model decide
     }

@@ -218,7 +218,7 @@ Return ONLY valid JSON, no markdown."""
 
     try:
         response = client.chat.completions.create(
-            model="gpt-4o-mini",
+            model="gpt-5.2",
             messages=[
                 {"role": "system", "content": "Extract structured data from notes. Return only valid JSON."},
                 {"role": "user", "content": prompt}
@@ -400,7 +400,7 @@ Return ONLY valid JSON."""
         try:
             # Use the Responses API with web_search tool for actual web search
             response = client.responses.create(
-                model="gpt-4o",
+                model="gpt-5.2",
                 tools=[{"type": "web_search_preview"}],
                 input=prompt,
                 instructions="You are a professional researcher. Use the web_search tool to find accurate information about people. Return only verified data with source URLs.",

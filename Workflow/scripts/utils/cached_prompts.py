@@ -28,7 +28,7 @@ Usage:
     
     # Use with AI client - static content first, then user message
     response = client.chat.completions.create(
-        model="gpt-4o",
+        model="gpt-5.2",
         messages=[
             {"role": "system", "content": system_prompt},  # Cached prefix
             {"role": "user", "content": user_specific_content}  # Dynamic

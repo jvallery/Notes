@@ -130,7 +130,7 @@ Return JSON with:
 Return ONLY the JSON object, no markdown."""
     
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5.2",
         messages=[
             {"role": "system", "content": "Extract structured JSON. Return JSON only."},
             {"role": "user", "content": prompt},

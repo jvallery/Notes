@@ -79,14 +79,14 @@ models:
     store: false
     api: "responses"
 
-  # Model selection: gpt-5.2 for quality, gpt-4o-mini for speed/cost
-  # Updated 2026-01-04: Use GPT-5.2, remove max_tokens constraints
+  # Model selection: Use GPT-5.2 for all operations
+  # Updated 2026-01-05: Standardized on GPT-5.2 across all operations
   
   # NOTE: Classification uses heuristics (scripts/classify.py), not LLM.
   # This config is reserved for future LLM-based classification if needed.
   classify:
     provider: "openai"
-    model: "gpt-4o-mini"
+    model: "gpt-5.2"
     fallback: "gpt-5.2"
     temperature: 0.0
     # Currently unused - classification is heuristic-based
@@ -94,35 +94,35 @@ models:
   extract_transcript:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens - transcripts can be long
 
   extract_email:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens
 
   extract_voice:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens
 
   planning:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-4o"
+    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens - plans can be complex
   # Backfill: Historical content extraction for README population
-  # Use mini for cost efficiency on bulk operations
+  # Use gpt-5.2 for consistency
   backfill:
     provider: "openai"
-    model: "gpt-4o-mini"
+    model: "gpt-5.2"
     fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens

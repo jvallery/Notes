@@ -309,7 +309,7 @@ SUBJECT: {metadata.get('subject', '')}
 
     try:
         response = client.chat.completions.create(
-            model=model_config.get("model", "gpt-4o-mini"),
+            model=model_config.get("model", "gpt-5.2"),
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
@@ -1024,7 +1024,7 @@ Use this to personalize your response and reference relevant history:
 
     try:
         response = client.chat.completions.create(
-            model=model_config.get("model", "gpt-4o"),
+            model=model_config.get("model", "gpt-5.2"),
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},

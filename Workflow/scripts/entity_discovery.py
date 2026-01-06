@@ -291,10 +291,9 @@ Source type: {source_type or 'Unknown'}
 Use web search if needed to identify this entity."""
 
     try:
-        # Use chat completions with web search tool
-        # Note: web_search_preview may not be available in all versions
+        # Use chat completions
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-5.2",
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}

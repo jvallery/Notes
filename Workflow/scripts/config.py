@@ -140,7 +140,7 @@ class Config:
 
         Example:
             config.get_model_config('extract_transcript')
-            # Returns: {'provider': 'openai', 'model': 'gpt-4o', ...}
+            # Returns: {'provider': 'openai', 'model': 'gpt-5.2', ...}
         """
         model_node = getattr(self.models, task, None)
         if model_node is None:

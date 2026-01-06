@@ -686,7 +686,7 @@ If truly unknown, use empty string.
 Return ONLY the JSON object, no markdown."""
 
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5.2",
         messages=[
             {"role": "system", "content": "You extract structured data from notes. Return only valid JSON."},
             {"role": "user", "content": prompt}
@@ -741,7 +741,7 @@ Return JSON with:
 Return ONLY the JSON object, no markdown."""
     
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-5.2",
         messages=[
             {"role": "system", "content": "You extract structured data from notes. Return only valid JSON."},
             {"role": "user", "content": prompt}

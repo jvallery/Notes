@@ -18,7 +18,7 @@ Usage:
     
     # Or use the logger directly for more control
     with AILogger() as logger:
-        response = logger.log_completion(client, model="gpt-4o", messages=[...])
+        response = logger.log_completion(client, model="gpt-5.2", messages=[...])
 
 Log Files:
     - Workflow/logs/ai/YYYY-MM-DD/
@@ -149,10 +149,11 @@ class DailySummary:
         self.estimated_cost_usd = self._estimate_cost()
     
     def _estimate_cost(self) -> float:
-        """Estimate cost based on model pricing (as of 2024)."""
+        """Estimate cost based on model pricing (as of 2026)."""
         cost = 0.0
         pricing = {
             # Model: (input_per_1k, output_per_1k)
+            "gpt-5.2": (0.003, 0.012),   # GPT-5.2 primary model
             "gpt-4o": (0.005, 0.015),
             "gpt-4o-mini": (0.00015, 0.0006),
             "gpt-4-turbo": (0.01, 0.03),
@@ -527,7 +528,7 @@ def get_client(caller: Optional[str] = None) -> InstrumentedClient:
         
         client = get_client("draft_responses.extract_email")
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-5.2",
             messages=[{"role": "user", "content": "Hello"}]
         )
     """
@@ -606,7 +607,7 @@ def get_cached_system_prompt(
         system_prompt = get_cached_system_prompt(task="email_draft")
         
         response = client.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-5.2",
             messages=[
                 {"role": "system", "content": system_prompt},  # Cached
                 {"role": "user", "content": user_content}  # Dynamic
