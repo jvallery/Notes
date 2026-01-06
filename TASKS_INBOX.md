@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate with Stacy Wynn (interim RevOps lead) to confirm any immediate impacts to active GTM processes (forecasting cadence, deal desk, pricing approvals) following Cristina Hasson's departure. 📅 2025-12-23 🔼 #task #proposed #auto
 - [?] For any deal larger than 15 PB, obtain Deal Desk sign-off prior to issuing a quote and ensure the quote is synced before submission. @TBD ⏫ #task #proposed #auto
 - [?] Ensure all late-stage opportunity budgetary quotes are synced so they are eligible for review and execution visibility. @TBD ⏫ #task #proposed #auto
 - [?] When building customer configurations, prioritize using hardware currently on hand to accelerate fulfillment. @TBD 🔼 #task #proposed #auto
