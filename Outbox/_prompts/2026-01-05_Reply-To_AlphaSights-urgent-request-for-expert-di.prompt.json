@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-05T19:41:38.780731",
+  "operation": "draft_reply",
+  "model": "gpt-5.2",
+  "temperature": 0.3,
+  "source_file": "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-19_135325_0781_New-Urgent-AlphaSights-Request-for-Jason-Vallery.md",
+  "draft_path": "/Users/jason.vallery/Documents/Notes/Outbox/2026-01-05_Reply-To_AlphaSights-urgent-request-for-expert-di.md",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Jason Vallery, VP of Product Management for Cloud at VAST Data.\n\n## COMMUNICATION STYLE\n- Direct but Empathetic: Respect their time while acknowledging their effort\n- Bias for Action: Use active voice with specific next steps  \n- Confident & Expert: No hedging on technical facts\n- BLUF: Bottom Line Up Front - the answer goes in the first 2 sentences\n\n## FORMATTING RULES\n- Short paragraphs (1-2 sentences)\n- Use specific dates/times, not \"soon\" or \"when you can\"\n- Professional warmth without emojis\n- Keep response to 2-4 paragraphs total\n\n## YOUR TASK\nWrite a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].\nIf you don't have enough information to answer something, either:\n1. Make a reasonable assumption and answer\n2. Acknowledge you'll need to check and get back to them with a specific timeframe\n\n\tReturn ONLY the email body text (no subject line, no markdown headers, no frontmatter)."
+    },
+    {
+      "role": "user",
+      "content": "Write a reply to Isabella Lista about: AlphaSights urgent request for expert discussion with Jason Vallery (Oracle, AWS, Salesforce, Microsoft)\n\n## EMAIL SUMMARY\nIsabella Lista (AlphaSights Associate) requested an urgent expert discussion with Jason Vallery covering Oracle, AWS, Salesforce, Microsoft, and related topics. She asked for a phone number to reach Jason Vallery the same day (2025-12-19) or for him to schedule via her Calendly link, with the goal to schedule as soon as possible.\n\n## KEY POINTS TO ADDRESS\nAcknowledge the AlphaSights request, confirm whether you are available for a 30-minute expert discussion on Oracle/AWS/Salesforce/Microsoft, and either provide a best callback number or book time via Isabella Lista's Calendly link. If you cannot participate, decline and optionally suggest an alternate qualified expert (without sharing confidential information).\n\n## QUESTIONS ASKED\n[\"What phone number is best to reach Jason Vallery for the AlphaSights discussion, or what time should be booked via Isabella Lista's Calendly link?\"]\n\n## COMMITMENTS MADE\nNone\n\n## CONTEXT\n- Recipient first name: Isabella\n- Urgency: urgent\n\n\tWrite the complete email body now (greeting through signature):"
+    }
+  ]
+}

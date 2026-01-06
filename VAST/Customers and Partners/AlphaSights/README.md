@@ -41,6 +41,8 @@ not done
 - 2025-12-19: Isabella Lista (AlphaSights) emailed Jason Vallery on 2025-12-19 requesting an urgent consultation d...
 
 - 2025-12-19: Isabella Lista (AlphaSights) emailed Jason Vallery on 2025-12-19 requesting an urgent expert discuss...
+
+- 2025-12-19: Isabella Lista (AlphaSights Associate) requested an urgent expert discussion with Jason Vallery cove...
 ## Key Facts
 
 - AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including trends, internal risk governance teams, future direction, and an industry macro view.
@@ -60,6 +62,8 @@ not done
 - AlphaSights provided a Google Calendar booking link (https://calendar.app.google/31vJT5sNBPwkGy849) to schedule a short briefing for the paid consultation project.
 
 - AlphaSights requested an urgent expert discussion with Jason Vallery covering Oracle, AWS, Salesforce, and Microsoft topics.
+
+- AlphaSights requested an urgent expert discussion with Jason Vallery focused on Oracle, AWS, Salesforce, Microsoft, and related topics.
 ## Topics
 
 - AlphaSights paid expert consultation

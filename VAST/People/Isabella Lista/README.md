@@ -44,6 +44,8 @@ phone: +1 646-889-2580
 - 2025-12-19: Mentioned in: AlphaSights urgent expert discussion request for Jason Vallery (Oracle, AWS, Salesforce, Microsoft)
 
 - 2025-12-19: Mentioned in: AlphaSights urgent request for consultation with Jason Vallery
+
+- 2025-12-19: Mentioned in: AlphaSights urgent request for expert discussion with Jason Vallery (Oracle, AWS, Salesforce, Microsoft)
 ## Open Tasks
 ```tasks
 path includes Isabella Lista
