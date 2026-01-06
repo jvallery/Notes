@@ -3,7 +3,7 @@ type: people
 email: lior.genzel@vastdata.com
 company: VAST Data
 title: Lior Genzel
-last_contact: '2025-12-22'
+last_contact: '2025-12-30'
 created: '2026-01-05'
 tags:
 - type/people

@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Confirm whether the Leidos Federal FOpp-4197 order is strictly software-only or includes any hardware/upgrade component, and ensure the opportunity documentation in Salesforce reflects the correct scope for OrderAdmin processing. @TBD 🔼 #task #proposed #auto
+- [?] Track the Leidos Federal cloud PO (FOpp-4197, "Leidos DoD Cloud") and capture customer expectations, user experience feedback, cloud product implications, and business development learnings for VAST Cloud strategy. ⏫ #task #proposed #auto
 - [?] Provide guidance to Karl Vietmeier on how aggressively Cloud Product Management should assert ownership and how much control Jason Vallery wants to maintain over Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities. 📅 2025-12-03 ⏫ #task #proposed #auto
 - [?] Align internally on an accountability and handoff model for opportunities that begin as cloud (hyperscaler-led) but involve on-prem hardware, specifically for Google Distributed Cloud (GDC) and Azure Local, to avoid diluted ownership and loss of execution visibility. 📅 2025-12-10 🔼 #task #proposed #auto
 - [?] Respond to Karl Vietmeier with guidance on whether cloud product management should own Google Distributed Cloud (GDC) and Azure Local opportunities, including how aggressively to assert ownership and what level of control cloud PM should maintain versus on-prem teams. 📅 2025-12-03 ⏫ #task #proposed #auto

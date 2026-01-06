@@ -318,6 +318,8 @@ not done
 - VAST Data is seeing growing interest from the market in whether VAST supports Google Distributed Cloud (GDC) and Microsoft Azure Local.
 
 - For Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities, ownership often shifts from cloud teams to on-prem teams once hardware is involved, which creates confusion over accountability and reduces visibility into progress and outcomes.
+
+- Jeff Denworth requested that cloud purchase orders be tracked to understand customer expectations, user experience, cloud implications, and business development angles.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

@@ -127,6 +127,10 @@ not done
 - Leaders from Leidos are expected to speak at VAST Forward about how Leidos is using VAST Data to transform its environment with real AI pipelines and production outcomes.
 
 - Rick Scurfield stated that leaders from Leidos will be on stage at VAST Forward to discuss how they use VAST Data.
+
+- A VAST Data order opportunity for Leidos Federal named "Leidos DoD Cloud" (Opp Number FOpp-4197) with TCV $96,808.14 and close date 2025-12-26 was submitted to VAST Order Administration for review and booking.
+
+- The Leidos Federal deal FOpp-4197 is a software-only cloud deployment in a Leidos GovCloud instance and was described as the first Cloud PO in the US Federal sector.
 ## Topics
 
 - Leidos Federal opportunity FOpp-4197 order submission and OrderAdmin processing
