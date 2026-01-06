@@ -534,6 +534,8 @@ role: Lior Genzel @ VAST Data
 - Lior Genzel stated that VAST Data has Cisco, Dell, HPE, and Supermicro certified as eBox partners for VAST offerings.
 
 - Lior Genzel committed to check with VAST Data partner organization for the full list of globally certified hardware partners and share it with Google.
+
+- Lior Genzel stated that VAST Azure is not close to being ready for Microsoft to use for the requested Azure VoC GPU performance testing, and the request should be declined.
 ## Recent Context
 
 - 2025-11-06: Mentioned in: Walmart hybrid lakehouse architecture prep, SyncEngine + DataSpaces approach and Q4 two-cluster pilot

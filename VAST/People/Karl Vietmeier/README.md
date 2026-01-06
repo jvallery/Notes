@@ -3,7 +3,7 @@ type: people
 email: karl.vietmeier@vastdata.com
 company: VAST Data
 title: Karl Vietmeier
-last_contact: '2025-12-01'
+last_contact: '2025-12-11'
 created: '2026-01-05'
 tags:
 - type/people
@@ -144,6 +144,8 @@ role: Cloud Solutions Architect - VAST on Cloud
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC instance for GPU performance testing, VAST declines due to readiness
 
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
+
+- 2025-12-11: Microsoft request for Azure VoC instance for GPU performance testing (declined)
 ## Open Tasks
 ```tasks
 path includes Karl Vietmeier

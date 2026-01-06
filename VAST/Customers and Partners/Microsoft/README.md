@@ -5,7 +5,7 @@ account_type: customer
 status: Active
 industry: Technology
 my_role: ''
-last_contact: '2025-12-19'
+last_contact: '2025-12-11'
 created: '2026-01-05'
 tags:
 - type/customer
@@ -186,6 +186,8 @@ not done
 - 2025-12-21: Mentioned in: Jeff Denworth flags MAI supply chain risk and need for immediate Microsoft deployment plan
 
 - 2025-12-01: Mentioned in: Ownership and accountability for Google Distributed Cloud (GDC) and Azure Local support opportunities
+
+- 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU VMs because t...
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -490,6 +492,8 @@ not done
 - Azure Local is being discussed as an environment where VAST Data support is being requested and may be tied to hyperscaler acquisition and cloud consumption.
 
 - Microsoft Azure Local is being asked about as a potential deployment/support target for VAST Data.
+
+- Microsoft's Redmond lab currently does not have GPU nodes available, prompting Microsoft to request an Azure VoC instance to test performance with Azure GPU instances.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
@@ -845,6 +849,12 @@ not done
 - Pipeline review and expansion of Azure customer list with Microsoft sellers
 
 - Demo/accelerator plan to showcase VAST Global Namespace on Azure for the AI roadshow
+
+- Microsoft request for Azure VoC instance to test with Azure GPU VMs
+
+- Readiness of VAST Azure for performance testing and customer evaluation
+
+- Expected performance profile for an Azure VoC instance (question to Karl Vietmeier)
 ## Key Decisions
 
 - Trevor Cooper-Chadwick's request for VAST Customer Learning Portal access will remain pending until Lior Genzel confirms Trevor's objectives and whether access is appropriate for a prospect in an engineering-level PoC.
@@ -948,3 +958,5 @@ not done
 - Pipeline sync between Microsoft (Mohamad Al Jazaery and Kurt Niebuhr) and VAST (Tiffany Stonehill) will be scheduled in January 2026 due to Mohamad Al Jazaery being out for the next two weeks starting 2025-12-19.
 
 - For the request to showcase VAST Global Namespace on Microsoft Azure, Tiffany Stonehill deferred technical ownership/updates to Lior Genzel as the most current source from engineering.
+
+- Decline Microsoft's request for an Azure VoC instance for performance testing against Azure GPU instances because VAST Azure is not ready for this use case.
