@@ -153,6 +153,8 @@ tags:
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 
 - 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Open Tasks
 ```tasks
 path includes Renen Hallak

@@ -464,6 +464,10 @@ last_enriched: '2026-01-05'
 - Jeff Denworth stated that supply chain for the upcoming year is a complete disaster and asked whether VAST knows how to source Microsoft's stated 2 EB requirement, when it needs to be ordered, and who VAST would order it from.
 
 - Jeff Denworth stated that if Microsoft is really buying 100 EB, he wants to analyze working capital and opportunity cost for VAST Data versus Microsoft.
+
+- Marianne Budnik stated Jeff Denworth is driving the talk track for CES content related to NVIDIA's media briefing.
+
+- Kirstin Bordner requested Jeff Denworth approve the new BF4 blog written by Nicole and share it so she can draft a press release.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -673,6 +677,8 @@ last_enriched: '2026-01-05'
 - 2025-12-21: Jeff Denworth asked whether Microsoft MAI expects to use VAST Data supply chain and warned that VAST...
 
 - 2025-12-21: Jeff Denworth raised a critical concern that VAST is selling out of inventory, lead times are increa...
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth

@@ -13,6 +13,14 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Coordinate press interview coverage at CES using John Mao as an interview spokesperson while Renen Hallak is tied up with flash vendor meetings. @Kirstin Bordner 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Create or identify VAST content for the NVIDIA Rubin platform press cycle, since Kirstin Bordner noted VAST currently has no supporting content for Rubin. @TBD 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Develop a CES media strategy to engage journalists and insert VAST into NVIDIA launch coverage, including considering a VAST press release announcing "available now" that points to Asaf's demo and sending it to NVIDIA for review by tomorrow night. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Schedule and hold a review meeting with Renen Hallak and Gilad on Monday, December 29, 2025, including at least one person from the California team working on Jensen's press conference presentation, to review CES slides/animation and ensure advocacy alignment. @Marianne Budnik 📅 2025-12-29 ⏫ #task #proposed #auto
+- [?] Jeff Denworth to approve the new BF4 blog written by Nicole and share it with Kirstin Bordner so she can draft a VAST press release aligned to the NVIDIA CME embargo lift. @Jeff Denworth 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Approve VAST mentions in NVIDIA press releases (NVIDIA CME press release, NVIDIA Rubin press release, and Open Models press release) since NVIDIA requested approval but not a VAST quote. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Register Renen Hallak for the NVIDIA Live event at CES on January 5, 2026 at 1:00 PM PT at the Fontainebleau (Kirstin Bordner offered to register him). @Kirstin Bordner 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Arrange a meeting with Microsoft EVP for CoreAI Jay Parikh while VAST is in Las Vegas for CES; Renen Hallak indicated he is adding the Microsoft team to arrange this meeting. @TBD 📅 2026-01-05 ⏫ #task #proposed #auto
 - [?] Coordinate with Alon Horev and Lior Genzel to decide the most strategic environment to run Anson (Qi)'s VAST proof of concept that requires 1,000 to 2,000 GPUs, evaluating MAI and Vipin environment versus Nscale or CoreWeave clusters. @Alon Horev 📅 2025-12-19 🔼 #task #proposed #auto
 - [?] Work with Lior Genzel to secure introductions to Microsoft MAI stakeholders Majid Mohammed, Yunchao Gong, and Karén Simonyan to reduce reliance on Kushal Datta as the sole channel to the decision maker Mustafa. @Lior Genzel 📅 2026-01-10 ⏫ #task #proposed #auto
 - [?] Send Jeff Denworth the most recent analysis Jason Vallery has on the Microsoft MAI deal, including any assumptions around 100 EB and 2 EB sourcing implications. 📅 2025-12-22 ⏫ #task #proposed #auto

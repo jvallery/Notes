@@ -45,6 +45,7 @@ console = Console()
 @click.option("--verbose", "-v", is_flag=True, help="Show extraction details")
 @click.option("--enrich", is_flag=True, help="Trigger enrichment for new entities")
 @click.option("--draft-replies", is_flag=True, help="Generate draft email replies")
+@click.option("--draft-all-emails", is_flag=True, help="Generate drafts for all emails (including no-reply/automated)")
 @click.option("--source", is_flag=True, help="Re-process from Sources/ directory")
 @click.option("--force", is_flag=True, help="Skip duplicate detection, reprocess even if already extracted")
 @click.option("--show-cache-stats", is_flag=True, help="Print cache + timing summary after run")
@@ -52,7 +53,7 @@ console = Console()
 @click.option("--vault-root", type=click.Path(), help="Override vault root (defaults to repo root)")
 @click.option("--workers", "-w", type=int, default=None, help="Number of parallel workers (default from config, 1=sequential)")
 @click.option("--sequential", is_flag=True, help="Force sequential processing (ignore config)")
-def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, source: bool, force: bool, show_cache_stats: bool, trace_dir: str, vault_root: str, workers: int, sequential: bool):
+def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich: bool, draft_replies: bool, draft_all_emails: bool, source: bool, force: bool, show_cache_stats: bool, trace_dir: str, vault_root: str, workers: int, sequential: bool):
     """Unified content ingest pipeline.
     
     Processes emails, transcripts, documents, and voice memos through a unified
@@ -81,6 +82,8 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         subtitle_parts.append(f"{effective_workers or 'config'} workers")
     if draft_replies:
         subtitle_parts.append("drafts→Outbox")
+    if draft_all_emails:
+        subtitle_parts.append("all-email-drafts")
     
     console.print(Panel.fit(
         "[bold blue]Unified Ingest Pipeline[/bold blue]",
@@ -93,6 +96,7 @@ def main(content_type: str, file_path: str, dry_run: bool, verbose: bool, enrich
         dry_run=dry_run,
         verbose=verbose,
         generate_outputs=draft_replies,
+        draft_all_emails=draft_all_emails,
         force=force,
         trace_dir=Path(trace_dir) if trace_dir else None,
         show_cache_stats=show_cache_stats,

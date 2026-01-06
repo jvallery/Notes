@@ -196,6 +196,8 @@ not done
 - 2025-12-18: Mentioned in: Intro to Sebastien Berube (AWS) and coffee meeting setup for Jan 7, 2026
 
 - 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.

@@ -77,6 +77,8 @@ phone: +1-512-535-8234
 - John Mao's OpenAI friend previously worked at Instagram/Facebook and Twilio, leading infrastructure/platform engineering teams, and stated OpenAI is less "not invented here" than those companies.
 
 - John Mao clarified that Ben Ries reports to John Mao's friend at OpenAI, and that John Mao's friend reports to Venkat.
+
+- Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
@@ -105,6 +107,8 @@ phone: +1-512-535-8234
 - 2025-12-21: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 
 - 2025-12-12: John Mao shared details from a catch-up with his close friend who leads OpenAI's Online Data Infrast...
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Open Tasks
 ```tasks
 path includes John Mao

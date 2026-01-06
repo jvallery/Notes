@@ -62,6 +62,8 @@ not done
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 
 - 2025-12-01: Mentioned in: RFE 0482 (NVIDIA DGX Cloud): dual-uplink visibility and tenant-scoped visibility via Uplink
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Key Facts
 
 - RFE 0482 is associated with NVIDIA Corporation and the opportunity 'DGX-C | Coreweave' (opportunity amount $0, close date 2025-11-02).
@@ -209,6 +211,12 @@ not done
 - RFE 0482 requests dual-uplink visibility for a dedicated VAST cluster 'LAX-02' so both lambda.cloud.vastdata.com and nvidiadgxc.cloud.vastdata.com can access visibility for the same cluster.
 
 - RFE 0482 requests tenant-scoped visibility for multi-tenant VAST cluster 'LAX-03' so nvidiadgxc.cloud.vastdata.com can see only the NVIDIA DGX Cloud tenant data (metrics, workloads, configurations, health) without exposing other tenants or cluster-wide information.
+
+- NVIDIA is hosting an event called "NVIDIA Live" at CES on January 5, 2026 starting at 1:00 PM PT at the Fontainebleau, and it is open to anyone (not a press conference).
+
+- The embargo for NVIDIA's CME announcement lifts at 3:00 PM PT on January 5, 2026, which is when VAST can announce related blog, demo, and press release content.
+
+- Marianne Budnik stated NVIDIA is doing a 90-minute closed media-only press conference at CES, and nothing from that event will be broadly shown.
 ## Topics
 
 - RFE 0482 for NVIDIA DGX Cloud: unified visibility across VAST clusters deployed at multiple NCPs

@@ -94,6 +94,12 @@ role: Vice President, Global Communications & Customer Marketing
 - Kirstin Bordner added John Mao because he is planning to be in Las Vegas and can be used for press interviews while Renen Hallak is meeting flash vendors.
 
 - Kirstin Bordner identified three NVIDIA CES news-cycle topics for VAST insertion: CME (blog, press release, demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner stated NVIDIA sent VAST two additional press releases requesting VAST inclusion: the NVIDIA Rubin press release and the Open Models press release; NVIDIA is not asking VAST for a quote, only approval of VAST mentions.
+
+- Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
+
+- Kirstin Bordner identified three CES news-cycle topics to insert VAST into: NVIDIA CME (with a blog, press release, and demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
 ## Recent Context
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule
@@ -127,6 +133,8 @@ role: Vice President, Global Communications & Customer Marketing
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA Live, embargo timing, and Microsoft Jay Parikh meeting coordination
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected VAST spokespeople for breakout sessions, required prep cadence
+
+- 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 ## Open Tasks
 ```tasks
 path includes Kirstin Bordner
