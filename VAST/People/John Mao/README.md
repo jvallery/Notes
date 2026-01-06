@@ -65,6 +65,12 @@ phone: +1-512-535-8234
 - John Mao clarified that Ben Ries reports to John Mao's friend at OpenAI, and that John Mao's friend reports to Venkat (Venkat Venkataramani).
 
 - Kirstin Bordner suggested using John Mao for press interviews at CES because Renen Hallak will be tied up meeting flash vendors.
+
+- John Mao's OpenAI contact is ex-Instagram/Facebook and ex-Twilio, and said OpenAI is less "not invented here" than those companies, which John Mao viewed as positive for VAST.
+
+- John Mao stated he will fly to San Francisco early in the New Year to visit his OpenAI contact and open a dialogue to bring in VAST engineering, and he requested keeping the relationship engineering-centered.
+
+- John Mao stated that Ben Ries reports to John Mao's OpenAI friend, and that the friend reports to Venkat (likely Venkat Venkataramani, per context in the thread).
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure
@@ -87,6 +93,8 @@ phone: +1-512-535-8234
 
 - 2025-12-21: Mentioned in: CES 2026 planning: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting request
 - 2025-12-12: John Mao shared details from a catch-up with a close friend at OpenAI who leads the Online Data Infr...
+
+- 2025-12-12: John Mao shared details from a catch-up with a close personal friend who recently joined OpenAI to l...
 ## Open Tasks
 ```tasks
 path includes John Mao
@@ -128,6 +136,14 @@ not done
 - OpenAI DAQ (Data Acquisition) in-house research data platform
 
 - OpenAI Data Platform team (Spark/Databricks) and leadership
+
+- OpenAI online data platforms: Rockset, Snowflake, Azure Blob persistence, local SSD usage
+
+- ChatGPT conversation persistence and "memory" system (KV-store semantics)
+
+- Azure CosmosDB usage by OpenAI Applications for conversation persistence (public reference per Jason Vallery)
+
+- OpenAI Research data platform DAQ (Data Acquisition) and ownership by Louis Feuvrier
 ## Key Decisions
 
 - John Mao will keep the OpenAI relationship engineering-centered and will open a dialogue that brings in VAST engineering during his planned San Francisco visit early in the new year.
@@ -137,3 +153,5 @@ not done
 - John Mao intends to keep the relationship with his OpenAI friend engineering-centered and to open a dialogue that brings in VAST engineering rather than positioning it as a sales-led relationship.
 
 - John Mao intends to keep the relationship with his OpenAI friend engineering-centered and to open a dialogue that brings in VAST Data engineering.
+
+- John Mao will keep the OpenAI relationship engineering-centered and will open a dialogue to bring in VAST engineering after visiting his OpenAI contact in San Francisco early in the New Year.

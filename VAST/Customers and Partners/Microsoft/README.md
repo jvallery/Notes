@@ -178,6 +178,8 @@ not done
 - 2026-01-04: Mentioned in: Weekly VAST GTM Meeting agenda and Teams link (Microsoft-led)
 - 2025-12-11: Mentioned in: Microsoft requests Azure VoC for GPU performance testing, Lior plans to decline
 - 2025-12-27: Jeff Denworth escalated risk to a Q1 Microsoft AI Infrastructure (MAI) deal due to slow progress, su...
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -466,6 +468,10 @@ not done
 - Microsoft has a physical VAST Proof of Concept (PoC) system installed in Microsoft's lab in Redmond and Microsoft is actively testing it.
 
 - Microsoft's Redmond lab currently does not have GPU nodes available, which prompted Microsoft to request an Azure VoC instance to run performance testing against Azure GPU virtual machines.
+
+- Azure Blob is described as the persistence layer for OpenAI's Rockset-based Applications data platform (per John Mao's OpenAI contact).
+
+- Azure CosmosDB is described by Jason Vallery as heavily used by OpenAI Applications for conversation persistence.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks

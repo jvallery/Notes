@@ -43,6 +43,8 @@ not done
 
 - 2025-12-12: Mentioned in: John Mao update on OpenAI org and data platforms (Rockset, Snowflake, DAQ)
 - 2026-01-04: Brian Linhart shared a weekly VAST account pursuit update for OpenAI, noting limited public news ove...
+
+- 2025-12-12: Mentioned in: John Mao update: OpenAI org, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
 ## Key Facts
 
 - VAST plans a touch base meeting on Tuesday with the OpenAI team to align on POC next steps, OpenAI resource availability, and the POC start date.
@@ -136,6 +138,20 @@ not done
 - VAST is working on additional education for the Nvidia team that works with OpenAI, with expectation of more substantive updates in the next couple of weeks.
 
 - Softbank completed funding of a $40B investment in OpenAI prior to the end-of-year deadline (noted as internal news in the email).
+
+- OpenAI is organized into three major teams: Applications (ChatGPT and other products, "online data"), Scaling (between Applications and Research, not clearly a platform team), and Research (data scientists using "offline" data for training).
+
+- OpenAI Applications team's two largest data platforms (per John Mao's OpenAI contact) are Rockset (uses local SSDs and persists to Azure Blob) and Snowflake (OpenAI is one of Snowflake's largest customers).
+
+- Rockset is described by John Mao's OpenAI contact as OpenAI's "vector database" and the SQL-based platform (persisted to Azure Blob) that contains the entire history of ChatGPT conversations.
+
+- John Mao's OpenAI contact mentioned there are talks about integrating or merging more of the Applications datasets with the Research datasets.
+
+- Jason Vallery stated that Rockset is the company OpenAI acquired, founded by the team behind RocksDB, and that the system can be viewed as RocksDB managing persistence on local SSDs plus FoundationDB providing KV semantics on top, functioning as persistent "memory" for ChatGPT (persistent KV-store, not just a KV-cache).
+
+- Jason Vallery stated OpenAI has another big data team called "Data Platform" where Spark and Databricks workloads run, led by Emma Tang.
+
+- OpenAI Research data platform is described by Jason Vallery as an in-house system called DAQ (Data Acquisition) that drives very high throughput and PiB-scale data movement; Louis Feuvrier is the lead developer/architect for DAQ.
 ## Topics
 
 - OpenAI POC planning: next steps, resource availability, and start date
