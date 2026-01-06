@@ -28,6 +28,7 @@ from typing import List, Dict, Any, Optional
 
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.ai_client import get_client
+from utils.config import get_model_config
 from utils.frontmatter import parse_frontmatter, render_frontmatter
 from manifest_sync import (
     VAST_CUSTOMERS,
@@ -129,13 +130,14 @@ Return JSON with:
 
 Return ONLY the JSON object, no markdown."""
     
+    model_config = get_model_config("enrichment")
     response = client.chat.completions.create(
-        model="gpt-5.2",
+        model=model_config["model"],
         messages=[
             {"role": "system", "content": "Extract structured JSON. Return JSON only."},
             {"role": "user", "content": prompt},
         ],
-        temperature=0.0,
+        temperature=model_config.get("temperature", 0.0),
         store=False,
     )
     

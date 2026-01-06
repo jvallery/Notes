@@ -27,8 +27,12 @@ Usage:
     glossary = get_glossary_context()
     
     # Use with AI client - static content first, then user message
+    # IMPORTANT: Always use get_model_config() to get model name
+    from utils.config import get_model_config
+    model_config = get_model_config("extraction")
+    
     response = client.chat.completions.create(
-        model="gpt-5.2",
+        model=model_config["model"],  # From config, never hardcoded
         messages=[
             {"role": "system", "content": system_prompt},  # Cached prefix
             {"role": "user", "content": user_specific_content}  # Dynamic

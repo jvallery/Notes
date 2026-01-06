@@ -83,17 +83,17 @@ class UnifiedExtractor:
         try:
             with self.logger.context(phase="extract", file=str(envelope.source_path)):
                 response = self.client.chat.completions.create(
-                    model=model_config.get("model", "gpt-5.2"),
+                    model=model_config["model"],
                     messages=[
                         {"role": "system", "content": system_prompt},
                         {"role": "user", "content": user_prompt},
                     ],
-                    temperature=0.0,
+                    temperature=model_config.get("temperature", 0.0),
                     # Prompt caching: static context (persona/glossary/aliases) is first in system prompt.
                 )
             
             latency_ms = int((time.time() - call_start) * 1000)
-            self.last_usage = self._capture_usage(response, model_config.get("model", "gpt-5.2"), latency_ms)
+            self.last_usage = self._capture_usage(response, model_config["model"], latency_ms)
             
             # Log cache stats if available (OpenAI returns cached_tokens in usage)
             if self.verbose and self.last_usage:

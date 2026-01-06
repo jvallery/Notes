@@ -309,12 +309,12 @@ SUBJECT: {metadata.get('subject', '')}
 
     try:
         response = client.chat.completions.create(
-            model=model_config.get("model", "gpt-5.2"),
+            model=model_config["model"],
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            temperature=0.0,
+            temperature=model_config.get("temperature", 0.0),
         )
         
         result = response.choices[0].message.content.strip()
@@ -911,7 +911,7 @@ def generate_draft_response(
     - internal_metadata: AI's reasoning and extracted action items
     """
     
-    model_config = get_model_config("extraction")
+    model_config = get_model_config("draft_responses")
     
     # Load persona and classify recipient
     persona = load_persona()
@@ -1024,12 +1024,12 @@ Use this to personalize your response and reference relevant history:
 
     try:
         response = client.chat.completions.create(
-            model=model_config.get("model", "gpt-5.2"),
+            model=model_config["model"],
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt},
             ],
-            temperature=0.7,
+            temperature=model_config.get("temperature", 0.7),
             response_format={"type": "json_object"},
         )
         

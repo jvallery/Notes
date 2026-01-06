@@ -1,10 +1,56 @@
 # Agent Configuration: Full Autonomy for Notes Vault
 
 > **Mode**: God Mode (Maximum Autonomy)  
-> **Last Updated**: 2025-01-03
+> **Last Updated**: 2026-01-05
 
 This document describes how AI agents (Copilot/Claude, Codex) are configured
 for autonomous operation within the Notes vault.
+
+## Core Principles
+
+### AI Model Configuration (MANDATORY)
+
+**All AI model references MUST come from `Workflow/config.yaml` via `get_model_config()`.**
+
+```python
+# ✅ CORRECT - Always use config
+from utils.config import get_model_config
+
+model_config = get_model_config("extraction")  # or other task name
+response = client.chat.completions.create(
+    model=model_config["model"],  # From config
+    temperature=model_config.get("temperature", 0.0),
+    ...
+)
+
+# ❌ WRONG - Never hardcode model names
+response = client.chat.completions.create(
+    model="gpt-5.2",  # NEVER DO THIS
+    ...
+)
+```
+
+**Rules:**
+1. **No hardcoded model names** in any Python script
+2. **No fallback defaults** - if config is missing, fail loudly
+3. **Single source of truth**: `Workflow/config.yaml` models section
+4. All tasks must be explicitly configured in config.yaml
+5. `get_model_config()` will raise `ValueError` if task not configured
+
+**Current Model**: GPT-5.2 for all operations (as of 2026-01-05)
+
+**Available Tasks** (configured in config.yaml):
+- `extract_transcript` - Transcript extraction
+- `extract_email` - Email extraction  
+- `extract_voice` - Voice memo extraction
+- `extraction` - General extraction
+- `planning` - ChangePlan generation
+- `backfill` - Historical README population
+- `enrichment` - Person/customer enrichment (L2)
+- `web_enrichment` - Web search enrichment (L3)
+- `entity_discovery` - AI entity classification
+- `manifest_enrichment` - Manifest metadata enrichment
+- `draft_responses` - Email response drafting
 
 ## God Mode Configuration
 

@@ -29,6 +29,7 @@ from pydantic import BaseModel, Field
 
 sys.path.insert(0, str(Path(__file__).parent))
 from utils import vault_root, workflow_root, sanitize_path_name
+from utils.config import get_model_config
 
 
 def get_glossary_context() -> str:
@@ -292,13 +293,14 @@ Use web search if needed to identify this entity."""
 
     try:
         # Use chat completions
+        model_config = get_model_config("entity_discovery")
         response = client.chat.completions.create(
-            model="gpt-5.2",
+            model=model_config["model"],
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": user_prompt}
             ],
-            temperature=0.0,
+            temperature=model_config.get("temperature", 0.0),
             response_format={"type": "json_object"}
         )
         

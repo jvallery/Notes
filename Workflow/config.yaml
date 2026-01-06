@@ -81,51 +81,84 @@ models:
 
   # Model selection: Use GPT-5.2 for all operations
   # Updated 2026-01-05: Standardized on GPT-5.2 across all operations
+  # CRITICAL: No fallbacks - if config is wrong, fail loudly
   
   # NOTE: Classification uses heuristics (scripts/classify.py), not LLM.
   # This config is reserved for future LLM-based classification if needed.
   classify:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # Currently unused - classification is heuristic-based
 
   extract_transcript:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens - transcripts can be long
 
   extract_email:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens
 
   extract_voice:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens
 
   planning:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens - plans can be complex
+  
   # Backfill: Historical content extraction for README population
-  # Use gpt-5.2 for consistency
   backfill:
     provider: "openai"
     model: "gpt-5.2"
-    fallback: "gpt-5.2"
     temperature: 0.0
     # No max_tokens
+  
+  # Extraction: Used by draft_responses.py and other extraction tasks
+  extraction:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.0
+  
+  # Enrichment: Person and customer enrichment from README content (L2)
+  enrichment:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.0
+  
+  # Web Enrichment: Web search enrichment (L3) using Responses API
+  web_enrichment:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.0
+    # Uses Responses API with web_search_preview tool
+  
+  # Entity Discovery: AI-powered entity discovery
+  entity_discovery:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.0
+  
+  # Manifest Sync: AI enrichment for manifest entries
+  manifest_enrichment:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.0
+  
+  # Draft Responses: Email response generation
+  draft_responses:
+    provider: "openai"
+    model: "gpt-5.2"
+    temperature: 0.3  # Slightly creative for responses
+  
   # Conflict resolution only
   # If you want “best possible” and you’re willing to switch stacks: use OpenAI Codex with gpt-5.2-codex.
   # If staying in Copilot: pick Claude Opus 4.5 explicitly.

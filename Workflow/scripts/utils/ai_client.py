@@ -10,15 +10,20 @@ This module provides:
 
 Usage:
     from utils.ai_client import get_client, AILogger
+    from utils.config import get_model_config
     
     client = get_client()  # Instrumented OpenAI client
+    model_config = get_model_config("extraction")  # Always from config
     
     # All calls are automatically logged to Workflow/logs/ai/
-    response = client.chat.completions.create(...)
+    response = client.chat.completions.create(
+        model=model_config["model"],
+        messages=[...]
+    )
     
     # Or use the logger directly for more control
     with AILogger() as logger:
-        response = logger.log_completion(client, model="gpt-5.2", messages=[...])
+        response = logger.log_completion(client, model=model_config["model"], messages=[...])
 
 Log Files:
     - Workflow/logs/ai/YYYY-MM-DD/
@@ -525,10 +530,12 @@ def get_client(caller: Optional[str] = None) -> InstrumentedClient:
     
     Example:
         from utils.ai_client import get_client
+        from utils.config import get_model_config
         
         client = get_client("draft_responses.extract_email")
+        model_config = get_model_config("extraction")
         response = client.chat.completions.create(
-            model="gpt-5.2",
+            model=model_config["model"],
             messages=[{"role": "user", "content": "Hello"}]
         )
     """
@@ -602,12 +609,14 @@ def get_cached_system_prompt(
     
     Usage:
         from utils.ai_client import get_client, get_cached_system_prompt
+        from utils.config import get_model_config
         
         client = get_client("my_script")
+        model_config = get_model_config("extraction")
         system_prompt = get_cached_system_prompt(task="email_draft")
         
         response = client.chat.completions.create(
-            model="gpt-5.2",
+            model=model_config["model"],
             messages=[
                 {"role": "system", "content": system_prompt},  # Cached
                 {"role": "user", "content": user_content}  # Dynamic

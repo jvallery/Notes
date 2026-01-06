@@ -49,6 +49,7 @@ import yaml
 # Add parent dir for imports
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.ai_client import get_client
+from utils.config import get_model_config
 from utils.frontmatter import parse_frontmatter, render_frontmatter
 from manifest_sync import (
     VAST_PEOPLE, PEOPLE_MANIFEST, CACHE_DIR, GLOSSARY_CACHE,
@@ -217,13 +218,14 @@ Rules:
 Return ONLY valid JSON, no markdown."""
 
     try:
+        model_config = get_model_config("enrichment")
         response = client.chat.completions.create(
-            model="gpt-5.2",
+            model=model_config["model"],
             messages=[
                 {"role": "system", "content": "Extract structured data from notes. Return only valid JSON."},
                 {"role": "user", "content": prompt}
             ],
-            temperature=0.0,
+            temperature=model_config.get("temperature", 0.0),
             store=False
         )
         
@@ -399,8 +401,9 @@ Return ONLY valid JSON."""
 
         try:
             # Use the Responses API with web_search tool for actual web search
+            model_config = get_model_config("web_enrichment")
             response = client.responses.create(
-                model="gpt-5.2",
+                model=model_config["model"],
                 tools=[{"type": "web_search_preview"}],
                 input=prompt,
                 instructions="You are a professional researcher. Use the web_search tool to find accurate information about people. Return only verified data with source URLs.",

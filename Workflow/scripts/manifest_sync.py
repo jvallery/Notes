@@ -33,7 +33,7 @@ from typing import Optional, Dict, List, Any
 # Add parent dir for imports
 sys.path.insert(0, str(Path(__file__).parent))
 from utils.ai_client import get_client
-from utils.config import load_config
+from utils.config import load_config, get_model_config
 
 # Paths
 CONFIG = load_config()
@@ -685,13 +685,14 @@ If truly unknown, use empty string.
 
 Return ONLY the JSON object, no markdown."""
 
+    model_config = get_model_config("manifest_enrichment")
     response = client.chat.completions.create(
-        model="gpt-5.2",
+        model=model_config["model"],
         messages=[
             {"role": "system", "content": "You extract structured data from notes. Return only valid JSON."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.0,
+        temperature=model_config.get("temperature", 0.0),
         store=False
     )
     
@@ -740,13 +741,14 @@ Return JSON with:
 
 Return ONLY the JSON object, no markdown."""
     
+    model_config = get_model_config("manifest_enrichment")
     response = client.chat.completions.create(
-        model="gpt-5.2",
+        model=model_config["model"],
         messages=[
             {"role": "system", "content": "You extract structured data from notes. Return only valid JSON."},
             {"role": "user", "content": prompt}
         ],
-        temperature=0.0,
+        temperature=model_config.get("temperature", 0.0),
         store=False
     )
     

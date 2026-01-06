@@ -139,20 +139,41 @@ def _validate_config(config: dict) -> None:
 
 
 def get_model_config(task: str) -> dict[str, Any]:
-    """Get model configuration for a specific task."""
+    """Get model configuration for a specific task.
+    
+    CRITICAL: This function MUST be used for ALL AI calls.
+    No hardcoded model references are allowed anywhere in the codebase.
+    If a task is not configured, this function will raise an error.
+    
+    Raises:
+        ValueError: If the task is not configured in config.yaml
+    """
 
     config = load_config()
     models = config.get("models", {})
 
-    task_config = models.get(task, {})
+    task_config = models.get(task)
+    
+    # FAIL if task is not configured - no silent defaults
+    if task_config is None:
+        available = [k for k in models.keys() if k not in ("default_provider", "privacy")]
+        raise ValueError(
+            f"Model task '{task}' not configured in config.yaml. "
+            f"Available tasks: {', '.join(sorted(available))}"
+        )
+    
+    # Require explicit model configuration - no defaults
+    if "model" not in task_config:
+        raise ValueError(
+            f"Model task '{task}' missing 'model' in config.yaml. "
+            f"All tasks must explicitly configure the model."
+        )
 
-    # Apply defaults
     return {
         "provider": task_config.get(
             "provider", models.get("default_provider", "openai")
         ),
-        "model": task_config.get("model", "gpt-5.2"),  # Default to GPT-5.2
-        "fallback": task_config.get("fallback", "gpt-5.2"),
+        "model": task_config["model"],
         "temperature": task_config.get("temperature", 0.0),
         "max_tokens": task_config.get("max_tokens"),  # None = let model decide
     }
