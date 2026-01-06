@@ -189,6 +189,7 @@ class OutputGenerator:
             source_content,
             prompt_path=prompt_path,
             draft_path=output_path,
+            context_bundle=context_bundle,
         )
         
         # Include email if available
@@ -255,6 +256,7 @@ prompt_file: "{prompt_ref}"
         *,
         prompt_path: Optional[Path] = None,
         draft_path: Optional[Path] = None,
+        context_bundle: Optional[object] = None,
     ) -> str:
         """Build the draft reply body using LLM with persona.
         
@@ -272,6 +274,7 @@ prompt_file: "{prompt_ref}"
                 source_content,
                 prompt_path=prompt_path,
                 draft_path=draft_path,
+                context_bundle=context_bundle,
             )
         except Exception as e:
             if self.verbose:
@@ -286,6 +289,7 @@ prompt_file: "{prompt_ref}"
         *,
         prompt_path: Optional[Path] = None,
         draft_path: Optional[Path] = None,
+        context_bundle: Optional[object] = None,
     ) -> str:
         """Generate reply body using LLM with persona."""
         from scripts.utils.ai_client import get_openai_client
@@ -311,20 +315,36 @@ prompt_file: "{prompt_ref}"
         # Build questions and commitments
         questions = extraction.questions if hasattr(extraction, 'questions') else []
         commitments = extraction.commitments if hasattr(extraction, 'commitments') else []
-        
+
+        vault_context = ""
+        if context_bundle and hasattr(context_bundle, "get_dynamic_suffix"):
+            try:
+                vault_context = context_bundle.get_dynamic_suffix() or ""
+            except Exception:
+                vault_context = ""
+
+        raw_excerpt = (source_content or "").strip()
+        max_chars = 8000
+        if len(raw_excerpt) > max_chars:
+            raw_excerpt = raw_excerpt[:max_chars].rstrip() + "\n\n[...TRUNCATED...]"
+
         system_prompt = f"""You are {identity.get('name', 'Jason Vallery')}, {identity.get('role', 'VP of Product Management for Cloud')} at {identity.get('company', 'VAST Data')}.
 
 ## COMMUNICATION STYLE
 - Direct but Empathetic: Respect their time while acknowledging their effort
-- Bias for Action: Use active voice with specific next steps  
+- Warm & Human: Professional warmth, not terse or robotic
+- Bias for Action: Use active voice with specific next steps
 - Confident & Expert: No hedging on technical facts
 - BLUF: Bottom Line Up Front - the answer goes in the first 2 sentences
 
 ## FORMATTING RULES
-- Short paragraphs (1-2 sentences)
+- Start with a greeting (e.g., "Hi {first_name},")
+- Short paragraphs (1-2 sentences), but use as many as needed to be helpful
+- Use bullets/numbered lists for multi-part answers or steps
 - Use specific dates/times, not "soon" or "when you can"
 - Professional warmth without emojis
-- Keep response to 2-4 paragraphs total
+- Avoid em dashes (—); use commas or hyphens instead
+- Do not mention internal notes/READMEs/manifests; use them only to inform what you say
 
 ## YOUR TASK
 Write a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].
@@ -332,9 +352,12 @@ If you don't have enough information to answer something, either:
 1. Make a reasonable assumption and answer
 2. Acknowledge you'll need to check and get back to them with a specific timeframe
 
-	Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
+Return ONLY the email body text (no subject line, no markdown headers, no frontmatter)."""
 
         user_prompt = f"""Write a reply to {sender} about: {extraction.title}
+
+## SOURCE EMAIL (VERBATIM)
+{raw_excerpt or "[No source content provided]"}
 
 ## EMAIL SUMMARY
 {extraction.summary}
@@ -352,7 +375,10 @@ If you don't have enough information to answer something, either:
 - Recipient first name: {first_name}
 - Urgency: {extraction.suggested_outputs.reply_urgency if extraction.suggested_outputs else "normal"}
 
-	Write the complete email body now (greeting through signature):"""
+## RELEVANT CONTEXT FROM MY NOTES (PRIVATE - DO NOT QUOTE VERBATIM)
+{vault_context or "None"}
+
+Write the complete email body now (greeting through signature):"""
 
         messages = [
             {"role": "system", "content": system_prompt},

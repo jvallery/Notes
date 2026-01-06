@@ -198,6 +198,8 @@ not done
 - 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
 
 - 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
+
+- 2025-12-22: Mentioned in: Jeff Denworth assigns action item: clarify crawl-walk-run in Azure + VAST integration proposal
 ## Key Facts
 
 - Microsoft AI Infrastructure (MAI) capacity constraints and supply chain urgency drive near-term engagement and escalation.
@@ -524,6 +526,8 @@ not done
 - Microsoft MAI initial GPU drop is expected to arrive in February 2026 and MAI needs a storage solution ready for May 2026 to June 2026, per Kushal Datta as reported by Lior Genzel.
 
 - Microsoft MAI storage decision is described as being ultimately Mustafa's decision, per Jason Vallery's conversations with Azure contacts.
+
+- The assigned document is an Azure + VAST integration proposal, implying Microsoft Azure is the target cloud platform for the integration plan.
 ## Topics
 
 - MAI: exabyte-scale storage needs, timelines, and execution risks
