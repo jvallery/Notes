@@ -39,6 +39,8 @@ not done
 - A recording and FAQ were provided for the 2025-12-23 'Pricing Changes and Supply Chain Update' session, including a passcode '&U9eZF98'.
 
 - A recording and FAQ were provided for the 2025-12-23 'Pricing Changes and Supply Chain Update' session, and the recording passcode is '&U9eZF98'.
+
+- A recording and FAQ were provided for the 2025-12-23 "Pricing Changes and Supply Chain Update" session, including passcode "&U9eZF98".
 ## Topics
 
 ## Key Decisions

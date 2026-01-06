@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] If any active deal is impacted by pricing changes or supply chain updates, contact Stacy Wynn (or Erik or Rick, last names not provided) to clarify guidance and next steps. 🔼 #task #proposed #auto
+- [?] Review the 2025-12-23 "Pricing Changes and Supply Chain Update" session recording and FAQ to understand current guidance for active deals. 🔼 #task #proposed #auto
 - [?] Coordinate with Mikey and relevant team members to validate Walmart requirements, competitive positioning versus Alluxio, and define a path to full estate takeover at Walmart. ⏫ #task #proposed #auto
 - [?] Analyze Walmart's re-stated hybrid requirements (unified namespace, GCS integration, on-prem-only POC constraints) and propose what changes should be incorporated into the VAST product plan. ⏫ #task #proposed #auto
 - [?] Coordinate with Google (David Pawlak) to schedule a minimum one-hour follow-up meeting to review questions and walk through Google's document related to the GDC Storage RFP proposal. 📅 2025-12-19 ⏫ #task #proposed #auto
