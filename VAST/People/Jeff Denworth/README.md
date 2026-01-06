@@ -689,6 +689,8 @@ last_enriched: '2026-01-05'
 - 2025-12-21: Mentioned in: CES 2026 planning for NVIDIA Live, press cycle, and Microsoft Jay Parikh meeting
 
 - 2025-12-23: Jeff Denworth shared that Walmart re-stated requirements after an internal meeting, emphasizing a lo...
+
+- 2025-12-23: VAST Forward 2026 speaker selection and required prep cadence
 ## Open Tasks
 ```tasks
 path includes Jeff Denworth

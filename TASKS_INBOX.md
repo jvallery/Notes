@@ -13,6 +13,13 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] If there are any concerns or conflicts with the VAST Forward spokesperson assignment, contact Jeff Denworth and Kirstin Bordner directly (do not reply-all). 📅 2026-01-06 🔼 #task #proposed #auto
+- [?] Review the VAST Forward session template that Kirstin Bordner will send to all VAST spokespeople/SMEs ahead of the 2026-01-06 intro call. 📅 2026-01-06 🔼 #task #proposed #auto
+- [?] Deliver the assigned breakout session live at VAST Forward on 2026-02-25 to 2026-02-26 as the VAST spokesperson. 📅 2026-02-25 ⏫ #task #proposed #auto
+- [?] Participate in the final dry run for the assigned VAST Forward breakout session. 📅 2026-02-24 ⏫ #task #proposed #auto
+- [?] Participate in at least two customer prep sessions for the assigned VAST Forward breakout session (possibly more). 📅 2026-02-24 ⏫ #task #proposed #auto
+- [?] Schedule and complete an internal 1:1 prep call for the VAST Forward spokesperson role during the week of 2026-01-06 (scheduling in progress). 📅 2026-01-10 ⏫ #task #proposed #auto
+- [?] Attend the VAST Forward spokesperson intro call on 2026-01-06 at 11:00am ET. 📅 2026-01-06 ⏫ #task #proposed #auto
 - [?] Review the 2025-12-23 Pricing Changes and Supply Chain Update session recording and FAQ to understand current guidance for active deals. 🔼 #task #proposed #auto
 - [?] Assess competitive risk from Alluxio for Walmart's hybrid data platform requirements and identify mitigation actions (product gaps, positioning, integration strategy). 🔼 #task #proposed #auto
 - [?] Coordinate with Mikey and the broader team to align on a plan to address Walmart's hybrid and GCS integration requirements and define a path to 'total estate takeover' for Walmart. ⏫ #task #proposed #auto

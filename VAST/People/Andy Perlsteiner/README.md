@@ -67,6 +67,8 @@ role: Field CTO
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST spokesperson for breakout session, required prep cadence
 - 2025-12-23: Mentioned in: VAST Forward: selected as VAST breakout spokesperson, required prep cadence and key dates
+
+- 2025-12-23: Mentioned in: VAST Forward 2026 speaker selection and required prep cadence
 ## Open Tasks
 ```tasks
 path includes Andy Perlsteiner
