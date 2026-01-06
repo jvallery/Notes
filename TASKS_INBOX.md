@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Decide whether to accept the Slice invitation and complete Slice account setup using the invitation link to access and manage VAST Data equity grants and securities. 🔼 #task #proposed #auto
 - [?] Edit "VAST and Azure Integration.docx" to clearly distill and communicate the crawl-walk-run phased plan for the Azure + VAST integration proposal so it is obvious to a first-time reader. ⏫ #task #proposed #auto
 - [?] Review the Google Docs share request and grant or deny Lior Genzel access to the document "VAST and Azure Integration.docx". 🔼 #task #proposed #auto
 - [?] Draft a CES media strategy to engage journalists and insert VAST into NVIDIA launch coverage, including considering a VAST "available now" press release pointing to Asaf's demo and sending it to NVIDIA for review. @TBD 📅 2025-12-22 ⏫ #task #proposed #auto

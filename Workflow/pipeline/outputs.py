@@ -15,8 +15,10 @@ Usage:
     ics_path = generator.generate_calendar_invite(extraction)
 """
 
+import json
 import sys
 import re
+import yaml
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Optional
@@ -24,6 +26,16 @@ from typing import Optional
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from .models import UnifiedExtraction, SuggestedOutputs, CalendarSuggestion
+from scripts.utils import get_model_config, workflow_root
+
+
+def _load_persona() -> dict:
+    """Load the communication persona from profiles/jason_persona.yaml."""
+    persona_path = workflow_root() / "profiles" / "jason_persona.yaml"
+    if persona_path.exists():
+        with open(persona_path) as f:
+            return yaml.safe_load(f)
+    return {}
 
 
 class OutputGenerator:
