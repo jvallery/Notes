@@ -4,7 +4,7 @@ title: Cloud
 status: active
 my_role: owner
 description: Cloud platform strategy, multi-tenancy, operability, and marketplace readiness across hyperscalers.
-last_contact: '2025-12-11'
+last_contact: '2025-12-01'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -130,6 +130,8 @@ not done
 - 2025-12-30: Mentioned in: Leidos Federal first US Fed sector Cloud PO submitted (FOpp-4197, $96,808.14)
 - 2026-01-02: A Google Docs notification email captured two open comments from Jonsi Stefansson on the document 'V...
 - 2025-12-11: Microsoft requested an Azure VoC instance to run performance testing against Azure GPU instances bec...
+
+- 2025-12-01: Karl Vietmeier flagged growing market interest in VAST support for Google Distributed Cloud (GDC) an...
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -292,6 +294,8 @@ not done
 - Jeff Denworth requested that Jason Vallery track cloud purchase orders to understand customer expectations, user experience, cloud implications, and business development angles.
 
 - The document text claims integrating with Azure Blob allows customers to keep the long-tail dataset on HDD-based object storage while reserving VAST flash for the GPU-adjacent working set, as a hedge against flash component price volatility.
+
+- When GDC or Azure Local opportunities involve hardware, VAST on-prem teams tend to take ownership, which can create confusion over accountability and reduce Cloud Product Management visibility into progress and outcomes.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -617,6 +621,14 @@ not done
 - Readiness gap of VAST Azure for performance testing and customer evaluation
 
 - Follow-up call planning with Microsoft requestors
+
+- Support strategy for Google Distributed Cloud (GDC)
+
+- Support strategy for Microsoft Azure Local
+
+- Internal ownership and accountability model for hybrid/on-prem hardware-involved cloud opportunities
+
+- Cloud Product Management vs on-prem team ownership for hyperscaler-tied solutions
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.

@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Provide guidance to Karl Vietmeier on how aggressively Cloud Product Management should assert ownership and how much control Jason Vallery wants to maintain over Google Distributed Cloud (GDC) and Microsoft Azure Local opportunities. ⏫ #task #proposed #auto
 - [?] Reply to Edwin Trogler to propose specific times for a quick call next week to discuss VAST Data and potential FP&A opportunities in Colorado. 🔼 #task #proposed #auto
 - [?] Review Edwin Trogler's resume when received and determine appropriate internal VAST Data contacts for FP&A Director or finance leadership introductions. 🔼 #task #proposed #auto
 - [?] Nominate appropriate customer attendees for the VAST Forward VIP Ski Experience at SnowBasin. @TBD 🔼 #task #proposed #auto
