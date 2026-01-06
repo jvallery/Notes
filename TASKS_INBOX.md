@@ -13,6 +13,8 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Propose specific times next week for a quick introductory call with Edwin Trogler to discuss VAST Data and potential FP&A opportunities in Colorado. 🔼 #task #proposed #auto
+- [?] Review Edwin Trogler's resume and determine appropriate VAST Data contacts (Finance/FP&A leadership or recruiting) for an introduction regarding potential FP&A Director opportunities in Colorado. 🔼 #task #proposed #auto
 - [?] Propose a concrete path and milestones (non-date commitments) toward 'total estate takeover' at Walmart, including how VAST would address unified namespace and GCS integration constraints. 🔼 #task #proposed #auto
 - [?] Coordinate with Mikey and the Walmart account team to determine which Walmart requirements should be incorporated into the VAST product plan and what near-term actions reduce Alluxio competitive risk. ⏫ #task #proposed #auto
 - [?] Analyze Walmart's restated requirements from their internal requirements meeting (hybrid long-term, unified namespace, on-prem-only POC, GCS integration requirement) and summarize gaps versus current VAST capabilities. ⏫ #task #proposed #auto
