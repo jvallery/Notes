@@ -45,4 +45,6 @@ not done
 - Equity management platform access (Slice)
 
 - VAST Data equity grants and securities administration
+
+- Viewing and managing equity grants and additional securities for VAST Data
 ## Key Decisions
