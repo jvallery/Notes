@@ -13,6 +13,11 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Nominate customers for the VAST Forward VIP Ski Experience at SnowBasin (exclusive customer/guest experience tied to the conference). @TBD 🔼 #task #proposed #auto
+- [?] Position VAST Forward to customer accounts as an opportunity to accelerate their roadmap and deepen their long-term relationship with VAST Data. @TBD 🔼 #task #proposed #auto
+- [?] Encourage customer accounts to participate in VAST Forward onsite certification, hands-on labs, and direct access sessions with VAST Data product and leadership teams. @TBD 🔼 #task #proposed #auto
+- [?] For each customer account, highlight the most relevant VAST Forward customer and partner speakers (for example Pixar, Lowe's, NHL, Leidos, Aquatic, T-Mobile, Cisco, HPE) to increase resonance and attendance. @TBD 🔼 #task #proposed #auto
+- [?] Share the VAST Forward agenda directly with customer accounts to drive attendance for VAST Forward (February 24-26, 2026). @TBD ⏫ #task #proposed #auto
 - [?] Clarify internally the accountability model and ownership boundaries between VAST cloud product management and on-prem teams for opportunities that start as cloud but involve hardware (for example GDC and Azure Local), to prevent diluted visibility into progress and outcomes. 📅 2025-12-10 🔼 #task #proposed #auto
 - [?] Respond to Karl Vietmeier with guidance on whether VAST cloud product management should assert ownership of Google Distributed Cloud (GDC) and Azure Local opportunities, including how aggressively to maintain control vs share ownership with on-prem teams. 📅 2025-12-03 ⏫ #task #proposed #auto
 - [?] Propose specific times for a quick introductory call with Edwin Trogler next week to discuss VAST Data and potential FP&A opportunities. 🔼 #task #proposed #auto

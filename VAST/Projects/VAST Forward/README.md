@@ -154,6 +154,14 @@ not done
 - Rick Scurfield promoted onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams as key value for attendees at VAST Forward.
 
 - Rick Scurfield requested nominations of customers for a VIP Ski Experience at SnowBasin associated with VAST Forward.
+
+- VAST Forward is scheduled for February 24-26, 2026 and is positioned internally as VAST Data's first global conference and a major ecosystem proof point.
+
+- Leaders from Pixar, Lowe's, NHL, Leidos, Aquatic, and T-Mobile are expected to speak at VAST Forward about production VAST Data deployments, including real AI pipelines and production outcomes.
+
+- Partners including Cisco, Arrow, Acceldata, HPE, Cambridge Computer, Government Acquisitions, and Starfish are participating in VAST Forward as sponsors/partners, which Rick Scurfield framed as validation of VAST Data's category and leadership position.
+
+- VAST Forward will include onsite certification, hands-on labs, and direct access to VAST Data product and leadership teams for attending customers.
 ## Topics
 
 - VAST Forward conference positioning as customer and partner proof point
@@ -235,6 +243,12 @@ not done
 - Customer speakers and partner sponsorship participation at VAST Forward
 
 - VAST Forward conference positioning and customer value proposition
+
+- VAST Forward conference positioning and ecosystem proof points
+
+- Customer outreach to drive VAST Forward attendance
+
+- Partner sponsorship and participation at VAST Forward
 ## Key Decisions
 
 - Recipients of Kirstin Bordner's email have been selected to serve as VAST spokespeople for assigned VAST Forward breakout sessions.
