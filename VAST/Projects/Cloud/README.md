@@ -154,6 +154,8 @@ not done
 - 2025-12-22: Mentioned in: Jeff Denworth assigns action item: clarify crawl-walk-run in Azure + VAST integration proposal
 
 - 2025-12-23: Mentioned in: Jeff Denworth update: Walmart hybrid requirements unsettled, PM to re-analyze
+
+- 2025-12-23: Mentioned in: Walmart requirements restated, hybrid namespace and GCS integration required
 ## Key Facts
 
 - No generally available, transactable “VAST on Cloud” offering exists today; current work is roadmap plus early marketplace/private-offer motions.
@@ -348,6 +350,8 @@ not done
 - The Azure + VAST integration proposal work is part of VAST Data's Cloud scope and planning.
 
 - Walmart requirements analysis is expected to influence VAST cloud and hybrid product planning.
+
+- VAST product management leadership was asked to determine what Walmart's restated hybrid and GCS integration requirements imply for the VAST Cloud product plan.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas

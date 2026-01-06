@@ -474,6 +474,8 @@ last_enriched: '2026-01-05'
 - Jeff Denworth assigned Jason Vallery an action item in the document "VAST and Azure Integration.docx" to distill and make clear the crawl-walk-run progression in the "Azure + VAST: Integration Proposal" section because it is not obvious to readers.
 
 - Jeff Denworth asked VAST Product Management leadership to analyze Walmart's re-stated requirements and decide what should be incorporated into the VAST product plan, coordinating with Mikey and team.
+
+- Jeff Denworth warned that Walmart's requirements may put Alluxio back in the driver seat and that VAST must be careful competitively.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
@@ -1076,6 +1078,10 @@ not done
 - Crawl-walk-run phased plan articulation for Azure integration
 
 - Competitive risk: Alluxio potentially leading Walmart solution
+
+- Unified namespace requirement (no disjoint namespaces)
+
+- Competitive risk: Alluxio positioning for Walmart hybrid use case
 ## Key Decisions
 
 - Approve the VAST Cloud vision statement and scope boundaries for FY26, including the "Neocloud-in-a-box" concept and explicit "what we will not build" in the next 12 months.

@@ -132,6 +132,10 @@ not done
 - Walmart was not successful in getting the business to accept two disjoint namespaces, implying they require a unified namespace approach across environments.
 
 - Jeff Denworth warned that Walmart's requirements may put Alluxio back in the driver seat, creating competitive risk for VAST.
+
+- Walmart was not successful in getting the business to accept operating with two disjoint namespaces, implying they require a unified namespace across environments.
+
+- Walmart indicated any solution they move forward with will require integration with Google Cloud Storage (GCS), or significant lobbying at the database layer including potentially adopting a hybrid cloud database.
 ## Topics
 
 - Hybrid lakehouse architecture (GCP → two on-prem sites)

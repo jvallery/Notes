@@ -13,6 +13,9 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Assess competitive risk from Alluxio for Walmart's hybrid data platform requirements and identify mitigation actions (product gaps, positioning, integration strategy). 🔼 #task #proposed #auto
+- [?] Coordinate with Mikey and the broader team to align on a plan to address Walmart's hybrid and GCS integration requirements and define a path to 'total estate takeover' for Walmart. ⏫ #task #proposed #auto
+- [?] Analyze Walmart's restated requirements from their internal requirements meeting (hybrid solution, unified namespace, GCS integration) and propose what changes should be incorporated into the VAST product plan. ⏫ #task #proposed #auto
 - [?] If any active deal is impacted by pricing changes or supply chain updates, contact Stacy Wynn (or Erik or Rick, last names not provided) to clarify guidance and next steps. 🔼 #task #proposed #auto
 - [?] Review the 2025-12-23 "Pricing Changes and Supply Chain Update" session recording and FAQ to understand current guidance for active deals. 🔼 #task #proposed #auto
 - [?] Coordinate with Mikey and relevant team members to validate Walmart requirements, competitive positioning versus Alluxio, and define a path to full estate takeover at Walmart. ⏫ #task #proposed #auto

@@ -35,7 +35,7 @@ def test_ingest_cli_routes(monkeypatch, tmp_path):
             verbose,
             generate_outputs,
             draft_all_emails=False,
-            force,
+            force=False,
             trace_dir=None,
             show_cache_stats=False,
             log_metrics=True,
