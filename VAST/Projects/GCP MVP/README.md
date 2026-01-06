@@ -4,7 +4,7 @@ title: GCP MVP
 status: active
 my_role: owner
 description: GCP marketplace MVP launch (private offers, fixed capacity pricing, and deployment flow).
-last_contact: '2026-01-05'
+last_contact: '2025-12-17'
 created: '2026-01-05'
 tags:
 - type/projects
@@ -174,6 +174,8 @@ not done
 - Test timing coordination with Google (pending Maroun's proposed schedule)
 
 - Internal sync meeting scheduling
+
+- GCP MVP enablement collateral
 ## Key Decisions
 
 - Transaction path is marketplace-based private offers (no BYOL) for the MVP.

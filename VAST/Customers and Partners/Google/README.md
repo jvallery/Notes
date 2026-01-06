@@ -250,6 +250,8 @@ not done
 - The presentation share notification was sent via Google Slides from the address drive-shares-dm-noreply@google.com.
 
 - Whale Iptic's multi-pod architecture was described as running across Google Cloud Platform (GCP) as one of the cloud providers used for redundancy.
+
+- Google Slides was used to share and request edit access for the presentation "GCP Flow from customer to sales to customer.pptx".
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications

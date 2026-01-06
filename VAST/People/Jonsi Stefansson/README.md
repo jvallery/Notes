@@ -80,6 +80,8 @@ role: GM of Cloud @ VAST Data
 - Jonsi Stefansson stated VAST plans to set up an engineering workshop in Redmond in January 2026 related to the Azure Blob integration proposal.
 
 - Jonsi Stefansson emailed Microsoft contacts to determine Microsoft supply chain status and future needs for their largest platforms, and received out-of-office replies indicating return on January 5, 2026.
+
+- On 2025-12-17, Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer to sales to customer.pptx" and invited Jason Vallery to edit it.
 ## Recent Context
 
 - 2025-10-28: GCP Marketplace MVP launch readiness, private offers via Tackle, fixed capacity pricing and Polaris entitlements
