@@ -29,6 +29,8 @@ phone: +1 646-889-2580
 - Isabella Lista provided a Calendly link for scheduling a 30-minute call: https://calendly.com/isabella-lista-alphasights/30min.
 
 - Isabella Lista is an Associate at AlphaSights and coordinates expert discussions/consultations.
+
+- Isabella Lista is an Associate at AlphaSights and contacted Jason Vallery to request an urgent expert discussion/consultation.
 ## Recent Context
 
 - 2025-12-19: Mentioned in: AlphaSights urgent request to schedule expert discussion on Oracle, AWS, Salesforce, Microsoft
@@ -40,6 +42,8 @@ phone: +1 646-889-2580
 - 2025-12-19: Mentioned in: AlphaSights urgent expert discussion request for Jason Vallery (Isabella Lista)
 
 - 2025-12-19: Mentioned in: AlphaSights urgent expert discussion request for Jason Vallery (Oracle, AWS, Salesforce, Microsoft)
+
+- 2025-12-19: Mentioned in: AlphaSights urgent request for consultation with Jason Vallery
 ## Open Tasks
 ```tasks
 path includes Isabella Lista

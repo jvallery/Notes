@@ -5,7 +5,7 @@ account_type: ''
 status: ''
 industry: _Unknown_
 created: '2026-01-05'
-last_contact: '2025-12-28'
+last_contact: '2025-12-19'
 tags:
 - type/customer
 - needs-review
@@ -37,6 +37,8 @@ not done
 
 - 2025-12-19: Isabella Lista (AlphaSights) requested an urgent expert discussion with Jason Vallery covering Oracl...
 - 2025-12-28: Olivia Bao (AlphaSights) emailed Jason Vallery with an urgent request to participate in a paid consu...
+
+- 2025-12-19: Isabella Lista (AlphaSights) emailed Jason Vallery on 2025-12-19 requesting an urgent consultation d...
 ## Key Facts
 
 - AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including trends, internal risk governance teams, future direction, and an industry macro view.
@@ -50,6 +52,8 @@ not done
 - AlphaSights requested an urgent expert discussion with Jason Vallery focused on Oracle, AWS, Salesforce, Microsoft, and related cloud topics.
 
 - AlphaSights is seeking expert input for a paid consultation project focused on corporate insider threat, including overall trends, internal risk governance teams, future direction, and an industry macro view.
+
+- AlphaSights requested an urgent discussion with Jason Vallery focused on cloud and enterprise technology topics including Oracle, AWS, Salesforce, and Microsoft.
 ## Topics
 
 - AlphaSights paid expert consultation
@@ -95,4 +99,12 @@ not done
 - Cloud providers and enterprise platforms: Oracle, AWS, Salesforce, Microsoft
 
 - Scheduling a 30-minute expert discussion via Calendly
+
+- Oracle cloud market discussion
+
+- AWS market discussion
+
+- Salesforce market discussion
+
+- Microsoft market discussion
 ## Key Decisions
