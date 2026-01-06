@@ -270,6 +270,8 @@ not done
 - Google Distributed Cloud (GDC) is being asked about as a potential deployment/support target for VAST Data.
 
 - Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
+
+- Google Slides sent an automated share notification email from drive-shares-dm-noreply@google.com for a presentation shared by a VAST Data user.
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications

@@ -76,6 +76,8 @@ not done
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS posture, and SSE-C support
+
+- 2025-12-17: Jonsi Stefansson shared a Google Slides presentation titled "GCP Flow from customer to sales to cust...
 ## Key Facts
 
 - Private offers only (no BYOL); fixed capacity pricing discussed at ~$0.07/GB list for offers.
