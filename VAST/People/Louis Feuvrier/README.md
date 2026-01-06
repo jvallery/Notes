@@ -57,6 +57,8 @@ last_enriched: '2026-01-05'
 - Louis Feuvrier is the lead developer/architect for OpenAI's DAQ (Data Acquisition) system (per Jason Vallery).
 
 - Louis Feuvrier is the lead developer/architect for OpenAI's in-house research data system called DAQ (Data Acquisition).
+
+- Louis Feuvrier is listed on LinkedIn with the descriptor/title 'Learning' (exact employer not provided in the email).
 ## Recent Context
 
 - 2025-12-26: LinkedIn notification that Louis Feuvrier accepted Jason Vallery's connection invitation. The email ...
@@ -82,6 +84,8 @@ last_enriched: '2026-01-05'
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org, Rockset stack, and engineering relationship via his friend
 
 - 2025-12-12: Mentioned in: John Mao update: OpenAI org structure, data platforms (Rockset, Snowflake, CosmosDB, DAQ) and engineering relationship
+
+- 2025-12-26: LinkedIn notified Jason Vallery that Louis Feuvrier accepted Jason's connection invitation on 2025-1...
 ## Open Tasks
 ```tasks
 path includes Louis Feuvrier

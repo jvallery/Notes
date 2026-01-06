@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Send an initial LinkedIn message to Louis Feuvrier to start the conversation after the connection acceptance. 🔽 #task #proposed #auto
 - [?] If there are any concerns or conflicts with the VAST Forward spokesperson assignment, contact Jeff Denworth and Kirstin Bordner directly (do not reply-all). 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Review the VAST Forward session template that Kirstin Bordner will send to all VAST spokespeople/SMEs ahead of the 2026-01-06 intro call. 📅 2026-01-06 🔼 #task #proposed #auto
 - [?] Deliver the assigned breakout session live at VAST Forward on 2026-02-25 to 2026-02-26 as the VAST spokesperson. 📅 2026-02-25 ⏫ #task #proposed #auto
