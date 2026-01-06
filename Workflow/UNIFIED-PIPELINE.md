@@ -447,7 +447,7 @@ I'm Jason Vallery, working at VAST Data as [role].
 3. Enrichment triggers for new entities
 
 ### Phase 4: Output Generation
-1. Draft reply generation for emails
+1. Draft reply generation for emails (draft → `Outbox/`, prompt artifact → `Outbox/_prompts/`)
 2. Calendar invite generation
 3. High-priority task surfacing
 
