@@ -184,6 +184,8 @@ expertise:
 - Jason Vallery identified key Microsoft MAI stakeholders VAST needs relationships with: Majid Mohammed (Mustafa's chief of staff), Yunchao Gong (Kushal Datta's boss), and Karén Simonyan (Yunchao Gong's boss, chief scientist, direct report of Mustafa).
 
 - Jason Vallery stated he has no current relationship with Majid Mohammed, Yunchao Gong, or Karén Simonyan, and that Lior Genzel will take the lead on getting introductions.
+
+- Jason Vallery was added to the email thread about Brian Bearly's board game session planning by David Ellis.
 ## Recent Context
 
 - 2026-01-01: James Vallery shared a list of LinkedIn job postings he applied to (Nasdaq, Ibotta, DESRI, TRC Compa...
@@ -244,6 +246,8 @@ expertise:
 - 2025-12-15: Mentioned in: Google Distributed Cloud RFP follow-up: encryption key granularity, SED/FIPS, and SSE-C support
 
 - 2025-12-21: Mentioned in: Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain
+
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas 2025
 ## Open Tasks
 ```tasks
 path includes James Vallery

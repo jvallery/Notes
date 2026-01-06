@@ -51,6 +51,8 @@ last_enriched: '2026-01-05'
 - Brian Bearly said he can make the board game session work any day from Friday 2025-12-26 through Wednesday 2025-12-31.
 
 - Brian Bearly proposed two candidate times for the board game session: Saturday 2025-12-27 at 1:00pm or Monday 2025-12-29 at 1:00pm.
+
+- Brian Bearly stated he was available any day from Friday 2025-12-26 through Wednesday 2025-12-31 for the board game session at his home.
 ## Recent Context
 
 - 2025-12-18: Mentioned in: Board game session planning at Brian Bearly's place (week after Christmas)
@@ -74,6 +76,8 @@ last_enriched: '2026-01-05'
 - 2025-12-18: Mentioned in: Board game session planning, week after Christmas 2025 (Nemesis / Betrayal at House on the Hill)
 
 - 2025-12-18: Mentioned in: Planning board game session at Brian Bearly's house (week after Christmas 2025)
+
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas 2025
 ## Open Tasks
 ```tasks
 path includes Brian Bearly

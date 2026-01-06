@@ -378,6 +378,23 @@ grep "$REQUEST_ID" Workflow/logs/ai/*/responses.jsonl | jq
        logger.warning(f"Had {stats['failed_requests']} failed API calls")
    ```
 
+## Cache Management
+
+This repo uses a mix of local disk caches, in-memory caches, and (optionally) provider-side prompt caching.
+
+### Clear Local Disk Caches
+
+- Glossary cache: delete `Workflow/_cache/glossary.json` (and optional `Workflow/_cache/glossary.txt`), then rebuild via `python scripts/manifest_sync.py scan` (or any command that rebuilds glossary/manifests).
+- Web enrichment cache: delete `Workflow/_cache/web_enrichment/` to force fresh search results (or run enrich with `--force` where supported).
+
+### Clear In-Memory Caches
+
+Some components cache within a single process (entity lookups, prompt assembly). Restart the script/process to clear.
+
+### OpenAI Prompt Caching
+
+OpenAI-side prompt caching (when used) cannot be manually cleared; it expires automatically.
+
 ## Migration Guide
 
 To update an existing script to use the framework:

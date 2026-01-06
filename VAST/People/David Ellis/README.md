@@ -137,6 +137,8 @@ education:
 - David Ellis stated Monday 2025-12-29 at 1:00pm is better for him than Saturday 2025-12-27 at 1:00pm for the board game session.
 
 - David Ellis indicated he is attending the board game session and later said Monday 2025-12-29 is better for him.
+
+- David Ellis said Monday 2025-12-29 at 1:00pm was better for him than Saturday 2025-12-27 at 1:00pm.
 ## Recent Context
 
 - 2026-01-04: David Ellis is trying to confirm attendance for the final mens group chat about the book '2084' and ...
@@ -168,6 +170,8 @@ education:
 - 2025-12-18: Mentioned in: Board game session planning, week after Christmas 2025 (Nemesis / Betrayal at House on the Hill)
 
 - 2025-12-18: Mentioned in: Planning board game session at Brian Bearly's house (week after Christmas 2025)
+
+- 2025-12-18: Mentioned in: Board game session planning (Nemesis) week after Christmas 2025
 ## Open Tasks
 ```tasks
 path includes David Ellis
