@@ -116,6 +116,10 @@ not done
 - Potential meeting in Seattle between VAST Data and Oracle DRCC/Alloy product management
 
 - DRCC/Alloy product management contact introduction
+
+- Introduction between VAST Data (Jason Vallery) and Oracle Cloud Infrastructure (Christian Linacre, Matthew Thomson)
+
+- Oracle Alloy and Dedicated Regions (DRCC/Alloy) product management discussion
 ## Key Decisions
 
 - Christian Linacre will connect Jason Vallery and Matthew Thomson so they can meet while Jason is in Seattle.
@@ -129,3 +133,5 @@ not done
 - Christian Linacre will connect Jason Vallery (VAST Data) with Matthew Thomson (Oracle Cloud Infrastructure) to meet while Jason is in Seattle.
 
 - Christian Linacre will connect Jason Vallery with Matt (Oracle product management lead for DRCC/Alloy) for a potential in-person meeting in Seattle.
+
+- Matthew Thomson could not meet on Tuesday afternoon (2025-12-09) and instead proposed meeting in Seattle on Thursday with specific time windows.

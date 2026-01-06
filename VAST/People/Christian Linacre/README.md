@@ -50,6 +50,8 @@ role: Vice President, Alloy & Dedicated Regions
 - Christian Linacre provided his cell phone number as +1.425.270.9331.
 
 - Christian Linacre is currently traveling as of 2025-12-08.
+
+- Christian Linacre stated he was traveling as of Monday, 2025-12-08.
 ## Recent Context
 
 - 2025-12-08: Mentioned in: Oracle OCI intro: connect with Matt Thomson (DRCC/Alloy PM) for Seattle meeting
