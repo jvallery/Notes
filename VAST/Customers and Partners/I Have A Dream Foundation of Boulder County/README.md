@@ -91,6 +91,12 @@ not done
 - IHDF is exploring (very early stage) a potential acquisition of a former church in Longmont that is for sale at a low price; it is not currently in any plan and is considered confidential.
 
 - A small group (Maureen, Jorin, Tracy, and Perla Delgado) will look at initial feasibility of the Longmont former church acquisition idea and report back to the IHDF board.
+
+- IHDF board members agreed to form a fundraising committee with a broader development scope than events and marketing, including volunteers, stewardship, and potentially non-board members and a budget.
+
+- IHDF is in the very early stages of exploring acquisition of a former church in Longmont that is for sale at a low price; it is not currently in any organizational plan and is to be kept confidential.
+
+- A small group including Maureen (real estate or facilities expertise implied as her wheelhouse), Jorin (business knowledge), Tracy (program feasibility), and Perla Delgado will evaluate initial feasibility of the Longmont church acquisition idea and report back to the IHDF Board.
 ## Topics
 
 - IHDF Draft Strategic Plan feedback collection process
@@ -154,6 +160,12 @@ not done
 - Potential real estate acquisition: former church in Longmont, early-stage feasibility and SWOT analysis
 
 - Confidentiality expectations for board executive session topics
+
+- Fundraising strategy and creation of a development-focused fundraising committee
+
+- Potential acquisition of a former church building in Longmont and initial feasibility assessment
+
+- Confidentiality expectations for early-stage facility acquisition discussions
 ## Key Decisions
 
 - IHDF will form a fundraising committee with a broader development scope beyond events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.

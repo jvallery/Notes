@@ -48,6 +48,8 @@ not done
 - 2025-12-10: Vinita Ananth (Nebius) confirmed that the proposed meeting time works for her. Jason Vallery request...
 - 2026-01-05: Mentioned in: Operations: Microsoft MAI Nebius NJ first hall 58 x 58 and procurement decision by end of January 2026
 - 2025-12-10: Vinita Ananth (Nebius) confirmed that the proposed meeting time works for a Nebius and VAST connecti...
+
+- 2025-12-10: Vinita Ananth (Nebius) confirmed she can meet at the proposed time for a Nebius and VAST connection ...
 ## Key Facts
 
 - Nebius New Jersey data center is the planned site for a Microsoft MAI training deployment that scales to 812 x 812 and is installed in phases starting with a first-hall 58 x 58 setup.
@@ -78,6 +80,8 @@ not done
 - Scheduling confirmation for 2025-12-15 10:00am PT
 
 - Scheduling a meeting for 2025-12-15 10:00am PT
+
+- Meeting scheduling for 2025-12-15 10:00am PT
 ## Key Decisions
 
 - Schedule a Nebius and VAST introductory call for Monday, 2025-12-15 at 10:00 AM PT.
@@ -99,3 +103,5 @@ not done
 - Schedule the Nebius and VAST connection meeting for Monday, 2025-12-15 at 10:00am PT (pending calendar invite being sent).
 
 - Schedule the Nebius and VAST connection meeting for Monday, 2025-12-15 at 10:00am PT (confirmed by Vinita Ananth).
+
+- Schedule the Nebius and VAST connection call for Monday, 2025-12-15 at 10:00am PT (confirmed by Vinita Ananth).
