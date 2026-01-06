@@ -117,6 +117,8 @@ not done
 - The Google Distributed Cloud RFP follow-up questions on encryption and compliance are being handled as part of VAST's Google Cloud related workstream (GCP MVP).
 
 - The Google Distributed Cloud RFP follow-up questions on encryption and compliance are relevant inputs to the VAST cloud workstream for Google (GCP/GDC context).
+
+- A deck titled "GCP Flow from customer to sales to customer.pptx" was shared, implying documentation of a GCP-related process flow relevant to the GCP MVP effort.
 ## Topics
 
 - GA timing, lighthouse customers, and field enablement

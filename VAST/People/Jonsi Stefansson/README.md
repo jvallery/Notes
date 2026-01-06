@@ -3,7 +3,7 @@ type: people
 email: jonsi@vastdata.com
 company: VAST Data
 title: Jonsi Stefansson
-last_contact: '2025-12-21'
+last_contact: '2025-12-17'
 created: '2026-01-05'
 phone_iceland: '+3546987478'
 phone_us: '+14079510436'
@@ -12,7 +12,7 @@ aliases:
 - Jonsi Stefanson
 tags:
 - type/people
-role: GM of Cloud @ VAST Data
+role: GM of Cloud
 ---
 
 # Jonsi Stefansson

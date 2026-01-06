@@ -272,6 +272,8 @@ not done
 - Whale Iptic was described as running a multi-pod architecture across Amazon Web Services, Google Cloud Platform, and Microsoft Azure.
 
 - Google Slides sent an automated share notification email from drive-shares-dm-noreply@google.com for a presentation shared by a VAST Data user.
+
+- The presentation was shared via Google Slides (Google LLC).
 ## Topics
 
 - GDC RFP: technical gaps, compliance posture, and next-step clarifications
