@@ -99,6 +99,12 @@ tags:
 - Renen Hallak asked whether Alon Horev was in Seattle during the week of December 9, 2025.
 
 - Renen Hallak stated that Microsoft should have their own flash allocation with NAND manufacturers and that VAST efficiencies could reduce Microsoft's NAND needs.
+
+- Renen Hallak plans to meet flash vendors during CES week and stated he cannot change the dates of those meetings.
+
+- Renen Hallak stated he has no time for press interviews during CES due to other commitments.
+
+- Renen Hallak stated he is adding the Microsoft team to arrange a meeting with Jay Parikh while in Las Vegas for CES.
 ## Recent Context
 
 - 2025-12-21: Mentioned in: CES 2026 NVIDIA coordination: NVIDIA Live (Jan 5), embargo timing, and Microsoft Jay Parikh meeting

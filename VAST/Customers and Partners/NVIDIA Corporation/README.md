@@ -217,6 +217,14 @@ not done
 - The embargo for NVIDIA's CME announcement lifts at 3:00 PM PT on January 5, 2026, which is when VAST can announce related blog, demo, and press release content.
 
 - Marianne Budnik stated NVIDIA is doing a 90-minute closed media-only press conference at CES, and nothing from that event will be broadly shown.
+
+- NVIDIA is hosting an event called "NVIDIA Live" at CES on January 5, 2026 starting at 1:00pm PT at the Fontainebleau in Las Vegas; it is open to anyone and is not a press conference.
+
+- The embargo for NVIDIA's CME announcement lifts at 3:00pm PT on January 5, 2026, and VAST plans to align its blog, demo, and press release timing to that embargo lift.
+
+- Marianne Budnik stated NVIDIA is doing a 90-minute media-only press conference at CES and that content from that session will not be broadly shown, requiring VAST to adjust amplification strategy.
+
+- Kirstin Bordner stated NVIDIA is not asking VAST for a quote in the attached press releases, only approval of the VAST mentions.
 ## Topics
 
 - RFE 0482 for NVIDIA DGX Cloud: unified visibility across VAST clusters deployed at multiple NCPs

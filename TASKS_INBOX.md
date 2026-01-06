@@ -13,6 +13,14 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Use John Mao for press interviews at CES to support VAST presence in the NVIDIA CES news cycle while Renen Hallak is meeting flash vendors. @John Mao 📅 2026-01-06 🔼 #task #proposed #auto
+- [?] Create or identify VAST content to support the NVIDIA Rubin platform press release, since the team currently has no supporting asset for Rubin. @TBD 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Develop a VAST CES media strategy to engage journalists and insert VAST into NVIDIA launch coverage, including considering a VAST "available now" press release pointing to Asaf's demo and sending it to NVIDIA for review. @Kirstin Bordner 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Schedule a review meeting on Monday, December 29, 2025 with Renen Hallak and Gilad (last name unknown) and include at least one California-based team member working on Jensen's NVIDIA press conference presentation. @Marianne Budnik 📅 2025-12-29 ⏫ #task #proposed #auto
+- [?] Jeff Denworth to approve the new BF4 blog draft written by Nicole and share it with Kirstin Bordner so she can draft a VAST press release aligned to the NVIDIA CME embargo. @Jeff Denworth 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Approve the VAST mentions in the NVIDIA CME, Rubin, and Open Models press releases (NVIDIA requested approval of mentions, not a quote). @TBD 📅 2025-12-22 ⏫ #task #proposed #auto
+- [?] Register Renen Hallak for the NVIDIA Live event at CES (January 5, 2026 at 1:00pm PT, Fontainebleau) if he plans to attend. @Kirstin Bordner 📅 2026-01-05 🔼 #task #proposed #auto
+- [?] Arrange a meeting in Las Vegas with Jay Parikh (EVP, CoreAI at Microsoft) during CES week by coordinating with the Microsoft team. @Renen Hallak 📅 2026-01-05 ⏫ #task #proposed #auto
 - [?] Decide whether to accept the Slice invitation and complete Slice account setup to access VAST Data equity grants and securities information. 🔽 #task #proposed #auto
 - [?] Edit "VAST and Azure Integration.docx" to distill and clearly present the crawl-walk-run phased plan for the Azure + VAST integration proposal so it is obvious to a first-time reader. ⏫ #task #proposed #auto
 - [?] Review the Google Drive share request and either grant or deny Lior Genzel access to the document "VAST and Azure Integration.docx". 📅 2025-12-23 🔼 #task #proposed #auto

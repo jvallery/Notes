@@ -100,6 +100,16 @@ role: Vice President, Global Communications & Customer Marketing
 - Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
 
 - Kirstin Bordner identified three CES news-cycle topics to insert VAST into: NVIDIA CME (with a blog, press release, and demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner recommended Renen Hallak adjust travel to arrive in Las Vegas on January 5, 2026 (instead of January 6, 2026) to attend NVIDIA Live, without rearranging flash vendor meetings.
+
+- Kirstin Bordner stated she could fly to Las Vegas to meet Renen Hallak and attempt to line up press interviews, but noted it is last minute and may be difficult to arrange.
+
+- Kirstin Bordner stated NVIDIA is not asking VAST for a quote in the attached press releases, only approval of the VAST mentions.
+
+- Kirstin Bordner identified three CES news-cycle insertion topics for VAST: NVIDIA CME (with VAST blog, press release, and demo), Rubin platform (no VAST content yet), and Open Models/Cosmos Reason (supporting blog exists).
+
+- Kirstin Bordner stated Jay Parikh (EVP for CoreAI at Microsoft) is participating in Roland's January 6, 2026 keynote and suggested VAST try to meet him in Las Vegas.
 ## Recent Context
 
 - 2025-12-23: Mentioned in: VAST Forward: Selected as VAST breakout session spokesperson, required prep schedule

@@ -79,6 +79,8 @@ phone: +1-512-535-8234
 - John Mao clarified that Ben Ries reports to John Mao's friend at OpenAI, and that John Mao's friend reports to Venkat.
 
 - Kirstin Bordner added John Mao because he is also planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
+
+- Kirstin Bordner stated John Mao is planning to be in Las Vegas for CES and can be used for press interviews while Renen Hallak is meeting flash vendors.
 ## Recent Context
 
 - 2025-12-12: Mentioned in: OpenAI data infrastructure org and platforms, via John Mao friend in Online Data Infrastructure

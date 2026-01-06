@@ -468,6 +468,8 @@ last_enriched: '2026-01-05'
 - Marianne Budnik stated Jeff Denworth is driving the talk track for CES content related to NVIDIA's media briefing.
 
 - Kirstin Bordner requested Jeff Denworth approve the new BF4 blog written by Nicole and share it so she can draft a press release.
+
+- Marianne Budnik stated Jeff Denworth is driving the talk track for the NVIDIA press conference presentation to ensure it is strong.
 ## Recent Context
 
 - 2025-11-04: Planning notes for a set of sessions with Jeff Denworth to align VAST Cloud strategy for FY26: defin...
