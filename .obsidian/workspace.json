@@ -11,24 +11,10 @@
             "id": "d53b413e5fffdcfe",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Outbox/2026-01-05_Reply-To_Zoom-meeting-summary-Jason-Vallery-and-A.md",
-                "mode": "source",
-                "source": false,
-                "backlinks": true,
-                "backlinkOpts": {
-                  "collapseAll": false,
-                  "extraContext": false,
-                  "sortOrder": "alphabetical",
-                  "showSearch": false,
-                  "searchQuery": "",
-                  "backlinkCollapsed": false,
-                  "unlinkedCollapsed": true
-                }
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "2026-01-05_Reply-To_Zoom-meeting-summary-Jason-Vallery-and-A"
+              "title": "New tab"
             }
           }
         ]
@@ -193,8 +179,16 @@
       "audio-recorder:Start/stop recording": false
     }
   },
-  "active": "d53b413e5fffdcfe",
+  "active": "c2c00970aedeeb55",
   "lastOpenFiles": [
+    "Workflow/review_bundles/ingest_pipeline_review_bundle_2026-01-05_205124.txt",
+    "Workflow/review_bundles",
+    "Outbox/2026-01-05_Reply-To_Nebius-and-VAST-intro-call-scheduled-for.md",
+    "Outbox/_prompts/2026-01-05_Reply-To_Nebius-and-VAST-intro-call-scheduled-for.prompt.json",
+    "Outbox/2026-01-05_Reply-To_Microsoft-Ignite-follow-up-intro-call-re.md",
+    "Outbox/_prompts/2026-01-05_Reply-To_Microsoft-Ignite-follow-up-intro-call-re.prompt.json",
+    "Outbox/2026-01-05_Reply-To_AlphaSights-urgent-request-to-schedule-e.md",
+    "Outbox/2026-01-05_Reply-To_Leidos-Federal-first-Cloud-PO-submitted-.md",
     "Outbox/_prompts/2026-01-05_Reply-To_Leidos-Federal-first-Cloud-PO-submitted-.prompt.json",
     "Outbox/2026-01-05_Reply-To_Leidos-Federal-first-US-Fed-Cloud-PO-sub_1.md",
     "Outbox/_prompts/2026-01-05_Reply-To_Leidos-Federal-first-US-Fed-Cloud-PO-sub_1.prompt.json",
@@ -214,23 +208,15 @@
     "Outbox/_prompts/2026-01-05_Reply-To_Walmart-requirements-restated-hybrid-nam.prompt.json",
     "Outbox/2026-01-05_Reply-To_Jeff-Denworth-update-Walmart-hybrid-requ.md",
     "Outbox/2026-01-05_Reply-To_Google-GDC-Storage-RFP-follow-up-FIPS-SE_1.md",
-    "Outbox/_prompts/2026-01-05_Reply-To_Jeff-Denworth-update-Walmart-hybrid-requ.prompt.json",
     "VAST/People/Jeff Denworth/2025-12-23 - Jeff Denworth update- Walmart hybrid requirements unsettled, PM to re-analyze.md",
-    "Outbox/_prompts/2026-01-05_Reply-To_Google-GDC-Storage-RFP-follow-up-FIPS-SE_1.prompt.json",
     "Outbox/2026-01-05_Reply-To_Google-GDC-Storage-RFP-follow-up-FIPS-SE.md",
-    "Outbox/_prompts/2026-01-05_Reply-To_Google-GDC-Storage-RFP-follow-up-FIPS-SE.prompt.json",
     "VAST/Customers and Partners/Google/2025-12-17 - Google GDC Storage RFP follow-up- FIPS, SEDs, BYOH partner list, and meeting scheduling.md",
     "Outbox/2026-01-05_Reply-To_Lior-Genzel-requests-access-to-Google-Do.md",
-    "Outbox/_prompts/2026-01-05_Reply-To_Lior-Genzel-requests-access-to-Google-Do.prompt.json",
     "VAST/Customers and Partners/Slice Global, Inc./2025-12-22 - Slice Global invitation for Jason Vallery to access VAST Data equity information.md",
     "Outbox/2026-01-05_Reply-To_Jeff-Denworth-assigns-action-item-clarif.md",
     "Outbox/2026-01-05_Reply-To_Lior-Genzel-requested-access-to-Google-D.md",
     "Outbox/2026-01-05_Reply-To_CES-2026-planning-for-NVIDIA-Live-press-.md",
     "Outbox/2026-01-05_Reply-To_Jeff-Denworth-escalates-MAI-supply-chain.md",
-    "VAST/People/Jeff Denworth/2025-12-21 - Jeff Denworth escalates MAI supply chain risk and asks if Microsoft expects VAST supply chain.md",
-    "Outbox/2026-01-05_Reply-To_Jonsi-Stefansson-shared-Google-Slides-de.md",
-    "Outbox/2026-01-05_Reply-To_Jeff-Denworth-flags-MAI-supply-chain-ris.md",
-    "VAST/People/Jeff Denworth/2025-12-21 - Jeff Denworth flags MAI supply chain risk and need for immediate deployment plan.md",
     "DRAFT/Azure Integration/_scratch/azure-storage-azcopy/readme-command-prompt.png",
     "Personal/Projects/Frigate/snapshots/pool_2.jpg",
     "Personal/Projects/Frigate/snapshots/patio_2.jpg",

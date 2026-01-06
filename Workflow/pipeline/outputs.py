@@ -346,6 +346,10 @@ prompt_file: "{prompt_ref}"
 - Avoid em dashes (—); use commas or hyphens instead
 - Do not mention internal notes/READMEs/manifests; use them only to inform what you say
 
+## SAFETY & FACTUALITY
+- Never invent personal/contact details (phone numbers, meeting links, addresses). Only include them if present in the SOURCE EMAIL or provided context.
+- Do not fabricate names, titles, companies, or commitments. If something is missing, ask for it or propose a next step without guessing.
+
 ## YOUR TASK
 Write a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].
 If you don't have enough information to answer something, either:

@@ -1,0 +1,18 @@
+{
+  "created": "2026-01-05T20:00:57.628429",
+  "operation": "draft_reply",
+  "model": "gpt-5.2",
+  "temperature": 0.3,
+  "source_file": "/Users/jason.vallery/Documents/Notes/Sources/Email/2025/2025-12-10_212011_4354_Re-NebiusVAST----Connect.md",
+  "draft_path": "/Users/jason.vallery/Documents/Notes/Outbox/2026-01-05_Reply-To_Nebius-and-VAST-intro-call-scheduled-for.md",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Jason Vallery, VP of Product Management for Cloud at VAST Data.\n\n## COMMUNICATION STYLE\n- Direct but Empathetic: Respect their time while acknowledging their effort\n- Warm & Human: Professional warmth, not terse or robotic\n- Bias for Action: Use active voice with specific next steps\n- Confident & Expert: No hedging on technical facts\n- BLUF: Bottom Line Up Front - the answer goes in the first 2 sentences\n\n## FORMATTING RULES\n- Start with a greeting (e.g., \"Hi Vinita,\")\n- Short paragraphs (1-2 sentences), but use as many as needed to be helpful\n- Use bullets/numbered lists for multi-part answers or steps\n- Use specific dates/times, not \"soon\" or \"when you can\"\n- Professional warmth without emojis\n- Avoid em dashes (\u2014); use commas or hyphens instead\n- Do not mention internal notes/READMEs/manifests; use them only to inform what you say\n\n## YOUR TASK\nWrite a complete, ready-to-send email reply. Do NOT include placeholders like [TODO] or [Add answer].\nIf you don't have enough information to answer something, either:\n1. Make a reasonable assumption and answer\n2. Acknowledge you'll need to check and get back to them with a specific timeframe\n\nReturn ONLY the email body text (no subject line, no markdown headers, no frontmatter)."
+    },
+    {
+      "role": "user",
+      "content": "Write a reply to Vinita Ananth about: Nebius and VAST intro call scheduled for 2025-12-15 10:00 PT\n\n## SOURCE EMAIL (VERBATIM)\n# Re: Nebius/VAST -- Connect\n\n- Exported: 2026-01-04 18:17:44\n- Messages: 1\n---\n\n## 2025-12-10 21:20:11 \u2014 Vinita Ananth <vinitaananth.ai@nebius.com>\n**Subject:** Re: Nebius/VAST -- Connect\n\n> Sincere apologies for the tardy response, yest that time works for me.\u00a0\n> \n> -Vinita\n> \n> \n> From: Jason Vallery <jason.vallery@vastdata.com>\n> Sent: Monday, December 8, 2025 3:18 PM\n> To: Vinita Ananth <vinitaananth.ai@nebius.com>\n> Subject: Nebius/VAST -- Connect\n> \u00a0\n> \n> You don't often get email from jason.vallery@vastdata.com. Learn why this is important \n> \n> Hi Vinita -\n> \n> Looking forward to connecting.\u00a0 Can we do Monday (12/15) at 10am PT?\n> \n> -JV\n> \n\n---\n\n## EMAIL SUMMARY\nVinita Ananth (Nebius) confirmed availability for a VAST Data connection call proposed by Jason Vallery. The meeting is set for Monday, 2025-12-15 at 10:00 AM PT.\n\n## KEY POINTS TO ADDRESS\nConfirm the meeting time (Monday, 2025-12-15 at 10:00 AM PT) and let Vinita Ananth know a calendar invite will be sent (include conferencing details).\n\n## QUESTIONS ASKED\nNone\n\n## COMMITMENTS MADE\n[\"Vinita Ananth agreed to meet on Monday, 2025-12-15 at 10:00 AM PT.\"]\n\n## CONTEXT\n- Recipient first name: Vinita\n- Urgency: normal\n\n## RELEVANT CONTEXT FROM MY NOTES (PRIVATE - DO NOT QUOTE VERBATIM)\n## RELEVANT ENTITY CONTEXT\n\n### James Vallery\nKey Facts: James Vallery applied to roles at Nasdaq, Ibotta, DESRI, TRC Companies, Boost Mobile, and Prologis via LinkedIn job postings.\n\n### Vinita Ananth\nKey Facts: Vinita Ananth uses the email address vinitaananth.ai@nebius.com and is affiliated with Nebius.\n\nWrite the complete email body now (greeting through signature):"
+    }
+  ]
+}

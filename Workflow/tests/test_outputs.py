@@ -239,6 +239,9 @@ def test_generate_reply_prompt_artifact_includes_context(tmp_path):
     payload = json.loads(prompt_path.read_text())
 
     messages = payload.get("messages") or []
+    system_content = next(m.get("content", "") for m in messages if m.get("role") == "system")
+    assert "Never invent" in system_content
+    assert "phone" in system_content.lower()
     assert any("SOURCE EMAIL (VERBATIM)" in m.get("content", "") for m in messages)
     assert any("Body goes here." in m.get("content", "") for m in messages)
     assert any("RELEVANT CONTEXT FROM MY NOTES" in m.get("content", "") for m in messages)
