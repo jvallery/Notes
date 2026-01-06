@@ -72,6 +72,34 @@ def test_participant_lookup_uses_email_first(tmp_path):
     assert any("Email Match/README.md" in p.target_path for p in plan.patches)
 
 
+def test_entity_index_resolves_similar_names_with_categorized_aliases(tmp_path):
+    (tmp_path / "VAST" / "People" / "Kanchan Mehrotra").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "VAST" / "People" / "Kanchan Mehrotra" / "README.md").write_text("# README\n")
+    (tmp_path / "VAST" / "People" / "Akanksha Mehrotra").mkdir(parents=True, exist_ok=True)
+    (tmp_path / "VAST" / "People" / "Akanksha Mehrotra" / "README.md").write_text("# README\n")
+
+    aliases_dir = tmp_path / "Workflow" / "entities"
+    aliases_dir.mkdir(parents=True, exist_ok=True)
+    (aliases_dir / "aliases.yaml").write_text(
+        yaml.dump(
+            {
+                "people": {
+                    "Kanchan Mehrotra": ["Kanchan", "Koncha"],
+                    "Akanksha Mehrotra": ["Akanksha"],
+                }
+            }
+        )
+    )
+
+    index = EntityIndex(tmp_path)
+
+    kanchan = index.find_person("Koncha")
+    akanksha = index.find_person("Akanksha")
+
+    assert kanchan is not None and kanchan.name == "Kanchan Mehrotra"
+    assert akanksha is not None and akanksha.name == "Akanksha Mehrotra"
+
+
 def _extraction(source_file: Path) -> UnifiedExtraction:
     primary = EntityRef(entity_type="person", name="Alice Example", confidence=0.9)
     fact_primary = Fact(text="Alice fact", about_entity=primary, fact_type="background")

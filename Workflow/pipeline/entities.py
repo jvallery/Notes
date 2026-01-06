@@ -365,15 +365,46 @@ class EntityIndex:
         
         try:
             data = yaml.safe_load(aliases_path.read_text()) or {}
-            
-            # Flatten nested structure
-            for canonical, variants in data.items():
+
+            # Support the vault's categorized aliases format:
+            #   people/accounts/projects/rob: {Canonical: [aliases...]}, plus legacy flat mappings.
+            categories = ["people", "accounts", "projects", "rob", "rob_forums"]
+            if any(isinstance(data.get(cat), dict) for cat in categories):
+                for category in categories:
+                    cat_aliases = data.get(category)
+                    if not isinstance(cat_aliases, dict):
+                        continue
+                    for key, value in cat_aliases.items():
+                        if not key:
+                            continue
+                        if isinstance(value, list):
+                            canonical = str(key)
+                            self._aliases[canonical.lower()] = canonical
+                            for alias in value:
+                                if not alias:
+                                    continue
+                                self._aliases[str(alias).lower()] = canonical
+                        elif isinstance(value, str):
+                            # Dict form: {"alias": "Canonical Name"}
+                            alias = str(key)
+                            canonical = str(value)
+                            self._aliases[canonical.lower()] = canonical
+                            self._aliases[alias.lower()] = canonical
+                return
+
+            # Legacy flat mapping: {"Canonical Name": ["alias1", "alias2"], "Alias": "Canonical"}
+            for key, value in data.items():
+                if not key:
+                    continue
+                canonical = str(key)
                 self._aliases[canonical.lower()] = canonical
-                if isinstance(variants, list):
-                    for variant in variants:
-                        self._aliases[variant.lower()] = canonical
-                elif isinstance(variants, str):
-                    self._aliases[variants.lower()] = canonical
+                if isinstance(value, list):
+                    for alias in value:
+                        if not alias:
+                            continue
+                        self._aliases[str(alias).lower()] = canonical
+                elif isinstance(value, str):
+                    self._aliases[str(key).lower()] = str(value)
         except Exception:
             pass
 
