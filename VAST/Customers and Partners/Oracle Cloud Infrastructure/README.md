@@ -110,6 +110,8 @@ not done
 - Potential in-person meeting in Seattle while Jason Vallery is in town
 
 - Oracle DRCC/Alloy product management contact for follow-up
+
+- Potential meeting in Seattle between VAST Data and Oracle DRCC/Alloy product management
 ## Key Decisions
 
 - Christian Linacre will connect Jason Vallery and Matthew Thomson so they can meet while Jason is in Seattle.

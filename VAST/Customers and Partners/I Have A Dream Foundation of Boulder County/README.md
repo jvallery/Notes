@@ -83,6 +83,8 @@ not done
 - A small group (Maureen, Jorin, Tracy, and Perla Delgado) will evaluate initial feasibility of the potential Longmont former church acquisition and report back to the IHDF board.
 
 - I Have A Dream Foundation of Boulder County is conducting a strategic planning process and has a Draft Strategic Plan and a designed version of the strategic plan to be previewed at a January board meeting.
+
+- I Have A Dream Foundation of Boulder County (IHDF) is collecting board feedback on the Draft Strategic Plan via a feedback form due by 2025-12-18.
 ## Topics
 
 - IHDF Draft Strategic Plan feedback collection process
@@ -134,6 +136,12 @@ not done
 - Early-stage feasibility exploration of acquiring a former church property in Longmont, including SWOT analysis
 
 - IHDF strategic plan review and feedback collection
+
+- IHDF Draft Strategic Plan feedback collection process and deadline (2025-12-18)
+
+- January IHDF board meeting agenda item: first look at designed strategic plan with consultants Hannah and Andrea Ostroy
+
+- December IHDF board meeting reminder (Wednesday)
 ## Key Decisions
 
 - IHDF will form a fundraising committee with a broader development scope beyond events and marketing (including volunteers and stewardship), potentially including non-board members and a budget.
