@@ -334,6 +334,8 @@ not done
 - VAST Cloud product leadership (Jason Vallery) was introduced to Microsoft to enable technical collaboration.
 
 - A draft 'VAST on Cloud' Cloud Course and a Project Brief have been started using existing material and are being reviewed for messaging and technical accuracy before a January working session.
+
+- A VAST on Cloud training course and a project brief are being assembled from existing materials and will be reviewed for messaging and technical accuracy before a January working session.
 ## Topics
 
 - Multi-tenancy and tenant-scoped auth/quotas
@@ -699,6 +701,8 @@ not done
 - Project Brief review for alignment, clarity, and accuracy
 
 - Sales enablement messaging and technical accuracy for field readiness
+
+- Field readiness and messaging clarity for VAST on Cloud
 ## Key Decisions
 
 - Prioritize core cloud layers before higher-layer services.
