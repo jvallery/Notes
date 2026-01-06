@@ -3,7 +3,7 @@ type: people
 email: mordechai.blaunstein@vastdata.com
 company: VAST Data
 title: Mordechai Blaunstein
-last_contact: '2025-12-19'
+last_contact: '2025-12-29'
 created: '2026-01-05'
 tags:
 - type/people
@@ -84,6 +84,8 @@ role: Mordechai Blaunstein @ VAST Data
 - On 2025-12-19, Mordechai Blaunstein shared a Google Docs document titled "CoreWeave-Vast Automation Project - V2 .docx" and invited Jason Vallery to edit it.
 
 - Mordechai Blaunstein said VAST is already working on similar requests from multiple CSPs and is defining a new VIP pool type called 'Service Aware VIP Pool' to allow multi-VIP access to the VMS for GUI/CLI/REST/SSH/CSI, tracked in Jira ORION-261324 and an internal wiki page.
+
+- Mordechai Blaunstein accepted a calendar invitation for a 1:1 sync with Jason Vallery scheduled for Friday, January 2, 2026 from 1:00pm to 2:00pm Mountain Time (Denver) via Zoom.
 ## Recent Context
 
 - 2025-12-29: Mordechai Blaunstein accepted a calendar invitation for a 1-hour sync with Jason Vallery. The meetin...
