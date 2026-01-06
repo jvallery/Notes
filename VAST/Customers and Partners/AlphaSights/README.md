@@ -5,7 +5,7 @@ account_type: ''
 status: ''
 industry: _Unknown_
 created: '2026-01-05'
-last_contact: '2025-12-19'
+last_contact: '2025-12-28'
 tags:
 - type/customer
 - needs-review
@@ -123,4 +123,8 @@ not done
 - AlphaSights expert discussion request for Jason Vallery
 
 - Scheduling a 30-minute call via Calendly
+
+- Internal risk governance teams and operating models
+
+- Industry macro view on insider threat
 ## Key Decisions

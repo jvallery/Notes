@@ -13,6 +13,7 @@ Use this as a quick-dump list. Add lines like:
 - Status cycle: Proposed (`?`) → Accepted (`[ ]`) → Done (`x`); Rejected (`X`) hides/cancels.
 
 ## Inbox
+- [?] Decide whether to participate in AlphaSights paid consultation on corporate insider threat and, if yes, book a short briefing using https://calendar.app.google/31vJT5sNBPwkGy849. 📅 2026-01-07 ⏫ #task #proposed #auto
 - [?] Be onsite and live as a VAST Forward breakout spokesperson during VAST Forward on February 25-26, 2026. 📅 2026-02-25 ⏫ #task #proposed #auto
 - [?] If there are concerns or conflicts with the assigned VAST Forward spokesperson role, contact Jeff Denworth and Kirstin Bordner directly (do not reply-all). 📅 2026-01-06 ⏫ #task #proposed #auto
 - [?] Review and start from the VAST Forward session template that Kirstin Bordner will send to VAST spokespeople/SMEs ahead of the January 6, 2026 intro call. 📅 2026-01-06 🔼 #task #proposed #auto

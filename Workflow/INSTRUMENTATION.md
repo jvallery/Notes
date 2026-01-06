@@ -141,6 +141,16 @@ Every API call logs:
 }
 ```
 
+### Draft Reply Prompt Artifacts
+
+When the unified pipeline generates an Outbox draft reply, it also writes a per-draft prompt artifact to:
+
+- `Outbox/_prompts/<draft-stem>.prompt.json`
+
+The draft file includes a `prompt_file:` frontmatter key pointing to the artifact. The artifact contains the exact `messages` (system + user) sent to the model after variable interpolation, so you can inspect the full outbound prompt without spelunking daily logs.
+
+When an actual model call is made, the request is also logged to `Workflow/logs/ai/YYYY-MM-DD/requests.jsonl` with `context` fields (e.g., `source_file`, `draft_path`, `prompt_path`) to make it searchable.
+
 ### Daily Summary
 
 `Workflow/logs/ai/YYYY-MM-DD/summary.json`:
